@@ -1,0 +1,359 @@
+<style>
+.gs{font-family:var(--font-anthropic-sans);display:grid;gap:var(--cds-gap-lg);max-width:78rem;margin-inline:auto}
+.gs h1{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin:0;text-wrap:balance}
+.gs .top{display:flex;flex-wrap:wrap;gap:var(--cds-gap-sm) var(--cds-gap-md);align-items:flex-start;justify-content:space-between}
+.gs .tag{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:var(--cds-gap-xs) 0 0;max-width:70ch}
+.gs .proto{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);border:1px dashed var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-xs) var(--cds-pad-sm)}
+.gs nav{position:sticky;top:0;z-index:2;background:var(--color-bg);border-bottom:1px solid var(--color-border-line);display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.gs nav button{font:inherit;font-size:var(--cds-font-size-body);background:none;border:0;border-bottom:2px solid transparent;color:var(--color-fg-muted);padding:var(--cds-pad-sm) var(--cds-pad-md);cursor:pointer;white-space:nowrap}
+.gs nav button[aria-selected=true]{color:var(--color-fg);border-bottom-color:currentColor;font-weight:var(--cds-font-weight-medium)}
+.gs nav button:focus-visible,.gs th:focus-visible,.gs tr.click:focus-visible{outline:2px solid var(--color-fg);outline-offset:-2px}
+.gs .panel{display:grid;gap:var(--cds-gap-md)}
+.gs .panel[hidden]{display:none}
+.gs .lede{font-size:var(--cds-font-size-body);margin:0;max-width:72ch;line-height:1.5}
+.gs .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:var(--cds-gap-md)}
+.gs .tile,.gs .card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0}
+.gs .tile{display:grid;gap:var(--cds-gap-xs);align-content:start}
+.gs .tile .k{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gs .tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);font-variant-numeric:tabular-nums;line-height:1.1}
+.gs .tile .d{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}
+.gs .spark{height:34px;margin-top:4px}
+.gs .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,26rem),1fr));gap:var(--cds-gap-md)}
+.gs h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
+.gs .note{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:var(--cds-gap-xs) 0 var(--cds-gap-md);max-width:90ch}
+.gs .insight{font-size:var(--cds-font-size-body);line-height:1.45;margin:0 0 var(--cds-gap-sm)}
+.gs .chart{position:relative;min-height:300px}
+.gs .tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);white-space:nowrap;z-index:3}
+.gs .tip .t{color:var(--cds-text-secondary)}
+.gs .legend{display:flex;flex-wrap:wrap;gap:4px var(--cds-gap-md);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-bottom:var(--cds-gap-sm)}
+.gs .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.gs .tbl{max-height:28rem;overflow:auto}
+.gs table{border-collapse:collapse;width:100%;font-size:var(--cds-font-size-caption);font-variant-numeric:tabular-nums}
+.gs th{position:sticky;top:0;background:var(--color-panel);text-align:left;font-weight:var(--cds-font-weight-medium);color:var(--color-fg-muted);padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);cursor:pointer;user-select:none;white-space:nowrap}
+.gs th[aria-sort=ascending]::after{content:" ↑"}
+.gs th[aria-sort=descending]::after{content:" ↓"}
+.gs td{padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);vertical-align:top}
+.gs td.n,.gs th.n{text-align:right}
+.gs .bar{display:inline-block;height:8px;border-radius:4px;background:var(--cds-chart-muted);vertical-align:middle;margin-right:6px}
+.gs .ctl{display:flex;flex-wrap:wrap;gap:var(--cds-gap-sm) var(--cds-gap-md);align-items:center;margin-bottom:var(--cds-gap-sm);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gs .ctl label{display:flex;gap:var(--cds-gap-xs);align-items:center}
+.gs select,.gs input[type=search]{font:inherit;font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);background:var(--color-panel);color:var(--color-fg);max-width:100%}
+.gs .st{display:inline-block;padding:0 8px;border-radius:999px;font-size:var(--cds-font-size-caption);border:1px solid currentColor;white-space:nowrap}
+.gs .st.pass{color:var(--color-ok)}
+.gs .st.warn{color:var(--color-warn)}
+.gs .st.fail{color:var(--color-bad)}
+.gs .replink{font-size:var(--cds-font-size-caption);color:var(--color-fg);text-decoration:underline}
+.gs .chg{font-variant-numeric:tabular-nums;white-space:nowrap}
+.gs .chg.bad{color:var(--color-bad)}
+.gs .chg.good{color:var(--color-ok)}
+.gs .chg.flat{color:var(--color-fg-muted)}
+.gs .stagenote{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:var(--cds-gap-xs) 0 0}
+.gs .soon{display:grid;gap:var(--cds-gap-sm);max-width:70ch}
+.gs .soon p{margin:0;line-height:1.5}
+.gs .soon ul{margin:0;padding-left:1.1rem;display:grid;gap:4px;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.gs .method{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);display:grid;gap:var(--cds-gap-xs);max-width:90ch}
+.gs .method b{color:var(--color-fg);font-weight:var(--cds-font-weight-medium)}
+[data-dash-source-state=refreshing]{opacity:.5}
+[data-dash-source-state=empty]{color:transparent}
+</style>
+
+<div class="gs">
+  <header class="top">
+    <div>
+      <h1 id="top">GMI Savings Tracker</h1>
+      <p class="tag">An independent savings tracker for GMI: it checks reported savings against the state's own payments, and finds the next $50M.</p>
+    </div>
+    <div style="display:grid;gap:6px;justify-items:end">
+      <span class="st" id="runPill" data-source="c_run" data-field="pill">—</span>
+      <span class="proto">Prototype by Sierra Napier · not an official State of Maryland product</span>
+      <a class="replink" id="repLink" data-source="reports" data-field="title" href="#" target="_blank" rel="noopener" hidden>—</a>
+    </div>
+  </header>
+
+  <nav role="tablist" aria-label="Pages" id="tabs">
+    <button role="tab" id="t-over" data-tab="over" aria-selected="true">Overview</button>
+    <button role="tab" id="t-track" data-tab="track" aria-selected="false">Savings tracker</button>
+    <button role="tab" id="t-opp" data-tab="opp" aria-selected="false">Opportunities</button>
+    <button role="tab" id="t-calc" data-tab="calc" aria-selected="false">Calculator</button>
+    <button role="tab" id="t-trend" data-tab="trend" aria-selected="false">Trends</button>
+    <button role="tab" id="t-vend" data-tab="vend" aria-selected="false">Vendors</button>
+    <button role="tab" id="t-agency" data-tab="agency" aria-selected="false">Agencies</button>
+    <button role="tab" id="t-budget" data-tab="budget" aria-selected="false">Budget</button>
+    <button role="tab" id="t-data" data-tab="data" aria-selected="false">Data &amp; pipeline</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section class="panel" id="p-over" role="tabpanel" aria-labelledby="t-over">
+    <p class="lede" data-source="c_over" data-field="headline">—</p>
+    <div class="tiles">
+      <div class="tile"><span class="k">Operating budget, FY2025 actual</span><span class="v" data-source="c_over" data-field="actual">—</span><span class="d" data-good="neutral" data-source="c_over" data-field="actual_change">—</span><div class="spark" id="spActual" data-source="budget_function"></div></div>
+      <div class="tile"><span class="k">Controllable purchases, FY2025</span><span class="v" data-source="c_over" data-field="ctrl">—</span><span class="d" data-good="lower" data-source="c_over" data-field="ctrl_change">—</span><span class="d" data-source="c_over" data-field="ctrl_share">—</span><div class="spark" id="spCtrl" data-source="scope"></div></div>
+      <div class="tile"><span class="k">Payments to vendors, FY2026</span><span class="v" data-source="c_over" data-field="pay">—</span><span class="d" data-good="neutral" data-source="c_over" data-field="pay_change">—</span><div class="spark" id="spPay" data-source="totals"></div></div>
+      <div class="tile"><span class="k">GMI target</span><span class="v">$50M</span><span class="d">Annual savings from permanent cuts</span></div>
+    </div>
+    <div class="card">
+      <h2 id="scopeH">Where savings can come from</h2>
+      <p class="note">Operating budget by what an agency can change. Most of the budget is staff, grants, client payments such as Medicaid, and debt service. Savings work targets <b>controllable purchases</b>: contracts, supplies, equipment, vehicles, energy, telecom and leases. Solid bars are actual spending; faded bars are budgets.</p>
+      <div class="legend" id="scopeLegend"></div>
+      <div class="chart" id="scopeChart" data-source="scope"></div>
+    </div>
+  </section>
+
+  <!-- PLANNED TABS (filled in later phases) -->
+  <section class="panel" id="p-track" role="tabpanel" aria-labelledby="t-track" hidden><div class="card soon"><h2>Savings tracker</h2><p>Arrives in phase 2: each GMI workstream's reported savings, labeled recurring, one-time or unconfirmed, beside the change in the state's own payments.</p></div></section>
+  <section class="panel" id="p-opp" role="tabpanel" aria-labelledby="t-opp" hidden><div class="card soon"><h2>Opportunities</h2><p>Arrives in phases 3–4: eight detectors scan every spending code at every agency and rank where the next $50M is likely to be.</p></div></section>
+  <section class="panel" id="p-calc" role="tabpanel" aria-labelledby="t-calc" hidden><div class="card soon"><h2>Calculator</h2><p>Arrives in phase 4: set savings levers and assumptions, see the range of outcomes and the chance of reaching $50M, and save scenarios for yourself.</p></div></section>
+  <section class="panel" id="p-trend" role="tabpanel" aria-labelledby="t-trend" hidden><div class="card soon"><h2>Trends</h2><p>Arrives in phase 5: spending over time by category and spending code, turning points and forecasts.</p></div></section>
+  <section class="panel" id="p-vend" role="tabpanel" aria-labelledby="t-vend" hidden><div class="card soon"><h2>Vendors</h2><p>Arrives in phase 5: vendors paid by many agencies, concentration, and a detail view per vendor.</p></div></section>
+
+  <!-- AGENCIES (phase 1 preview) -->
+  <section class="panel" id="p-agency" role="tabpanel" aria-labelledby="t-agency" hidden>
+    <div class="card">
+      <h2 id="agH">Controllable purchases per employee</h2>
+      <p class="note">Each agency's controllable purchases divided by its budgeted full-time positions, for the selected year: actual spending where the year has actuals, otherwise that year's budget. This is the base for peer benchmarking: phase 3 groups similar agencies so comparisons are fair. Agencies with fewer than 50 positions are left out, since one contract swings their figure.</p>
+      <div class="ctl"><label>Fiscal year <select id="agYear"></select></label><label>Search <input type="search" id="agQ" placeholder="Agency name"></label><span id="agCount"></span></div>
+      <div class="tbl"><table data-source="agency_year" data-row-key="agency_code,fiscal_year">
+        <thead><tr><th data-field="agency">Agency</th><th class="n" data-field="controllable">Controllable purchases</th><th class="n" data-field="controllable_yoy">vs prior year</th><th class="n" data-field="fte">Positions</th><th class="n" data-field="controllable_per_fte">Per position</th><th class="n" data-field="controllable_per_fte_yoy">vs prior year</th><th class="n" data-field="operating_spending">All spending</th></tr></thead>
+        <tbody id="agBody"></tbody></table></div>
+      <p class="stagenote" id="agStage"></p>
+    </div>
+  </section>
+
+  <!-- BUDGET -->
+  <section class="panel" id="p-budget" role="tabpanel" aria-labelledby="t-budget" hidden>
+    <div class="card">
+      <h2 id="budH">Operating budget by function, FY2017–FY2027</h2>
+      <p class="note">All funds. Solid bars are actual spending; faded bars are budgets (working budget, appropriation or Legislative Appropriation). FY2021–FY2022 have no actuals in the portal.</p>
+      <p class="insight" id="budInsight"></p>
+      <div class="legend" id="budLegend"></div>
+      <div class="chart" id="budChart" data-source="budget_function"></div>
+    </div>
+    <div class="card">
+      <div class="ctl"><label>Budget year <select id="budSel"></select></label><span id="budNote"></span></div>
+      <p class="stagenote" id="budPair" style="margin:0 0 var(--cds-gap-sm)"></p>
+      <div class="grid">
+        <div><h2>By function</h2><p class="note">All funds.</p>
+          <div class="tbl"><table data-source="budget_function" data-row-key="fiscal_year,category_title">
+            <thead><tr><th data-field="category_title">Function</th><th class="n" data-field="budget">Amount</th><th class="n" data-field="budget_yoy">vs prior year</th><th class="n">Share</th></tr></thead>
+            <tbody id="fnBody"></tbody></table></div></div>
+        <div><h2>By fund type</h2><p class="note">General, federal and special funds.</p>
+          <div class="tbl"><table data-source="budget_fund" data-row-key="fiscal_year,fund_type_name">
+            <thead><tr><th data-field="fund_type_name">Fund</th><th class="n" data-field="budget">Amount</th><th class="n" data-field="budget_yoy">vs prior year</th><th class="n">Share</th></tr></thead>
+            <tbody id="fundBody"></tbody></table></div></div>
+        <div><h2>By type of spending</h2><p class="note">Comptroller object; controllable share in the last column.</p>
+          <div class="tbl"><table data-source="budget_object" data-row-key="fiscal_year,object_name">
+            <thead><tr><th data-field="object_name">Object</th><th class="n" data-field="budget">Amount</th><th class="n" data-field="budget_yoy">vs prior year</th><th class="n" data-field="controllable">Controllable</th></tr></thead>
+            <tbody id="objBody"></tbody></table></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA & PIPELINE -->
+  <section class="panel" id="p-data" role="tabpanel" aria-labelledby="t-data" hidden>
+    <div class="tiles">
+      <div class="tile"><span class="k">Latest run</span><span class="v" data-source="c_run" data-field="status">—</span><span class="d" data-source="c_run" data-field="when">—</span></div>
+      <div class="tile"><span class="k">Checks passed</span><span class="v" data-source="c_run" data-field="checks">—</span><span class="d" data-source="c_run" data-field="warn">—</span></div>
+      <div class="tile"><span class="k">Rows checked against the portal</span><span class="v" data-source="c_run" data-field="rows">—</span><span class="d">Payments and operating budget</span></div>
+      <div class="tile"><span class="k">Runs recorded</span><span class="v" data-source="c_run" data-field="runs">—</span><span class="d" data-source="c_run" data-field="repairs">—</span></div>
+    </div>
+    <div class="card">
+      <h2 id="srcH">Data sources</h2>
+      <p class="note">Five state datasets on opendata.maryland.gov, each downloaded in full and matched year by year to the portal's own row counts and totals. Payments are matched again to vendorpayments.maryland.gov and the budget to operatingbudget.maryland.gov.</p>
+      <div class="tbl"><table data-source="sources" data-row-key="dataset_id">
+        <thead><tr><th data-field="title">Dataset</th><th data-field="dataset_id">ID</th><th data-field="use">What it holds</th><th data-field="years">Years</th><th class="n" data-field="rows_downloaded">Rows</th><th data-field="reconciled">Matches portal</th><th data-field="portal_updated">Portal updated</th></tr></thead>
+        <tbody id="srcBody"></tbody></table></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h2 id="runsH">Pipeline runs</h2>
+        <p class="note">Every run is recorded, including failed ones. A run with a failed check publishes nothing; the last good version stays live.</p>
+        <div class="tbl"><table data-source="runs" data-row-key="run_id">
+          <thead><tr><th data-field="started_utc">Started (UTC)</th><th data-field="status">Result</th><th class="n" data-field="passed">Passed</th><th class="n" data-field="warnings">Warnings</th><th class="n" data-field="repairs">Repairs</th><th data-field="mode">Mode</th></tr></thead>
+          <tbody id="runsBody"></tbody></table></div>
+      </div>
+      <div class="card">
+        <h2 id="checksH">Checks in the latest run</h2>
+        <div class="ctl"><label>Stage <select id="ckStage"><option value="">All stages</option><option value="raw">Download</option><option value="staged">Master lists</option><option value="model">Model</option><option value="cross-check">Cross-check</option><option value="publish">Publish</option></select></label>
+          <label>Show <select id="ckStatus"><option value="">All</option><option value="pass">Passed</option><option value="warn">Warnings</option><option value="fail">Failed</option></select></label></div>
+        <div class="tbl"><table data-source="checks" data-row-key="check">
+          <thead><tr><th data-field="status">Status</th><th data-field="check">Check</th><th data-field="detail">Detail</th></tr></thead>
+          <tbody id="ckBody"></tbody></table></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 id="measH">Year-over-year measures</h2>
+      <p class="note">Defined once in the pipeline and used everywhere on the dashboard, like a DAX measure in Power BI; the same definitions ship as DAX for a Power BI build. Each change compares a fiscal year with the one before for the same item. Where the two years are different budget stages (for example a working budget against an actual), the comparison says so. Arrows: ▲ up, ▼ down; for costs, red means up and green means down.</p>
+      <div class="tbl"><table data-source="measures" data-row-key="table,measure">
+        <thead><tr><th data-field="measure">Measure</th><th data-field="table">Table</th><th data-field="grouped_by">For each</th><th data-field="higher_is">Higher is</th><th data-field="definition">Definition</th></tr></thead>
+        <tbody id="measBody"></tbody></table></div>
+    </div>
+    <div class="grid" data-report="skip">
+      <div class="card">
+        <h2 id="amH">Agency master list</h2>
+        <p class="note">Payment agency names mapped to budget agencies across years, so the payments and the budget can be read together.</p>
+        <div class="tbl"><table data-source="agency_master" data-row-key="agency_code">
+          <thead><tr><th data-field="agency_code">Code</th><th data-field="agency">Agency</th><th class="n" data-field="payment_names">Payment names</th><th data-field="how_matched">How matched</th></tr></thead>
+          <tbody id="amBody"></tbody></table></div>
+      </div>
+      <div class="card">
+        <h2 id="vfH">Vendor master list: companies under several names</h2>
+        <p class="note">FY2026 private vendors paid under two or more payee names, merged into one vendor so their spend and buying leverage show in full.</p>
+        <div class="tbl"><table data-source="vendor_families" data-row-key="family">
+          <thead><tr><th data-field="family">Vendor</th><th class="n" data-field="payee_names">Payee names</th><th class="n" data-field="agencies">Agencies</th><th class="n" data-field="spend">FY2026 spend</th></tr></thead>
+          <tbody id="vfBody"></tbody></table></div>
+      </div>
+    </div>
+    <div class="card method" id="method">
+      <h2>Method</h2>
+      <p><b>Controllable purchases</b> are operating spending an agency can renegotiate or reduce: contractual services, supplies, equipment, vehicles, fuel and utilities, communications, travel, rent and insurance. Left out: salaries, contractual payroll, grants, capital, client and provider payments (Medicaid, purchase of care, other fee-for-service, and pass-through programs such as the Benefit Exchange's reinsurance, provider reimbursements, foster care maintenance and energy assistance), debt service, and charges between state agencies (DoIT and in-state allocations, rent paid to DGS).</p>
+      <p><b>Budget stages.</b> The budget file holds one stage per year: actuals for FY2017–FY2020 and FY2023–FY2025, a working budget for FY2021 and FY2026, the appropriation for FY2022 and the Legislative Appropriation for FY2027. The file still labels FY2027 "Governors Allowance"; DBM's Operating Budget site calls it the Legislative Appropriation and its figures match to the dollar.</p>
+      <p><b>Master lists.</b> Payments carry an agency code from FY2020; earlier names are mapped by that code, then by hand for renamed agencies (for example DHMH to the Maryland Department of Health), and capital-budget accounts are grouped as capital. MDOT's modal administrations roll up to the Department of Transportation. Payee names are grouped when they differ only by suffix or spacing, and known company families (Verizon, AT&amp;T, utilities, IT resellers) are merged.</p>
+      <p><b>Built by</b> Sierra Napier with Python. The pipeline runs monthly; it can also be deployed on AWS or Google Cloud.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+const M = v => v==null||isNaN(v)?'—':'$' + new Intl.NumberFormat('en',{notation:'compact',maximumFractionDigits:1}).format(v);
+const P = d3.format('+.1%'), PCT = d3.format('.1%'), N = d3.format(',');
+const TEXT = new Set(['agency_code','agency','stage','category_title','fund_type_name','object_name','scope','title','dataset_id','use','portal_name','portal_updated','years','reconciled','stage_pair','measure','definition','grouped_by','higher_is','table','run_id','started_utc','status','mode','check','detail','family','how_matched','source','published','in_budget']);
+const num = rows => rows.map(r => Object.fromEntries(Object.entries(r).map(([k,v]) => [k, (v!==''&&v!=null&&!isNaN(v)&&!TEXT.has(k)) ? Number(v) : (v===''?null:v)])));
+const lc = s => /^Governor|^Legislative/.test(s)?s.replace(/^Legislative/,'Legislative'):String(s||'').toLowerCase();
+const ARROW = v => v==null||isNaN(v)?'—':Math.abs(v)<=0.0005?'■ flat':(v>0?'▲ ':'▼ ')+d3.format('.1%')(Math.abs(v));
+const toneOf = (v,good) => v==null||isNaN(v)||Math.abs(v)<=0.0005||good==='neutral'?'flat':((v>0)===(good==='higher')?'good':'bad');
+const stageShort = s => ({'Actual':'actual','Working budget':'working budget','Appropriation':'appropriation','Legislative appropriation':'Legislative Appropriation'})[s]||lc(s);
+const SCOPES = ['Controllable purchases','Charges between agencies','Client payments and debt service','Staff, grants and capital'];
+
+/* ---------------- calcs ---------------- */
+dash.calc('c_over',{inputs:['budget_function','scope','totals'],title:'Overview figures',description:'FY2025 actual budget and its change from FY2024, controllable purchases and their share, FY2026 payments and their change from FY2025.',
+  fn:(budget_function,scope,totals)=>{const b=num(budget_function),s=num(scope),t=num(totals);
+    const tot=y=>d3.sum(b.filter(r=>r.fiscal_year===y),r=>r.budget),ctrl=y=>d3.sum(s.filter(r=>r.fiscal_year===y&&r.scope==='Controllable purchases'),r=>r.budget);
+    const pay=y=>(t.find(r=>r.fiscal_year===y)||{}).total_payments;
+    return [{actual:M(tot(2025)),actual_change:ARROW(tot(2025)/tot(2024)-1)+' vs FY2024 actual',ctrl:M(ctrl(2025)),ctrl_change:ARROW(ctrl(2025)/ctrl(2024)-1)+' vs FY2024 actual',ctrl_share:PCT(ctrl(2025)/tot(2025))+' of FY2025 spending',
+      pay:M(pay(2026)),pay_change:ARROW(pay(2026)/pay(2025)-1)+' vs FY2025',
+      headline:`Maryland spent ${M(tot(2025))} through its operating budget in FY2025. ${M(ctrl(2025))} of that, ${PCT(ctrl(2025)/tot(2025))}, went to purchases agencies control: contracts, supplies, equipment, vehicles, energy, telecom and leases. GMI's $50M target is ${PCT(50e6/ctrl(2025))} of that pool. This tracker checks the savings reported so far against the state's own payments and looks for the rest.`}];}});
+dash.calc('c_run',{inputs:['runs','checks'],title:'Pipeline status',description:'Result, time and check counts of the latest pipeline run, and the number of runs recorded.',
+  fn:(runs,checks)=>{const r=num(runs).sort((a,b)=>d3.ascending(a.started_utc,b.started_utc));const l=r[r.length-1]||{};const n=s=>checks.filter(c=>c.status===s).length;
+    return [{status:l.status==='passed'?'Passed':'Failed',when:String(l.started_utc||'').replace('T',' ').slice(0,16)+' UTC',checks:`${n('pass')} of ${checks.length}`,warn:`${n('warn')} warnings, ${n('fail')} failed`,
+      rows:N((l.payment_rows||0)+(l.budget_rows||0)),runs:String(r.length),repairs:`${d3.sum(r,x=>x.repairs)} automatic repairs so far`,
+      pill:n('fail')?`Data checks: ${n('fail')} failed`:`Data checks passed: ${n('pass')} of ${checks.length}`,state:n('fail')?'fail':(n('warn')?'warn':'pass')}];}});
+
+/* ---------------- tabs ---------------- */
+const TABS=['over','track','opp','calc','trend','vend','agency','budget','data'];
+let tab='over';{const h=location.hash.slice(1);if(TABS.includes(h))tab=h;}
+function showTab(t){tab=t;document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===t)));
+  TABS.forEach(x=>{document.getElementById('p-'+x).hidden=(x!==t);});try{dash.setLink&&dash.setLink('t-'+t);}catch(e){}render();}
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-tab]');if(b)showTab(b.dataset.tab);});
+document.getElementById('tabs').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft'].includes(e.key))return;const i=(TABS.indexOf(tab)+(e.key==='ArrowRight'?1:-1)+TABS.length)%TABS.length;showTab(TABS[i]);document.getElementById('t-'+TABS[i]).focus();});
+const prm=()=>Object.assign({ag_year:2025,budget_year:2025},dash.params()||{});
+
+/* ---------------- tables ---------------- */
+function table(id,rows,cols,o={}){
+  const tb=document.getElementById(id);if(!tb)return;tb._rows=rows;tb._cols=cols;tb._o=o;
+  const ths=tb.closest('table').querySelectorAll('thead th');ths.forEach(h=>h.removeAttribute('aria-sort'));drawRows(tb);
+  ths.forEach((th,i)=>{if(th._w||!cols[i])return;th._w=1;th.tabIndex=0;
+    const go=()=>{const k=tb._cols[i].key,dir=th.getAttribute('aria-sort')==='descending'?'ascending':'descending';ths.forEach(h=>h.removeAttribute('aria-sort'));th.setAttribute('aria-sort',dir);
+      tb._rows=tb._rows.slice().sort((a,b)=>{const x=a[k],y=b[k];const r=(typeof x==='number'&&typeof y==='number')?x-y:String(x??'').localeCompare(String(y??''));return dir==='ascending'?r:-r;});drawRows(tb);};
+    th.addEventListener('click',go);th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+}
+function drawRows(tb){const rows=tb._rows,cols=tb._cols,o=tb._o;tb.textContent='';const mx=o.bar?(d3.max(rows,r=>r[o.bar])||1):1;
+  rows.forEach(r=>{const tr=document.createElement('tr');
+    cols.forEach(c=>{const td=document.createElement('td');if(c.n)td.className='n';
+      if(c.key===o.bar&&r[c.key]!=null){const s=document.createElement('span');s.className='bar';s.style.width=Math.max(3,56*r[c.key]/mx)+'px';td.appendChild(s);}
+      if(c.chg){const s=document.createElement('span');s.className='chg '+toneOf(r[c.key],c.chg);s.textContent=ARROW(r[c.key]);if(r.stage_pair)s.title=r.stage_pair;td.appendChild(s);}
+      else if(c.pill){const s=document.createElement('span');s.className='st '+c.pill(r[c.key]);s.textContent=c.fmt?c.fmt(r[c.key]):r[c.key];td.appendChild(s);}
+      else td.appendChild(document.createTextNode(c.fmt?c.fmt(r[c.key],r):(r[c.key]??'')));tr.appendChild(td);});tb.appendChild(tr);});}
+const ok=id=>{const d=dash.data(id);return d&&d.status==='ok'?d.data:null;};
+const setText=(id,t)=>{const e=document.getElementById(id);if(e)e.textContent=t;};
+function fillMarks(){for(const id of ['c_over','c_run']){const d=dash.data(id);
+  document.querySelectorAll(`[data-source="${id}"][data-field]`).forEach(el=>{el.textContent=(d.status==='ok'&&d.data[0])?d.data[0][el.dataset.field]:'—';});}
+  document.querySelectorAll('[data-good]').forEach(el=>{const t=el.textContent,s=t.startsWith('▲')?1:t.startsWith('▼')?-1:0;
+    el.classList.add('chg');el.classList.remove('good','bad','flat');el.classList.add(toneOf(s*0.01||null,el.dataset.good));});
+  const r=ok('c_run');document.getElementById('runPill').className='st '+(r&&r[0]?r[0].state:'');}
+
+/* ---------------- charts ---------------- */
+function spark(box,pts,o={}){if(!box)return;box.textContent='';if(pts.length<2)return;const W=box.clientWidth||180,H=34;
+  const x=d3.scaleLinear(d3.extent(pts,d=>d.x),[2,W-4]),y=d3.scaleLinear(d3.extent(pts,d=>d.y),[H-4,4]);
+  const svg=d3.select(box).append('svg').attr('width','100%').attr('height',H).attr('viewBox',`0 0 ${W} ${H}`).attr('aria-hidden','true');
+  svg.append('path').datum(pts).attr('fill','none').attr('stroke',dash.colors[0]).attr('stroke-width',1.8).attr('d',d3.line().x(d=>x(d.x)).y(d=>y(d.y)));
+  const l=pts[pts.length-1];svg.append('circle').attr('cx',x(l.x)).attr('cy',y(l.y)).attr('r',2.6).attr('fill',dash.colors[0]);}
+function stacked(box,legend,rows,keys,col,o={}){
+  const lg=document.getElementById(legend);lg.textContent='';keys.forEach(k=>{const s=document.createElement('span');const i=document.createElement('i');i.style.background=col(k);s.appendChild(i);s.appendChild(document.createTextNode(k));lg.appendChild(s);});
+  box.textContent='';const W=box.clientWidth||700,H=300,m={l:50,r:8,t:18,b:22};
+  const x=d3.scaleBand(rows.map(d=>d.year),[m.l,W-m.r]).padding(.25),y=d3.scaleLinear([0,d3.max(rows,d=>d.total)],[H-m.b,m.t]).nice();
+  const svg=d3.select(box).append('svg').attr('width','100%').attr('viewBox',`0 0 ${W} ${H}`);
+  svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d)).attr('stroke','var(--color-border-line)');
+  svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x',m.l-6).attr('y',d=>y(d)).attr('dy','.32em').attr('text-anchor','end').attr('font-size',11).attr('fill','var(--color-fg-muted)').text(M);
+  svg.append('g').selectAll('g').data(d3.stack().keys(keys)(rows)).join('g').attr('fill',d=>col(d.key)).selectAll('rect').data(d=>d).join('rect')
+    .attr('x',d=>x(d.data.year)).attr('width',x.bandwidth()).attr('y',d=>y(d[1])).attr('height',d=>Math.max(0,y(d[0])-y(d[1])-1)).attr('opacity',d=>d.data.stage==='Actual'?1:.42);
+  const lab=x.bandwidth()>34;
+  svg.append('g').selectAll('text').data(rows).join('text').attr('x',d=>x(d.year)+x.bandwidth()/2).attr('y',H-6).attr('text-anchor','middle').attr('font-size',11).attr('fill','var(--color-fg-muted)').text(d=>(lab?'FY':"'")+String(d.year).slice(2));
+  if(lab)svg.append('g').selectAll('text').data(rows).join('text').attr('x',d=>x(d.year)+x.bandwidth()/2).attr('y',d=>y(d.total)-4).attr('text-anchor','middle').attr('font-size',10).attr('fill','var(--color-fg)').text(d=>M(o.labelKey?d[o.labelKey]:d.total));
+  const tip=d3.select(box).append('div').attr('class','tip').style('opacity',0);
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x',d=>x(d.year)).attr('width',x.bandwidth()).attr('y',m.t).attr('height',H-m.t-m.b).attr('fill','transparent')
+    .on('mousemove',(e,d)=>{const [mx,my]=d3.pointer(e,box);tip.style('opacity',1).style('left',Math.min(mx+12,W-260)+'px').style('top',(my+12)+'px');tip.html('');
+      tip.append('div').attr('class','t').text('FY'+d.year+', '+lc(d.stage)+': '+M(d.total));keys.slice().reverse().forEach(k=>tip.append('div').text(k+': '+M(d[k])+' ('+d3.format('.0%')(d[k]/d.total)+')'));})
+    .on('mouseleave',()=>tip.style('opacity',0));}
+
+/* ---------------- pages ---------------- */
+function drawOver(){
+  const sc=ok('scope'),bf=ok('budget_function'),tt=ok('totals');
+  if(sc){const S=num(sc);const years=[...new Set(S.map(r=>r.fiscal_year))].sort((a,b)=>a-b);
+    const rows=years.map(y=>{const v=S.filter(r=>r.fiscal_year===y);const o={year:y,stage:(v[0]||{}).stage};SCOPES.forEach(k=>o[k]=d3.sum(v.filter(r=>r.scope===k),r=>r.budget));o.total=d3.sum(v,r=>r.budget);return o;});
+    const col=k=>k==='Controllable purchases'?dash.colors[0]:k==='Charges between agencies'?dash.colors[2]:k==='Client payments and debt service'?'var(--cds-chart-muted)':'var(--color-border-line)';
+    stacked(document.getElementById('scopeChart'),'scopeLegend',rows,SCOPES,col,{labelKey:'Controllable purchases'});
+    spark(document.getElementById('spCtrl'),rows.filter(r=>r.stage==='Actual').map(r=>({x:r.year,y:r['Controllable purchases']})));
+    spark(document.getElementById('spActual'),rows.filter(r=>r.stage==='Actual').map(r=>({x:r.year,y:r.total})));}
+  if(tt)spark(document.getElementById('spPay'),num(tt).sort((a,b)=>a.fiscal_year-b.fiscal_year).map(r=>({x:r.fiscal_year,y:r.total_payments})));
+}
+function drawAgency(){
+  const ay=ok('agency_year');if(!ay)return;const A=num(ay);const years=[...new Set(A.filter(r=>r.controllable_per_fte!=null).map(r=>r.fiscal_year))].sort((a,b)=>b-a);
+  const stageOf=y=>(A.find(r=>r.fiscal_year===y)||{}).stage;
+  const sel=document.getElementById('agYear');if(sel.options.length!==years.length)sel.replaceChildren(...years.map(y=>new Option('FY'+y+' ('+stageShort(stageOf(y))+')',y)));
+  const y=+prm().ag_year;sel.value=String(y);const q=document.getElementById('agQ').value.trim().toLowerCase();
+  const rows=A.filter(r=>r.fiscal_year===y&&r.fte>=50&&r.controllable_per_fte!=null&&(!q||String(r.agency).toLowerCase().includes(q))).sort((a,b)=>b.controllable_per_fte-a.controllable_per_fte);
+  setText('agCount',`${rows.length} agencies; median ${M(d3.median(rows,r=>r.controllable_per_fte))} per position`);
+  table('agBody',rows,[{key:'agency'},{key:'controllable',n:1,fmt:M},{key:'controllable_yoy',n:1,chg:'lower'},{key:'fte',n:1,fmt:d3.format(',.0f')},{key:'controllable_per_fte',n:1,fmt:M},{key:'controllable_per_fte_yoy',n:1,chg:'lower'},{key:'operating_spending',n:1,fmt:M}],{bar:'controllable_per_fte'});
+  const pair=(rows.find(r=>r.stage_pair)||{}).stage_pair||'';const s=stageOf(y);
+  setText('agStage',(s==='Actual'?`FY${y} figures are actual spending.`:`FY${y} figures are the ${stageShort(s)}, a budget rather than spending.`)+(pair?` The change column compares it with the FY${y-1} ${stageShort(pair.split(' vs ')[1])}. ▲ red means costs rose; ▼ green means they fell.`:''));
+}
+function drawBudget(){
+  const fn=ok('budget_function'),fu=ok('budget_fund'),ob=ok('budget_object');if(!fn)return;const F=num(fn);
+  const tot=d3.rollup(F,v=>d3.sum(v,x=>x.budget),x=>x.category_title);const top=[...tot].sort((a,b)=>b[1]-a[1]).slice(0,5).map(d=>d[0]);const keys=[...top,'All other functions'];
+  const years=[...new Set(F.map(x=>x.fiscal_year))].sort((a,b)=>a-b);
+  const rows=years.map(y=>{const v=F.filter(x=>x.fiscal_year===y);const o={year:y,stage:(v[0]||{}).stage};keys.forEach(k=>o[k]=0);v.forEach(x=>{o[top.includes(x.category_title)?x.category_title:'All other functions']+=x.budget;});o.total=d3.sum(v,x=>x.budget);return o;});
+  const col=k=>k==='All other functions'?'var(--cds-chart-muted)':dash.colors[top.indexOf(k)%dash.colors.length];
+  stacked(document.getElementById('budChart'),'budLegend',rows,keys,col);
+  const a=rows.filter(d=>d.stage==='Actual'),f0=a[0],l=a[a.length-1];
+  setText('budInsight',`Actual spending rose from ${M(f0.total)} in FY${f0.year} to ${M(l.total)} in FY${l.year} (${P(l.total/f0.total-1)}). ${top[0]} is the largest function, at ${d3.format('.0%')(l[top[0]]/l.total)} of FY${l.year} actuals.`);
+  const sel=document.getElementById('budSel');if(sel.options.length!==years.length)sel.replaceChildren(...years.slice().reverse().map(y=>new Option('FY'+y+' ('+lc((F.find(x=>x.fiscal_year===y)||{}).stage)+')',y)));
+  const y=+prm().budget_year;sel.value=String(y);const R=F.filter(x=>x.fiscal_year===y),t=d3.sum(R,x=>x.budget),stage=(R[0]||{}).stage||'';
+  setText('budNote',stage==='Actual'?'Actual spending.':'Not actual spending: this year is the '+lc(stage)+'.');
+  table('fnBody',R.map(x=>({...x,share:x.budget/t})).sort((a,b)=>b.budget-a.budget),[{key:'category_title'},{key:'budget',n:1,fmt:M},{key:'budget_yoy',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}]);
+  const pr=(R.find(r=>r.stage_pair)||{}).stage_pair;setText('budPair',pr?`"vs prior year" compares the FY${y} ${stageShort(pr.split(' vs ')[0])} with the FY${y-1} ${stageShort(pr.split(' vs ')[1])}.`:'No prior year in the data.');
+  if(fu){const U=num(fu).filter(x=>x.fiscal_year===y),ut=d3.sum(U,x=>x.budget);table('fundBody',U.map(x=>({...x,share:x.budget/ut})).sort((a,b)=>b.budget-a.budget),[{key:'fund_type_name'},{key:'budget',n:1,fmt:M},{key:'budget_yoy',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}]);}
+  if(ob){table('objBody',num(ob).filter(x=>x.fiscal_year===y).sort((a,b)=>b.budget-a.budget),[{key:'object_name'},{key:'budget',n:1,fmt:M},{key:'budget_yoy',n:1,chg:'neutral'},{key:'controllable',n:1,fmt:M}]);}
+}
+function drawData(){
+  const so=ok('sources');if(so)table('srcBody',num(so),[{key:'title'},{key:'dataset_id'},{key:'use'},{key:'years'},{key:'rows_downloaded',n:1,fmt:N},{key:'reconciled',pill:v=>String(v).toLowerCase()==='true'?'pass':'fail',fmt:v=>String(v).toLowerCase()==='true'?'Yes':'No'},{key:'portal_updated'}]);
+  const ru=ok('runs');if(ru)table('runsBody',num(ru).sort((a,b)=>d3.descending(a.started_utc,b.started_utc)),[{key:'started_utc',fmt:v=>String(v).replace('T',' ').slice(0,16)},{key:'status',pill:v=>v==='passed'?'pass':'fail'},{key:'passed',n:1},{key:'warnings',n:1},{key:'repairs',n:1},{key:'mode'}]);
+  const ck=ok('checks');if(ck){const s=document.getElementById('ckStage').value,f=document.getElementById('ckStatus').value;
+    table('ckBody',ck.filter(r=>(!s||r.stage===s)&&(!f||r.status===f)),[{key:'status',pill:v=>v},{key:'check'},{key:'detail'}]);}
+  const am=ok('agency_master');if(am)table('amBody',num(am).filter(r=>r.agency_code),[{key:'agency_code'},{key:'agency'},{key:'payment_names',n:1},{key:'how_matched'}]);
+  const me=ok('measures');if(me)table('measBody',me,[{key:'measure'},{key:'table'},{key:'grouped_by'},{key:'higher_is',fmt:v=>v==='lower'?'Better lower (a cost)':'Neither (context)'},{key:'definition'}]);
+  const vf=ok('vendor_families');if(vf)table('vfBody',num(vf),[{key:'family'},{key:'payee_names',n:1},{key:'agencies',n:1},{key:'spend',n:1,fmt:M}],{bar:'spend'});
+}
+const DRAW={over:drawOver,agency:drawAgency,budget:drawBudget,data:drawData};
+function drawReport(){const r=ok('reports'),a=document.getElementById('repLink');if(!r||!r.length){a.hidden=true;return;}
+  const l=r.slice().sort((x,y)=>d3.descending(x.run_date,y.run_date))[0];a.href=l.url;a.textContent='Download PDF report ('+l.run_date+')';a.hidden=false;}
+function render(){fillMarks();drawReport();(DRAW[tab]||(()=>{}))();}
+
+document.getElementById('agYear').addEventListener('change',e=>dash.setParams({ag_year:+e.target.value}));
+document.getElementById('agQ').addEventListener('input',()=>drawAgency());
+document.getElementById('budSel').addEventListener('change',e=>dash.setParams({budget_year:+e.target.value}));
+document.getElementById('ckStage').addEventListener('change',()=>drawData());
+document.getElementById('ckStatus').addEventListener('change',()=>drawData());
+
+showTab(tab);
+dash.onData(render);
+</script>

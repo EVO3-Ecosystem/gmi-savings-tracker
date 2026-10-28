@@ -1,0 +1,12 @@
+# Maryland open data portal (Socrata) datasets pulled by src/pipeline/extract.py
+domain: opendata.maryland.gov
+page_size: 20000        # 50,000-row pages drop mid-download without an app token
+retries: 6              # per page, with exponential backoff
+backoff_seconds: 5
+heal_attempts: 2        # re-download a dataset whose row count does not match the portal
+datasets:
+  budget:   {id: yu65-jmmv, year_col: fiscal_year, sum_col: budget}
+  fund:     {id: gy87-e27x, year_col: fiscal_year, sum_col: budget}
+  fte:      {id: x8qy-486w, year_col: fiscal_year, sum_col: count}
+  payments: {id: 7syw-q4cy, year_col: fiscal_year, sum_col: amount}
+  grants:   {id: absk-avps, year_col: fiscalyear,  sum_col: amount}

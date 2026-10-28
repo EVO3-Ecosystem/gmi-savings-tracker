@@ -1,0 +1,6 @@
+[project]
+name = "md-transparency"
+version = "0.1.0"
+description = "Local SODA -> Parquet -> DuckDB pipeline for Maryland budget, payments, funding, FTE and grants data"
+requires-python = ">=3.10"
+dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0"]

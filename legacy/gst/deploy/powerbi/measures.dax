@@ -1,0 +1,53 @@
+// GMI Savings Tracker: year-over-year measures for a Power BI build.
+// Same definitions as scripts/measures.py. Tables are the published CSVs in out/;
+// relate each to a 'Fiscal Year' table (one row per fiscal year, column [Fiscal Year], [Stage]).
+
+// ---------- base measures
+Operating Spending      = SUM ( 'budget_by_function'[budget] )
+Controllable Purchases  = CALCULATE ( SUM ( 'spending_scope'[budget] ), 'spending_scope'[scope] = "Controllable purchases" )
+Payments to Vendors     = SUM ( 'totals_by_fy'[total_payments] )
+Positions               = SUM ( 'agency_year'[fte] )
+Controllable per Position = DIVIDE ( SUM ( 'agency_year'[controllable] ), [Positions] )
+
+// ---------- prior year: same filters, previous fiscal year
+Prior Year (Operating Spending) =
+    VAR fy = SELECTEDVALUE ( 'Fiscal Year'[Fiscal Year] )
+    RETURN CALCULATE ( [Operating Spending], 'Fiscal Year'[Fiscal Year] = fy - 1 )
+Prior Year (Controllable Purchases) =
+    VAR fy = SELECTEDVALUE ( 'Fiscal Year'[Fiscal Year] )
+    RETURN CALCULATE ( [Controllable Purchases], 'Fiscal Year'[Fiscal Year] = fy - 1 )
+Prior Year (Payments to Vendors) =
+    VAR fy = SELECTEDVALUE ( 'Fiscal Year'[Fiscal Year] )
+    RETURN CALCULATE ( [Payments to Vendors], 'Fiscal Year'[Fiscal Year] = fy - 1 )
+Prior Year (Controllable per Position) =
+    VAR fy = SELECTEDVALUE ( 'Fiscal Year'[Fiscal Year] )
+    RETURN CALCULATE ( [Controllable per Position], 'Fiscal Year'[Fiscal Year] = fy - 1 )
+
+// ---------- year-over-year change (blank when there is no prior year)
+YoY % (Operating Spending)        = DIVIDE ( [Operating Spending] - [Prior Year (Operating Spending)], [Prior Year (Operating Spending)] )
+YoY % (Controllable Purchases)    = DIVIDE ( [Controllable Purchases] - [Prior Year (Controllable Purchases)], [Prior Year (Controllable Purchases)] )
+YoY % (Payments to Vendors)       = DIVIDE ( [Payments to Vendors] - [Prior Year (Payments to Vendors)], [Prior Year (Payments to Vendors)] )
+YoY % (Controllable per Position) = DIVIDE ( [Controllable per Position] - [Prior Year (Controllable per Position)], [Prior Year (Controllable per Position)] )
+
+// ---------- which stages are being compared ("Actual vs Actual", "Working budget vs Actual", ...)
+Stage Pair =
+    VAR fy = SELECTEDVALUE ( 'Fiscal Year'[Fiscal Year] )
+    VAR s1 = CALCULATE ( SELECTEDVALUE ( 'Fiscal Year'[Stage] ), 'Fiscal Year'[Fiscal Year] = fy )
+    VAR s0 = CALCULATE ( SELECTEDVALUE ( 'Fiscal Year'[Stage] ), 'Fiscal Year'[Fiscal Year] = fy - 1 )
+    RETURN IF ( ISBLANK ( s0 ), BLANK (), s1 & " vs " & s0 )
+
+// ---------- arrow label, e.g. "▲ 4.2%" (use in cards and table columns)
+YoY Label (Controllable Purchases) =
+    VAR c = [YoY % (Controllable Purchases)]
+    RETURN IF ( ISBLANK ( c ), "—", IF ( c > 0, "▲ ", IF ( c < 0, "▼ ", "■ " ) ) & FORMAT ( ABS ( c ), "0.0%" ) )
+YoY Label (Controllable per Position) =
+    VAR c = [YoY % (Controllable per Position)]
+    RETURN IF ( ISBLANK ( c ), "—", IF ( c > 0, "▲ ", IF ( c < 0, "▼ ", "■ " ) ) & FORMAT ( ABS ( c ), "0.0%" ) )
+YoY Label (Operating Spending) =
+    VAR c = [YoY % (Operating Spending)]
+    RETURN IF ( ISBLANK ( c ), "—", IF ( c > 0, "▲ ", IF ( c < 0, "▼ ", "■ " ) ) & FORMAT ( ABS ( c ), "0.0%" ) )
+
+// ---------- conditional color (Format > Font color > Field value). For costs, lower is better.
+YoY Color (cost) =
+    VAR c = [YoY % (Controllable Purchases)]
+    RETURN SWITCH ( TRUE (), ISBLANK ( c ), "#6B7280", c > 0.005, "#B3261E", c < -0.005, "#1F7A4D", "#6B7280" )
