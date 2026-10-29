@@ -142,14 +142,16 @@ def run(force=False):
              "source": source, "heal_attempts": heals, "secs": round(time.time() - t, 1), "portal_totals": totals}
         entries.append(e)
         log(f"{name:9s} {fid}  {n:>8,} rows  portal {expect:>8,}  {'OK' if e['match'] else 'MISMATCH'}  {source}  {e['secs']}s")
+    from . import enrich  # context sources for the six recommendations; warnings never block the core extract
+    extra = enrich.run_all(out, (RAW / prev_id) if prev_id else None, log)
     ok = all(e["match"] for e in entries)
     manifest = {"run": run_id, "status": "passed" if ok else "failed", "forced": force, "seconds": round(time.time() - t_run, 1),
-                "domain": CFG["domain"], "page_size": CFG["page_size"], "app_token": bool(os.environ.get("MD_SODA_APP_TOKEN")), "datasets": entries}
+                "domain": CFG["domain"], "page_size": CFG["page_size"], "app_token": bool(os.environ.get("MD_SODA_APP_TOKEN")), "datasets": entries, "enrichment": extra}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
     row = {"run_id": run_id, "status": manifest["status"], "forced": force, "seconds": manifest["seconds"],
            "rows": sum(e["rows"] for e in entries), "downloaded": sum(not e["source"].startswith("reused") for e in entries),
            "reused": sum(e["source"].startswith("reused") for e in entries), "heals": sum(e["heal_attempts"] for e in entries),
-           "mismatches": sum(not e["match"] for e in entries)}
+           "mismatches": sum(not e["match"] for e in entries), "enrichment_warnings": sum(x["status"] != "pass" for x in extra)}
     hist = pd.read_csv(RUNS) if RUNS.exists() else pd.DataFrame()
     pd.concat([hist, pd.DataFrame([row])], ignore_index=True).to_csv(RUNS, index=False)
     log(f"run {run_id} {manifest['status']} in {manifest['seconds']}s -> {out}")

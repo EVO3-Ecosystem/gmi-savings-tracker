@@ -12,8 +12,8 @@ The plan, data dictionary and reference lists are in the *Maryland Transparency 
 | Phase | State | Gate |
 |---|---|---|
 | 1. Extract | **Done** (Oct 28, 2026) | Two runs in a row matched portal row counts for all five datasets ✔ |
-| 2. Database | Next | Every check passes; yearly totals tie to the portal |
-| 3. Reference data | — | Match rates at or above the dashboard's master list quality |
+| 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
+| 3. Reference data | Next | Match rates at or above the dashboard's master list quality |
 | 4. Marts & dashboard | — | Every dashboard file reproduced, or each difference explained |
 | 5. Analytics | — | Outputs match the dashboard |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
@@ -25,6 +25,8 @@ pip install sodapy pandas pyarrow pyyaml requests duckdb pytest
 make extract        # download what changed since the last good run
 make extract-full   # download everything
 make gate1          # Phase 1 gate: last two runs matched the portal
+make build          # Phase 2: DuckDB layers + checks (non-zero exit on a failed check)
+make all            # extract then build
 make test
 ```
 
@@ -50,6 +52,12 @@ Gate runs, Oct 28, 2026 (1,208,477 rows each):
 | 20261028T203005Z | freshness check (portal unchanged) | 3.5 s | all five reused and match |
 
 Budget (11 years) and payments (20 years) per-year sums from the downloaded files equal the portal's own totals to the cent.
+
+## Phase 2: database (`src/pipeline/build.py`, `checks.py`)
+
+Builds `data/md_transparency.duckdb` from a run's files in about 9 seconds: `raw` (as delivered), `ref` (agencies, functions, objects, sub-objects, fund types, budget stages), `core` (typed and normalized facts, plus CPI by fiscal year, federal awards, population, and the Managing for Results document index), `ops` (source snapshot, portal yearly totals, enrichment status, check results, run log). Every check is recorded in `ops.check_result` and `data/check_history.csv`. A failed stop check exits non-zero and **keeps the last good database**; the failed build is saved as `md_transparency.failed.duckdb` for inspection (tested by faking a one-row mismatch).
+
+Context sources pulled with each extract (`src/pipeline/enrich.py`, warnings never block): CPI-U (BLS, falling back to FRED when BLS's shared daily limit is hit), federal grants to Maryland governments (USAspending), Maryland population (Census estimates), and every agency's Managing for Results plan (DBM, 111 PDFs for FY2027). See `docs/recommendations.md`.
 
 ## Layout
 

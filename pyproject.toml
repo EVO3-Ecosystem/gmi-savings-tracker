@@ -12,5 +12,9 @@ dev = ["pytest>=8", "ruff>=0.5"]
 line-length = 160
 extend-exclude = ["legacy"]
 
+[tool.ruff.lint]
+select = ["E", "F", "W", "B"]
+ignore = ["E501"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

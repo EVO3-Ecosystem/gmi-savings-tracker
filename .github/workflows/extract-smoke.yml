@@ -1,6 +1,6 @@
 # Manual check that the portal is reachable and the extract step still works end to end.
 # The pipeline runs locally by decision (no cloud); this workflow only runs when started by hand.
-name: Extract smoke test
+name: Extract and build
 on: workflow_dispatch
 jobs:
   extract:
@@ -12,7 +12,8 @@ jobs:
         with: {python-version: "3.12", cache: pip}
       - run: pip install -e ".[dev]"
       - run: python -m src.pipeline.extract
-        env: {MD_SODA_APP_TOKEN: "${{ secrets.MD_SODA_APP_TOKEN }}"}
+        env: {MD_SODA_APP_TOKEN: "${{ secrets.MD_SODA_APP_TOKEN }}", BLS_API_KEY: "${{ secrets.BLS_API_KEY }}"}
+      - run: python -m src.pipeline.build
       - run: pytest -q
       - uses: actions/upload-artifact@v4
-        with: {name: manifest, path: "data/raw/*/manifest.json"}
+        with: {name: run-evidence, path: "data/raw/*/manifest.json\ndata/check_history.csv\ndata/runs.csv"}
