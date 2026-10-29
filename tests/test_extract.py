@@ -3,8 +3,10 @@ import json
 from pathlib import Path
 
 import pyarrow.parquet as pq
+import pytest
 
 RAW = Path(__file__).resolve().parents[1] / "data" / "raw"
+pytestmark = pytest.mark.skipif(not RAW.exists() or not any(RAW.glob("*/manifest.json")), reason="no extract run in data/ (CI)")
 
 
 def latest():

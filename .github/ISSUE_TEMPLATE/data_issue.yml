@@ -1,0 +1,14 @@
+name: Data issue
+description: A number that doesn't tie, a portal change, or a failed check
+labels: [data]
+body:
+  - type: input
+    id: dataset
+    attributes: {label: Dataset or dashboard file, placeholder: "7syw-q4cy payments / f_area.csv"}
+  - type: input
+    id: run
+    attributes: {label: Run ID, placeholder: "20261028T203005Z"}
+  - type: textarea
+    id: what
+    attributes: {label: What you saw vs what you expected}
+    validations: {required: true}

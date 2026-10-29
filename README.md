@@ -1,4 +1,7 @@
-# md-transparency
+# GMI Savings Tracker
+
+An independent savings tracker for Maryland's Government Modernization Initiative (GMI): it checks reported savings against the state's own payments, and finds the next $50M. Prototype by Sierra Napier; not an official State of Maryland product.
+
 
 A free, local pipeline for Maryland's budget, payments, funding, staffing and grants data: SODA pulls → Parquet files → one DuckDB database → dashboard CSVs. It replaces the pipeline that built the **GMI Savings Tracker** and **Maryland Spend Lens** dashboards, whose original code is saved here under `legacy/`.
 
@@ -51,6 +54,9 @@ Budget (11 years) and payments (20 years) per-year sums from the downloaded file
 ## Layout
 
 ```
+.github/                 CI, manual extract smoke test, issue and PR templates
+docs/                    roadmap, checks catalog, data sources
+scripts/bootstrap_github.sh  one-time labels, milestones and phase issues
 config/datasets.yaml     dataset IDs, page size, retries, backoff, heal attempts
 reference/               hand-kept CSVs (Phase 3); for now the dashboard pipeline's agency and vendor master lists
 src/pipeline/extract.py  Phase 1

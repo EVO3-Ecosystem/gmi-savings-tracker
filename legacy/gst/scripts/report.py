@@ -31,7 +31,7 @@ DATASETS = {"f_function": "f_function", "f_object": "f_object", "f_scope": "f_sc
 AREAS = ["IT hardware, software & services", "Fleet & fuel", "Utilities & facility energy", "Real estate & leases", "Print, copy & mail", "Telecom"]
 DETAILS = [("controllable", "Detail: controllable purchases"), ("scope", "Detail: what agencies can change"), ("funds", "Detail: how the budget is paid for")] + [(f"area:{a}", f"Focus area: {a}") for a in AREAS]
 # tabs included in the report, in order, once they are built
-SECTIONS = [("over", "Overview"), ("areas", "Focus areas"), ("track", "Savings tracker"), ("opp", "Opportunities"),, ("agency", "Agencies"), ("budget", "Budget"), ("data", "Data & pipeline")]
+SECTIONS = [("over", "Overview"), ("areas", "Focus areas"), ("track", "Savings tracker"), ("opp", "Opportunities"), ("calc", "Calculator"), ("agency", "Agencies"), ("budget", "Budget"), ("data", "Data & pipeline")]
 
 TOKENS = """:root{--color-bg:#ffffff;--color-panel:#ffffff;--color-border-line:#dcdfe4;--color-fg:#16181d;--color-fg-muted:#5c6370;
 --color-ok:#1f7a4d;--color-warn:#a46200;--color-bad:#b3261e;--cds-chart-muted:#b9bec7;--cds-surface-popover:#fff;--cds-border:#dcdfe4;

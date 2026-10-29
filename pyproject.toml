@@ -1,6 +1,16 @@
 [project]
-name = "md-transparency"
+name = "gmi-savings-tracker"
 version = "0.1.0"
-description = "Local SODA -> Parquet -> DuckDB pipeline for Maryland budget, payments, funding, FTE and grants data"
+description = "GMI Savings Tracker: local SODA -> Parquet -> DuckDB pipeline that checks reported savings against Maryland's own payments and finds the next $50M"
 requires-python = ">=3.10"
 dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[tool.ruff]
+line-length = 160
+extend-exclude = ["legacy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

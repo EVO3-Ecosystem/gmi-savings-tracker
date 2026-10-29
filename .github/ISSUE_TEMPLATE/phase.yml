@@ -1,0 +1,15 @@
+name: Build phase
+description: One phase of the roadmap, with its gate
+labels: [phase]
+body:
+  - type: input
+    id: phase
+    attributes: {label: Phase, placeholder: "2. Database"}
+    validations: {required: true}
+  - type: textarea
+    id: build
+    attributes: {label: Build, description: What this phase delivers}
+  - type: textarea
+    id: gate
+    attributes: {label: Gate, description: The check that must pass before the next phase starts}
+    validations: {required: true}

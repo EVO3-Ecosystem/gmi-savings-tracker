@@ -72,7 +72,7 @@ def portal_facts(c, fid, spec):
 def download(c, fid, path):
     rows, off, size = [], 0, CFG["page_size"]
     while True:
-        page = call(lambda: c.get(fid, order=":id", limit=size, offset=off), f"{fid} offset {off}")
+        page = call(lambda o=off: c.get(fid, order=":id", limit=size, offset=o), f"{fid} offset {off}")
         rows += page
         if len(page) < size:
             break
