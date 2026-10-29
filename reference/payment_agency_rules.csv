@@ -1,0 +1,22 @@
+rule,payment_name_pattern,target,note
+code_in_payments,^[A-Z][0-9][0-9]$ in the category column,that code,FY2020 onward: payments carry the agency code
+rollup,J01,J00,MDOT modal administration rolled up to the Department of Transportation
+rollup,J02,J00,MDOT modal administration rolled up to the Department of Transportation
+rollup,J03,J00,MDOT modal administration rolled up to the Department of Transportation
+rollup,J04,J00,MDOT modal administration rolled up to the Department of Transportation
+rollup,J05,J00,MDOT modal administration rolled up to the Department of Transportation
+rollup,J06,J00,MDOT modal administration rolled up to the Department of Transportation
+capital,CAPITAL|CAP PROJ|- ?CAP\b|-CAP$,CAPITAL,"capital budget account, not in the operating budget"
+manual,^DHMH|HEALTH AND MENTAL HYGIENE|^DEPT OF HEALTH,^Maryland Department of Health$,older payment name; target is a budget agency-name pattern
+manual,HUMAN RESOURCES,^Department of Human Services$,older payment name; target is a budget agency-name pattern
+manual,"LABOR, LICENSING",^Maryland Department of Labor$,older payment name; target is a budget agency-name pattern
+manual,BUSINESS & ECONOMIC DEVELOPMENT$|^DEPT OF COMMERCE$,^Department of Commerce$,older payment name; target is a budget agency-name pattern
+manual,DEPT\. OF AGING,^Department of Aging$,older payment name; target is a budget agency-name pattern
+manual,^ENERGY ADMINISTRATION$,^Maryland Energy Administration$,older payment name; target is a budget agency-name pattern
+manual,OFFICE OF PLANNING,^Department of Planning$,older payment name; target is a budget agency-name pattern
+manual,COMMISSION ON HUMAN RELATIONS,Civil Rights,older payment name; target is a budget agency-name pattern
+manual,DISPARITY GRANTS|PROPERTY TAX GRANT|MISCELLANEOUS GRANTS,^Payments to Civil Divisions,older payment name; target is a budget agency-name pattern
+manual,PUBLIC SCHOOL CONSTRUCTION PROGRAM,School Construction,older payment name; target is a budget agency-name pattern
+manual,SUBSEQUENT INJURY FUND,^Subsequent Injury Fund$,older payment name; target is a budget agency-name pattern
+direct,^MARYLAND ENVIRONMENTAL SERVICE$,U10,payment-only agency code
+closest_name,difflib ratio >= 0.88,code of the closest coded payment name,last resort

@@ -1,0 +1,12 @@
+file_pattern,agency_code,note
+^MDH-|^Maryland-Department-of-Health-Overview,M00,Maryland Department of Health units
+^DPSCS-,Q00,Public Safety and Correctional Services facility summaries
+^Exec-Gov-Office-for-Children,D18,Governor's Office for Children
+^Exec-Gov-|^Exec-Dept-Governor,D10,Executive Department - Governor's offices
+^Exec-Dept-,D15,"Executive Department boards, commissions and offices"
+^Maryland-State-Board-of-Contract-Appeals,D15,"Executive Department boards, commissions and offices"
+^MHEC-,R62,Maryland Higher Education Commission
+^USM-|^Morgan-State-University|^St-Mary_s-College|^Baltimore-City-Community-College,R75,Higher education institutions (budgeted outside the operating dataset's agencies; mapped to state support)
+^Maryland-Public-Television,R15,Maryland Public Broadcasting Commission
+^State-Retirement-Agency,G20,Maryland State Retirement and Pension Systems
+^Maryland-Environmental-Service,U10,payment-only agency code

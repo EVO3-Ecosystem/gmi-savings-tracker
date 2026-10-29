@@ -1,0 +1,11 @@
+sodapy>=2.2
+pandas>=2.0
+pyarrow>=14
+pyyaml>=6
+requests>=2.31
+duckdb>=1.0
+pdfplumber>=0.11
+
+[dev]
+pytest>=8
+ruff>=0.5

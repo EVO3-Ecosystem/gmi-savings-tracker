@@ -12,7 +12,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from . import checks
+from . import checks, reference
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data"
@@ -113,6 +113,7 @@ def build(run_id):
         con.execute("""CREATE TABLE core.mfr_document AS SELECT fiscal_year, agency_file,
           replace(replace(agency_file, '-MFR.pdf', ''), '-', ' ') AS agency_title, url, bytes, last_modified FROM raw.mfr_index""")
 
+    reference.build(con, raw)  # Phase 3: reference CSVs -> ref layer, mapped payments, budget scope, MFR measures
     res = checks.run(con, run_id, man)
     con.close()
     if res:

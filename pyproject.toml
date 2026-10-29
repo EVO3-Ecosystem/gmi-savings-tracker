@@ -3,7 +3,7 @@ name = "gmi-savings-tracker"
 version = "0.1.0"
 description = "GMI Savings Tracker: local SODA -> Parquet -> DuckDB pipeline that checks reported savings against Maryland's own payments and finds the next $50M"
 requires-python = ">=3.10"
-dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0"]
+dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0", "pdfplumber>=0.11"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
@@ -14,7 +14,7 @@ extend-exclude = ["legacy"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "B"]
-ignore = ["E501"]
+ignore = ["E501", "B905"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

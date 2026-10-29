@@ -13,8 +13,8 @@ The plan, data dictionary and reference lists are in the *Maryland Transparency 
 |---|---|---|
 | 1. Extract | **Done** (Oct 28, 2026) | Two runs in a row matched portal row counts for all five datasets ✔ |
 | 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
-| 3. Reference data | Next | Match rates at or above the dashboard's master list quality |
-| 4. Marts & dashboard | — | Every dashboard file reproduced, or each difference explained |
+| 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ | Match rates at or above the dashboard's master list quality |
+| 4. Marts & dashboard | Next | Every dashboard file reproduced, or each difference explained |
 | 5. Analytics | — | Outputs match the dashboard |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
 
@@ -58,6 +58,19 @@ Budget (11 years) and payments (20 years) per-year sums from the downloaded file
 Builds `data/md_transparency.duckdb` from a run's files in about 9 seconds: `raw` (as delivered), `ref` (agencies, functions, objects, sub-objects, fund types, budget stages), `core` (typed and normalized facts, plus CPI by fiscal year, federal awards, population, and the Managing for Results document index), `ops` (source snapshot, portal yearly totals, enrichment status, check results, run log). Every check is recorded in `ops.check_result` and `data/check_history.csv`. A failed stop check exits non-zero and **keeps the last good database**; the failed build is saved as `md_transparency.failed.duckdb` for inspection (tested by faking a one-row mismatch).
 
 Context sources pulled with each extract (`src/pipeline/enrich.py`, warnings never block): CPI-U (BLS, falling back to FRED when BLS's shared daily limit is hit), federal grants to Maryland governments (USAspending), Maryland population (Census estimates), and every agency's Managing for Results plan (DBM, 111 PDFs for FY2027). See `docs/recommendations.md`.
+
+## Phase 3: reference data (`reference/*.csv`, `src/pipeline/reference.py`)
+
+Every rule the dashboard pipeline kept in code now lives in a CSV, so each change has an author and a date: payment agency rules and decisions, vendor families and normalization, payee focus areas, controllable-purchase rules, focus-area rules, budget stages, GMI's 14 reported savings items, the Managing for Results plan-to-agency map, and the dashboard's quality baseline. `reference.py` applies them to build `ref.map_payment_agency`, `ref.map_payee_vendor`, `ref.map_focus_area`, `core.fact_payment_mapped`, `core.fact_budget_scope` (controllable flag, scope and focus area per budget line) and `core.mfr_measure` (every performance measure and yearly value read from the plans). Results, Oct 29, 2026:
+
+| Measure | Pipeline | Dashboard |
+|---|---|---|
+| FY2026 payment dollars matched to a budget agency | 100.00% | 100.00% |
+| Payment agency names mapped | 141 of 145 | 141 of 145 |
+| Payee names grouped into multi-name companies | 9,686 in 4,478 (all years) | 9,474 in 4,377 (FY2026 payees) |
+| Controllable purchases, FY2025 | $4,093,855,308 | $4,093,855,308 |
+| Focus areas, FY2025 | $1,287,718,788 in 96 codes | $1,287,718,788 in 96 codes |
+| Managing for Results | 2,957 measures, 106 of 111 plans matched to an agency | — |
 
 ## Layout
 

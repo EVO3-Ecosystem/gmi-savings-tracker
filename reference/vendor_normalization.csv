@@ -1,0 +1,5 @@
+step,pattern,note
+strip_punctuation,[^A-Z0-9& ],"uppercase; anything but letters, digits, & and spaces becomes a space"
+drop_suffix,\b(INC|INCORPORATED|LLC|L L C|LTD|CORP|CORPORATION|CO|COMPANY|LP|L P|LLP|PLLC|PC|THE|OF AMERICA|USA|US)\b,legal suffixes removed
+merge_spacing,(remove spaces),names equal apart from spacing are one vendor
+government,COUNTY|CITY OF|BOARD OF|PUBLIC SCHOOL|UNIVERSITY|COLLEGE|STATE OF|TREASUR|COMPTROLLER|COMMISSION|DEPARTMENT|DEPT|GOVERNMENT|AUTHORITY|MAYOR|TOWN OF|SCHOOLS|UNITED STATES|FEDERAL|MUNICIPAL|BALTIMORE CITY|HEALTHCARE|HEALTH PLAN|MEDICAL CENTER|HOSPITAL|MEDICAID|BANK|AGENCY ON AGING|ENVIRONMENTAL SERVICE|BLIND INDUSTRIES|OCCUPATIONAL HEALTH,"payees matching this are government or institutional, not commercial vendors"

@@ -1,0 +1,8 @@
+measure,value,source
+fy2026_payment_dollars_matched,1.0,"GMI Savings Tracker master list quality, Oct 28 2026"
+payment_agency_names_mapped,141,of 145 names
+payee_names_grouped,9474,names in multi-name companies
+companies_with_several_names,4377,
+controllable_fy2025,4093855308,dashboard f_scope
+focus_area_fy2025,1287718788,dashboard f_code
+focus_area_codes,96,dashboard f_code

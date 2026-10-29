@@ -79,6 +79,7 @@ def run(con, run_id, manifest):
     for src, status, detail in con.execute("SELECT source, status, detail FROM ops.enrichment").fetchall():
         check("raw", f"Context source pulled: {src}", status == "pass", detail[:200], "warn")
 
+    phase3(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -91,3 +92,44 @@ def run(con, run_id, manifest):
         print(f"{r['result']:4s}  [{r['layer']}] {r['check']}: {r['detail']}")
     print(f"{len(df)} checks: {int((df.result == 'pass').sum())} passed, {int((df.result == 'warn').sum())} warnings, {fails} failed")
     return fails == 0
+
+
+def phase3(con, check, one):
+    """Reference data: match rates at or above the dashboard pipeline's (reference/baseline_quality.csv)."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'ref' AND table_name = 'map_payment_agency'"):
+        return
+    base = dict(con.execute("SELECT measure, CAST(value AS DOUBLE) FROM ref.baseline_quality").fetchall())
+    fy = one("SELECT max(fiscal_year) FROM core.fact_payment WHERE NOT partial_year")
+    share = one("SELECT sum(amount) FILTER (WHERE agency_code IS NOT NULL) / sum(amount) FROM core.fact_payment_mapped WHERE fiscal_year = ?", fy)
+    check("ref", f"FY{fy} payment dollars matched to a budget agency", share >= base["fy2026_payment_dollars_matched"] - 1e-9,
+          f"{share:.4%} (dashboard: {base['fy2026_payment_dollars_matched']:.2%})")
+    partial = one("SELECT max(fiscal_year) FROM core.fact_payment")
+    ps = one("SELECT sum(amount) FILTER (WHERE agency_code IS NOT NULL) / sum(amount) FROM core.fact_payment_mapped WHERE fiscal_year = ?", partial)
+    check("ref", f"FY{partial} (partial year) payment dollars matched", ps >= 0.99, f"{ps:.4%}", "warn")
+    mapped, total = one("SELECT count(*) FILTER (WHERE agency_code IS NOT NULL) FROM ref.map_payment_agency"), one("SELECT count(*) FROM ref.map_payment_agency")
+    un = [r[0] for r in con.execute("SELECT payment_agency_name FROM ref.map_payment_agency WHERE agency_code IS NULL ORDER BY 1").fetchall()]
+    check("ref", "Payment agency names mapped", mapped >= base["payment_agency_names_mapped"],
+          f"{mapped} of {total} (dashboard: {int(base['payment_agency_names_mapped'])} of 145); unmapped: {', '.join(un) or 'none'}")
+    names, comps = con.execute("""SELECT count(*), count(DISTINCT vendor) FROM ref.map_payee_vendor
+        WHERE vendor IN (SELECT vendor FROM ref.map_payee_vendor GROUP BY vendor HAVING count(*) > 1)""").fetchone()
+    check("ref", "Payee names grouped into companies", names >= base["payee_names_grouped"],
+          f"{names:,} names in {comps:,} companies (dashboard, FY2026 payees only: {int(base['payee_names_grouped']):,} in {int(base['companies_with_several_names']):,})")
+    c25 = one("SELECT sum(budget) FROM core.fact_budget_scope WHERE fiscal_year = 2025 AND controllable")
+    check("ref", "Controllable purchases FY2025 = dashboard", abs(c25 - base["controllable_fy2025"]) < 1, f"${c25:,.0f} (dashboard ${base['controllable_fy2025']:,.0f})")
+    a25 = one("SELECT sum(budget) FROM core.fact_budget_scope WHERE fiscal_year = 2025 AND focus_area IS NOT NULL")
+    codes = one("SELECT count(DISTINCT subobject_code) FROM ref.map_focus_area")
+    check("ref", "Focus areas FY2025 = dashboard", abs(a25 - base["focus_area_fy2025"]) < 1 and codes >= base["focus_area_codes"],
+          f"${a25:,.0f} in {codes} spending codes (dashboard ${base['focus_area_fy2025']:,.0f} in {int(base['focus_area_codes'])})")
+    miss = one("SELECT count(*) FROM ref.map_focus_area m LEFT JOIN ref.dim_subobject s USING (subobject_code) WHERE s.subobject_code IS NULL")
+    check("ref", "Every focus-area code exists in the budget", miss == 0, f"{miss} missing")
+    prev = HIST.parent / "payee_names.txt"
+    now = {r[0] for r in con.execute("SELECT payee FROM ref.map_payee_vendor").fetchall()}
+    old = set(prev.read_text().splitlines()) if prev.exists() else set()
+    new = sorted(now - old) if old else []
+    check("ref", "New payee names since the last build", not new, (f"{len(new)} new: " + "; ".join(new[:8]) + (" ..." if len(new) > 8 else "")) if old else "first build recorded", "warn")
+    prev.write_text("\n".join(sorted(now)))
+    if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'core' AND table_name = 'mfr_measure'"):
+        docs, matched = con.execute("SELECT count(*), count(agency_code) FROM ref.map_mfr_agency").fetchone()
+        n, ag = con.execute("SELECT count(DISTINCT agency_file || measure), count(DISTINCT agency_file) FROM core.mfr_measure").fetchone()
+        check("ref", "Managing for Results measures read from the plans (recommendation 6)", ag >= 0.8 * docs,
+              f"{n:,} measures from {ag} of {docs} plans; {matched} plans matched to a budget agency", "warn")

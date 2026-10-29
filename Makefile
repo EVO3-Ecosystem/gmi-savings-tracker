@@ -3,6 +3,7 @@ extract:  ; $(PY) -m src.pipeline.extract
 extract-full: ; $(PY) -m src.pipeline.extract --force
 gate1:    ; $(PY) -m src.pipeline.extract --gate
 build:    ; $(PY) -m src.pipeline.build
+gate3:    ; $(PY) -m pytest -q tests/test_reference.py
 all:      extract build
 test:     ; $(PY) -m pytest -q tests
-.PHONY: extract extract-full gate1 build all test
+.PHONY: extract extract-full gate1 build gate3 all test

@@ -1,0 +1,8 @@
+area,rule,value,note
+Fleet & fuel,object_name,Motor Vehicle Operation and Maintenance,
+"IT hardware, software & services",subobject_name_pattern,Data Proc|Software|Computer|Programming|Sys Analysis|Data Entry|Microcomputer|Mainframe,case-insensitive
+Telecom,object_name_except_code,Communications|301,Communications except postage
+"Print, copy & mail",subobject_codes,301;804,postage; printing and reproduction
+Utilities & facility energy,object_name_except_name,Fuel and Utilities|Loan,
+Real estate & leases,subobject_codes,1301,rent paid to non-DGS landlords
+(all areas),controllable_only,true,areas apply only within controllable purchases

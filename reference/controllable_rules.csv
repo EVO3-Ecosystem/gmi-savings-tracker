@@ -1,0 +1,18 @@
+rule,value,note
+excluded_object,"Grants, Subsidies, and Contributions",not a purchase an agency can renegotiate
+excluded_object,Land and Structures,not a purchase an agency can renegotiate
+excluded_object,"Salaries, Wages and Fringe Benefits",not a purchase an agency can renegotiate
+excluded_object,Technical and Special Fees,not a purchase an agency can renegotiate
+entitlement_code,818,"client and provider payments, debt service"
+entitlement_code,820,"client and provider payments, debt service"
+entitlement_code,830,"client and provider payments, debt service"
+entitlement_code,836,"client and provider payments, debt service"
+entitlement_code,838,"client and provider payments, debt service"
+entitlement_code,1306,"client and provider payments, debt service"
+entitlement_code,1307,"client and provider payments, debt service"
+internal_code,305,"DoIT and in-state allocations, rent paid to DGS"
+internal_code,876,"DoIT and in-state allocations, rent paid to DGS"
+internal_code,882,"DoIT and in-state allocations, rent paid to DGS"
+internal_code,1303,"DoIT and in-state allocations, rent paid to DGS"
+internal_name,Allocation|^Instate|^In State,sub-object name pattern
+pass_through_program,Reinsurance|Provider Reimbursements|Foster Care Maintenance|Health Services Cost Review|Home Energy Programs|Housing and Building Energy Programs|Renewable and Clean Energy Programs,"program pays insurers, providers or households"
