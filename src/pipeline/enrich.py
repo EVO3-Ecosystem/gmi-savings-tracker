@@ -27,7 +27,10 @@ def _get(url, method="GET", tries=5, headers=None, **kw):
     for i in range(tries):
         try:
             r = requests.request(method, url, timeout=120, headers=UA if headers is None else headers, **kw)
-            if r.status_code in (429, 500, 502, 503, 504):
+            if r.status_code == 429:  # throttled: wait as long as the server asks, then retry
+                time.sleep(min(int(r.headers.get("Retry-After") or 30 * (i + 1)), 300))
+                raise requests.exceptions.HTTPError("HTTP 429")
+            if r.status_code in (500, 502, 503, 504):
                 raise requests.exceptions.HTTPError(f"HTTP {r.status_code}")
             r.raise_for_status()
             return r
@@ -67,7 +70,7 @@ def _cpi_bls(year):
         if j.get("status") != "REQUEST_SUCCEEDED":
             raise RuntimeError(f"BLS: {j.get('message')}")
         for d in j["Results"]["series"][0]["data"]:
-            if d["period"].startswith("M") and d["period"] != "M13":
+            if d["period"].startswith("M") and d["period"] != "M13" and d["value"].replace(".", "", 1).isdigit():  # "-" = not published
                 rows.append({"year": int(d["year"]), "month": int(d["period"][1:]), "cpi": float(d["value"])})
     return pd.DataFrame(rows)
 
@@ -131,7 +134,8 @@ def mfr(out, prev_dir):
     for path in links:
         url = "https://dbm.maryland.gov" + path
         name = path.rsplit("/", 1)[1]
-        h = _get(url, "HEAD").headers
+        time.sleep(PACE)  # DBM throttles bursts (HTTP 429 seen from GitHub runners)
+        h = _get(url, "HEAD", tries=7).headers
         lm, size = h.get("Last-Modified"), int(h.get("Content-Length") or 0)
         p = prev_idx.get(url)
         if p and p["last_modified"] == lm and p["bytes"] == size and (prev_dir / "mfr" / name).exists():
@@ -141,13 +145,26 @@ def mfr(out, prev_dir):
                 shutil.copy2(prev_dir / "mfr" / name, d / name)
             reused += 1
         else:
-            (d / name).write_bytes(_get(url).content)
+            (d / name).write_bytes(_get(url, tries=7).content)
         ok = (d / name).read_bytes()[:4] == b"%PDF"
         rows.append({"fiscal_year": fy, "agency_file": name, "url": url, "bytes": (d / name).stat().st_size, "last_modified": lm, "is_pdf": ok})
     idx = pd.DataFrame(rows)
     idx.to_parquet(out / "mfr_index.parquet", index=False)
     return {"rows": len(idx), "detail": f"FY{fy}: {len(idx)} agency PDFs ({reused} unchanged and reused), {idx.bytes.sum() / 1e6:,.0f} MB",
             "ok": len(idx) >= 50 and bool(idx.is_pdf.all())}
+
+
+PACE = float(os.environ.get("MFR_PACE_SECONDS", "1.0"))
+
+
+def mfr_reuse(out, prev_dir):
+    """Self-healing fallback: if DBM refuses this run, carry the last run's plans forward (they change once a year)."""
+    if not (prev_dir and (prev_dir / "mfr_index.parquet").exists()):
+        raise RuntimeError("no earlier run to reuse")
+    shutil.copytree(prev_dir / "mfr", out / "mfr", copy_function=os.link, dirs_exist_ok=True)
+    shutil.copy2(prev_dir / "mfr_index.parquet", out / "mfr_index.parquet")
+    n = len(pd.read_parquet(out / "mfr_index.parquet"))
+    return {"rows": n, "detail": f"DBM unavailable; reused {n} plans from {prev_dir.name}", "ok": False}
 
 
 SOURCES = {"cpi": cpi, "federal_awards": federal_awards, "population": population, "mfr": mfr}
@@ -162,6 +179,11 @@ def run_all(out, prev_dir, log):
             status = "pass" if res["ok"] else "warn"
         except Exception as e:  # a context source never blocks the core extract
             res, status = {"rows": 0, "detail": f"{type(e).__name__}: {e}"[:300]}, "warn"
+            if name == "mfr":
+                try:
+                    res = mfr_reuse(out, prev_dir)
+                except Exception as e2:  # nothing to reuse either
+                    res["detail"] += f"; reuse failed: {e2}"[:200]
         e = {"source": name, "status": status, "rows": res["rows"], "detail": res["detail"], "secs": round(time.time() - t, 1)}
         entries.append(e)
         log(f"{name:15s} {status:4s} {e['rows']:>6,} rows  {e['detail']}  {e['secs']}s")
