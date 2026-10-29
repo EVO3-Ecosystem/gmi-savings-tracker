@@ -86,7 +86,8 @@ def recurrence(d_sav, f_chk, run_id, hist_path):
         b, a = r.get(2025, 0), r.get(2026, 0)
         rp = rep.get(cid)
         dropv = b - a
-        st = "No reported figure" if not rp else ("Seen" if dropv >= .5 * rp else "Partly seen" if dropv > 0 else "Not seen yet")
+        st = (("Payments fell" if dropv > 0 else "Payments did not fall") if not rp else
+              ("Seen" if dropv >= .5 * rp else "Partly seen" if dropv > 0 else "Not seen yet"))
         item = d_sav[d_sav.saving_id == cid].item.iloc[0]
         rows.append({"check_id": cid, "item": item, "reported": rp, "before": b, "after": a, "status": st})
     cur = pd.DataFrame(rows)
@@ -107,10 +108,10 @@ def plan50(fm, fc, bids):
     for _, b in bids.iterrows():
         if sum(r["saving"] for r in rows) >= 50e6:
             break
-        rows.append({"step": len(rows) + 1, "action": f"Statewide contract: {b.vendor}", "basis": f"3.5% of ${b.fy2026 / 1e6:,.1f}M paid by {int(b.agencies)} agencies (range 2-5%)", "saving": .035 * b.fy2026, "tab": "opp"})
+        rows.append({"step": len(rows) + 1, "action": f"Statewide contract: {b.vendor}", "basis": f"assumed 3.5% of ${b.fy2026 / 1e6:,.1f}M paid by {int(b.agencies)} agencies (assumed range 2-5%)", "saving": .035 * b.fy2026, "tab": "opp"})
     if sum(r["saving"] for r in rows) < 50e6:
         for area in ("Real estate & leases", "Utilities & facility energy"):
-            rows.append({"step": len(rows) + 1, "action": f"Start savings in {area.lower()} at 1%", "basis": f"1% of forecast FY2027 spending of ${f27.get(area, 0) / 1e6:,.1f}M", "saving": .01 * f27.get(area, 0), "tab": "calc"})
+            rows.append({"step": len(rows) + 1, "action": f"Start savings in {area.lower()} at 1%", "basis": f"assumed 1% of forecast FY2027 spending of ${f27.get(area, 0) / 1e6:,.1f}M", "saving": .01 * f27.get(area, 0), "tab": "calc"})
     d = pd.DataFrame(rows)
     d["cumulative"] = d.saving.cumsum()
     return d
@@ -134,13 +135,15 @@ def master_quality(pm, am, vm, prev_path):
     return pd.DataFrame(rows, columns=["measure", "value", "ok"]), matched
 
 
-def status(bids, chk, sets, plan, matched):
-    seen = int((chk.status == "Seen").sum()); tot = int((chk.status != "No reported figure").sum())
+def status(bids, chk, plan, matched):
+    seen = int((chk.status == "Seen").sum()); tot = int(chk.status.isin(["Seen", "Partly seen", "Not seen yet"]).sum())
+    cats = chk[chk.check_id.isin(["S02", "S03", "S04", "S05"])]
+    fell = int((cats.status == "Payments fell").sum())
     reach = plan.cumulative.iloc[-1] >= 50e6
     return pd.DataFrame([
         (1, "Bid statewide contracts for shared vendors", "Ready", f"{len(bids)} vendors ranked; ${bids.low.sum() / 1e6:,.1f}M–${bids.high.sum() / 1e6:,.1f}M a year", "opp"),
         (2, "Confirm which reported savings recur", "Tracking", f"{seen} of {tot} checks seen in payments; {int(chk.changed.sum())} changed since last run", "track"),
-        (3, "Name the seven renegotiated contracts", "Candidates found" if len(sets) else "No fit found", f"{sets.set.nunique() if len(sets) else 0} vendor sets fit $81M / $18M; awaiting GMI's list", "track"),
+        (3, "Name the seven renegotiated contracts", "Categories tracked", f"4 contract types named in GMI's report are checked against payments; payments fell for {fell} of 4; vendors still unnamed", "track"),
         (4, "Plan the rest of the path to $50M", "Plan reaches $50M" if reach else "Gap remains", f"{len(plan)} steps to ${plan.cumulative.iloc[-1] / 1e6:,.1f}M a year", "calc"),
         (5, "Keep one vendor and agency master list", "In place", f"{matched:.1%} of FY2026 payments matched to an agency", "data"),
         (6, "Tie spending to results", "Needs a data feed", "Current Managing for Results measures are published only in the budget books (PDF); the open data portal has 2016 files only", "data"),

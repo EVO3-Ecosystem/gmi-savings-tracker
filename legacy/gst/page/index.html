@@ -196,7 +196,7 @@
       <div class="hd"><h2 id="trTblH">Every reported item and its check</h2></div>
       <p class="note">Hover over a check result to see the vendors it covers. A check says whether the change shows up in what the state paid; it is a lead to follow, not proof. Payee names miss spending booked under other names, and contracts change for other reasons.</p>
       <div class="tbl"><table data-source="d_savings f_savings_check" data-row-key="saving_id">
-        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th class="n">Payments before</th><th class="n">Payments after</th><th class="n">Change</th><th>Check result</th></tr></thead>
+        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n">Payments FY2025</th><th class="n">Payments FY2026</th><th class="n">Change</th><th>Check result</th></tr></thead>
         <tbody id="trBody"></tbody></table></div>
       <p class="stagenote" id="trStage"></p>
     </div>
@@ -206,13 +206,18 @@
       <div class="tbl"><table data-source="d_savings_status"><thead><tr><th>Item</th><th class="n">Reported</th><th class="n">FY2025 paid</th><th class="n">FY2026 paid</th><th>Status</th><th>Last refresh</th></tr></thead><tbody id="stBody2"></tbody></table></div>
     </div>
     <div class="card">
-      <div class="hd"><h2>Which vendors fit the seven renegotiated contracts (recommendation 3)</h2></div>
-      <p class="note">A search of 60,000 combinations of three to seven commercial vendors (paid by three or more agencies, still paid in FY2026 but 5–50% less) for sets that match GMI's description: about $81M a year before, about $18M lower after. Share of sets = how often a vendor appears among the 200 best-fitting sets. Candidates to confirm with GMI, not a finding.</p>
-      <div class="tbl"><table data-source="d_contract_freq"><thead><tr><th>Vendor</th><th class="n">Share of sets</th><th class="n">FY2025 paid</th><th class="n">Decrease</th></tr></thead><tbody id="cfBody"></tbody></table></div>
+      <div class="hd"><h2>Sources</h2></div>
+      <p class="note">Every reported figure on this tab is quoted from one of these documents; hover over a Source cell for the exact words. Payment figures are computed from the state's payments data. Checked Oct 29, 2026.</p>
+      <ul class="ins" style="font-size:var(--cds-font-size-caption)">
+        <li>Maryland Department of Budget and Management, <a href="https://governor.maryland.gov/media/893" target="_blank" rel="noopener">Government Modernization Initiative Final Report</a> (Joint Chairmen's Report, p. 77), January 26, 2026: all GMI items, page numbers as shown.</li>
+        <li>Maryland Department of General Services, <a href="https://dgs.maryland.gov/Pages/Announcements/GovernmentModernization.aspx" target="_blank" rel="noopener">Government Modernization announcement</a>: $326,341,056 estimated facility savings across seven Baltimore facilities (no date or fiscal years given).</li>
+        <li>State of Maryland, <a href="https://opendata.maryland.gov/d/7syw-q4cy" target="_blank" rel="noopener">Payments Data (7syw-q4cy)</a>, FY2022–FY2026: every payment check, matched by payee name.</li>
+        <li>WYPR, <a href="https://www.wypr.org/wypr-news/2025-01-10/gov-moore-announces-plan-to-save-50m-by-modernizing-maryland-government" target="_blank" rel="noopener">Gov. Moore announces plan to save $50M</a>, January 10, 2025: the $50M target and the consultant fee (20% of savings, up to $15M).</li>
+      </ul>
     </div>
     <div class="card">
       <div class="hd"><h2>Largest vendor decreases, FY2025 to FY2026</h2></div>
-      <p class="note">GMI's biggest item, $18M from renegotiating seven contracts worth about $81M a year, does not name the vendors. The payments data covers every vendor, so this lists the commercial vendors paid by five or more agencies whose operating payments fell most. Construction, health plans, schools, banks and governments are left out. These are candidates to ask GMI about, not a match.</p>
+      <p class="note">Commercial vendors paid by five or more agencies whose operating payments fell most from FY2025 to FY2026, from the state's payments data. Construction, health plans, schools, banks and governments are left out. Context for the vendor-contract item, not a match to it: GMI has not named its seven vendors.</p>
       <div class="tbl"><table data-source="d_vendor_moves" data-row-key="vendor">
         <thead><tr><th data-field="vendor">Vendor</th><th class="n" data-field="agencies">Agencies</th><th class="n" data-field="fy2024">FY2024</th><th class="n" data-field="fy2025">FY2025</th><th class="n" data-field="fy2026">FY2026</th><th class="n" data-field="change">Change</th><th class="n">%</th></tr></thead>
         <tbody id="mvBody"></tbody></table></div>
@@ -223,7 +228,7 @@
     <div class="tiles" id="opTiles"></div>
     <div class="card">
       <div class="hd"><h2>Statewide bid list (recommendation 1)</h2><button class="xp" data-expand="bid">Expand</button></div>
-      <p class="note">Commercial vendors paid separately by ten or more agencies in FY2026, largest first. Regulated utilities and service providers are left out. One enterprise agreement typically saves 2–5%. Click a vendor for its page.</p>
+      <p class="note">Commercial vendors paid separately by ten or more agencies in FY2026, largest first. Regulated utilities and service providers are left out. Savings use an assumed 2–5% from one enterprise agreement (a screening assumption, not a published rate). Click a vendor for its page.</p>
       <div class="tbl"><table data-source="d_bid_list"><thead><tr><th class="n">#</th><th>Vendor</th><th class="n">Agencies</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Savings 2–5%</th><th>Largest buyers</th></tr></thead><tbody id="bidBody"></tbody></table></div>
     </div>
     <div class="card">
@@ -237,7 +242,7 @@
       <div class="tbl"><table data-source="d_opps" data-row-key="opp_id">
         <thead><tr><th data-field="detector">Detector</th><th data-field="agency">Agency</th><th data-field="spending_code">Spending code or vendor</th><th data-field="area">Focus area</th><th class="n" data-field="baseline">Spending</th><th class="n" data-field="likely">Likely saving</th><th class="n" data-field="low">Range</th><th data-field="evidence">Why</th></tr></thead>
         <tbody id="opBody"></tbody></table></div>
-      <p class="stagenote">Peer gap: spending per budgeted position above three in four agencies; 5–15% of the excess is counted because agencies differ in mission. Growth above trend: spending that grew 25+ points faster than the state's from FY2022 to FY2025; 10–30% of the extra growth is counted. Tail spend: payments to vendors outside each focus area's ten largest; consolidation typically saves 3–10%. Leverage: one vendor paid separately by ten or more agencies; an enterprise agreement typically saves 2–5%. The same agency and code is never counted twice. Findings are leads to review, not savings already found. The year filter does not apply here.</p>
+      <p class="stagenote">Peer gap: spending per budgeted position above three in four agencies; 5–15% of the excess is counted because agencies differ in mission. Growth above trend: spending that grew 25+ points faster than the state's from FY2022 to FY2025; 10–30% of the extra growth is counted. Tail spend: payments to vendors outside each focus area's ten largest; an assumed 3–10% from consolidation. Leverage: one vendor paid separately by ten or more agencies; an assumed 2–5% from one enterprise agreement. The same agency and code is never counted twice. All of these percentages are screening assumptions, not published rates. Findings are leads to review, not savings already found. The year filter does not apply here.</p>
     </div>
   </section>
   <section class="panel" id="p-calc" role="tabpanel" aria-labelledby="t-calc" hidden>
@@ -280,7 +285,7 @@
     </div>
     <div class="card">
       <div class="hd"><h2>A path to $50M a year (recommendation 4)</h2></div>
-      <p class="note">GMI's current pace from the forecast, then statewide contracts for the largest shared vendors at 3.5% (the middle of 2–5%), added until the total reaches $50M. Click a step for its evidence.</p>
+      <p class="note">GMI's current pace from the forecast, then statewide contracts for the largest shared vendors at an assumed 3.5% (the middle of an assumed 2–5% range, not a published rate), added until the total reaches $50M. Click a step for its evidence.</p>
       <div class="tbl"><table data-source="d_plan50"><thead><tr><th class="n">Step</th><th>Action</th><th>Basis</th><th class="n">Savings a year</th><th class="n">Running total</th></tr></thead><tbody id="planBody"></tbody></table></div>
     </div>
     <div class="card">
@@ -425,7 +430,7 @@
 
 <script>
 /* ======================= formatting ======================= */
-const M = v => v==null||isNaN(v)?'—':'$' + new Intl.NumberFormat('en',{notation:'compact',maximumFractionDigits:1}).format(v);
+const M = v => v==null||isNaN(v)?'—':(v < 0 ? '−$' : '$') + new Intl.NumberFormat('en',{notation:'compact',maximumFractionDigits:1}).format(Math.abs(v));
 const PCT = d3.format('.1%'), N = d3.format(','), N0 = d3.format(',.0f');
 const TEXT = new Set(['agency_code','agency','stage','category_title','fund_type_name','object_name','scope','title','dataset_id','use','portal_name','portal_updated','years','reconciled','stage_pair','measure','definition','grouped_by','higher_is','table','run_id','started_utc','status','mode','check','detail','family','how_matched','source','published','in_budget','area','spending_code','vendor','url','run_date','file_label','official_stage','evidence','evidence_url','note','code','opp_id','payee_name','label','detector','method','kind','vendor','top_agencies','action','basis','tab','status','previous_status','progress','previous','title','spending_code','saving_id','workstream','item','type','count','check_id','check_note','source_url']);
 const num = rows => rows.map(r => Object.fromEntries(Object.entries(r).map(([k,v]) => [k, (v!==''&&v!=null&&!isNaN(v)&&!TEXT.has(k)) ? Number(v) : (v===''?null:v)])));
@@ -692,9 +697,9 @@ function drawRecs(){ // recommendations computed from the tracker's own findings
   const base27 = d3.sum(fm, m => fc.find(r => r.area === m.area && r.fiscal_year === 2027).p50);
   const fam = vf ? vf.length : 0;
   const recs = [
-    ['Bid statewide contracts for shared vendors', `Start with ${topLev || 'the vendors many agencies buy from separately'}. ${lev.length} commercial vendors are each paid separately by ten or more agencies (${M(levS)} in FY2026); one enterprise agreement typically saves 2–5%, or ${M(levL)}–${M(levH)} a year.`, () => { showTab('opp'); const s = document.getElementById('opDet'); s.value = 'Leverage'; drawOpp(prm()); }],
+    ['Bid statewide contracts for shared vendors', `Start with ${topLev || 'the vendors many agencies buy from separately'}. ${lev.length} commercial vendors are each paid separately by ten or more agencies (${M(levS)} in FY2026); at an assumed 2–5% from one enterprise agreement, that is ${M(levL)}–${M(levH)} a year.`, () => { showTab('opp'); const s = document.getElementById('opDet'); s.value = 'Leverage'; drawOpp(prm()); }],
     ['Confirm which reported savings recur', `Payments to the matching vendors fell for vehicle purchases and laptops, but rose from FY2025 to FY2026 for: ${up.join('; ') || 'none of the checked items'}. Agency invoices or contract changes would show whether those savings are real but offset, or not yet in place.`, () => showTab('track')],
-    ['Name the seven renegotiated contracts', `GMI's largest item, $18M a year, cannot be checked because the vendors are not named. Publishing them, with their before-and-after prices, would let the $18M be tracked like the other items.`, () => showTab('track')],
+    ['Name the seven renegotiated contracts', `GMI's largest item, $18M a year, names four kinds of contract (food services at one agency, statewide radio maintenance, office supplies, a software license agreement) but no vendors. Payments that fit each kind are tracked; publishing the vendors and their before-and-after prices would let the $18M be checked exactly.`, () => showTab('track')],
     ['Plan the rest of the path to $50M', `At GMI's current pace the forecast puts FY2027 savings near ${M(net27)}. Reaching $50M takes about ${(hi * 100).toFixed(1)} more points of savings across ${M(base27)} in forecast controllable purchases, or new areas such as real estate and utilities, where GMI has not reported savings yet.`, () => showTab('calc')],
     ['Keep one vendor and agency master list', `The same company appears under several payee names (${fam} company families in FY2026 alone), and agency names change between years. A maintained master list makes savings trackable across years and agencies.`, () => { showTab('data'); document.getElementById('vfH').scrollIntoView({block:'start'}); }],
     ['Tie spending to results', 'Join spending to Managing for Results measures so savings can be checked against service levels, and a cut that lowers service shows up next to the saving.', null]];
@@ -702,7 +707,6 @@ function drawRecs(){ // recommendations computed from the tracker's own findings
 function drawRecTables(){
   const b = ok('d_bid_list'); if (b && document.getElementById('bidBody')) table('bidBody', b, [{key:'rank',n:1},{key:'vendor'},{key:'agencies',n:1},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'low',n:1,fmt:(v, r) => `${M(r.low)}–${M(r.high)}`},{key:'top_agencies'}], {bar:'fy2026', click:r => openDetail('vendor:' + r.vendor)});
   const st = ok('d_savings_status'); if (st) table('stBody2', st, [{key:'item'},{key:'reported',n:1,fmt:v => v == null ? '—' : M(v)},{key:'before',n:1,fmt:M},{key:'after',n:1,fmt:M},{key:'status',pill:v => v === 'Seen' ? 'pass' : v === 'Partly seen' ? 'warn' : v === 'Not seen yet' ? 'fail' : ''},{key:'previous_status',fmt:(v, r) => v == null ? 'first run recorded' : (String(r.changed) === 'true' ? 'changed from ' + v : 'unchanged')}]);
-  const cf = ok('d_contract_freq'); if (cf) table('cfBody', cf, [{key:'vendor'},{key:'share_of_sets',n:1,fmt:v => d3.format('.0%')(v)},{key:'fy2025',n:1,fmt:M},{key:'decrease',n:1,fmt:M}], {bar:'share_of_sets'});
   const pl = ok('d_plan50'); if (pl) table('planBody', pl, [{key:'step',n:1},{key:'action'},{key:'basis'},{key:'saving',n:1,fmt:M},{key:'cumulative',n:1,fmt:M}], {click:r => showTab(r.tab)});
   const mq = ok('d_master_quality'); if (mq) table('mqBody', mq, [{key:'measure'},{key:'value'},{key:'ok',pill:v => String(v) === 'true' ? 'pass' : 'fail',fmt:v => String(v) === 'true' ? 'OK' : 'Check'}]);
 }
@@ -805,7 +809,7 @@ function drawData(){
 }
 
 function drawTrack(p){
-  const d = ok('d_savings'), f = ok('f_savings_check'); if (!d || !f) return;
+  let d = ok('d_savings'); const f = ok('f_savings_check'); if (!d || !f) return;
   const pys = yearsFor(f, p, true); const y1 = pys.length ? pys[pys.length-1] : null, y0 = y1 ? y1 - 1 : null;
   const paid = (cid, y) => d3.sum(f.filter(r => r.check_id === cid && r.fiscal_year === y && (!p.agencies.length || p.agencies.includes(r.agency_code))), r => r.paid);
   const rep = r => r.reported_low == null ? null : (r.reported_low + r.reported_high) / 2;
@@ -816,6 +820,7 @@ function drawTrack(p){
   const tone = r => r === 'Seen in payments' || r === 'Payments fell' ? 'pass' : r === 'Partly seen' ? 'warn' : r === "Can't be checked" || r === 'Checked with the item above' ? '' : 'fail';
   const rows = d.map(r => { const g = r.check_id ? G.get(r.check_id) : null; const first = g && g.items[0].saving_id === r.saving_id;
     return {...r, rep: rep(r), before: first ? g.before : null, after: first ? g.after : null, change: first && g.before ? (g.after - g.before)/g.before : null, res: !r.check_id ? "Can't be checked" : first ? g.res : 'Checked with the item above', _lab: r.check_note}; });
+  const ca = d.filter(r => r.type === 'Cost avoidance'); d = d.filter(r => r.type !== 'Cost avoidance'); // capital cost avoidance is shown apart from yearly savings
   const lo = d3.sum(d, r => r.reported_low || 0), hi = d3.sum(d, r => r.reported_high || 0), fm = (a, b) => a === b ? M(a) : `${M(a)}–${M(b)}`;
   const chk = d.filter(r => r.check_id && r.reported_low != null), no = d.filter(r => !r.check_id);
   const seen = [...G.values()].filter(g => g.reported && (g.res === 'Seen in payments' || g.res === 'Partly seen'));
@@ -823,13 +828,13 @@ function drawTrack(p){
   setText('trChk', fm(d3.sum(chk, r => r.reported_low), d3.sum(chk, r => r.reported_high))); setText('trChkS', `${chk.length} items in ${G.size} vendor groups`);
   setText('trSeenK', y1 ? `Seen in payments, FY${y0} to FY${y1}` : 'Seen in payments'); setText('trSeen', M(d3.sum(seen, g => Math.min(g.drop, g.reported))));
   setText('trSeenS', `${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks show payments falling` + (p.agencies.length ? ' · ' + who(p) : ''));
-  setText('trNo', fm(d3.sum(no, r => r.reported_low || 0), d3.sum(no, r => r.reported_high || 0))); setText('trNoS', no.map(r => r.workstream.toLowerCase()).join(', '));
-  setText('trLede', `GMI's January 2026 report lists ${d.length} savings items worth ${fm(lo, hi)} a year against a $50M target. Payments to the matching vendors can check ${chk.length} of them. ` + (y1 ? `From FY${y0} to FY${y1}${p.agencies.length ? ' at ' + who(p) : ''}, payments fell in ${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks: about ${M(d3.sum(seen, g => Math.min(g.drop, g.reported)))} of the reported savings shows up in what the state paid.` : 'Choose a year with payments (FY2017–FY2026) to run the checks.') + ` The largest item, $18M from seven renegotiated contracts, has no vendor names to match, so the vendors whose payments fell most are listed at the bottom as candidates.`);
+  setText('trNo', fm(d3.sum(no, r => r.reported_low || 0), d3.sum(no, r => r.reported_high || 0))); setText('trNoS', no.map(r => r.item.split(' (')[0].toLowerCase()).join('; ') + (ca.length ? ` · separately, DGS estimates ${M(d3.sum(ca, r => r.reported_low))} in facility cost avoidance (mostly capital, not yearly)` : ''));
+  setText('trLede', `GMI's January 26, 2026 report to the legislature lists ${d.length} savings items worth ${fm(lo, hi)} a year against a $50M target (GMI's own total for FY2026: $29M). Payments to the matching vendors can check ${chk.length} of them. ` + (y1 ? `From FY${y0} to FY${y1}${p.agencies.length ? ' at ' + who(p) : ''}, payments fell in ${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks: about ${M(d3.sum(seen, g => Math.min(g.drop, g.reported)))} of the reported savings shows up in what the state paid.` : 'Choose a year with payments (FY2017–FY2026) to run the checks.') + ` The largest item, $18M from renegotiating seven vendors' agreements, names four kinds of contract but no vendors; each kind is checked against the payments that fit it.`);
   const bars = [...G.entries()].filter(([, g]) => g.reported).map(([cid, g]) => ({label: g.items[0].workstream + ': ' + g.items[0].item.split(' (')[0].toLowerCase() + (g.items.length > 1 ? ` (+${g.items.length - 1} related)` : ''), a: g.reported, b: Math.max(0, g.drop), chg: g.before ? (g.after - g.before)/g.before : null, g})).sort((a, b) => b.a - a.a);
   setText('trChartH', y1 ? `Reported saving vs. the drop in payments, FY${y0} to FY${y1}` : 'Reported saving vs. the drop in payments');
   hbars(document.getElementById('trChart'), bars, {good:'lower', aria:'Reported savings compared with the drop in payments', tip: d => [`Reported: ${M(d.a)} a year`, `Payments: ${M(d.g.before)} → ${M(d.g.after)} (${ARROW(d.chg)})`, d.g.res]});
-  table('trBody', rows, [{key:'workstream'},{key:'item'},{key:'rep',n:1,fmt:(v, r) => r.reported_low == null ? 'Not quantified' : r.reported_low === r.reported_high ? M(v) : `${M(r.reported_low)}–${M(r.reported_high)}`},{key:'type'},{key:'status'},{key:'before',n:1,fmt:v => v == null ? '' : M(v)},{key:'after',n:1,fmt:v => v == null ? '' : M(v)},{key:'change',n:1,chg:'lower'},{key:'res',pill:tone}]);
-  [...document.querySelectorAll('#trBody tr')].forEach((tr, i) => { const c = tr.lastChild; if (c && rows[i]) c.title = rows[i].check_note || ''; });
+  table('trBody', rows, [{key:'workstream'},{key:'item'},{key:'rep',n:1,fmt:(v, r) => r.reported_low == null ? 'Not quantified' : r.reported_low === r.reported_high ? M(v) : `${M(r.reported_low)}–${M(r.reported_high)}`},{key:'type'},{key:'status'},{key:'source_page',fmt:(v, r) => (r.source_url.includes('dgs.') ? 'DGS' : 'GMI report') + ', ' + v},{key:'before',n:1,fmt:v => v == null ? '' : M(v)},{key:'after',n:1,fmt:v => v == null ? '' : M(v)},{key:'change',n:1,chg:'lower'},{key:'res',pill:tone}]);
+  [...document.querySelectorAll('#trBody tr')].forEach((tr, i) => { const c = tr.lastChild; if (c && rows[i]) { c.title = rows[i].check_note || ''; tr.children[5].title = '"' + rows[i].source_quote + '"'; } });
   setText('trStage', `Reported figures: ${d[0].source} (${d[0].source_url}). Payments compare FY${y0 || '—'} with FY${y1 || '—'}, the last selected year with payments and the year before${p.agencies.length ? ', for ' + who(p) : ''}. "Seen" means payments fell by at least half the reported saving; "partly seen" means they fell by less. The focus-area filter does not apply here.`);
 }
 
@@ -874,7 +879,7 @@ function caSim(p){ let seed = 13; const rnd = () => { seed = (seed * 16807) % 21
   return out.map(a => a.sort((x, y) => x - y)); }
 const qt = (a, f) => a[Math.floor(f * (a.length - 1))];
 const oppClick = r => r.detector === 'Leverage' ? openDetail('vendor:' + r.spending_code) : r.detector === 'Tail spend' ? openDetail('area:' + r.area) : r.agency_code && openDetail('agency:' + r.agency_code);
-const DET_TXT = {'Growth above trend':'Spending on a code that grew at least 25 points faster at one agency than across the state, FY2022–FY2025 (actual budget). The saving counted is 10–30% of the growth above the state\'s pace.','Peer gap':'Spending per budgeted position on a code above three in four agencies, FY2025 actual budget. Agencies differ in mission, so only 5–15% of the spending above that 75th percentile is counted, at most 3–10% of the agency\'s spending on the code.','Leverage':'Vendors paid separately by ten or more agencies in FY2026. One enterprise agreement typically saves 2–5% of what is paid.','Tail spend':'Payments to vendors outside the ten largest in each focus area, FY2026. Consolidating them typically saves 3–10%.'};
+const DET_TXT = {'Growth above trend':'Spending on a code that grew at least 25 points faster at one agency than across the state, FY2022–FY2025 (actual budget). The saving counted is 10–30% of the growth above the state\'s pace, an assumption for screening, not a published rate.','Peer gap':'Spending per budgeted position on a code above three in four agencies, FY2025 actual budget. Agencies differ in mission, so only 5–15% of the spending above that 75th percentile is counted, at most 3–10% of the agency\'s spending on the code. These percentages are assumptions for screening, not published rates.','Leverage':'Vendors paid separately by ten or more agencies in FY2026. The 2–5% saving from one enterprise agreement is an assumption for screening, not a published rate; for scale, GMI reports $18M on about $81M of renegotiated agreements.','Tail spend':'Payments to vendors outside the ten largest in each focus area, FY2026. The 3–10% saving from consolidating them is an assumption for screening, not a published rate.'};
 function drawOppDetail(p, key){
   const tb = document.getElementById('dTables'); tb.textContent = ''; const box = document.getElementById('dChart'); legend('dLegend', []); const ins = [];
   const all = oppRows(p), bid = ok('d_bid_list') || [], vd = ok('f_vendor_detail') || [], vn = ok('d_vendor_names') || [];
@@ -887,7 +892,7 @@ function drawOppDetail(p, key){
     const v = key.slice(7), V = v.toUpperCase(); const rows = vd.filter(r => String(r.vendor).toUpperCase() === V); const b = bid.find(r => String(r.vendor).toUpperCase() === V);
     setText('dTitle', v); const yr = d3.rollups(rows, x => ({paid:d3.sum(x, r => r.paid), n:new Set(x.map(r => r.agency_code)).size}), r => r.fiscal_year).map(([year, o]) => ({year, ...o})).sort((a, c) => a.year - c.year);
     const y25 = (yr.find(r => r.year === 2025) || {}).paid || 0, y26 = (yr.find(r => r.year === 2026) || {}).paid || 0, n26 = (yr.find(r => r.year === 2026) || {}).n || 0;
-    setText('dLede', `${v} was paid ${M(y26)} by ${n26} agencies in FY2026, each buying separately. ${b ? `It ranks #${b.rank} on the statewide bid list.` : ''} One statewide agreement typically saves 2–5%, or ${M(.02 * y26)}–${M(.05 * y26)} a year.`);
+    setText('dLede', `${v} was paid ${M(y26)} by ${n26} agencies in FY2026, each buying separately. ${b ? `It ranks #${b.rank} on the statewide bid list.` : ''} At an assumed 2–5% from one statewide agreement (not a published rate), that is ${M(.02 * y26)}–${M(.05 * y26)} a year.`);
     dTile('Paid in FY2026', M(y26), {change: y25 ? (y26 - y25) / y25 : null, label:'vs FY2025'}, 'lower', ''); dTile('Agencies paying', String(n26), null, null, 'FY2026'); dTile('Savings at 2–5%', `${M(.02 * y26)}–${M(.05 * y26)}`, null, null, 'a year'); dTile('Payee names merged', String(vn.filter(r => String(r.vendor).toUpperCase() === V).length), null, null, 'FY2026');
     setText('dChartH', 'Payments by year'); setText('dChartNote', 'Payments to this vendor from all agencies, FY2022–FY2026 (actual payments).');
     barsLine(box, yr.map(r => ({year:r.year, a:r.paid})), {aLabel:'Paid'});

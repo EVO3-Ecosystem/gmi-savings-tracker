@@ -23,7 +23,7 @@ DATASETS = {  # dataset id on the dashboard -> published table
     "f_function": "f_function", "f_object": "f_object", "f_scope": "f_scope", "f_fund": "f_fund", "f_code": "f_code",
     "f_area": "f_area", "f_vendor": "f_vendor", "f_agency": "f_agency", "d_agency": "d_agency", "totals": "totals_by_fy",
     "sources": "sources", "measures": "measures", "stage_evidence": "stage_evidence", "agency_master": "agency_master",
-    "vendor_families": "vendor_families", "runs": "pipeline_runs", "checks": "run_checks", "d_vendor_moves": "d_vendor_moves", "d_opps": "d_opps", "d_bid_list": "d_bid_list", "f_vendor_detail": "f_vendor_detail", "d_vendor_names": "d_vendor_names", "d_contract_freq": "d_contract_freq", "d_savings_status": "d_savings_status", "d_plan50": "d_plan50", "d_master_quality": "d_master_quality", "d_rec_status": "d_rec_status", "f_forecast": "f_forecast", "d_forecast_model": "d_forecast_model", "d_savings": "d_savings", "f_savings_check": "f_savings_check",
+    "vendor_families": "vendor_families", "runs": "pipeline_runs", "checks": "run_checks", "d_vendor_moves": "d_vendor_moves", "d_opps": "d_opps", "d_bid_list": "d_bid_list", "f_vendor_detail": "f_vendor_detail", "d_vendor_names": "d_vendor_names", "d_savings_status": "d_savings_status", "d_plan50": "d_plan50", "d_master_quality": "d_master_quality", "d_rec_status": "d_rec_status", "f_forecast": "f_forecast", "d_forecast_model": "d_forecast_model", "d_savings": "d_savings", "f_savings_check": "f_savings_check",
 }
 AREAS = ['IT hardware, software & services', 'Fleet & fuel', 'Utilities & facility energy', 'Real estate & leases', 'Print, copy & mail', 'Telecom']
 

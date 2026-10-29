@@ -195,20 +195,22 @@ def main():
     import recs as Rc
     _ops = Rc._ops(pm); _names = pub["agency_year"].groupby("agency_code").agency.last()
     pub["d_bid_list"] = Rc.bid_list(_ops, _names)
-    pub["d_contract_sets"], pub["d_contract_freq"] = Rc.contract_sets(_ops)
     _lev = pub["d_opps"].loc[pub["d_opps"].detector == "Leverage", "spending_code"].tolist() if "d_opps" in pub else []
     pub["f_vendor_detail"], pub["d_vendor_names"] = Rc.vendor_detail(_ops, list(pub["d_bid_list"].vendor) + _lev)
     pub["d_savings_status"] = Rc.recurrence(pub["d_savings"], pub["f_savings_check"], RUN.run_id, MODEL / "savings_status_history.csv")
     pub["d_plan50"] = Rc.plan50(pub["d_forecast_model"], pub["f_forecast"], pub["d_bid_list"])
     pub["d_master_quality"], _matched = Rc.master_quality(pm, am, vm, MODEL / "payee_names_prev.txt")
-    pub["d_rec_status"] = Rc.status(pub["d_bid_list"], pub["d_savings_status"], pub["d_contract_sets"], pub["d_plan50"], _matched)
+    pub["d_rec_status"] = Rc.status(pub["d_bid_list"], pub["d_savings_status"], pub["d_plan50"], _matched)
     _rh = MODEL / "rec_history.csv"; _h = pd.read_csv(_rh) if _rh.exists() else pd.DataFrame()
     _h = pd.concat([_h, pub["d_rec_status"].assign(run_id=RUN.run_id)], ignore_index=True); _h.to_csv(_rh, index=False)
     _prev = _h[_h.run_id != RUN.run_id].groupby("rec").tail(1).set_index("rec") if "run_id" in _h else pd.DataFrame()
     pub["d_rec_status"]["previous"] = pub["d_rec_status"].rec.map(_prev.progress) if len(_prev) else None
     RUN.check("recs", "Bid list has shared vendors", len(pub["d_bid_list"]) > 0, f"{len(pub['d_bid_list'])} vendors paid by 10+ agencies")
     RUN.check("recs", "Every reported savings item has a status", pub["d_savings_status"].status.notna().all(), pub["d_rec_status"].progress[1])
-    RUN.check("recs", "Contract candidate search ran", True, pub["d_rec_status"].progress[2], warn=True)
+    _ds = pub["d_savings"]
+    RUN.check("recs", "Every reported savings item cites its source and page", bool((_ds.source_url.str.startswith("https://") & (_ds.source_page.str.len() > 0) & (_ds.source_quote.str.len() > 0)).all()),
+              f"{len(_ds)} items; sources: " + "; ".join(sorted(_ds.source.unique())))
+    RUN.check("recs", "Named contract types checked against payments", pub["d_savings_status"].check_id.isin(["S02", "S03", "S04", "S05"]).sum() == 4, pub["d_rec_status"].progress[2])
     RUN.check("recs", "Path to $50M adds up", abs(pub["d_plan50"].saving.sum() - pub["d_plan50"].cumulative.iloc[-1]) < 1, pub["d_rec_status"].progress[3])
     RUN.check("recs", "Payments match the agency master list", _matched >= .99, f"{_matched:.2%} of FY2026 payments matched")
     fc = pub["f_forecast"].dropna(subset=["p50"])
