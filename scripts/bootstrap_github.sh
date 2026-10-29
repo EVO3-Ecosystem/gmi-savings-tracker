@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # One-time GitHub setup after the repo exists: labels, milestones (one per phase) and an issue per phase.
-# Usage: OWNER=<github user or org> ./scripts/bootstrap_github.sh   (needs the gh CLI, logged in)
+# Usage: OWNER=EVO3-Ecosystem ./scripts/bootstrap_github.sh   (needs the gh CLI, logged in)
 set -euo pipefail
 REPO="${OWNER:?set OWNER}/gmi-savings-tracker"
 for l in "phase:5319e7" "data:d93f0b" "dashboard:0e8a16" "analytics:1d76db" "infra:cccccc"; do
