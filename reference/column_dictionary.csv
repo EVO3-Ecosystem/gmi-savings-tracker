@@ -1,0 +1,253 @@
+column,applies_to,origin,definition
+fiscal_year,,portal,"Maryland fiscal year (July 1 to June 30), named for the year it ends"
+fiscalyear,raw.grants,portal,Fiscal year in the grants dataset (renamed fiscal_year in core)
+fiscal_period,raw.payments,portal,Accounting period; the portal fills it with a placeholder value so it is not used
+fiscalperiod,raw.grants,portal,Accounting period in the grants dataset; not used
+date,,portal,Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used
+category,raw.payments,portal,Payment category as published by the portal
+category,"raw.grants,core.fact_grant",portal,Grant or Loan
+category,"raw.budget,raw.fund",portal,Budget function code (renamed function_code in core)
+category_title,,portal,Budget function title (renamed function_name in core)
+type,raw.budget,portal,Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead
+type,"ref.gmi_reported_savings,d_savings",reference,"Kind of saving GMI reported: year over year, one-time, cost avoidance"
+agency_code,,portal,Three-character State budget agency code (for example D50); the key that joins budget and payments
+agency_name,,portal,Agency name as published; in core the code suffix the portal adds in some years is removed
+agency_code_as_paid,core.fact_payment*,derived,Agency code when the payments dataset carries one in the name; otherwise empty
+agency_name_as_paid,,derived,Agency name exactly as it appears in the payments dataset
+agency,,derived,Agency name shown on the dashboard
+agency_title,core.mfr_document,source,Agency name on the Managing for Results plan's web page
+agency_file,,source,File name of an agency's Managing for Results plan PDF
+agency_subobject_code,raw.budget,portal,Agency-specific spending code; not used (Comptroller sub-object is used)
+agency_subobject_name,raw.budget,portal,Agency-specific spending code name; not used
+unit_code,,portal,Budget unit code within an agency
+unit_name,,portal,Budget unit name
+program_code,,portal,"Budget program code, two digits in core"
+program_name,,portal,Budget program name
+subprogram_code,,portal,Budget subprogram code
+subprogram_name,,portal,Budget subprogram name
+organization_code,,portal,Portal's combined agency-unit-program code
+organization_sub_code,raw.budget,portal,Portal's combined code including subprogram
+object_code,,portal,"Comptroller object code, two digits (for example 08 Contractual services)"
+object_name,,portal,Comptroller object name
+comptroller_subobject_code,raw.budget,portal,Comptroller sub-object (detailed spending) code; renamed subobject_code in core
+comptroller_subobject_name,raw.budget,portal,Comptroller sub-object name; renamed subobject_name in core
+subobject_code,,derived,Comptroller sub-object code without leading zeros
+subobject_name,,derived,Comptroller sub-object name
+code,f_code,derived,Comptroller sub-object code
+spending_code,,derived,Comptroller sub-object name (with code) shown on the dashboard
+fund_type,,derived,"Fund type (General, Special, Federal, Reimbursable and so on)"
+fund_type_name,,portal,Fund type name as published
+fund_source_code,,portal,Fund source code within a fund type
+fund_source_name,,portal,Fund source name
+budget,,portal,Dollars budgeted or spent (actual years) on the row; nominal dollars
+count,raw.fte,portal,Budgeted full-time-equivalent positions (renamed fte in core)
+count,"ref.gmi_reported_savings,d_savings",reference,Number of contracts or items GMI reported in the saving (text)
+description,"raw.budget,raw.fund",portal,Portal description column; not used
+description,raw.grants,portal,Grant or loan purpose as written by the grantor
+fte,,derived,Budgeted full-time-equivalent positions
+vendor_name,raw.payments,portal,Payee name as published; includes businesses and individuals
+vendor_name_as_paid,,derived,Payee name exactly as published in payments
+vendor_zip,,portal,Payee ZIP code as published
+zipcode,raw.grants,portal,Grantee ZIP code as published
+amount,,portal,"Dollars paid, awarded or reported on the row; nominal dollars"
+grantor,,portal,State agency and program awarding the grant or loan
+grantee,,portal,Recipient of the grant or loan
+nonprofit,,portal,Y when the portal marks the grantee as a non-profit
+function_code,,derived,Budget function code (from the portal's category)
+function_name,,derived,Budget function title (from the portal's category_title)
+portal_type,,derived,The portal's own stage label kept for comparison with the confirmed stage
+stage,,reference,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks"
+official_stage,stage_evidence,reference,Stage DBM's budget books assign to the year
+file_label,stage_evidence,portal,Stage label the portal file assigned to the year
+evidence,stage_evidence,source,Where in DBM's budget books the stage is confirmed
+evidence,d_opps,derived,Plain-language reason the detector flagged the row
+evidence_url,,source,Link to the evidence document
+programs_compared,stage_evidence,derived,Programs compared between the portal file and DBM's books
+programs_exact,stage_evidence,derived,Programs whose totals match DBM's books exactly
+file_total,stage_evidence,derived,Portal file total for the year
+dbm_actual_total,stage_evidence,source,Actual total printed in DBM's budget books
+internal,core.fact_budget_scope,derived,True for transfers between State agencies (reimbursable funds) excluded from controllable spending
+entitlement,core.fact_budget_scope,derived,True for spending set by law or formula (for example Medicaid benefits) excluded from controllable spending
+controllable,,derived,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv"
+focus_area,,derived,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none
+area,,derived,One of GMI's six focus areas
+scope,,derived,Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on)
+partial_year,core.fact_payment*,derived,True for the latest payments year while it is still incomplete
+partial,,derived,True when the year is not finished
+reporting_incomplete,,derived,True when a federal-award year is under 60% of the prior year (reporting lag)
+federal_fy,,source,Federal fiscal year (October to September) from USAspending
+definition,core.fact_federal_award,source,What the federal award total includes (USAspending award types 02-05 to Maryland governments)
+definition,measures,derived,What the dashboard measure means
+calendar_year,,source,Calendar year of the Census population estimate
+population,,source,Maryland resident population (Census Population Estimates)
+vintage,,source,Census estimate vintage (release year)
+year,"raw.cpi,raw.population",source,Calendar year
+month,raw.cpi,source,Calendar month
+cpi,raw.cpi,source,"CPI-U, U.S. city average, all items, not seasonally adjusted (BLS CUUR0000SA0 / FRED CPIAUCNS)"
+cpi_avg,,derived,Average CPI-U over the fiscal year's months
+months,core.cpi_fy,derived,Months of CPI available for the fiscal year
+to_latest_dollars,,derived,Multiplier that converts the fiscal year's dollars to dollars of the latest full fiscal year
+dollars_of_fy,,derived,Fiscal year whose dollars to_latest_dollars converts to
+url,,source,Link to the source document
+bytes,,source,File size in bytes
+last_modified,,source,Last-Modified header the source server returned
+is_pdf,raw.mfr_index,derived,True when the downloaded file is a PDF
+plan_year,core.mfr_measure,source,Fiscal year of the Managing for Results plan
+goal,core.mfr_measure,source,Plan goal text
+objective,core.mfr_measure,source,Plan objective text
+measure,core.mfr_measure,source,Performance measure name as printed
+kind,core.mfr_measure,source,"Actual or estimate, from the plan's column heading"
+kind,f_forecast,derived,"Actual, forecast or plan"
+value_text,core.mfr_measure,source,Measure value exactly as printed
+value,core.mfr_measure,derived,Measure value as a number
+value,ref.baseline_quality,reference,Baseline value recorded from the legacy dashboard
+value,"ref.controllable_rule,ref.focus_area_rule",reference,The code or pattern the rule matches
+value,d_master_quality,derived,Measured value
+value,f_forecast,derived,Actual or forecast spending in dollars
+measure,"ref.baseline_quality,d_master_quality",reference,Name of the quality measure
+measure,measures,derived,Column name of the dashboard measure
+_run_id,,ops,Extract run that produced the row
+run_id,,ops,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ"
+built_utc,,ops,When the database was built (UTC)
+started_utc,,ops,When the run started (UTC)
+seconds,,ops,Run duration in seconds
+checks,,ops,Number of checks run
+passed,,ops,Checks passed
+warnings,,ops,Checks that warned
+failed,,ops,Checks that failed
+repairs,,ops,Datasets re-downloaded by self-healing
+mode,,ops,"Run mode (full, freshness reuse, test fault)"
+published,,ops,True when the run's outputs were published
+payment_rows,,ops,Payment rows in the run
+budget_rows,,ops,Budget rows in the run
+status,"pipeline_runs,ops.enrichment",ops,Run or source status
+status,run_checks,ops,"pass, warn or fail"
+status,d_savings_status,derived,"Whether the reported saving is seen in payments (Seen, Partly seen, Not seen yet, Payments fell, Payments did not fall)"
+status,"ref.gmi_reported_savings,d_savings",reference,Status GMI gave the item
+status,d_rec_status,derived,Status of the recommendation
+layer,,ops,"Database layer the check ran on (raw, core, ref, mart)"
+check,,ops,Check description
+severity,,ops,Stop (blocks the run) or Warn
+result,,ops,"pass, warn or fail"
+detail,,ops,Numbers behind the check result
+source,"ops.enrichment,ops.source_snapshot,raw.*",ops,Source name or URL the data came from
+source,"ref.budget_stage,ref.baseline_quality,ref.dim_stage",reference,Where the reference value is documented
+source,"ref.gmi_reported_savings,d_savings",reference,Citation for the reported saving
+source,sources,derived,Short name of the source dataset
+rows,,ops,Row count
+dataset,,ops,Short name of the source dataset
+dataset_id,,ops,Portal four-by-four identifier
+rows_downloaded,,ops,Rows in the downloaded file
+rows_portal,,ops,Rows the portal reported
+portal_count,,ops,Rows the portal reported with count(*)
+rows_updated_at,,ops,Portal rowsUpdatedAt (Unix seconds) used by the freshness check
+heal_attempts,,ops,Re-downloads needed to match the portal count
+total,,ops,Portal's own sum for the year
+title,sources,derived,Dataset title used on the dashboard
+title,d_rec_status,derived,Recommendation title
+portal_name,,ops,Dataset title as the portal publishes it
+portal_updated,,ops,Date the portal data last changed
+use,sources,derived,What the dataset contributes to the tracker
+years,sources,derived,Fiscal years used
+reconciled,sources,ops,True when downloaded rows equal the portal's count
+names_used,ref.dim_agency,derived,Distinct agency names seen for the code
+first_fy,,derived,First fiscal year the code appears
+last_fy,,derived,Last fiscal year the code appears
+min_code,ref.dim_function,derived,Lowest function code with the title
+max_code,ref.dim_function,derived,Highest function code with the title
+codes,ref.dim_function,derived,Function codes sharing the title
+rule,,reference,Name of the mapping or scope rule
+note,,reference,Explanation of the rule or row
+pattern,,reference,Regular expression the rule applies
+step,ref.vendor_normalization,reference,Order the normalization step runs in
+step,d_plan50,derived,Order of the step in the path to $50M
+payee_pattern,,reference,Regular expression matching payee names
+payment_name_pattern,,reference,Regular expression matching payment agency names
+payment_agency_name,,derived,Agency name as it appears in payments
+target,,reference,Agency code the rule maps to
+matched_by,,derived,Rule that mapped the payment agency name to a code
+in_budget,,derived,True when the agency code exists in the budget
+match,ref.map_mfr_agency,derived,How the plan file was matched to an agency
+file_pattern,,reference,Pattern matching a Managing for Results plan file name
+decision,ref.payment_agency_decisions,reference,"Mapping decision (pending, mapped, excluded)"
+decided_by,,reference,Who made the decision
+family,,reference,Company that several payee names belong to
+payee,ref.map_payee_vendor,derived,Payee name as published
+vendor_key,ref.map_payee_vendor,derived,Normalized payee name (suffixes and punctuation removed)
+vendor,,derived,Company name after grouping payee names
+is_government,,derived,True when the payee is a government body (excluded from vendor analysis)
+payee_area,ref.map_payee_vendor,derived,Focus area the payee is assigned to by reference/payee_focus_area.csv
+payee_name,d_vendor_names,derived,One payee name grouped into the vendor
+payee_names,vendor_families,derived,Payee names grouped into the company
+payment_names,agency_master,derived,Payment agency names mapped to the code
+how_matched,agency_master,derived,How the payment names were matched to the code
+payee_spend,f_area,derived,Payments to payees assigned to the focus area
+spend,,derived,Dollars spent (budget actuals or payments)
+operating_spending,f_agency,derived,Operating budget (all funds) for the agency and year
+payments,f_agency,derived,Payments made by the agency in the year
+paid,,derived,Payments in dollars
+total_payments,,derived,All payments in the fiscal year
+total_payments_prior,,derived,All payments in the previous fiscal year
+total_payments_yoy,,derived,Change in total payments from the previous fiscal year (share)
+payment_records,,derived,Payment rows in the fiscal year
+agencies,,derived,Agencies paying the vendor (or with payments in the year)
+vendors,,derived,Distinct payees in the year
+table,measures,derived,Dashboard table the measure belongs to
+grouped_by,measures,derived,Grain the measure is grouped by
+higher_is,measures,derived,"Whether a higher value is better, worse or neutral"
+fy2024,,derived,Payments in FY2024
+fy2025,,derived,Payments in FY2025
+fy2026,,derived,Payments in FY2026
+change,d_vendor_moves,derived,FY2026 minus FY2025 payments
+opp_id,d_opps,derived,Opportunity identifier
+detector,d_opps,derived,Screening rule that found the opportunity
+baseline,d_opps,derived,Spending the screening percentage is applied to
+low,,derived,Low end of the estimated saving; uses a screening assumption (see Assumptions register)
+high,,derived,High end of the estimated saving; uses a screening assumption (see Assumptions register)
+likely,d_opps,derived,Midpoint of low and high
+rank,d_bid_list,derived,Rank by FY2026 payments
+top_agencies,d_bid_list,derived,Three agencies paying the vendor most in FY2026
+check_id,,derived,Reported saving whose payments are checked
+check_note,,reference,How the payment check is defined
+payment_check,ref.gmi_reported_savings,reference,Payment check specification
+saving_id,,reference,Reported saving identifier (S01-S18)
+workstream,,reference,GMI workstream the saving belongs to
+item,,reference,Saving as GMI describes it
+reported_low,,source,Low end of the reported saving in dollars (GMI Final Report)
+reported_high,,source,High end of the reported saving in dollars (GMI Final Report)
+reported,d_savings_status,source,Reported saving midpoint in dollars
+source_url,,source,Link to the citation
+source_page,,source,Page of the citation
+source_quote,,source,Verbatim quote supporting the figure
+before,d_savings_status,derived,Matching payments in FY2025
+after,d_savings_status,derived,Matching payments in FY2026
+previous_status,d_savings_status,ops,Status in the previous run
+changed,d_savings_status,ops,True when the status changed since the previous run
+action,d_plan50,derived,Action in the path to $50M
+basis,d_plan50,derived,How the step's saving is calculated
+saving,d_plan50,derived,Annual saving of the step in dollars
+cumulative,d_plan50,derived,Running total of savings
+tab,,derived,Dashboard tab the row links to
+ok,d_master_quality,derived,True when the measure meets its target
+rec,d_rec_status,derived,Recommendation number (1-6)
+progress,d_rec_status,derived,Key number showing progress
+previous,d_rec_status,ops,Progress text in the previous run
+p10,f_forecast,derived,10th percentile of the bootstrap forecast
+p50,f_forecast,derived,Median of the bootstrap forecast
+p90,f_forecast,derived,90th percentile of the bootstrap forecast
+plan,f_forecast,derived,Spending after GMI's reported savings rate
+method,d_forecast_model,derived,Forecast model chosen by the backtest
+growth,d_forecast_model,derived,Annual growth rate of the chosen model
+backtest_mape,d_forecast_model,derived,Mean absolute percentage error of the chosen model (fit FY2017-2022; scored FY2023-2025)
+trend_mape,d_forecast_model,derived,Backtest error of the log-linear trend model
+naive_mape,d_forecast_model,derived,Backtest error of the naive (last actual) model
+drift_mape,d_forecast_model,derived,Backtest error of the drift model
+baseline_fy2025,d_forecast_model,derived,FY2025 actual spending in the area
+gmi_recurring,d_forecast_model,source,Recurring savings GMI reported for the area
+gmi_rate,d_forecast_model,derived,gmi_recurring divided by baseline_fy2025
+gmi_note,d_forecast_model,source,Which reported items make up gmi_recurring
+gf_share,d_forecast_model,derived,General Fund share of the area's FY2025 spending
+column,ref.column_dictionary,reference,Column name being defined
+applies_to,ref.column_dictionary,reference,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all"
+origin,ref.column_dictionary,reference,"Where the column comes from: portal, source, reference, derived or ops"
+definition,ref.column_dictionary,reference,What the column means

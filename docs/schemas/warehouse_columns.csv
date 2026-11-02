@@ -1,0 +1,312 @@
+table,column,type,table_rows,definition,origin
+core.cpi_fy,fiscal_year,INTEGER,21,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.cpi_fy,cpi_avg,DOUBLE,21,Average CPI-U over the fiscal year's months,derived
+core.cpi_fy,months,BIGINT,21,Months of CPI available for the fiscal year,derived
+core.cpi_fy,to_latest_dollars,DOUBLE,21,Multiplier that converts the fiscal year's dollars to dollars of the latest full fiscal year,derived
+core.cpi_fy,dollars_of_fy,INTEGER,21,Fiscal year whose dollars to_latest_dollars converts to,derived
+core.fact_budget,fiscal_year,INTEGER,741957,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_budget,agency_code,VARCHAR,741957,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+core.fact_budget,agency_name,VARCHAR,741957,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+core.fact_budget,unit_code,VARCHAR,741957,Budget unit code within an agency,portal
+core.fact_budget,unit_name,VARCHAR,741957,Budget unit name,portal
+core.fact_budget,program_code,VARCHAR,741957,"Budget program code, two digits in core",portal
+core.fact_budget,program_name,VARCHAR,741957,Budget program name,portal
+core.fact_budget,subprogram_code,VARCHAR,741957,Budget subprogram code,portal
+core.fact_budget,subprogram_name,VARCHAR,741957,Budget subprogram name,portal
+core.fact_budget,object_code,VARCHAR,741957,"Comptroller object code, two digits (for example 08 Contractual services)",portal
+core.fact_budget,object_name,VARCHAR,741957,Comptroller object name,portal
+core.fact_budget,subobject_code,VARCHAR,741957,Comptroller sub-object code without leading zeros,derived
+core.fact_budget,subobject_name,VARCHAR,741957,Comptroller sub-object name,derived
+core.fact_budget,fund_type,VARCHAR,741957,"Fund type (General, Special, Federal, Reimbursable and so on)",derived
+core.fact_budget,portal_type,VARCHAR,741957,The portal's own stage label kept for comparison with the confirmed stage,derived
+core.fact_budget,function_code,INTEGER,741957,Budget function code (from the portal's category),derived
+core.fact_budget,function_name,VARCHAR,741957,Budget function title (from the portal's category_title),derived
+core.fact_budget,organization_code,VARCHAR,741957,Portal's combined agency-unit-program code,portal
+core.fact_budget,budget,DOUBLE,741957,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+core.fact_budget_scope,fiscal_year,INTEGER,741957,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_budget_scope,agency_code,VARCHAR,741957,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+core.fact_budget_scope,agency_name,VARCHAR,741957,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+core.fact_budget_scope,unit_code,VARCHAR,741957,Budget unit code within an agency,portal
+core.fact_budget_scope,unit_name,VARCHAR,741957,Budget unit name,portal
+core.fact_budget_scope,program_code,VARCHAR,741957,"Budget program code, two digits in core",portal
+core.fact_budget_scope,program_name,VARCHAR,741957,Budget program name,portal
+core.fact_budget_scope,subprogram_code,VARCHAR,741957,Budget subprogram code,portal
+core.fact_budget_scope,subprogram_name,VARCHAR,741957,Budget subprogram name,portal
+core.fact_budget_scope,object_code,VARCHAR,741957,"Comptroller object code, two digits (for example 08 Contractual services)",portal
+core.fact_budget_scope,object_name,VARCHAR,741957,Comptroller object name,portal
+core.fact_budget_scope,subobject_code,VARCHAR,741957,Comptroller sub-object code without leading zeros,derived
+core.fact_budget_scope,subobject_name,VARCHAR,741957,Comptroller sub-object name,derived
+core.fact_budget_scope,fund_type,VARCHAR,741957,"Fund type (General, Special, Federal, Reimbursable and so on)",derived
+core.fact_budget_scope,portal_type,VARCHAR,741957,The portal's own stage label kept for comparison with the confirmed stage,derived
+core.fact_budget_scope,function_code,INTEGER,741957,Budget function code (from the portal's category),derived
+core.fact_budget_scope,function_name,VARCHAR,741957,Budget function title (from the portal's category_title),derived
+core.fact_budget_scope,organization_code,VARCHAR,741957,Portal's combined agency-unit-program code,portal
+core.fact_budget_scope,budget,DOUBLE,741957,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+core.fact_budget_scope,internal,BOOLEAN,741957,True for transfers between State agencies (reimbursable funds) excluded from controllable spending,derived
+core.fact_budget_scope,entitlement,BOOLEAN,741957,True for spending set by law or formula (for example Medicaid benefits) excluded from controllable spending,derived
+core.fact_budget_scope,controllable,BOOLEAN,741957,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv",derived
+core.fact_budget_scope,focus_area,VARCHAR,741957,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
+core.fact_budget_scope,scope,VARCHAR,741957,Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on),derived
+core.fact_federal_award,federal_fy,BIGINT,20,Federal fiscal year (October to September) from USAspending,source
+core.fact_federal_award,amount,DOUBLE,20,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+core.fact_federal_award,partial,BOOLEAN,20,True when the year is not finished,derived
+core.fact_federal_award,reporting_incomplete,BOOLEAN,20,True when a federal-award year is under 60% of the prior year (reporting lag),derived
+core.fact_federal_award,definition,VARCHAR,20,What the federal award total includes (USAspending award types 02-05 to Maryland governments),source
+core.fact_fte,fiscal_year,INTEGER,6026,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_fte,agency_code,VARCHAR,6026,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+core.fact_fte,unit_code,VARCHAR,6026,Budget unit code within an agency,portal
+core.fact_fte,program_code,VARCHAR,6026,"Budget program code, two digits in core",portal
+core.fact_fte,organization_code,VARCHAR,6026,Portal's combined agency-unit-program code,portal
+core.fact_fte,fte,DOUBLE,6026,Budgeted full-time-equivalent positions,derived
+core.fact_fund,fiscal_year,INTEGER,26178,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_fund,agency_code,VARCHAR,26178,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+core.fact_fund,fund_type,VARCHAR,26178,"Fund type (General, Special, Federal, Reimbursable and so on)",derived
+core.fact_fund,fund_source_code,VARCHAR,26178,Fund source code within a fund type,portal
+core.fact_fund,fund_source_name,VARCHAR,26178,Fund source name,portal
+core.fact_fund,budget,DOUBLE,26178,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+core.fact_grant,fiscal_year,INTEGER,23085,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_grant,grantor,VARCHAR,23085,State agency and program awarding the grant or loan,portal
+core.fact_grant,grantee,VARCHAR,23085,Recipient of the grant or loan,portal
+core.fact_grant,category,VARCHAR,23085,Grant or Loan,portal
+core.fact_grant,nonprofit,VARCHAR,23085,Y when the portal marks the grantee as a non-profit,portal
+core.fact_grant,amount,DOUBLE,23085,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+core.fact_payment,fiscal_year,INTEGER,411231,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_payment,agency_name_as_paid,VARCHAR,411231,Agency name exactly as it appears in the payments dataset,derived
+core.fact_payment,vendor_name_as_paid,VARCHAR,411231,Payee name exactly as published in payments,derived
+core.fact_payment,vendor_zip,VARCHAR,411231,Payee ZIP code as published,portal
+core.fact_payment,agency_code_as_paid,VARCHAR,411231,Agency code when the payments dataset carries one in the name; otherwise empty,derived
+core.fact_payment,amount,DOUBLE,411231,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+core.fact_payment,partial_year,BOOLEAN,411231,True for the latest payments year while it is still incomplete,derived
+core.fact_payment_mapped,fiscal_year,INTEGER,411231,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_payment_mapped,agency_name_as_paid,VARCHAR,411231,Agency name exactly as it appears in the payments dataset,derived
+core.fact_payment_mapped,vendor_name_as_paid,VARCHAR,411231,Payee name exactly as published in payments,derived
+core.fact_payment_mapped,vendor_zip,VARCHAR,411231,Payee ZIP code as published,portal
+core.fact_payment_mapped,agency_code_as_paid,VARCHAR,411231,Agency code when the payments dataset carries one in the name; otherwise empty,derived
+core.fact_payment_mapped,amount,DOUBLE,411231,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+core.fact_payment_mapped,partial_year,BOOLEAN,411231,True for the latest payments year while it is still incomplete,derived
+core.fact_payment_mapped,agency_code,VARCHAR,411231,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+core.fact_payment_mapped,matched_by,VARCHAR,411231,Rule that mapped the payment agency name to a code,derived
+core.fact_population,calendar_year,BIGINT,16,Calendar year of the Census population estimate,source
+core.fact_population,fiscal_year,BIGINT,16,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.fact_population,population,BIGINT,16,Maryland resident population (Census Population Estimates),source
+core.fact_population,vintage,BIGINT,16,Census estimate vintage (release year),source
+core.mfr_document,fiscal_year,BIGINT,111,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.mfr_document,agency_file,VARCHAR,111,File name of an agency's Managing for Results plan PDF,source
+core.mfr_document,agency_title,VARCHAR,111,Agency name on the Managing for Results plan's web page,source
+core.mfr_document,url,VARCHAR,111,Link to the source document,source
+core.mfr_document,bytes,BIGINT,111,File size in bytes,source
+core.mfr_document,last_modified,VARCHAR,111,Last-Modified header the source server returned,source
+core.mfr_measure,agency_file,VARCHAR,22157,File name of an agency's Managing for Results plan PDF,source
+core.mfr_measure,agency_code,VARCHAR,22157,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+core.mfr_measure,plan_year,BIGINT,22157,Fiscal year of the Managing for Results plan,source
+core.mfr_measure,goal,VARCHAR,22157,Plan goal text,source
+core.mfr_measure,objective,VARCHAR,22157,Plan objective text,source
+core.mfr_measure,measure,VARCHAR,22157,Performance measure name as printed,source
+core.mfr_measure,fiscal_year,BIGINT,22157,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+core.mfr_measure,kind,VARCHAR,22157,"Actual or estimate, from the plan's column heading",source
+core.mfr_measure,value_text,VARCHAR,22157,Measure value exactly as printed,source
+core.mfr_measure,value,DOUBLE,22157,Measure value as a number,derived
+ops.check_result,run_id,VARCHAR,39,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,39,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,39,Check description,ops
+ops.check_result,severity,VARCHAR,39,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,39,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,39,Numbers behind the check result,ops
+ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
+ops.enrichment,status,VARCHAR,4,Run or source status,ops
+ops.enrichment,rows,BIGINT,4,Row count,ops
+ops.enrichment,detail,VARCHAR,4,Numbers behind the check result,ops
+ops.portal_year_total,run_id,VARCHAR,70,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.portal_year_total,dataset,VARCHAR,70,Short name of the source dataset,ops
+ops.portal_year_total,fiscal_year,INTEGER,70,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+ops.portal_year_total,total,DOUBLE,70,Portal's own sum for the year,ops
+ops.portal_year_total,rows,BIGINT,70,Row count,ops
+ops.run_log,run_id,VARCHAR,1,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.run_log,built_utc,VARCHAR,1,When the database was built (UTC),ops
+ops.run_log,checks,INTEGER,1,Number of checks run,ops
+ops.run_log,passed,INTEGER,1,Checks passed,ops
+ops.run_log,warnings,INTEGER,1,Checks that warned,ops
+ops.run_log,failed,INTEGER,1,Checks that failed,ops
+ops.source_snapshot,run_id,VARCHAR,5,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.source_snapshot,dataset,VARCHAR,5,Short name of the source dataset,ops
+ops.source_snapshot,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
+ops.source_snapshot,rows_downloaded,BIGINT,5,Rows in the downloaded file,ops
+ops.source_snapshot,portal_count,BIGINT,5,Rows the portal reported with count(*),ops
+ops.source_snapshot,rows_updated_at,BIGINT,5,Portal rowsUpdatedAt (Unix seconds) used by the freshness check,ops
+ops.source_snapshot,source,VARCHAR,5,Source name or URL the data came from,ops
+ops.source_snapshot,heal_attempts,INTEGER,5,Re-downloads needed to match the portal count,ops
+raw.budget,fiscal_year,VARCHAR,741957,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+raw.budget,agency_code,VARCHAR,741957,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+raw.budget,agency_name,VARCHAR,741957,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+raw.budget,unit_code,VARCHAR,741957,Budget unit code within an agency,portal
+raw.budget,unit_name,VARCHAR,741957,Budget unit name,portal
+raw.budget,program_code,VARCHAR,741957,"Budget program code, two digits in core",portal
+raw.budget,program_name,VARCHAR,741957,Budget program name,portal
+raw.budget,subprogram_code,VARCHAR,741957,Budget subprogram code,portal
+raw.budget,subprogram_name,VARCHAR,741957,Budget subprogram name,portal
+raw.budget,object_code,VARCHAR,741957,"Comptroller object code, two digits (for example 08 Contractual services)",portal
+raw.budget,object_name,VARCHAR,741957,Comptroller object name,portal
+raw.budget,comptroller_subobject_code,VARCHAR,741957,Comptroller sub-object (detailed spending) code; renamed subobject_code in core,portal
+raw.budget,comptroller_subobject_name,VARCHAR,741957,Comptroller sub-object name; renamed subobject_name in core,portal
+raw.budget,agency_subobject_code,VARCHAR,741957,Agency-specific spending code; not used (Comptroller sub-object is used),portal
+raw.budget,agency_subobject_name,VARCHAR,741957,Agency-specific spending code name; not used,portal
+raw.budget,fund_type_name,VARCHAR,741957,Fund type name as published,portal
+raw.budget,budget,VARCHAR,741957,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+raw.budget,type,VARCHAR,741957,Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead,portal
+raw.budget,organization_code,VARCHAR,741957,Portal's combined agency-unit-program code,portal
+raw.budget,organization_sub_code,VARCHAR,741957,Portal's combined code including subprogram,portal
+raw.budget,description,VARCHAR,741957,Portal description column; not used,portal
+raw.budget,category,VARCHAR,741957,Budget function code (renamed function_code in core),portal
+raw.budget,category_title,VARCHAR,741957,Budget function title (renamed function_name in core),portal
+raw.budget,_run_id,VARCHAR,741957,Extract run that produced the row,ops
+raw.cpi,year,INTEGER,236,Calendar year,source
+raw.cpi,month,INTEGER,236,Calendar month,source
+raw.cpi,cpi,DOUBLE,236,"CPI-U, U.S. city average, all items, not seasonally adjusted (BLS CUUR0000SA0 / FRED CPIAUCNS)",source
+raw.cpi,_run_id,VARCHAR,236,Extract run that produced the row,ops
+raw.federal_awards,federal_fy,BIGINT,20,Federal fiscal year (October to September) from USAspending,source
+raw.federal_awards,amount,DOUBLE,20,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+raw.federal_awards,partial,BOOLEAN,20,True when the year is not finished,derived
+raw.federal_awards,reporting_incomplete,BOOLEAN,20,True when a federal-award year is under 60% of the prior year (reporting lag),derived
+raw.federal_awards,_run_id,VARCHAR,20,Extract run that produced the row,ops
+raw.fte,agency_code,VARCHAR,6026,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+raw.fte,unit_code,VARCHAR,6026,Budget unit code within an agency,portal
+raw.fte,program_code,VARCHAR,6026,"Budget program code, two digits in core",portal
+raw.fte,count,VARCHAR,6026,Budgeted full-time-equivalent positions (renamed fte in core),portal
+raw.fte,fiscal_year,VARCHAR,6026,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+raw.fte,organization_code,VARCHAR,6026,Portal's combined agency-unit-program code,portal
+raw.fte,agency_name,VARCHAR,6026,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+raw.fte,unit_name,VARCHAR,6026,Budget unit name,portal
+raw.fte,program_name,VARCHAR,6026,Budget program name,portal
+raw.fte,_run_id,VARCHAR,6026,Extract run that produced the row,ops
+raw.fund,fiscal_year,VARCHAR,26178,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+raw.fund,agency_code,VARCHAR,26178,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+raw.fund,agency_name,VARCHAR,26178,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+raw.fund,unit_code,VARCHAR,26178,Budget unit code within an agency,portal
+raw.fund,unit_name,VARCHAR,26178,Budget unit name,portal
+raw.fund,program_code,VARCHAR,26178,"Budget program code, two digits in core",portal
+raw.fund,program_name,VARCHAR,26178,Budget program name,portal
+raw.fund,fund_type_name,VARCHAR,26178,Fund type name as published,portal
+raw.fund,fund_source_code,VARCHAR,26178,Fund source code within a fund type,portal
+raw.fund,fund_source_name,VARCHAR,26178,Fund source name,portal
+raw.fund,budget,VARCHAR,26178,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+raw.fund,organization_code,VARCHAR,26178,Portal's combined agency-unit-program code,portal
+raw.fund,description,VARCHAR,26178,Portal description column; not used,portal
+raw.fund,category,VARCHAR,26178,Budget function code (renamed function_code in core),portal
+raw.fund,category_title,VARCHAR,26178,Budget function title (renamed function_name in core),portal
+raw.fund,_run_id,VARCHAR,26178,Extract run that produced the row,ops
+raw.grants,grantor,VARCHAR,23085,State agency and program awarding the grant or loan,portal
+raw.grants,grantee,VARCHAR,23085,Recipient of the grant or loan,portal
+raw.grants,zipcode,VARCHAR,23085,Grantee ZIP code as published,portal
+raw.grants,fiscalyear,VARCHAR,23085,Fiscal year in the grants dataset (renamed fiscal_year in core),portal
+raw.grants,amount,VARCHAR,23085,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+raw.grants,description,VARCHAR,23085,Grant or loan purpose as written by the grantor,portal
+raw.grants,category,VARCHAR,23085,Grant or Loan,portal
+raw.grants,fiscalperiod,VARCHAR,23085,Accounting period in the grants dataset; not used,portal
+raw.grants,date,VARCHAR,23085,Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used,portal
+raw.grants,nonprofit,VARCHAR,23085,Y when the portal marks the grantee as a non-profit,portal
+raw.grants,_run_id,VARCHAR,23085,Extract run that produced the row,ops
+raw.mfr_index,fiscal_year,BIGINT,111,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+raw.mfr_index,agency_file,VARCHAR,111,File name of an agency's Managing for Results plan PDF,source
+raw.mfr_index,url,VARCHAR,111,Link to the source document,source
+raw.mfr_index,bytes,BIGINT,111,File size in bytes,source
+raw.mfr_index,last_modified,VARCHAR,111,Last-Modified header the source server returned,source
+raw.mfr_index,is_pdf,BOOLEAN,111,True when the downloaded file is a PDF,derived
+raw.mfr_index,_run_id,VARCHAR,111,Extract run that produced the row,ops
+raw.payments,fiscal_year,VARCHAR,411231,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+raw.payments,agency_name,VARCHAR,411231,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+raw.payments,vendor_name,VARCHAR,411231,Payee name as published; includes businesses and individuals,portal
+raw.payments,vendor_zip,VARCHAR,411231,Payee ZIP code as published,portal
+raw.payments,amount,VARCHAR,411231,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+raw.payments,fiscal_period,VARCHAR,411231,Accounting period; the portal fills it with a placeholder value so it is not used,portal
+raw.payments,date,VARCHAR,411231,Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used,portal
+raw.payments,category,VARCHAR,411231,Payment category as published by the portal,portal
+raw.payments,_run_id,VARCHAR,411231,Extract run that produced the row,ops
+raw.population,year,BIGINT,16,Calendar year,source
+raw.population,population,BIGINT,16,Maryland resident population (Census Population Estimates),source
+raw.population,vintage,BIGINT,16,Census estimate vintage (release year),source
+raw.population,_run_id,VARCHAR,16,Extract run that produced the row,ops
+ref.baseline_quality,measure,VARCHAR,7,Name of the quality measure,reference
+ref.baseline_quality,value,VARCHAR,7,Baseline value recorded from the legacy dashboard,reference
+ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,reference
+ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
+ref.column_dictionary,column,VARCHAR,252,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,252,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,252,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,252,What the column means,reference
+ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
+ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
+ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference
+ref.dim_agency,agency_code,VARCHAR,82,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+ref.dim_agency,agency_name,VARCHAR,82,Agency name as published; in core the code suffix the portal adds in some years is removed,portal
+ref.dim_agency,names_used,BIGINT,82,Distinct agency names seen for the code,derived
+ref.dim_agency,first_fy,INTEGER,82,First fiscal year the code appears,derived
+ref.dim_agency,last_fy,INTEGER,82,Last fiscal year the code appears,derived
+ref.dim_function,function_name,VARCHAR,12,Budget function title (from the portal's category_title),derived
+ref.dim_function,min_code,INTEGER,12,Lowest function code with the title,derived
+ref.dim_function,max_code,INTEGER,12,Highest function code with the title,derived
+ref.dim_function,codes,BIGINT,12,Function codes sharing the title,derived
+ref.dim_fund_type,fund_type,VARCHAR,8,"Fund type (General, Special, Federal, Reimbursable and so on)",derived
+ref.dim_object,object_code,VARCHAR,14,"Comptroller object code, two digits (for example 08 Contractual services)",portal
+ref.dim_object,object_name,VARCHAR,14,Comptroller object name,portal
+ref.dim_stage,fiscal_year,INTEGER,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+ref.dim_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+ref.dim_stage,source,VARCHAR,11,Where the reference value is documented,reference
+ref.dim_subobject,subobject_code,VARCHAR,377,Comptroller sub-object code without leading zeros,derived
+ref.dim_subobject,subobject_name,VARCHAR,377,Comptroller sub-object name,derived
+ref.dim_subobject,object_code,VARCHAR,377,"Comptroller object code, two digits (for example 08 Contractual services)",portal
+ref.focus_area_rule,area,VARCHAR,7,One of GMI's six focus areas,derived
+ref.focus_area_rule,rule,VARCHAR,7,Name of the mapping or scope rule,reference
+ref.focus_area_rule,value,VARCHAR,7,The code or pattern the rule matches,reference
+ref.focus_area_rule,note,VARCHAR,7,Explanation of the rule or row,reference
+ref.gmi_reported_savings,saving_id,VARCHAR,18,Reported saving identifier (S01-S18),reference
+ref.gmi_reported_savings,workstream,VARCHAR,18,GMI workstream the saving belongs to,reference
+ref.gmi_reported_savings,item,VARCHAR,18,Saving as GMI describes it,reference
+ref.gmi_reported_savings,reported_low,VARCHAR,18,Low end of the reported saving in dollars (GMI Final Report),source
+ref.gmi_reported_savings,reported_high,VARCHAR,18,High end of the reported saving in dollars (GMI Final Report),source
+ref.gmi_reported_savings,type,VARCHAR,18,"Kind of saving GMI reported: year over year, one-time, cost avoidance",reference
+ref.gmi_reported_savings,status,VARCHAR,18,Status GMI gave the item,reference
+ref.gmi_reported_savings,count,VARCHAR,18,Number of contracts or items GMI reported in the saving (text),reference
+ref.gmi_reported_savings,payment_check,VARCHAR,18,Payment check specification,reference
+ref.gmi_reported_savings,note,VARCHAR,18,Explanation of the rule or row,reference
+ref.gmi_reported_savings,source,VARCHAR,18,Citation for the reported saving,reference
+ref.gmi_reported_savings,source_url,VARCHAR,18,Link to the citation,source
+ref.gmi_reported_savings,source_page,VARCHAR,18,Page of the citation,source
+ref.gmi_reported_savings,source_quote,VARCHAR,18,Verbatim quote supporting the figure,source
+ref.map_focus_area,area,VARCHAR,96,One of GMI's six focus areas,derived
+ref.map_focus_area,subobject_code,VARCHAR,96,Comptroller sub-object code without leading zeros,derived
+ref.map_focus_area,subobject_name,VARCHAR,96,Comptroller sub-object name,derived
+ref.map_mfr_agency,agency_file,VARCHAR,111,File name of an agency's Managing for Results plan PDF,source
+ref.map_mfr_agency,agency_code,VARCHAR,111,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+ref.map_mfr_agency,match,VARCHAR,111,How the plan file was matched to an agency,derived
+ref.map_payee_vendor,payee,VARCHAR,61798,Payee name as published,derived
+ref.map_payee_vendor,vendor_key,VARCHAR,61798,Normalized payee name (suffixes and punctuation removed),derived
+ref.map_payee_vendor,vendor,VARCHAR,61798,Company name after grouping payee names,derived
+ref.map_payee_vendor,rule,VARCHAR,61798,Name of the mapping or scope rule,reference
+ref.map_payee_vendor,is_government,BOOLEAN,61798,True when the payee is a government body (excluded from vendor analysis),derived
+ref.map_payee_vendor,payee_area,VARCHAR,61798,Focus area the payee is assigned to by reference/payee_focus_area.csv,derived
+ref.map_payment_agency,payment_agency_name,VARCHAR,145,Agency name as it appears in payments,derived
+ref.map_payment_agency,agency_code,VARCHAR,145,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+ref.map_payment_agency,matched_by,VARCHAR,145,Rule that mapped the payment agency name to a code,derived
+ref.map_payment_agency,in_budget,BOOLEAN,145,True when the agency code exists in the budget,derived
+ref.mfr_agency_map,file_pattern,VARCHAR,11,Pattern matching a Managing for Results plan file name,reference
+ref.mfr_agency_map,agency_code,VARCHAR,11,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+ref.mfr_agency_map,note,VARCHAR,11,Explanation of the rule or row,reference
+ref.payee_focus_area,area,VARCHAR,6,One of GMI's six focus areas,derived
+ref.payee_focus_area,payee_pattern,VARCHAR,6,Regular expression matching payee names,reference
+ref.payment_agency_decisions,payment_agency_name,VARCHAR,4,Agency name as it appears in payments,derived
+ref.payment_agency_decisions,agency_code,VARCHAR,4,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+ref.payment_agency_decisions,decision,VARCHAR,4,"Mapping decision (pending, mapped, excluded)",reference
+ref.payment_agency_decisions,decided_by,VARCHAR,4,Who made the decision,reference
+ref.payment_agency_decisions,date,VARCHAR,4,Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used,portal
+ref.payment_agency_rule,rule,VARCHAR,21,Name of the mapping or scope rule,reference
+ref.payment_agency_rule,payment_name_pattern,VARCHAR,21,Regular expression matching payment agency names,reference
+ref.payment_agency_rule,target,VARCHAR,21,Agency code the rule maps to,reference
+ref.payment_agency_rule,note,VARCHAR,21,Explanation of the rule or row,reference
+ref.vendor_families,family,VARCHAR,33,Company that several payee names belong to,reference
+ref.vendor_families,payee_pattern,VARCHAR,33,Regular expression matching payee names,reference
+ref.vendor_normalization,step,VARCHAR,4,Order the normalization step runs in,reference
+ref.vendor_normalization,pattern,VARCHAR,4,Regular expression the rule applies,reference
+ref.vendor_normalization,note,VARCHAR,4,Explanation of the rule or row,reference

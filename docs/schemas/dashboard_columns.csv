@@ -1,0 +1,202 @@
+table,column,type,table_rows,definition,origin
+agency_master,agency_code,text,86,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+agency_master,agency,text,86,Agency name shown on the dashboard,derived
+agency_master,in_budget,number,86,True when the agency code exists in the budget,derived
+agency_master,payment_names,number,86,Payment agency names mapped to the code,derived
+agency_master,how_matched,text,86,How the payment names were matched to the code,derived
+d_agency,agency_code,text,82,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+d_agency,agency,text,82,Agency name shown on the dashboard,derived
+d_bid_list,rank,number,30,Rank by FY2026 payments,derived
+d_bid_list,vendor,text,30,Company name after grouping payee names,derived
+d_bid_list,fy2025,number,30,Payments in FY2025,derived
+d_bid_list,fy2026,number,30,Payments in FY2026,derived
+d_bid_list,agencies,number,30,Agencies paying the vendor (or with payments in the year),derived
+d_bid_list,low,number,30,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+d_bid_list,high,number,30,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+d_bid_list,top_agencies,text,30,Three agencies paying the vendor most in FY2026,derived
+d_forecast_model,area,text,7,One of GMI's six focus areas,derived
+d_forecast_model,method,text,7,Forecast model chosen by the backtest,derived
+d_forecast_model,growth,number,7,Annual growth rate of the chosen model,derived
+d_forecast_model,backtest_mape,number,7,Mean absolute percentage error of the chosen model (fit FY2017-2022; scored FY2023-2025),derived
+d_forecast_model,trend_mape,number,7,Backtest error of the log-linear trend model,derived
+d_forecast_model,naive_mape,number,7,Backtest error of the naive (last actual) model,derived
+d_forecast_model,drift_mape,number,7,Backtest error of the drift model,derived
+d_forecast_model,baseline_fy2025,number,7,FY2025 actual spending in the area,derived
+d_forecast_model,gmi_recurring,number,7,Recurring savings GMI reported for the area,source
+d_forecast_model,gmi_rate,number,7,gmi_recurring divided by baseline_fy2025,derived
+d_forecast_model,gmi_note,text,7,Which reported items make up gmi_recurring,source
+d_forecast_model,gf_share,number,7,General Fund share of the area's FY2025 spending,derived
+d_master_quality,measure,text,5,Name of the quality measure,reference
+d_master_quality,value,text,5,Measured value,derived
+d_master_quality,ok,number,5,True when the measure meets its target,derived
+d_opps,opp_id,text,453,Opportunity identifier,derived
+d_opps,detector,text,453,Screening rule that found the opportunity,derived
+d_opps,agency_code,text,453,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+d_opps,agency,text,453,Agency name shown on the dashboard,derived
+d_opps,area,text,453,One of GMI's six focus areas,derived
+d_opps,spending_code,text,453,Comptroller sub-object name (with code) shown on the dashboard,derived
+d_opps,baseline,number,453,Spending the screening percentage is applied to,derived
+d_opps,low,number,453,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+d_opps,high,number,453,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+d_opps,evidence,text,453,Plain-language reason the detector flagged the row,derived
+d_opps,likely,number,453,Midpoint of low and high,derived
+d_plan50,step,number,28,Order of the step in the path to $50M,derived
+d_plan50,action,text,28,Action in the path to $50M,derived
+d_plan50,basis,text,28,How the step's saving is calculated,derived
+d_plan50,saving,number,28,Annual saving of the step in dollars,derived
+d_plan50,tab,text,28,Dashboard tab the row links to,derived
+d_plan50,cumulative,number,28,Running total of savings,derived
+d_rec_status,rec,number,6,Recommendation number (1-6),derived
+d_rec_status,title,text,6,Recommendation title,derived
+d_rec_status,status,text,6,Status of the recommendation,derived
+d_rec_status,progress,text,6,Key number showing progress,derived
+d_rec_status,tab,text,6,Dashboard tab the row links to,derived
+d_rec_status,previous,text,6,Progress text in the previous run,ops
+d_savings,saving_id,text,18,Reported saving identifier (S01-S18),reference
+d_savings,workstream,text,18,GMI workstream the saving belongs to,reference
+d_savings,item,text,18,Saving as GMI describes it,reference
+d_savings,reported_low,number,18,Low end of the reported saving in dollars (GMI Final Report),source
+d_savings,reported_high,number,18,High end of the reported saving in dollars (GMI Final Report),source
+d_savings,type,text,18,"Kind of saving GMI reported: year over year, one-time, cost avoidance",reference
+d_savings,status,text,18,Status GMI gave the item,reference
+d_savings,count,text,18,Number of contracts or items GMI reported in the saving (text),reference
+d_savings,check_id,text,18,Reported saving whose payments are checked,derived
+d_savings,check_note,text,18,How the payment check is defined,reference
+d_savings,source,text,18,Citation for the reported saving,reference
+d_savings,source_url,text,18,Link to the citation,source
+d_savings,source_page,text,18,Page of the citation,source
+d_savings,source_quote,text,18,Verbatim quote supporting the figure,source
+d_savings_status,check_id,text,12,Reported saving whose payments are checked,derived
+d_savings_status,item,text,12,Saving as GMI describes it,reference
+d_savings_status,reported,number,12,Reported saving midpoint in dollars,source
+d_savings_status,before,number,12,Matching payments in FY2025,derived
+d_savings_status,after,number,12,Matching payments in FY2026,derived
+d_savings_status,status,text,12,"Whether the reported saving is seen in payments (Seen, Partly seen, Not seen yet, Payments fell, Payments did not fall)",derived
+d_savings_status,previous_status,text,12,Status in the previous run,ops
+d_savings_status,changed,number,12,True when the status changed since the previous run,ops
+d_vendor_moves,vendor,text,40,Company name after grouping payee names,derived
+d_vendor_moves,fy2024,number,40,Payments in FY2024,derived
+d_vendor_moves,fy2025,number,40,Payments in FY2025,derived
+d_vendor_moves,fy2026,number,40,Payments in FY2026,derived
+d_vendor_moves,change,number,40,FY2026 minus FY2025 payments,derived
+d_vendor_moves,agencies,number,40,Agencies paying the vendor (or with payments in the year),derived
+d_vendor_names,vendor,text,69,Company name after grouping payee names,derived
+d_vendor_names,payee_name,text,69,One payee name grouped into the vendor,derived
+d_vendor_names,fy2026,number,69,Payments in FY2026,derived
+f_agency,agency_code,text,795,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_agency,agency,text,795,Agency name shown on the dashboard,derived
+f_agency,fiscal_year,number,795,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_agency,stage,text,795,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_agency,operating_spending,number,795,Operating budget (all funds) for the agency and year,derived
+f_agency,controllable,number,795,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv",derived
+f_agency,fte,number,795,Budgeted full-time-equivalent positions,derived
+f_agency,payments,number,795,Payments made by the agency in the year,derived
+f_area,fiscal_year,number,6388,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_area,stage,text,6388,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_area,agency_code,text,6388,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_area,area,text,6388,One of GMI's six focus areas,derived
+f_area,spend,number,6388,Dollars spent (budget actuals or payments),derived
+f_area,payee_spend,number,6388,Payments to payees assigned to the focus area,derived
+f_code,fiscal_year,number,14744,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_code,stage,text,14744,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_code,agency_code,text,14744,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_code,area,text,14744,One of GMI's six focus areas,derived
+f_code,code,number,14744,Comptroller sub-object code,derived
+f_code,spending_code,text,14744,Comptroller sub-object name (with code) shown on the dashboard,derived
+f_code,spend,number,14744,Dollars spent (budget actuals or payments),derived
+f_forecast,area,text,105,One of GMI's six focus areas,derived
+f_forecast,fiscal_year,number,105,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_forecast,kind,text,105,"Actual, forecast or plan",derived
+f_forecast,value,number,105,Actual or forecast spending in dollars,derived
+f_forecast,p10,number,105,10th percentile of the bootstrap forecast,derived
+f_forecast,p50,number,105,Median of the bootstrap forecast,derived
+f_forecast,p90,number,105,90th percentile of the bootstrap forecast,derived
+f_forecast,plan,number,105,Spending after GMI's reported savings rate,derived
+f_function,fiscal_year,number,795,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_function,stage,text,795,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_function,agency_code,text,795,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_function,category_title,text,795,Budget function title (renamed function_name in core),portal
+f_function,budget,number,795,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+f_fund,fiscal_year,number,1919,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_fund,stage,text,1919,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_fund,agency_code,text,1919,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_fund,fund_type_name,text,1919,Fund type name as published,portal
+f_fund,budget,number,1919,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+f_object,fiscal_year,number,7817,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_object,stage,text,7817,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_object,agency_code,text,7817,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_object,object_name,text,7817,Comptroller object name,portal
+f_object,budget,number,7817,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+f_object,controllable,number,7817,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv",derived
+f_savings_check,check_id,text,1400,Reported saving whose payments are checked,derived
+f_savings_check,fiscal_year,number,1400,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_savings_check,agency_code,text,1400,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_savings_check,paid,number,1400,Payments in dollars,derived
+f_scope,fiscal_year,number,2484,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_scope,stage,text,2484,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+f_scope,agency_code,text,2484,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_scope,scope,text,2484,Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on),derived
+f_scope,budget,number,2484,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+f_vendor,fiscal_year,number,4940,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_vendor,agency_code,text,4940,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_vendor,area,text,4940,One of GMI's six focus areas,derived
+f_vendor,vendor,text,4940,Company name after grouping payee names,derived
+f_vendor,spend,number,4940,Dollars spent (budget actuals or payments),derived
+f_vendor_detail,vendor,text,3660,Company name after grouping payee names,derived
+f_vendor_detail,agency_code,text,3660,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_vendor_detail,fiscal_year,number,3660,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_vendor_detail,paid,number,3660,Payments in dollars,derived
+measures,table,text,14,Dashboard table the measure belongs to,derived
+measures,measure,text,14,Column name of the dashboard measure,derived
+measures,definition,text,14,What the dashboard measure means,derived
+measures,grouped_by,text,14,Grain the measure is grouped by,derived
+measures,higher_is,text,14,"Whether a higher value is better, worse or neutral",derived
+pipeline_runs,run_id,text,32,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+pipeline_runs,started_utc,text,32,When the run started (UTC),ops
+pipeline_runs,seconds,number,32,Run duration in seconds,ops
+pipeline_runs,status,text,32,Run or source status,ops
+pipeline_runs,published,number,32,True when the run's outputs were published,ops
+pipeline_runs,checks,number,32,Number of checks run,ops
+pipeline_runs,passed,number,32,Checks passed,ops
+pipeline_runs,warnings,number,32,Checks that warned,ops
+pipeline_runs,failed,number,32,Checks that failed,ops
+pipeline_runs,repairs,number,32,Datasets re-downloaded by self-healing,ops
+pipeline_runs,payment_rows,number,32,Payment rows in the run,ops
+pipeline_runs,budget_rows,number,32,Budget rows in the run,ops
+pipeline_runs,mode,text,32,"Run mode (full, freshness reuse, test fault)",ops
+run_checks,run_id,text,92,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+run_checks,stage,text,92,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+run_checks,check,text,92,Check description,ops
+run_checks,status,text,92,"pass, warn or fail",ops
+run_checks,detail,text,92,Numbers behind the check result,ops
+sources,source,text,5,Short name of the source dataset,derived
+sources,dataset_id,text,5,Portal four-by-four identifier,ops
+sources,title,text,5,Dataset title used on the dashboard,derived
+sources,use,text,5,What the dataset contributes to the tracker,derived
+sources,portal_name,text,5,Dataset title as the portal publishes it,ops
+sources,portal_updated,text,5,Date the portal data last changed,ops
+sources,rows_portal,number,5,Rows the portal reported,ops
+sources,rows_downloaded,number,5,Rows in the downloaded file,ops
+sources,years,text,5,Fiscal years used,derived
+sources,reconciled,number,5,True when downloaded rows equal the portal's count,ops
+stage_evidence,fiscal_year,number,4,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+stage_evidence,file_label,text,4,Stage label the portal file assigned to the year,portal
+stage_evidence,official_stage,text,4,Stage DBM's budget books assign to the year,reference
+stage_evidence,evidence,text,4,Where in DBM's budget books the stage is confirmed,source
+stage_evidence,evidence_url,text,4,Link to the evidence document,source
+stage_evidence,programs_compared,number,4,Programs compared between the portal file and DBM's books,derived
+stage_evidence,programs_exact,number,4,Programs whose totals match DBM's books exactly,derived
+stage_evidence,file_total,number,4,Portal file total for the year,derived
+stage_evidence,dbm_actual_total,number,4,Actual total printed in DBM's budget books,source
+stage_evidence,note,text,4,Explanation of the rule or row,reference
+totals_by_fy,fiscal_year,number,19,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+totals_by_fy,total_payments,number,19,All payments in the fiscal year,derived
+totals_by_fy,payment_records,number,19,Payment rows in the fiscal year,derived
+totals_by_fy,agencies,number,19,Agencies paying the vendor (or with payments in the year),derived
+totals_by_fy,vendors,number,19,Distinct payees in the year,derived
+totals_by_fy,total_payments_prior,number,19,All payments in the previous fiscal year,derived
+totals_by_fy,total_payments_yoy,number,19,Change in total payments from the previous fiscal year (share),derived
+vendor_families,family,text,130,Company that several payee names belong to,reference
+vendor_families,payee_names,number,130,Payee names grouped into the company,derived
+vendor_families,spend,number,130,Dollars spent (budget actuals or payments),derived
+vendor_families,agencies,number,130,Agencies paying the vendor (or with payments in the year),derived

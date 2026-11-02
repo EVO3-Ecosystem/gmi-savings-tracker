@@ -5,7 +5,7 @@ An independent savings tracker for Maryland's Government Modernization Initiativ
 
 A free, local pipeline for Maryland's budget, payments, funding, staffing and grants data: SODA pulls → Parquet files → one DuckDB database → dashboard CSVs. It replaces the pipeline that built the **GMI Savings Tracker** and **Maryland Spend Lens** dashboards, whose original code is saved here under `legacy/`.
 
-The plan, data dictionary and reference lists are in the *Maryland Transparency Data — Dev Wiki* (Roadmap & build plan tab).
+Data governance (sources, every table's schema, known source issues, assumptions, change control) is in [docs/data-governance.md](docs/data-governance.md), rebuilt with `make docs`. The plan and reference lists are also in the *Maryland Transparency Data — Dev Wiki* (Roadmap & build plan tab).
 
 ## Status
 

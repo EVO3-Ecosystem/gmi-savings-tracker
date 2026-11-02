@@ -1,5 +1,7 @@
 # Data sources (opendata.maryland.gov)
 
+Full schemas, owners, licences, known issues and the assumptions register are in [data-governance.md](data-governance.md).
+
 | Dataset | ID | Years | Notes |
 |---|---|---|---|
 | Operating budget | yu65-jmmv | FY2017–FY2027 | Portal `type` column is out of date; stages follow mtp.maryland.gov: FY2017–FY2025 Actual, FY2026 Working, FY2027 Legislative Appropriation |

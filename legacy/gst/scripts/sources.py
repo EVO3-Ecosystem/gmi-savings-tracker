@@ -14,7 +14,7 @@ HEAL = 2
 SOURCES = {
     "payments": {"id": "7syw-q4cy", "title": "State of Maryland Payments Data", "year": "fiscal_year", "value": "amount",
                  "years": range(2008, 2027), "per_year_files": True,
-                 "use": "Payments to vendors of $25,000 or more, by agency and payee, per fiscal year"},
+                 "use": "All payments by state agencies to businesses, local governments, non-profits and individuals, by agency and payee, per fiscal year (portal description)"},
     "budget": {"id": "yu65-jmmv", "title": "Maryland Operating Budget", "year": "fiscal_year", "value": "budget",
                "use": "Operating budget and actuals by agency, program and Comptroller spending code"},
     "fund": {"id": "gy87-e27x", "title": "Maryland Operating Budget - Funding Source", "year": "fiscal_year", "value": "budget",
@@ -22,7 +22,7 @@ SOURCES = {
     "fte": {"id": "x8qy-486w", "title": "State of Maryland Full Time Equivalents", "year": "fiscal_year", "value": "count",
             "use": "Budgeted full-time-equivalent positions by agency and program"},
     "grants": {"id": "absk-avps", "title": "State of Maryland Grant and Loan Data", "year": "fiscalyear", "value": "amount",
-               "use": "State grants and loans of $50,000 or more to non-government recipients"},
+               "use": "State aid grants (from FY2009) and loans (from FY2010) to for-profit and non-profit entities; the portal says $50,000 or more, but some rows are smaller"},
 }
 
 
