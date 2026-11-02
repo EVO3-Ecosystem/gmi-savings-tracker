@@ -18,7 +18,12 @@ A failed "Stop" check ends the run before anything is exported.
 | Managing for Results measures read from the plans | ref | Warn | 3 | yes |
 | Payment agency names matched to a code, share of dollars | ref | Stop below today's rate | 3 | yes |
 | New payee names since last run | ref | Warn and list them | 3 | yes |
-| Each mart total = its core total | mart | Stop | 4 | |
+| Vendor payments by year = core payments; agency roll-up budget by year = core budget | mart | Stop | 4 | yes |
+| One vendor master row per vendor; every vendor has a payee type | mart | Stop | 4 | yes |
+| Every mapped payment rolls up to a function or a named exception; exceptions are not in the budget | mart | Stop | 4 | yes |
+| Each agency's budget sits in one function | mart | Warn | 4 | yes |
+| Agency results rows = matched Managing for Results rows | mart | Stop | 4 | yes |
+| Each dashboard-file mart = the legacy file (or the difference explained) | mart | Stop | 4 | |
 | Exported files differ from last run | mart | Report the changes | 4 | |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

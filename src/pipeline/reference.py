@@ -96,6 +96,13 @@ def map_payee_vendor(con):
     for a, pat in zip(lens.area, lens.payee_pattern):
         v.loc[v.payee_area.isna() & v.vendor_key.str.contains(pat, regex=True), "payee_area"] = a
     _table(con, "ref.map_payee_vendor", v[["payee", "vendor_key", "vendor", "rule", "is_government", "payee_area"]])
+    # non-profits: grantees the State's grants data marks nonprofit = 'Y', normalized the same way as payee names
+    if _has(con, "core", "fact_grant"):
+        g = con.execute("SELECT grantee, upper(coalesce(nonprofit, '')) = 'Y' AS np, amount FROM core.fact_grant").df()
+        g["vendor_key"] = g.grantee.map(norm)
+        g = g.groupby("vendor_key").agg(grantee=("grantee", "first"), grants=("np", "size"), flagged=("np", "sum"), granted=("amount", "sum")).reset_index()
+        g["nonprofit_share"] = g.flagged / g.grants
+        _table(con, "ref.map_nonprofit", g[g.flagged > 0][["vendor_key", "grantee", "grants", "flagged", "nonprofit_share", "granted"]])
 
 
 # ---------------------------------------------------------------- budget lines: controllable and focus area

@@ -1,0 +1,9 @@
+agency_code,function_name,note
+CAPITAL,Capital budget accounts,"Payments from capital project accounts (payment agency names ending in CAPITAL, CAP PROJS); the operating budget dataset has no capital budget"
+J11,Not in the operating budget data,Maryland Transportation Authority; no J11 rows in yu65-jmmv FY2017-FY2027
+U10,Not in the operating budget data,Maryland Environmental Service; no U10 rows in yu65-jmmv
+R95,Not in the operating budget data,Baltimore City Community College; no R95 rows in yu65-jmmv
+R37,Not in the operating budget data,Universities at Shady Grove; no R37 rows in yu65-jmmv
+R60,Not in the operating budget data,College Savings Plans of Maryland; no R60 rows in yu65-jmmv
+D30,Not in the operating budget data,Maryland Food Center Authority; no D30 rows in yu65-jmmv
+E90,Not in the operating budget data,Registers of Wills; no E90 rows in yu65-jmmv

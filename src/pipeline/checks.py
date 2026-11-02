@@ -80,6 +80,7 @@ def run(con, run_id, manifest):
         check("raw", f"Context source pulled: {src}", status == "pass", detail[:200], "warn")
 
     phase3(con, check, one)
+    phase4(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -133,3 +134,36 @@ def phase3(con, check, one):
         n, ag = con.execute("SELECT count(DISTINCT agency_file || measure), count(DISTINCT agency_file) FROM core.mfr_measure").fetchone()
         check("ref", "Managing for Results measures read from the plans (recommendation 6)", ag >= 0.8 * docs,
               f"{n:,} measures from {ag} of {docs} plans; {matched} plans matched to a budget agency", "warn")
+
+
+def phase4(con, check, one):
+    """Marts: every roll-up ties back to its core total; every vendor and agency is classified."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'agency_rollup'"):
+        return
+    bad = con.execute("""SELECT count(*) FROM (SELECT fiscal_year, sum(amount) s FROM core.fact_payment GROUP BY 1) c
+        FULL JOIN (SELECT fiscal_year, sum(paid) s FROM mart.vendor_agency_year GROUP BY 1) m USING (fiscal_year)
+        WHERE abs(coalesce(c.s, 0) - coalesce(m.s, 0)) > 1""").fetchone()[0]
+    check("mart", "Vendor payments by year = core payments (every year, to the dollar)", bad == 0, f"{bad} years differ")
+    bad = con.execute("""SELECT count(*) FROM (SELECT fiscal_year, sum(budget) s FROM core.fact_budget GROUP BY 1) c
+        FULL JOIN (SELECT fiscal_year, sum(budget) s FROM mart.agency_rollup GROUP BY 1) m USING (fiscal_year)
+        WHERE abs(coalesce(c.s, 0) - coalesce(m.s, 0)) > 1""").fetchone()[0]
+    check("mart", "Agency roll-up budget by year = core budget (every year, to the dollar)", bad == 0, f"{bad} years differ")
+    d = one("SELECT count(*) - count(DISTINCT vendor) FROM mart.vendor_master")
+    n = one("SELECT count(*) FROM mart.vendor_master")
+    m = one("SELECT count(DISTINCT vendor) FROM mart.vendor_agency_year")
+    check("mart", "One vendor master row per vendor paid", d == 0 and n == m, f"{n:,} vendors, {d} duplicates, {m:,} in payments")
+    low = one("SELECT count(*) FROM mart.agency_function WHERE function_share < 0.99")
+    check("mart", "Each agency's budget sits in one function (no allocation needed)", low == 0, f"{low} agency-years below 99%", "warn")
+    nf = one("SELECT sum(paid) FILTER (WHERE agency_code IS NOT NULL AND function_name IS NULL) FROM mart.vendor_agency_year") or 0
+    check("mart", "Every mapped payment rolls up to a function or a named exception", nf < 1, f"${nf:,.0f} without a function")
+    stale = [r[0] for r in con.execute("SELECT agency_code FROM ref.function_exceptions WHERE agency_code IN (SELECT DISTINCT agency_code FROM core.fact_budget)").fetchall()]
+    check("mart", "Function exceptions are not in the operating budget", not stale, f"now in the budget: {', '.join(stale)}" if stale else "none are")
+    ex = con.execute("""SELECT x.function_name, sum(v.paid) FROM mart.vendor_agency_year v JOIN ref.function_exceptions x USING (agency_code)
+        WHERE v.fiscal_year = (SELECT max(fiscal_year) FROM core.fact_payment WHERE NOT partial_year) GROUP BY 1 ORDER BY 1""").fetchall()
+    check("mart", "Payments outside the operating budget data (latest full year)", True, "; ".join(f"{k}: ${v / 1e9:,.2f}B" for k, v in ex) or "none", "warn")
+    types = dict(con.execute("SELECT payee_type, sum(paid_all_years) FROM mart.vendor_master GROUP BY 1").fetchall())
+    tot = sum(types.values())
+    check("mart", "Every vendor has a payee type", one("SELECT count(*) FROM mart.vendor_master WHERE payee_type IS NULL") == 0,
+          "; ".join(f"{k} {v / tot:.1%}" for k, v in sorted(types.items())) + " of all payment dollars")
+    r, m = one("SELECT count(*) FROM mart.agency_results"), one("SELECT count(*) FROM core.mfr_measure WHERE agency_code IS NOT NULL")
+    check("mart", "Agency results rows = matched Managing for Results rows", r == m, f"{r:,} of {m:,}")

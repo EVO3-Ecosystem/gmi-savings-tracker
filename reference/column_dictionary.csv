@@ -72,7 +72,7 @@ controllable,,derived,"Controllable purchases: contractual services, supplies, e
 focus_area,,derived,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none
 area,,derived,One of GMI's six focus areas
 scope,,derived,Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on)
-partial_year,core.fact_payment*,derived,True for the latest payments year while it is still incomplete
+partial_year,"core.fact_payment*,mart.vendor_agency_year",derived,True for the latest payments year while it is still incomplete
 partial,,derived,True when the year is not finished
 reporting_incomplete,,derived,True when a federal-award year is under 60% of the prior year (reporting lag)
 federal_fy,,source,Federal fiscal year (October to September) from USAspending
@@ -92,14 +92,14 @@ url,,source,Link to the source document
 bytes,,source,File size in bytes
 last_modified,,source,Last-Modified header the source server returned
 is_pdf,raw.mfr_index,derived,True when the downloaded file is a PDF
-plan_year,core.mfr_measure,source,Fiscal year of the Managing for Results plan
-goal,core.mfr_measure,source,Plan goal text
-objective,core.mfr_measure,source,Plan objective text
-measure,core.mfr_measure,source,Performance measure name as printed
-kind,core.mfr_measure,source,"Actual or estimate, from the plan's column heading"
+plan_year,"core.mfr_measure,mart.agency_results",source,Fiscal year of the Managing for Results plan
+goal,"core.mfr_measure,mart.agency_results",source,Plan goal text
+objective,"core.mfr_measure,mart.agency_results",source,Plan objective text
+measure,"core.mfr_measure,mart.agency_results",source,Performance measure name as printed
+kind,"core.mfr_measure,mart.agency_results",source,"Actual or estimate, from the plan's column heading"
 kind,f_forecast,derived,"Actual, forecast or plan"
-value_text,core.mfr_measure,source,Measure value exactly as printed
-value,core.mfr_measure,derived,Measure value as a number
+value_text,"core.mfr_measure,mart.agency_results",source,Measure value exactly as printed
+value,"core.mfr_measure,mart.agency_results",derived,Measure value as a number
 value,ref.baseline_quality,reference,Baseline value recorded from the legacy dashboard
 value,"ref.controllable_rule,ref.focus_area_rule",reference,The code or pattern the rule matches
 value,d_master_quality,derived,Measured value
@@ -173,7 +173,7 @@ decision,ref.payment_agency_decisions,reference,"Mapping decision (pending, mapp
 decided_by,,reference,Who made the decision
 family,,reference,Company that several payee names belong to
 payee,ref.map_payee_vendor,derived,Payee name as published
-vendor_key,ref.map_payee_vendor,derived,Normalized payee name (suffixes and punctuation removed)
+vendor_key,"ref.map_payee_vendor,ref.map_nonprofit",derived,Normalized payee name (suffixes and punctuation removed)
 vendor,,derived,Company name after grouping payee names
 is_government,,derived,True when the payee is a government body (excluded from vendor analysis)
 payee_area,ref.map_payee_vendor,derived,Focus area the payee is assigned to by reference/payee_focus_area.csv
@@ -251,3 +251,24 @@ column,ref.column_dictionary,reference,Column name being defined
 applies_to,ref.column_dictionary,reference,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all"
 origin,ref.column_dictionary,reference,"Where the column comes from: portal, source, reference, derived or ops"
 definition,ref.column_dictionary,reference,What the column means
+function_share,mart.agency_function,derived,Share of the agency's budget that year in its main function (1.0 for every agency today)
+payee_type,,derived,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other"
+type_basis,,derived,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default"
+payee_names,mart.vendor_*,derived,Distinct payee names grouped into the vendor
+payments,mart.vendor_agency_year,derived,"Payment rows in the vendor, agency and year"
+payments_all,mart.agency_rollup,derived,All payments made by the agency in the year
+payments_non_government,,derived,Payments by the agency to payees whose payee type is not Government
+focus_area_spend,mart.agency_rollup,derived,Budget spending in GMI's six focus areas (spending codes in ref.map_focus_area)
+agencies_all_years,mart.vendor_master,derived,Agencies that paid the vendor in any year
+agencies_last_full_year,mart.vendor_master,derived,Agencies that paid the vendor in the latest full payments year
+functions,mart.vendor_master,derived,Budget functions the vendor is paid from (via the paying agencies)
+main_function,mart.vendor_master,derived,"Function with the most payments to the vendor, all years"
+last_full_year,mart.vendor_master,derived,Latest fiscal year of payments that is complete
+paid_last_full_year,mart.vendor_master,derived,Payments to the vendor in last_full_year
+paid_prior_year,mart.vendor_master,derived,Payments to the vendor in the year before last_full_year
+paid_all_years,mart.vendor_master,derived,"Payments to the vendor, all years"
+grants,ref.map_nonprofit,derived,Grant and loan rows for the grantee
+flagged,ref.map_nonprofit,derived,Rows the grants dataset flags nonprofit = Y
+nonprofit_share,ref.map_nonprofit,derived,flagged divided by grants; 0.5 or more makes the payee a Non-profit
+granted,ref.map_nonprofit,derived,"Dollars granted or lent to the grantee, all years"
+priority,ref.payee_type_rule,reference,Order the payee type rules apply in; the lowest matching priority wins across a vendor's names
