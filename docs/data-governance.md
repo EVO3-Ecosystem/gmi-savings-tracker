@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-02T18:12Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 02, 2026._
+_Generated 2026-11-02T18:22Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 02, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -426,6 +426,23 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | function_name | VARCHAR | derived | Budget function title (from the portal's category_title) |
 | function_share | DOUBLE | derived | Share of the agency's budget that year in its main function (1.0 for every agency today) |
 
+**mart.agency_master** (86 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+| in_budget | BOOLEAN | derived | True when the agency code exists in the budget |
+| payment_names | BIGINT | derived | Payment agency names mapped to the code |
+| how_matched | VARCHAR | derived | How the payment names were matched to the code |
+
+**mart.agency_name** (82 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+
 **mart.agency_results** (21,835 rows)
 
 | column | type | origin | definition |
@@ -469,6 +486,257 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | dollars_of_fy | INTEGER | derived | Fiscal year whose dollars to_latest_dollars converts to |
 | population | BIGINT | source | Maryland resident population (Census Population Estimates) |
 
+**mart.agency_year** (795 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| operating_spending | DOUBLE | derived | Operating budget (all funds) for the agency and year |
+| controllable | DOUBLE | derived | Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv |
+| fte | DOUBLE | derived | Budgeted full-time-equivalent positions |
+| payments | DOUBLE | derived | Payments made by the agency in the year (all payees) |
+| controllable_per_fte | DOUBLE | derived | Controllable purchases divided by budgeted positions |
+| controllable_prior | DOUBLE | derived | controllable in the previous fiscal year for the same keys |
+| fte_prior | DOUBLE | derived | fte in the previous fiscal year for the same keys |
+| controllable_per_fte_prior | DOUBLE | derived | controllable_per_fte in the previous fiscal year for the same keys |
+| controllable_yoy | DOUBLE | derived | Change in controllable from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| fte_yoy | DOUBLE | derived | Change in fte from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| controllable_per_fte_yoy | DOUBLE | derived | Change in controllable_per_fte from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.area_agency_year** (3,584 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+| spend_prior | DOUBLE | derived | spend in the previous fiscal year for the same keys |
+| spend_yoy | DOUBLE | derived | Change in spend from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.area_code_year** (935 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| code | VARCHAR | derived | Comptroller sub-object code |
+| spending_code | VARCHAR | derived | Comptroller sub-object name (with code) shown on the dashboard |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+| agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
+| spend_prior | DOUBLE | derived | spend in the previous fiscal year for the same keys |
+| spend_yoy | DOUBLE | derived | Change in spend from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.area_vendor_year** (440 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+| agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
+| spend_prior | DOUBLE | derived | spend in the previous fiscal year for the same keys |
+| spend_yoy | DOUBLE | derived | Change in spend from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+
+**mart.area_year** (120 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+| agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
+| codes | BIGINT | derived | Spending codes with spending in the area |
+| payee_spend | DOUBLE | derived | Payments to payees assigned to the focus area by payee name (pass-through payments excluded) |
+| vendors | BIGINT | derived | Distinct payees in the year |
+| spend_prior | DOUBLE | derived | spend in the previous fiscal year for the same keys |
+| payee_spend_prior | DOUBLE | derived | payee_spend in the previous fiscal year for the same keys |
+| spend_yoy | DOUBLE | derived | Change in spend from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| payee_spend_yoy | DOUBLE | derived | Change in payee_spend from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.budget_by_function** (126 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| category_title | VARCHAR | portal | Budget function title (renamed function_name in core) |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| budget_prior | DOUBLE | derived | budget in the previous fiscal year for the same keys |
+| budget_yoy | DOUBLE | derived | Change in budget from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.budget_by_fund** (55 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| fund_type_name | VARCHAR | portal | Fund type name as published |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| budget_prior | DOUBLE | derived | budget in the previous fiscal year for the same keys |
+| budget_yoy | DOUBLE | derived | Change in budget from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.budget_by_object** (147 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| object_name | VARCHAR | portal | Comptroller object name |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| controllable | DOUBLE | derived | Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv |
+| budget_prior | DOUBLE | derived | budget in the previous fiscal year for the same keys |
+| controllable_prior | DOUBLE | derived | controllable in the previous fiscal year for the same keys |
+| budget_yoy | DOUBLE | derived | Change in budget from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| controllable_yoy | DOUBLE | derived | Change in controllable from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.d_agency** (82 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+
+**mart.f_agency** (795 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| operating_spending | DOUBLE | derived | Operating budget (all funds) for the agency and year |
+| controllable | DOUBLE | derived | Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv |
+| fte | DOUBLE | derived | Budgeted full-time-equivalent positions |
+| payments | DOUBLE | derived | Payments made by the agency in the year |
+
+**mart.f_area** (6,451 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+| payee_spend | DOUBLE | derived | Payments to payees assigned to the focus area |
+
+**mart.f_code** (14,744 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| code | VARCHAR | derived | Comptroller sub-object code |
+| spending_code | VARCHAR | derived | Comptroller sub-object name (with code) shown on the dashboard |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+
+**mart.f_function** (795 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| category_title | VARCHAR | portal | Budget function title (renamed function_name in core) |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+
+**mart.f_fund** (1,919 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| fund_type_name | VARCHAR | portal | Fund type name as published |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+
+**mart.f_object** (7,817 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| object_name | VARCHAR | portal | Comptroller object name |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| controllable | DOUBLE | derived | Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv |
+
+**mart.f_scope** (2,484 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| scope | VARCHAR | derived | Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on) |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+
+**mart.f_vendor** (5,706 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+
+**mart.payment_area** (411,231 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency_name_as_paid | VARCHAR | derived | Agency name exactly as it appears in the payments dataset |
+| vendor_name | VARCHAR | portal | Payee name as published |
+| amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| is_government | BOOLEAN | derived | True when the payee is a government body (excluded from vendor analysis) |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| passthrough | BOOLEAN | derived | True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed |
+
+**mart.spending_scope** (44 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| scope | VARCHAR | derived | Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on) |
+| budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| budget_prior | DOUBLE | derived | budget in the previous fiscal year for the same keys |
+| budget_yoy | DOUBLE | derived | Change in budget from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
+| stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.totals_by_fy** (20 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| total_payments | DOUBLE | derived | All payments in the fiscal year |
+| payment_records | BIGINT | derived | Payment rows in the fiscal year |
+| agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
+| vendors | BIGINT | derived | Distinct payees in the year |
+| total_payments_prior | DOUBLE | derived | All payments in the previous fiscal year |
+| total_payments_yoy | DOUBLE | derived | Change in total payments from the previous fiscal year (share) |
+
 **mart.vendor_agency_year** (387,361 rows)
 
 | column | type | origin | definition |
@@ -482,6 +750,15 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | paid | DOUBLE | derived | Payments in dollars |
 | payments | BIGINT | derived | Payment rows in the vendor, agency and year |
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
+
+**mart.vendor_families** (130 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| family | VARCHAR | reference | Company that several payee names belong to |
+| payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
+| spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+| agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
 
 **mart.vendor_master** (56,590 rows)
 
@@ -719,7 +996,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (273 rows)
+**ref.column_dictionary** (285 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -873,6 +1150,15 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 |---|---|---|---|
 | file_pattern | VARCHAR | reference | Pattern matching a Managing for Results plan file name |
 | agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| note | VARCHAR | reference | Explanation of the rule or row |
+
+**ref.payee_area_exclusions** (3 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| agency_name_pattern | VARCHAR | reference | Regular expression on the paying agency name; blank for any agency |
+| payee_pattern | VARCHAR | reference | Regular expression matching payee names |
 | note | VARCHAR | reference | Explanation of the rule or row |
 
 **ref.payee_focus_area** (6 rows)
@@ -1284,7 +1570,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-656 of 656 columns documented (65 source, 390 warehouse, 201 dashboard).
+822 of 822 columns documented (65 source, 556 warehouse, 201 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

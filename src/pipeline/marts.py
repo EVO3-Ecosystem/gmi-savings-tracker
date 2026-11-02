@@ -1,14 +1,47 @@
-"""Phase 4: build the mart layer from sql/mart/*.sql, in file order (one table per file; grain and checks in each header)."""
+"""Phase 4: build the mart layer from sql/mart/*.sql, in file order (one table per file; grain and checks in each header).
+
+A file whose first line is
+    -- yoy: keys=<col,col|none> values=<col,col> [stage]
+holds only the base SELECT. The runner wraps it with the dashboard's one change measure (legacy measures.yoy):
+for each value v it adds v_prior (same keys, previous fiscal year) and v_yoy = (v - v_prior) / |v_prior| (blank when the
+prior year is missing or zero); with `stage` it adds stage_pair ("Actual vs Actual", "Working budget vs Actual", ...).
+Columns come out in the legacy order: base columns, every v_prior, every v_yoy, then stage_pair.
+Other files are run as written (CREATE OR REPLACE TABLE ...).
+"""
+import re
 from pathlib import Path
 
 SQL = Path(__file__).resolve().parents[2] / "sql" / "mart"
+HEAD = re.compile(r"--\s*yoy:\s*keys=(\S+)\s+values=(\S+)(\s+stage)?")
+
+
+def yoy_sql(name, base, keys, values, stage):
+    k = [] if keys == "none" else keys.split(",")
+    v = values.split(",")
+    on = " AND ".join([f"b.{c} IS NOT DISTINCT FROM p.{c}" for c in k] + ["b.fiscal_year = p.fiscal_year"])
+    prior_cols = ", ".join([f"{c}" for c in k] + ["fiscal_year + 1 AS fiscal_year"] + [f"{x} AS {x}_prior" for x in v] + (["stage AS stage_prior"] if stage else []))
+    sel = ["b.*"] + [f"p.{x}_prior" for x in v]
+    sel += [f"CASE WHEN p.{x}_prior IS NOT NULL AND p.{x}_prior <> 0 THEN (b.{x} - p.{x}_prior) / abs(p.{x}_prior) END AS {x}_yoy" for x in v]
+    if stage:
+        sel.append("CASE WHEN p.stage_prior IS NULL THEN NULL ELSE b.stage || ' vs ' || p.stage_prior END AS stage_pair")
+    return (f"CREATE OR REPLACE TABLE mart.{name} AS WITH b AS ({base}), p AS (SELECT {prior_cols} FROM b) "
+            f"SELECT {', '.join(sel)} FROM b LEFT JOIN p ON {on}")
 
 
 def build(con):
     con.execute("CREATE SCHEMA IF NOT EXISTS mart")
+    done = []
     for f in sorted(SQL.glob("*.sql")):
+        text = f.read_text()
         try:
-            con.execute(f.read_text())
+            m = HEAD.match(text.lstrip())
+            if m:
+                name = f.stem.split("_", 1)[1]
+                body = "\n".join(line for line in text.splitlines() if not line.lstrip().startswith("--")).strip().rstrip(";")
+                con.execute(yoy_sql(name, body, m.group(1), m.group(2), bool(m.group(3))))
+            else:
+                con.execute(text)
         except Exception as e:  # name the file so a broken mart is easy to find
             raise RuntimeError(f"{f.name}: {e}") from e
-    return [f.stem for f in sorted(SQL.glob("*.sql"))]
+        done.append(f.stem)
+    return done

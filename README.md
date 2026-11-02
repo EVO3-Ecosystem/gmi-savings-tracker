@@ -60,7 +60,7 @@ The website's budget download labels FY2021 "Working", FY2022 "Appropriation" an
 | 1. Extract | **Done** (Oct 28, 2026) | Two runs in a row matched portal row counts for all five datasets ✔ |
 | 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
 | 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ | Match rates at or above the dashboard's master list quality |
-| 4. Marts & dashboard | Next | Every dashboard file reproduced, or each difference explained |
+| 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 13 reproduced exactly, 8 differences explained (`docs/parity/`) ✔; analytics files move with Phase 5 |
 | 5. Analytics | — | Outputs match the dashboard |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
 

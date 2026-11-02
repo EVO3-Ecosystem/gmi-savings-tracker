@@ -23,7 +23,7 @@ A failed "Stop" check ends the run before anything is exported.
 | Every mapped payment rolls up to a function or a named exception; exceptions are not in the budget | mart | Stop | 4 | yes |
 | Each agency's budget sits in one function | mart | Warn | 4 | yes |
 | Agency results rows = matched Managing for Results rows | mart | Stop | 4 | yes |
-| Each dashboard-file mart = the legacy file (or the difference explained) | mart | Stop | 4 | |
+| Each dashboard-file mart = the legacy file (or the difference explained) | mart | Stop (`make parity`) | 4 | yes: 13 of 21 exact, 8 explained |
 | Exported files differ from last run | mart | Report the changes | 4 | |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

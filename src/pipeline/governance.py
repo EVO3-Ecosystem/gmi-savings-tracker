@@ -54,6 +54,19 @@ def catalog(cfg):
 
 
 def define(dic, table, col):
+    got = _define(dic, table, col)
+    if not got[0] and table.startswith("mart."):  # a dashboard-file mart reuses that file's definitions
+        got = _define(dic, table[5:], col)
+    if not got[0]:  # the one change measure (legacy measures.yoy, src/pipeline/marts.py)
+        for suf, text in (("_prior", "{b} in the previous fiscal year for the same keys"), ("_yoy", "Change in {b} from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero)")):
+            if col.endswith(suf):
+                return text.format(b=col[: -len(suf)]), "derived"
+        if col == "stage_pair":
+            return "Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual'", "derived"
+    return got
+
+
+def _define(dic, table, col):
     rows = dic[dic.column == col]
     for _, r in rows.iterrows():
         if r.applies_to and any(fnmatch.fnmatch(table, p.strip()) for p in r.applies_to.split(",")):

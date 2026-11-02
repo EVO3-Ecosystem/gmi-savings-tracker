@@ -183,7 +183,7 @@ payment_names,agency_master,derived,Payment agency names mapped to the code
 how_matched,agency_master,derived,How the payment names were matched to the code
 payee_spend,f_area,derived,Payments to payees assigned to the focus area
 spend,,derived,Dollars spent (budget actuals or payments)
-operating_spending,f_agency,derived,Operating budget (all funds) for the agency and year
+operating_spending,"f_agency,agency_year",derived,Operating budget (all funds) for the agency and year
 payments,f_agency,derived,Payments made by the agency in the year
 paid,,derived,Payments in dollars
 total_payments,,derived,All payments in the fiscal year
@@ -272,3 +272,12 @@ flagged,ref.map_nonprofit,derived,Rows the grants dataset flags nonprofit = Y
 nonprofit_share,ref.map_nonprofit,derived,flagged divided by grants; 0.5 or more makes the payee a Non-profit
 granted,ref.map_nonprofit,derived,"Dollars granted or lent to the grantee, all years"
 priority,ref.payee_type_rule,reference,Order the payee type rules apply in; the lowest matching priority wins across a vendor's names
+operating_spending,agency_year,derived,"Operating budget, all funds, for the agency and year"
+payments,agency_year,derived,Payments made by the agency in the year (all payees)
+controllable_per_fte,agency_year,derived,Controllable purchases divided by budgeted positions
+code,area_code_year,derived,Comptroller sub-object code
+codes,area_year,derived,Spending codes with spending in the area
+payee_spend,area_year,derived,Payments to payees assigned to the focus area by payee name (pass-through payments excluded)
+vendor_name,mart.payment_area,portal,Payee name as published
+passthrough,mart.payment_area,derived,"True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed"
+agency_name_pattern,ref.payee_area_exclusions,reference,Regular expression on the paying agency name; blank for any agency

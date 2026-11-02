@@ -1,0 +1,9 @@
+file,explanation,source
+totals_by_fy,"Adds FY2027 (partial year; the legacy pipeline stopped at FY2026, and the roadmap says to add FY2027 labeled partial). FY2008-FY2026 totals and row counts match to the cent; the vendor count is one higher in FY2009, FY2020 and FY2021 because one payee name groups differently under the spacing rule (not yet identified).",docs/parity/differences.csv; docs/roadmap.md Phase 4
+agency_year,"Only FY2027 payments differ: the legacy file has none (it stopped at FY2026); the mart has the partial-year payments. Every other value matches.",docs/parity/differences.csv
+f_agency,Same as agency_year (FY2027 payments added).,docs/parity/differences.csv
+area_year,Only FY2027 payee-name spending and vendor counts differ (partial year added). FY2008-FY2026 match.,docs/parity/differences.csv
+f_area,Only FY2027 rows differ (partial year added). FY2008-FY2026 match.,docs/parity/differences.csv
+f_vendor,Only FY2027 rows are added (partial year). FY2022-FY2026 match.,docs/parity/differences.csv
+area_vendor_year,Only FY2027 rows are added (partial year). FY2022-FY2026 match.,docs/parity/differences.csv
+vendor_families,"Same company and the same three payee names; the mart names it RJ UNIFORM (the most-paid spelling, $9.58M of $17.45M) where the legacy file used R J UNIFORM. All other 129 companies match.",ref.map_payee_vendor

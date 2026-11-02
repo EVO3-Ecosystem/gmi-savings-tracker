@@ -1,0 +1,4 @@
+area,agency_name_pattern,payee_pattern,note
+Real estate & leases,HEALTH|DHMH,,"Health Department 'Leasing Co LLC' payees are nursing-facility operators paid through Medicaid, not leases (legacy payments_legacy.tag)"
+Utilities & facility energy,PUBLIC SERVICE COMMISSION|HUMAN SERVICES|HUMAN RESOURCES|HOUSING,,"Utility payments by PSC, Human Services/Resources and Housing are customer bill assistance, not State energy use"
+*,,STATE & LOCAL SOLUTIONS|XEROX STATE HEALTHCARE|FUEL FUND,"Xerox State & Local Solutions / State Healthcare ran benefits and Medicaid processing, not printing; the Fuel Fund of Maryland is an energy-assistance charity"

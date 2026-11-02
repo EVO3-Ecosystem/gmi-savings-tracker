@@ -132,8 +132,9 @@ def budget_scope(con):
              WHEN regexp_matches(coalesce(subobject_name, ''), '(?i){it}') THEN 'IT hardware, software & services'
              WHEN object_name = 'Motor Vehicle Operation and Maintenance' THEN 'Fleet & fuel'
         END AS focus_area,
-        CASE WHEN object_name IN ('{ex}') THEN 'Staff, grants and capital' WHEN internal THEN 'Charges between agencies'
-             WHEN entitlement THEN 'Client payments and debt service' ELSE 'Controllable purchases' END AS scope
+        CASE WHEN entitlement THEN 'Client payments and debt service'  -- legacy precedence: entitlement, then internal, then excluded objects
+             WHEN internal THEN 'Charges between agencies'
+             WHEN object_name IN ('{ex}') THEN 'Staff, grants and capital' ELSE 'Controllable purchases' END AS scope
       FROM c""")
     con.execute("""CREATE OR REPLACE TABLE ref.map_focus_area AS SELECT DISTINCT focus_area AS area, subobject_code, subobject_name
                    FROM core.fact_budget_scope WHERE focus_area IS NOT NULL""")
