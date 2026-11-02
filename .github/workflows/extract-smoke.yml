@@ -15,8 +15,11 @@ jobs:
         env: {MD_SODA_APP_TOKEN: "${{ secrets.MD_SODA_APP_TOKEN }}", BLS_API_KEY: "${{ secrets.BLS_API_KEY }}"}
       - run: python -m src.pipeline.build
       - run: pytest -q
+      - name: Reconcile with the Transparency Portal downloads
+        run: python -m src.pipeline.reconcile --strict
+      - run: python -m src.pipeline.figures
       - name: Data governance (schemas, coverage, drift)
         run: python -m src.pipeline.governance --strict
         continue-on-error: true
       - uses: actions/upload-artifact@v4
-        with: {name: run-evidence, path: "data/raw/*/manifest.json\ndata/check_history.csv\ndata/runs.csv\ndocs/data-governance.md\ndocs/schemas/*"}
+        with: {name: run-evidence, path: "data/raw/*/manifest.json\ndata/check_history.csv\ndata/runs.csv\ndocs/data-governance.md\ndocs/schemas/*\ndocs/reconciliation/*\ndocs/figures/*"}

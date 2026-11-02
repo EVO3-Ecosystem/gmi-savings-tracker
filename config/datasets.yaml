@@ -10,3 +10,11 @@ datasets:
   fte:      {id: x8qy-486w, year_col: fiscal_year, sum_col: count}
   payments: {id: 7syw-q4cy, year_col: fiscal_year, sum_col: amount}
   grants:   {id: absk-avps, year_col: fiscalyear,  sum_col: amount}
+
+# Second copy of each dataset: the Maryland Transparency Portal's own downloads (mtp.maryland.gov/#!/view-data,
+# "Data ... as displayed on this website"). reconcile.py compares them with the API extract, year by year.
+website_downloads:
+  budget:   {url: "https://mtp.maryland.gov/api/download_dataset?dataset_domain=opendata.maryland.gov&dataset_id=yu65-jmmv&dataset_name=Operating", year_col: "Fiscal Year", sum_col: "Budget"}
+  fund:     {url: "https://budgetsource.maryland.gov/api/operating_budget.csv", year_col: fiscal_year, sum_col: budget}
+  payments: {url: "https://vendorpayments.maryland.gov/api/operating_budget.csv", year_col: fiscal_year, sum_col: amount}
+  grants:   {url: "https://grantsandloans.maryland.gov/api/operating_budget.csv", year_col: fiscalyear, sum_col: amount}

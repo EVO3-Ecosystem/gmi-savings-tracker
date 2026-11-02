@@ -151,19 +151,19 @@ measures,measure,text,14,Column name of the dashboard measure,derived
 measures,definition,text,14,What the dashboard measure means,derived
 measures,grouped_by,text,14,Grain the measure is grouped by,derived
 measures,higher_is,text,14,"Whether a higher value is better, worse or neutral",derived
-pipeline_runs,run_id,text,32,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-pipeline_runs,started_utc,text,32,When the run started (UTC),ops
-pipeline_runs,seconds,number,32,Run duration in seconds,ops
-pipeline_runs,status,text,32,Run or source status,ops
-pipeline_runs,published,number,32,True when the run's outputs were published,ops
-pipeline_runs,checks,number,32,Number of checks run,ops
-pipeline_runs,passed,number,32,Checks passed,ops
-pipeline_runs,warnings,number,32,Checks that warned,ops
-pipeline_runs,failed,number,32,Checks that failed,ops
-pipeline_runs,repairs,number,32,Datasets re-downloaded by self-healing,ops
-pipeline_runs,payment_rows,number,32,Payment rows in the run,ops
-pipeline_runs,budget_rows,number,32,Budget rows in the run,ops
-pipeline_runs,mode,text,32,"Run mode (full, freshness reuse, test fault)",ops
+pipeline_runs,run_id,text,33,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+pipeline_runs,started_utc,text,33,When the run started (UTC),ops
+pipeline_runs,seconds,number,33,Run duration in seconds,ops
+pipeline_runs,status,text,33,Run or source status,ops
+pipeline_runs,published,number,33,True when the run's outputs were published,ops
+pipeline_runs,checks,number,33,Number of checks run,ops
+pipeline_runs,passed,number,33,Checks passed,ops
+pipeline_runs,warnings,number,33,Checks that warned,ops
+pipeline_runs,failed,number,33,Checks that failed,ops
+pipeline_runs,repairs,number,33,Datasets re-downloaded by self-healing,ops
+pipeline_runs,payment_rows,number,33,Payment rows in the run,ops
+pipeline_runs,budget_rows,number,33,Budget rows in the run,ops
+pipeline_runs,mode,text,33,"Run mode (full, freshness reuse, test fault)",ops
 run_checks,run_id,text,92,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 run_checks,stage,text,92,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 run_checks,check,text,92,Check description,ops

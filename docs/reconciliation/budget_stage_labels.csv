@@ -1,0 +1,12 @@
+fiscal_year,site_stage,confirmed_stage,source,agrees
+2017,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2018,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2019,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2020,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2021,Budget - Working,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,False
+2022,Budget - Appropriation,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,False
+2023,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2024,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2025,Budget - Actual,Actual,mtp.maryland.gov / operatingbudget.maryland.gov statement; FY2021-FY2022 confirmed against DBM Volume 2,True
+2026,Budget - Working,Working budget,operatingbudget.maryland.gov statement,True
+2027,Budget - Governors Allowance,Legislative appropriation,operatingbudget.maryland.gov statement,False

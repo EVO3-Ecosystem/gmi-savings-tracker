@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-02T17:28Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 02, 2026._
+_Generated 2026-11-02T17:55Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 02, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -1074,7 +1074,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | grouped_by | text | derived | Grain the measure is grouped by |
 | higher_is | text | derived | Whether a higher value is better, worse or neutral |
 
-**pipeline_runs** (32 rows)
+**pipeline_runs** (33 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|

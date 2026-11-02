@@ -7,6 +7,52 @@ A free, local pipeline for Maryland's budget, payments, funding, staffing and gr
 
 Data governance (sources, every table's schema, known source issues, assumptions, change control) is in [docs/data-governance.md](docs/data-governance.md), rebuilt with `make docs`. The plan and reference lists are also in the *Maryland Transparency Data — Dev Wiki* (Roadmap & build plan tab).
 
+## How the pipeline works
+
+```mermaid
+flowchart LR
+  subgraph S[Sources]
+    A[opendata.maryland.gov<br/>SODA API, 5 datasets]
+    W[mtp.maryland.gov<br/>website downloads, 4 datasets]
+    X[BLS · USAspending · Census<br/>DBM Managing for Results PDFs]
+  end
+  A -->|extract.py<br/>paged, retried, self-healing| R[(raw Parquet<br/>per run + manifest)]
+  X -->|enrich.py| R
+  R -->|build.py| D[(DuckDB<br/>raw · ref · core · ops)]
+  F[reference/*.csv<br/>rules and decisions] --> D
+  D -->|checks.py<br/>stop or warn| Q{all stop<br/>checks pass?}
+  Q -->|no| K[keep last good DB]
+  Q -->|yes| M[marts · dashboard CSVs]
+  W -->|reconcile.py| C[reconciliation<br/>by fiscal year]
+  D --> C
+  D -->|governance.py| G[schemas · drift · coverage]
+  D -->|figures.py| P[docs/figures]
+```
+
+### Datasets
+
+Every dataset the Maryland Transparency Portal's [View Data](https://mtp.maryland.gov/#!/view-data) page lists is extracted through the API and checked against the website's own download, year by year (`make reconcile`; results in `docs/reconciliation/`).
+
+| Dataset | Portal ID | API rows | Website download | Years | Match |
+|---|---|---|---|---|---|
+| Operating budget | [yu65-jmmv](https://opendata.maryland.gov/d/yu65-jmmv) | 741,957 | mtp.maryland.gov | FY2017–FY2027 | every year |
+| Funding source | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | 26,178 | budgetsource.maryland.gov | FY2017–FY2027 | every year |
+| Payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | 411,231 | vendorpayments.maryland.gov | FY2008–FY2027 (FY2027 partial) | every year |
+| Grants and loans | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | 23,085 | grantsandloans.maryland.gov | FY2009–FY2025 | every year |
+| Budgeted positions | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | not on View Data | FY2017–FY2027 | API count only |
+
+Counts from the Nov 2, 2026 run. Not extracted: County Board of Education spending ([t6vk-rvwe](https://opendata.maryland.gov/d/t6vk-rvwe)), linked from the portal's menu; it covers county school boards, not State agencies. Full schemas, owners and known source issues are in [docs/data-governance.md](docs/data-governance.md).
+
+![Rows per fiscal year](docs/figures/rows_by_year.png)
+
+![API extract vs website downloads](docs/figures/reconciliation.png)
+
+![Operating budget by stage](docs/figures/budget_by_stage.png)
+
+![Vendor concentration](docs/figures/vendor_concentration.png)
+
+The website's budget download labels FY2021 "Working", FY2022 "Appropriation" and FY2027 "Governor's Allowance". The budget site's own statement and DBM's budget books say FY2021 and FY2022 are actuals and FY2027 is the Legislative Appropriation, so stages come from `reference/budget_stage.csv` (`docs/reconciliation/budget_stage_labels.csv`).
+
 ## Status
 
 | Phase | State | Gate |
@@ -28,6 +74,9 @@ make gate1          # Phase 1 gate: last two runs matched the portal
 make build          # Phase 2: DuckDB layers + checks (non-zero exit on a failed check)
 make all            # extract then build
 make test
+make reconcile      # compare with mtp.maryland.gov downloads (about 750 MB; RECONCILE_FLAGS=--reuse to skip downloading)
+make figures        # docs/figures/*.png from the database
+make docs           # data governance: schemas, coverage, drift
 ```
 
 An app token is optional: copy `.env.example` to `.env` and set `MD_SODA_APP_TOKEN`. Without one, a full download takes about 2.5 minutes; a run where nothing changed takes about 4 seconds.
@@ -76,7 +125,7 @@ Every rule the dashboard pipeline kept in code now lives in a CSV, so each chang
 
 ```
 .github/                 CI, manual extract smoke test, issue and PR templates
-docs/                    roadmap, checks catalog, data sources
+docs/                    roadmap, checks, data sources, data governance, schemas/, reconciliation/, figures/, portfolio-recommendations
 scripts/bootstrap_github.sh  one-time labels, milestones and phase issues
 config/datasets.yaml     dataset IDs, page size, retries, backoff, heal attempts
 reference/               hand-kept CSVs (Phase 3); for now the dashboard pipeline's agency and vendor master lists

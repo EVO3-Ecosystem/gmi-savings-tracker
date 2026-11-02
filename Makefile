@@ -6,6 +6,8 @@ build:    ; $(PY) -m src.pipeline.build
 gate3:    ; $(PY) -m pytest -q tests/test_reference.py
 all:      extract build
 test:     ; $(PY) -m pytest -q tests
+reconcile: ; $(PY) -m src.pipeline.reconcile $(RECONCILE_FLAGS)
+figures:  ; $(PY) -m src.pipeline.figures
 docs:     ; $(PY) -m src.pipeline.governance $(if $(DASH),--dashboard $(DASH))
 docs-strict: ; $(PY) -m src.pipeline.governance --strict $(if $(DASH),--dashboard $(DASH))
-.PHONY: extract extract-full gate1 build gate3 all test docs docs-strict
+.PHONY: extract extract-full gate1 build gate3 all test docs docs-strict reconcile figures
