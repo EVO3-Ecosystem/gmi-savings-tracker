@@ -29,3 +29,7 @@ f_forecast: f_forecast
 d_forecast_model: d_forecast_model
 d_savings: d_savings
 f_savings_check: f_savings_check
+d_vendors: d_vendors
+f_vendor_pay: f_vendor_pay
+f_payee_type: f_payee_type
+f_vendor_year: f_vendor_year

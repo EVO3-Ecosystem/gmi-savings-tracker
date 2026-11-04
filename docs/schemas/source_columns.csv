@@ -1,66 +1,66 @@
 dataset,dataset_id,field_name,display_name,datatype,portal_description,definition
-budget,yu65-jmmv,type,Type,Text,(none),Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead
-budget,yu65-jmmv,organization_code,Organization Code,Text,(none),Portal's combined agency-unit-program code
-budget,yu65-jmmv,organization_sub_code,Organization Sub Code,Text,(none),Portal's combined code including subprogram
-budget,yu65-jmmv,category,Category,Number,(none),Budget function code (renamed function_code in core)
-budget,yu65-jmmv,category_title,Category Title,Text,(none),Budget function title (renamed function_name in core)
-budget,yu65-jmmv,description,Description,Text,(none),Portal description column; not used
-budget,yu65-jmmv,agency_subobject_code,Agency Subobject Code,Text,(none),Agency-specific spending code; not used (Comptroller sub-object is used)
 budget,yu65-jmmv,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"
-budget,yu65-jmmv,program_code,Program Code,Text,(none),"Budget program code, two digits in core"
-budget,yu65-jmmv,agency_code,Agency Code,Text,(none),Three-character State budget agency code (for example D50); the key that joins budget and payments
-budget,yu65-jmmv,agency_name,Agency Name,Text,(none),Agency name as published; in core the code suffix the portal adds in some years is removed
-budget,yu65-jmmv,unit_code,Unit Code,Text,(none),Budget unit code within an agency
-budget,yu65-jmmv,unit_name,Unit Name,Text,(none),Budget unit name
-budget,yu65-jmmv,budget,Budget,Number,(none),Dollars budgeted or spent (actual years) on the row; nominal dollars
-budget,yu65-jmmv,fund_type_name,Fund Type Name,Text,(none),Fund type name as published
+budget,yu65-jmmv,agency_subobject_code,Agency Subobject Code,Text,(none),Agency-specific spending code; not used (Comptroller sub-object is used)
+budget,yu65-jmmv,description,Description,Text,(none),Portal description column; not used
 budget,yu65-jmmv,agency_subobject_name,Agency Subobject Name,Text,(none),Agency-specific spending code name; not used
 budget,yu65-jmmv,comptroller_subobject_name,Comptroller Subobject Name,Text,(none),Comptroller sub-object name; renamed subobject_name in core
 budget,yu65-jmmv,comptroller_subobject_code,Comptroller Subobject Code,Text,(none),Comptroller sub-object (detailed spending) code; renamed subobject_code in core
 budget,yu65-jmmv,object_name,Object Name,Text,(none),Comptroller object name
 budget,yu65-jmmv,object_code,Object Code,Text,(none),"Comptroller object code, two digits (for example 08 Contractual services)"
-budget,yu65-jmmv,subprogram_name,Subprogram Name,Text,(none),Budget subprogram name
 budget,yu65-jmmv,subprogram_code,Subprogram Code,Text,(none),Budget subprogram code
+budget,yu65-jmmv,subprogram_name,Subprogram Name,Text,(none),Budget subprogram name
 budget,yu65-jmmv,program_name,Program Name,Text,(none),Budget program name
-fte,x8qy-486w,unit_name,Unit Name,Text,(none),Budget unit name
-fte,x8qy-486w,program_name,Program Name,Text,(none),Budget program name
-fte,x8qy-486w,program_code,Program Code,Text,(none),"Budget program code, two digits in core"
+budget,yu65-jmmv,unit_name,Unit Name,Text,(none),Budget unit name
+budget,yu65-jmmv,unit_code,Unit Code,Text,(none),Budget unit code within an agency
+budget,yu65-jmmv,agency_name,Agency Name,Text,(none),Agency name as published; in core the code suffix the portal adds in some years is removed
+budget,yu65-jmmv,agency_code,Agency Code,Text,(none),Three-character State budget agency code (for example D50); the key that joins budget and payments
+budget,yu65-jmmv,category,Category,Number,(none),Budget function code (renamed function_code in core)
+budget,yu65-jmmv,organization_sub_code,Organization Sub Code,Text,(none),Portal's combined code including subprogram
+budget,yu65-jmmv,organization_code,Organization Code,Text,(none),Portal's combined agency-unit-program code
+budget,yu65-jmmv,type,Type,Text,(none),Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead
+budget,yu65-jmmv,budget,Budget,Number,(none),Dollars budgeted or spent (actual years) on the row; nominal dollars
+budget,yu65-jmmv,fund_type_name,Fund Type Name,Text,(none),Fund type name as published
+budget,yu65-jmmv,category_title,Category Title,Text,(none),Budget function title (renamed function_name in core)
+budget,yu65-jmmv,program_code,Program Code,Text,(none),"Budget program code, two digits in core"
 fte,x8qy-486w,count,Count,Number,(none),Budgeted full-time-equivalent positions (renamed fte in core)
-fte,x8qy-486w,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"
-fte,x8qy-486w,organization_code,Organization Code,Text,(none),Portal's combined agency-unit-program code
+fte,x8qy-486w,program_name,Program Name,Text,(none),Budget program name
+fte,x8qy-486w,unit_name,Unit Name,Text,(none),Budget unit name
 fte,x8qy-486w,agency_name,Agency Name,Text,(none),Agency name as published; in core the code suffix the portal adds in some years is removed
-fte,x8qy-486w,agency_code,Agency Code,Text,(none),Three-character State budget agency code (for example D50); the key that joins budget and payments
+fte,x8qy-486w,organization_code,Organization Code,Text,(none),Portal's combined agency-unit-program code
+fte,x8qy-486w,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"
+fte,x8qy-486w,program_code,Program Code,Text,(none),"Budget program code, two digits in core"
 fte,x8qy-486w,unit_code,Unit Code,Text,(none),Budget unit code within an agency
+fte,x8qy-486w,agency_code,Agency Code,Text,(none),Three-character State budget agency code (for example D50); the key that joins budget and payments
+fund,gy87-e27x,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"
+fund,gy87-e27x,category,Category,Number,(none),Budget function code (renamed function_code in core)
+fund,gy87-e27x,program_name,Program Name,Text,(none),Budget program name
+fund,gy87-e27x,budget,Budget,Number,(none),Dollars budgeted or spent (actual years) on the row; nominal dollars
 fund,gy87-e27x,program_code,Program Code,Text,(none),"Budget program code, two digits in core"
 fund,gy87-e27x,category_title,Category Title,Text,(none),Budget function title (renamed function_name in core)
-fund,gy87-e27x,organization_code,Organization Code,Text,(none),Portal's combined agency-unit-program code
-fund,gy87-e27x,budget,Budget,Number,(none),Dollars budgeted or spent (actual years) on the row; nominal dollars
-fund,gy87-e27x,fund_source_name,Fund Source Name,Text,(none),Fund source name
-fund,gy87-e27x,fund_source_code,Fund Source Code,Text,(none),Fund source code within a fund type
-fund,gy87-e27x,fund_type_name,Fund Type Name,Text,(none),Fund type name as published
-fund,gy87-e27x,program_name,Program Name,Text,(none),Budget program name
 fund,gy87-e27x,unit_name,Unit Name,Text,(none),Budget unit name
 fund,gy87-e27x,unit_code,Unit Code,Text,(none),Budget unit code within an agency
 fund,gy87-e27x,agency_name,Agency Name,Text,(none),Agency name as published; in core the code suffix the portal adds in some years is removed
 fund,gy87-e27x,agency_code,Agency Code,Text,(none),Three-character State budget agency code (for example D50); the key that joins budget and payments
-fund,gy87-e27x,category,Category,Number,(none),Budget function code (renamed function_code in core)
-fund,gy87-e27x,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"
+fund,gy87-e27x,organization_code,Organization Code,Text,(none),Portal's combined agency-unit-program code
+fund,gy87-e27x,fund_source_name,Fund Source Name,Text,(none),Fund source name
+fund,gy87-e27x,fund_source_code,Fund Source Code,Text,(none),Fund source code within a fund type
+fund,gy87-e27x,fund_type_name,Fund Type Name,Text,(none),Fund type name as published
 fund,gy87-e27x,description,Description,Text,(none),Portal description column; not used
 grants,absk-avps,fiscalyear,Fiscal Year,Number,(none),Fiscal year in the grants dataset (renamed fiscal_year in core)
-grants,absk-avps,date,Date,Calendar date,(none),Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used
-grants,absk-avps,fiscalperiod,Fiscal Period,Number,(none),Accounting period in the grants dataset; not used
-grants,absk-avps,category,Category,Text,(none),Grant or Loan
 grants,absk-avps,description,Description,Text,(none),Grant or loan purpose as written by the grantor
-grants,absk-avps,amount,Amount,Number,(none),"Dollars paid, awarded or reported on the row; nominal dollars"
-grants,absk-avps,zipcode,Zip Code,Text,(none),Grantee ZIP code as published
-grants,absk-avps,grantee,Grantee,Text,(none),Recipient of the grant or loan
-grants,absk-avps,grantor,Grantor,Text,(none),State agency and program awarding the grant or loan
+grants,absk-avps,category,Category,Text,(none),Grant or Loan
 grants,absk-avps,nonprofit,Nonprofit,Text,Whether or not the grantee is a non-profit (503C) entity. ,Y when the portal marks the grantee as a non-profit
-payments,7syw-q4cy,date,Date,Calendar date,(none),Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used
+grants,absk-avps,fiscalperiod,Fiscal Period,Number,(none),Accounting period in the grants dataset; not used
+grants,absk-avps,date,Date,Calendar date,(none),Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used
+grants,absk-avps,grantor,Grantor,Text,(none),State agency and program awarding the grant or loan
+grants,absk-avps,amount,Amount,Number,(none),"Dollars paid, awarded or reported on the row; nominal dollars"
+grants,absk-avps,grantee,Grantee,Text,(none),Recipient of the grant or loan
+grants,absk-avps,zipcode,Zip Code,Text,(none),Grantee ZIP code as published
+payments,7syw-q4cy,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"
 payments,7syw-q4cy,category,Category,Text,(none),Payment category as published by the portal
+payments,7syw-q4cy,date,Date,Calendar date,(none),Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used
+payments,7syw-q4cy,agency_name,Agency Name,Text,(none),Agency name as published; in core the code suffix the portal adds in some years is removed
 payments,7syw-q4cy,fiscal_period,Fiscal Period,Number,(none),Accounting period; the portal fills it with a placeholder value so it is not used
 payments,7syw-q4cy,amount,Amount,Number,(none),"Dollars paid, awarded or reported on the row; nominal dollars"
 payments,7syw-q4cy,vendor_zip,Vendor Zip,Text,(none),Payee ZIP code as published
 payments,7syw-q4cy,vendor_name,Vendor Name,Text,(none),Payee name as published; includes businesses and individuals
-payments,7syw-q4cy,agency_name,Agency Name,Text,(none),Agency name as published; in core the code suffix the portal adds in some years is removed
-payments,7syw-q4cy,fiscal_year,Fiscal Year,Number,(none),"Maryland fiscal year (July 1 to June 30), named for the year it ends"

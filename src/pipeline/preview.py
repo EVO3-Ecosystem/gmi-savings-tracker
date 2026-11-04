@@ -7,6 +7,7 @@ dashboard's filter-combination tests against the exported files (every tab drawn
 then writes data/export/latest/dashboard_preview.html with the data embedded. Exits 1 if any test fails, so a preview
 is only produced from data the dashboard can draw.
 """
+import csv
 import importlib.util
 import sys
 from pathlib import Path
@@ -36,7 +37,13 @@ def main():
     if bad:
         return 1
     out = EXP / "dashboard_preview.html"
-    out.write_text(pt.build_html(tables, {}))
+    man = list(csv.DictReader(open(EXP / "manifest.csv")))
+    n = sum(r["source"] == "mart" for r in man)
+    banner = ('<div style="background:#fff7e0;color:#3a2a00;border-bottom:1px solid #e6c97a;padding:10px 16px;font:14px/1.4 sans-serif">'
+              f"<b>Preview for approval</b>: the GMI Savings Tracker built from the new database pipeline. {n} of {len(man)} data files come from "
+              f"the new marts; {len(man) - n} are carried from the current pipeline until Phase 5. The live dashboard is unchanged.</div>")
+    html = pt.build_html(tables, {}).replace("<meta charset=utf-8>", '<meta charset=utf-8><meta name="viewport" content="width=device-width,initial-scale=1"><title>GMI Tracker Preview</title>', 1)
+    out.write_text(html.replace("<body>", "<body>" + banner, 1))
     print(f"preview: {out} ({out.stat().st_size / 1e6:.1f} MB)")
     return 0
 

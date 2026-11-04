@@ -16,7 +16,7 @@ f_object,7817,7817,0,0,0,,,True,False,reproduced
 f_scope,2484,2484,0,0,0,,,True,False,reproduced
 f_fund,1919,1919,0,0,0,,,True,False,reproduced
 f_code,14744,14744,0,0,0,,,True,False,reproduced
-f_area,6388,6451,0,38,25,,payee_spend (253 rows),False,True,difference explained
+f_area,6388,6425,0,37,0,,payee_spend (253 rows),False,True,difference explained
 f_vendor,4940,5706,0,766,0,,,False,True,difference explained
 f_agency,795,795,0,0,0,,payments (75 rows),False,True,difference explained
 d_agency,82,82,0,0,0,,,True,False,reproduced

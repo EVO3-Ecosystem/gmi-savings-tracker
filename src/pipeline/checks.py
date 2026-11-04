@@ -165,5 +165,12 @@ def phase4(con, check, one):
     tot = sum(types.values())
     check("mart", "Every vendor has a payee type", one("SELECT count(*) FROM mart.vendor_master WHERE payee_type IS NULL") == 0,
           "; ".join(f"{k} {v / tot:.1%}" for k, v in sorted(types.items())) + " of all payment dollars")
+    if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_vendors'"):
+        bad = one("""SELECT count(*) FROM (SELECT vendor, sum(paid) FILTER (WHERE fiscal_year = 2026) s FROM mart.f_vendor_pay GROUP BY 1) f
+            JOIN mart.d_vendors d USING (vendor) WHERE abs(coalesce(f.s, 0) - d.fy2026) > 1""")
+        check("mart", "Vendors tab: vendor pages add up to the vendor list (FY2026)", bad == 0, f"{bad} vendors differ; {one('SELECT count(*) FROM mart.d_vendors'):,} vendors listed")
+        bad = one("""SELECT count(*) FROM (SELECT fiscal_year, sum(amount) s FROM core.fact_payment GROUP BY 1) c
+            FULL JOIN (SELECT fiscal_year, sum(paid) s FROM mart.f_payee_type GROUP BY 1) m USING (fiscal_year) WHERE abs(coalesce(c.s, 0) - coalesce(m.s, 0)) > 1""")
+        check("mart", "Vendors tab: payments by payee type = core payments (every year)", bad == 0, f"{bad} years differ")
     r, m = one("SELECT count(*) FROM mart.agency_results"), one("SELECT count(*) FROM core.mfr_measure WHERE agency_code IS NOT NULL")
     check("mart", "Agency results rows = matched Managing for Results rows", r == m, f"{r:,} of {m:,}")

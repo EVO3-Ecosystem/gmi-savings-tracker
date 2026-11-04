@@ -80,9 +80,21 @@ d_vendor_moves,fy2025,number,40,Payments in FY2025,derived
 d_vendor_moves,fy2026,number,40,Payments in FY2026,derived
 d_vendor_moves,change,number,40,FY2026 minus FY2025 payments,derived
 d_vendor_moves,agencies,number,40,Agencies paying the vendor (or with payments in the year),derived
-d_vendor_names,vendor,text,69,Company name after grouping payee names,derived
-d_vendor_names,payee_name,text,69,One payee name grouped into the vendor,derived
-d_vendor_names,fy2026,number,69,Payments in FY2026,derived
+d_vendor_names,vendor,text,267,Company name after grouping payee names,derived
+d_vendor_names,payee_name,text,267,One payee name grouped into the vendor,derived
+d_vendor_names,fy2026,number,267,Payments in FY2026,derived
+d_vendors,vendor,text,3640,Company name after grouping payee names,derived
+d_vendors,payee_type,text,3640,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
+d_vendors,main_function,text,3640,"Budget function with the most payments to the vendor, all years",derived
+d_vendors,focus_area,text,3640,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
+d_vendors,payee_names,number,3640,Payee names grouped into the vendor,derived
+d_vendors,fy2022,number,3640,Payments in FY2022,derived
+d_vendors,fy2023,number,3640,Payments in FY2023,derived
+d_vendors,fy2024,number,3640,Payments in FY2024,derived
+d_vendors,fy2025,number,3640,Payments in FY2025,derived
+d_vendors,fy2026,number,3640,Payments in FY2026,derived
+d_vendors,agencies_fy2025,number,3640,Agencies that paid the vendor in FY2025,derived
+d_vendors,agencies_fy2026,number,3640,Agencies that paid the vendor in FY2026,derived
 f_agency,agency_code,text,795,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 f_agency,agency,text,795,Agency name shown on the dashboard,derived
 f_agency,fiscal_year,number,795,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
@@ -128,6 +140,12 @@ f_object,agency_code,text,7817,Three-character State budget agency code (for exa
 f_object,object_name,text,7817,Comptroller object name,portal
 f_object,budget,number,7817,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
 f_object,controllable,number,7817,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv",derived
+f_payee_type,fiscal_year,number,5629,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_payee_type,agency_code,text,5629,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_payee_type,payee_type,text,5629,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
+f_payee_type,function_name,text,5629,Budget function title (from the portal's category_title),derived
+f_payee_type,paid,number,5629,Payments in dollars,derived
+f_payee_type,vendors,number,5629,Distinct payees in the year,derived
 f_savings_check,check_id,text,1400,Reported saving whose payments are checked,derived
 f_savings_check,fiscal_year,number,1400,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 f_savings_check,agency_code,text,1400,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -142,33 +160,43 @@ f_vendor,agency_code,text,4940,Three-character State budget agency code (for exa
 f_vendor,area,text,4940,One of GMI's six focus areas,derived
 f_vendor,vendor,text,4940,Company name after grouping payee names,derived
 f_vendor,spend,number,4940,Dollars spent (budget actuals or payments),derived
-f_vendor_detail,vendor,text,3660,Company name after grouping payee names,derived
-f_vendor_detail,agency_code,text,3660,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-f_vendor_detail,fiscal_year,number,3660,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-f_vendor_detail,paid,number,3660,Payments in dollars,derived
+f_vendor_detail,vendor,text,6292,Company name after grouping payee names,derived
+f_vendor_detail,agency_code,text,6292,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_vendor_detail,fiscal_year,number,6292,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_vendor_detail,paid,number,6292,Payments in dollars,derived
+f_vendor_pay,vendor,text,30845,Company name after grouping payee names,derived
+f_vendor_pay,agency_code,text,30845,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_vendor_pay,fiscal_year,number,30845,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_vendor_pay,paid,number,30845,Payments in dollars,derived
+f_vendor_year,fiscal_year,number,19,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_vendor_year,vendors,number,19,Distinct payees in the year,derived
+f_vendor_year,paid_non_government,number,19,Payments to non-government payees in the year,derived
+f_vendor_year,top10_share,number,19,Share of non-government payments held by the 10 largest vendors that year,derived
+f_vendor_year,top100_share,number,19,Share of non-government payments held by the 100 largest vendors that year,derived
+f_vendor_year,vendors_1m,number,19,Non-government vendors paid $1M or more that year,derived
 measures,table,text,14,Dashboard table the measure belongs to,derived
 measures,measure,text,14,Column name of the dashboard measure,derived
 measures,definition,text,14,What the dashboard measure means,derived
 measures,grouped_by,text,14,Grain the measure is grouped by,derived
 measures,higher_is,text,14,"Whether a higher value is better, worse or neutral",derived
-pipeline_runs,run_id,text,33,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-pipeline_runs,started_utc,text,33,When the run started (UTC),ops
-pipeline_runs,seconds,number,33,Run duration in seconds,ops
-pipeline_runs,status,text,33,Run or source status,ops
-pipeline_runs,published,number,33,True when the run's outputs were published,ops
-pipeline_runs,checks,number,33,Number of checks run,ops
-pipeline_runs,passed,number,33,Checks passed,ops
-pipeline_runs,warnings,number,33,Checks that warned,ops
-pipeline_runs,failed,number,33,Checks that failed,ops
-pipeline_runs,repairs,number,33,Datasets re-downloaded by self-healing,ops
-pipeline_runs,payment_rows,number,33,Payment rows in the run,ops
-pipeline_runs,budget_rows,number,33,Budget rows in the run,ops
-pipeline_runs,mode,text,33,"Run mode (full, freshness reuse, test fault)",ops
-run_checks,run_id,text,92,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-run_checks,stage,text,92,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-run_checks,check,text,92,Check description,ops
-run_checks,status,text,92,"pass, warn or fail",ops
-run_checks,detail,text,92,Numbers behind the check result,ops
+pipeline_runs,run_id,text,35,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+pipeline_runs,started_utc,text,35,When the run started (UTC),ops
+pipeline_runs,seconds,number,35,Run duration in seconds,ops
+pipeline_runs,status,text,35,Run or source status,ops
+pipeline_runs,published,number,35,True when the run's outputs were published,ops
+pipeline_runs,checks,number,35,Number of checks run,ops
+pipeline_runs,passed,number,35,Checks passed,ops
+pipeline_runs,warnings,number,35,Checks that warned,ops
+pipeline_runs,failed,number,35,Checks that failed,ops
+pipeline_runs,repairs,number,35,Datasets re-downloaded by self-healing,ops
+pipeline_runs,payment_rows,number,35,Payment rows in the run,ops
+pipeline_runs,budget_rows,number,35,Budget rows in the run,ops
+pipeline_runs,mode,text,35,"Run mode (full, freshness reuse, test fault)",ops
+run_checks,run_id,text,93,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+run_checks,stage,text,93,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+run_checks,check,text,93,Check description,ops
+run_checks,status,text,93,"pass, warn or fail",ops
+run_checks,detail,text,93,Numbers behind the check result,ops
 sources,source,text,5,Short name of the source dataset,derived
 sources,dataset_id,text,5,Portal four-by-four identifier,ops
 sources,title,text,5,Dataset title used on the dashboard,derived

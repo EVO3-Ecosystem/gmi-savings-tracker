@@ -24,6 +24,7 @@ DATASETS = {  # dataset id on the dashboard -> published table
     "f_area": "f_area", "f_vendor": "f_vendor", "f_agency": "f_agency", "d_agency": "d_agency", "totals": "totals_by_fy",
     "sources": "sources", "measures": "measures", "stage_evidence": "stage_evidence", "agency_master": "agency_master",
     "vendor_families": "vendor_families", "runs": "pipeline_runs", "checks": "run_checks", "d_vendor_moves": "d_vendor_moves", "d_opps": "d_opps", "d_bid_list": "d_bid_list", "f_vendor_detail": "f_vendor_detail", "d_vendor_names": "d_vendor_names", "d_savings_status": "d_savings_status", "d_plan50": "d_plan50", "d_master_quality": "d_master_quality", "d_rec_status": "d_rec_status", "f_forecast": "f_forecast", "d_forecast_model": "d_forecast_model", "d_savings": "d_savings", "f_savings_check": "f_savings_check",
+    "d_vendors": "d_vendors", "f_vendor_pay": "f_vendor_pay", "f_payee_type": "f_payee_type", "f_vendor_year": "f_vendor_year",
 }
 AREAS = ['IT hardware, software & services', 'Fleet & fuel', 'Utilities & facility energy', 'Real estate & leases', 'Print, copy & mail', 'Telecom']
 
@@ -45,7 +46,10 @@ window.addEventListener('load',run);</script>"""
 def combos(latest=2025):
     y = latest
     return [
-        ("default (all actual years)", {}, ["over", "areas", "track", "opp", "calc", "agency", "budget"]),
+        ("default (all actual years)", {}, ["over", "areas", "track", "opp", "calc", "vend", "agency", "budget"]),
+        ("vendors, one agency and one year", {"agencies": ["__TOP1__"], "years": [y]}, ["vend", "detail:vendor:Verizon"]),
+        ("vendors, one area, budget years", {"areas": ["Telecom"], "stage": "budget"}, ["vend"]),
+        ("vendor page outside the bid list", {}, ["detail:vendor:Depository Trust", "detail:vendor:Wellpoint Maryland"]),
         ("opportunities, one agency and area", {"agencies": ["__TOP1__"], "areas": ["IT hardware, software & services"]}, ["opp", "calc"]),
         ("savings check, one agency", {"agencies": ["__TOP1__"], "years": [2026]}, ["track"]),
         ("savings check, budgets only", {"stage": "budget"}, ["track"]),
@@ -85,7 +89,7 @@ def build_html(tables, params):
 PROBE = """(tab) => {
   const G = window.__gst; const p = G.prm(); const ok = G.ok; const out = {params: p, issues: []};
   const vis = [...document.querySelectorAll('.gs .panel')].filter(e => !e.hidden).map(e => e.innerText).join('\\n') + document.getElementById('chips').innerText;
-  if (/\\bNaN\\b|undefined|Infinity/.test(vis)) out.issues.push('NaN/undefined on screen');
+  if (/\\bNaN\\b|undefined|\\bInfinity\\b(?! [A-Z])/.test(vis))  /* 'Infinity Health Care' is a vendor name */ out.issues.push('NaN/undefined on screen');
   const sc = document.getElementById('selfcheck'); if (sc && /do not reconcile/.test(sc.textContent)) out.issues.push(sc.textContent);
   const rc = G.reconcile(p); if (!rc.ok) out.issues.push(rc.msg);
   // agencies add up to the state (operating spending), for the selected years

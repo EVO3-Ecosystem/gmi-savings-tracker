@@ -281,3 +281,13 @@ payee_spend,area_year,derived,Payments to payees assigned to the focus area by p
 vendor_name,mart.payment_area,portal,Payee name as published
 passthrough,mart.payment_area,derived,"True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed"
 agency_name_pattern,ref.payee_area_exclusions,reference,Regular expression on the paying agency name; blank for any agency
+main_function,d_vendors,derived,"Budget function with the most payments to the vendor, all years"
+payee_names,d_vendors,derived,Payee names grouped into the vendor
+fy2022,,derived,Payments in FY2022
+fy2023,,derived,Payments in FY2023
+agencies_fy2025,d_vendors,derived,Agencies that paid the vendor in FY2025
+agencies_fy2026,d_vendors,derived,Agencies that paid the vendor in FY2026
+paid_non_government,f_vendor_year,derived,Payments to non-government payees in the year
+top10_share,f_vendor_year,derived,Share of non-government payments held by the 10 largest vendors that year
+top100_share,f_vendor_year,derived,Share of non-government payments held by the 100 largest vendors that year
+vendors_1m,f_vendor_year,derived,Non-government vendors paid $1M or more that year
