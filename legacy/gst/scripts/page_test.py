@@ -71,7 +71,7 @@ def combos(latest=2025):
         ("detail: agency page", {}, ["detail:agency:__TOP1__"]),
         ("detail: payments by area", {"areas": ["Telecom"]}, ["detail:payments"]),
         ("detail: funds", {"years": [2020, 2021]}, ["detail:funds"]),
-        ("opportunity pages", {}, ["opp", "detail:bid", "detail:opps", "detail:det:Peer gap", "detail:det:Leverage", "detail:vendor:Carahsoft"]),
+        ("opportunity pages", {}, ["opp", "detail:bid", "detail:opps", "detail:det:Peer gap", "detail:det:Leverage", "detail:vendor:Carahsoft", "detail:vendor:Verizon", "detail:vendor:Apple Ford", "detail:area:Telecom"]),
         ("calculator source pages", {}, ["calc", "detail:src:area:Telecom", "detail:src:area:Other controllable purchases", "detail:src:fee"]),
     ]
 

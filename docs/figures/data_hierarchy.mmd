@@ -1,0 +1,50 @@
+flowchart TB
+  classDef have fill:#e8f1fc,stroke:#2a78d6,color:#0b0b0b
+  classDef gap fill:#fdeee8,stroke:#eb6834,color:#0b0b0b,stroke-dasharray:5 3
+  classDef join fill:#e7f7f0,stroke:#1baf7a,color:#0b0b0b,stroke-width:2px
+
+  subgraph BUD[Budget: what is bought]
+    direction TB
+    B1["Budget line<br/>FY × agency × unit × program × subprogram<br/>× sub-object × fund type<br/>741,957 lines · core.fact_budget_scope"]:::have
+    B2["Sub-object (spending code, 377)<br/>→ focus area · scope · controllable"]:::have
+    B3["Program → Unit"]:::have
+    B1 --> B2
+    B1 --> B3
+  end
+
+  subgraph PAY[Payments: who is paid]
+    direction TB
+    P1["Payment line<br/>FY × agency name × payee × ZIP<br/>a yearly total, not a transaction<br/>411,231 lines · mart.payment_area"]:::have
+    P2["Vendor (company), 56,590<br/>ref.map_payee_vendor · payee type"]:::have
+    P3["Vendor × agency × year<br/>mart.vendor_agency_year"]:::have
+    P4["Vendor master<br/>mart.vendor_master"]:::have
+    P1 -->|"every line: 411,231 of 411,231"| P2 --> P3 --> P4
+  end
+
+  subgraph OTH[Other datasets]
+    direction TB
+    FS["Funding source<br/>core.fact_fund"]:::have
+    FT["Positions<br/>agency × unit × program"]:::have
+    GR["Grants and loans<br/>core.fact_grant"]:::have
+  end
+
+  A["Agency × fiscal year<br/>the only key budget and payments share<br/>mart.agency_rollup"]:::join
+  F["Function (12)<br/>each agency sits in exactly one"]:::join
+  R["Results<br/>Managing for Results measures<br/>mart.agency_results"]:::have
+
+  B3 --> A
+  P1 -->|"ref.map_payment_agency<br/>411,060 of 411,231 lines"| A
+  FS --> A
+  FT --> A
+  A --> F
+  A --> R
+  B2 -.->|"bridge for the 6 focus areas only<br/>(payee-name rules)"| P2
+
+  G1["Gap 1 · Payments carry no program or<br/>spending code: a budget line can't be<br/>tied to a vendor (State data limit)"]:::gap
+  G2["Gap 2 · 171 payment lines, $749.3M, no agency<br/>(mostly Maryland Health Insurance Plan,<br/>FY2010–FY2017): decision pending"]:::gap
+  G3["Gap 3 · core.fact_fund keeps only the agency;<br/>the raw file has unit and program (fixable)"]:::gap
+  G4["Gap 4 · Grants name a program in text;<br/>128 of 1,106 match a budget program name"]:::gap
+  P1 -.- G1
+  P1 -.- G2
+  FS -.- G3
+  GR -.- G4

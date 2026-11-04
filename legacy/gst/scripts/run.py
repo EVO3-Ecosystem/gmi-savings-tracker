@@ -196,7 +196,12 @@ def main():
     _ops = Rc._ops(pm); _names = pub["agency_year"].groupby("agency_code").agency.last()
     pub["d_bid_list"] = Rc.bid_list(_ops, _names)
     _lev = pub["d_opps"].loc[pub["d_opps"].detector == "Leverage", "spending_code"].tolist() if "d_opps" in pub else []
-    pub["f_vendor_detail"], pub["d_vendor_names"] = Rc.vendor_detail(_ops, list(pub["d_bid_list"].vendor) + _lev)
+    _bidv = list(pub["d_bid_list"].vendor) + _lev
+    _f1, _n1 = Rc.vendor_detail(_ops, _bidv)  # bid-list vendors: same basis as the bid list
+    _rest = sorted(set(pub["f_vendor"].vendor) - {v.upper() for v in _f1.vendor.str.upper()})
+    _all = pm.assign(vendor=pm.family.fillna(pm.vendor_name).astype(str))
+    _f2, _n2 = Rc.vendor_detail(_all, _rest)  # every other vendor on an area page: all its payments
+    pub["f_vendor_detail"], pub["d_vendor_names"] = pd.concat([_f1, _f2], ignore_index=True), pd.concat([_n1, _n2], ignore_index=True)
     pub["d_savings_status"] = Rc.recurrence(pub["d_savings"], pub["f_savings_check"], RUN.run_id, MODEL / "savings_status_history.csv")
     pub["d_plan50"] = Rc.plan50(pub["d_forecast_model"], pub["f_forecast"], pub["d_bid_list"])
     pub["d_master_quality"], _matched = Rc.master_quality(pm, am, vm, MODEL / "payee_names_prev.txt")
@@ -210,6 +215,8 @@ def main():
     _ds = pub["d_savings"]
     RUN.check("recs", "Every reported savings item cites its source and page", bool((_ds.source_url.str.startswith("https://") & (_ds.source_page.str.len() > 0) & (_ds.source_quote.str.len() > 0)).all()),
               f"{len(_ds)} items; sources: " + "; ".join(sorted(_ds.source.unique())))
+    _miss = set(pub["f_vendor"].vendor.str.upper()) - set(pub["f_vendor_detail"].vendor.str.upper())
+    RUN.check("recs", "Every vendor on an area page has its own drill-down page", not _miss, f"{pub['f_vendor'].vendor.nunique()} vendors" + (f"; missing: {sorted(_miss)[:5]}" if _miss else ""))
     RUN.check("recs", "Named contract types checked against payments", pub["d_savings_status"].check_id.isin(["S02", "S03", "S04", "S05"]).sum() == 4, pub["d_rec_status"].progress[2])
     RUN.check("recs", "Path to $50M adds up", abs(pub["d_plan50"].saving.sum() - pub["d_plan50"].cumulative.iloc[-1]) < 1, pub["d_rec_status"].progress[3])
     RUN.check("recs", "Payments match the agency master list", _matched >= .99, f"{_matched:.2%} of FY2026 payments matched")
