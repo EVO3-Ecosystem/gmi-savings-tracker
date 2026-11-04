@@ -25,6 +25,7 @@ DATASETS = {  # dataset id on the dashboard -> published table
     "sources": "sources", "measures": "measures", "stage_evidence": "stage_evidence", "agency_master": "agency_master",
     "vendor_families": "vendor_families", "runs": "pipeline_runs", "checks": "run_checks", "d_vendor_moves": "d_vendor_moves", "d_opps": "d_opps", "d_bid_list": "d_bid_list", "f_vendor_detail": "f_vendor_detail", "d_vendor_names": "d_vendor_names", "d_savings_status": "d_savings_status", "d_plan50": "d_plan50", "d_master_quality": "d_master_quality", "d_rec_status": "d_rec_status", "f_forecast": "f_forecast", "d_forecast_model": "d_forecast_model", "d_savings": "d_savings", "f_savings_check": "f_savings_check",
     "d_vendors": "d_vendors", "f_vendor_pay": "f_vendor_pay", "f_payee_type": "f_payee_type", "f_vendor_year": "f_vendor_year",
+    "d_multi": "d_multi", "f_concentration": "f_concentration", "d_area_top": "d_area_top", "d_families": "d_families", "d_multi_basis": "d_multi_basis",
 }
 AREAS = ['IT hardware, software & services', 'Fleet & fuel', 'Utilities & facility energy', 'Real estate & leases', 'Print, copy & mail', 'Telecom']
 
@@ -49,6 +50,7 @@ def combos(latest=2025):
         ("default (all actual years)", {}, ["over", "areas", "track", "opp", "calc", "vend", "agency", "budget"]),
         ("vendors, one agency and one year", {"agencies": ["__TOP1__"], "years": [y]}, ["vend", "detail:vendor:Verizon"]),
         ("vendors, one area, budget years", {"areas": ["Telecom"], "stage": "budget"}, ["vend"]),
+        ("vendors, FY2023 and two areas", {"years": [2023], "areas": ["Fleet & fuel", "Telecom"]}, ["vend", "detail:vendor:Element Fleet"]),
         ("vendor page outside the bid list", {}, ["detail:vendor:Depository Trust", "detail:vendor:Wellpoint Maryland"]),
         ("opportunities, one agency and area", {"agencies": ["__TOP1__"], "areas": ["IT hardware, software & services"]}, ["opp", "calc"]),
         ("savings check, one agency", {"agencies": ["__TOP1__"], "years": [2026]}, ["track"]),

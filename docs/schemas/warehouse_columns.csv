@@ -231,6 +231,30 @@ mart.budget_by_object,controllable_yoy,DOUBLE,147,"Change in controllable from t
 mart.budget_by_object,stage_pair,VARCHAR,147,"Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual'",derived
 mart.d_agency,agency_code,VARCHAR,82,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 mart.d_agency,agency,VARCHAR,82,Agency name shown on the dashboard,derived
+mart.d_area_top,fiscal_year,INTEGER,175,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.d_area_top,area,VARCHAR,175,One of GMI's six focus areas,derived
+mart.d_area_top,vendor,VARCHAR,175,Company name after grouping payee names,derived
+mart.d_area_top,agencies,BIGINT,175,Agencies paying the vendor (or with payments in the year),derived
+mart.d_area_top,spend,DOUBLE,175,Dollars spent (budget actuals or payments),derived
+mart.d_area_top,rank,BIGINT,175,Rank of the vendor within its area and year by spend,derived
+mart.d_families,fiscal_year,INTEGER,1257,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.d_families,family,VARCHAR,1257,Company that several payee names belong to,reference
+mart.d_families,payee_name,VARCHAR,1257,One payee name grouped into the vendor,derived
+mart.d_families,agencies,BIGINT,1257,Agencies paying the vendor (or with payments in the year),derived
+mart.d_families,spend,DOUBLE,1257,Dollars spent (budget actuals or payments),derived
+mart.d_multi,fiscal_year,INTEGER,216,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.d_multi,vendor,VARCHAR,216,Company name after grouping payee names,derived
+mart.d_multi,area,VARCHAR,216,One of GMI's six focus areas,derived
+mart.d_multi,agencies,BIGINT,216,Agencies paying the vendor (or with payments in the year),derived
+mart.d_multi,spend,DOUBLE,216,Dollars spent (budget actuals or payments),derived
+mart.d_multi,payee_names,BIGINT,216,Payee names grouped into the vendor,derived
+mart.d_multi,agency_codes,VARCHAR,216,Budget agency codes that paid the vendor that year (comma-separated),derived
+mart.d_multi,agencies_prior,BIGINT,216,Agencies that paid the vendor the year before,derived
+mart.d_multi,spend_prior,DOUBLE,216,Spend with the vendor the year before,derived
+mart.d_multi_basis,fiscal_year,INTEGER,10,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.d_multi_basis,basis,VARCHAR,10,Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens),derived
+mart.d_multi_basis,vendors,BIGINT,10,Distinct payees in the year,derived
+mart.d_multi_basis,spend,DOUBLE,10,Dollars spent (budget actuals or payments),derived
 mart.d_vendors,vendor,VARCHAR,3640,Company name after grouping payee names,derived
 mart.d_vendors,payee_type,VARCHAR,3640,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
 mart.d_vendors,main_function,VARCHAR,3640,"Budget function with the most payments to the vendor, all years",derived
@@ -264,6 +288,12 @@ mart.f_code,area,VARCHAR,14744,One of GMI's six focus areas,derived
 mart.f_code,code,VARCHAR,14744,Comptroller sub-object code,derived
 mart.f_code,spending_code,VARCHAR,14744,Comptroller sub-object name (with code) shown on the dashboard,derived
 mart.f_code,spend,DOUBLE,14744,Dollars spent (budget actuals or payments),derived
+mart.f_concentration,fiscal_year,INTEGER,114,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.f_concentration,area,VARCHAR,114,One of GMI's six focus areas,derived
+mart.f_concentration,vendors,BIGINT,114,Distinct payees in the year,derived
+mart.f_concentration,spend,DOUBLE,114,Dollars spent (budget actuals or payments),derived
+mart.f_concentration,top5_share,DOUBLE,114,Share of the area's private-vendor spend held by its five largest vendors,derived
+mart.f_concentration,hhi,DOUBLE,114,"Herfindahl-Hirschman Index: sum of squared percentage shares of spend (0-10,000; above 1,800 is highly concentrated under the 2023 DOJ/FTC Merger Guidelines)",derived
 mart.f_function,fiscal_year,INTEGER,795,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.f_function,stage,VARCHAR,795,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 mart.f_function,agency_code,VARCHAR,795,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -280,12 +310,12 @@ mart.f_object,agency_code,VARCHAR,7817,Three-character State budget agency code 
 mart.f_object,object_name,VARCHAR,7817,Comptroller object name,portal
 mart.f_object,budget,DOUBLE,7817,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
 mart.f_object,controllable,DOUBLE,7817,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv",derived
-mart.f_payee_type,fiscal_year,INTEGER,5942,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-mart.f_payee_type,agency_code,VARCHAR,5942,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-mart.f_payee_type,payee_type,VARCHAR,5942,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
-mart.f_payee_type,function_name,VARCHAR,5942,Budget function title (from the portal's category_title),derived
-mart.f_payee_type,paid,DOUBLE,5942,Payments in dollars,derived
-mart.f_payee_type,vendors,BIGINT,5942,Distinct payees in the year,derived
+mart.f_payee_type,fiscal_year,INTEGER,5924,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.f_payee_type,agency_code,VARCHAR,5924,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.f_payee_type,payee_type,VARCHAR,5924,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
+mart.f_payee_type,function_name,VARCHAR,5924,Budget function title (from the portal's category_title),derived
+mart.f_payee_type,paid,DOUBLE,5924,Payments in dollars,derived
+mart.f_payee_type,vendors,BIGINT,5924,Distinct payees in the year,derived
 mart.f_scope,fiscal_year,INTEGER,2484,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.f_scope,stage,VARCHAR,2484,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 mart.f_scope,agency_code,VARCHAR,2484,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -329,6 +359,12 @@ mart.totals_by_fy,agencies,BIGINT,20,Agencies paying the vendor (or with payment
 mart.totals_by_fy,vendors,BIGINT,20,Distinct payees in the year,derived
 mart.totals_by_fy,total_payments_prior,DOUBLE,20,All payments in the previous fiscal year,derived
 mart.totals_by_fy,total_payments_yoy,DOUBLE,20,Change in total payments from the previous fiscal year (share),derived
+mart.v_purchase,fiscal_year,INTEGER,341180,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.v_purchase,agency_code,VARCHAR,341180,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.v_purchase,vendor,VARCHAR,341180,Company name after grouping payee names,derived
+mart.v_purchase,vendor_name,VARCHAR,341180,Payee name as published,portal
+mart.v_purchase,area,VARCHAR,341180,"Payee-name focus area, or 'Other goods & services'",derived
+mart.v_purchase,amount,DOUBLE,341180,"Dollars paid, awarded or reported on the row; nominal dollars",portal
 mart.vendor_agency_year,vendor,VARCHAR,387361,Company name after grouping payee names,derived
 mart.vendor_agency_year,payee_type,VARCHAR,387361,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
 mart.vendor_agency_year,agency_code,VARCHAR,387361,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -362,12 +398,12 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_result,run_id,VARCHAR,50,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,50,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,50,Check description,ops
-ops.check_result,severity,VARCHAR,50,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,50,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,50,Numbers behind the check result,ops
+ops.check_result,run_id,VARCHAR,55,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,55,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,55,Check description,ops
+ops.check_result,severity,VARCHAR,55,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,55,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,55,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
@@ -488,10 +524,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,282,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,282,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,282,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,282,What the column means,reference
+ref.column_dictionary,column,VARCHAR,292,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,292,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,292,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,292,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference

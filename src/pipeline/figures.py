@@ -110,6 +110,27 @@ def vendor_concentration(con):
          "Payee names grouped into companies by reference/vendor_normalization.csv and vendor_families.csv; government payees excluded.")
 
 
+def concentration(con):
+    d = con.execute("SELECT fiscal_year, area, hhi FROM mart.f_concentration ORDER BY area, fiscal_year").df()
+    areas = d.groupby("area").hhi.last().sort_values(ascending=False).index
+    fig, axs = plt.subplots(1, len(areas), figsize=(15, 3.1), sharey=True)
+    for ax, a in zip(axs, areas):
+        g = d[d.area == a]
+        last = g.iloc[-1]
+        c = C[0] if last.hhi >= 1800 else MUTED
+        ax.axhline(1800, color=MUTED, lw=1, ls=(0, (3, 3)))
+        ax.plot(g.fiscal_year, g.hhi, color=c, lw=2)
+        ax.scatter([last.fiscal_year], [last.hhi], s=30, color=c, zorder=3)
+        ax.set_title(f"{a}\nHHI {last.hhi:,.0f} in FY{int(last.fiscal_year)}", loc="left", fontsize=9.5)
+        ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator([2008, 2017, 2026]))
+        ax.xaxis.set_major_formatter(lambda v, _: f"FY{int(v) % 100:02d}")
+    axs[0].set_ylabel("HHI")
+    axs[0].yaxis.set_major_formatter(lambda v, _: f"{v:,.0f}")
+    axs[0].text(2008.3, 1880, "1,800: highly concentrated", fontsize=8, color=MUTED)
+    save(fig, "vendor_concentration_hhi.png", "Buying in four of six focus areas is highly concentrated",
+         "Herfindahl-Hirschman Index of private-vendor spend per focus area, FY2008-FY2026 (mart.f_concentration). Threshold from the 2023 U.S. DOJ/FTC Merger Guidelines.")
+
+
 def check_history():
     h = pd.read_csv(ROOT / "data" / "check_history.csv")
     if h.run_id.nunique() < 3:  # one or two builds make a poor chart; the table in docs/checks.md covers it
@@ -133,6 +154,7 @@ def main():
     rows_by_year(con)
     budget_by_stage(con)
     vendor_concentration(con)
+    concentration(con)
     con.close()
     if (ROOT / "docs" / "reconciliation" / "by_year.csv").exists():
         reconciliation()

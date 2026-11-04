@@ -50,11 +50,12 @@
 .gs .insight{font-size:var(--cds-font-size-body);line-height:1.45;margin:0 0 var(--cds-gap-sm);max-width:92ch}
 .gs ul.ins{margin:0;padding-left:1.1rem;display:grid;gap:6px;font-size:var(--cds-font-size-body);line-height:1.45}
 .gs .chart{position:relative;min-height:280px}
+.gs .sm{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:var(--cds-gap-md)}.gs .sm .cell{min-width:0;position:relative;border-radius:var(--cds-radius);padding:var(--cds-pad-xs)}.gs .sm .cell:hover,.gs .sm .cell:focus-visible{background:var(--color-bg);outline:none}.gs .sm .cell b{display:block;font-size:var(--cds-font-size-caption);font-weight:var(--cds-font-weight-medium)}.gs .sm .cell span{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}.gs .sm .plot{position:relative;height:96px}.gs .insight{font-size:var(--cds-font-size-body);line-height:1.45;margin:0 0 var(--cds-gap-sm)}.gs details.card>summary{cursor:pointer;list-style:none}.gs details.card>summary::before{content:'▸ ';color:var(--color-fg-muted)}.gs details.card[open]>summary::before{content:'▾ '}
 .gs .tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);white-space:nowrap;z-index:5}
 .gs .tip .t{color:var(--cds-text-secondary)}
 .gs .legend{display:flex;flex-wrap:wrap;gap:4px var(--cds-gap-md);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-bottom:var(--cds-gap-sm)}
 .gs .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
-.gs .tbl{max-height:28rem;overflow:auto}
+.gs .tbl{max-height:28rem;overflow:auto}#p-vend .tbl table{min-width:34rem}#p-vend .tbl td{white-space:nowrap}#p-vend .tbl td:first-child,#p-vend .tbl th:first-child{position:sticky;left:0;background:var(--color-panel)}
 .gs table{border-collapse:collapse;width:100%;font-size:var(--cds-font-size-caption);font-variant-numeric:tabular-nums}
 .gs th{position:sticky;top:0;background:var(--color-panel);text-align:left;font-weight:var(--cds-font-weight-medium);color:var(--color-fg-muted);padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);cursor:pointer;user-select:none;white-space:nowrap}
 .gs th[aria-sort=ascending]::after{content:" ↑"}
@@ -314,37 +315,65 @@
 
   <!-- VENDORS -->
   <section class="panel" id="p-vend" role="tabpanel" aria-labelledby="t-vend" hidden>
-    <p class="lede" id="vLede" data-source="d_vendors f_vendor_year">—</p>
+    <p class="lede" id="vLede" data-source="d_multi f_concentration">—</p>
     <div class="tiles">
-      <div class="tile"><span class="k" id="vkN">Vendors paid</span><span class="v" id="vvN" data-source="f_vendor_year">—</span><span class="d chg" id="vdN">—</span><span class="d" id="vsN"></span></div>
-      <div class="tile"><span class="k">Paid to vendors</span><span class="v" id="vvP" data-source="f_payee_type">—</span><span class="d chg" id="vdP">—</span><span class="d" id="vsP"></span></div>
-      <div class="tile"><span class="k">Share held by the top 10</span><span class="v" id="vvT" data-source="f_vendor_year">—</span><span class="d" id="vsT"></span></div>
-      <div class="tile"><span class="k">Vendors paid by 10+ agencies</span><span class="v" id="vvM" data-source="d_vendors">—</span><span class="d" id="vsM"></span></div>
+      <div class="tile"><span class="k" id="vkN">Private vendors paid</span><span class="v" id="vvN" data-source="f_concentration d_multi">—</span><span class="d chg" id="vdN">—</span><span class="d" id="vsN"></span></div>
+      <div class="tile"><span class="k" id="vkM">Paid separately by 15+ agencies</span><span class="v" id="vvM" data-source="d_multi">—</span><span class="d chg" id="vdM">—</span><span class="d" id="vsM"></span></div>
+      <div class="tile"><span class="k">Highly concentrated focus areas</span><span class="v" id="vvH" data-source="f_concentration">—</span><span class="d" id="vsH"></span></div>
+      <div class="tile"><span class="k">Companies paid under 2+ names</span><span class="v" id="vvF" data-source="d_families">—</span><span class="d" id="vsF"></span></div>
+    </div>
+    <div class="card">
+      <div class="hd"><h2 id="vmH">One vendor, dozens of buyers</h2></div>
+      <p class="note" id="vmNote">Private vendors paid separately by 15 or more agencies: each a candidate for one statewide contract. Click a column to sort, a row for the vendor's page.</p>
+      <p class="insight" id="vmIns"></p>
+      <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><span class="lab">Area <select id="vAreaSel" aria-label="Area"><option value="">All areas</option></select></span>
+        <span class="lab">Search <input type="search" id="vQ" placeholder="Vendor name" aria-label="Search vendors"></span><span id="vCount"></span></div>
+      <div class="tbl"><table data-source="d_multi" data-row-key="vendor">
+        <thead><tr><th data-field="vendor">Vendor</th><th data-field="area">Area</th><th class="n" data-field="agencies">Agencies</th><th class="n" title="Change in agencies paying, from the year before">± agencies</th><th class="n" data-field="spend">Spend</th><th class="n" title="Change in spend, from the year before">± spend</th><th class="n" data-field="payee_names">Payee names</th></tr></thead>
+        <tbody id="vBody"></tbody></table></div>
+      <p class="stagenote" id="vmStage"></p>
     </div>
     <div class="grid">
       <div class="card">
-        <div class="hd"><h2 id="vtH">All payments by who was paid</h2></div>
-        <p class="note" id="vtNote">Every payment in the state's payments data, by payee type. Click a year to add or remove it.</p>
-        <div class="legend" id="vtLegend"></div>
-        <div class="chart" id="vtChart" data-source="f_payee_type"></div>
+        <div class="hd"><h2 id="vcH">How concentrated is each area?</h2></div>
+        <p class="note">Bar: share of the area's spend held by its five largest vendors. Herfindahl-Hirschman Index (HHI, 0–10,000): above 1,800 counts as highly concentrated under the 2023 U.S. DOJ/FTC Merger Guidelines. Concentrated areas call for tougher negotiation with a few suppliers; spread-out areas call for consolidating many small contracts.</p>
+        <p class="insight" id="vcIns"></p>
+        <div class="chart" id="vcChart" data-source="f_concentration" style="min-height:250px"></div>
       </div>
       <div class="card">
-        <div class="hd"><h2 id="vbH">Largest vendors</h2></div>
-        <p class="note" id="vbNote">Click a vendor for its page.</p>
-        <div class="chart" id="vbChart" data-source="d_vendors f_vendor_pay"></div>
+        <div class="hd"><h2 id="vtrH">Concentration over time</h2></div>
+        <p class="note">HHI by area, FY2008 to the selected year; the dashed line is the 1,800 threshold. Click an area's chart to filter by it.</p>
+        <div class="sm" id="vcTrend" data-source="f_concentration"></div>
       </div>
     </div>
-    <div class="card"><h3>What the data shows</h3><ul class="ins" id="vIns"></ul></div>
-    <div class="card">
-      <div class="hd"><h2 id="vlH">Every vendor paid $1M or more in a year</h2></div>
-      <p class="note">Non-government payees paid at least $1M in some year from FY2022 to FY2026, with payee names grouped into companies. Payee type follows the State's grants data and published name rules (Data &amp; pipeline tab); focus area is by payee name. Click a row for the vendor's page.</p>
-      <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><span class="lab">Search <input type="search" id="vQ" placeholder="Vendor name" aria-label="Search vendors"></span>
-        <span class="lab">Payee type <select id="vType" aria-label="Payee type"><option value="">All types</option></select></span><span id="vCount"></span></div>
+    <div class="grid">
+      <div class="card">
+        <div class="hd"><h2 id="vaH">Largest vendors in each area</h2></div>
+        <p class="note">The six largest private vendors per area; follows the Area choice above. Click a row for the vendor's page.</p>
+        <div class="tbl"><table data-source="d_area_top" data-row-key="area,vendor">
+          <thead><tr><th data-field="area">Area</th><th data-field="vendor">Vendor</th><th class="n" data-field="agencies">Agencies</th><th class="n" data-field="spend">Spend</th><th class="n">Share of area</th></tr></thead>
+          <tbody id="vaBody"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h2 id="vcfH">One company, many payee records</h2></div>
+        <p class="note" id="vcfNote">The same company paid under several names splits its spend in reports and hides its buying power. Largest companies first; search for any.</p>
+        <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><span class="lab">Search <input type="search" id="vcfQ" placeholder="Company or payee name" aria-label="Search companies"></span><span id="vcfCount"></span></div>
+        <div class="tbl"><table data-source="d_families" data-row-key="family,payee_name">
+          <thead><tr><th data-field="family">Company</th><th data-field="payee_name">Payee name in the data</th><th class="n" data-field="agencies">Agencies</th><th class="n" data-field="spend">Spend</th></tr></thead>
+          <tbody id="vcfBody"></tbody></table></div>
+      </div>
+    </div>
+    <div class="card"><h3>What the data shows, and what to do</h3><ul class="ins" id="vIns"></ul></div>
+    <details class="card" id="vLedger"><summary><b>Full vendor ledger</b>: every payee by type since FY2008, and every vendor paid $1M or more in a year since FY2022</summary>
+      <div class="grid" style="margin-top:var(--cds-gap-md)">
+        <div><h3 id="vtH">All payments by who was paid</h3><p class="note" id="vtNote">Every payment in the state's payments data, by payee type.</p><div class="legend" id="vtLegend"></div><div class="chart" id="vtChart" data-source="f_payee_type"></div></div>
+        <div><h3 id="vbH">Largest payees</h3><p class="note" id="vbNote"></p><div class="chart" id="vbChart" data-source="d_vendors f_vendor_pay"></div></div>
+      </div>
+      <div class="filters" style="padding:var(--cds-gap-sm) 0"><span class="lab">Payee type <select id="vType" aria-label="Payee type"><option value="">All non-government types</option></select></span><span class="lab">Search <input type="search" id="vlQ" placeholder="Vendor name" aria-label="Search the ledger"></span><span id="vlCount"></span></div>
       <div class="tbl"><table data-source="d_vendors f_vendor_pay" data-row-key="vendor">
         <thead><tr><th data-field="vendor">Vendor</th><th data-field="payee_type">Type</th><th data-field="main_function">Main function</th><th class="n">Paid</th><th class="n">Change</th><th class="n">Agencies</th><th class="n" data-field="payee_names">Payee names</th></tr></thead>
-        <tbody id="vBody"></tbody></table></div>
-      <p class="stagenote" id="vStage"></p>
-    </div>
+        <tbody id="vlBody"></tbody></table></div>
+    </details>
   </section>
 
   <!-- BUDGET -->
@@ -814,63 +843,121 @@ function drawAgency(p){
     {bar:'per', click:r => openDetail('agency:' + r.agency_code), sel:r => p.agencies.includes(r.agency_code)});
   setText('agStage', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}; per position = spending ÷ position-years, shown per year. Change compares ${prevYs.length ? 'with ' + fyLabel(prevYs) : ends ? `FY${ys[ys.length-1]} with FY${ys[0]}` : 'with nothing: no earlier year in the data'}.` + (ys.some(isBudgetYear) ? ' Includes budget years.' : '') + ' For costs, ▲ red means they rose and ▼ green means they fell.');
 }
-const TITLE = s => String(s).toLowerCase().replace(/(^|[^a-z'])([a-z])/g, (m, a, b) => a + b.toUpperCase());
+const TITLE = s => String(s).toLowerCase().replace(/(^|[^a-z'])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Of|And|For|The|To|On)\b/g, w => w.toLowerCase()).replace(/^./, c => c.toUpperCase()).replace(/\b(Mco|Shi|Cdw|Ibm|Bge|Ups|Dhl|Llc|Wex|Md|Wgl|Dsr|Crc|Wssc|Usa|Sap|Hp|Cgi|Mci)\b/g, w => w.toUpperCase()).replace(/\bAt&T\b/gi, 'AT&T').replace(/\s*&\s*$/, '');
 const VTYPES = ['Business or other', 'Health care organization', 'Financial institution', 'Education institution', 'Utility', 'Non-profit', 'Government'];
+const VAREAS = () => AREAS.concat(['Other goods & services']);
+const HHI_HIGH = 1800;  // 2023 U.S. DOJ/FTC Merger Guidelines: above 1,800 is highly concentrated
+function vYear(p){ const PY = [2022, 2023, 2024, 2025, 2026]; const ys = PY.filter(y => p.stage !== 'budget' && (!p.years.length || p.years.includes(y))); return {y: ys.length ? ys[ys.length - 1] : 2026, picked: ys.length > 0, many: p.years.length > 0 && ys.length > 1}; }
+function concBars(box, rows, o){ box.textContent = ''; if (!rows.length) { emptyMsg(box); return; } const W = box.clientWidth || 560, H = rows.length * 40 + 26;
+  const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Top-five vendor share by focus area');
+  const meas = svg.append('text').attr('font-size', 12); const lw = Math.min(W * .42, d3.max(rows, d => { meas.text(d.area); return meas.node().getComputedTextLength(); }) + 10);
+  meas.text('100% · 64 vendors · HHI 4,648'); const rw = meas.node().getComputedTextLength() + 10; meas.remove();
+  const x = d3.scaleLinear([0, 1], [lw, W - rw]), y = d3.scaleBand(rows.map(d => d.area), [6, H - 22]).padding(.3);
+  svg.append('g').selectAll('line').data([0, .25, .5, .75, 1]).join('line').attr('x1', d => x(d)).attr('x2', d => x(d)).attr('y1', 6).attr('y2', H - 22).attr('stroke', 'var(--color-border-line)');
+  svg.append('g').selectAll('text').data([0, .5, 1]).join('text').attr('x', d => x(d)).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(d3.format('.0%'));
+  svg.append('g').selectAll('text').data(rows).join('text').attr('x', lw - 8).attr('y', d => y(d.area) + y.bandwidth() / 2).attr('dy', '.32em').attr('text-anchor', 'end').attr('font-size', 12).attr('fill', 'var(--color-fg)').text(d => d.area);
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', lw).attr('y', d => y(d.area)).attr('height', y.bandwidth()).attr('rx', 4).attr('width', d => Math.max(2, x(d.top5_share) - lw))
+    .attr('fill', d => d.hhi >= HHI_HIGH ? dash.colors[0] : 'var(--cds-chart-muted)').attr('opacity', d => !o.sel || o.sel === d.area ? 1 : .35);
+  svg.append('g').selectAll('text').data(rows).join('text').attr('x', d => x(d.top5_share) + 6).attr('y', d => y(d.area) + y.bandwidth() / 2).attr('dy', '.32em').attr('font-size', 12).attr('fill', 'var(--color-fg)').style('font-variant-numeric', 'tabular-nums')
+    .text(d => `${d3.format('.0%')(d.top5_share)} · ${d.vendors} vendors · HHI ${N(d.hhi)}`);
+  const tip = d3.select(box).append('div').attr('class', 'tip').style('opacity', 0);
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', 0).attr('y', d => y(d.area)).attr('width', W).attr('height', y.bandwidth()).attr('fill', 'transparent').style('cursor', 'pointer')
+    .on('mousemove', (e, d) => { const [mx, my] = d3.pointer(e, box); tip.style('opacity', 1).style('left', Math.min(mx + 12, W - 250) + 'px').style('top', (my + 12) + 'px'); tip.text('');
+      tip.append('div').attr('class', 't').text(`${d.area}, FY${o.year}`); [`Spend: ${M(d.spend)} with ${d.vendors} vendors`, `Top five hold ${PCT(d.top5_share)}`, `HHI ${N(d.hhi)} · ${d.hhi >= HHI_HIGH ? 'highly concentrated: negotiate' : 'not concentrated: consolidate'}`, 'Click to filter by this area'].forEach(t => tip.append('div').text(t)); })
+    .on('mouseleave', () => tip.style('opacity', 0)).on('click', (e, d) => o.click && o.click(d)); }
+function hhiTrend(grid, rows, year, o){ grid.textContent = ''; const years = d3.range(2008, year + 1); const ymax = Math.max(HHI_HIGH * 1.4, d3.max(rows, r => r.hhi) || 0);
+  const cells = VAREAS().filter(a => a !== 'Other goods & services').map(area => { const c = document.createElement('div'); c.className = 'cell'; grid.appendChild(c); return [area, c]; });
+  cells.forEach(([area, cell]) => { const pts = years.map(y => (rows.find(r => r.area === area && r.fiscal_year === y) || {}).hhi).map((v, i) => ({x: years[i], y: v})).filter(d => d.y != null);
+    cell.style.cursor = 'pointer'; cell.tabIndex = 0; cell.setAttribute('role', 'button'); cell.setAttribute('aria-label', `${area}: filter by this area`);
+    cell.addEventListener('click', () => o.click(area)); cell.addEventListener('keydown', e => { if (e.key === 'Enter') o.click(area); });
+    const last = pts[pts.length - 1], first = pts.find(d => d.x === 2022) || pts[0]; const b = document.createElement('b'); b.textContent = area; cell.appendChild(b);
+    const sp = document.createElement('span'); sp.textContent = last ? `HHI ${N(last.y)} in FY${last.x}${first && first !== last ? `; ${N(first.y)} in FY${first.x}` : ''}` : 'no data'; cell.appendChild(sp);
+    const plot = document.createElement('div'); plot.className = 'plot'; cell.appendChild(plot);
+    const W = plot.clientWidth || 220, H = 96, m = {l: 34, r: 6, t: 6, b: 14}; const x = d3.scaleLinear([2008, year], [m.l, W - m.r]), y = d3.scaleLinear([0, ymax], [H - m.b, m.t]).nice();
+    const svg = d3.select(plot).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', `${area} HHI by year`);
+    svg.append('g').selectAll('text').data(y.ticks(2)).join('text').attr('x', m.l - 4).attr('y', d => y(d)).attr('dy', '.32em').attr('text-anchor', 'end').attr('font-size', 10).attr('fill', 'var(--color-fg-muted)').text(d => d3.format('~s')(d));
+    svg.append('g').selectAll('text').data([2008, year]).join('text').attr('x', d => x(d)).attr('y', H - 2).attr('text-anchor', (d, i) => i ? 'end' : 'start').attr('font-size', 10).attr('fill', 'var(--color-fg-muted)').text(d => 'FY' + String(d).slice(2));
+    svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(HHI_HIGH)).attr('y2', y(HHI_HIGH)).attr('stroke', 'var(--color-fg-muted)').attr('stroke-dasharray', '3 3');
+    svg.append('path').datum(pts).attr('fill', 'none').attr('stroke', last && last.y >= HHI_HIGH ? dash.colors[0] : 'var(--color-fg-muted)').attr('stroke-width', 2).attr('d', d3.line().x(d => x(d.x)).y(d => y(d.y)));
+    if (last) svg.append('circle').attr('cx', x(last.x)).attr('cy', y(last.y)).attr('r', 3).attr('fill', last.y >= HHI_HIGH ? dash.colors[0] : 'var(--color-fg-muted)');
+    const tip = d3.select(plot).append('div').attr('class', 'tip').style('opacity', 0);
+    svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).attr('fill', 'transparent')
+      .on('mousemove', e => { const [mx] = d3.pointer(e); const xv = Math.round(x.invert(mx)); const p = pts.find(d => d.x === xv); if (!p) return; tip.style('opacity', 1).style('left', Math.min(mx + 8, W - 120) + 'px').style('top', '2px').text(`FY${xv}: HHI ${N(p.y)}`); })
+      .on('mouseleave', () => tip.style('opacity', 0)); }); }
 function drawVendors(p){
-  const dv = ok('d_vendors'), fp = ok('f_vendor_pay'), ft = ok('f_payee_type'), fy = ok('f_vendor_year'); if (!dv || !fp || !ft || !fy) return;
-  const PY = [2022, 2023, 2024, 2025, 2026];
-  let ys = PY.filter(y => p.stage !== 'budget' && (!p.years.length || p.years.includes(y))); const allYs = !ys.length && p.stage !== 'budget';
-  if (!ys.length) ys = PY.slice(-1);  // no payment year in the selection: show the latest full year, and say so
-  const prevYs = ys.length === 1 ? [ys[0] - 1] : contiguous(ys) ? ys.map(y => y - ys.length) : []; const pv = prevYs.every(y => PY.includes(y)) ? prevYs : [];
-  const last = ys[ys.length - 1], tsel = document.getElementById('vType');
-  if (tsel.options.length === 1) VTYPES.filter(t => t !== 'Government').forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; tsel.appendChild(o); });
-  const typ = tsel.value, q = document.getElementById('vQ').value.trim().toLowerCase(), ag = p.agencies;
-  // payments per vendor in the selection (agency filter applies through the vendor x agency table)
-  const byV = d3.rollup(fp.filter(r => !ag.length || ag.includes(r.agency_code)), v => d3.rollup(v, x => ({paid:d3.sum(x, r => r.paid), n:new Set(x.map(r => r.agency_code)).size}), r => r.fiscal_year), r => r.vendor);
-  const got = (m, yy, k) => d3.sum(yy, y => (m && m.get(y) || {})[k] || 0);
-  let rows = dv.filter(r => (!p.areas.length || p.areas.includes(r.focus_area))).map(r => { const m = byV.get(r.vendor); const val = got(m, ys, 'paid'), pval = pv.length ? got(m, pv, 'paid') : null;
-    return {vendor: TITLE(r.vendor), key: r.vendor, payee_type: r.payee_type, main_function: r.main_function, focus_area: r.focus_area, payee_names: r.payee_names, value: val, change: pval ? (val - pval) / pval : null,
-            agencies: (m && m.get(last) || {}).n || 0, _lab: pv.length ? 'vs ' + fyLabel(pv) : ''}; }).filter(r => r.value > 0);
-  const scoped = rows; rows = rows.filter(r => (!typ || r.payee_type === typ) && (!q || r.vendor.toLowerCase().includes(q))).sort((a, b) => b.value - a.value);
+  const dm = ok('d_multi'), fc = ok('f_concentration'), at = ok('d_area_top'), df = ok('d_families'), db = ok('d_multi_basis') || []; if (!dm || !fc || !at || !df) return;
+  const {y, picked, many} = vYear(p), ag = p.agencies; const asel = document.getElementById('vAreaSel');
+  if (asel.options.length === 1) VAREAS().forEach(a => { const o = document.createElement('option'); o.value = a; o.textContent = a; asel.appendChild(o); });
+  const area = asel.value || (p.areas.length === 1 ? p.areas[0] : ''); const inArea = a => area ? a === area : (!p.areas.length || p.areas.includes(a));
+  const paidBy = r => !ag.length || String(r.agency_codes || '').split(',').some(c => ag.includes(c));
+  const q = document.getElementById('vQ').value.trim().toLowerCase();
+  // multi-agency vendors
+  const all = dm.filter(r => r.fiscal_year === y); const prev = dm.filter(r => r.fiscal_year === y - 1);
+  let rows = all.filter(r => inArea(r.area) && paidBy(r)).map(r => ({...r, name: TITLE(r.vendor), ag_change: r.agencies_prior ? (r.agencies - r.agencies_prior) / r.agencies_prior : null,
+    sp_change: r.spend_prior ? (r.spend - r.spend_prior) / r.spend_prior : null, _lab: `vs FY${y - 1}`})).filter(r => !q || r.name.toLowerCase().includes(q)).sort((a, b) => b.agencies - a.agencies || b.spend - a.spend);
+  setText('vmH', `One vendor, dozens of buyers, FY${y}`); setText('vCount', `${rows.length} vendors · ${M(d3.sum(rows, r => r.spend))}`);
+  table('vBody', rows, [{key:'name', sort:'name'},{key:'area'},{key:'agencies',n:1,fmt:N0},{key:'ag_change',n:1,chg:'neutral'},{key:'spend',n:1,fmt:M},{key:'sp_change',n:1,chg:'neutral'},{key:'payee_names',n:1,fmt:N0}],
+    {bar:'agencies', click: r => openDetail('vendor:' + r.name)});
+  const hot = rows.filter(r => r.agencies >= 40); const byArea = d3.rollups(rows, v => ({n: v.length, s: d3.sum(v, r => r.spend)}), r => r.area).sort((a, b) => b[1].s - a[1].s);
+  setText('vmIns', rows.length ? `${rows.length} private vendors were paid separately by 15 or more agencies in FY${y}, ${M(d3.sum(rows, r => r.spend))} in all${hot.length ? `; ${hot.length} by 40 or more (${hot.slice(0, 3).map(r => r.name).join(', ')})` : ''}. ${byArea[0] ? `The most money is in ${byArea[0][0].replace(/^[A-Z][a-z]/, m => m.toLowerCase())} (${byArea[0][1].n} vendors, ${M(byArea[0][1].s)}).` : ''}` : '');
+  setText('vmStage', `Agencies are State budget agencies (payment accounts mapped to their agency; the capital project accounts count as one). Companies group their payee names. ${(() => { const o = db.find(r => r.fiscal_year === y && r.basis === 'payee name and payment account'); return o ? `Counted the Maryland Spend Lens way, by payee name and payment account, FY${y} has ${o.vendors} such vendors (${M(o.spend)}); grouping names into companies and accounts into agencies, as here, merges duplicates.` : ''; })()}${ag.length ? ' Agency filter: vendors that ' + who(p) + ' pays.' : ''}${many ? ` Several years are selected: showing the latest, FY${y}.` : ''}${!picked && p.years.length ? ' The selected years have no payments detail (FY2022 on), so FY2026 is shown.' : ''}`);
+  // concentration
+  const cy = fc.filter(r => r.fiscal_year === y).sort((a, b) => b.top5_share - a.top5_share); const sel = area && area !== 'Other goods & services' ? area : '';
+  concBars(document.getElementById('vcChart'), cy, {year: y, sel, click: d => { asel.value = asel.value === d.area ? '' : d.area; drawVendors(prm()); }});
+  hhiTrend(document.getElementById('vcTrend'), fc, y, {click: a => { asel.value = asel.value === a ? '' : a; drawVendors(prm()); }});
+  setText('vcH', `How concentrated is each area? FY${y}`);
+  const hi = cy.filter(r => r.hhi >= HHI_HIGH), lo = cy.filter(r => r.hhi < HHI_HIGH).sort((a, b) => a.top5_share - b.top5_share); const c22 = fc.filter(r => r.fiscal_year === 2022);
+  const rose = cy.map(r => ({...r, d: r.hhi - ((c22.find(c => c.area === r.area) || {}).hhi || r.hhi)})).sort((a, b) => b.d - a.d)[0];
+  setText('vcIns', cy.length ? `${hi.length} of ${cy.length} areas are highly concentrated, led by ${cy[0].area.replace(/^[A-Z][a-z]/, m => m.toLowerCase())} (top five hold ${PCT(cy[0].top5_share)}, HHI ${N(cy[0].hhi)}${cy[0].vendors < 10 ? `; only ${cy[0].vendors} vendors, so a few carriers are the market` : ''}): negotiate harder with the few suppliers.${lo.length ? ` ${lo[0].area} is the most spread out (${lo[0].vendors} vendors; top five hold ${PCT(lo[0].top5_share)}): consolidate the many small contracts.` : ''}${rose && y > 2022 && Math.abs(rose.d) >= 100 ? ` Since FY2022, concentration rose most in ${rose.area.replace(/^[A-Z][a-z]/, m => m.toLowerCase())} (HHI ${rose.d > 0 ? '+' : ''}${N(rose.d)}).` : ''}` : '');
+  // largest per area
+  const tops = at.filter(r => r.fiscal_year === y && inArea(r.area)).map(r => { const c = cy.find(x => x.area === r.area); return {...r, name: TITLE(r.vendor), share: c && c.spend ? r.spend / c.spend : null}; })
+    .sort((a, b) => d3.ascending(AREAS.indexOf(a.area), AREAS.indexOf(b.area)) || a.rank - b.rank);
+  setText('vaH', `Largest vendors in each area, FY${y}`);
+  const SHORT = {'IT hardware, software & services':'IT','Fleet & fuel':'Fleet & fuel','Utilities & facility energy':'Utilities','Real estate & leases':'Real estate','Print, copy & mail':'Print & mail','Telecom':'Telecom'};
+  table('vaBody', tops, [{key:'area', fmt: v => SHORT[v] || v},{key:'name'},{key:'agencies',n:1,fmt:N0},{key:'spend',n:1,fmt:M},{key:'share',n:1,fmt:PCT}], {bar:'spend', click: r => openDetail('vendor:' + r.name)});
+  // families
+  const fq = document.getElementById('vcfQ').value.trim().toLowerCase(); const fy = df.filter(r => r.fiscal_year === y);
+  const tot = d3.rollup(fy, v => d3.sum(v, r => r.spend), r => r.family); const order = [...tot].sort((a, b) => b[1] - a[1]).map(d => d[0]);
+  const pickF = fq ? order.filter(f => f.toLowerCase().includes(fq) || fy.some(r => r.family === f && r.payee_name.toLowerCase().includes(fq))) : order.slice(0, 12);
+  const fam = fy.filter(r => pickF.includes(r.family)).map(r => ({...r, fam: TITLE(r.family), _o: pickF.indexOf(r.family)})).sort((a, b) => a._o - b._o || b.spend - a.spend);
+  setText('vcfH', `One company, many payee records, FY${y}`); setText('vcfCount', `${fq ? pickF.length + ' companies match' : 'Largest 12 of ' + N(order.length) + ' companies'}`);
+  table('vcfBody', fam, [{key:'fam'},{key:'payee_name'},{key:'agencies',n:1,fmt:N0},{key:'spend',n:1,fmt:M}], {click: r => openDetail('vendor:' + r.fam)});
   // tiles
-  const fyr = new Map(fy.map(r => [r.fiscal_year, r])); const cur = fyr.get(last), prv = fyr.get(last - 1); const whole = !ag.length && !p.areas.length;
-  const tsum = (yy, pred) => d3.sum(ft.filter(r => yy.includes(r.fiscal_year) && (!ag.length || ag.includes(r.agency_code)) && pred(r)), r => r.paid);
-  const nonGov = r => r.payee_type !== 'Government'; const paid = tsum(ys, nonGov), ppaid = pv.length ? tsum(pv, nonGov) : null;
-  setText('vvN', whole ? N(cur.vendors) : N(scoped.length)); setText('vkN', whole ? `Vendors paid, FY${last}` : 'Vendors in this selection');
-  setChg('vdN', whole && prv ? {change: (cur.vendors - prv.vendors) / prv.vendors, label: `vs FY${last - 1}`} : null, 'neutral'); setText('vsN', whole ? `non-government payees; ${N(cur.vendors_1m)} paid $1M or more` : `paid $1M+ in some year, ${fyLabel(ys)}`);
-  setText('vvP', M(paid)); setChg('vdP', ppaid ? {change: (paid - ppaid) / ppaid, label: 'vs ' + fyLabel(pv)} : null, 'neutral'); setText('vsP', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}, excluding government payees${ag.length ? ' · ' + who(p) : ''}`);
-  const sortedV = scoped.slice().sort((a, b) => b.value - a.value), tot = whole ? paid : d3.sum(scoped, r => r.value);
-  const t10 = whole && ys.length === 1 ? cur.top10_share : (tot ? d3.sum(sortedV.slice(0, 10), r => r.value) / tot : null);
-  setText('vvT', t10 == null ? '—' : PCT(t10)); setText('vsT', whole && ys.length === 1 ? `top 100: ${PCT(cur.top100_share)} · FY${last}` : `of ${whole ? 'all vendor payments' : 'the vendors listed'}, ${fyLabel(ys)}`);
-  const multi = scoped.filter(r => r.agencies >= 10); setText('vvM', N(multi.length)); setText('vsM', `${M(d3.sum(multi, r => r.value))} paid, ${fyLabel(ys)} · each buys separately`);
-  // chart 1: payee types by year
+  const sumY = yy => d3.sum(fc.filter(r => r.fiscal_year === yy), r => r.vendors); const nV = sumY(y), nP = sumY(y - 1);
+  setText('vkN', `Focus-area vendors, FY${y}`); setText('vvN', N(nV)); setChg('vdN', nP ? {change: (nV - nP) / nP, label: `vs FY${y - 1}`} : null, 'neutral');
+  setText('vsN', `${M(d3.sum(cy, r => r.spend))} with private vendors in the six areas`);
+  const pall = prev.filter(r => inArea(r.area) && paidBy(r)); setText('vvM', N(rows.length)); setChg('vdM', pall.length ? {change: (rows.length - pall.length) / pall.length, label: `vs FY${y - 1} (${pall.length})`} : null, 'neutral');
+  setText('vkM', `Paid separately by 15+ agencies, FY${y}`); setText('vsM', `${M(d3.sum(rows, r => r.spend))} across them${area ? ' · ' + area : ''}`);
+  setText('vvH', `${hi.length} of ${cy.length}`); setText('vsH', hi.length ? `HHI above 1,800: ${hi.map(r => r.area).join(', ')}` : 'none above HHI 1,800');
+  const fsum = d3.sum(fy, r => r.spend); setText('vvF', N(order.length)); setText('vsF', `${M(fsum)} paid to companies under two or more names, FY${y}`);
+  setText('vLede', `In FY${y}, ${N(rows.length)} private vendors were each paid by 15 or more state agencies buying separately, ${M(d3.sum(rows, r => r.spend))} in all. ${hi.length} of the ${cy.length} focus areas are highly concentrated and ${N(order.length)} companies are paid under more than one name: three places where buying together could save money.`);
+  // findings with actions
+  const ins = []; const s3 = rows.slice(0, 3);
+  if (s3.length) ins.push(`Start with the most-shared vendors: ${s3.map(r => `${r.name} (${r.agencies} agencies, ${M(r.spend)})`).join('; ')}. One statewide agreement each replaces dozens of separate purchases.`);
+  if (hi.length) ins.push(`Negotiate where few suppliers hold the market: ${hi.map(r => `${r.area.replace(/^[A-Z][a-z]/, m => m.toLowerCase())} (HHI ${N(r.hhi)})`).join(', ')}. Price benchmarks and contract terms matter more than bidding there.`);
+  if (lo.length) ins.push(`Consolidate where spend is spread out: ${lo[0].area.replace(/^[A-Z][a-z]/, m => m.toLowerCase())} has ${lo[0].vendors} vendors and the top five hold only ${PCT(lo[0].top5_share)}.`);
+  const nmC = d3.rollups(fy, v => new Set(v.map(r => r.payee_name)).size, r => r.family).sort((a, b) => b[1] - a[1] || (tot.get(b[0]) - tot.get(a[0])))[0]; if (nmC) ins.push(`Fix the vendor master list first: ${TITLE(nmC[0])} is paid under ${nmC[1]} names (${M(tot.get(nmC[0]))} in FY${y}), and ${N(order.length)} companies are split this way (${M(fsum)}), so reports by payee name understate each company's buying power.`);
+  ins.push('Caveats: payments are yearly totals per agency and payee, without spending codes, and payee-name focus areas find only part of what the budget codes record (Focus areas tab). The savings each step could bring are on the Opportunities tab.');
+  const ul = document.getElementById('vIns'); ul.textContent = ''; ins.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+  if (document.getElementById('vLedger').open) drawLedger(p, y);
+}
+function drawLedger(p, last){
+  const dv = ok('d_vendors'), fp = ok('f_vendor_pay'), ft = ok('f_payee_type'); if (!dv || !fp || !ft) return; const ag = p.agencies;
+  const tsel = document.getElementById('vType'); if (tsel.options.length === 1) VTYPES.filter(t => t !== 'Government').forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; tsel.appendChild(o); });
+  const typ = tsel.value, q = document.getElementById('vlQ').value.trim().toLowerCase();
   const ftA = ft.filter(r => r.fiscal_year <= 2026 && (!ag.length || ag.includes(r.agency_code))); const years = [...new Set(ftA.map(r => r.fiscal_year))].sort((a, b) => a - b);
   const keys = VTYPES.filter(k => ftA.some(r => r.payee_type === k)); const tcol = k => k === 'Government' ? 'var(--cds-chart-muted)' : dash.colors[VTYPES.indexOf(k) % dash.colors.length];
-  const srows = years.map(y => { const o = {year: y, stage: 'Actual'}; keys.forEach(k => o[k] = 0); ftA.filter(r => r.fiscal_year === y).forEach(r => { o[r.payee_type] += r.paid; }); o.total = d3.sum(keys, k => o[k]); return o; });
-  stacked(document.getElementById('vtChart'), 'vtLegend', srows, keys, tcol, {actual: true, selYears: ys, click: yearClick, aria: 'Payments by payee type and year', dimKey: k => typ && k !== typ});
-  setText('vtH', `All payments by who was paid${ag.length ? ' · ' + who(p) : ''}`);
-  const g = srows.find(r => r.year === last); const gsh = g && g.total ? g.Government / g.total : null;
-  setText('vtNote', `FY${years[0]}–FY${years[years.length - 1]}, every payment in the state's payments data. In FY${last}, ${gsh == null ? '—' : PCT(gsh)} went to government payees (counties, school boards, public funds): transfers, not purchases. Click a year to add or remove it.`);
-  // chart 2: top 15
-  const top = rows.slice(0, 15); setText('vbH', `Largest vendors, ${fyLabel(ys)}`); setText('vbNote', `${typ || 'All non-government types'}${p.areas.length ? ' · ' + (p.areas.length === 1 ? p.areas[0] : p.areas.length + ' areas') : ''}${ag.length ? ' · paid by ' + who(p) : ''}. Click a vendor for its page.`);
-  hbars(document.getElementById('vbChart'), top.map(r => ({label: r.vendor, a: r.value, chg: r.change, color: tcol(r.payee_type)})), {aria: 'Largest vendors', good: 'neutral', click: d => openDetail('vendor:' + d.label), tip: d => [`Paid: ${M(d.a)}`, d.chg == null ? '' : `Change: ${ARROW(d.chg)}`]});
-  // table
-  setText('vCount', `${N(rows.length)} vendors · ${M(d3.sum(rows, r => r.value))}`);
-  table('vBody', rows, [{key:'vendor'},{key:'payee_type'},{key:'main_function'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'agencies',n:1,fmt:N0},{key:'payee_names',n:1,fmt:N0}],
-    {bar:'value', click: r => openDetail('vendor:' + r.vendor)});
-  setText('vStage', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}. Change compares ${pv.length ? 'with ' + fyLabel(pv) : 'with nothing: no earlier payments year in the vendor detail (FY2022 on)'}. Agencies: paying agencies in FY${last}.` + (allYs ? ' The selected years have no vendor detail, so the latest full year is shown.' : '') + (p.stage === 'budget' ? ' Vendor payments are actual spending; budget years have none.' : ''));
-  // findings
-  const fst = fyr.get(2022), ins = [];
-  if (whole && fst && cur) ins.push(`The top 10 vendors held ${PCT(cur.top10_share)} of vendor payments in FY${last}, down from ${PCT(fst.top10_share)} in FY2022; the top 100 hold ${PCT(cur.top100_share)} of ${M(cur.paid_non_government)}.`);
-  const mv = scoped.filter(r => r.change != null && Math.abs(r.value) >= 1e6).map(r => ({...r, d: r.value - r.value / (1 + r.change)}));
-  const up = mv.slice().sort((a, b) => b.d - a.d)[0], dn = mv.slice().sort((a, b) => a.d - b.d)[0];
-  if (up && up.d > 0) ins.push(`Largest increase: ${up.vendor}, up ${M(up.d)} (${ARROW(up.change)} ${up._lab}).`);
-  if (dn && dn.d < 0) ins.push(`Largest decrease: ${dn.vendor}, down ${M(-dn.d)} (${ARROW(dn.change)} ${dn._lab}).`);
-  const wide = scoped.slice().sort((a, b) => b.agencies - a.agencies)[0]; if (wide) ins.push(`${wide.vendor} is paid by the most agencies (${wide.agencies} in FY${last}); ${N(multi.length)} vendors are paid by 10 or more agencies, each buying separately: the pool for statewide contracts (Opportunities tab).`);
-  const byT = d3.rollups(scoped, v => d3.sum(v, r => r.value), r => r.payee_type).sort((a, b) => b[1] - a[1]); if (byT.length && tot) ins.push(`By type: ${byT.slice(0, 3).map(([k, v]) => `${k} ${PCT(v / d3.sum(byT, d => d[1]))}`).join(', ')} of listed vendors' payments.`);
-  ins.push('Payments are yearly totals per agency and payee, not invoices, and carry no spending code: they show who was paid, not for what.');
-  const ul = document.getElementById('vIns'); ul.textContent = ''; ins.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
-  setText('vLede', `${whole ? N(cur.vendors) + ' vendors (non-government payees) were paid ' + M(cur.paid_non_government) + ` in FY${last}` : N(scoped.length) + ' vendors in this selection were paid ' + M(tot) + ' in ' + fyLabel(ys)}. The ${N(dv.length)} paid $1M or more in a year since FY2022 are listed below, each with its own page.`);
+  const srows = years.map(yr => { const o = {year: yr, stage: 'Actual'}; keys.forEach(k => o[k] = 0); ftA.filter(r => r.fiscal_year === yr).forEach(r => { o[r.payee_type] += r.paid; }); o.total = d3.sum(keys, k => o[k]); return o; });
+  stacked(document.getElementById('vtChart'), 'vtLegend', srows, keys, tcol, {actual: true, selYears: [last], click: yearClick, aria: 'Payments by payee type and year', dimKey: k => typ && k !== typ});
+  const g = srows.find(r => r.year === last); setText('vtNote', `FY${years[0]}–FY${years[years.length - 1]}. In FY${last}, ${g && g.total ? PCT(g.Government / g.total) : '—'} went to government payees (counties, school boards, public funds): transfers, not purchases.`);
+  const byV = d3.rollup(fp.filter(r => r.fiscal_year === last || r.fiscal_year === last - 1).filter(r => !ag.length || ag.includes(r.agency_code)), v => d3.rollup(v, x => ({paid: d3.sum(x, r => r.paid), n: new Set(x.map(r => r.agency_code)).size}), r => r.fiscal_year), r => r.vendor);
+  const rows = dv.map(r => { const m = byV.get(r.vendor); const c = m && m.get(last), pv = m && m.get(last - 1); return {vendor: TITLE(r.vendor), payee_type: r.payee_type, main_function: r.main_function, payee_names: r.payee_names,
+    value: c ? c.paid : 0, change: pv && pv.paid ? ((c ? c.paid : 0) - pv.paid) / pv.paid : null, agencies: c ? c.n : 0, _lab: `vs FY${last - 1}`}; })
+    .filter(r => r.value > 0 && (!typ || r.payee_type === typ) && (!q || r.vendor.toLowerCase().includes(q)) && (!p.areas.length || true)).sort((a, b) => b.value - a.value);
+  hbars(document.getElementById('vbChart'), rows.slice(0, 12).map(r => ({label: r.vendor, a: r.value, chg: r.change, color: tcol(r.payee_type)})), {aria: 'Largest payees', good: 'neutral', click: d => openDetail('vendor:' + d.label), tip: d => [`Paid: ${M(d.a)}`, d.chg == null ? '' : `Change: ${ARROW(d.chg)}`]});
+  setText('vbH', `Largest payees, FY${last}`); setText('vbNote', `${typ || 'All non-government types'}, including payments that are not purchases (debt service, Medicaid health plans). Click a bar for its page.`);
+  setText('vlCount', `${N(rows.length)} vendors · ${M(d3.sum(rows, r => r.value))}`);
+  table('vlBody', rows, [{key:'vendor'},{key:'payee_type'},{key:'main_function'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'agencies',n:1,fmt:N0},{key:'payee_names',n:1,fmt:N0}], {bar:'value', click: r => openDetail('vendor:' + r.vendor)});
 }
 function drawBudget(p){
   const ff = ok('f_function'), fu = ok('f_fund'), fo = ok('f_object'); if (!ff) return;
@@ -1236,8 +1323,10 @@ function render(){ if (rendering) return; rendering = true; let again = false;
     if (!healedOnError) { healedOnError = true; rendering = false; detail = null; setP({stage:'actual', years:[], areas:[], agencies:[]}); return; } }
   finally { rendering = false; if (again) setTimeout(render, 0); } }
 document.getElementById('agQ').addEventListener('input', () => drawAgency(prm()));
-document.getElementById('vQ').addEventListener('input', () => drawVendors(prm()));
-document.getElementById('vType').addEventListener('change', () => drawVendors(prm()));
+['vQ','vcfQ'].forEach(id => document.getElementById(id).addEventListener('input', () => drawVendors(prm())));
+document.getElementById('vAreaSel').addEventListener('change', () => drawVendors(prm()));
+['vType','vlQ'].forEach(id => document.getElementById(id).addEventListener(id === 'vType' ? 'change' : 'input', () => drawLedger(prm(), vYear(prm()).y)));
+document.getElementById('vLedger').addEventListener('toggle', () => { if (document.getElementById('vLedger').open) drawLedger(prm(), vYear(prm()).y); });
 document.getElementById('opDet').addEventListener('change', () => drawOpp(prm()));
 document.getElementById('ckStage').addEventListener('change', () => drawData());
 document.getElementById('ckStatus').addEventListener('change', () => drawData());

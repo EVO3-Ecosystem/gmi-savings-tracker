@@ -33,3 +33,8 @@ d_vendors: d_vendors
 f_vendor_pay: f_vendor_pay
 f_payee_type: f_payee_type
 f_vendor_year: f_vendor_year
+d_multi: d_multi
+f_concentration: f_concentration
+d_area_top: d_area_top
+d_families: d_families
+d_multi_basis: d_multi_basis

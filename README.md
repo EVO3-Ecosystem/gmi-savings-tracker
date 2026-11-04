@@ -51,6 +51,10 @@ Counts from the Nov 2, 2026 run. Not extracted: County Board of Education spendi
 
 ![Vendor concentration](docs/figures/vendor_concentration.png)
 
+![Concentration by focus area](docs/figures/vendor_concentration_hhi.png)
+
+The dashboard's Vendors tab is built on `sql/mart/34-39`: private vendors paid by 15 or more agencies, concentration (top-five share and HHI) by focus area, the largest vendors per area and companies paid under several names. It is scored against [docs/portfolio-rubric.md](docs/portfolio-rubric.md).
+
 The website's budget download labels FY2021 "Working", FY2022 "Appropriation" and FY2027 "Governor's Allowance". The budget site's own statement and DBM's budget books say FY2021 and FY2022 are actuals and FY2027 is the Legislative Appropriation, so stages come from `reference/budget_stage.csv` (`docs/reconciliation/budget_stage_labels.csv`).
 
 ## Status

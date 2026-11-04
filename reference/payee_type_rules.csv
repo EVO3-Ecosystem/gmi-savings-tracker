@@ -3,6 +3,6 @@ priority,payee_type,pattern,note
 2,Health care organization,HEALTHCARE|HEALTH PLAN|MEDICAL CENTER|MEDICAL SYSTEM|HOSPITAL|MEDICAID|\bMCO\b|OCCUPATIONAL HEALTH|HEALTH SYSTEM|AETNA BETTER|CAREFIRST COMMUNITY|JAI MEDICAL|KAISER|MARYLAND PHYSICIANS CARE|FAMILY CHOICE|PRIORITY PARTNERS|UNITED ?HEALTH ?CARE|WELLPOINT|AMERIGROUP,"Hospitals, health systems and health plans, including the nine HealthChoice MCOs on the Maryland Department of Health comparison chart dated 2/1/26 (health.maryland.gov/mmcp/healthchoice/Documents/hc-mco-comparison-chart.pdf); Amerigroup Maryland is Wellpoint Maryland's name before January 2023 (The Daily Record, Jan 3, 2023)"
 3,Education institution,UNIVERSITY|COLLEGE,"Universities and colleges, public or private (the name does not say which)"
 4,Financial institution,\bBANK\b|DEPOSITORY TRUST|TRUST COMPANY,"Banks and paying agents (debt service, purchasing-card settlement)"
-5,Utility,BALTIMORE GAS|\bBGE\b|PEPCO|POTOMAC ELECTRIC|DELMARVA|POTOMAC EDISON|WASHINGTON GAS|SOUTHERN MARYLAND ELECTRIC|\bSMECO\b|CHOPTANK ELECTRIC,Regulated electric and gas utilities serving Maryland
+5,Utility,BALTIMORE GAS|\bBGE\b|PEPCO|POTOMAC ELECTRIC|DELMARVA POWER|POTOMAC EDISON|WASHINGTON GAS|SOUTHERN MARYLAND ELECTRIC|\bSMECO\b|CHOPTANK ELECTRIC,Regulated electric and gas utilities serving Maryland
 6,Non-profit,,"Grantees the grants dataset flags nonprofit = Y on at least half of their grants (ref.map_nonprofit)"
 7,Business or other,,"Everything else; includes individuals, who are never featured by name"

@@ -177,7 +177,7 @@ vendor_key,"ref.map_payee_vendor,ref.map_nonprofit",derived,Normalized payee nam
 vendor,,derived,Company name after grouping payee names
 is_government,,derived,True when the payee is a government body (excluded from vendor analysis)
 payee_area,ref.map_payee_vendor,derived,Focus area the payee is assigned to by reference/payee_focus_area.csv
-payee_name,d_vendor_names,derived,One payee name grouped into the vendor
+payee_name,"d_vendor_names,d_families,mart.d_families",derived,One payee name grouped into the vendor
 payee_names,vendor_families,derived,Payee names grouped into the company
 payment_names,agency_master,derived,Payment agency names mapped to the code
 how_matched,agency_master,derived,How the payment names were matched to the code
@@ -278,11 +278,11 @@ controllable_per_fte,agency_year,derived,Controllable purchases divided by budge
 code,area_code_year,derived,Comptroller sub-object code
 codes,area_year,derived,Spending codes with spending in the area
 payee_spend,area_year,derived,Payments to payees assigned to the focus area by payee name (pass-through payments excluded)
-vendor_name,mart.payment_area,portal,Payee name as published
+vendor_name,"mart.payment_area,mart.v_purchase",portal,Payee name as published
 passthrough,mart.payment_area,derived,"True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed"
 agency_name_pattern,ref.payee_area_exclusions,reference,Regular expression on the paying agency name; blank for any agency
 main_function,d_vendors,derived,"Budget function with the most payments to the vendor, all years"
-payee_names,d_vendors,derived,Payee names grouped into the vendor
+payee_names,"d_vendors,d_multi,mart.d_multi",derived,Payee names grouped into the vendor
 fy2022,,derived,Payments in FY2022
 fy2023,,derived,Payments in FY2023
 agencies_fy2025,d_vendors,derived,Agencies that paid the vendor in FY2025
@@ -291,3 +291,11 @@ paid_non_government,f_vendor_year,derived,Payments to non-government payees in t
 top10_share,f_vendor_year,derived,Share of non-government payments held by the 10 largest vendors that year
 top100_share,f_vendor_year,derived,Share of non-government payments held by the 100 largest vendors that year
 vendors_1m,f_vendor_year,derived,Non-government vendors paid $1M or more that year
+agency_codes,d_multi,derived,Budget agency codes that paid the vendor that year (comma-separated)
+agencies_prior,d_multi,derived,Agencies that paid the vendor the year before
+spend_prior,d_multi,derived,Spend with the vendor the year before
+top5_share,f_concentration,derived,Share of the area's private-vendor spend held by its five largest vendors
+hhi,f_concentration,derived,"Herfindahl-Hirschman Index: sum of squared percentage shares of spend (0-10,000; above 1,800 is highly concentrated under the 2023 DOJ/FTC Merger Guidelines)"
+basis,d_multi_basis,derived,Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens)
+area,"mart.v_purchase,d_multi",derived,"Payee-name focus area, or 'Other goods & services'"
+rank,d_area_top,derived,Rank of the vendor within its area and year by spend

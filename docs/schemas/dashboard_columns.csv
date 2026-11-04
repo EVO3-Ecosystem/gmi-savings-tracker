@@ -6,6 +6,12 @@ agency_master,payment_names,number,86,Payment agency names mapped to the code,de
 agency_master,how_matched,text,86,How the payment names were matched to the code,derived
 d_agency,agency_code,text,82,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 d_agency,agency,text,82,Agency name shown on the dashboard,derived
+d_area_top,fiscal_year,number,175,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+d_area_top,area,text,175,One of GMI's six focus areas,derived
+d_area_top,vendor,text,175,Company name after grouping payee names,derived
+d_area_top,agencies,number,175,Agencies paying the vendor (or with payments in the year),derived
+d_area_top,spend,number,175,Dollars spent (budget actuals or payments),derived
+d_area_top,rank,number,175,Rank of the vendor within its area and year by spend,derived
 d_bid_list,rank,number,30,Rank by FY2026 payments,derived
 d_bid_list,vendor,text,30,Company name after grouping payee names,derived
 d_bid_list,fy2025,number,30,Payments in FY2025,derived
@@ -14,6 +20,11 @@ d_bid_list,agencies,number,30,Agencies paying the vendor (or with payments in th
 d_bid_list,low,number,30,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 d_bid_list,high,number,30,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 d_bid_list,top_agencies,text,30,Three agencies paying the vendor most in FY2026,derived
+d_families,fiscal_year,number,1257,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+d_families,family,text,1257,Company that several payee names belong to,reference
+d_families,payee_name,text,1257,One payee name grouped into the vendor,derived
+d_families,agencies,number,1257,Agencies paying the vendor (or with payments in the year),derived
+d_families,spend,number,1257,Dollars spent (budget actuals or payments),derived
 d_forecast_model,area,text,7,One of GMI's six focus areas,derived
 d_forecast_model,method,text,7,Forecast model chosen by the backtest,derived
 d_forecast_model,growth,number,7,Annual growth rate of the chosen model,derived
@@ -29,6 +40,19 @@ d_forecast_model,gf_share,number,7,General Fund share of the area's FY2025 spend
 d_master_quality,measure,text,5,Name of the quality measure,reference
 d_master_quality,value,text,5,Measured value,derived
 d_master_quality,ok,number,5,True when the measure meets its target,derived
+d_multi,fiscal_year,number,216,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+d_multi,vendor,text,216,Company name after grouping payee names,derived
+d_multi,area,text,216,"Payee-name focus area, or 'Other goods & services'",derived
+d_multi,agencies,number,216,Agencies paying the vendor (or with payments in the year),derived
+d_multi,spend,number,216,Dollars spent (budget actuals or payments),derived
+d_multi,payee_names,number,216,Payee names grouped into the vendor,derived
+d_multi,agency_codes,text,216,Budget agency codes that paid the vendor that year (comma-separated),derived
+d_multi,agencies_prior,number,216,Agencies that paid the vendor the year before,derived
+d_multi,spend_prior,number,216,Spend with the vendor the year before,derived
+d_multi_basis,fiscal_year,number,10,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+d_multi_basis,basis,text,10,Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens),derived
+d_multi_basis,vendors,number,10,Distinct payees in the year,derived
+d_multi_basis,spend,number,10,Dollars spent (budget actuals or payments),derived
 d_opps,opp_id,text,453,Opportunity identifier,derived
 d_opps,detector,text,453,Screening rule that found the opportunity,derived
 d_opps,agency_code,text,453,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -116,6 +140,12 @@ f_code,area,text,14744,One of GMI's six focus areas,derived
 f_code,code,number,14744,Comptroller sub-object code,derived
 f_code,spending_code,text,14744,Comptroller sub-object name (with code) shown on the dashboard,derived
 f_code,spend,number,14744,Dollars spent (budget actuals or payments),derived
+f_concentration,fiscal_year,number,114,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_concentration,area,text,114,One of GMI's six focus areas,derived
+f_concentration,vendors,number,114,Distinct payees in the year,derived
+f_concentration,spend,number,114,Dollars spent (budget actuals or payments),derived
+f_concentration,top5_share,number,114,Share of the area's private-vendor spend held by its five largest vendors,derived
+f_concentration,hhi,number,114,"Herfindahl-Hirschman Index: sum of squared percentage shares of spend (0-10,000; above 1,800 is highly concentrated under the 2023 DOJ/FTC Merger Guidelines)",derived
 f_forecast,area,text,105,One of GMI's six focus areas,derived
 f_forecast,fiscal_year,number,105,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 f_forecast,kind,text,105,"Actual, forecast or plan",derived
@@ -140,12 +170,12 @@ f_object,agency_code,text,7817,Three-character State budget agency code (for exa
 f_object,object_name,text,7817,Comptroller object name,portal
 f_object,budget,number,7817,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
 f_object,controllable,number,7817,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv",derived
-f_payee_type,fiscal_year,number,5629,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-f_payee_type,agency_code,text,5629,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-f_payee_type,payee_type,text,5629,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
-f_payee_type,function_name,text,5629,Budget function title (from the portal's category_title),derived
-f_payee_type,paid,number,5629,Payments in dollars,derived
-f_payee_type,vendors,number,5629,Distinct payees in the year,derived
+f_payee_type,fiscal_year,number,5611,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_payee_type,agency_code,text,5611,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_payee_type,payee_type,text,5611,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
+f_payee_type,function_name,text,5611,Budget function title (from the portal's category_title),derived
+f_payee_type,paid,number,5611,Payments in dollars,derived
+f_payee_type,vendors,number,5611,Distinct payees in the year,derived
 f_savings_check,check_id,text,1400,Reported saving whose payments are checked,derived
 f_savings_check,fiscal_year,number,1400,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 f_savings_check,agency_code,text,1400,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal

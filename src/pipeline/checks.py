@@ -172,5 +172,19 @@ def phase4(con, check, one):
         bad = one("""SELECT count(*) FROM (SELECT fiscal_year, sum(amount) s FROM core.fact_payment GROUP BY 1) c
             FULL JOIN (SELECT fiscal_year, sum(paid) s FROM mart.f_payee_type GROUP BY 1) m USING (fiscal_year) WHERE abs(coalesce(c.s, 0) - coalesce(m.s, 0)) > 1""")
         check("mart", "Vendors tab: payments by payee type = core payments (every year)", bad == 0, f"{bad} years differ")
+    if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_multi'"):
+        bad = one("SELECT count(*) FROM mart.d_multi WHERE agencies < 15")
+        check("mart", "Vendors tab: every multi-agency vendor is paid by 15+ agencies", bad == 0, f"{bad} below 15; {one('SELECT count(*) FROM mart.d_multi WHERE fiscal_year = 2026')} in FY2026")
+        bad = one("""SELECT count(*) FROM mart.f_concentration WHERE top5_share > 1.000001 OR top5_share <= 0 OR hhi < 0 OR hhi > 10000
+            OR hhi < 10000.0 / vendors - 1""")  # HHI can't be below 10,000/n (equal shares)
+        check("mart", "Vendors tab: concentration shares and HHI within bounds", bad == 0, f"{bad} area-years out of bounds")
+        bad = one("""SELECT count(*) FROM (SELECT fiscal_year, area, sum(amount) s FROM mart.v_purchase WHERE area <> 'Other goods & services' GROUP BY ALL HAVING sum(amount) > 0) v
+            FULL JOIN mart.f_concentration c USING (fiscal_year, area) WHERE abs(coalesce(v.s, 0) - coalesce(c.spend, 0)) > 1""")
+        check("mart", "Vendors tab: concentration spend = private focus-area payments (every area and year)", bad == 0, f"{bad} differ")
+        bad = one("SELECT count(*) FROM (SELECT fiscal_year, family FROM mart.d_families GROUP BY ALL HAVING count(DISTINCT payee_name) < 2)")
+        check("mart", "Vendors tab: every company listed has two or more payee names", bad == 0, f"{bad} with one name")
+        k = dict(con.execute("SELECT basis, vendors FROM mart.d_multi_basis WHERE fiscal_year = 2026").fetchall())
+        check("mart", "Vendors tab: 15+ agency count on both bases (FY2026)", k.get("company and budget agency") == one("SELECT count(*) FROM mart.d_multi WHERE fiscal_year = 2026"),
+              "; ".join(f"{b}: {v}" for b, v in sorted(k.items())) + " (the Maryland Spend Lens showed 54 on the payee-name basis)", "warn")
     r, m = one("SELECT count(*) FROM mart.agency_results"), one("SELECT count(*) FROM core.mfr_measure WHERE agency_code IS NOT NULL")
     check("mart", "Agency results rows = matched Managing for Results rows", r == m, f"{r:,} of {m:,}")
