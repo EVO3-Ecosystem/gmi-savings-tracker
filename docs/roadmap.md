@@ -13,6 +13,6 @@ Six phases over about eight weeks; each phase's gate must pass before the next s
 | 6. Automate & document | 7–8 | `make all`; launchd or cron on the Mac; run log, optional PDF report, wiki update | Two clean scheduled runs with no manual steps | |
 
 ## Open questions
-- Which decision for the 4 unmatched payment agency names? Recorded as pending in `reference/payment_agency_decisions.csv`; none paid in FY2026.
-- Is 4mca-332u (higher-education CUR and CR funds) already inside yu65-jmmv's totals?
+- ~~Which decision for the 4 unmatched payment agency names?~~ Decided 2026-11-04 in `reference/payment_agency_decisions.csv` (two mapped, two excluded, each with evidence).
+- ~~Is 4mca-332u (higher-education CUR and CR funds) already inside yu65-jmmv's totals?~~ No (checked 2026-11-04): it covers R13 Morgan State, R14 St. Mary's, R30 University System of Maryland and R95 Baltimore City Community College, which have no rows in yu65-jmmv ($8.6B in FY2026). Decision: add it in Phase 5 as its own raw table, union into the budget with a `source_dataset` column, show it in all-funds totals labeled "including public higher education", and leave it out of GMI savings baselines (these institutions buy under their own procurement authority, outside the executive-branch procurement GMI works through; confirm the statute citations before publishing).
 - When to register the Socrata app token (before daily scheduling).

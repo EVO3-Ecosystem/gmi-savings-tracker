@@ -50,11 +50,12 @@ def map_payment_agency(con):
     capital = rules[rules.rule == "capital"].payment_name_pattern.iloc[0]
     manual = list(zip(rules[rules.rule == "manual"].payment_name_pattern, rules[rules.rule == "manual"].target))
     direct = list(zip(rules[rules.rule == "direct"].payment_name_pattern, rules[rules.rule == "direct"].target))
-    decided = {r.payment_agency_name: r for r in decisions.itertuples() if r.agency_code}
+    decided = {r.payment_agency_name: r for r in decisions.itertuples() if not str(r.decision).startswith("pending")}
     rows = []
     for n in sorted(p.n.dropna().unique()):
         if n in decided:
-            c, how = decided[n].agency_code, f"decision: {decided[n].decision}"
+            c = decided[n].agency_code if isinstance(decided[n].agency_code, str) and decided[n].agency_code else None  # excluded: no code
+            how = f"decision: {decided[n].decision}"
         elif n in name2code:
             c, how = name2code[n], "agency code in payments"
         elif re.search(capital, n):

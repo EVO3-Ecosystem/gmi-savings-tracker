@@ -1,11 +1,11 @@
 file,legacy_rows,mart_rows,keys_only_legacy,keys_only_mart,duplicate_keys,missing_columns,columns_differing,matches,explained,status
-totals_by_fy,19,20,0,1,0,,vendors (3 rows),False,True,difference explained
+totals_by_fy,19,20,0,1,0,,agencies (2 rows); vendors (3 rows),False,True,difference explained
 budget_by_function,126,126,0,0,0,,,True,False,reproduced
 budget_by_fund,55,55,0,0,0,,,True,False,reproduced
 budget_by_object,147,147,0,0,0,,,True,False,reproduced
 spending_scope,44,44,0,0,0,,,True,False,reproduced
-agency_year,795,795,0,0,0,,payments (75 rows),False,True,difference explained
-agency_master,86,86,0,0,0,,,True,False,reproduced
+agency_year,795,795,0,0,0,,payments (77 rows),False,True,difference explained
+agency_master,86,86,0,0,0,,payment_names (3 rows),False,True,difference explained
 vendor_families,130,130,1,1,0,,,False,True,difference explained
 area_year,120,120,0,0,0,,payee_spend (6 rows); vendors (6 rows); payee_spend_yoy (6 rows),False,True,difference explained
 area_agency_year,3584,3584,0,0,0,,,True,False,reproduced
@@ -16,7 +16,7 @@ f_object,7817,7817,0,0,0,,,True,False,reproduced
 f_scope,2484,2484,0,0,0,,,True,False,reproduced
 f_fund,1919,1919,0,0,0,,,True,False,reproduced
 f_code,14744,14744,0,0,0,,,True,False,reproduced
-f_area,6388,6425,0,37,0,,payee_spend (253 rows),False,True,difference explained
+f_area,6388,6433,0,45,0,,payee_spend (278 rows),False,True,difference explained
 f_vendor,4940,5706,0,766,0,,,False,True,difference explained
-f_agency,795,795,0,0,0,,payments (75 rows),False,True,difference explained
+f_agency,795,795,0,0,0,,payments (77 rows),False,True,difference explained
 d_agency,82,82,0,0,0,,,True,False,reproduced

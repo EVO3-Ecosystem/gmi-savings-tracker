@@ -1,5 +1,5 @@
-payment_agency_name,agency_code,decision,decided_by,date
-AID TO UNIVERSITY OF MD MEDICAL SYSTEM,,pending: no budget agency found,,
-MARYLAND HEALTH INSURANCE PLAN,,pending: no budget agency found,,
-MARYLAND STATE BOARD OF CONTRACT APPEALS,,pending: no budget agency found,,
-SECURITY INTEREST FILING FEES,,pending: no budget agency found,,
+payment_agency_name,agency_code,decision,decided_by,date,evidence
+AID TO UNIVERSITY OF MD MEDICAL SYSTEM,,excluded: no budget agency; payments FY2008-FY2009 only ($13.1M) predate the budget data (FY2017+); kept in payment totals,Sierra Napier,2026-11-04,"No budget unit, program or subprogram names the University of Maryland Medical System in yu65-jmmv; payees are UMMS and its CRNA program"
+MARYLAND HEALTH INSURANCE PLAN,D78,mapped: successor agency (Maryland Health Benefit Exchange),Sierra Napier,2026-11-04,"Maryland Manual: plan repealed July 1, 2016 (Ch. 321, Acts of 2016), remaining employees, property and liabilities transferred to the Maryland Health Benefit Exchange; its Senior Prescription Drug Assistance Program went to the Department of Health (https://msa.maryland.gov/msa/mdmanual/25ind/defunct/html/42healinsf.html). Payments FY2010-FY2017 ($733.3M), 85% to CareFirst for plan claims"
+MARYLAND STATE BOARD OF CONTRACT APPEALS,D15,mapped: budget unit found,Sierra Napier,2026-11-04,"yu65-jmmv carries the Board as a program of D15 Executive Department-Boards, Commissions and Offices"
+SECURITY INTEREST FILING FEES,,excluded: fee pass-through to a government payee; payments FY2008-FY2009 only ($2.9M) predate the budget data; kept in payment totals,Sierra Napier,2026-11-04,"Only payee is the Baltimore City Director of Finance; no budget unit names security-interest filings, so the paying agency is not proven"

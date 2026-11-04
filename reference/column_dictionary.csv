@@ -299,3 +299,4 @@ hhi,f_concentration,derived,"Herfindahl-Hirschman Index: sum of squared percenta
 basis,d_multi_basis,derived,Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens)
 area,"mart.v_purchase,d_multi",derived,"Payee-name focus area, or 'Other goods & services'"
 rank,d_area_top,derived,Rank of the vendor within its area and year by spend
+evidence,ref.payment_agency_decisions,reference,Source or reasoning behind the mapping decision

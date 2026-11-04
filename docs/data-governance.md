@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-04T14:24Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 04, 2026._
+_Generated 2026-11-04T15:00Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 04, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -686,7 +686,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | fte | DOUBLE | derived | Budgeted full-time-equivalent positions |
 | payments | DOUBLE | derived | Payments made by the agency in the year |
 
-**mart.f_area** (6,425 rows)
+**mart.f_area** (6,433 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -751,7 +751,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 | controllable | DOUBLE | derived | Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv |
 
-**mart.f_payee_type** (5,924 rows)
+**mart.f_payee_type** (5,913 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -851,7 +851,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | area | VARCHAR | derived | Payee-name focus area, or 'Other goods & services' |
 | amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
 
-**mart.vendor_agency_year** (387,361 rows)
+**mart.vendor_agency_year** (387,339 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1110,7 +1110,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (292 rows)
+**ref.column_dictionary** (301 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1300,6 +1300,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | decision | VARCHAR | reference | Mapping decision (pending, mapped, excluded) |
 | decided_by | VARCHAR | reference | Who made the decision |
 | date | VARCHAR | portal | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
+| evidence | VARCHAR | reference | Source or reasoning behind the mapping decision |
 
 **ref.payment_agency_rule** (21 rows)
 
@@ -1787,7 +1788,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-944 of 944 columns documented (65 source, 620 warehouse, 259 dashboard).
+945 of 945 columns documented (65 source, 621 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**
