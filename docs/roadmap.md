@@ -65,7 +65,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 31 | Run | Scheduling | Manual | Manual locally; CI on GitHub | Same (Phase 6) |
 | 32 | Docs | Figures | None | `figures.py`: 5 PNGs from the database | Better |
 
-Summary: 13 Better, 6 Same, 4 Partial, 6 Carried, 3 Gap (1 optional). 26 of 44 dashboard files come from the new marts; 18 are carried.
+Summary of the 32 rows: 13 Better, 5 Same, 3 Partial, 7 Carried, 4 Gap (one optional, one low priority). 26 of 44 dashboard files come from the new marts; 18 are carried.
 
 ## Gap analysis and improvement backlog (Nov 5, 2026)
 
