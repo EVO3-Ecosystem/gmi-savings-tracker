@@ -98,3 +98,32 @@ Dashboard-level gaps added in the *GMI Dashboard Optimization Roadmap v2* (Claud
 | 16 | Opportunities headline reads as a promise; detectors untested | "Leads worth up to"; backtest each detector | M | 5 |
 | 17 | Agencies: one table, no chart or headline; pass-through agencies top per-position | Ranked chart, headline, pass-through flag | S | 5a |
 | 18 | Budget cards lack conclusions; no funding chart; tall grant rows | One-line finding per card, funding chart, one-line descriptions | S | 5a |
+
+## Roadmap v3 additions (Nov 5, 2026): outside review and portfolio harvest
+
+**Review check.** An outside review of this repo was right that CI is failing (every push since Nov 2; last green Oct 29) but wrong about the cause: the error is `ModuleNotFoundError: No module named 'src'` at test collection (pytest import path), not network calls. It also described the repo as static CSVs or SQLite, which it isn't, and said Phase 5 must reproduce the 21 base files, which are already reproduced.
+
+**Ideas register.** 49 unique ideas from the review: 9 done, 25 adopt, 9 adapt, 6 decline. Declined, with reasons: OData (SODA covers it), subcontractor data (no public source), State Police dashboard (out of scope), revenue forecasting with XGBoost/LightGBM (no revenue data; the same models are used for spending), Prophet or Orbit seasonality (annual data only), random forest fiscal-stress classifier (no labeled stress events), switching to Seaborn or Plotly (d3 and matplotlib already use the validated palette).
+
+| Step | Adds | Gate |
+|---|---|---|
+| Today | CI import path fix | Green CI on main |
+| 5a | SODA fixtures and no-network tests; fixture integration test; contract tests on exports; README diagram, screenshots and findings; executive cards (forecast range, savings vs $50M, review queue); Agencies scatter and box plot; Budget treemap; job description crosswalk (after checking the posting) | CI green on fixtures; nothing stale; export refuses a failed build |
+| 5 | Rolling-origin backtests; P10-P90 ranges with coverage; LightGBM quantile challenger on agency x code x year; log and real-dollar transforms; robust scaling; Isolation Forest on vendor-agency-year patterns; agency peer clusters (K-Means/HDBSCAN) with a PCA map; grant-description clustering; review queue with status (Under review, Approved variance, Refer to OLA) and CSV export; State Plan priorities and OLA findings as reference data; BLS employment and BEA GDP context; program-level drill-down | 0 carried files; models beat or match baselines; every tab 5 of 5 |
+| 6 | DVC with a local store; optional `make postgres`; freshness alerts as GitHub issues; read-only MCP server over the marts; NAICS and contract-award research (eMMA, SAM.gov); analyst-detail toggle; roadmap timeline figure | Two clean scheduled runs |
+
+**Portfolio harvest** (patterns from the owner's other repos, `snapaiarchitect/sierra-applied-ml` and `snapaiarchitect/genai-engineering`):
+
+| From | Pattern | Lands as | Phase |
+|---|---|---|---|
+| sierra-applied-ml | GitHub Pages live site with interactive pages | Public preview of the dashboard and a project page | 6 |
+| sierra-applied-ml | README order: problem, what it means, results vs baseline, one finding per chart, provenance | README rewrite | 5a |
+| sierra-applied-ml | Baseline-first results tables, holdout periods | Model card template | 5 |
+| genai-engineering | Docker and docker-compose one-command launch | `docker compose up` runs pipeline and preview | 6 |
+| genai-engineering | Model registry with lineage | `ops.model_registry` in DuckDB | 5 |
+| genai-engineering | Drift detection (KS test, PSI) | Check comparing this run's payment distributions with the last | 5 |
+| genai-engineering | Promote only if better than baseline | Stop check before a model is published | 5 |
+| genai-engineering | Confidence threshold to human review | Low-confidence flags go to the review queue | 5 |
+| genai-engineering | TF-IDF + logistic regression classifier | Payee-type classifier trained on rule-labeled payees, to catch rule misses; grant description groups | 5 |
+
+**Portfolio housekeeping done Nov 5, 2026:** genai-engineering README counts and claims corrected to its data files (pushed); sierra-applied-ml README corrected to its results files and its links moved to snapaiarchitect (patch ready; this session can't push to that repo); profile README in `snapaiarchitect/snapaiarchitect` links all three repos (pushed; the repo is private, so it shows on the profile only once made public). Pinning is a manual step on GitHub.
