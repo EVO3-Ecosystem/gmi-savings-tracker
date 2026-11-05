@@ -80,7 +80,8 @@ def build(run_id):
       FROM raw.payments""")
     con.execute("""CREATE TABLE core.fact_grant AS SELECT CAST(fiscalyear AS INTEGER) AS fiscal_year, trim(grantor) AS grantor, trim(grantee) AS grantee,
         CASE upper(trim(category)) WHEN 'L' THEN 'Loan' WHEN 'LOAN' THEN 'Loan' WHEN 'G' THEN 'Grant' WHEN 'GRANT' THEN 'Grant' ELSE trim(category) END AS category,
-        upper(trim(nonprofit)) AS nonprofit, CAST(amount AS DOUBLE) AS amount FROM raw.grants""")
+        upper(trim(nonprofit)) AS nonprofit, CAST(amount AS DOUBLE) AS amount,
+        trim(description) AS description, trim(zipcode) AS zipcode FROM raw.grants""")
 
     # ---- ref: dimensions derived from the portal (hand-kept reference CSVs arrive in Phase 3)
     con.execute("""CREATE TABLE ref.dim_agency AS SELECT agency_code, arg_max(agency_name, fiscal_year) AS agency_name,

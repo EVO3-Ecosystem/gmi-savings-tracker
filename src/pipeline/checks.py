@@ -186,5 +186,20 @@ def phase4(con, check, one):
         k = dict(con.execute("SELECT basis, vendors FROM mart.d_multi_basis WHERE fiscal_year = 2026").fetchall())
         check("mart", "Vendors tab: 15+ agency count on both bases (FY2026)", k.get("company and budget agency") == one("SELECT count(*) FROM mart.d_multi WHERE fiscal_year = 2026"),
               "; ".join(f"{b}: {v}" for b, v in sorted(k.items())) + " (the Maryland Spend Lens showed 54 on the payee-name basis)", "warn")
+    if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'f_overlap'"):
+        bad = one("""SELECT count(*) FROM (SELECT fiscal_year, sum(amount) s, count(*) n FROM core.fact_grant GROUP BY 1) c
+            FULL JOIN (SELECT fiscal_year, sum(amount) s, count(*) n FROM mart.f_grants GROUP BY 1) m USING (fiscal_year)
+            WHERE abs(coalesce(c.s, 0) - coalesce(m.s, 0)) > 1 OR c.n IS DISTINCT FROM m.n""")
+        check("mart", "Grants as listed = core grants (rows and dollars, every year)", bad == 0, f"{bad} years differ")
+        bad = one("""SELECT count(*) FROM (SELECT fiscal_year, sum(budget) b FROM core.fact_budget GROUP BY 1) c
+            FULL JOIN (SELECT fiscal_year, sum(budget) b, sum(payments) p FROM mart.f_budget_vs_pay GROUP BY 1) m USING (fiscal_year)
+            LEFT JOIN (SELECT fiscal_year, sum(amount) p FROM core.fact_payment WHERE fiscal_year >= 2017 GROUP BY 1) q USING (fiscal_year)
+            WHERE abs(coalesce(c.b, 0) - coalesce(m.b, 0)) > 1 OR abs(coalesce(q.p, 0) - coalesce(m.p, 0)) > 1""")
+        check("mart", "Budget vs payments: budget and payments = core totals (every year)", bad == 0, f"{bad} years differ")
+        bad = one("""SELECT count(*) FROM (SELECT fiscal_year, sum(budget) b FROM mart.f_program GROUP BY 1) a
+            FULL JOIN (SELECT fiscal_year, sum(budget) b FROM mart.f_fund_source GROUP BY 1) f USING (fiscal_year) WHERE abs(coalesce(a.b, 0) - coalesce(f.b, 0)) > 1""")
+        check("mart", "Where it's going = how it's funded (budget by program = budget by fund source, every year)", bad == 0, f"{bad} years differ")
+        lo = one("SELECT min(grants_in_payments_share) FROM mart.f_overlap WHERE grants_and_loans > 0") or 0
+        check("mart", "Grants whose grantee is also a payee that year (name match)", True, f"lowest year {lo:.0%} of grant dollars; grants are shown as part of payments, never added", "warn")
     r, m = one("SELECT count(*) FROM mart.agency_results"), one("SELECT count(*) FROM core.mfr_measure WHERE agency_code IS NOT NULL")
     check("mart", "Agency results rows = matched Managing for Results rows", r == m, f"{r:,} of {m:,}")
