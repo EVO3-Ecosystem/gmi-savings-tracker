@@ -88,3 +88,13 @@ Ordered by value for the dashboard and the interview. Effort: S = under a day, M
 | 13 | Scheduling (row 31) | Monthly refresh is manual | `make all` on a schedule; register the Socrata app token first | S | 6 |
 
 Tab scores (rubric in `docs/portfolio-rubric.md`, Nov 5, 2026): Overview 3, Focus areas 4, Savings tracker 3, Opportunities 3, Calculator 3, Vendors 5, Agencies 3, Budget 3, Data & pipeline 2. Gaps 1, 3, 4 and 6 lift Data & pipeline; gap 7 lifts Overview, Agencies and Opportunities; gap 2 lifts the three analytics tabs.
+
+Dashboard-level gaps added in the *GMI Dashboard Optimization Roadmap v2* (Claude Docs, Nov 5, 2026), which supersedes the Dev Wiki's v1 roadmap tab:
+
+| # | Gap | Fix | Effort | Phase |
+|---|---|---|---|---|
+| 14 | Overview tiles add nine years; 7 dense cards | FY2026 vs FY2025 tiles with stage labels; one-line conclusion; scope chart moves to Focus areas | S | 5a |
+| 15 | Savings tracker repeats two tables; 50% tolerance unlabeled | Merge the tables; label the tolerance where "Seen" appears | S | 5a |
+| 16 | Opportunities headline reads as a promise; detectors untested | "Leads worth up to"; backtest each detector | M | 5 |
+| 17 | Agencies: one table, no chart or headline; pass-through agencies top per-position | Ranked chart, headline, pass-through flag | S | 5a |
+| 18 | Budget cards lack conclusions; no funding chart; tall grant rows | One-line finding per card, funding chart, one-line descriptions | S | 5a |
