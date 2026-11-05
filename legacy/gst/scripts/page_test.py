@@ -26,6 +26,7 @@ DATASETS = {  # dataset id on the dashboard -> published table
     "vendor_families": "vendor_families", "runs": "pipeline_runs", "checks": "run_checks", "d_vendor_moves": "d_vendor_moves", "d_opps": "d_opps", "d_bid_list": "d_bid_list", "f_vendor_detail": "f_vendor_detail", "d_vendor_names": "d_vendor_names", "d_savings_status": "d_savings_status", "d_plan50": "d_plan50", "d_master_quality": "d_master_quality", "d_rec_status": "d_rec_status", "f_forecast": "f_forecast", "d_forecast_model": "d_forecast_model", "d_savings": "d_savings", "f_savings_check": "f_savings_check",
     "d_vendors": "d_vendors", "f_vendor_pay": "f_vendor_pay", "f_payee_type": "f_payee_type", "f_vendor_year": "f_vendor_year",
     "d_multi": "d_multi", "f_concentration": "f_concentration", "d_area_top": "d_area_top", "d_families": "d_families", "d_multi_basis": "d_multi_basis",
+    "f_grants": "f_grants", "f_fund_source": "f_fund_source", "f_program": "f_program", "f_budget_vs_pay": "f_budget_vs_pay", "f_overlap": "f_overlap",
 }
 AREAS = ['IT hardware, software & services', 'Fleet & fuel', 'Utilities & facility energy', 'Real estate & leases', 'Print, copy & mail', 'Telecom']
 
@@ -57,6 +58,8 @@ def combos(latest=2025):
         ("savings check, budgets only", {"stage": "budget"}, ["track"]),
         ("one year", {"years": [y]}, ["over", "areas", "agency", "budget"]),
         ("first actual year", {"years": [2017]}, ["over", "budget"]),
+        ("FY2026 working budget, all stages", {"years": [2026], "stage": "all"}, ["over", "budget"]),
+        ("one agency, budget and payments", {"agencies": ["__TOP1__"]}, ["over", "budget"]),
         ("back-to-back years", {"years": [y - 2, y - 1, y]}, ["over", "areas", "agency", "budget"]),
         ("scattered years", {"years": [2018, 2021, y]}, ["over", "areas", "agency"]),
         ("budget years", {"stage": "budget"}, ["over", "areas", "budget"]),

@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-05T14:55Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 05, 2026._
+_Generated 2026-11-05T15:40Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 05, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -835,7 +835,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | paid | DOUBLE | derived | Payments in dollars |
 | vendors | BIGINT | derived | Distinct payees in the year |
 
-**mart.f_program** (12,291 rows)
+**mart.f_program** (6,648 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -845,7 +845,6 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | unit_name | VARCHAR | portal | Budget unit name |
 | program_code | VARCHAR | portal | Budget program code, two digits in core |
 | program_name | VARCHAR | portal | Budget program name |
-| fund_type | VARCHAR | derived | Fund type (General, Special, Federal, Reimbursable and so on) |
 | budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 
 **mart.f_scope** (2,484 rows)
@@ -1196,7 +1195,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (301 rows)
+**ref.column_dictionary** (321 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1874,7 +1873,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,001 of 1,001 columns documented (65 source, 677 warehouse, 259 dashboard).
+1,000 of 1,000 columns documented (65 source, 676 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

@@ -141,6 +141,26 @@
       <div class="tile"><span class="k" id="kArea">Focus areas, by spending code</span><button class="xp" data-expand="areas">Expand</button><span class="v" id="vArea" data-source="f_area">—</span><span class="d chg" id="dArea">—</span><span class="d" id="sArea"></span><div class="spark" id="spArea"></div></div>
       <div class="tile"><span class="k" id="kPay">Payments to vendors</span><button class="xp" data-expand="payments">Expand</button><span class="v" id="vPay" data-source="f_agency totals f_area">—</span><span class="d chg" id="dPay">—</span><span class="d" id="sPay"></span><div class="spark" id="spPay"></div></div>
     </div>
+    <div class="card">
+      <div class="hd"><h2 id="ovBPH">Budget and payments, FY2017–FY2026</h2><button class="xp" data-expand="budget">Expand</button></div>
+      <p class="note" id="ovBPNote">Operating budget at its latest stage (bars) and payments to all payees (line). They measure different things, so they sit side by side and are never added.</p>
+      <div class="legend" id="ovBPLegend"></div>
+      <div class="chart" id="ovBP" data-source="f_budget_vs_pay"></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="hd"><h2 id="ovFundH">How it's funded, where payments go</h2><button class="xp" data-expand="budget">Expand</button></div>
+        <p class="note" id="ovFundNote">Budget by fund type and payments by payee, for one year.</p>
+        <div class="chart" id="ovFund" data-source="f_overlap" style="min-height:0"></div>
+        <p class="insight" id="ovGrants"></p>
+      </div>
+      <div class="card">
+        <div class="hd"><h2 id="ov50H">Path to $50M</h2><button class="xp" data-expand="calc">Expand</button></div>
+        <p class="note" id="ov50Note">Yearly savings from the steps on the Calculator and Opportunities tabs, against the $50M target.</p>
+        <div class="chart" id="ov50" data-source="d_plan50" style="min-height:0"></div>
+        <p class="insight" id="ov50Detail"></p>
+      </div>
+    </div>
     <div class="grid">
       <div class="card">
         <div class="hd"><h2 id="scopeH">Where savings can come from</h2><button class="xp" data-expand="scope">Expand</button></div>
@@ -384,6 +404,34 @@
       <p class="insight" id="budInsight"></p>
       <div class="legend" id="budLegend"></div>
       <div class="chart" id="budChart" data-source="f_function"></div>
+    </div>
+    <div class="card">
+      <div class="hd"><h2 id="ovlH">Budget, payments and grants by year</h2></div>
+      <p class="note">How the three sources line up. The budget is all funds at its latest stage; payments are cash paid to payees (no payroll, but capital and pass-through money); grants and loans are the state's award list. Grants are mostly paid out through payments, so the last column shows the share of grant dollars whose grantee is also a payee that year (exact name match, so a minimum). Statewide; the agency filter does not apply.</p>
+      <div class="tbl"><table data-source="f_overlap">
+        <thead><tr><th>Year</th><th>Budget stage</th><th class="n">Budget</th><th class="n">General funds</th><th class="n">Special funds</th><th class="n">Federal funds</th><th class="n">Payments</th><th class="n">To governments</th><th class="n">To everyone else</th><th class="n">Grants and loans</th><th class="n">Grant $ to payees</th></tr></thead>
+        <tbody id="ovlBody"></tbody></table></div>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="hd"><h2 id="fsH">How it's funded</h2></div><p class="note" id="fsNote">Budget by named fund source. Federal sources carry their federal Assistance Listing number.</p>
+        <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><select id="fsType" aria-label="Fund type"><option value="">All fund types</option></select> <input id="fsQ" type="search" placeholder="Search fund sources" aria-label="Search fund sources"></div>
+        <div class="tbl"><table data-source="f_fund_source">
+          <thead><tr><th>Fund source</th><th>Code</th><th>Type</th><th class="n">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
+          <tbody id="fsBody"></tbody></table></div><p class="note" id="fsCount"></p></div>
+      <div class="card"><div class="hd"><h2 id="pgH">Where it's going</h2></div><p class="note" id="pgNote">Budget by agency program.</p>
+        <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><input id="pgQ" type="search" placeholder="Search programs or agencies" aria-label="Search programs"></div>
+        <div class="tbl"><table data-source="f_program">
+          <thead><tr><th>Program</th><th>Agency</th><th class="n">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
+          <tbody id="pgBody"></tbody></table></div><p class="note" id="pgCount"></p></div>
+    </div>
+    <div class="card">
+      <div class="hd"><h2 id="grH">Grants and loans, as listed</h2></div>
+      <p class="note" id="grNote">Every row as the state publishes it (grants and loans dataset, absk-avps), with no grouping. Grantor names are free text, so one agency can appear under several spellings. FY2009–FY2025; the agency filter does not apply.</p>
+      <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><select id="grCat" aria-label="Grant or loan"><option value="">Grants and loans</option><option>Grant</option><option>Loan</option></select> <select id="grPay" aria-label="Also a payee"><option value="">All grantees</option><option value="1">Also a payee that year</option><option value="0">Not found in payments</option></select> <input id="grQ" type="search" placeholder="Search grantor, grantee or description" aria-label="Search grants"></div>
+      <div class="tbl"><table data-source="f_grants">
+        <thead><tr><th>Year</th><th>Grantor</th><th>Grantee</th><th>Description</th><th>Type</th><th>Non-profit</th><th>ZIP</th><th class="n">Amount</th><th class="n">Paid to grantee that year</th></tr></thead>
+        <tbody id="grBody"></tbody></table></div>
+      <p class="note" id="grCount"></p>
     </div>
     <div class="grid">
       <div class="card"><div class="hd"><h2 id="fnH">By function</h2><button class="xp" data-expand="budget">Expand</button></div><p class="note" id="fnNote">All funds.</p>
@@ -720,8 +768,8 @@ function barsLine(box, rows, o={}){ box.textContent = ''; if (!rows.length) { em
   svg.append('g').selectAll('rect').data(rows.filter(d => d.a != null)).join('rect').attr('x', d => x(d.year)).attr('width', x.bandwidth()).attr('y', d => y(d.a)).attr('height', d => y(0) - y(d.a)).attr('rx',2)
     .attr('fill', o.color || dash.colors[0]).attr('fill-opacity', d => on(d.year) ? 1 : .22).attr('stroke', d => (!o.actual && isBudgetYear(d.year)) ? 'var(--color-fg-muted)' : null).attr('stroke-dasharray','2 2');
   const lp = rows.filter(d => d.b != null);
-  if (lp.length > 1) { svg.append('path').datum(lp).attr('fill','none').attr('stroke','var(--color-fg-muted)').attr('stroke-width',2).attr('d', d3.line().x(d => x(d.year) + x.bandwidth()/2).y(d => y(d.b)));
-    svg.append('g').selectAll('circle').data(lp).join('circle').attr('cx', d => x(d.year) + x.bandwidth()/2).attr('cy', d => y(d.b)).attr('r',2.5).attr('fill','var(--color-fg-muted)'); }
+  if (lp.length > 1) { svg.append('path').datum(lp).attr('fill','none').attr('stroke', o.lineColor || 'var(--color-fg-muted)').attr('stroke-width',2).attr('d', d3.line().x(d => x(d.year) + x.bandwidth()/2).y(d => y(d.b)));
+    svg.append('g').selectAll('circle').data(lp).join('circle').attr('cx', d => x(d.year) + x.bandwidth()/2).attr('cy', d => y(d.b)).attr('r',2.5).attr('fill', o.lineColor || 'var(--color-fg-muted)'); }
   const lab = x.bandwidth() > 30;
   svg.append('g').selectAll('text').data(rows).join('text').attr('x', d => x(d.year) + x.bandwidth()/2).attr('y', H-6).attr('text-anchor','middle').attr('font-size',11)
     .attr('fill', d => on(d.year) ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', d => on(d.year) && o.selYears ? 600 : null).text(d => (lab ? 'FY' : "'") + String(d.year).slice(2));
@@ -776,7 +824,7 @@ function drawRecTables(){
   const mq = ok('d_master_quality'); if (mq) table('mqBody', mq, [{key:'measure'},{key:'value'},{key:'ok',pill:v => String(v) === 'true' ? 'pass' : 'fail',fmt:v => String(v) === 'true' ? 'OK' : 'Check'}]);
 }
 function drawOver(p){
-  drawRecs();
+  drawRecs(); drawPortalOver(p);
   const ff = ok('f_function'), fs = ok('f_scope'), fa = ok('f_area'); if (!ff || !fs || !fa) return;
   const bud = measure(ff, 'budget', p, {ignoreArea:true}), ctl = measure(fs.filter(r => r.scope === 'Controllable purchases'), 'budget', p, {ignoreArea:true}), ar = measure(fa.filter(r => r.spend != null), 'spend', p);
   setText('kBud', 'Operating spending' + (p.stage === 'budget' ? ' (budgets)' : p.stage === 'all' ? ' (actual and budgets)' : ''));
@@ -960,6 +1008,7 @@ function drawLedger(p, last){
   table('vlBody', rows, [{key:'vendor'},{key:'payee_type'},{key:'main_function'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'agencies',n:1,fmt:N0},{key:'payee_names',n:1,fmt:N0}], {bar:'value', click: r => openDetail('vendor:' + r.vendor)});
 }
 function drawBudget(p){
+  drawPortalBudget(p);
   const ff = ok('f_function'), fu = ok('f_fund'), fo = ok('f_object'); if (!ff) return;
   const base = sel(ff, p, {ignoreArea:true}); const tot = d3.rollup(base, v => sum(v, 'budget'), r => r.category_title); const top = [...tot].sort((a,b) => b[1]-a[1]).slice(0,5).map(d => d[0]); const keys = [...top, 'All other functions'];
   const years = [...new Set(base.map(r => r.fiscal_year))].sort((a,b) => a-b);
@@ -979,6 +1028,75 @@ function drawBudget(p){
     table('objBody', ob, [{key:'object_name'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'controllable',n:1,fmt:M}]); }
   setText('budPair', `${fl}${m.n > 1 ? ' combined' : ''}. Change: ${m.label || 'no earlier years to compare'}.` + (m.mixed ? ' This selection mixes actual spending and budgets.' : ''));
 }
+/* ======================= budget, payments, funding and grants (portal views) ======================= */
+const COL_BUD = () => dash.colors[0], COL_PAY = () => dash.colors[1], COL_GR = () => dash.colors[2];
+const isTrue = v => v === true || String(v).toLowerCase() === 'true';
+function hstack(box, bars, o={}){ box.textContent = ''; const W = box.clientWidth || 520, rowH = 46, H = bars.length * rowH + 8, m = {l:0, r:8};
+  const mx = o.max || d3.max(bars, b => d3.sum(b.parts, x => x.v || 0)) || 1; const x = d3.scaleLinear([0, mx], [m.l, W - m.r]);
+  const svg = d3.select(box).append('svg').attr('width','100%').attr('viewBox',`0 0 ${W} ${H}`).attr('role','img').attr('aria-label', o.aria || 'Bars');
+  const tip = d3.select(box).append('div').attr('class','tip').style('opacity',0);
+  bars.forEach((b, i) => { const y0 = i * rowH; let acc = 0; const tot = d3.sum(b.parts, p => p.v || 0);
+    svg.append('text').attr('x', 0).attr('y', y0 + 12).attr('font-size', 12).attr('fill','var(--color-fg)').attr('font-weight', 550).text(b.label + (b.total !== false ? ' · ' + M(tot) : ''));
+    b.parts.forEach(p => { if (!p.v) return; const x0 = x(acc), w = Math.max(1, x(acc + p.v) - x0); acc += p.v;
+      const g = svg.append('g'); g.append('rect').attr('x', x0).attr('y', y0 + 18).attr('width', w).attr('height', 18).attr('rx', 2).attr('fill', p.color)
+        .attr('fill-opacity', p.assumed ? .35 : 1).attr('stroke', p.assumed ? p.color : 'var(--color-bg)').attr('stroke-dasharray', p.assumed ? '3 2' : null);
+      if (w > 64) g.append('text').attr('x', x0 + 5).attr('y', y0 + 31).attr('font-size', 11).attr('fill', p.assumed ? 'var(--color-fg)' : '#fff').text((p.short || p.label) + ' ' + (o.share ? d3.format('.0%')(p.v / tot) : M(p.v)));
+      g.append('rect').attr('x', x0).attr('y', y0 + 18).attr('width', w).attr('height', 18).attr('fill','transparent')
+        .on('mousemove', e => { const [mx2, my] = d3.pointer(e, box); tip.style('opacity',1).style('left', Math.min(mx2 + 12, W - 260) + 'px').style('top', (my + 12) + 'px').html('');
+          tip.append('div').attr('class','t').text(p.label); tip.append('div').text(M(p.v) + ' · ' + d3.format('.1%')(p.v / tot) + ' of ' + b.label.toLowerCase()); if (p.note) tip.append('div').text(p.note); })
+        .on('mouseleave', () => tip.style('opacity',0)); }); });
+  if (o.marker) { const xm = x(o.marker.v); svg.append('line').attr('x1', xm).attr('x2', xm).attr('y1', 14).attr('y2', H - 4).attr('stroke','var(--color-fg)').attr('stroke-width', 1.5);
+    svg.append('text').attr('x', xm - 4).attr('y', H - 6).attr('text-anchor','end').attr('font-size', 11).attr('fill','var(--color-fg)').text(o.marker.label); } }
+function bpYear(p){ const ys = p.years.filter(y => y >= 2017 && y <= 2026); return ys.length ? ys[ys.length - 1] : 2026; }
+function drawPortalOver(p){
+  const bp = ok('f_budget_vs_pay'), ov = ok('f_overlap'), pl = ok('d_plan50');
+  if (bp) { const base = sel(bp, p, {ignoreArea:true}); const years = d3.range(2017, 2027);
+    const rows = years.map(y => { const v = base.filter(r => r.fiscal_year === y); return {year:y, a: v.length ? sum(v, 'budget') : null, b: v.some(r => r.payments != null) ? sum(v, 'payments') : null}; });
+    barsLine(document.getElementById('ovBP'), rows, {aLabel:'Operating budget', bLabel:'Payments', color: COL_BUD(), lineColor: COL_PAY(), selYears: p.years.length ? p.years : null, click: yearClick, aria:'Operating budget and payments by year, FY2017 to FY2026'});
+    legend('ovBPLegend', [['Operating budget (actual)', COL_BUD()], ['Working budget (FY2026, dashed outline)', COL_BUD()], ['Payments to all payees', COL_PAY(), true]]);
+    const l = rows[rows.length - 1], a = rows.filter(r => STAGE_OF[r.year] === 'Actual' && r.a).pop();
+    setText('ovBPH', `Budget and payments, FY2017–FY2026${p.agencies.length ? ' · ' + who(p) : ''}`);
+    setText('ovBPNote', `Operating budget at its latest stage (bars: actual through FY${a ? a.year : 2025}; FY2026 is the working budget until actuals are published, usually with the next Governor's budget in January) and payments to all payees (line). FY2026 payments: ${M(l.b)}${l.a ? ', ' + d3.format('.0%')(l.b / l.a) + ' of the working budget' : ''}. Payments leave out payroll but include capital and pass-through money, so the two are never added. FY2027 is left out: its budget is an appropriation and its payments are a partial year. Click a year to filter.`); }
+  if (ov) { const y = bpYear(p), r = ov.find(d => d.fiscal_year === y); const box = document.getElementById('ovFund');
+    if (!r) { emptyMsg(box); } else {
+      hstack(box, [{label:`Budget, FY${y} (${stageShort(r.stage)})`, parts:[{label:'General funds', short:'General', v:r.general_funds, color:COL_BUD()}, {label:'Special funds', short:'Special', v:r.special_funds, color:dash.colors[3]}, {label:'Federal funds', short:'Federal', v:r.federal_funds, color:dash.colors[5]}]},
+                   {label:`Payments, FY${y}`, parts:[{label:'To governments (counties, schools, transit, State and federal bodies)', short:'Governments', v:r.paid_to_government, color:COL_PAY()}, {label:'To everyone else (businesses, non-profits, health care, individuals)', short:'Everyone else', v:r.paid_to_others, color:dash.colors[4]}]}],
+             {share:true, aria:`Budget by fund type and payments by payee, FY${y}`});
+      setText('ovFundH', `How it's funded, where payments go, FY${y}`);
+      setText('ovFundNote', 'Both bars use one dollar scale; labels show each part\'s share of its own bar. Hover for amounts.' + (p.years.length ? '' : ' Choose a year to change it.'));
+      const g = ov.filter(d => d.grants_and_loans > 0).pop();
+      setText('ovGrants', g ? `Grants and loans: ${M(g.grants_and_loans)} in FY${g.fiscal_year}, the latest year published${y > g.fiscal_year ? ` (FY${y} is not out yet)` : ''}. ${d3.format('.0%')(g.grants_in_payments_share)} of those dollars went to grantees also paid that year, so grants are counted inside payments, not on top. The full list is on the Budget tab.` : ''); } }
+  if (pl && pl.length) { const s1 = pl.filter(r => +r.step === 1), rest = pl.filter(r => +r.step > 1); const v1 = sum(s1, 'saving'), v2 = sum(rest, 'saving');
+    hstack(document.getElementById('ov50'), [{label:'Yearly savings, by source', total:false, parts:[{label:'Keep GMI\'s current savings going (rates GMI reported)', short:'Current GMI savings', v:v1, color:COL_BUD(), note:(s1[0] || {}).basis},
+      {label:`Statewide contracts with ${rest.length} vendors (assumed 3.5%, range 2–5%)`, short:'Statewide contracts', v:v2, color:COL_BUD(), assumed:true, note:'An assumption, not a reported saving'}]}],
+      {max: Math.max(50e6, v1 + v2) * 1.04, marker:{v:50e6, label:'$50M target'}, aria:'Path to the $50M savings target'});
+    setText('ov50Note', `${M(v1 + v2)} a year if current savings continue (${M(v1)}, from GMI's reported rates) and ${rest.length} statewide contracts save an assumed 3.5% (${M(v2)}; dashed). At the 2% low end the contracts give about ${M(v2 * 2 / 3.5)}, short of the target.`);
+    setText('ov50Detail', 'Largest assumed steps: ' + rest.slice().sort((a,b) => b.saving - a.saving).slice(0, 3).map(r => `${String(r.action).replace('Statewide contract: ', '')} ${M(r.saving)}`).join(', ') + '. The Calculator tab changes the rates; the Opportunities tab shows the evidence for each vendor.'); } }
+function drawPortalBudget(p){
+  const ov = ok('f_overlap'), fs = ok('f_fund_source'), pg = ok('f_program'), gr = ok('f_grants');
+  const sh = v => v == null ? '—' : d3.format('.0%')(v);
+  if (ov) table('ovlBody', ov.filter(r => r.fiscal_year <= 2026).slice().reverse().map(r => ({...r, _yr: 'FY' + r.fiscal_year})), [{key:'_yr', sort:'fiscal_year'},{key:'stage',fmt:stageShort},{key:'budget',n:1,fmt:M},{key:'general_funds',n:1,fmt:M},{key:'special_funds',n:1,fmt:M},{key:'federal_funds',n:1,fmt:M},
+    {key:'payments',n:1,fmt:M},{key:'paid_to_government',n:1,fmt:M},{key:'paid_to_others',n:1,fmt:M},{key:'grants_and_loans',n:1,fmt:v => v ? M(v) : 'not published'},{key:'grants_in_payments_share',n:1,fmt:sh}]);
+  const ys = fs ? yearsFor(fs, p) : []; const fl = fyLabel(ys);
+  if (fs) { const ts = document.getElementById('fsType'); if (ts.options.length === 1) { [...new Set(fs.map(r => r.fund_type))].sort().forEach(t => { const op = document.createElement('option'); op.textContent = t; ts.appendChild(op); }); ts.addEventListener('change', () => drawPortalBudget(prm())); document.getElementById('fsQ').addEventListener('input', () => drawPortalBudget(prm())); }
+    const q = document.getElementById('fsQ').value.trim().toLowerCase(), t = ts.value;
+    const rows = fs.filter(r => (!t || r.fund_type === t)).map(r => ({...r, key: r.fund_type + '|' + r.fund_source_code + '|' + r.fund_source_name}));
+    const out = breakdown(rows, 'key', 'budget', p, {ignoreArea:true}).map(r => { const [ft, code, name] = r.key.split('|'); return {...r, ft, code: code === 'null' ? '' : code, name}; }).filter(r => !q || (r.name + ' ' + r.code).toLowerCase().includes(q));
+    table('fsBody', out.slice(0, 150), [{key:'name'},{key:'code'},{key:'ft'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}]);
+    setText('fsH', `How it's funded, ${fl}`); setText('fsCount', `${N(out.length)} fund sources${out.length > 150 ? ', largest 150 shown' : ''}${p.agencies.length ? ' · ' + who(p) : ''}. ${fl}${ys.length > 1 ? ' combined' : ''}.`); }
+  if (pg) { const qi = document.getElementById('pgQ'); if (!qi._w) { qi._w = 1; qi.addEventListener('input', () => drawPortalBudget(prm())); }
+    const q = qi.value.trim().toLowerCase(); const rows = pg.map(r => ({...r, key: r.agency_code + '|' + r.program_name}));
+    const out = breakdown(rows, 'key', 'budget', p, {ignoreArea:true}).map(r => { const [code, name] = r.key.split('|'); return {...r, code, name, agency: agName(code)}; }).filter(r => !q || (r.name + ' ' + r.agency).toLowerCase().includes(q));
+    table('pgBody', out.slice(0, 150), [{key:'name'},{key:'agency'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}], {click: r => setP({agencies:[r.code]})});
+    setText('pgH', `Where it's going, ${fl}`); setText('pgCount', `${N(out.length)} programs${out.length > 150 ? ', largest 150 shown' : ''}. Click a program to filter by its agency.`); }
+  if (gr) { ['grCat','grPay','grQ'].forEach(id => { const el = document.getElementById(id); if (!el._w) { el._w = 1; el.addEventListener(id === 'grQ' ? 'input' : 'change', () => drawPortalBudget(prm())); } });
+    const c = document.getElementById('grCat').value, pf = document.getElementById('grPay').value, q = document.getElementById('grQ').value.trim().toLowerCase();
+    const gy = p.years.length ? p.years : null;
+    const rows = gr.filter(r => (!gy || gy.includes(r.fiscal_year)) && (!c || r.category === c) && (!pf || isTrue(r.in_payments) === (pf === '1')) && (!q || `${r.grantor} ${r.grantee} ${r.description}`.toLowerCase().includes(q))).sort((a,b) => b.amount - a.amount);
+    table('grBody', rows.slice(0, 200), [{key:'fiscal_year',fmt:v => 'FY' + v},{key:'grantor'},{key:'grantee'},{key:'description',fmt:v => v == null ? '' : String(v).length > 140 ? String(v).slice(0, 140) + '…' : v},{key:'category'},{key:'nonprofit',fmt:v => v === 'Y' ? 'Yes' : v === 'N' ? 'No' : ''},{key:'zipcode'},{key:'amount',n:1,fmt:M},{key:'paid_same_fy',n:1,fmt:v => v == null || v === '' ? '—' : M(v)}]);
+    const tot = sum(rows, 'amount'), inP = sum(rows.filter(r => isTrue(r.in_payments)), 'amount');
+    setText('grH', `Grants and loans, as listed${gy ? ', ' + fyLabel(gy.filter(y => y <= 2025)) : ''}`);
+    setText('grCount', `${N(rows.length)} rows, ${M(tot)}${rows.length > 200 ? '; largest 200 shown (search to narrow)' : ''}. ${tot ? d3.format('.0%')(inP / tot) : '—'} of these dollars went to grantees also paid that year.` + (gy && !gy.some(y => y <= 2025) ? ' No grants are published for the selected years yet.' : '')); } }
 function drawData(){
   const so = ok('sources'); if (so) table('srcBody', so, [{key:'title'},{key:'dataset_id'},{key:'use'},{key:'years'},{key:'rows_downloaded',n:1,fmt:N},{key:'reconciled',pill:v => String(v).toLowerCase() === 'true' ? 'pass' : 'fail',fmt:v => String(v).toLowerCase() === 'true' ? 'Yes' : 'No'},{key:'portal_updated'}]);
   const ru = ok('runs'); if (ru) table('runsBody', ru.slice().sort((a,b) => d3.descending(a.started_utc, b.started_utc)), [{key:'started_utc',fmt:v => String(v).replace('T',' ').slice(0,16)},{key:'status',pill:v => v === 'passed' ? 'pass' : 'fail'},{key:'passed',n:1},{key:'warnings',n:1},{key:'repairs',n:1},{key:'mode'}]);

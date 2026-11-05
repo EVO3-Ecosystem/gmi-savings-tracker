@@ -364,14 +364,13 @@ mart.f_payee_type,payee_type,VARCHAR,5913,"Payee type from reference/payee_type_
 mart.f_payee_type,function_name,VARCHAR,5913,Budget function title (from the portal's category_title),derived
 mart.f_payee_type,paid,DOUBLE,5913,Payments in dollars,derived
 mart.f_payee_type,vendors,BIGINT,5913,Distinct payees in the year,derived
-mart.f_program,fiscal_year,INTEGER,12291,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-mart.f_program,stage,VARCHAR,12291,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.f_program,agency_code,VARCHAR,12291,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-mart.f_program,unit_name,VARCHAR,12291,Budget unit name,portal
-mart.f_program,program_code,VARCHAR,12291,"Budget program code, two digits in core",portal
-mart.f_program,program_name,VARCHAR,12291,Budget program name,portal
-mart.f_program,fund_type,VARCHAR,12291,"Fund type (General, Special, Federal, Reimbursable and so on)",derived
-mart.f_program,budget,DOUBLE,12291,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+mart.f_program,fiscal_year,INTEGER,6648,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.f_program,stage,VARCHAR,6648,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.f_program,agency_code,VARCHAR,6648,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.f_program,unit_name,VARCHAR,6648,Budget unit name,portal
+mart.f_program,program_code,VARCHAR,6648,"Budget program code, two digits in core",portal
+mart.f_program,program_name,VARCHAR,6648,Budget program name,portal
+mart.f_program,budget,DOUBLE,6648,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
 mart.f_scope,fiscal_year,INTEGER,2484,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.f_scope,stage,VARCHAR,2484,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 mart.f_scope,agency_code,VARCHAR,2484,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -580,10 +579,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,301,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,301,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,301,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,301,What the column means,reference
+ref.column_dictionary,column,VARCHAR,321,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,321,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,321,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,321,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference
