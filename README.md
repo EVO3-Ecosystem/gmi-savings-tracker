@@ -1,5 +1,7 @@
 # GMI Savings Tracker
 
+[![CI](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/ci.yml)
+
 An independent savings tracker for Maryland's Government Modernization Initiative (GMI): it checks reported savings against the state's own payments, and finds the next $50M. Prototype by Sierra Napier; not an official State of Maryland product.
 
 
@@ -63,21 +65,30 @@ The website's budget download labels FY2021 "Working", FY2022 "Appropriation" an
 |---|---|---|
 | 1. Extract | **Done** (Oct 28, 2026) | Two runs in a row matched portal row counts for all five datasets ✔ |
 | 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
-| 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ | Match rates at or above the dashboard's master list quality |
-| 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 13 reproduced exactly, 8 differences explained (`docs/parity/`) ✔; analytics files move with Phase 5 |
+| 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ |
+| 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 12 reproduced exactly, 9 differences explained (`docs/parity/`) ✔; vendor, budget and overlap marts added since; analytics files move with Phase 5 |
 | 5. Analytics | — | Outputs match the dashboard |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
 
+Next up is Phase 5a: replace the Data & pipeline tab's old-pipeline facts, port the cross-checks, and make `export.py` refuse a failed build. The full gap list is in [docs/roadmap.md](docs/roadmap.md).
+
+CI (lint, compile check, tests) was red from Nov 2 to Nov 6, 2026: the editable install exposed `pipeline` instead of `src`, so `from src.pipeline import ...` failed at test collection. Fixed by declaring the packages in `pyproject.toml`; `main` is green again.
+
 ## Run it
 
+Python 3.10 or newer.
+
 ```bash
-pip install sodapy pandas pyarrow pyyaml requests duckdb pytest
+pip install -e ".[dev]"   # runtime dependencies, pytest and ruff (what CI installs)
 make extract        # download what changed since the last good run
 make extract-full   # download everything
 make gate1          # Phase 1 gate: last two runs matched the portal
 make build          # Phase 2: DuckDB layers + checks (non-zero exit on a failed check)
 make all            # extract then build
-make test
+make test           # CI runs the same; data-dependent tests skip when data/ is absent
+make parity         # compare the marts with the legacy dashboard files (LEGACY=path to the old out/ folder)
+python -m src.pipeline.export --carry ../gst/out   # dashboard CSVs from the marts into data/export/
+python -m src.pipeline.preview                     # dashboard page tests on the export, then a self-contained preview
 make reconcile      # compare with mtp.maryland.gov downloads (about 750 MB; RECONCILE_FLAGS=--reuse to skip downloading)
 make figures        # docs/figures/*.png from the database
 make docs           # data governance: schemas, coverage, drift
@@ -129,13 +140,17 @@ Every rule the dashboard pipeline kept in code now lives in a CSV, so each chang
 
 ```
 .github/                 CI, manual extract smoke test, issue and PR templates
-docs/                    roadmap, checks, data sources, data governance, schemas/, reconciliation/, figures/, portfolio-recommendations
+docs/                    roadmap, checks, data sources, data governance, portfolio rubric and recommendations,
+                         schemas/, reconciliation/, parity/, figures/
 scripts/bootstrap_github.sh  one-time labels, milestones and phase issues
 config/datasets.yaml     dataset IDs, page size, retries, backoff, heal attempts
-reference/               hand-kept CSVs (Phase 3); for now the dashboard pipeline's agency and vendor master lists
-src/pipeline/extract.py  Phase 1
-tests/                   pytest checks on the latest run
-data/                    git-ignored: raw/<run_id>/, runs.csv, md_transparency.duckdb
+config/dashboard.yaml    the dashboard's data files: columns, keys and which mart builds each
+reference/               hand-kept CSVs (15): agency, vendor, payee-type, focus-area and budget-stage rules and decisions
+sql/mart/                one SQL file per mart (43), run in order by marts.py
+src/pipeline/            extract, enrich, build, checks, reference, marts, parity, export, preview,
+                         reconcile, figures, governance
+tests/                   pytest checks (data-dependent ones skip when data/ is absent)
+data/                    git-ignored: raw/<run_id>/, runs.csv, md_transparency.duckdb, export/
 legacy/gst/              the original GMI Savings Tracker pipeline (see below)
 ```
 
