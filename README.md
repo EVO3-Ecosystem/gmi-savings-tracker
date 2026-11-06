@@ -41,7 +41,7 @@ Every dataset the Maryland Transparency Portal's [View Data](https://mtp.marylan
 | Funding source | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | 26,178 | budgetsource.maryland.gov | FY2017–FY2027 | every year |
 | Payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | 411,231 | vendorpayments.maryland.gov | FY2008–FY2027 (FY2027 partial) | every year |
 | Grants and loans | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | 23,085 | grantsandloans.maryland.gov | FY2009–FY2025 | every year |
-| Budgeted positions | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | not on View Data | FY2017–FY2027 | API count only |
+| Budgeted positions | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | not on View Data | FY2017–FY2027 | Matches the portal's own count and yearly totals; no website download to compare |
 
 Counts from the Nov 2, 2026 run. Not extracted: County Board of Education spending ([t6vk-rvwe](https://opendata.maryland.gov/d/t6vk-rvwe)), linked from the portal's menu; it covers county school boards, not State agencies. Full schemas, owners and known source issues are in [docs/data-governance.md](docs/data-governance.md).
 

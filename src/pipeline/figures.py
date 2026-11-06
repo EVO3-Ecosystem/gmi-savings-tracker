@@ -64,6 +64,9 @@ def reconciliation():
     for ax, (k, g), c in zip(axs, r.groupby("dataset", sort=False), C):
         ax.plot(g.fiscal_year, g.total_api, color=c, lw=2, label="API extract")
         ax.scatter(g.fiscal_year, g.total_web, s=36, facecolor=SURF, edgecolor=INK, lw=1.2, zorder=3, label="Website download")
+        if k == "payments":  # the latest year is partial: draw its segment dashed so the drop does not read as a collapse
+            ax.plot(g.fiscal_year.iloc[-2:], g.total_api.iloc[-2:], color=SURF, lw=3, zorder=2)
+            ax.plot(g.fiscal_year.iloc[-2:], g.total_api.iloc[-2:], color=c, lw=2, ls=(0, (3, 2)), zorder=2.5)
         ax.yaxis.set_major_formatter(money)
         bad = int((~g.match).sum())
         ax.set_title(NAMES[k] + "\n" + ("every year matches" if not bad else f"{bad} years differ"), loc="left", fontsize=9.5)
@@ -72,7 +75,8 @@ def reconciliation():
             ax.annotate(f"FY{int(last.fiscal_year)} partial", (last.fiscal_year, last.total_api), xytext=(-62, 4), textcoords="offset points", fontsize=8, color=MUTED)
     axs[0].legend(frameon=False, fontsize=8.5, loc="upper left")
     save(fig, "reconciliation.png", "Two copies, one answer: API extract vs the Transparency Portal's own downloads",
-         "Line: yearly total from the SODA API. Rings: yearly total from mtp.maryland.gov downloads. A match means equal row counts and totals within $1.")
+         "Line: yearly total from the SODA API. Rings: yearly total from mtp.maryland.gov downloads. A match means equal row counts and totals within $1. "
+         "Positions (x8qy-486w) is not shown: the portal has no website download for it; it is checked against the portal's own count and yearly totals.")
 
 
 def budget_by_stage(con):
@@ -126,7 +130,7 @@ def concentration(con):
         ax.xaxis.set_major_formatter(lambda v, _: f"FY{int(v) % 100:02d}")
     axs[0].set_ylabel("HHI")
     axs[0].yaxis.set_major_formatter(lambda v, _: f"{v:,.0f}")
-    axs[0].text(2008.3, 1880, "1,800: highly concentrated", fontsize=8, color=MUTED)
+    axs[0].text(2008.3, 2000, "1,800: highly concentrated", fontsize=8, color=MUTED, va="bottom")
     save(fig, "vendor_concentration_hhi.png", "Buying in four of six focus areas is highly concentrated",
          "Herfindahl-Hirschman Index of private-vendor spend per focus area, FY2008-FY2026 (mart.f_concentration). Threshold from the 2023 U.S. DOJ/FTC Merger Guidelines.")
 
