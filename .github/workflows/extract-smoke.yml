@@ -2,6 +2,8 @@
 # The pipeline runs locally by decision (no cloud); this workflow only runs when started by hand.
 name: Extract and build
 on: workflow_dispatch
+permissions:
+  contents: read
 jobs:
   extract:
     runs-on: ubuntu-latest
