@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "gmi-savings-tracker"
 version = "0.1.0"
@@ -7,6 +11,9 @@ dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "reque
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
+
+[tool.setuptools]
+packages = ["src", "src.pipeline"]
 
 [tool.ruff]
 line-length = 160
