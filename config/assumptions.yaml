@@ -1,0 +1,33 @@
+# Assumptions behind the forecasts (src/models/forecast.py). Change a value here, not in code.
+
+forecast:
+  first_actual_fy: 2017        # the series starts here (earlier years are not in the operating budget data)
+  last_actual_fy: 2025         # last year with a confirmed actual; later years are the State's own plan, never used to fit
+  horizon_fy: 2031             # forecast through this fiscal year
+  bootstrap_paths: 4000        # simulated paths per area for the p10 / p50 / p90 range
+  seed: 11                     # fixed so a rebuild reproduces the same ranges
+  selection: rolling_origin_mase  # method choice: lowest mean MASE over the rolling origins (legacy_single_split = the legacy rule)
+  selection_fit_end_fy: 2022   # legacy rule only: fit through this year, score the years after it
+  rolling_min_train_years: 5   # rolling-origin backtest: smallest training window
+  rolling_max_horizon: 3       # rolling-origin backtest: longest horizon scored from each origin
+  backtest_bootstrap_paths: 500   # paths per origin for the backtest's ranges (the published forecasts use bootstrap_paths)
+  rolling_score_through_fy: 2027  # years up to the last actual are scored against actuals; later years against the State's plan
+
+# GMI's recurring savings by focus area (Joint Chairmen's Report, Jan 26, 2026): the middle of each reported range,
+# summed over the saving IDs listed (see reference/gmi_reported_savings.csv). Areas not listed get no default rate.
+gmi_recurring:
+  "Fleet & fuel":
+    savings: [S08, S09]
+    note: "fuel and maintenance $0.8M + maintenance vendors $1.3M"
+  "Telecom":
+    savings: [S10, S11, S12]
+    note: "phone lines $0.5M + plan catalog $2.1-2.3M + copper lines $1.4-1.7M"
+  "IT hardware, software & services":
+    savings: [S13, S14, S15]
+    note: "laptop refresh $1.5M + specifications $1.5M + pricing $1.9M"
+  "Print, copy & mail":
+    savings: [S16]
+    note: "shipping contract $0.8M"
+  "Other controllable purchases":
+    savings: [S01]
+    note: "contract renegotiation $18M year over year"

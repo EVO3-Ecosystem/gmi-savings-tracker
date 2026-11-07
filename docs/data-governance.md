@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-07T03:40Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
+_Generated 2026-11-07T04:18Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -640,6 +640,55 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 
+**mart.d_forecast_backtest** (392 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| method | VARCHAR | derived | Forecast model scored: log-linear trend, naive (last actual), drift (average yearly growth) or the equal-weight combination of those three (scored only, never kept) |
+| origin_fy | BIGINT | derived | Last fiscal year of actual spending the model was allowed to see (the forecast origin) |
+| horizon | BIGINT | derived | Years ahead of the origin that the forecast looks (1 to 3) |
+| forecast_fy | BIGINT | derived | Fiscal year being forecast: origin plus horizon, up to FY2027 (years after the last actual are scored against the State's plan) |
+| target | VARCHAR | derived | What the forecast is scored against: actual (spending up to the last actual year) or plan (the State's own budget figure for FY2026 and FY2027, which is not an outcome) |
+| outcome | DOUBLE | derived | Dollars the forecast is scored against: actual spending, or the State's plan when target is plan |
+| forecast | DOUBLE | derived | The model's forecast for that year, in dollars, using only actual years up to the origin (never the plan) |
+| abs_error | DOUBLE | derived | Absolute forecast error in dollars |
+| ape | DOUBLE | derived | Absolute percentage error: absolute error divided by the outcome |
+| mase | DOUBLE | derived | Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error |
+| p10 | DOUBLE | derived | 10th percentile of the bootstrap range simulated at that origin, in dollars |
+| p50 | DOUBLE | derived | Median of the bootstrap range simulated at that origin, in dollars |
+| p90 | DOUBLE | derived | 90th percentile of the bootstrap range simulated at that origin, in dollars |
+| covered | BOOLEAN | derived | True when the outcome fell inside the p10 to p90 range (a range meant to cover 80%) |
+| interval_score | DOUBLE | derived | Interval score of the p10 to p90 range in dollars (Gneiting and Raftery 2007): its width plus 10 times how far the outcome fell outside it; lower is better |
+
+**mart.d_forecast_calibration** (8 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| method | VARCHAR | derived | The area's chosen forecast model (the kept model of each area for the All areas row) |
+| scored | BIGINT | derived | Rolling-backtest forecasts of actual spending scored for the area's chosen model |
+| covered_share | DOUBLE | derived | Share of those forecasts whose actual spending fell inside the published p10 to p90 range |
+| nominal | DOUBLE | derived | The share the range is meant to cover (0.8 for p10 to p90) |
+| widen_by | DOUBLE | derived | Pooled factor by which the ranges would have needed to be wider (around the median, on the log scale) to cover the nominal share in the backtest; 1 is calibrated; measured in-sample on few points, so a size of the problem, not a validated correction |
+
+**mart.d_forecast_model** (7 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| method | VARCHAR | derived | Forecast model chosen by the backtest |
+| growth | DOUBLE | derived | Annual growth rate of the chosen model |
+| backtest_mape | DOUBLE | derived | Mean absolute percentage error of the chosen model (fit FY2017-2022; scored FY2023-2025) |
+| trend_mape | DOUBLE | derived | Backtest error of the log-linear trend model |
+| naive_mape | DOUBLE | derived | Backtest error of the naive (last actual) model |
+| drift_mape | DOUBLE | derived | Backtest error of the drift model |
+| baseline_fy2025 | DOUBLE | derived | FY2025 actual spending in the area |
+| gmi_recurring | DOUBLE | source | Recurring savings GMI reported for the area |
+| gmi_rate | DOUBLE | derived | gmi_recurring divided by baseline_fy2025 |
+| gmi_note | VARCHAR | source | Which reported items make up gmi_recurring |
+| gf_share | DOUBLE | derived | General Fund share of the area's FY2025 spending |
+
 **mart.d_master_quality** (5 rows)
 
 | column | type | origin | definition |
@@ -750,6 +799,19 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 | top5_share | DOUBLE | derived | Share of the area's private-vendor spend held by its five largest vendors |
 | hhi | DOUBLE | derived | Herfindahl-Hirschman Index: sum of squared percentage shares of spend (0-10,000; above 1,800 is highly concentrated under the 2023 DOJ/FTC Merger Guidelines) |
+
+**mart.f_forecast** (105 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| fiscal_year | BIGINT | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| kind | VARCHAR | derived | Actual, forecast or plan |
+| value | DOUBLE | derived | Actual or forecast spending in dollars |
+| p10 | DOUBLE | derived | 10th percentile of the bootstrap forecast |
+| p50 | DOUBLE | derived | Median of the bootstrap forecast |
+| p90 | DOUBLE | derived | 90th percentile of the bootstrap forecast |
+| plan | DOUBLE | derived | Spending after GMI's reported savings rate |
 
 **mart.f_function** (795 rows)
 
@@ -927,7 +989,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (59 rows)
+**mart.run_checks** (66 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1040,7 +1102,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (59 rows)
+**ops.check_result** (66 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1246,7 +1308,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (321 rows)
+**ref.column_dictionary** (341 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1924,7 +1986,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,031 of 1,031 columns documented (65 source, 707 warehouse, 259 dashboard).
+1,073 of 1,073 columns documented (65 source, 749 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

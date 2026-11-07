@@ -81,6 +81,7 @@ def run(con, run_id, manifest):
 
     phase3(con, check, one)
     phase4(con, check, one)
+    phase5(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -203,3 +204,38 @@ def phase4(con, check, one):
         check("mart", "Grants whose grantee is also a payee that year (name match)", True, f"lowest year {lo:.0%} of grant dollars; grants are shown as part of payments, never added", "warn")
     r, m = one("SELECT count(*) FROM mart.agency_results"), one("SELECT count(*) FROM core.mfr_measure WHERE agency_code IS NOT NULL")
     check("mart", "Agency results rows = matched Managing for Results rows", r == m, f"{r:,} of {m:,}")
+
+
+def phase5(con, check, one):
+    """Forecasts: structurally sound, tied to the budget, and the chosen model is not worse than the naive baseline."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'f_forecast'"):
+        return
+    bad = one("SELECT count(*) FROM mart.f_forecast WHERE kind = 'Forecast' AND NOT (p10 <= p50 AND p50 <= p90)")
+    check("mart", "Forecast ranges are ordered (p10 <= p50 <= p90)", bad == 0, f"{bad} forecast rows out of order")
+    gap = one("""SELECT coalesce(max(abs(a.v - s.b)), 0) FROM (SELECT fiscal_year, sum(value) v FROM mart.f_forecast WHERE kind = 'Actual' GROUP BY 1) a
+        JOIN (SELECT fiscal_year, sum(budget) b FROM mart.f_scope WHERE scope = 'Controllable purchases' AND stage = 'Actual' GROUP BY 1) s USING (fiscal_year)""")
+    base = one("""SELECT coalesce(max(abs(m.baseline_fy2025 - f.value)), 0) FROM mart.d_forecast_model m
+        JOIN mart.f_forecast f ON f.area = m.area AND f.kind = 'Actual' AND f.fiscal_year = 2025""")
+    check("mart", "Forecast actuals add up to controllable purchases (every actual year)", gap <= 10 and base <= 1,
+          f"largest yearly gap ${gap:,.0f} (rows are rounded to the dollar); FY2025 baseline gap ${base:,.0f}")
+    short = one("""SELECT count(*) FROM (SELECT area, count(*) FILTER (WHERE kind = 'Actual') a, count(*) FILTER (WHERE kind = 'Forecast') f
+        FROM mart.f_forecast GROUP BY 1) WHERE a < 9 OR f < 6""")
+    n = one("SELECT count(*) FROM mart.d_forecast_model")
+    check("mart", "Every forecast area has nine actual years and six forecast years", short == 0 and n >= 7, f"{n} areas; {short} short")
+    unordered = one("SELECT count(*) FROM mart.d_forecast_backtest WHERE NOT (p10 <= p50 AND p50 <= p90)")
+    check("mart", "Backtest ranges are ordered (p10 <= p50 <= p90)", unordered == 0, f"{unordered} backtest rows out of order")
+    unplanned = one("""SELECT count(*) FROM (SELECT area FROM mart.d_forecast_backtest WHERE target = 'plan' GROUP BY area
+        HAVING count(DISTINCT forecast_fy) < 2)""") + one("SELECT count(*) FROM mart.d_forecast_model WHERE area NOT IN (SELECT area FROM mart.d_forecast_backtest WHERE target = 'plan')")
+    check("mart", "Every forecast area is also scored against the State's plan for FY2026 and FY2027", unplanned == 0, f"{unplanned} areas without both plan years")
+    cov = con.execute("SELECT covered_share, scored, nominal, widen_by FROM mart.d_forecast_calibration WHERE area = 'All areas'").fetchone()
+    if cov:
+        share, scored, nominal, widen = cov
+        check("mart", "Published forecast ranges cover about their nominal share on the rolling backtest", abs(share - nominal) <= 0.10,
+              f"{share:.1%} of {scored} forecasts of actual spending fell inside the p10-p90 range (nominal {nominal:.0%}); "
+              f"about {widen:.2f}x wider ranges would have been needed (in-sample, a handful of points)", "warn")
+    worse = con.execute("""SELECT m.area, avg(b.mase) FILTER (WHERE b.method = m.method) AS chosen, avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') AS naive
+        FROM mart.d_forecast_model m JOIN mart.d_forecast_backtest b USING (area) WHERE b.target = 'actual' GROUP BY m.area, m.method
+        HAVING avg(b.mase) FILTER (WHERE b.method = m.method) > avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') + 1e-9""").fetchall()
+    check("mart", "Chosen forecast model is no worse than the naive baseline in the rolling-origin backtest", not worse,
+          "; ".join(f"{a}: MASE {c:.2f} vs naive {nv:.2f}" for a, c, nv in worse) if worse else "every area's chosen model matches or beats naive (mean MASE over FY2021-FY2024 origins, scored against actuals)", "warn")
+
