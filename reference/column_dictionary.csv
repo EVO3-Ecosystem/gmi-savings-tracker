@@ -57,15 +57,15 @@ function_code,,derived,Budget function code (from the portal's category)
 function_name,,derived,Budget function title (from the portal's category_title)
 portal_type,,derived,The portal's own stage label kept for comparison with the confirmed stage
 stage,,reference,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks"
-official_stage,stage_evidence,reference,Stage DBM's budget books assign to the year
-file_label,stage_evidence,portal,Stage label the portal file assigned to the year
-evidence,stage_evidence,source,Where in DBM's budget books the stage is confirmed
+official_stage,"stage_evidence,ref.stage_evidence",reference,Stage DBM's budget books assign to the year
+file_label,"stage_evidence,ref.stage_evidence",portal,Stage label the portal file assigned to the year
+evidence,"stage_evidence,ref.stage_evidence",source,Where in DBM's budget books the stage is confirmed
 evidence,d_opps,derived,Plain-language reason the detector flagged the row
 evidence_url,,source,Link to the evidence document
-programs_compared,stage_evidence,derived,Programs compared between the portal file and DBM's books
-programs_exact,stage_evidence,derived,Programs whose totals match DBM's books exactly
-file_total,stage_evidence,derived,Portal file total for the year
-dbm_actual_total,stage_evidence,source,Actual total printed in DBM's budget books
+programs_compared,"stage_evidence,ref.stage_evidence",derived,Programs compared between the portal file and DBM's books
+programs_exact,"stage_evidence,ref.stage_evidence",derived,Programs whose totals match DBM's books exactly
+file_total,"stage_evidence,ref.stage_evidence",derived,Portal file total for the year
+dbm_actual_total,"stage_evidence,ref.stage_evidence",source,Actual total printed in DBM's budget books
 internal,core.fact_budget_scope,derived,True for transfers between State agencies (reimbursable funds) excluded from controllable spending
 entitlement,core.fact_budget_scope,derived,True for spending set by law or formula (for example Medicaid benefits) excluded from controllable spending
 controllable,,derived,"Controllable purchases: contractual services, supplies, equipment, rent and similar spending agencies can renegotiate, per reference/controllable_rules.csv"

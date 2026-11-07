@@ -4,9 +4,9 @@
 
 Writes one CSV per dashboard dataset (config/dashboard.yaml) to data/export/<run_id>/ and points data/export/latest at
 it. Files that have a mart come from the database, with the legacy file's column order and rounding (money to the
-cent, shares and changes to 5 decimals). Files that don't have a mart yet (the Phase 5 analytics and the pipeline's own
-run files) are copied from --carry and marked "carried" in manifest.csv, so the dashboard can be previewed whole while
-Phase 5 is under way. Feedback loop: manifest.csv also records, per file, rows and whether it changed since the last
+cent, shares and changes to 5 decimals). Every dashboard file now has a mart (since Nov 7, 2026), so nothing is carried;
+--carry remains for a dataset added to config/dashboard.yaml before its mart exists: such a file is copied from that folder
+and marked "carried" in manifest.csv. Feedback loop: manifest.csv also records, per file, rows and whether it changed since the last
 export (the roadmap's "exported files differ from last run" report).
 """
 import argparse

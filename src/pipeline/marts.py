@@ -1,18 +1,25 @@
 """Phase 4: build the mart layer from sql/mart/*.sql, in file order (one table per file; grain and checks in each header).
 
 A file whose first line is
-    -- yoy: keys=<col,col|none> values=<col,col> [stage]
+    -- yoy: keys=<col,col|none> values=<col,col> [stage] [good=lower]
 holds only the base SELECT. The runner wraps it with the dashboard's one change measure (legacy measures.yoy):
 for each value v it adds v_prior (same keys, previous fiscal year) and v_yoy = (v - v_prior) / |v_prior| (blank when the
 prior year is missing or zero); with `stage` it adds stage_pair ("Actual vs Actual", "Working budget vs Actual", ...).
 Columns come out in the legacy order: base columns, every v_prior, every v_yoy, then stage_pair.
 Other files are run as written (CREATE OR REPLACE TABLE ...).
+
+The same headers define the `measures` catalog (`catalog()`): one row per value of every file with a header, saying what the
+`_yoy` column means; `good=lower` marks a cost (a lower value is better), anything else is neutral context. `stage_evidence`
+is the hand-kept reference/stage_evidence.csv, loaded as a table so the dashboard can show how each year's stage was confirmed.
 """
 import re
 from pathlib import Path
 
-SQL = Path(__file__).resolve().parents[2] / "sql" / "mart"
-HEAD = re.compile(r"--\s*yoy:\s*keys=(\S+)\s+values=(\S+)(\s+stage)?")
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[2]
+SQL = ROOT / "sql" / "mart"
+HEAD = re.compile(r"--\s*yoy:\s*keys=(\S+)\s+values=(\S+)(\s+stage)?(?:\s+good=(\w+))?")
 
 
 def yoy_sql(name, base, keys, values, stage):
@@ -26,6 +33,26 @@ def yoy_sql(name, base, keys, values, stage):
         sel.append("CASE WHEN p.stage_prior IS NULL THEN NULL ELSE b.stage || ' vs ' || p.stage_prior END AS stage_pair")
     return (f"CREATE OR REPLACE TABLE mart.{name} AS WITH b AS ({base}), p AS (SELECT {prior_cols} FROM b) "
             f"SELECT {', '.join(sel)} FROM b LEFT JOIN p ON {on}")
+
+
+def catalog(sql_dir=SQL):
+    """The dashboard's measures: what each year-over-year column means, from the `-- yoy:` headers (file order)."""
+    rows = []
+    for f in sorted(Path(sql_dir).glob("*.sql")):
+        m = HEAD.match(f.read_text().lstrip())
+        if not m:
+            continue
+        keys = [] if m.group(1) == "none" else m.group(1).split(",")
+        for v in m.group(2).split(","):
+            rows.append({"table": f.stem.split("_", 1)[1], "measure": f"{v}_yoy",
+                         "definition": f"Change in {v} from the previous fiscal year, as a share of the previous year",
+                         "grouped_by": ", ".join(keys) or "fiscal year", "higher_is": m.group(4) or "neutral"})
+    return pd.DataFrame(rows, columns=["table", "measure", "definition", "grouped_by", "higher_is"]).drop_duplicates(["table", "measure"])
+
+
+def stage_evidence(root=ROOT):
+    """How each budget year's stage was confirmed (reference/stage_evidence.csv, the legacy file carried over unchanged)."""
+    return pd.read_csv(Path(root) / "reference" / "stage_evidence.csv")
 
 
 def build(con):
@@ -44,4 +71,9 @@ def build(con):
         except Exception as e:  # name the file so a broken mart is easy to find
             raise RuntimeError(f"{f.name}: {e}") from e
         done.append(f.stem)
+    for name, df in (("measures", catalog()), ("stage_evidence", stage_evidence())):
+        con.register("_df", df)
+        con.execute(f"CREATE OR REPLACE TABLE mart.{name} AS SELECT * FROM _df")
+        con.unregister("_df")
+        done.append(name)
     return done

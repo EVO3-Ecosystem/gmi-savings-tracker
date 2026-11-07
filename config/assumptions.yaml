@@ -98,3 +98,7 @@ recommendations:
     contract_rate: 0.035       # assumed saving on a statewide contract (assumed range 2-5%)
     fallback_rate: 0.01        # assumed saving in the fallback areas if the contracts fall short
     fallback_areas: ["Real estate & leases", "Utilities & facility energy"]
+
+# Stage evidence (src/pipeline/checks.py): how a budget year's stage was confirmed against DBM's budget books.
+stage_evidence:
+  min_exact_share: 0.6         # of the programs compared with DBM's printed actuals, at least this share must match to the dollar

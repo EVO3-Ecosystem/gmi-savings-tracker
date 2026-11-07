@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-07T04:46Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
+_Generated 2026-11-07T05:04Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -1077,6 +1077,16 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | top100_share | DOUBLE | derived | Share of non-government payments held by the 100 largest vendors that year |
 | vendors_1m | BIGINT | derived | Non-government vendors paid $1M or more that year |
 
+**mart.measures** (14 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| table | VARCHAR | derived | Dashboard table the measure belongs to |
+| measure | VARCHAR | derived | Column name of the dashboard measure |
+| definition | VARCHAR | derived | What the dashboard measure means |
+| grouped_by | VARCHAR | derived | Grain the measure is grouped by |
+| higher_is | VARCHAR | derived | Whether a higher value is better, worse or neutral |
+
 **mart.payment_area** (411,231 rows)
 
 | column | type | origin | definition |
@@ -1109,7 +1119,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (77 rows)
+**mart.run_checks** (80 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1145,6 +1155,21 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_prior | DOUBLE | derived | budget in the previous fiscal year for the same keys |
 | budget_yoy | DOUBLE | derived | Change in budget from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
 | stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
+
+**mart.stage_evidence** (4 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | BIGINT | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| file_label | VARCHAR | portal | Stage label the portal file assigned to the year |
+| official_stage | VARCHAR | reference | Stage DBM's budget books assign to the year |
+| evidence | VARCHAR | source | Where in DBM's budget books the stage is confirmed |
+| evidence_url | VARCHAR | source | Link to the evidence document |
+| programs_compared | DOUBLE | derived | Programs compared between the portal file and DBM's books |
+| programs_exact | DOUBLE | derived | Programs whose totals match DBM's books exactly |
+| file_total | BIGINT | derived | Portal file total for the year |
+| dbm_actual_total | DOUBLE | source | Actual total printed in DBM's budget books |
+| note | VARCHAR | reference | Explanation of the rule or row |
 
 **mart.totals_by_fy** (20 rows)
 
@@ -1222,7 +1247,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (77 rows)
+**ops.check_result** (80 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1627,6 +1652,21 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | rule | VARCHAR | reference | Name of the mapping or scope rule |
 | payment_name_pattern | VARCHAR | reference | Regular expression matching payment agency names |
 | target | VARCHAR | reference | Agency code the rule maps to |
+| note | VARCHAR | reference | Explanation of the rule or row |
+
+**ref.stage_evidence** (4 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | VARCHAR | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| file_label | VARCHAR | portal | Stage label the portal file assigned to the year |
+| official_stage | VARCHAR | reference | Stage DBM's budget books assign to the year |
+| evidence | VARCHAR | source | Where in DBM's budget books the stage is confirmed |
+| evidence_url | VARCHAR | source | Link to the evidence document |
+| programs_compared | VARCHAR | derived | Programs compared between the portal file and DBM's books |
+| programs_exact | VARCHAR | derived | Programs whose totals match DBM's books exactly |
+| file_total | VARCHAR | derived | Portal file total for the year |
+| dbm_actual_total | VARCHAR | source | Actual total printed in DBM's budget books |
 | note | VARCHAR | reference | Explanation of the rule or row |
 
 **ref.vendor_families** (33 rows)
@@ -2106,7 +2146,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,143 of 1,143 columns documented (65 source, 819 warehouse, 259 dashboard).
+1,168 of 1,168 columns documented (65 source, 844 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

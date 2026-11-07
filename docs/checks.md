@@ -43,5 +43,8 @@ A failed "Stop" check ends the run before anything is exported. The export itsel
 | The path to $50M is numbered, adds up, and agrees with recommendation 4's status | mart | Stop | 5 | yes |
 | Vendor drill-downs tie to their payee names, and every bid-list vendor has one | mart | Stop | 5 | yes |
 | Most of the path to $50M does not rest on assumed saving rates | mart | Warn | 5 | yes |
+| The measures catalog describes exactly the year-over-year columns of the marts | mart | Stop | 5 | yes |
+| Stage evidence agrees with the confirmed stages, the database's whole-year totals and DBM's printed actuals | mart | Stop | 5 | yes |
+| Every year whose portal stage label differs from the confirmed stage has evidence | mart | Stop | 5 | yes |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

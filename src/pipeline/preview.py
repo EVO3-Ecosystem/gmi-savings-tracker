@@ -40,8 +40,10 @@ def main():
     man = list(csv.DictReader(open(EXP / "manifest.csv")))
     n = sum(r["source"] == "mart" for r in man)
     banner = ('<div style="background:#fff7e0;color:#3a2a00;border-bottom:1px solid #e6c97a;padding:10px 16px;font:14px/1.4 sans-serif">'
-              f"<b>Preview for approval</b>: the GMI Savings Tracker built from the new database pipeline. {n} of {len(man)} data files come from "
-              f"the new marts; {len(man) - n} are carried from the current pipeline until Phase 5. The live dashboard is unchanged.</div>")
+              "<b>Preview for approval</b>: the GMI Savings Tracker built from the new database pipeline. "
+              + (f"All {len(man)} data files come from the new marts." if n == len(man) else
+                 f"{n} of {len(man)} data files come from the new marts; {len(man) - n} are carried from the current pipeline.")
+              + " The live dashboard is unchanged.</div>")
     # the live dashboard's look: its fonts, popover and the validated eight-color palette, which the test stub leaves out
     look = ("<style>:root{--font-anthropic-sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;"
             "--font-anthropic-serif:ui-serif,Georgia,'Times New Roman',serif;--cds-font-weight-medium:550;--cds-surface-popover:#fff;"
