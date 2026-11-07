@@ -9,8 +9,43 @@ Six phases over about eight weeks; each phase's gate must pass before the next s
 | 2. Database | 2–3 | DuckDB `raw`, `core`, `ops`; type casting and code normalizing; reconciliation checks; non-zero exit on failure | Every check passes; yearly totals tie to the portal | **Passed Oct 29, 2026** (30 of 30) |
 | 3. Reference data | 3–4 | `ref` layer from `reference/` CSVs: agencies and aliases, stages, focus areas, payment-name and vendor maps; match-rate report | Match rates at or above the dashboard's master list quality | **Passed Oct 29, 2026** |
 | 4. Marts & dashboard | 4–5 | One `mart` table per dashboard file; `export.py` writes the CSVs; FY2027 payments as a partial year | Every dashboard file reproduced, or each difference explained | **Gate passed for the 21 base dashboard files (Nov 2, 2026).** `sql/mart/*.sql` (28 files at the gate, 43 now; the change measure applied by `marts.py` from each file's `-- yoy:` header), `make parity` against the legacy files: 12 reproduced exactly; 9 differ only as explained in `docs/parity/explanations.csv` (FY2027 partial year added; one company spelled differently). Also added: vendor master, payee types, agency functions, agency roll-up and results marts. Fixed on the way: scope precedence (client payments, then charges between agencies, then staff/grants/capital) and the payee-name pass-through exclusions (`reference/payee_area_exclusions.csv`). Left for Phase 5: the analytics files (opportunities, forecasts, savings checks, recommendations) and `export.py` |
-| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test, database snapshot, the Data & pipeline facts and the forecasts (`f_forecast`, `d_forecast_model`) the opportunity detectors (`d_opps`, `d_bid_list`) the savings checks (`d_savings`, `f_savings_check`, `d_savings_status`, `d_vendor_moves`) and the recommendations (`d_plan50`, `d_rec_status`, `d_vendor_names`, `f_vendor_detail`), `measures` and `stage_evidence` done: **no dashboard file is carried any more (44 of 44 from marts, Nov 7, 2026)**. The gate's other half, outputs match the dashboard, has two supports: the dashboard's own 34 page tests pass against the 44-file export (every tab drawn, totals reconcile; run Nov 7, 2026 with `python -m src.pipeline.preview`, which needs Playwright and Chromium), and every ported module equals the legacy *scripts* on the same inputs. What is not done is a file-by-file comparison with the published legacy CSVs (not in the repo). Cross-checks against the state sites, the per-detector backtest and new-payee-name history are still open |
+| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **Ported; gate not passed (Nov 7, 2026).** All five analytics modules and the pipeline facts are on the database (`src/models/`, model cards in `docs/models/`), so **no dashboard file is carried (44 of 44 from marts)**. The gate's other half, outputs match the dashboard, has two supports: the dashboard's 34 page tests pass against the 44-file export, and every ported module equals the legacy *scripts* on the same inputs. Not done: a file-by-file comparison with the published legacy CSVs (not in the repo). Open: cross-checks against the state sites, the per-detector backtest, new-payee-name history, branch protection |
 | 6. Automate & document | 7–8 | `make all`; launchd or cron on the Mac; run log, optional PDF report, wiki update | Two clean scheduled runs with no manual steps | |
+
+## Status and history (Nov 7, 2026)
+
+**Where we are.** Phases 0–3 passed, Phase 4's gate passed for the 21 base files and all 44 dashboard files now come from the database. Phase 5's modules are all ported; its gate is not passed (see its row). The build runs 80 checks (79 pass, 1 warns, 0 fail); 113 tests; 1,172 of 1,172 columns documented; export refuses a failed or stale build.
+
+| Date | What landed | PR |
+|---|---|---|
+| Oct 28–29 | Extract, database, reference data (phases 1–3) | |
+| Nov 2 | Phase 4 gate for the 21 base files | |
+| Nov 6 | CI fixed (package discovery); stale egg-info removed; docs refreshed; positions wording and figures | 6, 7, 8, 9 |
+| Nov 7 | Publish gate, fault-injection test, database snapshots, pinned actions | 10 |
+| Nov 7 | Data & pipeline facts from this pipeline (`sources`, `run_checks`, `pipeline_runs`, `d_master_quality`) | 11 |
+| Nov 7 | Forecasts with rolling-origin backtest, plan scoring and coverage measurement | 12 |
+| Nov 7 | Opportunity detectors and bid list | 13 |
+| Nov 7 | Savings checks and vendor moves | 14 |
+| Nov 7 | Recommendations and the path to $50M | 15 |
+| Nov 7 | Measures catalog and stage evidence: 44 of 44 files from marts | 16 |
+| Nov 7 | $1M growth base, plan range ($41.4M–$59.0M), held-out check of range widening | 17 |
+
+**What the build says about the savings story** (model cards in `docs/models/`): the path to $50M is 28 steps and $50.2M a year at the assumed rates, but $41.4M–$59.0M across the assumed ranges, and only about 10% of it has payment evidence; of seven checks with a reported figure, 2 are Seen, 1 Partly seen, 4 Not seen yet (which is not proof the savings did not happen); forecast ranges cover 64% of actuals against the 80% they claim; the growth detector still draws 22% of its value from findings that grew 1,000% or more.
+
+**Decisions taken on Nov 7 (owner delegated them):** growth minimum base $1M; forecast ranges left as published (the widening factor is unstable: 1.5 to 2.8 depending on the cut-off); the status label "Plan reaches $50M" kept and the range added beside it; Utilities forecast stays on the naive model (the rolling-origin backtest supports it).
+
+## Next steps, in order
+
+| # | Step | Why now | Needs |
+|---|---|---|---|
+| 1 | `ops.payee_name_seen` (gap 5, rest) | Completes the "changed since last refresh" loop; small | Nothing |
+| 2 | Higher-education budget, 4mca-332u (gap 8) | All-funds totals leave out about $8.6B a year | Nothing; touches totals, so parity needs a look |
+| 3 | Per-detector backtest (gap 16) | The saving rates are the least-evidenced numbers in the product | A design: detectors use one year, so test persistence of flags across years first |
+| 4 | Real and per-resident dollars, FY2026 vs FY2025 tiles (gap 7, rest; gap 14) | Executives read one year in current dollars | Dashboard repo changes |
+| 5 | Re-score the tabs against the rubric | The Nov 5 scores predate Phase 5 | The dashboard |
+| 6 | Branch protection on `main` | One setting stops a red build reaching `main` | A repo admin |
+| 7 | File-by-file comparison with legacy CSVs; state-site cross-checks | Closes the Phase 5 gate | The legacy `out/` files in the repo; network access to the state sites |
+| 8 | Phase 6: scheduling, Socrata app token, Docker, Pages | Two clean scheduled runs | Steps 1–7 settled |
 
 ## Open questions
 - ~~Which decision for the 4 unmatched payment agency names?~~ Decided 2026-11-04 in `reference/payment_agency_decisions.csv` (two mapped, two excluded, each with evidence).
@@ -52,12 +87,12 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 18 | Analytics | Recommendations, path to $50M, history per run | `recs.py`, `model/rec_history.csv` | `src/models/recommendations.py`: the path to $50M and status rows 1-5 identical to the legacy functions on the real data (tested); recommendation 6 now read from this pipeline's Managing for Results data (the legacy text said "needs a data feed"); history in `data/rec_history.csv`, written only by passing builds; model card `docs/models/recommendations.md` shows how much of the path rests on assumptions | Better |
 | 19 | Analytics | Vendor moves, payee-name detail, vendor pages | `payments_legacy.py`, `run.py` | `d_vendor_moves` ported with the savings checks (decreases only); `d_vendor_names` and `f_vendor_detail` ported with the recommendations, identical to the legacy function on both bases (tested) | Same |
 | 20 | Quality | Master list quality | Computed each run | `mart.d_master_quality`, computed each build from `ref` (143 of 145 agency names mapped; lists the two still unmapped) | Same |
-| 21 | Quality | Checks per run | 93 in 7 stages: raw 23, staged 3, model 14, cross-check 8, recommendations 7, page 28, publish 10 | 59 (raw 9, core 19, ref 11, mart 20) plus 34 page tests in `preview.py` | Partial: cross-checks and recommendation checks not ported |
+| 21 | Quality | Checks per run | 93 in 7 stages: raw 23, staged 3, model 14, cross-check 8, recommendations 7, page 28, publish 10 | 80 (raw 9, core 19, ref 11, mart 41) plus 34 page tests in `preview.py`; recommendation checks ported, cross-checks not | Partial: cross-checks not ported |
 | 22 | Quality | Fault-injection test | `run.py --inject-fault` drops half of FY2015 and shows the repair | `make test-fault` drops half of one budget year in a copy of the raw run and checks that the build fails its stop checks and the last good database survives (`tests/test_fault_injection.py`); the download re-fetch is shown by `EXTRACT_FAULT=fte` | Same |
 | 23 | Quality | A failed check blocks publishing | Keeps the last good `out/` | Keeps the last good database; `export.py` refuses (exit 2) when a stop check failed, a newer build failed, or parity has an unexplained difference (`src/pipeline/gate.py`, `tests/test_gate.py`) | Same |
-| 24 | Quality | Unit tests and CI | Page test only | 7 test files (14 tests), GitHub Actions CI and extract smoke test | Better |
+| 24 | Quality | Unit tests and CI | Page test only | 22 test files (113 tests; the data-free ones run in CI), GitHub Actions CI and extract smoke test | Better |
 | 25 | Quality | Parity with the old pipeline | n/a | `parity.py` with explanations | Better |
-| 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,062 of 1,062 columns, drift history, governance doc | Better |
+| 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,172 of 1,172 columns, drift history, governance doc | Better |
 | 27 | Publish | Run log and checks on the dashboard | `pipeline_runs.csv`, `run_checks.csv` | `mart.pipeline_runs` (extract runs joined to each build's check counts) and `mart.run_checks` (every check of the build), written by `export.py`; run history comes from `data/runs.csv` and `data/check_history.csv` | Better |
 | 28 | Publish | Dashboard data files | Written to `out/` | `export.py` with a manifest and a "changed since last export" flag, plus a tested preview | Better |
 | 29 | Publish | PDF report | `report.py` | None (optional end-user feature) | Gap (optional) |
@@ -65,7 +100,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 31 | Run | Scheduling | Manual | Manual locally; CI on GitHub | Same (Phase 6) |
 | 32 | Docs | Figures | None | `figures.py`: 5 PNGs from the database | Better |
 
-Summary of the 32 rows: 16 Better, 12 Same, 1 Partial, 0 Carried, 3 Gap (one optional, one low priority). **All 44 dashboard files come from the new marts; none is carried.**
+Summary of the 32 rows (checked Nov 7, 2026): 16 Better, 12 Same, 1 Partial, 0 Carried, 3 Gap (one optional, one low priority). **All 44 dashboard files come from the new marts; none is carried.**
 
 ## Gap analysis and improvement backlog (Nov 5, 2026)
 
@@ -74,12 +109,12 @@ Ordered by value for the dashboard and the interview. Effort: S = under a day, M
 | # | Gap | Why it matters | Fix | Effort | Phase |
 |---|---|---|---|---|---|
 | 1 | The Data & pipeline tab shows the old pipeline's facts (rows 20, 27): 93 of 93 checks, the four agency names already decided, the corrected grants "$50,000" claim | A reviewer sees numbers that contradict the repo; integrity scores 2 of 5 | Marts for `sources`, `runs`, `checks`, `measures`, `d_master_quality` and `stage_evidence` from `ops` and `ref`; show new and old check counts during the switch | S | 5a **done Nov 7:** `sources`, `runs`, `checks` and `d_master_quality` (`src/pipeline/facts.py`); `measures` is generated from the `-- yoy:` headers of the mart SQL, so it cannot drift from the columns it describes; `stage_evidence` is a reference file checked against the stage reference and the database. New and old check counts are not shown side by side |
-| 2 | Analytics still carried (rows 15-19) | Calculator, Opportunities and Savings tracker score 3 only because of this | Port to `src/models/` on the marts: baselines first, backtest FY2017-FY2022 → FY2023-FY2025, seeded bootstrap, assumptions in `config/assumptions.yaml`, model cards in `docs/models/`; parity against the old files | M per module | 5 |
-| 3 | No cross-checks with the state's own sites (row 4) or DBM budget books (row 5) | The old pipeline proved totals against three independent publications; the new one against two | Port the 8 cross-checks into `checks.py` (warn if a site is down, stop if a total differs) | S | 5a |
+| 2 | Analytics still carried (rows 15-19) | Calculator, Opportunities and Savings tracker score 3 only because of this | Port to `src/models/` on the marts: baselines first, backtest FY2017-FY2022 → FY2023-FY2025, seeded bootstrap, assumptions in `config/assumptions.yaml`, model cards in `docs/models/`; parity against the old files | M per module | 5 **done Nov 7:** four modules ported with parity to the legacy scripts (PRs 12-15), then `measures` and `stage_evidence` (PR 16); the Calculator, Opportunities and Savings tracker no longer depend on carried files |
+| 3 | No cross-checks with the state's own sites (row 4) or DBM budget books (row 5) | The old pipeline proved totals against three independent publications; the new one against two | Port the 8 cross-checks into `checks.py` (warn if a site is down, stop if a total differs) | S | 5a **partly done Nov 7:** `stage_evidence` is checked against the stage reference, the database totals and DBM's printed actuals on every build; the cross-checks against the two state sites are not ported because those hosts are unreachable from the build sandbox |
 | 4 | Publishing is not gated (row 23) | A bad build could still be exported | `export.py` exits non-zero if the latest run has a failed stop check or parity has an unexplained difference | S | 5a **done Nov 7** |
 | 5 | No history of recommendations or new payee names (row 18) | The "changed since last refresh" feedback loop is lost | `ops.rec_history` and `ops.payee_name_seen`, appended each run | S | 5 **partly done Nov 7:** the savings status history (`data/savings_status_history.csv`) and the recommendation history (`data/rec_history.csv`) are kept, appended by builds that pass; new payee names remain |
 | 6 | No fault-injection test (row 22) | Self-healing is claimed but not demonstrated | `make test-fault`: drop rows from one year in a copy of raw and show the check fails and the last good database is kept | S | 5a **done Nov 7** |
-| 7 | Analysis quality from the tab review: small-base changes (+4,177%, +42,462%), nominal dollars only, nine-year sums in Overview tiles | Over-reading risk; executives read one year | Minimum base for changes (about $1M); real and per-resident dollars (`core.cpi_fy`, `core.fact_population`); FY2026 vs FY2025 tiles | M | 5 |
+| 7 | Analysis quality from the tab review: small-base changes (+4,177%, +42,462%), nominal dollars only, nine-year sums in Overview tiles | Over-reading risk; executives read one year | Minimum base for changes (about $1M); real and per-resident dollars (`core.cpi_fy`, `core.fact_population`); FY2026 vs FY2025 tiles | M | 5 **partly done Nov 7:** the $1M minimum base is applied (`opportunities.growth.min_base_budget`: growth findings 166 to 39, re-coding share 38% to 22%); real and per-resident dollars and the FY2026 vs FY2025 tiles remain |
 | 8 | Higher education budget (4mca-332u) not loaded | All-funds totals leave out about $8.6B a year | Raw table, `source_dataset` column, labeled totals, kept out of savings baselines | M | 5 |
 | 9 | Grants have no groupings; overlap is a name-match minimum | WMATA, the largest grants, show no match | Grantor and grantee groupings (see "Next phase suggestions") | M | 5-6 |
 | 10 | Model tidy-ups noted earlier | `core.fact_fund` drops unit and program; `mart.payment_area` holds payment lines | Keep unit/program; rename to `mart.payment_line` | S | 5 |
@@ -87,7 +122,7 @@ Ordered by value for the dashboard and the interview. Effort: S = under a day, M
 | 12 | Power BI measures, PDF report (rows 29-30) | Nice to have | Generate DAX from `config/dashboard.yaml` measures; port `report.py` | S each | 6 (optional) |
 | 13 | Scheduling (row 31) | Monthly refresh is manual | `make all` on a schedule; register the Socrata app token first | S | 6 |
 
-Tab scores (rubric in `docs/portfolio-rubric.md`, Nov 5, 2026): Overview 3, Focus areas 4, Savings tracker 3, Opportunities 3, Calculator 3, Vendors 5, Agencies 3, Budget 3, Data & pipeline 2. Gaps 1, 3, 4 and 6 lift Data & pipeline; gap 7 lifts Overview, Agencies and Opportunities; gap 2 lifts the three analytics tabs.
+Tab scores (rubric in `docs/portfolio-rubric.md`, Nov 5, 2026): Overview 3, Focus areas 4, Savings tracker 3, Opportunities 3, Calculator 3, Vendors 5, Agencies 3, Budget 3, Data & pipeline 2. Gaps 1, 3, 4 and 6 lift Data & pipeline; gap 7 lifts Overview, Agencies and Opportunities; gap 2 lifts the three analytics tabs. Estimate after Nov 7 (not re-scored against the dashboard; the dashboard lives outside this repo): the rubric's integrity and reproducibility criteria (6 and 7) are now met for every analytics tab, since each number comes from a database table with a stop or warn check, a test and a model card; the story criterion (1) is not, because the Overview wording and the Opportunities headline are unchanged. Re-score the tabs before quoting these.
 
 Dashboard-level gaps added in the *GMI Dashboard Optimization Roadmap v2* (Claude Docs, Nov 5, 2026), which supersedes the Dev Wiki's v1 roadmap tab:
 
@@ -95,7 +130,7 @@ Dashboard-level gaps added in the *GMI Dashboard Optimization Roadmap v2* (Claud
 |---|---|---|---|---|
 | 14 | Overview tiles add nine years; 7 dense cards | FY2026 vs FY2025 tiles with stage labels; one-line conclusion; scope chart moves to Focus areas | S | 5a |
 | 15 | Savings tracker repeats two tables; 50% tolerance unlabeled | Merge the tables; label the tolerance where "Seen" appears | S | 5a |
-| 16 | Opportunities headline reads as a promise; detectors untested | "Leads worth up to"; backtest each detector | M | 5 **partly done Nov 7:** detectors ported with exact parity and tested on constructed cases; measured that 38% of the growth detector's value is growth of 1,000%+ (likely re-coding) and that totals are not additive; headline wording and the backtest remain open |
+| 16 | Opportunities headline reads as a promise; detectors untested | "Leads worth up to"; backtest each detector | M | 5 **partly done Nov 7:** detectors ported with exact parity and tested on constructed cases; the $1M minimum base is applied (re-coding share 38% to 22%); totals are not additive (stated in the model card). The "leads worth up to" headline wording and the per-detector backtest remain open |
 | 17 | Agencies: one table, no chart or headline; pass-through agencies top per-position | Ranked chart, headline, pass-through flag | S | 5a |
 | 18 | Budget cards lack conclusions; no funding chart; tall grant rows | One-line finding per card, funding chart, one-line descriptions | S | 5a |
 
