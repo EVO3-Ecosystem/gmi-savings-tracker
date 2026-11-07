@@ -56,7 +56,8 @@ def test_plan_and_status_rows_one_to_five_match_the_legacy_script_and_row_six_is
     _same(plan, old_plan)
     share = con.execute("SELECT sum(amount) FILTER (WHERE agency_code IS NOT NULL) / sum(amount) FROM core.fact_payment_mapped WHERE fiscal_year = 2026").fetchone()[0]
     new, old = R.status(bids, chk, plan, share, (2957, 108, 111, 106)), rc.status(bids, chk, old_plan, share)
-    _same(new.iloc[:5], old.iloc[:5])
+    _same(new.iloc[:5].drop(columns="progress").assign(p=new.progress.str.split(" at the assumed rates").str[0].where(new.rec == 4, new.progress)),
+          old.iloc[:5].drop(columns="progress").assign(p=old.progress))  # rec 4's progress now adds the plan's range after the legacy text
     assert old.iloc[5].status == "Needs a data feed" and new.iloc[5].status == "Data in place"
 
 

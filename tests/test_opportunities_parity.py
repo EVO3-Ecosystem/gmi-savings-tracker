@@ -31,7 +31,9 @@ def _legacy_payments(payments):
 def test_detectors_match_the_legacy_script():
     code_agency, agency_year, payments = _inputs()
     old = _legacy("opportunities").build(code_agency, agency_year.sort_values("fiscal_year", ascending=False), _legacy_payments(payments))
-    new = O.detect(code_agency, agency_year, payments)
+    cfg = O.assumptions()
+    cfg["growth"]["min_base_budget"] = 0  # the legacy script has no minimum prior-year base
+    new = O.detect(code_agency, agency_year, payments, cfg)
     pd.testing.assert_frame_equal(new[old.columns].reset_index(drop=True), old.reset_index(drop=True), check_dtype=False)
 
 
