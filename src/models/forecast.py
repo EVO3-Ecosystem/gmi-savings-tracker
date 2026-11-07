@@ -77,31 +77,41 @@ def _actuals(g, a0, a1):
 def backtest(s, cfg=None):
     """Rolling-origin backtest: every method, every area, origins from the smallest training window to the last actual.
 
-    One row per area, method, origin and horizon (forecast year = origin + horizon, never past the last actual).
+    One row per area, method, origin and horizon (forecast year = origin + horizon, up to `rolling_score_through_fy`).
+    A forecast year up to the last actual is scored against actual spending (target = "actual"); a later year (FY2026
+    working budget, FY2027 legislative appropriation) is scored against the State's plan (target = "plan"), which is
+    a budget figure, not an outcome. Forecasts never use a year after their origin, and never use the plan.
     mase = absolute error / mean absolute one-step naive error inside that origin's training window.
     """
     cfg = (cfg or assumptions())["forecast"]
     a0, a1, min_train, max_h = cfg["first_actual_fy"], cfg["last_actual_fy"], cfg["rolling_min_train_years"], cfg["rolling_max_horizon"]
+    through = cfg["rolling_score_through_fy"]
     rows = []
     for area, g in s.groupby("area"):
         act = _actuals(g, a0, a1)
+        plan = g[g.stage != "Actual"].set_index("fiscal_year").spend
         x, y = act.index.values.astype(float), act.values
-        for origin in range(a0 + min_train - 1, a1):
+        for origin in range(a0 + min_train - 1, a1 + 1):
             tr = x <= origin
             scale = float(np.mean(np.abs(np.diff(y[tr]))))
             for h in range(1, max_h + 1):
-                if origin + h > a1:
+                fy = origin + h
+                if fy > through:
                     break
-                te = x == origin + h
-                actual = float(y[te][0])
+                if fy <= a1:
+                    target, outcome = "actual", float(y[x == fy][0])
+                elif fy in plan.index:
+                    target, outcome = "plan", float(plan.loc[fy])
+                else:
+                    continue
                 for m in METHODS:
-                    f = float(predict(m, x[tr], y[tr], x[te])[0])
-                    err = abs(f - actual)
-                    rows.append({"area": area, "method": m, "origin_fy": origin, "horizon": h, "forecast_fy": origin + h,
-                                 "actual": actual, "forecast": f, "abs_error": err, "ape": err / actual,
+                    f = float(predict(m, x[tr], y[tr], [fy])[0])
+                    err = abs(f - outcome)
+                    rows.append({"area": area, "method": m, "origin_fy": origin, "horizon": h, "forecast_fy": fy, "target": target,
+                                 "outcome": outcome, "forecast": f, "abs_error": err, "ape": err / outcome,
                                  "mase": err / scale if scale > 0 else None})
     out = pd.DataFrame(rows)
-    for c in ("actual", "forecast", "abs_error"):
+    for c in ("outcome", "forecast", "abs_error"):
         out[c] = out[c].round(0)
     for c in ("ape", "mase"):
         out[c] = pd.to_numeric(out[c]).round(5)

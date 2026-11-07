@@ -244,16 +244,17 @@ mart.d_families,family,VARCHAR,1257,Company that several payee names belong to,r
 mart.d_families,payee_name,VARCHAR,1257,One payee name grouped into the vendor,derived
 mart.d_families,agencies,BIGINT,1257,Agencies paying the vendor (or with payments in the year),derived
 mart.d_families,spend,DOUBLE,1257,Dollars spent (budget actuals or payments),derived
-mart.d_forecast_backtest,area,VARCHAR,189,One of GMI's six focus areas,derived
-mart.d_forecast_backtest,method,VARCHAR,189,"Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth)",derived
-mart.d_forecast_backtest,origin_fy,BIGINT,189,Last fiscal year of actual spending the model was allowed to see (the forecast origin),derived
-mart.d_forecast_backtest,horizon,BIGINT,189,Years ahead of the origin that the forecast looks (1 to 3),derived
-mart.d_forecast_backtest,forecast_fy,BIGINT,189,"Fiscal year being forecast: origin plus horizon, never later than the last actual year",derived
-mart.d_forecast_backtest,actual,DOUBLE,189,"Actual spending in the forecast year, in dollars",derived
-mart.d_forecast_backtest,forecast,DOUBLE,189,"The model's forecast for that year, in dollars, using only years up to the origin",derived
-mart.d_forecast_backtest,abs_error,DOUBLE,189,Absolute forecast error in dollars,derived
-mart.d_forecast_backtest,ape,DOUBLE,189,Absolute percentage error: absolute error divided by the actual,derived
-mart.d_forecast_backtest,mase,DOUBLE,189,Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error,derived
+mart.d_forecast_backtest,area,VARCHAR,294,One of GMI's six focus areas,derived
+mart.d_forecast_backtest,method,VARCHAR,294,"Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth)",derived
+mart.d_forecast_backtest,origin_fy,BIGINT,294,Last fiscal year of actual spending the model was allowed to see (the forecast origin),derived
+mart.d_forecast_backtest,horizon,BIGINT,294,Years ahead of the origin that the forecast looks (1 to 3),derived
+mart.d_forecast_backtest,forecast_fy,BIGINT,294,"Fiscal year being forecast: origin plus horizon, up to FY2027 (years after the last actual are scored against the State's plan)",derived
+mart.d_forecast_backtest,target,VARCHAR,294,"What the forecast is scored against: actual (spending up to the last actual year) or plan (the State's own budget figure for FY2026 and FY2027, which is not an outcome)",derived
+mart.d_forecast_backtest,outcome,DOUBLE,294,"Dollars the forecast is scored against: actual spending, or the State's plan when target is plan",derived
+mart.d_forecast_backtest,forecast,DOUBLE,294,"The model's forecast for that year, in dollars, using only actual years up to the origin (never the plan)",derived
+mart.d_forecast_backtest,abs_error,DOUBLE,294,Absolute forecast error in dollars,derived
+mart.d_forecast_backtest,ape,DOUBLE,294,Absolute percentage error: absolute error divided by the outcome,derived
+mart.d_forecast_backtest,mase,DOUBLE,294,Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error,derived
 mart.d_forecast_model,area,VARCHAR,7,One of GMI's six focus areas,derived
 mart.d_forecast_model,method,VARCHAR,7,Forecast model chosen by the backtest,derived
 mart.d_forecast_model,growth,DOUBLE,7,Annual growth rate of the chosen model,derived
@@ -446,11 +447,11 @@ mart.pipeline_runs,repairs,BIGINT,2,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,2,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,2,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,2,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,63,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,63,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,63,Check description,ops
-mart.run_checks,status,VARCHAR,63,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,63,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,64,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,64,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,64,Check description,ops
+mart.run_checks,status,VARCHAR,64,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,64,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,5,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,5,Dataset title used on the dashboard,derived
@@ -514,12 +515,12 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_result,run_id,VARCHAR,63,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,63,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,63,Check description,ops
-ops.check_result,severity,VARCHAR,63,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,63,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,63,Numbers behind the check result,ops
+ops.check_result,run_id,VARCHAR,64,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,64,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,64,Check description,ops
+ops.check_result,severity,VARCHAR,64,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,64,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,64,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
@@ -640,10 +641,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,321,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,321,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,321,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,321,What the column means,reference
+ref.column_dictionary,column,VARCHAR,331,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,331,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,331,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,331,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference

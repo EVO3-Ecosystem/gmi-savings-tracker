@@ -222,9 +222,12 @@ def phase5(con, check, one):
         FROM mart.f_forecast GROUP BY 1) WHERE a < 9 OR f < 6""")
     n = one("SELECT count(*) FROM mart.d_forecast_model")
     check("mart", "Every forecast area has nine actual years and six forecast years", short == 0 and n >= 7, f"{n} areas; {short} short")
+    unplanned = one("""SELECT count(*) FROM (SELECT area FROM mart.d_forecast_backtest WHERE target = 'plan' GROUP BY area
+        HAVING count(DISTINCT forecast_fy) < 2)""") + one("SELECT count(*) FROM mart.d_forecast_model WHERE area NOT IN (SELECT area FROM mart.d_forecast_backtest WHERE target = 'plan')")
+    check("mart", "Every forecast area is also scored against the State's plan for FY2026 and FY2027", unplanned == 0, f"{unplanned} areas without both plan years")
     worse = con.execute("""SELECT m.area, avg(b.mase) FILTER (WHERE b.method = m.method) AS chosen, avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') AS naive
-        FROM mart.d_forecast_model m JOIN mart.d_forecast_backtest b USING (area) GROUP BY m.area, m.method
+        FROM mart.d_forecast_model m JOIN mart.d_forecast_backtest b USING (area) WHERE b.target = 'actual' GROUP BY m.area, m.method
         HAVING avg(b.mase) FILTER (WHERE b.method = m.method) > avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') + 1e-9""").fetchall()
     check("mart", "Chosen forecast model is no worse than the naive baseline in the rolling-origin backtest", not worse,
-          "; ".join(f"{a}: MASE {c:.2f} vs naive {nv:.2f}" for a, c, nv in worse) if worse else "every area's chosen model matches or beats naive (mean MASE over FY2021-FY2024 origins)", "warn")
+          "; ".join(f"{a}: MASE {c:.2f} vs naive {nv:.2f}" for a, c, nv in worse) if worse else "every area's chosen model matches or beats naive (mean MASE over FY2021-FY2024 origins, scored against actuals)", "warn")
 

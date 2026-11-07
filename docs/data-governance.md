@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-07T03:56Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
+_Generated 2026-11-07T04:04Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -640,7 +640,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 
-**mart.d_forecast_backtest** (189 rows)
+**mart.d_forecast_backtest** (294 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -648,11 +648,12 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | method | VARCHAR | derived | Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth) |
 | origin_fy | BIGINT | derived | Last fiscal year of actual spending the model was allowed to see (the forecast origin) |
 | horizon | BIGINT | derived | Years ahead of the origin that the forecast looks (1 to 3) |
-| forecast_fy | BIGINT | derived | Fiscal year being forecast: origin plus horizon, never later than the last actual year |
-| actual | DOUBLE | derived | Actual spending in the forecast year, in dollars |
-| forecast | DOUBLE | derived | The model's forecast for that year, in dollars, using only years up to the origin |
+| forecast_fy | BIGINT | derived | Fiscal year being forecast: origin plus horizon, up to FY2027 (years after the last actual are scored against the State's plan) |
+| target | VARCHAR | derived | What the forecast is scored against: actual (spending up to the last actual year) or plan (the State's own budget figure for FY2026 and FY2027, which is not an outcome) |
+| outcome | DOUBLE | derived | Dollars the forecast is scored against: actual spending, or the State's plan when target is plan |
+| forecast | DOUBLE | derived | The model's forecast for that year, in dollars, using only actual years up to the origin (never the plan) |
 | abs_error | DOUBLE | derived | Absolute forecast error in dollars |
-| ape | DOUBLE | derived | Absolute percentage error: absolute error divided by the actual |
+| ape | DOUBLE | derived | Absolute percentage error: absolute error divided by the outcome |
 | mase | DOUBLE | derived | Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error |
 
 **mart.d_forecast_model** (7 rows)
@@ -972,7 +973,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (63 rows)
+**mart.run_checks** (64 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1085,7 +1086,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (63 rows)
+**ops.check_result** (64 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1291,7 +1292,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (321 rows)
+**ref.column_dictionary** (331 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1969,7 +1970,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,061 of 1,061 columns documented (65 source, 737 warehouse, 259 dashboard).
+1,062 of 1,062 columns documented (65 source, 738 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

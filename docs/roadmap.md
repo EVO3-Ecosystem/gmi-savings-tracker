@@ -57,7 +57,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 23 | Quality | A failed check blocks publishing | Keeps the last good `out/` | Keeps the last good database; `export.py` refuses (exit 2) when a stop check failed, a newer build failed, or parity has an unexplained difference (`src/pipeline/gate.py`, `tests/test_gate.py`) | Same |
 | 24 | Quality | Unit tests and CI | Page test only | 7 test files (14 tests), GitHub Actions CI and extract smoke test | Better |
 | 25 | Quality | Parity with the old pipeline | n/a | `parity.py` with explanations | Better |
-| 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,031 of 1,031 columns, drift history, governance doc | Better |
+| 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,062 of 1,062 columns, drift history, governance doc | Better |
 | 27 | Publish | Run log and checks on the dashboard | `pipeline_runs.csv`, `run_checks.csv` | `mart.pipeline_runs` (extract runs joined to each build's check counts) and `mart.run_checks` (every check of the build), written by `export.py`; run history comes from `data/runs.csv` and `data/check_history.csv` | Better |
 | 28 | Publish | Dashboard data files | Written to `out/` | `export.py` with a manifest and a "changed since last export" flag, plus a tested preview | Better |
 | 29 | Publish | PDF report | `report.py` | None (optional end-user feature) | Gap (optional) |

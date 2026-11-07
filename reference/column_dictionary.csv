@@ -323,9 +323,10 @@ grants,mart.f_overlap,derived,Grants dataset rows with category Grant
 method,mart.d_forecast_backtest,derived,"Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth)"
 origin_fy,mart.d_forecast_backtest,derived,Last fiscal year of actual spending the model was allowed to see (the forecast origin)
 horizon,mart.d_forecast_backtest,derived,Years ahead of the origin that the forecast looks (1 to 3)
-forecast_fy,mart.d_forecast_backtest,derived,"Fiscal year being forecast: origin plus horizon, never later than the last actual year"
-actual,mart.d_forecast_backtest,derived,"Actual spending in the forecast year, in dollars"
-forecast,mart.d_forecast_backtest,derived,"The model's forecast for that year, in dollars, using only years up to the origin"
+forecast_fy,mart.d_forecast_backtest,derived,"Fiscal year being forecast: origin plus horizon, up to FY2027 (years after the last actual are scored against the State's plan)"
+target,mart.d_forecast_backtest,derived,"What the forecast is scored against: actual (spending up to the last actual year) or plan (the State's own budget figure for FY2026 and FY2027, which is not an outcome)"
+outcome,mart.d_forecast_backtest,derived,"Dollars the forecast is scored against: actual spending, or the State's plan when target is plan"
+forecast,mart.d_forecast_backtest,derived,"The model's forecast for that year, in dollars, using only actual years up to the origin (never the plan)"
 abs_error,mart.d_forecast_backtest,derived,Absolute forecast error in dollars
-ape,mart.d_forecast_backtest,derived,Absolute percentage error: absolute error divided by the actual
+ape,mart.d_forecast_backtest,derived,Absolute percentage error: absolute error divided by the outcome
 mase,mart.d_forecast_backtest,derived,Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error

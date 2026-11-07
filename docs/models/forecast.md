@@ -8,9 +8,9 @@
 
 **Choice rule (unchanged from the legacy pipeline, so the dashboard stays comparable).** Fit through FY2022, score FY2023 to FY2025, keep the lowest mean absolute percentage error. **Ranges:** 4,000 seeded bootstrap paths (resampled residuals for the trend, resampled yearly changes for naive and drift); they widen with the horizon.
 
-**Added evaluation (`mart.d_forecast_backtest`).** A rolling-origin backtest: every model is refitted at each origin from FY2021 to FY2024 and scored one to three years ahead, never using a later year. MASE divides each error by the mean one-step naive error inside that origin's own training years, so no future value enters the scale. A MASE above 1 means the error is larger than what standing still would have cost one year at a time in the training history.
+**Added evaluation (`mart.d_forecast_backtest`).** A rolling-origin backtest: every model is refitted at each origin from FY2021 to FY2025 and scored one to three years ahead, never using a later year. Forecast years up to FY2025 are scored against **actual** spending; FY2026 (working budget) and FY2027 (legislative appropriation) are scored against **the State's plan** and labelled `target = plan`. A plan figure is a budget, not an outcome, so those rows show how far a forecast sits from the budget, not how wrong it was; they are kept apart from the actuals and never used to fit or to choose a model. MASE divides each error by the mean one-step naive error inside that origin's own training years, so no future value enters the scale. A MASE above 1 means the error is larger than what standing still would have cost one year at a time in the training history.
 
-## Results (rolling origins FY2021 to FY2024, mean MASE)
+## Results against actuals (rolling origins FY2021 to FY2024, forecasts of FY2022 to FY2025, mean MASE)
 
 | Area | Chosen by the legacy rule | Naive | Drift | Trend | Best on rolling origins |
 |---|---|---|---|---|---|
@@ -21,6 +21,20 @@
 | Real estate & leases | Trend | 2.02 | 1.66 | **1.57** | Trend (agrees) |
 | Telecom | Naive | **0.85** | 1.41 | 1.20 | Naive |
 | Utilities & facility energy | Drift | **3.78** | 4.10 | 4.41 | **Naive (disagrees)** |
+
+## The chosen forecast against the State's plan (from the FY2025 origin)
+
+| Area | Model | FY2026 forecast | FY2026 plan | Gap | FY2027 forecast | FY2027 plan | Gap |
+|---|---|---|---|---|---|---|---|
+| Fleet & fuel | Naive | $193.1M | $227.6M | -15.2% | $193.1M | $224.3M | -13.9% |
+| IT hardware, software & services | Naive | $692.2M | $682.1M | +1.5% | $692.2M | $723.6M | -4.3% |
+| Other controllable purchases | Naive | $2,806.1M | $3,492.4M | -19.7% | $2,806.1M | $3,452.1M | -18.7% |
+| Print, copy & mail | Naive | $52.4M | $56.2M | -6.7% | $52.4M | $60.1M | -12.8% |
+| Real estate & leases | Trend | $139.4M | $149.7M | -6.9% | $141.3M | $144.5M | -2.2% |
+| Telecom | Naive | $46.8M | $58.0M | -19.3% | $46.8M | $55.6M | -15.7% |
+| Utilities & facility energy | Drift | $165.9M | $154.2M | +7.6% | $170.5M | $160.3M | +6.4% |
+
+Gap = forecast minus plan, as a share of the plan. In five of seven areas the State plans to spend more in FY2026 than a model fitted to FY2017 to FY2025 expects; in Fleet & fuel, Telecom and Other controllable purchases by 15 to 20 percent. Whether the plan is the better guide cannot be known until those years have actuals, and across FY2022 to FY2025 the plan has not been tested here. Treat the gap as a question for the budget owners, not an error in either number.
 
 ## What this shows
 
@@ -37,7 +51,7 @@
 
 ## Checks that run on every build
 
-Ranges are ordered; actuals add up to controllable purchases in every year; every area has nine actual and six forecast years; the chosen model is no worse than naive on the rolling backtest (warning). The legacy script and this port give identical tables on the real marts (`tests/test_forecast_parity.py`).
+Ranges are ordered; actuals add up to controllable purchases in every year; every area has nine actual and six forecast years; every area is scored against the plan for FY2026 and FY2027; the chosen model is no worse than naive on the rolling backtest against actuals (warning). Tests prove that no forecast changes when a later actual or the plan changes (`tests/test_forecast.py`). The legacy script and this port give identical tables on the real marts (`tests/test_forecast_parity.py`).
 
 ## Rebuild
 

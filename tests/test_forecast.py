@@ -107,9 +107,30 @@ def test_general_fund_share_is_weighted_by_agency_spend(built):
 
 def test_rolling_backtest_has_one_row_per_area_method_origin_horizon(built):
     _, _, bt = built
-    assert len(bt) == 3 * 3 * 9  # origins FY2021-FY2024 with horizons 3, 3, 2, 1
-    assert bt.forecast_fy.max() == 2025 and (bt.forecast_fy == bt.origin_fy + bt.horizon).all()
+    assert len(bt) == 3 * 3 * 14  # origins FY2021-FY2025 with horizons 3, 3, 3, 3, 2 (scored through FY2027)
+    assert bt.forecast_fy.max() == 2027 and (bt.forecast_fy == bt.origin_fy + bt.horizon).all()
     assert set(bt.method) == set(F.METHODS)
+
+
+def test_years_after_the_last_actual_are_scored_against_the_plan_and_labelled(built):
+    _, _, bt = built
+    assert set(bt[bt.forecast_fy <= 2025].target) == {"actual"}
+    assert set(bt[bt.forecast_fy > 2025].target) == {"plan"} and set(bt[bt.forecast_fy > 2025].forecast_fy) == {2026, 2027}
+    b = bt[(bt.area == "B") & (bt.method == F.NAIVE) & (bt.origin_fy == 2025) & (bt.horizon == 1)].iloc[0]
+    assert b.target == "plan" and b.outcome == 500_000.0 * 1.0 and b.forecast == 500_000.0 * 1.2  # FY2026 plan vs the FY2025 actual
+    fy27 = bt[(bt.area == "B") & (bt.method == F.NAIVE) & (bt.origin_fy == 2025) & (bt.horizon == 2)].iloc[0]
+    assert fy27.outcome == 500_000.0 * 1.0 and fy27.abs_error == abs(fy27.forecast - fy27.outcome)
+
+
+def test_forecasts_never_use_the_plan():
+    f_code, f_scope, f_fund = _inputs()
+    changed = f_code.copy()
+    changed.loc[changed.fiscal_year >= 2026, "spend"] *= 50  # a wild State plan
+    a, b = F.backtest(F.series(f_code, f_scope)), F.backtest(F.series(changed, f_scope))
+    pd.testing.assert_series_equal(a.forecast, b.forecast)  # every forecast is unchanged
+    plan = a.target == "plan"
+    assert not a[plan].outcome.equals(b[plan].outcome)  # only the plan rows' outcomes (and errors) move
+    pd.testing.assert_series_equal(a[~plan].abs_error, b[~plan].abs_error)
 
 
 def test_mase_scale_comes_from_the_origins_own_training_history():
@@ -118,14 +139,14 @@ def test_mase_scale_comes_from_the_origins_own_training_history():
     bt = F.backtest(s)
     r = bt[(bt.method == F.NAIVE) & (bt.origin_fy == 2021) & (bt.horizon == 1)].iloc[0]
     scale = np.mean(np.abs(np.diff([100.0, 110.0, 105.0, 120.0, 130.0])))  # FY2017-FY2021 only
-    assert r.forecast == 130.0 and r.actual == 125.0 and r.mase == round(5.0 / scale, 5)
+    assert r.forecast == 130.0 and r.outcome == 125.0 and r.target == "actual" and r.mase == round(5.0 / scale, 5)
 
 
 def test_rolling_backtest_never_uses_the_future():
     f_code, f_scope, f_fund = _inputs()
     s1 = F.series(f_code, f_scope)
     changed = f_code.copy()
-    changed.loc[(changed.area == "B") & (changed.fiscal_year == 2025), "spend"] = 9e9  # a wild last actual
+    changed.loc[(changed.area == "B") & (changed.fiscal_year == 2025), "spend"] = 5e6  # a wild last actual
     s2 = F.series(changed, f_scope)
     a, b = F.backtest(s1), F.backtest(s2)
     key = (a.area == "B") & (a.forecast_fy <= 2024)  # nothing scored on or before FY2024 may depend on FY2025
