@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..models import opportunities
+
 HIST = Path(__file__).resolve().parents[2] / "data" / "check_history.csv"
 SUM_COL = {"budget": ("core.fact_budget", "budget"), "fund": ("core.fact_fund", "budget"), "fte": ("core.fact_fte", "fte"),
            "payments": ("core.fact_payment", "amount"), "grants": ("core.fact_grant", "amount")}
@@ -82,6 +84,7 @@ def run(con, run_id, manifest):
     phase3(con, check, one)
     phase4(con, check, one)
     phase5(con, check, one)
+    phase5_opportunities(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -238,4 +241,28 @@ def phase5(con, check, one):
         HAVING avg(b.mase) FILTER (WHERE b.method = m.method) > avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') + 1e-9""").fetchall()
     check("mart", "Chosen forecast model is no worse than the naive baseline in the rolling-origin backtest", not worse,
           "; ".join(f"{a}: MASE {c:.2f} vs naive {nv:.2f}" for a, c, nv in worse) if worse else "every area's chosen model matches or beats naive (mean MASE over FY2021-FY2024 origins, scored against actuals)", "warn")
+
+
+def phase5_opportunities(con, check, one):
+    """Opportunity detectors: well-formed findings, a bid list that obeys its thresholds, and a warning when one detector's
+    total leans on findings that look like re-coding (growth of 1,000% or more)."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_opps'"):
+        return
+    bad = one("SELECT count(*) FROM mart.d_opps WHERE low < 0 OR high < low OR likely IS NULL OR baseline < 0")
+    dup_ids = one("SELECT count(*) - count(DISTINCT opp_id) FROM mart.d_opps")
+    dup_codes = one("""SELECT count(*) FROM (SELECT agency_code, spending_code FROM mart.d_opps WHERE agency_code IS NOT NULL
+        GROUP BY ALL HAVING count(*) > 1)""")
+    check("mart", "Opportunity findings are well formed (low <= high, no duplicate id, one finding per agency and spending code)",
+          bad == 0 and dup_ids == 0 and dup_codes == 0, f"{bad} malformed, {dup_ids} duplicate ids, {dup_codes} repeated agency and code")
+    cfg = opportunities.assumptions()["bid_list"]
+    off = one("SELECT count(*) FROM mart.d_bid_list WHERE agencies < ? OR fy2026 < ?", cfg["min_agencies"], cfg["min_spend"])
+    ranks = one("SELECT count(*) FROM mart.d_bid_list WHERE rank <> (SELECT count(*) FROM mart.d_bid_list b WHERE b.fy2026 > mart.d_bid_list.fy2026) + 1")
+    check("mart", "Bid list vendors meet the agency and spend thresholds and are ranked by FY2026 payments", off == 0 and ranks == 0,
+          f"{off} vendors below the thresholds, {ranks} ranks out of order")
+    row = con.execute("""SELECT coalesce(sum(likely) FILTER (WHERE TRY_CAST(regexp_extract(evidence, 'grew ([+-]?[0-9]+)%', 1) AS DOUBLE) >= 1000), 0),
+          coalesce(sum(likely), 0) FROM mart.d_opps WHERE detector = 'Growth above trend'""").fetchone()
+    share = row[0] / row[1] if row[1] else 0
+    check("mart", "Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)", share <= 0.25,
+          f"${row[0] / 1e6:,.1f}M of the growth detector's ${row[1] / 1e6:,.1f}M likely saving ({share:.0%}) comes from findings that grew 1,000% or more; "
+          "a minimum prior-year base (assumptions.yaml, opportunities.growth.min_base_budget) removes most of them", "warn")
 

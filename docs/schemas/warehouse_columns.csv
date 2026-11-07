@@ -239,6 +239,14 @@ mart.d_area_top,vendor,VARCHAR,175,Company name after grouping payee names,deriv
 mart.d_area_top,agencies,BIGINT,175,Agencies paying the vendor (or with payments in the year),derived
 mart.d_area_top,spend,DOUBLE,175,Dollars spent (budget actuals or payments),derived
 mart.d_area_top,rank,BIGINT,175,Rank of the vendor within its area and year by spend,derived
+mart.d_bid_list,rank,BIGINT,30,Rank by FY2026 payments,derived
+mart.d_bid_list,vendor,VARCHAR,30,Company name after grouping payee names,derived
+mart.d_bid_list,fy2025,DOUBLE,30,Payments in FY2025,derived
+mart.d_bid_list,fy2026,DOUBLE,30,Payments in FY2026,derived
+mart.d_bid_list,agencies,DOUBLE,30,Agencies paying the vendor (or with payments in the year),derived
+mart.d_bid_list,low,DOUBLE,30,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_bid_list,high,DOUBLE,30,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_bid_list,top_agencies,VARCHAR,30,Three agencies paying the vendor most in FY2026,derived
 mart.d_families,fiscal_year,INTEGER,1257,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.d_families,family,VARCHAR,1257,Company that several payee names belong to,reference
 mart.d_families,payee_name,VARCHAR,1257,One payee name grouped into the vendor,derived
@@ -294,6 +302,17 @@ mart.d_multi_basis,fiscal_year,INTEGER,10,"Maryland fiscal year (July 1 to June 
 mart.d_multi_basis,basis,VARCHAR,10,Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens),derived
 mart.d_multi_basis,vendors,BIGINT,10,Distinct payees in the year,derived
 mart.d_multi_basis,spend,DOUBLE,10,Dollars spent (budget actuals or payments),derived
+mart.d_opps,opp_id,VARCHAR,453,Opportunity identifier,derived
+mart.d_opps,detector,VARCHAR,453,Screening rule that found the opportunity,derived
+mart.d_opps,agency_code,VARCHAR,453,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.d_opps,agency,VARCHAR,453,Agency name shown on the dashboard,derived
+mart.d_opps,area,VARCHAR,453,One of GMI's six focus areas,derived
+mart.d_opps,spending_code,VARCHAR,453,Comptroller sub-object name (with code) shown on the dashboard,derived
+mart.d_opps,baseline,DOUBLE,453,Spending the screening percentage is applied to,derived
+mart.d_opps,low,DOUBLE,453,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_opps,high,DOUBLE,453,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_opps,evidence,VARCHAR,453,Plain-language reason the detector flagged the row,derived
+mart.d_opps,likely,DOUBLE,453,Midpoint of low and high,derived
 mart.d_vendors,vendor,VARCHAR,3640,Company name after grouping payee names,derived
 mart.d_vendors,payee_type,VARCHAR,3640,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
 mart.d_vendors,main_function,VARCHAR,3640,"Budget function with the most payments to the vendor, all years",derived
@@ -458,11 +477,11 @@ mart.pipeline_runs,repairs,BIGINT,2,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,2,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,2,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,2,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,66,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,66,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,66,Check description,ops
-mart.run_checks,status,VARCHAR,66,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,66,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,69,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,69,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,69,Check description,ops
+mart.run_checks,status,VARCHAR,69,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,69,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,5,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,5,Dataset title used on the dashboard,derived
@@ -526,12 +545,12 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_result,run_id,VARCHAR,66,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,66,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,66,Check description,ops
-ops.check_result,severity,VARCHAR,66,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,66,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,66,Numbers behind the check result,ops
+ops.check_result,run_id,VARCHAR,69,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,69,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,69,Check description,ops
+ops.check_result,severity,VARCHAR,69,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,69,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,69,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops

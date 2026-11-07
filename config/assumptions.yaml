@@ -31,3 +31,43 @@ gmi_recurring:
   "Other controllable purchases":
     savings: [S01]
     note: "contract renegotiation $18M year over year"
+
+# Screening assumptions for the opportunity detectors (src/models/opportunities.py), carried over from the legacy
+# pipeline. The saving rates are screening percentages, not forecasts: see the Assumptions register in
+# docs/data-governance.md. Change a value here, not in code.
+opportunities:
+  current_fy: 2025             # budget detectors look at this actual year ...
+  base_fy: 2022                # ... and, for growth, compare it with this one
+  payments_fy: 2026            # payment detectors (tail spend, leverage, bid list) use this year
+  peer_gap:
+    min_positions: 50          # agencies with fewer budgeted positions are not compared
+    min_agencies: 8            # a spending code needs this many comparable agencies
+    min_budget: 250000         # ignore findings smaller than this
+    percentile: 0.75           # spending per position above this percentile of peer agencies
+    share_low: 0.05            # saving = this share of the excess above the percentile ...
+    share_high: 0.15
+    cap_low: 0.03              # ... but at most this share of the agency's spending on the code
+    cap_high: 0.10
+  growth:
+    points_above_state: 0.25   # grew this many points faster than the state's spending on the same code
+    min_budget: 500000
+    min_base_budget: 0         # the prior-year spending must exceed this (0 = legacy: any positive base). Roadmap gap 7 suggests about 1,000,000
+    share_low: 0.10            # saving = this share of the growth above the state's pace
+    share_high: 0.30
+  tail_spend:
+    top_vendors: 10            # vendors outside the largest N in a focus area
+    min_tail: 1000000
+    rate_low: 0.03
+    rate_high: 0.10
+  leverage:
+    min_agencies: 10           # one vendor paid separately by this many agencies
+    min_spend: 5000000
+    rate_low: 0.02
+    rate_high: 0.05
+  bid_list:
+    min_agencies: 10
+    min_spend: 5000000
+    rate_low: 0.02
+    rate_high: 0.05
+    excluded_agency_codes: [CAPITAL, D06, D25]
+    not_biddable: "CONSTRUCT|PAVING|CONTRACTING|MCO|HEALTH|TRUST|BANK|SCHOOL|ACADEMY|UNIVERSITY|COLLEGE|HOSPITAL|COUNTY|CITY OF|\\bJV\\b|BUS|INSURANCE|ROOF|MECHANICAL|ENGINEERS|TITLE|RESCUE|BUILDERS|EXCAVAT|BRIDGE|STEEL|CONCRETE|YESHIVA|TALMUD|HOME OF|ARC OF|COUNCIL|CHARIT|SHELTER|FAMILY|YOUTH|COMMUNITY|SERVICES FOR|CENTER FOR|SOCIETY|FOUNDATION|ASSOCIATION|BALTIMORE GAS|PEPCO|POTOMAC ELECTRIC|DELMARVA|POTOMAC EDISON|WASHINGTON GAS LIGHT|SCHLOSSER|MYERS|ZIMMER|CHRISTMAN"
