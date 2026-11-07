@@ -96,7 +96,11 @@ recommendations:
   plan:
     forecast_fy: 2027          # step 1 applies GMI's reported rates to this year's forecast median
     contract_rate: 0.035       # assumed saving on a statewide contract (assumed range 2-5%)
+    contract_rate_low: 0.02    # the plan's low case: the bottom of that range
+    contract_rate_high: 0.05   # the plan's high case: the top of that range
     fallback_rate: 0.01        # assumed saving in the fallback areas if the contracts fall short
+    fallback_rate_low: 0.005   # low and high cases for the fallback areas (a judgement, like the rate itself)
+    fallback_rate_high: 0.02
     fallback_areas: ["Real estate & leases", "Utilities & facility energy"]
 
 # Stage evidence (src/pipeline/checks.py): how a budget year's stage was confirmed against DBM's budget books.

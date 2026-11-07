@@ -53,18 +53,20 @@ def plan50(model, forecast, bids, cfg=None):
     f27 = forecast[forecast.fiscal_year == pl["forecast_fy"]].set_index("area").p50
     pace = float((model.set_index("area").gmi_rate.fillna(0) * f27.reindex(model.area).values).sum())
     rows = [{"step": 1, "action": "Keep GMI's current savings going", "basis": f"forecast FY{pl['forecast_fy']} spending × the rate GMI reported for each area",
-             "saving": pace, "tab": "calc"}]
+             "saving": pace, "low": pace, "high": pace, "tab": "calc"}]
     for _, b in bids.iterrows():
         if sum(r["saving"] for r in rows) >= target:
             break
         rows.append({"step": len(rows) + 1, "action": f"Statewide contract: {b.vendor}",
                      "basis": f"assumed {pl['contract_rate'] * 100:.1f}% of ${b.fy2026 / 1e6:,.1f}M paid by {int(b.agencies)} agencies (assumed range 2-5%)",
-                     "saving": pl["contract_rate"] * b.fy2026, "tab": "opp"})
+                     "saving": pl["contract_rate"] * b.fy2026, "low": pl["contract_rate_low"] * b.fy2026,
+                     "high": pl["contract_rate_high"] * b.fy2026, "tab": "opp"})
     if sum(r["saving"] for r in rows) < target:
         for area in pl["fallback_areas"]:
             rows.append({"step": len(rows) + 1, "action": f"Start savings in {area.lower()} at {pl['fallback_rate'] * 100:.0f}%",
                          "basis": f"assumed {pl['fallback_rate'] * 100:.0f}% of forecast FY{pl['forecast_fy']} spending of ${f27.get(area, 0) / 1e6:,.1f}M",
-                         "saving": pl["fallback_rate"] * f27.get(area, 0), "tab": "calc"})
+                         "saving": pl["fallback_rate"] * f27.get(area, 0), "low": pl["fallback_rate_low"] * f27.get(area, 0),
+                         "high": pl["fallback_rate_high"] * f27.get(area, 0), "tab": "calc"})
     d = pd.DataFrame(rows)
     d["cumulative"] = d.saving.cumsum()
     return d
@@ -94,7 +96,8 @@ def status(bids, chk, plan, matched, mfr=None, cfg=None):
         (3, "Name the seven renegotiated contracts", "Categories tracked",
          f"4 contract types named in GMI's report are checked against payments; payments fell for {fell} of 4; vendors still unnamed", "track"),
         (4, "Plan the rest of the path to $50M", "Plan reaches $50M" if reach else "Gap remains",
-         f"{len(plan)} steps to ${plan.cumulative.iloc[-1] / 1e6:,.1f}M a year", "calc"),
+         f"{len(plan)} steps to ${plan.cumulative.iloc[-1] / 1e6:,.1f}M a year at the assumed rates; "
+         f"${plan.low.sum() / 1e6:,.1f}M–${plan.high.sum() / 1e6:,.1f}M across the assumed ranges", "calc"),
         (5, "Keep one vendor and agency master list", "In place", f"{matched:.1%} of FY{cfg['matched_fy']} payments matched to an agency", "data"),
         (6, "Tie spending to results", st6, pr6, "data"),
     ], columns=STATUS_COLUMNS)

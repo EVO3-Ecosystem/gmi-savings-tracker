@@ -68,6 +68,8 @@ d_plan50,step,number,28,Order of the step in the path to $50M,derived
 d_plan50,action,text,28,Action in the path to $50M,derived
 d_plan50,basis,text,28,How the step's saving is calculated,derived
 d_plan50,saving,number,28,Annual saving of the step in dollars,derived
+d_plan50,low,number,28,Annual saving of the step in the plan's low case in dollars,derived
+d_plan50,high,number,28,Annual saving of the step in the plan's high case in dollars,derived
 d_plan50,tab,text,28,Dashboard tab the row links to,derived
 d_plan50,cumulative,number,28,Running total of savings,derived
 d_rec_status,rec,number,6,Recommendation number (1-6),derived

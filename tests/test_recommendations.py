@@ -51,18 +51,26 @@ def _chk(rows):
     return pd.DataFrame(rows, columns=["check_id", "status", "changed"])
 
 
+def test_every_plan_step_has_a_low_and_high_case_around_its_saving():
+    plan = R.plan50(*_plan_inputs([("V1", 600e6, 12), ("V2", 600e6, 10), ("V3", 600e6, 10)]))
+    assert (plan.low <= plan.saving + 1e-6).all() and (plan.saving <= plan.high + 1e-6).all()
+    assert plan.low.iloc[0] == plan.high.iloc[0] == plan.saving.iloc[0]  # step 1 is GMI's reported pace: one number
+    v = plan[plan.action == "Statewide contract: V1"].iloc[0]
+    assert round(v.low) == round(0.02 * 600e6) and round(v.high) == round(0.05 * 600e6)
+
+
 def test_status_rows_state_the_key_numbers():
     bids = pd.DataFrame({"vendor": ["V1", "V2"], "low": [1e6, 2.5e6], "high": [4e6, 3.5e6]})
     chk = _chk([("S01", "Seen", False), ("S06", "Partly seen", True), ("S10", "Not seen yet", False), ("S02", "Payments fell", False),
                 ("S03", "Payments fell", False), ("S04", "Payments did not fall", False), ("S05", "Payments fell", False)])
-    plan = pd.DataFrame({"cumulative": [20e6, 51e6]})
+    plan = pd.DataFrame({"cumulative": [20e6, 51e6], "low": [20e6, 20e6], "high": [20e6, 45e6]})
     st = R.status(bids, chk, plan, 0.987, (2957, 108, 111, 106)).set_index("rec")
     assert st.loc[1, "progress"] == "2 vendors ranked; $3.5M–$7.5M a year"
     assert st.loc[2, "progress"] == "1 of 3 checks seen in payments; 1 changed since last run"
     assert "payments fell for 3 of 4" in st.loc[3, "progress"]
-    assert st.loc[4, "status"] == "Plan reaches $50M" and st.loc[4, "progress"] == "2 steps to $51.0M a year"
+    assert st.loc[4, "status"] == "Plan reaches $50M" and st.loc[4, "progress"] == "2 steps to $51.0M a year at the assumed rates; $40.0M–$65.0M across the assumed ranges"
     assert st.loc[5, "progress"] == "98.7% of FY2026 payments matched to an agency"
-    assert list(R.status(bids, chk, pd.DataFrame({"cumulative": [20e6]}), 1.0).set_index("rec").loc[4, ["status"]]) == ["Gap remains"]
+    assert list(R.status(bids, chk, pd.DataFrame({"cumulative": [20e6], "low": [20e6], "high": [20e6]}), 1.0).set_index("rec").loc[4, ["status"]]) == ["Gap remains"]
 
 
 def test_recommendation_six_is_read_from_the_managing_for_results_data_not_a_stale_text():

@@ -317,6 +317,8 @@ mart.d_plan50,step,BIGINT,28,Order of the step in the path to $50M,derived
 mart.d_plan50,action,VARCHAR,28,Action in the path to $50M,derived
 mart.d_plan50,basis,VARCHAR,28,How the step's saving is calculated,derived
 mart.d_plan50,saving,DOUBLE,28,Annual saving of the step in dollars,derived
+mart.d_plan50,low,DOUBLE,28,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_plan50,high,DOUBLE,28,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 mart.d_plan50,tab,VARCHAR,28,Dashboard tab the row links to,derived
 mart.d_plan50,cumulative,DOUBLE,28,Running total of savings,derived
 mart.d_rec_status,rec,BIGINT,6,Recommendation number (1-6),derived
