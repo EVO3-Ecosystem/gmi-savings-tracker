@@ -83,7 +83,7 @@ The website's budget download labels FY2021 "Working", FY2022 "Appropriation" an
 | 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
 | 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ |
 | 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 12 reproduced exactly, 9 differences explained (`docs/parity/`) ✔; vendor, budget and overlap marts added since; analytics files move with Phase 5 |
-| 5. Analytics | **5a in progress** | Outputs match the dashboard; publish gate, fault-injection test, snapshots, the Data & pipeline facts, the forecasts, the opportunity detectors and the savings checks done; 6 of 44 dashboard files (path to $50M, recommendation status, vendor names and detail, measures, stage evidence) still carried |
+| 5. Analytics | **5a in progress** | Outputs match the dashboard; publish gate, fault-injection test, snapshots, the Data & pipeline facts, the forecasts, the opportunity detectors, the savings checks and the recommendations done; 2 of 44 dashboard files (measures, stage evidence) still carried |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
 
 Next up is Phase 5a: replace the Data & pipeline tab's old-pipeline facts, port the cross-checks, and make `export.py` refuse a failed build. The full gap list is in [docs/roadmap.md](docs/roadmap.md).
