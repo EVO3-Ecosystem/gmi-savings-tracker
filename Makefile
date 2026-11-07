@@ -16,4 +16,4 @@ figures:  ; $(PY) -m src.pipeline.figures
 diagrams: ; mmdc -i docs/figures/pipeline.mmd -o docs/figures/pipeline.png -b white -s 2 && mmdc -i docs/figures/data_hierarchy.mmd -o docs/figures/data_hierarchy.png -b white -s 2
 docs:     ; $(PY) -m src.pipeline.governance $(if $(DASH),--dashboard $(DASH))
 docs-strict: ; $(PY) -m src.pipeline.governance --strict $(if $(DASH),--dashboard $(DASH))
-.PHONY: extract extract-full gate1 build gate3 all test docs docs-strict reconcile figures diagrams parity
+.PHONY: extract extract-full gate1 build gate3 all test test-fault docs docs-strict reconcile figures diagrams parity export snapshot restore
