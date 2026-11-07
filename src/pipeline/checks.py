@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from ..models import opportunities, savings
+from ..models import opportunities, recommendations, savings
 
 HIST = Path(__file__).resolve().parents[2] / "data" / "check_history.csv"
 SUM_COL = {"budget": ("core.fact_budget", "budget"), "fund": ("core.fact_fund", "budget"), "fte": ("core.fact_fte", "fte"),
@@ -86,6 +86,7 @@ def run(con, run_id, manifest):
     phase5(con, check, one)
     phase5_opportunities(con, check, one)
     phase5_savings(con, check, one)
+    phase5_recommendations(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -292,4 +293,31 @@ def phase5_savings(con, check, one):
     off = one("SELECT count(*) FROM mart.d_vendor_moves WHERE change > 0 OR agencies < ? OR fy2025 < ?", cfg["min_agencies"], cfg["min_before"])
     check("mart", "Vendor moves are decreases by vendors paid by enough agencies, largest first", off == 0 and one("SELECT count(*) FROM mart.d_vendor_moves") <= cfg["top"],
           f"{off} rows that are not decreases or fall below the thresholds")
+
+
+def phase5_recommendations(con, check, one):
+    """The six recommendations: all present, a path to $50M that adds up and agrees with its status, vendor drill-downs that tie to
+    their payee names, and a warning when too much of the path rests on assumed rates."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_rec_status'"):
+        return
+    cfg = recommendations.assumptions()
+    n, distinct, blank = con.execute("""SELECT count(*), count(DISTINCT rec), count(*) FILTER (WHERE status IS NULL OR progress IS NULL OR trim(progress) = '')
+        FROM mart.d_rec_status""").fetchone()
+    check("mart", "All six recommendations have a status and a key number", n == 6 and distinct == 6 and blank == 0, f"{n} rows, {distinct} distinct, {blank} blank")
+    steps, lo, hi, drift, top = con.execute("""SELECT count(*), min(step), max(step),
+        (SELECT count(*) FROM (SELECT cumulative, sum(saving) OVER (ORDER BY step) AS c FROM mart.d_plan50) WHERE abs(cumulative - c) > 1),
+        max(cumulative) FROM mart.d_plan50""").fetchone()
+    reached = top >= cfg["target_saving"]
+    says = one("SELECT status FROM mart.d_rec_status WHERE rec = 4") == "Plan reaches $50M"
+    check("mart", "The path to $50M is numbered, adds up, and agrees with recommendation 4's status", lo == 1 and hi == steps and drift == 0 and reached == says,
+          f"{steps} steps to ${top / 1e6:,.1f}M a year; running total off in {drift} steps; status says {'reaches' if says else 'gap'}, total {'reaches' if reached else 'falls short'}")
+    ties = one("""SELECT count(*) FROM (SELECT vendor, sum(fy2026) s FROM mart.d_vendor_names GROUP BY 1) a
+        JOIN (SELECT vendor, sum(paid) p FROM mart.f_vendor_detail WHERE fiscal_year = ? GROUP BY 1) b USING (vendor) WHERE abs(a.s - b.p) > 10""",
+               cfg["vendor_detail"]["names_fy"])
+    missing = one("SELECT count(*) FROM mart.d_bid_list WHERE vendor NOT IN (SELECT vendor FROM mart.f_vendor_detail)")
+    check("mart", "Vendor drill-downs tie to their payee names, and every bid-list vendor has one", ties == 0 and missing == 0,
+          f"{ties} vendors whose payee names do not add up to their payments; {missing} bid-list vendors without a drill-down")
+    share = one("SELECT coalesce(sum(saving) FILTER (WHERE step > 1) / nullif(sum(saving), 0), 0) FROM mart.d_plan50")
+    check("mart", "Most of the path to $50M does not rest on assumed saving rates", share <= 0.5,
+          f"{share:.0%} of the path (${(top or 0) * share / 1e6:,.1f}M) is assumed savings on statewide contracts and fallback areas; the rest carries forward savings GMI reported", "warn")
 

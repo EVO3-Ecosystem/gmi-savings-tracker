@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-07T04:37Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
+_Generated 2026-11-07T04:46Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -749,6 +749,28 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | evidence | VARCHAR | derived | Plain-language reason the detector flagged the row |
 | likely | DOUBLE | derived | Midpoint of low and high |
 
+**mart.d_plan50** (28 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| step | BIGINT | derived | Order of the step in the path to $50M |
+| action | VARCHAR | derived | Action in the path to $50M |
+| basis | VARCHAR | derived | How the step's saving is calculated |
+| saving | DOUBLE | derived | Annual saving of the step in dollars |
+| tab | VARCHAR | derived | Dashboard tab the row links to |
+| cumulative | DOUBLE | derived | Running total of savings |
+
+**mart.d_rec_status** (6 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| rec | BIGINT | derived | Recommendation number (1-6) |
+| title | VARCHAR | derived | Recommendation title |
+| status | VARCHAR | derived | Status of the recommendation |
+| progress | VARCHAR | derived | Key number showing progress |
+| tab | VARCHAR | derived | Dashboard tab the row links to |
+| previous | "NULL" | ops | Progress text in the previous run |
+
 **mart.d_savings** (18 rows)
 
 | column | type | origin | definition |
@@ -791,6 +813,14 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | fy2026 | DOUBLE | derived | Payments in FY2026 |
 | change | DOUBLE | derived | FY2026 minus FY2025 payments |
 | agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
+
+**mart.d_vendor_names** (267 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| payee_name | VARCHAR | derived | One payee name grouped into the vendor |
+| fy2026 | DOUBLE | derived | Payments in FY2026 |
 
 **mart.d_vendors** (3,640 rows)
 
@@ -1018,6 +1048,15 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | vendor | VARCHAR | derived | Company name after grouping payee names |
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 
+**mart.f_vendor_detail** (7,260 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| paid | DOUBLE | derived | Payments in dollars |
+
 **mart.f_vendor_pay** (30,845 rows)
 
 | column | type | origin | definition |
@@ -1070,7 +1109,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (73 rows)
+**mart.run_checks** (77 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1183,7 +1222,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (73 rows)
+**ops.check_result** (77 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2067,7 +2106,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,124 of 1,124 columns documented (65 source, 800 warehouse, 259 dashboard).
+1,143 of 1,143 columns documented (65 source, 819 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

@@ -39,5 +39,9 @@ A failed "Stop" check ends the run before anything is exported. The export itsel
 | Every payment check matches payments, and the four named contract types are checked | mart | Stop | 5 | yes |
 | Every payment check has a status (reports how many are Seen, Partly seen, Not seen yet) | mart | Stop | 5 | yes |
 | Vendor moves are decreases by vendors paid by enough agencies, largest first | mart | Stop | 5 | yes |
+| All six recommendations have a status and a key number | mart | Stop | 5 | yes |
+| The path to $50M is numbered, adds up, and agrees with recommendation 4's status | mart | Stop | 5 | yes |
+| Vendor drill-downs tie to their payee names, and every bid-list vendor has one | mart | Stop | 5 | yes |
+| Most of the path to $50M does not rest on assumed saving rates | mart | Warn | 5 | yes |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

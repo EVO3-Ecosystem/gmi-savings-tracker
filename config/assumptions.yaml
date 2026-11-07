@@ -85,3 +85,16 @@ savings:
     top: 40                    # the largest decreases shown
     excluded_agency_codes: [CAPITAL, D06, D25]   # operating spending only
     not_procurement: "CONSTRUCT|PAVING|CONTRACTING|MCO|HEALTH PLAN|PARTNERS MCO|TRUST|BANK|SCHOOL|ACADEMY|UNIVERSITY|COLLEGE|HOSPITAL|COUNTY|CITY OF|\\bJV\\b|BUS SALES|NOVA BUS|INSURANCE|MEDICAL CENTER|YESHIVA|TALMUD|BNOS|ROOF|MECHANICAL|CORPS OF ENGINEERS|HEALTH|TITLE|RESCUE|BUILDERS|EXCAVAT|BRIDGE|STEEL|CONCRETE"
+
+# Recommendations (src/models/recommendations.py): the Overview's six recommendations as tracked tables.
+recommendations:
+  target_saving: 50000000      # the path to this many dollars a year
+  matched_fy: 2026             # recommendation 5 reports the share of this year's payments matched to an agency
+  vendor_detail:
+    first_fy: 2022             # drill-down tables from this year
+    names_fy: 2026             # payee names merged into a vendor, by this year's payments
+  plan:
+    forecast_fy: 2027          # step 1 applies GMI's reported rates to this year's forecast median
+    contract_rate: 0.035       # assumed saving on a statewide contract (assumed range 2-5%)
+    fallback_rate: 0.01        # assumed saving in the fallback areas if the contracts fall short
+    fallback_areas: ["Real estate & leases", "Utilities & facility energy"]
