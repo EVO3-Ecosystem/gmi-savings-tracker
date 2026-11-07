@@ -12,7 +12,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from . import checks, marts, reference
+from . import checks, facts, marts, reference
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data"
@@ -117,6 +117,7 @@ def build(run_id):
     reference.build(con, raw)  # Phase 3: reference CSVs -> ref layer, mapped payments, budget scope, MFR measures
     marts.build(con)  # Phase 4: sql/mart/*.sql -> mart layer
     res = checks.run(con, run_id, man)
+    facts.build(con, run_id, man, DATA, checks.HIST)  # Data & pipeline tab: sources, runs, checks, master-list quality
     con.close()
     if res:
         tmp.replace(DB)  # only a database that passes every stop check replaces the last good one

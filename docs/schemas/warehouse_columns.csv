@@ -244,6 +244,9 @@ mart.d_families,family,VARCHAR,1257,Company that several payee names belong to,r
 mart.d_families,payee_name,VARCHAR,1257,One payee name grouped into the vendor,derived
 mart.d_families,agencies,BIGINT,1257,Agencies paying the vendor (or with payments in the year),derived
 mart.d_families,spend,DOUBLE,1257,Dollars spent (budget actuals or payments),derived
+mart.d_master_quality,measure,VARCHAR,5,Name of the quality measure,reference
+mart.d_master_quality,value,VARCHAR,5,Measured value,derived
+mart.d_master_quality,ok,BIGINT,5,True when the measure meets its target,derived
 mart.d_multi,fiscal_year,INTEGER,216,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.d_multi,vendor,VARCHAR,216,Company name after grouping payee names,derived
 mart.d_multi,area,VARCHAR,216,One of GMI's six focus areas,derived
@@ -400,6 +403,34 @@ mart.payment_area,vendor,VARCHAR,411231,Company name after grouping payee names,
 mart.payment_area,is_government,BOOLEAN,411231,True when the payee is a government body (excluded from vendor analysis),derived
 mart.payment_area,area,VARCHAR,411231,One of GMI's six focus areas,derived
 mart.payment_area,passthrough,BOOLEAN,411231,"True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed",derived
+mart.pipeline_runs,run_id,VARCHAR,2,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.pipeline_runs,started_utc,VARCHAR,2,When the run started (UTC),ops
+mart.pipeline_runs,seconds,DOUBLE,2,Run duration in seconds,ops
+mart.pipeline_runs,status,VARCHAR,2,Run or source status,ops
+mart.pipeline_runs,published,BIGINT,2,True when the run's outputs were published,ops
+mart.pipeline_runs,checks,DOUBLE,2,Number of checks run,ops
+mart.pipeline_runs,passed,DOUBLE,2,Checks passed,ops
+mart.pipeline_runs,warnings,DOUBLE,2,Checks that warned,ops
+mart.pipeline_runs,failed,DOUBLE,2,Checks that failed,ops
+mart.pipeline_runs,repairs,BIGINT,2,Datasets re-downloaded by self-healing,ops
+mart.pipeline_runs,payment_rows,BIGINT,2,Payment rows in the run,ops
+mart.pipeline_runs,budget_rows,BIGINT,2,Budget rows in the run,ops
+mart.pipeline_runs,mode,VARCHAR,2,"Run mode (full, freshness reuse, test fault)",ops
+mart.run_checks,run_id,VARCHAR,59,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,59,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,59,Check description,ops
+mart.run_checks,status,VARCHAR,59,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,59,Numbers behind the check result,ops
+mart.sources,source,VARCHAR,5,Short name of the source dataset,derived
+mart.sources,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
+mart.sources,title,VARCHAR,5,Dataset title used on the dashboard,derived
+mart.sources,use,VARCHAR,5,What the dataset contributes to the tracker,derived
+mart.sources,portal_name,VARCHAR,5,Dataset title as the portal publishes it,ops
+mart.sources,portal_updated,VARCHAR,5,Date the portal data last changed,ops
+mart.sources,rows_portal,BIGINT,5,Rows the portal reported,ops
+mart.sources,rows_downloaded,BIGINT,5,Rows in the downloaded file,ops
+mart.sources,years,VARCHAR,5,Fiscal years used,derived
+mart.sources,reconciled,BIGINT,5,True when downloaded rows equal the portal's count,ops
 mart.spending_scope,fiscal_year,INTEGER,44,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.spending_scope,stage,VARCHAR,44,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 mart.spending_scope,scope,VARCHAR,44,Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on),derived
