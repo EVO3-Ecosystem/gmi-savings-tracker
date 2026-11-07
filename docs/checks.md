@@ -32,5 +32,8 @@ A failed "Stop" check ends the run before anything is exported. The export itsel
 | Backtest ranges ordered (p10 <= p50 <= p90) | mart | Stop | 5 | yes |
 | Chosen forecast model no worse than naive on the rolling-origin backtest (against actuals) | mart | Warn | 5 | yes |
 | Published forecast ranges cover about their nominal 80% on the rolling backtest (within 10 points) | mart | Warn | 5 | yes |
+| Opportunity findings well formed (low <= high, unique ids, one per agency and code) | mart | Stop | 5 | yes |
+| Bid list vendors meet the agency and spend thresholds and are ranked by FY2026 payments | mart | Stop | 5 | yes |
+| Growth detector does not lean on findings that grew 1,000% or more | mart | Warn | 5 | yes |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

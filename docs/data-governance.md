@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-07T04:18Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
+_Generated 2026-11-07T04:28Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -630,6 +630,19 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 | rank | BIGINT | derived | Rank of the vendor within its area and year by spend |
 
+**mart.d_bid_list** (30 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| rank | BIGINT | derived | Rank by FY2026 payments |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| fy2025 | DOUBLE | derived | Payments in FY2025 |
+| fy2026 | DOUBLE | derived | Payments in FY2026 |
+| agencies | DOUBLE | derived | Agencies paying the vendor (or with payments in the year) |
+| low | DOUBLE | derived | Low end of the estimated saving; uses a screening assumption (see Assumptions register) |
+| high | DOUBLE | derived | High end of the estimated saving; uses a screening assumption (see Assumptions register) |
+| top_agencies | VARCHAR | derived | Three agencies paying the vendor most in FY2026 |
+
 **mart.d_families** (1,257 rows)
 
 | column | type | origin | definition |
@@ -719,6 +732,22 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | basis | VARCHAR | derived | Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens) |
 | vendors | BIGINT | derived | Distinct payees in the year |
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
+
+**mart.d_opps** (453 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| opp_id | VARCHAR | derived | Opportunity identifier |
+| detector | VARCHAR | derived | Screening rule that found the opportunity |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+| area | VARCHAR | derived | One of GMI's six focus areas |
+| spending_code | VARCHAR | derived | Comptroller sub-object name (with code) shown on the dashboard |
+| baseline | DOUBLE | derived | Spending the screening percentage is applied to |
+| low | DOUBLE | derived | Low end of the estimated saving; uses a screening assumption (see Assumptions register) |
+| high | DOUBLE | derived | High end of the estimated saving; uses a screening assumption (see Assumptions register) |
+| evidence | VARCHAR | derived | Plain-language reason the detector flagged the row |
+| likely | DOUBLE | derived | Midpoint of low and high |
 
 **mart.d_vendors** (3,640 rows)
 
@@ -989,7 +1018,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (66 rows)
+**mart.run_checks** (69 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1102,7 +1131,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (66 rows)
+**ops.check_result** (69 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1986,7 +2015,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,073 of 1,073 columns documented (65 source, 749 warehouse, 259 dashboard).
+1,092 of 1,092 columns documented (65 source, 768 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

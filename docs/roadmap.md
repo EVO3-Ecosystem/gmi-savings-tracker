@@ -9,7 +9,7 @@ Six phases over about eight weeks; each phase's gate must pass before the next s
 | 2. Database | 2–3 | DuckDB `raw`, `core`, `ops`; type casting and code normalizing; reconciliation checks; non-zero exit on failure | Every check passes; yearly totals tie to the portal | **Passed Oct 29, 2026** (30 of 30) |
 | 3. Reference data | 3–4 | `ref` layer from `reference/` CSVs: agencies and aliases, stages, focus areas, payment-name and vendor maps; match-rate report | Match rates at or above the dashboard's master list quality | **Passed Oct 29, 2026** |
 | 4. Marts & dashboard | 4–5 | One `mart` table per dashboard file; `export.py` writes the CSVs; FY2027 payments as a partial year | Every dashboard file reproduced, or each difference explained | **Gate passed for the 21 base dashboard files (Nov 2, 2026).** `sql/mart/*.sql` (28 files at the gate, 43 now; the change measure applied by `marts.py` from each file's `-- yoy:` header), `make parity` against the legacy files: 12 reproduced exactly; 9 differ only as explained in `docs/parity/explanations.csv` (FY2027 partial year added; one company spelled differently). Also added: vendor master, payee types, agency functions, agency roll-up and results marts. Fixed on the way: scope precedence (client payments, then charges between agencies, then staff/grants/capital) and the payee-name pass-through exclusions (`reference/payee_area_exclusions.csv`). Left for Phase 5: the analytics files (opportunities, forecasts, savings checks, recommendations) and `export.py` |
-| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test, database snapshot, the Data & pipeline facts and the forecasts (`f_forecast`, `d_forecast_model`) done; cross-checks, ops history tables and the 12 carried files (opportunities, savings, recommendations, vendor moves, `measures`, `stage_evidence`) still open |
+| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test, database snapshot, the Data & pipeline facts and the forecasts (`f_forecast`, `d_forecast_model`) and the opportunity detectors (`d_opps`, `d_bid_list`) done; cross-checks, ops history tables and the 10 carried files (savings, recommendations, vendor moves, `measures`, `stage_evidence`) still open |
 | 6. Automate & document | 7–8 | `make all`; launchd or cron on the Mac; run log, optional PDF report, wiki update | Two clean scheduled runs with no manual steps | |
 
 ## Open questions
@@ -47,7 +47,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 13 | Model | The 21 base dashboard files | Built in pandas | SQL marts: 12 reproduced exactly, 9 differ only as explained (`docs/parity/`) | Same (proven) |
 | 14 | Model | Vendors tab and portal views | None | 10 vendor marts; budget vs payments, funding sources, programs, grants as listed, overlap | Better |
 | 15 | Analytics | Forecasts (trend vs naive vs drift, backtest, bootstrap band) | `forecast.py` | `src/models/forecast.py` (identical output on the real marts, tested against the legacy script), assumptions in `config/assumptions.yaml`, a rolling-origin backtest against the naive baseline, model card in `docs/models/forecast.md` | Better |
-| 16 | Analytics | Opportunity detectors and bid list | `opportunities.py` (4 detectors) | `d_opps`, `d_bid_list` | **Carried** |
+| 16 | Analytics | Opportunity detectors and bid list | `opportunities.py` (4 detectors) | `src/models/opportunities.py`: exactly the legacy output on the new marts (tested), thresholds in `config/assumptions.yaml`, a configurable minimum base for the growth detector, model card in `docs/models/opportunities.md` | Same |
 | 17 | Analytics | Savings checks against payments | `savings.py` | `d_savings`, `f_savings_check`, `d_savings_status` | **Carried** |
 | 18 | Analytics | Recommendations, path to $50M, history per run | `recs.py`, `model/rec_history.csv` | `d_rec_status`, `d_plan50`; no history | **Carried** |
 | 19 | Analytics | Vendor moves, payee-name detail, vendor pages | `payments_legacy.py`, `run.py` | `d_vendor_moves`, `d_vendor_names`, `f_vendor_detail` | **Carried** |
@@ -65,7 +65,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 31 | Run | Scheduling | Manual | Manual locally; CI on GitHub | Same (Phase 6) |
 | 32 | Docs | Figures | None | `figures.py`: 5 PNGs from the database | Better |
 
-Summary of the 32 rows: 15 Better, 8 Same, 2 Partial, 4 Carried, 3 Gap (one optional, one low priority). 32 of 44 dashboard files come from the new marts; 12 are carried.
+Summary of the 32 rows: 15 Better, 9 Same, 2 Partial, 3 Carried, 3 Gap (one optional, one low priority). 34 of 44 dashboard files come from the new marts; 10 are carried.
 
 ## Gap analysis and improvement backlog (Nov 5, 2026)
 
@@ -95,7 +95,7 @@ Dashboard-level gaps added in the *GMI Dashboard Optimization Roadmap v2* (Claud
 |---|---|---|---|---|
 | 14 | Overview tiles add nine years; 7 dense cards | FY2026 vs FY2025 tiles with stage labels; one-line conclusion; scope chart moves to Focus areas | S | 5a |
 | 15 | Savings tracker repeats two tables; 50% tolerance unlabeled | Merge the tables; label the tolerance where "Seen" appears | S | 5a |
-| 16 | Opportunities headline reads as a promise; detectors untested | "Leads worth up to"; backtest each detector | M | 5 |
+| 16 | Opportunities headline reads as a promise; detectors untested | "Leads worth up to"; backtest each detector | M | 5 **partly done Nov 7:** detectors ported with exact parity and tested on constructed cases; measured that 38% of the growth detector's value is growth of 1,000%+ (likely re-coding) and that totals are not additive; headline wording and the backtest remain open |
 | 17 | Agencies: one table, no chart or headline; pass-through agencies top per-position | Ranked chart, headline, pass-through flag | S | 5a |
 | 18 | Budget cards lack conclusions; no funding chart; tall grant rows | One-line finding per card, funding chart, one-line descriptions | S | 5a |
 
