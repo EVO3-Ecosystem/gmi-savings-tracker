@@ -51,7 +51,7 @@ opportunities:
   growth:
     points_above_state: 0.25   # grew this many points faster than the state's spending on the same code
     min_budget: 500000
-    min_base_budget: 0         # the prior-year spending must exceed this (0 = legacy: any positive base). Roadmap gap 7 suggests about 1,000,000
+    min_base_budget: 1000000   # the prior-year spending must exceed this (0 = the legacy rule: any positive base). $1M drops lines that jump from a few thousand dollars (likely re-coding)
     share_low: 0.10            # saving = this share of the growth above the state's pace
     share_high: 0.30
   tail_spend:

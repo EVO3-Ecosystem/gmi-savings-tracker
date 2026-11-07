@@ -302,17 +302,17 @@ mart.d_multi_basis,fiscal_year,INTEGER,10,"Maryland fiscal year (July 1 to June 
 mart.d_multi_basis,basis,VARCHAR,10,Counting basis: company and budget agency (this dashboard) or payee name and payment account (Maryland Spend Lens),derived
 mart.d_multi_basis,vendors,BIGINT,10,Distinct payees in the year,derived
 mart.d_multi_basis,spend,DOUBLE,10,Dollars spent (budget actuals or payments),derived
-mart.d_opps,opp_id,VARCHAR,453,Opportunity identifier,derived
-mart.d_opps,detector,VARCHAR,453,Screening rule that found the opportunity,derived
-mart.d_opps,agency_code,VARCHAR,453,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-mart.d_opps,agency,VARCHAR,453,Agency name shown on the dashboard,derived
-mart.d_opps,area,VARCHAR,453,One of GMI's six focus areas,derived
-mart.d_opps,spending_code,VARCHAR,453,Comptroller sub-object name (with code) shown on the dashboard,derived
-mart.d_opps,baseline,DOUBLE,453,Spending the screening percentage is applied to,derived
-mart.d_opps,low,DOUBLE,453,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
-mart.d_opps,high,DOUBLE,453,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
-mart.d_opps,evidence,VARCHAR,453,Plain-language reason the detector flagged the row,derived
-mart.d_opps,likely,DOUBLE,453,Midpoint of low and high,derived
+mart.d_opps,opp_id,VARCHAR,396,Opportunity identifier,derived
+mart.d_opps,detector,VARCHAR,396,Screening rule that found the opportunity,derived
+mart.d_opps,agency_code,VARCHAR,396,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.d_opps,agency,VARCHAR,396,Agency name shown on the dashboard,derived
+mart.d_opps,area,VARCHAR,396,One of GMI's six focus areas,derived
+mart.d_opps,spending_code,VARCHAR,396,Comptroller sub-object name (with code) shown on the dashboard,derived
+mart.d_opps,baseline,DOUBLE,396,Spending the screening percentage is applied to,derived
+mart.d_opps,low,DOUBLE,396,Low end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_opps,high,DOUBLE,396,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
+mart.d_opps,evidence,VARCHAR,396,Plain-language reason the detector flagged the row,derived
+mart.d_opps,likely,DOUBLE,396,Midpoint of low and high,derived
 mart.d_plan50,step,BIGINT,28,Order of the step in the path to $50M,derived
 mart.d_plan50,action,VARCHAR,28,Action in the path to $50M,derived
 mart.d_plan50,basis,VARCHAR,28,How the step's saving is calculated,derived

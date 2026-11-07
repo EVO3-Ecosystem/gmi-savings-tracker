@@ -55,8 +55,14 @@ def _growth_case(old=1_000_000.0):
     return _budget(rows), _agencies(TEN)
 
 
+def _legacy_cfg():
+    cfg = O.assumptions()
+    cfg["growth"]["min_base_budget"] = 0  # the constructed cases use small round bases; the default $1M minimum has its own test
+    return cfg
+
+
 def test_growth_counts_only_growth_above_the_states_pace():
-    d = O.detect(*_growth_case()[:2], NO_PAY)
+    d = O.detect(*_growth_case()[:2], NO_PAY, _legacy_cfg())
     r = d[d.detector == "Growth above trend"]
     assert list(r.agency_code) == ["D06"]
     state = 8_000_000 / 6_000_000 - 1
@@ -67,7 +73,8 @@ def test_growth_counts_only_growth_above_the_states_pace():
 
 def test_a_minimum_base_removes_growth_from_a_tiny_starting_point():
     budget, ay = _growth_case(old=10_000.0)
-    assert len(O.detect(budget, ay, NO_PAY).query("detector == 'Growth above trend'")) == 1  # legacy: any positive base
+    assert len(O.detect(budget, ay, NO_PAY, _legacy_cfg()).query("detector == 'Growth above trend'")) == 1  # legacy: any positive base
+    assert O.detect(budget, ay, NO_PAY).query("detector == 'Growth above trend'").empty  # default: the prior year must exceed $1M
     cfg = O.assumptions()
     cfg["growth"]["min_base_budget"] = 100_000
     assert O.detect(budget, ay, NO_PAY, cfg).query("detector == 'Growth above trend'").empty
@@ -75,7 +82,7 @@ def test_a_minimum_base_removes_growth_from_a_tiny_starting_point():
 
 def test_one_finding_per_agency_and_code_the_larger_wins():
     rows = [(a, "0803", 2022, 1_000_000.0) for a in TEN] + [(a, "0803", 2025, 1_000_000.0) for a in TEN[:-1]] + [("D10", "0803", 2025, 10_000_000.0)]
-    d = O.detect(_budget(rows), _agencies(TEN), NO_PAY)
+    d = O.detect(_budget(rows), _agencies(TEN), NO_PAY, _legacy_cfg())
     r = d[(d.agency_code == "D10") & d.spending_code.str.contains("0803")]
     assert len(r) == 1  # flagged by both the peer-gap and the growth detector, listed once
     # peer gap is worth $650k likely; growth is 10-30% of $8.1M above the state's pace = $1.62M likely, so growth is kept

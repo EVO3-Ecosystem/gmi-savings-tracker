@@ -34,10 +34,10 @@ Bid list: 30 vendors, $21.1M likely.
 **Do not read $258M as the size of the opportunity.** Three reasons, all measured:
 
 1. **The findings are not additive.** The budget detectors flag $3.08B of baseline spending and the payment detectors $0.81B of the same money seen from the payments side; only the two budget detectors are de-duplicated against each other.
-2. **Some growth findings look like re-coding, not growth.** 38 of the growth detector's 166 findings grew 1,000% or more (for example Food Services at Public Safety and Correctional Services, +42,462%; Food at the Health department, +2,090%) and carry **$52.0M, 38% of that detector's $135.7M**. A line that jumps from a few thousand dollars to millions is more likely a budget line that was renamed or moved than a saving to chase. The build warns when this share exceeds 25% (it does: 38%).
+2. **Some growth findings look like re-coding, not growth.** 38 of the growth detector's 166 findings grew 1,000% or more (for example Food Services at Public Safety and Correctional Services, +42,462%; Food at the Health department, +2,090%) and carry **$52.0M, 38% of that detector's $135.7M**. A line that jumps from a few thousand dollars to millions is more likely a budget line that was renamed or moved than a saving to chase. The build warns when this share exceeds 25% (it did at the legacy setting: 38%; with the $1M minimum it is 22%).
 3. **The rates are assumptions.** The percentages are not evidence of what a renegotiation yields.
 
-**A minimum prior-year base removes most of the re-coding.** `opportunities.growth.min_base_budget` (default 0, the legacy rule, so parity holds). Measured on this build:
+**A minimum prior-year base removes most of the re-coding.** `opportunities.growth.min_base_budget` (default $1M since Nov 7, 2026; 0 is the legacy rule, which the parity test sets explicitly). Measured on this build:
 
 | Minimum prior-year spending | Growth findings kept | Growth likely saving kept |
 |---|---|---|
@@ -46,7 +46,7 @@ Bid list: 30 vendors, $21.1M likely.
 | $250k | 107 | $104.7M (77%) |
 | $1M (roadmap gap 7) | 39 | $93.8M (69%) |
 
-**Recommendation (not applied).** Set the minimum base to $1M, as the roadmap already proposes (gap 7), and word the headline as "leads worth up to" rather than a total. This changes dashboard numbers, so it is the owner's decision; one line in `config/assumptions.yaml`.
+**Applied Nov 7, 2026.** The minimum base is $1M, as the roadmap proposed (gap 7): 39 growth findings and $93.8M likely saving remain, and the share from findings that grew 1,000% or more fell from 38% to 22%, so the build check now passes. Findings still read as leads worth up to a range, not a total: the rates are screening assumptions. The legacy behaviour is one line in `config/assumptions.yaml`.
 
 ## Limits
 
