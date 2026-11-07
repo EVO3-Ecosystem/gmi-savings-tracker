@@ -25,7 +25,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 OTHER = "Other controllable purchases"
 TREND, NAIVE, DRIFT = "Log-linear trend", "Naive (last actual)", "Drift (average yearly growth)"
-METHODS = (TREND, NAIVE, DRIFT)
+METHODS = (TREND, NAIVE, DRIFT)  # the models a forecast can be kept from
+COMBINATION = "Equal-weight combination"  # scored in the backtest only, to show whether averaging earns a place; never kept
 
 
 def assumptions():
@@ -74,18 +75,27 @@ def _actuals(g, a0, a1):
     return g[(g.stage == "Actual") & g.fiscal_year.between(a0, a1)].set_index("fiscal_year").spend.sort_index()
 
 
+def interval_score(lo, hi, outcome, alpha=0.2):
+    """Interval score of a central (1 - alpha) range (Gneiting and Raftery 2007): its width plus a penalty of 2/alpha
+    times how far the outcome falls outside it. Lower is better; it rewards narrow ranges that still cover."""
+    return (hi - lo) + (2 / alpha) * np.maximum(lo - outcome, 0) + (2 / alpha) * np.maximum(outcome - hi, 0)
+
+
 def backtest(s, cfg=None):
     """Rolling-origin backtest: every method, every area, origins from the smallest training window to the last actual.
 
     One row per area, method, origin and horizon (forecast year = origin + horizon, up to `rolling_score_through_fy`).
     A forecast year up to the last actual is scored against actual spending (target = "actual"); a later year (FY2026
     working budget, FY2027 legislative appropriation) is scored against the State's plan (target = "plan"), which is
-    a budget figure, not an outcome. Forecasts never use a year after their origin, and never use the plan.
+    a budget, not an outcome. Forecasts never use a year after their origin, and never use the plan.
     mase = absolute error / mean absolute one-step naive error inside that origin's training window.
+    p10, p50, p90 = the bootstrap range simulated at that origin; covered = the outcome fell inside p10-p90 (nominal
+    80%); interval_score = the interval score of that range in dollars.
     """
     cfg = (cfg or assumptions())["forecast"]
     a0, a1, min_train, max_h = cfg["first_actual_fy"], cfg["last_actual_fy"], cfg["rolling_min_train_years"], cfg["rolling_max_horizon"]
-    through = cfg["rolling_score_through_fy"]
+    through, n_paths = cfg["rolling_score_through_fy"], cfg["backtest_bootstrap_paths"]
+    rng = np.random.default_rng(cfg["seed"] + 1)  # separate stream: the published forecasts do not depend on the backtest
     rows = []
     for area, g in s.groupby("area"):
         act = _actuals(g, a0, a1)
@@ -94,28 +104,98 @@ def backtest(s, cfg=None):
         for origin in range(a0 + min_train - 1, a1 + 1):
             tr = x <= origin
             scale = float(np.mean(np.abs(np.diff(y[tr]))))
-            for h in range(1, max_h + 1):
-                fy = origin + h
-                if fy > through:
-                    break
-                if fy <= a1:
-                    target, outcome = "actual", float(y[x == fy][0])
-                elif fy in plan.index:
-                    target, outcome = "plan", float(plan.loc[fy])
-                else:
-                    continue
-                for m in METHODS:
-                    f = float(predict(m, x[tr], y[tr], [fy])[0])
-                    err = abs(f - outcome)
-                    rows.append({"area": area, "method": m, "origin_fy": origin, "horizon": h, "forecast_fy": fy, "target": target,
-                                 "outcome": outcome, "forecast": f, "abs_error": err, "ape": err / outcome,
-                                 "mase": err / scale if scale > 0 else None})
+            years = np.arange(origin + 1, min(origin + max_h, through) + 1)
+            sims = {m: simulate(m, x[tr], y[tr], years, n_paths, rng) for m in METHODS}
+            points = {m: predict(m, x[tr], y[tr], years) for m in METHODS}
+            sims[COMBINATION] = np.mean([sims[m] for m in METHODS], axis=0)  # path by path, so its range is the range of the average
+            points[COMBINATION] = np.mean([points[m] for m in METHODS], axis=0)
+            for m in (*METHODS, COMBINATION):
+                p10, p50, p90 = np.percentile(sims[m], [10, 50, 90], axis=0)
+                f = points[m]
+                for k, fy in enumerate(years):
+                    fy = int(fy)
+                    if fy <= a1:
+                        target, outcome = "actual", float(y[x == fy][0])
+                    elif fy in plan.index:
+                        target, outcome = "plan", float(plan.loc[fy])
+                    else:
+                        continue
+                    err = abs(float(f[k]) - outcome)
+                    rows.append({"area": area, "method": m, "origin_fy": origin, "horizon": fy - origin, "forecast_fy": fy, "target": target,
+                                 "outcome": outcome, "forecast": float(f[k]), "abs_error": err, "ape": err / outcome,
+                                 "mase": err / scale if scale > 0 else None, "p10": p10[k], "p50": p50[k], "p90": p90[k],
+                                 "covered": bool(p10[k] <= outcome <= p90[k]), "interval_score": float(interval_score(p10[k], p90[k], outcome))})
     out = pd.DataFrame(rows)
-    for c in ("outcome", "forecast", "abs_error"):
+    for c in ("outcome", "forecast", "abs_error", "p10", "p50", "p90", "interval_score"):
         out[c] = out[c].round(0)
     for c in ("ape", "mase"):
         out[c] = pd.to_numeric(out[c]).round(5)
     return out
+
+
+def calibration(bt, model, alpha=0.2):
+    """How far the published p10-p90 ranges are from their nominal 80%, measured on the rolling backtest against actuals,
+    for each area's chosen model, plus the pooled factor that would have made them cover 80%.
+
+    widen_by: the (1 - alpha) quantile (with the usual finite-sample rank correction) of how many times wider than its
+    own range each outcome's miss was, on the log scale around the median; 1 = already calibrated, above 1 = too narrow.
+    It is measured in-sample on a handful of points, so it is a size of the problem, not a validated correction.
+    """
+    chosen = bt.merge(model[["area", "method"]], on=["area", "method"])
+    chosen = chosen[chosen.target == "actual"].copy()
+    lo, mid, hi, out = (np.log(chosen[c].astype(float)) for c in ("p10", "p50", "p90", "outcome"))
+    up = (hi - mid).clip(lower=1e-9)
+    down = (mid - lo).clip(lower=1e-9)
+    chosen["miss"] = np.where(out >= mid, (out - mid) / up, (mid - out) / down)
+    n = len(chosen)
+    k = float(np.sort(chosen.miss.values)[min(n - 1, int(np.ceil((n + 1) * (1 - alpha))) - 1)]) if n else float("nan")
+    rows = [{"area": a, "method": g.method.iloc[0], "scored": len(g), "covered_share": float(g.covered.mean()), "nominal": 1 - alpha,
+             "widen_by": k} for a, g in chosen.groupby("area")]
+    rows.append({"area": "All areas", "method": "chosen model of each area", "scored": n, "covered_share": float(chosen.covered.mean()) if n else None,
+                 "nominal": 1 - alpha, "widen_by": k})
+    out_df = pd.DataFrame(rows)
+    for c in ("covered_share", "widen_by"):
+        out_df[c] = pd.to_numeric(out_df[c]).round(4)
+    return out_df
+
+
+def simulate(method, x, y, fy, n_paths, rng):
+    """Bootstrap paths of spending in the years `fy` from one training window: array (n_paths, len(fy)).
+
+    Residual bootstrap: refit on resampled data, then add a random walk of resampled residuals (trend) or resampled
+    yearly changes (naive, drift), so ranges widen with the horizon.
+    """
+    dl = np.diff(np.log(y))
+    drift = dl.mean()
+    shocks = dl - drift
+    a, b = _fit(y, x)
+    res = np.log(y) - (a + b * x)
+    fy = np.asarray(fy)
+    sims = np.empty((n_paths, len(fy)))
+    for i in range(n_paths):
+        yb = np.exp(a + b * x + rng.choice(res, len(x)))
+        ab, bb = _fit(yb, x)
+        if method == NAIVE:
+            level = np.log(y[-1]) + np.cumsum(rng.choice(shocks, len(fy)))
+        elif method == DRIFT:
+            level = np.log(y[-1]) + np.cumsum(drift + rng.choice(shocks, len(fy)))
+        else:
+            level = ab + bb * fy + rng.choice(res, len(fy)) * np.sqrt(np.arange(1, len(fy) + 1)) / np.sqrt(2)
+        sims[i] = np.exp(level)
+    return sims
+
+
+def choose(area_scores, rule, legacy_mape):
+    """The model kept for one area. `rolling_origin_mase`: lowest mean MASE over the rolling origins (a tie goes to the
+    naive baseline); `legacy_single_split`: lowest MAPE on the single fit-through-FY2022 split (the legacy rule)."""
+    if rule == "legacy_single_split":
+        return min(legacy_mape, key=legacy_mape.get)
+    order = (NAIVE, TREND, DRIFT)  # strict '<' below, so the first listed wins a tie
+    best = order[0]
+    for m in order[1:]:
+        if area_scores[m] < area_scores[best]:
+            best = m
+    return best
 
 
 def build(f_code, f_scope, f_fund, cfg=None, reference=None):
@@ -125,33 +205,20 @@ def build(f_code, f_scope, f_fund, cfg=None, reference=None):
     gmi = gmi_recurring(cfg, reference)
     rng = np.random.default_rng(p["seed"])
     s = series(f_code, f_scope)
+    bt = backtest(s, cfg)
+    rolling = bt[bt.target == "actual"].groupby(["area", "method"]).mase.mean()
     rows, meta = [], []
     for area, g in s.groupby("area"):
         act = _actuals(g, a0, a1)
         plan = g[g.stage != "Actual"].set_index("fiscal_year").spend
         x, y = act.index.values.astype(float), act.values
-        # method choice: fit through the cut-off year, score the years after it
+        # single split (legacy): fit through the cut-off year, score the years after it
         tr, te = x <= fit_end, x > fit_end
         mape = {m: float(np.mean(np.abs(predict(m, x[tr], y[tr], x[te]) - y[te]) / y[te])) for m in METHODS}
-        method = min(mape, key=mape.get)
-        dl = np.diff(np.log(y))
-        drift = dl.mean()
-        shocks = dl - drift
+        method = choose({m: rolling[(area, m)] for m in METHODS}, p.get("selection", "rolling_origin_mase"), mape)
         a, b = _fit(y, x)
-        res = np.log(y) - (a + b * x)
         fy = np.arange(a1 + 1, h1 + 1)
-        sims = np.empty((n_paths, len(fy)))
-        for i in range(n_paths):  # residual bootstrap: refit on resampled data, then add a random walk of residuals
-            yb = np.exp(a + b * x + rng.choice(res, len(x)))
-            ab, bb = _fit(yb, x)
-            if method == NAIVE:
-                level = np.log(y[-1]) + np.cumsum(rng.choice(shocks, len(fy)))
-            elif method == DRIFT:
-                level = np.log(y[-1]) + np.cumsum(drift + rng.choice(shocks, len(fy)))
-            else:
-                level = ab + bb * fy + rng.choice(res, len(fy)) * np.sqrt(np.arange(1, len(fy) + 1)) / np.sqrt(2)
-            sims[i] = np.exp(level)
-        p10, p50, p90 = np.percentile(sims, [10, 50, 90], axis=0)
+        p10, p50, p90 = np.percentile(simulate(method, x, y, fy, n_paths, rng), [10, 50, 90], axis=0)
         for yr, v in act.items():
             rows.append({"area": area, "fiscal_year": int(yr), "kind": "Actual", "value": v, "p10": None, "p50": None, "p90": None, "plan": None})
         for k, yr in enumerate(fy):
@@ -177,15 +244,16 @@ def build(f_code, f_scope, f_fund, cfg=None, reference=None):
         f[c] = pd.to_numeric(f[c]).round(0)
     for c in ("growth", "backtest_mape", "trend_mape", "naive_mape", "drift_mape", "gmi_rate", "gf_share"):
         m[c] = pd.to_numeric(m[c]).round(5)
-    return f, m, backtest(s, cfg)
+    return f, m, bt
 
 
 def write(con, cfg=None):
     """Read the marts, build the three tables and store them in the mart schema."""
     f_code, f_scope, f_fund = (con.execute(f"SELECT * FROM mart.{t}").df() for t in ("f_code", "f_scope", "f_fund"))
     f, m, bt = build(f_code, f_scope, f_fund, cfg)
-    for name, df in (("f_forecast", f), ("d_forecast_model", m), ("d_forecast_backtest", bt)):
+    cal = calibration(bt, m)
+    for name, df in (("f_forecast", f), ("d_forecast_model", m), ("d_forecast_backtest", bt), ("d_forecast_calibration", cal)):
         con.register("_df", df)
         con.execute(f"CREATE OR REPLACE TABLE mart.{name} AS SELECT * FROM _df")
         con.unregister("_df")
-    return {"f_forecast": len(f), "d_forecast_model": len(m), "d_forecast_backtest": len(bt)}
+    return {"f_forecast": len(f), "d_forecast_model": len(m), "d_forecast_backtest": len(bt), "d_forecast_calibration": len(cal)}

@@ -81,11 +81,29 @@ def test_same_seed_same_result_and_different_seed_differs():
     assert not a.p50.dropna().equals(c.p50.dropna())
 
 
-def test_method_choice_is_the_lowest_backtest_error(built):
-    _, m, _ = built
+def test_default_rule_picks_the_lowest_rolling_origin_mase_and_ties_go_to_naive(built):
+    _, m, bt = built
+    mase = bt[bt.target == "actual"].groupby(["area", "method"]).mase.mean().unstack()
     for r in m.itertuples():
-        errs = {"Log-linear trend": r.trend_mape, "Naive (last actual)": r.naive_mape, "Drift (average yearly growth)": r.drift_mape}
+        row = mase.loc[r.area]
+        assert row[r.method] == row.min()
+    assert F.choose({F.TREND: 1.0, F.NAIVE: 1.0, F.DRIFT: 1.0}, "rolling_origin_mase", {}) == F.NAIVE  # a tie goes to the baseline
+    assert F.choose({F.TREND: 0.9, F.NAIVE: 1.0, F.DRIFT: 1.2}, "rolling_origin_mase", {}) == F.TREND
+    assert F.choose({F.TREND: 9.0, F.NAIVE: 9.0, F.DRIFT: 9.0}, "legacy_single_split", {F.TREND: 0.3, F.NAIVE: 0.2, F.DRIFT: 0.1}) == F.DRIFT
+
+
+def test_legacy_rule_picks_the_lowest_single_split_error():
+    f_code, f_scope, f_fund = _inputs()
+    cfg = F.assumptions()
+    cfg["forecast"]["selection"] = "legacy_single_split"
+    _, m, _ = F.build(f_code, f_scope, f_fund, cfg)
+    for r in m.itertuples():
+        errs = {F.TREND: r.trend_mape, F.NAIVE: r.naive_mape, F.DRIFT: r.drift_mape}
         assert errs[r.method] == min(errs.values())
+
+
+def test_exact_growth_is_recovered_and_beats_naive(built):
+    _, m, _ = built
     a = m.set_index("area").loc["A"]
     assert a.method in ("Log-linear trend", "Drift (average yearly growth)")  # both fit exact growth; a tie at about zero error
     assert a.backtest_mape < 1e-4 and abs(a.growth - 0.05) < 1e-4  # exact 5% growth is recovered, and beats naive
@@ -107,9 +125,9 @@ def test_general_fund_share_is_weighted_by_agency_spend(built):
 
 def test_rolling_backtest_has_one_row_per_area_method_origin_horizon(built):
     _, _, bt = built
-    assert len(bt) == 3 * 3 * 14  # origins FY2021-FY2025 with horizons 3, 3, 3, 3, 2 (scored through FY2027)
+    assert len(bt) == 3 * 4 * 14  # origins FY2021-FY2025 with horizons 3, 3, 3, 3, 2 (scored through FY2027), three models and their combination
     assert bt.forecast_fy.max() == 2027 and (bt.forecast_fy == bt.origin_fy + bt.horizon).all()
-    assert set(bt.method) == set(F.METHODS)
+    assert set(bt.method) == set(F.METHODS) | {F.COMBINATION}
 
 
 def test_years_after_the_last_actual_are_scored_against_the_plan_and_labelled(built):
@@ -151,3 +169,48 @@ def test_rolling_backtest_never_uses_the_future():
     a, b = F.backtest(s1), F.backtest(s2)
     key = (a.area == "B") & (a.forecast_fy <= 2024)  # nothing scored on or before FY2024 may depend on FY2025
     pd.testing.assert_frame_equal(a[key].reset_index(drop=True), b[key].reset_index(drop=True))
+
+
+def test_interval_score_is_width_plus_a_penalty_for_missing():
+    assert F.interval_score(10.0, 20.0, 15.0) == 10.0  # inside: just the width
+    assert F.interval_score(10.0, 20.0, 25.0) == 10.0 + 10.0 * 5.0  # 2 / 0.2 = 10 per dollar above
+    assert F.interval_score(10.0, 20.0, 5.0) == 10.0 + 10.0 * 5.0  # and per dollar below
+
+
+def test_backtest_ranges_are_ordered_and_covered_matches_the_range(built):
+    _, _, bt = built
+    assert (bt.p10 <= bt.p50).all() and (bt.p50 <= bt.p90).all()
+    rounded = (bt.p10 <= bt.outcome) & (bt.outcome <= bt.p90)
+    near_a_bound = np.minimum((bt.outcome - bt.p10).abs(), (bt.outcome - bt.p90).abs()) <= 1  # covered uses unrounded values; rows are rounded to the dollar
+    assert ((bt.covered == rounded) | near_a_bound).all()
+    assert (bt.interval_score >= bt.p90 - bt.p10 - 1).all()  # never below the width (rows are rounded to the dollar)
+
+
+def test_published_forecasts_do_not_depend_on_the_backtest_settings():
+    f_code, f_scope, f_fund = _inputs()
+    a = F.build(f_code, f_scope, f_fund)[0]
+    cfg = F.assumptions()
+    cfg["forecast"]["backtest_bootstrap_paths"] = 50
+    b = F.build(f_code, f_scope, f_fund, cfg)[0]
+    pd.testing.assert_frame_equal(a, b)  # the backtest draws from its own random stream
+
+
+def _bt(rows):
+    return pd.DataFrame([{"area": "A", "method": F.NAIVE, "target": "actual", "p10": lo, "p50": mid, "p90": hi, "outcome": out, "covered": lo <= out <= hi}
+                         for lo, mid, hi, out in rows])
+
+
+def test_calibration_says_calibrated_when_ranges_cover_and_too_narrow_when_they_miss():
+    model = pd.DataFrame({"area": ["A"], "method": [F.NAIVE]})
+    good = F.calibration(_bt([(80.0, 100.0, 125.0, 100.0 + i) for i in range(-5, 5)]), model)
+    assert good.iloc[-1].area == "All areas" and good.iloc[-1].covered_share == 1.0 and good.iloc[-1].widen_by <= 1.0
+    bad = F.calibration(_bt([(95.0, 100.0, 105.0, 130.0)] * 4 + [(95.0, 100.0, 105.0, 100.0)]), model)
+    assert bad.iloc[-1].covered_share == 0.2 and bad.iloc[-1].widen_by > 1.5  # misses are several times the range
+    assert bad.iloc[0].area == "A" and bad.iloc[0].scored == 5
+
+
+def test_the_combination_is_scored_but_never_kept(built):
+    _, m, bt = built
+    assert F.COMBINATION not in set(m.method)
+    one = bt[(bt.area == "A") & (bt.origin_fy == 2023) & (bt.horizon == 1)].set_index("method")
+    assert abs(one.loc[F.COMBINATION, "forecast"] - one.loc[list(F.METHODS), "forecast"].mean()) <= 1  # the plain average of the three forecasts

@@ -222,9 +222,17 @@ def phase5(con, check, one):
         FROM mart.f_forecast GROUP BY 1) WHERE a < 9 OR f < 6""")
     n = one("SELECT count(*) FROM mart.d_forecast_model")
     check("mart", "Every forecast area has nine actual years and six forecast years", short == 0 and n >= 7, f"{n} areas; {short} short")
+    unordered = one("SELECT count(*) FROM mart.d_forecast_backtest WHERE NOT (p10 <= p50 AND p50 <= p90)")
+    check("mart", "Backtest ranges are ordered (p10 <= p50 <= p90)", unordered == 0, f"{unordered} backtest rows out of order")
     unplanned = one("""SELECT count(*) FROM (SELECT area FROM mart.d_forecast_backtest WHERE target = 'plan' GROUP BY area
         HAVING count(DISTINCT forecast_fy) < 2)""") + one("SELECT count(*) FROM mart.d_forecast_model WHERE area NOT IN (SELECT area FROM mart.d_forecast_backtest WHERE target = 'plan')")
     check("mart", "Every forecast area is also scored against the State's plan for FY2026 and FY2027", unplanned == 0, f"{unplanned} areas without both plan years")
+    cov = con.execute("SELECT covered_share, scored, nominal, widen_by FROM mart.d_forecast_calibration WHERE area = 'All areas'").fetchone()
+    if cov:
+        share, scored, nominal, widen = cov
+        check("mart", "Published forecast ranges cover about their nominal share on the rolling backtest", abs(share - nominal) <= 0.10,
+              f"{share:.1%} of {scored} forecasts of actual spending fell inside the p10-p90 range (nominal {nominal:.0%}); "
+              f"about {widen:.2f}x wider ranges would have been needed (in-sample, a handful of points)", "warn")
     worse = con.execute("""SELECT m.area, avg(b.mase) FILTER (WHERE b.method = m.method) AS chosen, avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') AS naive
         FROM mart.d_forecast_model m JOIN mart.d_forecast_backtest b USING (area) WHERE b.target = 'actual' GROUP BY m.area, m.method
         HAVING avg(b.mase) FILTER (WHERE b.method = m.method) > avg(b.mase) FILTER (WHERE b.method = 'Naive (last actual)') + 1e-9""").fetchall()

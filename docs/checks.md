@@ -29,6 +29,8 @@ A failed "Stop" check ends the run before anything is exported. The export itsel
 | Forecast actuals add up to controllable purchases (every actual year); FY2025 baseline = the area's actual | mart | Stop | 5 | yes |
 | Every forecast area has nine actual and six forecast years | mart | Stop | 5 | yes |
 | Every forecast area also scored against the State's plan for FY2026 and FY2027 | mart | Stop | 5 | yes |
+| Backtest ranges ordered (p10 <= p50 <= p90) | mart | Stop | 5 | yes |
 | Chosen forecast model no worse than naive on the rolling-origin backtest (against actuals) | mart | Warn | 5 | yes |
+| Published forecast ranges cover about their nominal 80% on the rolling backtest (within 10 points) | mart | Warn | 5 | yes |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

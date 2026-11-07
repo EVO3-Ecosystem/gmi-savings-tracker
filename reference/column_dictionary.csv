@@ -320,7 +320,7 @@ category,mart.f_grants,derived,"Grant or Loan, from the dataset's category code 
 payments,"mart.f_budget_vs_pay,mart.f_overlap",derived,"Payments to all payees in the year (vendor payments dataset, 7syw-q4cy)"
 partial_year,"mart.f_budget_vs_pay,mart.f_overlap",derived,True for the latest payments year while it is still being updated monthly
 grants,mart.f_overlap,derived,Grants dataset rows with category Grant
-method,mart.d_forecast_backtest,derived,"Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth)"
+method,mart.d_forecast_backtest,derived,"Forecast model scored: log-linear trend, naive (last actual), drift (average yearly growth) or the equal-weight combination of those three (scored only, never kept)"
 origin_fy,mart.d_forecast_backtest,derived,Last fiscal year of actual spending the model was allowed to see (the forecast origin)
 horizon,mart.d_forecast_backtest,derived,Years ahead of the origin that the forecast looks (1 to 3)
 forecast_fy,mart.d_forecast_backtest,derived,"Fiscal year being forecast: origin plus horizon, up to FY2027 (years after the last actual are scored against the State's plan)"
@@ -330,3 +330,13 @@ forecast,mart.d_forecast_backtest,derived,"The model's forecast for that year, i
 abs_error,mart.d_forecast_backtest,derived,Absolute forecast error in dollars
 ape,mart.d_forecast_backtest,derived,Absolute percentage error: absolute error divided by the outcome
 mase,mart.d_forecast_backtest,derived,Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error
+p10,mart.d_forecast_backtest,derived,"10th percentile of the bootstrap range simulated at that origin, in dollars"
+p50,mart.d_forecast_backtest,derived,"Median of the bootstrap range simulated at that origin, in dollars"
+p90,mart.d_forecast_backtest,derived,"90th percentile of the bootstrap range simulated at that origin, in dollars"
+covered,mart.d_forecast_backtest,derived,True when the outcome fell inside the p10 to p90 range (a range meant to cover 80%)
+interval_score,mart.d_forecast_backtest,derived,Interval score of the p10 to p90 range in dollars (Gneiting and Raftery 2007): its width plus 10 times how far the outcome fell outside it; lower is better
+method,mart.d_forecast_calibration,derived,The area's chosen forecast model (the kept model of each area for the All areas row)
+scored,mart.d_forecast_calibration,derived,Rolling-backtest forecasts of actual spending scored for the area's chosen model
+covered_share,mart.d_forecast_calibration,derived,Share of those forecasts whose actual spending fell inside the published p10 to p90 range
+nominal,mart.d_forecast_calibration,derived,The share the range is meant to cover (0.8 for p10 to p90)
+widen_by,mart.d_forecast_calibration,derived,"Pooled factor by which the ranges would have needed to be wider (around the median, on the log scale) to cover the nominal share in the backtest; 1 is calibrated; measured in-sample on few points, so a size of the problem, not a validated correction"
