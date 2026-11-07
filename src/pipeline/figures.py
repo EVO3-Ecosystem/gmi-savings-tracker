@@ -60,19 +60,29 @@ def rows_by_year(con):
 
 def reconciliation():
     r = pd.read_csv(ROOT / "docs" / "reconciliation" / "by_year.csv")
-    fig, axs = plt.subplots(1, 4, figsize=(15, 3.4))
+    fig, axs = plt.subplots(1, 4, figsize=(15, 3.7))
     for ax, (k, g), c in zip(axs, r.groupby("dataset", sort=False), C):
-        ax.plot(g.fiscal_year, g.total_api, color=c, lw=2, label="API extract")
-        ax.scatter(g.fiscal_year, g.total_web, s=36, facecolor=SURF, edgecolor=INK, lw=1.2, zorder=3, label="Website download")
+        g = g.sort_values("fiscal_year")
+        complete = g.iloc[:-1] if k == "payments" else g
+        ax.plot(complete.fiscal_year, complete.total_api, color=c, lw=2, label="API extract")
+        ax.scatter(complete.fiscal_year, complete.total_web, s=36, facecolor=SURF, edgecolor=INK, lw=1.2,
+                   zorder=3, label="Website download")
+        if k == "payments":
+            partial = g.iloc[-2:]
+            last = g.iloc[-1]
+            ax.plot(partial.fiscal_year, partial.total_api, color=c, lw=2, ls=(0, (4, 3)))
+            ax.scatter([last.fiscal_year], [last.total_web], s=52, marker="D", facecolor=SURF,
+                       edgecolor=C[1], lw=1.6, zorder=4)
+            ax.annotate(f"FY{int(last.fiscal_year)} partial year", (last.fiscal_year, last.total_api),
+                        xytext=(-112, 24), textcoords="offset points", fontsize=8, color=MUTED,
+                        bbox={"facecolor": SURF, "edgecolor": "none", "pad": 1.5})
         ax.yaxis.set_major_formatter(money)
         bad = int((~g.match).sum())
         ax.set_title(NAMES[k] + "\n" + ("every year matches" if not bad else f"{bad} years differ"), loc="left", fontsize=9.5)
-        if k == "payments":
-            last = g.iloc[-1]
-            ax.annotate(f"FY{int(last.fiscal_year)} partial", (last.fiscal_year, last.total_api), xytext=(-62, 4), textcoords="offset points", fontsize=8, color=MUTED)
     axs[0].legend(frameon=False, fontsize=8.5, loc="upper left")
     save(fig, "reconciliation.png", "Two copies, one answer: API extract vs the Transparency Portal's own downloads",
-         "Line: yearly total from the SODA API. Rings: yearly total from mtp.maryland.gov downloads. A match means equal row counts and totals within $1.")
+         "Line: SODA API yearly total. Rings: website yearly total. Dashed segment and diamond: partial FY2027 payments. Matches require equal row counts and totals within $1.\n"
+         "Positions (x8qy-486w) match the portal's own API count and yearly totals but have no website download, so they are absent from this four-dataset comparison.")
 
 
 def budget_by_stage(con):
@@ -118,7 +128,8 @@ def concentration(con):
         g = d[d.area == a]
         last = g.iloc[-1]
         c = C[0] if last.hhi >= 1800 else MUTED
-        ax.axhline(1800, color=MUTED, lw=1, ls=(0, (3, 3)))
+        ax.axhline(1800, color=MUTED, lw=1, ls=(0, (3, 3)),
+                   label="1,800: highly concentrated" if a == areas[-1] else None)
         ax.plot(g.fiscal_year, g.hhi, color=c, lw=2)
         ax.scatter([last.fiscal_year], [last.hhi], s=30, color=c, zorder=3)
         ax.set_title(f"{a}\nHHI {last.hhi:,.0f} in FY{int(last.fiscal_year)}", loc="left", fontsize=9.5)
@@ -126,7 +137,7 @@ def concentration(con):
         ax.xaxis.set_major_formatter(lambda v, _: f"FY{int(v) % 100:02d}")
     axs[0].set_ylabel("HHI")
     axs[0].yaxis.set_major_formatter(lambda v, _: f"{v:,.0f}")
-    axs[0].text(2008.3, 1880, "1,800: highly concentrated", fontsize=8, color=MUTED)
+    axs[-1].legend(frameon=True, facecolor=SURF, edgecolor="none", framealpha=1, fontsize=8, loc="upper right")
     save(fig, "vendor_concentration_hhi.png", "Buying in four of six focus areas is highly concentrated",
          "Herfindahl-Hirschman Index of private-vendor spend per focus area, FY2008-FY2026 (mart.f_concentration). Threshold from the 2023 U.S. DOJ/FTC Merger Guidelines.")
 
@@ -150,16 +161,19 @@ def check_history():
 
 def main():
     FIG.mkdir(parents=True, exist_ok=True)
-    con = duckdb.connect(str(DB), read_only=True)
-    rows_by_year(con)
-    budget_by_stage(con)
-    vendor_concentration(con)
-    concentration(con)
-    con.close()
     if (ROOT / "docs" / "reconciliation" / "by_year.csv").exists():
         reconciliation()
     if (ROOT / "data" / "check_history.csv").exists():
         check_history()
+    if DB.exists():
+        con = duckdb.connect(str(DB), read_only=True)
+        rows_by_year(con)
+        budget_by_stage(con)
+        vendor_concentration(con)
+        concentration(con)
+        con.close()
+    else:
+        print(f"database not found: {DB}; skipped rows, budget, vendor and HHI charts (existing PNGs left unchanged)")
     print("figures:", ", ".join(sorted(p.name for p in FIG.glob("*.png"))))
 
 

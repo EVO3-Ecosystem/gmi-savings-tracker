@@ -18,7 +18,7 @@ flowchart TB
     P2["Vendor (company), 56,590<br/>ref.map_payee_vendor · payee type"]:::have
     P3["Vendor × agency × year<br/>mart.vendor_agency_year"]:::have
     P4["Vendor master<br/>mart.vendor_master"]:::have
-    P1 -->|"every line: 411,231 of 411,231"| P2 --> P3 --> P4
+    P1 --> P2 --> P3 --> P4
   end
 
   subgraph OTH[Other datasets]
@@ -28,23 +28,24 @@ flowchart TB
     GR["Grants and loans<br/>core.fact_grant"]:::have
   end
 
+  MAP["Payment agency mapping<br/>ref.map_payment_agency<br/>rules + reviewed agency decisions"]:::have
   A["Agency × fiscal year<br/>the only key budget and payments share<br/>mart.agency_rollup"]:::join
   F["Function (12)<br/>each agency sits in exactly one"]:::join
   R["Results<br/>Managing for Results measures<br/>mart.agency_results"]:::have
 
   B3 --> A
-  P1 -->|"ref.map_payment_agency<br/>411,060 of 411,231 lines"| A
+  P1 --> MAP --> A
   FS --> A
   FT --> A
   A --> F
   A --> R
-  B2 -.->|"bridge for the 6 focus areas only<br/>(payee-name rules)"| P2
+  B2 -.->|"focus-area bridge<br/>(payee-name rules)"| P2
 
-  G1["Gap 1 · Payments carry no program or<br/>spending code: a budget line can't be<br/>tied to a vendor (State data limit)"]:::gap
-  G2["Gap 2 · 171 payment lines, $749.3M, no agency<br/>(mostly Maryland Health Insurance Plan,<br/>FY2010–FY2017): decision pending"]:::gap
-  G3["Gap 3 · core.fact_fund keeps only the agency;<br/>the raw file has unit and program (fixable)"]:::gap
-  G4["Gap 4 · Grants name a program in text;<br/>128 of 1,106 match a budget program name"]:::gap
-  P1 -.- G1
-  P1 -.- G2
-  FS -.- G3
-  GR -.- G4
+  subgraph LIM[Known limits and decisions]
+    direction LR
+    G1["Payments · no program or spending code<br/>A budget line cannot be tied to a vendor<br/>(State data limit)"]:::gap
+    G2["Resolved · agency decisions, Nov 4<br/>MHIP → D78; Contract Appeals → D15;<br/>UMMS + security-filing fees excluded"]:::join
+    G3["Funding · core.fact_fund keeps only agency<br/>The raw file also has unit and program<br/>(fixable)"]:::gap
+    G4["Grants · program named in text<br/>128 of 1,106 match a budget program name"]:::gap
+  end
+
