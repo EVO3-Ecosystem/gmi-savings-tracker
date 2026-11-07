@@ -35,5 +35,9 @@ A failed "Stop" check ends the run before anything is exported. The export itsel
 | Opportunity findings well formed (low <= high, unique ids, one per agency and code) | mart | Stop | 5 | yes |
 | Bid list vendors meet the agency and spend thresholds and are ranked by FY2026 payments | mart | Stop | 5 | yes |
 | Growth detector does not lean on findings that grew 1,000% or more | mart | Warn | 5 | yes |
+| Every reported savings item is unique, cites a page and a quote, and has low <= high | mart | Stop | 5 | yes |
+| Every payment check matches payments, and the four named contract types are checked | mart | Stop | 5 | yes |
+| Every payment check has a status (reports how many are Seen, Partly seen, Not seen yet) | mart | Stop | 5 | yes |
+| Vendor moves are decreases by vendors paid by enough agencies, largest first | mart | Stop | 5 | yes |
 
 The legacy pipeline ran about 90 checks (see the GMI Savings Tracker's Data & pipeline tab); phases 2–5 port them here.

@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from ..models import opportunities
+from ..models import opportunities, savings
 
 HIST = Path(__file__).resolve().parents[2] / "data" / "check_history.csv"
 SUM_COL = {"budget": ("core.fact_budget", "budget"), "fund": ("core.fact_fund", "budget"), "fte": ("core.fact_fte", "fte"),
@@ -85,6 +85,7 @@ def run(con, run_id, manifest):
     phase4(con, check, one)
     phase5(con, check, one)
     phase5_opportunities(con, check, one)
+    phase5_savings(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -265,4 +266,30 @@ def phase5_opportunities(con, check, one):
     check("mart", "Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)", share <= 0.25,
           f"${row[0] / 1e6:,.1f}M of the growth detector's ${row[1] / 1e6:,.1f}M likely saving ({share:.0%}) comes from findings that grew 1,000% or more; "
           "a minimum prior-year base (assumptions.yaml, opportunities.growth.min_base_budget) removes most of them", "warn")
+
+
+def phase5_savings(con, check, one):
+    """GMI's reported savings and their payment checks: every item cited, every check backed by payments, a status for each."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_savings'"):
+        return
+    n, ids, cited, ordered = con.execute("""SELECT count(*), count(DISTINCT saving_id), count(*) FILTER (WHERE trim(source_quote) <> '' AND trim(source_page) <> ''),
+        count(*) FILTER (WHERE reported_low > reported_high) FROM mart.d_savings""").fetchone()
+    check("mart", "Every reported savings item is unique, cites a page and a quote, and has low <= high", n == ids == cited and ordered == 0,
+          f"{n} items, {ids} distinct, {cited} with a page and quote, {ordered} with low above high")
+    missing = one("""SELECT count(DISTINCT check_id) FROM mart.d_savings WHERE check_id IS NOT NULL
+        AND check_id NOT IN (SELECT check_id FROM mart.f_savings_check)""")
+    named = one("SELECT count(*) FROM mart.d_savings_status WHERE check_id IN ('S02', 'S03', 'S04', 'S05')")
+    check("mart", "Every payment check matches payments, and the four named contract types are checked", missing == 0 and named == 4,
+          f"{missing} checks with no matching payments; {named} of 4 named contract types in the status table")
+    st = con.execute("SELECT status, count(*) FROM mart.d_savings_status WHERE reported IS NOT NULL GROUP BY 1").fetchall()
+    quantified = sum(c for _, c in st)
+    by = {s: c for s, c in st}
+    bad = one("SELECT count(*) FROM mart.d_savings_status WHERE status IS NULL OR status NOT IN ('Seen', 'Partly seen', 'Not seen yet', 'Payments fell', 'Payments did not fall')")
+    check("mart", "Every payment check has a status", bad == 0 and one("SELECT count(*) FROM mart.d_savings_status") > 0,
+          f"{by.get('Seen', 0)} Seen, {by.get('Partly seen', 0)} Partly seen, {by.get('Not seen yet', 0)} Not seen yet among {quantified} checks with a reported saving "
+          "(payments fell by half the reported saving or more = Seen); the rest show only whether payments fell")
+    cfg = savings.assumptions()["vendor_moves"]
+    off = one("SELECT count(*) FROM mart.d_vendor_moves WHERE change > 0 OR agencies < ? OR fy2025 < ?", cfg["min_agencies"], cfg["min_before"])
+    check("mart", "Vendor moves are decreases by vendors paid by enough agencies, largest first", off == 0 and one("SELECT count(*) FROM mart.d_vendor_moves") <= cfg["top"],
+          f"{off} rows that are not decreases or fall below the thresholds")
 

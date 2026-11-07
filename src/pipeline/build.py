@@ -12,7 +12,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from ..models import forecast, opportunities
+from ..models import forecast, opportunities, savings
 from . import checks, facts, marts, reference
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -119,8 +119,11 @@ def build(run_id):
     marts.build(con)  # Phase 4: sql/mart/*.sql -> mart layer
     forecast.write(con)  # Phase 5: forecasts and their rolling-origin backtest, built on the marts
     opportunities.write(con)  # Phase 5: opportunity detectors and the bid list
+    savings.write(con, run_id, DATA)  # Phase 5: GMI's reported savings checked against payments
     res = checks.run(con, run_id, man)
     facts.build(con, run_id, man, DATA, checks.HIST)  # Data & pipeline tab: sources, runs, checks, master-list quality
+    if res:
+        savings.record(con, run_id, DATA)  # status history only for a build that passed its checks
     con.close()
     if res:
         tmp.replace(DB)  # only a database that passes every stop check replaces the last good one
