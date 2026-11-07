@@ -1,4 +1,4 @@
--- yoy: keys=agency_code values=controllable,fte,controllable_per_fte stage
+-- yoy: keys=agency_code values=controllable,fte,controllable_per_fte stage good=lower
 -- Dashboard file agency_year: per agency and budget year: operating spending, controllable purchases, positions,
 -- payments (all payees) and controllable purchases per position.
 WITH b AS (SELECT agency_code, fiscal_year, sum(budget) AS operating_spending, coalesce(sum(budget) FILTER (WHERE controllable), 0) AS controllable

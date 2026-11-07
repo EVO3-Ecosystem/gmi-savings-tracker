@@ -1,4 +1,4 @@
--- yoy: keys=area values=spend,payee_spend stage
+-- yoy: keys=area values=spend,payee_spend stage good=lower
 -- Dashboard file area_year: each focus area by spending code (budget) and by payee name (payments).
 WITH b AS (SELECT b.fiscal_year, s.stage, b.focus_area AS area, sum(b.budget) AS spend, count(DISTINCT b.agency_code) AS agencies, count(DISTINCT b.subobject_code) AS codes
            FROM core.fact_budget_scope b JOIN ref.dim_stage s USING (fiscal_year) WHERE b.focus_area IS NOT NULL GROUP BY ALL),

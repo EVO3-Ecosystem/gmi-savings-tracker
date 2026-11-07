@@ -506,6 +506,11 @@ mart.f_vendor_year,paid_non_government,DOUBLE,20,Payments to non-government paye
 mart.f_vendor_year,top10_share,DOUBLE,20,Share of non-government payments held by the 10 largest vendors that year,derived
 mart.f_vendor_year,top100_share,DOUBLE,20,Share of non-government payments held by the 100 largest vendors that year,derived
 mart.f_vendor_year,vendors_1m,BIGINT,20,Non-government vendors paid $1M or more that year,derived
+mart.measures,table,VARCHAR,14,Dashboard table the measure belongs to,derived
+mart.measures,measure,VARCHAR,14,Column name of the dashboard measure,derived
+mart.measures,definition,VARCHAR,14,What the dashboard measure means,derived
+mart.measures,grouped_by,VARCHAR,14,Grain the measure is grouped by,derived
+mart.measures,higher_is,VARCHAR,14,"Whether a higher value is better, worse or neutral",derived
 mart.payment_area,fiscal_year,INTEGER,411231,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.payment_area,agency_code,VARCHAR,411231,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 mart.payment_area,agency_name_as_paid,VARCHAR,411231,Agency name exactly as it appears in the payments dataset,derived
@@ -528,11 +533,11 @@ mart.pipeline_runs,repairs,BIGINT,2,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,2,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,2,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,2,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,77,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,77,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,77,Check description,ops
-mart.run_checks,status,VARCHAR,77,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,77,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,80,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,80,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,80,Check description,ops
+mart.run_checks,status,VARCHAR,80,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,80,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,5,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,5,Dataset title used on the dashboard,derived
@@ -550,6 +555,16 @@ mart.spending_scope,budget,DOUBLE,44,Dollars budgeted or spent (actual years) on
 mart.spending_scope,budget_prior,DOUBLE,44,budget in the previous fiscal year for the same keys,derived
 mart.spending_scope,budget_yoy,DOUBLE,44,"Change in budget from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero)",derived
 mart.spending_scope,stage_pair,VARCHAR,44,"Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual'",derived
+mart.stage_evidence,fiscal_year,BIGINT,4,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.stage_evidence,file_label,VARCHAR,4,Stage label the portal file assigned to the year,portal
+mart.stage_evidence,official_stage,VARCHAR,4,Stage DBM's budget books assign to the year,reference
+mart.stage_evidence,evidence,VARCHAR,4,Where in DBM's budget books the stage is confirmed,source
+mart.stage_evidence,evidence_url,VARCHAR,4,Link to the evidence document,source
+mart.stage_evidence,programs_compared,DOUBLE,4,Programs compared between the portal file and DBM's books,derived
+mart.stage_evidence,programs_exact,DOUBLE,4,Programs whose totals match DBM's books exactly,derived
+mart.stage_evidence,file_total,BIGINT,4,Portal file total for the year,derived
+mart.stage_evidence,dbm_actual_total,DOUBLE,4,Actual total printed in DBM's budget books,source
+mart.stage_evidence,note,VARCHAR,4,Explanation of the rule or row,reference
 mart.totals_by_fy,fiscal_year,INTEGER,20,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.totals_by_fy,total_payments,DOUBLE,20,All payments in the fiscal year,derived
 mart.totals_by_fy,payment_records,BIGINT,20,Payment rows in the fiscal year,derived
@@ -596,12 +611,12 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_result,run_id,VARCHAR,77,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,77,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,77,Check description,ops
-ops.check_result,severity,VARCHAR,77,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,77,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,77,Numbers behind the check result,ops
+ops.check_result,run_id,VARCHAR,80,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,80,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,80,Check description,ops
+ops.check_result,severity,VARCHAR,80,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,80,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,80,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
@@ -813,6 +828,16 @@ ref.payment_agency_rule,rule,VARCHAR,21,Name of the mapping or scope rule,refere
 ref.payment_agency_rule,payment_name_pattern,VARCHAR,21,Regular expression matching payment agency names,reference
 ref.payment_agency_rule,target,VARCHAR,21,Agency code the rule maps to,reference
 ref.payment_agency_rule,note,VARCHAR,21,Explanation of the rule or row,reference
+ref.stage_evidence,fiscal_year,VARCHAR,4,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+ref.stage_evidence,file_label,VARCHAR,4,Stage label the portal file assigned to the year,portal
+ref.stage_evidence,official_stage,VARCHAR,4,Stage DBM's budget books assign to the year,reference
+ref.stage_evidence,evidence,VARCHAR,4,Where in DBM's budget books the stage is confirmed,source
+ref.stage_evidence,evidence_url,VARCHAR,4,Link to the evidence document,source
+ref.stage_evidence,programs_compared,VARCHAR,4,Programs compared between the portal file and DBM's books,derived
+ref.stage_evidence,programs_exact,VARCHAR,4,Programs whose totals match DBM's books exactly,derived
+ref.stage_evidence,file_total,VARCHAR,4,Portal file total for the year,derived
+ref.stage_evidence,dbm_actual_total,VARCHAR,4,Actual total printed in DBM's budget books,source
+ref.stage_evidence,note,VARCHAR,4,Explanation of the rule or row,reference
 ref.vendor_families,family,VARCHAR,33,Company that several payee names belong to,reference
 ref.vendor_families,payee_pattern,VARCHAR,33,Regular expression matching payee names,reference
 ref.vendor_normalization,step,VARCHAR,4,Order the normalization step runs in,reference

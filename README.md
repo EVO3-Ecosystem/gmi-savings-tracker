@@ -83,7 +83,7 @@ The website's budget download labels FY2021 "Working", FY2022 "Appropriation" an
 | 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
 | 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ |
 | 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 12 reproduced exactly, 9 differences explained (`docs/parity/`) ✔; vendor, budget and overlap marts added since; analytics files move with Phase 5 |
-| 5. Analytics | **5a in progress** | Outputs match the dashboard; publish gate, fault-injection test, snapshots, the Data & pipeline facts, the forecasts, the opportunity detectors, the savings checks and the recommendations done; 2 of 44 dashboard files (measures, stage evidence) still carried |
+| 5. Analytics | **5a in progress** | Outputs match the dashboard; publish gate, fault-injection test, snapshots, the Data & pipeline facts, the forecasts, the opportunity detectors, the savings checks, the recommendations, the measures catalog and the stage evidence done: **all 44 dashboard files now come from the database; none is carried**. The dashboard's 34 page tests pass against that export (`python -m src.pipeline.preview`); not compared file by file with the published legacy CSVs, and cross-checks against the state sites and the detector backtest are open |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
 
 Next up is Phase 5a: replace the Data & pipeline tab's old-pipeline facts, port the cross-checks, and make `export.py` refuse a failed build. The full gap list is in [docs/roadmap.md](docs/roadmap.md).
@@ -107,7 +107,7 @@ make snapshot       # portable Parquet snapshot of the database in data/snapshot
 make restore SNAP=data/snapshots/<folder>   # verify checksums, import, check row counts (RESTORE_FLAGS=--force to replace)
 make export         # dashboard CSVs; refused unless every stop check passed and parity has no unexplained difference
 make parity         # compare the marts with the legacy dashboard files (LEGACY=path to the old out/ folder)
-python -m src.pipeline.export --carry ../gst/out   # dashboard CSVs from the marts into data/export/
+python -m src.pipeline.export                      # all 44 dashboard CSVs from the marts into data/export/ (no legacy files needed)
 python -m src.pipeline.preview                     # dashboard page tests on the export, then a self-contained preview
 make reconcile      # compare four website downloads with the API (about 750 MB; RECONCILE_FLAGS=--reuse)
 make figures        # rebuild figures; database-backed charts require data/md_transparency.duckdb
@@ -166,7 +166,7 @@ docs/                    roadmap, checks, data sources, data governance, portfol
 scripts/bootstrap_github.sh  one-time labels, milestones and phase issues
 config/datasets.yaml     dataset IDs, page size, retries, backoff, heal attempts
 config/dashboard.yaml    the dashboard's data files: columns, keys and which mart builds each
-reference/               hand-kept CSVs (15): agency, vendor, payee-type, focus-area and budget-stage rules and decisions
+reference/               hand-kept CSVs (16): agency, vendor, payee-type, focus-area and budget-stage rules and decisions, GMI's reported savings, stage evidence
 sql/mart/                one SQL file per mart (43), run in order by marts.py
 src/pipeline/            extract, enrich, build, checks, reference, marts, parity, export, preview,
                          reconcile, figures, governance

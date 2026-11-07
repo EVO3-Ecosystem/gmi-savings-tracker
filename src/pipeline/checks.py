@@ -6,6 +6,7 @@ import datetime as dt
 from pathlib import Path
 
 import pandas as pd
+import yaml
 
 from ..models import opportunities, recommendations, savings
 
@@ -87,6 +88,7 @@ def run(con, run_id, manifest):
     phase5_opportunities(con, check, one)
     phase5_savings(con, check, one)
     phase5_recommendations(con, check, one)
+    phase5_reference_marts(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -320,4 +322,32 @@ def phase5_recommendations(con, check, one):
     share = one("SELECT coalesce(sum(saving) FILTER (WHERE step > 1) / nullif(sum(saving), 0), 0) FROM mart.d_plan50")
     check("mart", "Most of the path to $50M does not rest on assumed saving rates", share <= 0.5,
           f"{share:.0%} of the path (${(top or 0) * share / 1e6:,.1f}M) is assumed savings on statewide contracts and fallback areas; the rest carries forward savings GMI reported", "warn")
+
+
+def phase5_reference_marts(con, check, one):
+    """The measures catalog describes exactly the year-over-year columns the marts have, and the stage evidence agrees with the
+    confirmed stages and with the database's own totals."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'measures'"):
+        return
+    missing = one("""SELECT count(*) FROM mart.measures m WHERE NOT EXISTS (SELECT 1 FROM information_schema.columns c
+        WHERE c.table_schema = 'mart' AND c.table_name = m."table" AND c.column_name = m.measure)""")
+    undescribed = one("""SELECT count(*) FROM information_schema.columns c WHERE c.table_schema = 'mart' AND c.column_name LIKE '%\\_yoy' ESCAPE '\\'
+        AND NOT EXISTS (SELECT 1 FROM mart.measures m WHERE m."table" = c.table_name AND m.measure = c.column_name)""")
+    bad = one("SELECT count(*) FROM mart.measures WHERE higher_is NOT IN ('lower', 'neutral')")
+    n = one("SELECT count(*) FROM mart.measures")
+    check("mart", "The measures catalog describes exactly the year-over-year columns of the marts", missing == 0 and undescribed == 0 and bad == 0 and n > 0,
+          f"{n} measures; {missing} described but absent, {undescribed} year-over-year columns undescribed, {bad} with an unknown higher_is")
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[2] / "config" / "assumptions.yaml").read_text())["stage_evidence"]
+    off = one("SELECT count(*) FROM mart.stage_evidence e LEFT JOIN ref.dim_stage s USING (fiscal_year) WHERE s.stage IS NULL OR e.official_stage <> s.stage")
+    whole = one("""SELECT count(*) FROM mart.stage_evidence e JOIN (SELECT fiscal_year, sum(budget) t FROM core.fact_budget GROUP BY 1) b USING (fiscal_year)
+        WHERE e.programs_compared IS NULL AND abs(e.file_total - b.t) > 1""")
+    weak = one("SELECT count(*) FROM mart.stage_evidence WHERE programs_compared IS NOT NULL AND programs_exact / programs_compared <= ?", cfg["min_exact_share"])
+    check("mart", "Stage evidence agrees with the confirmed stages, with the database's whole-year totals, and with DBM's printed actuals", off == 0 and whole == 0 and weak == 0,
+          f"{off} rows whose official stage differs from ref.budget_stage; {whole} whole-file totals that differ from the database; "
+          f"{weak} program comparisons with {cfg['min_exact_share']:.0%} or fewer matching exactly")
+    unevidenced = one("""SELECT count(*) FROM (SELECT fiscal_year, any_value(portal_type) pt FROM core.fact_budget GROUP BY 1) p JOIN ref.dim_stage s USING (fiscal_year)
+        WHERE NOT ((s.stage = 'Actual' AND p.pt LIKE '%Actual') OR (s.stage = 'Working budget' AND p.pt LIKE '%Working'))
+        AND p.fiscal_year NOT IN (SELECT fiscal_year FROM mart.stage_evidence)""")
+    check("mart", "Every year whose portal stage label differs from the confirmed stage has evidence", unevidenced == 0,
+          f"{unevidenced} years where the portal's label and the confirmed stage differ but no evidence is recorded")
 
