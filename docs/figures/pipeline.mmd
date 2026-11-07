@@ -1,0 +1,34 @@
+flowchart TB
+  subgraph S[Sources]
+    direction LR
+    A[opendata.maryland.gov<br/>SODA API, 5 datasets]
+    X[BLS · USAspending · Census<br/>DBM Managing for Results PDFs]
+  end
+  A -->|extract.py<br/>paged, retried, self-healing| R[(raw Parquet<br/>per run + manifest)]
+  X -->|enrich.py| R
+  R -->|build.py| D[(DuckDB<br/>raw · ref · core · ops)]
+  F[reference/*.csv<br/>rules and decisions] --> D
+  D -->|checks.py<br/>stop or warn| Q{all stop<br/>checks pass?}
+  Q -->|no| K[keep last good DB]
+  Q -->|yes| M[marts]
+  subgraph O[Publish and verify]
+    direction LR
+    E[data/export<br/>dashboard CSVs + manifest]
+    PA[docs/parity<br/>legacy comparison]
+    PV[page tests<br/>self-contained preview]
+    G[schemas · drift · coverage]
+    P[docs/figures]
+  end
+  M -->|export.py| E
+  M -->|parity.py| PA
+  E -->|preview.py| PV
+  subgraph RC[Independent website reconciliation]
+    direction LR
+    W[mtp.maryland.gov<br/>website downloads, 4 datasets]
+    C[reconciliation<br/>by fiscal year]
+    W -->|reconcile.py| C
+  end
+  D --> C
+  D -->|governance.py| G[schemas · drift · coverage]
+  D -->|figures.py| P[docs/figures]
+

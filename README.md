@@ -12,10 +12,10 @@ Data governance (sources, every table's schema, known source issues, assumptions
 ## How the pipeline works
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph S[Sources]
+    direction LR
     A[opendata.maryland.gov<br/>SODA API, 5 datasets]
-    W[mtp.maryland.gov<br/>website downloads, 4 datasets]
     X[BLS · USAspending · Census<br/>DBM Managing for Results PDFs]
   end
   A -->|extract.py<br/>paged, retried, self-healing| R[(raw Parquet<br/>per run + manifest)]
@@ -24,8 +24,24 @@ flowchart LR
   F[reference/*.csv<br/>rules and decisions] --> D
   D -->|checks.py<br/>stop or warn| Q{all stop<br/>checks pass?}
   Q -->|no| K[keep last good DB]
-  Q -->|yes| M[marts · dashboard CSVs]
-  W -->|reconcile.py| C[reconciliation<br/>by fiscal year]
+  Q -->|yes| M[marts]
+  subgraph O[Publish and verify]
+    direction LR
+    E[data/export<br/>dashboard CSVs + manifest]
+    PA[docs/parity<br/>legacy comparison]
+    PV[page tests<br/>self-contained preview]
+    G[schemas · drift · coverage]
+    P[docs/figures]
+  end
+  M -->|export.py| E
+  M -->|parity.py| PA
+  E -->|preview.py| PV
+  subgraph RC[Independent website reconciliation]
+    direction LR
+    W[mtp.maryland.gov<br/>website downloads, 4 datasets]
+    C[reconciliation<br/>by fiscal year]
+    W -->|reconcile.py| C
+  end
   D --> C
   D -->|governance.py| G[schemas · drift · coverage]
   D -->|figures.py| P[docs/figures]
@@ -33,7 +49,7 @@ flowchart LR
 
 ### Datasets
 
-Every dataset the Maryland Transparency Portal's [View Data](https://mtp.maryland.gov/#!/view-data) page lists is extracted through the API and checked against the website's own download, year by year (`make reconcile`; results in `docs/reconciliation/`).
+All five datasets are extracted through the API and checked against the portal's own row count and yearly totals. The four datasets with a website download also get an independent, year-by-year website/API comparison (`make reconcile`; results in `docs/reconciliation/`). Positions has no website download to compare.
 
 | Dataset | Portal ID | API rows | Website download | Years | Match |
 |---|---|---|---|---|---|
@@ -89,8 +105,9 @@ make test           # CI runs the same; data-dependent tests skip when data/ is 
 make parity         # compare the marts with the legacy dashboard files (LEGACY=path to the old out/ folder)
 python -m src.pipeline.export --carry ../gst/out   # dashboard CSVs from the marts into data/export/
 python -m src.pipeline.preview                     # dashboard page tests on the export, then a self-contained preview
-make reconcile      # compare with mtp.maryland.gov downloads (about 750 MB; RECONCILE_FLAGS=--reuse to skip downloading)
-make figures        # docs/figures/*.png from the database
+make reconcile      # compare four website downloads with the API (about 750 MB; RECONCILE_FLAGS=--reuse)
+make figures        # rebuild figures; database-backed charts require data/md_transparency.duckdb
+make diagrams       # render pipeline.png and data_hierarchy.png from their Mermaid sources (needs mmdc)
 make docs           # data governance: schemas, coverage, drift
 ```
 
