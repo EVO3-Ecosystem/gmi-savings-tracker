@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-07T04:28Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
+_Generated 2026-11-07T04:37Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -749,6 +749,49 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | evidence | VARCHAR | derived | Plain-language reason the detector flagged the row |
 | likely | DOUBLE | derived | Midpoint of low and high |
 
+**mart.d_savings** (18 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| saving_id | VARCHAR | reference | Reported saving identifier (S01-S18) |
+| workstream | VARCHAR | reference | GMI workstream the saving belongs to |
+| item | VARCHAR | reference | Saving as GMI describes it |
+| reported_low | DOUBLE | source | Low end of the reported saving in dollars (GMI Final Report) |
+| reported_high | DOUBLE | source | High end of the reported saving in dollars (GMI Final Report) |
+| type | VARCHAR | reference | Kind of saving GMI reported: year over year, one-time, cost avoidance |
+| status | VARCHAR | reference | Status GMI gave the item |
+| count | VARCHAR | reference | Number of contracts or items GMI reported in the saving (text) |
+| check_id | VARCHAR | derived | Reported saving whose payments are checked |
+| check_note | VARCHAR | reference | How the payment check is defined |
+| source | VARCHAR | reference | Citation for the reported saving |
+| source_url | VARCHAR | source | Link to the citation |
+| source_page | VARCHAR | source | Page of the citation |
+| source_quote | VARCHAR | source | Verbatim quote supporting the figure |
+
+**mart.d_savings_status** (12 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| check_id | VARCHAR | derived | Reported saving whose payments are checked |
+| item | VARCHAR | reference | Saving as GMI describes it |
+| reported | DOUBLE | source | Reported saving midpoint in dollars |
+| before | DOUBLE | derived | Matching payments in FY2025 |
+| after | DOUBLE | derived | Matching payments in FY2026 |
+| status | VARCHAR | derived | Whether the reported saving is seen in payments (Seen, Partly seen, Not seen yet, Payments fell, Payments did not fall) |
+| previous_status | "NULL" | ops | Status in the previous run |
+| changed | BOOLEAN | ops | True when the status changed since the previous run |
+
+**mart.d_vendor_moves** (40 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| fy2024 | DOUBLE | derived | Payments in FY2024 |
+| fy2025 | DOUBLE | derived | Payments in FY2025 |
+| fy2026 | DOUBLE | derived | Payments in FY2026 |
+| change | DOUBLE | derived | FY2026 minus FY2025 payments |
+| agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
+
 **mart.d_vendors** (3,640 rows)
 
 | column | type | origin | definition |
@@ -946,6 +989,15 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | program_name | VARCHAR | portal | Budget program name |
 | budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 
+**mart.f_savings_check** (1,625 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| check_id | VARCHAR | derived | Reported saving whose payments are checked |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| paid | DOUBLE | derived | Payments in dollars |
+
 **mart.f_scope** (2,484 rows)
 
 | column | type | origin | definition |
@@ -1018,7 +1070,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (69 rows)
+**mart.run_checks** (73 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1131,7 +1183,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (69 rows)
+**ops.check_result** (73 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2015,7 +2067,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,092 of 1,092 columns documented (65 source, 768 warehouse, 259 dashboard).
+1,124 of 1,124 columns documented (65 source, 800 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

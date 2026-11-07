@@ -313,6 +313,34 @@ mart.d_opps,low,DOUBLE,453,Low end of the estimated saving; uses a screening ass
 mart.d_opps,high,DOUBLE,453,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 mart.d_opps,evidence,VARCHAR,453,Plain-language reason the detector flagged the row,derived
 mart.d_opps,likely,DOUBLE,453,Midpoint of low and high,derived
+mart.d_savings,saving_id,VARCHAR,18,Reported saving identifier (S01-S18),reference
+mart.d_savings,workstream,VARCHAR,18,GMI workstream the saving belongs to,reference
+mart.d_savings,item,VARCHAR,18,Saving as GMI describes it,reference
+mart.d_savings,reported_low,DOUBLE,18,Low end of the reported saving in dollars (GMI Final Report),source
+mart.d_savings,reported_high,DOUBLE,18,High end of the reported saving in dollars (GMI Final Report),source
+mart.d_savings,type,VARCHAR,18,"Kind of saving GMI reported: year over year, one-time, cost avoidance",reference
+mart.d_savings,status,VARCHAR,18,Status GMI gave the item,reference
+mart.d_savings,count,VARCHAR,18,Number of contracts or items GMI reported in the saving (text),reference
+mart.d_savings,check_id,VARCHAR,18,Reported saving whose payments are checked,derived
+mart.d_savings,check_note,VARCHAR,18,How the payment check is defined,reference
+mart.d_savings,source,VARCHAR,18,Citation for the reported saving,reference
+mart.d_savings,source_url,VARCHAR,18,Link to the citation,source
+mart.d_savings,source_page,VARCHAR,18,Page of the citation,source
+mart.d_savings,source_quote,VARCHAR,18,Verbatim quote supporting the figure,source
+mart.d_savings_status,check_id,VARCHAR,12,Reported saving whose payments are checked,derived
+mart.d_savings_status,item,VARCHAR,12,Saving as GMI describes it,reference
+mart.d_savings_status,reported,DOUBLE,12,Reported saving midpoint in dollars,source
+mart.d_savings_status,before,DOUBLE,12,Matching payments in FY2025,derived
+mart.d_savings_status,after,DOUBLE,12,Matching payments in FY2026,derived
+mart.d_savings_status,status,VARCHAR,12,"Whether the reported saving is seen in payments (Seen, Partly seen, Not seen yet, Payments fell, Payments did not fall)",derived
+mart.d_savings_status,previous_status,"""NULL""",12,Status in the previous run,ops
+mart.d_savings_status,changed,BOOLEAN,12,True when the status changed since the previous run,ops
+mart.d_vendor_moves,vendor,VARCHAR,40,Company name after grouping payee names,derived
+mart.d_vendor_moves,fy2024,DOUBLE,40,Payments in FY2024,derived
+mart.d_vendor_moves,fy2025,DOUBLE,40,Payments in FY2025,derived
+mart.d_vendor_moves,fy2026,DOUBLE,40,Payments in FY2026,derived
+mart.d_vendor_moves,change,DOUBLE,40,FY2026 minus FY2025 payments,derived
+mart.d_vendor_moves,agencies,BIGINT,40,Agencies paying the vendor (or with payments in the year),derived
 mart.d_vendors,vendor,VARCHAR,3640,Company name after grouping payee names,derived
 mart.d_vendors,payee_type,VARCHAR,3640,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
 mart.d_vendors,main_function,VARCHAR,3640,"Budget function with the most payments to the vendor, all years",derived
@@ -435,6 +463,10 @@ mart.f_program,unit_name,VARCHAR,6648,Budget unit name,portal
 mart.f_program,program_code,VARCHAR,6648,"Budget program code, two digits in core",portal
 mart.f_program,program_name,VARCHAR,6648,Budget program name,portal
 mart.f_program,budget,DOUBLE,6648,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
+mart.f_savings_check,check_id,VARCHAR,1625,Reported saving whose payments are checked,derived
+mart.f_savings_check,fiscal_year,INTEGER,1625,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.f_savings_check,agency_code,VARCHAR,1625,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.f_savings_check,paid,DOUBLE,1625,Payments in dollars,derived
 mart.f_scope,fiscal_year,INTEGER,2484,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.f_scope,stage,VARCHAR,2484,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 mart.f_scope,agency_code,VARCHAR,2484,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -477,11 +509,11 @@ mart.pipeline_runs,repairs,BIGINT,2,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,2,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,2,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,2,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,69,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,69,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,69,Check description,ops
-mart.run_checks,status,VARCHAR,69,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,69,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,73,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,73,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,73,Check description,ops
+mart.run_checks,status,VARCHAR,73,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,73,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,5,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,5,Dataset title used on the dashboard,derived
@@ -545,12 +577,12 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_result,run_id,VARCHAR,69,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,69,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,69,Check description,ops
-ops.check_result,severity,VARCHAR,69,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,69,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,69,Numbers behind the check result,ops
+ops.check_result,run_id,VARCHAR,73,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,73,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,73,Check description,ops
+ops.check_result,severity,VARCHAR,73,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,73,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,73,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
