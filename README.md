@@ -147,7 +147,7 @@ Every rule the dashboard pipeline kept in code now lives in a CSV, so each chang
 | Measure | Pipeline | Dashboard |
 |---|---|---|
 | FY2026 payment dollars matched to a budget agency | 100.00% | 100.00% |
-| Payment agency names mapped | 141 of 145 | 141 of 145 |
+| Payment agency names mapped | 143 of 145 (141 on Oct 29, before the Nov 4 agency decisions) | 141 of 145 |
 | Payee names grouped into multi-name companies | 9,686 in 4,478 (all years) | 9,474 in 4,377 (FY2026 payees) |
 | Controllable purchases, FY2025 | $4,093,855,308 | $4,093,855,308 |
 | Focus areas, FY2025 | $1,287,718,788 in 96 codes | $1,287,718,788 in 96 codes |
