@@ -1,5 +1,5 @@
 {
- "read": "2026-11-05T15:40:35+00:00",
+ "read": "2026-11-07T03:40:58+00:00",
  "results": [
   {
    "resource": {
@@ -17,31 +17,31 @@
     "metadata_updated_at": "2026-04-16T16:49:21.000Z",
     "data_updated_at": "2026-10-07T13:27:47.000Z",
     "page_views": {
-     "page_views_last_week": 59,
-     "page_views_last_month": 252,
-     "page_views_total": 5476,
-     "page_views_last_week_log": 5.906890595608519,
-     "page_views_last_month_log": 7.98299357469431,
-     "page_views_total_log": 12.41917016502854
+     "page_views_last_week": 80,
+     "page_views_last_month": 269,
+     "page_views_total": 5505,
+     "page_views_last_week_log": 6.339850002884625,
+     "page_views_last_month_log": 8.076815597050832,
+     "page_views_total_log": 12.42678889459556
     },
     "columns_name": [
-     "Vendor Zip",
+     "Agency Name",
      "Category",
      "Fiscal Year",
      "Vendor Name",
+     "Vendor Zip",
      "Amount",
      "Fiscal Period",
-     "Agency Name",
      "Date"
     ],
     "columns_field_name": [
-     "vendor_zip",
+     "agency_name",
      "category",
      "fiscal_year",
      "vendor_name",
+     "vendor_zip",
      "amount",
      "fiscal_period",
-     "agency_name",
      "date"
     ],
     "columns_datatype": [
@@ -49,9 +49,9 @@
      "Text",
      "Number",
      "Text",
-     "Number",
-     "Number",
      "Text",
+     "Number",
+     "Number",
      "Calendar date"
     ],
     "columns_description": [
@@ -71,14 +71,14 @@
       "noCommas": "true"
      },
      {},
+     {},
      {
       "precisionStyle": "currency"
      },
      {},
-     {},
      {}
     ],
-    "download_count": 12182,
+    "download_count": 12199,
     "provenance": "official",
     "lens_view_type": "tabular",
     "lens_display_type": "table",
@@ -95,12 +95,12 @@
     "domain_tags": [
      "budget",
      "vendors",
-     "dbm",
-     "department of budget and management",
      "tax",
-     "fiscal",
+     "spending",
      "payments",
-     "spending"
+     "fiscal",
+     "department of budget and management",
+     "dbm"
     ],
     "domain_metadata": [
      {
@@ -163,46 +163,46 @@
     "data_updated_at": "2026-10-09T19:32:43.000Z",
     "page_views": {
      "page_views_last_week": 41,
-     "page_views_last_month": 203,
-     "page_views_total": 3867,
+     "page_views_last_month": 212,
+     "page_views_total": 3882,
      "page_views_last_week_log": 5.392317422778761,
-     "page_views_last_month_log": 7.672425341971495,
-     "page_views_total_log": 11.917372079476841
+     "page_views_last_month_log": 7.734709620225839,
+     "page_views_total_log": 11.922955991908477
     },
     "columns_name": [
-     "Description",
-     "Grantee",
      "Date",
-     "Fiscal Period",
-     "Nonprofit",
-     "Category",
      "Zip Code",
-     "Amount",
      "Fiscal Year",
-     "Grantor"
+     "Amount",
+     "Description",
+     "Category",
+     "Nonprofit",
+     "Fiscal Period",
+     "Grantor",
+     "Grantee"
     ],
     "columns_field_name": [
-     "description",
-     "grantee",
      "date",
-     "fiscalperiod",
-     "nonprofit",
-     "category",
      "zipcode",
-     "amount",
      "fiscalyear",
-     "grantor"
+     "amount",
+     "description",
+     "category",
+     "nonprofit",
+     "fiscalperiod",
+     "grantor",
+     "grantee"
     ],
     "columns_datatype": [
-     "Text",
-     "Text",
      "Calendar date",
+     "Text",
+     "Number",
      "Number",
      "Text",
      "Text",
      "Text",
      "Number",
-     "Number",
+     "Text",
      "Text"
     ],
     "columns_description": [
@@ -210,9 +210,9 @@
      "",
      "",
      "",
+     "",
+     "",
      "Whether or not the grantee is a non-profit (503C) entity. ",
-     "",
-     "",
      "",
      "",
      ""
@@ -220,18 +220,18 @@
     "columns_format": [
      {},
      {},
-     {},
-     {},
-     {},
-     {},
-     {},
-     {},
      {
       "noCommas": "true"
      },
+     {},
+     {},
+     {},
+     {},
+     {},
+     {},
      {}
     ],
-    "download_count": 8316,
+    "download_count": 8343,
     "provenance": "official",
     "lens_view_type": "tabular",
     "lens_display_type": "table",
@@ -246,10 +246,10 @@
     "tags": [],
     "domain_category": "Budget",
     "domain_tags": [
-     "budget",
-     "loans",
+     "dbm",
      "grants",
-     "dbm"
+     "loans",
+     "budget"
     ],
     "domain_metadata": [
      {
@@ -311,15 +311,16 @@
     "metadata_updated_at": "2026-08-10T18:05:56.000Z",
     "data_updated_at": "2026-08-10T18:07:57.000Z",
     "page_views": {
-     "page_views_last_week": 21,
-     "page_views_last_month": 147,
-     "page_views_total": 2876,
-     "page_views_last_week_log": 4.459431618637297,
-     "page_views_last_month_log": 7.209453365628949,
-     "page_views_total_log": 11.490349505739287
+     "page_views_last_week": 22,
+     "page_views_last_month": 143,
+     "page_views_total": 2882,
+     "page_views_last_week_log": 4.523561956057013,
+     "page_views_last_month_log": 7.169925001442313,
+     "page_views_total_log": 11.493355121494908
     },
     "columns_name": [
-     "Fund Type Name",
+     "Object Name",
+     "Description",
      "Agency Subobject Code",
      "Fiscal Year",
      "Program Code",
@@ -330,21 +331,21 @@
      "Program Name",
      "Subprogram Code",
      "Subprogram Name",
+     "Object Code",
+     "Comptroller Subobject Code",
+     "Comptroller Subobject Name",
+     "Agency Subobject Name",
+     "Fund Type Name",
      "Budget",
      "Type",
      "Organization Code",
      "Organization Sub Code",
      "Category",
-     "Category Title",
-     "Comptroller Subobject Name",
-     "Agency Subobject Name",
-     "Comptroller Subobject Code",
-     "Object Name",
-     "Object Code",
-     "Description"
+     "Category Title"
     ],
     "columns_field_name": [
-     "fund_type_name",
+     "object_name",
+     "description",
      "agency_subobject_code",
      "fiscal_year",
      "program_code",
@@ -355,34 +356,21 @@
      "program_name",
      "subprogram_code",
      "subprogram_name",
+     "object_code",
+     "comptroller_subobject_code",
+     "comptroller_subobject_name",
+     "agency_subobject_name",
+     "fund_type_name",
      "budget",
      "type",
      "organization_code",
      "organization_sub_code",
      "category",
-     "category_title",
-     "comptroller_subobject_name",
-     "agency_subobject_name",
-     "comptroller_subobject_code",
-     "object_name",
-     "object_code",
-     "description"
+     "category_title"
     ],
     "columns_datatype": [
      "Text",
      "Text",
-     "Number",
-     "Text",
-     "Text",
-     "Text",
-     "Text",
-     "Text",
-     "Text",
-     "Text",
-     "Text",
-     "Number",
-     "Text",
-     "Text",
      "Text",
      "Number",
      "Text",
@@ -391,6 +379,18 @@
      "Text",
      "Text",
      "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Number",
+     "Text",
+     "Text",
+     "Text",
+     "Number",
      "Text"
     ],
     "columns_description": [
@@ -421,6 +421,7 @@
     "columns_format": [
      {},
      {},
+     {},
      {
       "noCommas": "true"
      },
@@ -442,10 +443,9 @@
      {},
      {},
      {},
-     {},
      {}
     ],
-    "download_count": 6654,
+    "download_count": 6660,
     "provenance": "official",
     "lens_view_type": "tabular",
     "lens_display_type": "table",
@@ -461,11 +461,11 @@
     "domain_category": "Budget",
     "domain_tags": [
      "operating budget",
-     "funding",
-     "department of budget and management",
      "appropriations",
      "budget",
-     "dbm"
+     "dbm",
+     "funding",
+     "department of budget and management"
     ],
     "domain_metadata": [
      {
@@ -527,62 +527,62 @@
     "metadata_updated_at": "2026-08-10T17:26:03.000Z",
     "data_updated_at": "2026-08-10T17:26:19.000Z",
     "page_views": {
-     "page_views_last_week": 18,
-     "page_views_last_month": 45,
-     "page_views_total": 1276,
-     "page_views_last_week_log": 4.247927513443585,
-     "page_views_last_month_log": 5.523561956057013,
-     "page_views_total_log": 10.318542809702723
+     "page_views_last_week": 23,
+     "page_views_last_month": 51,
+     "page_views_total": 1282,
+     "page_views_last_week_log": 4.584962500721157,
+     "page_views_last_month_log": 5.700439718141093,
+     "page_views_total_log": 10.325305455089683
     },
     "columns_name": [
-     "Program Name",
-     "Program Code",
-     "Unit Name",
-     "Unit Code",
-     "Agency Name",
      "Agency Code",
-     "Category",
-     "Fund Type Name",
-     "Description",
      "Category Title",
      "Organization Code",
      "Budget",
      "Fund Source Name",
      "Fund Source Code",
+     "Fund Type Name",
+     "Description",
+     "Program Name",
+     "Program Code",
+     "Unit Name",
+     "Unit Code",
+     "Agency Name",
+     "Category",
      "Fiscal Year"
     ],
     "columns_field_name": [
-     "program_name",
-     "program_code",
-     "unit_name",
-     "unit_code",
-     "agency_name",
      "agency_code",
-     "category",
-     "fund_type_name",
-     "description",
      "category_title",
      "organization_code",
      "budget",
      "fund_source_name",
      "fund_source_code",
+     "fund_type_name",
+     "description",
+     "program_name",
+     "program_code",
+     "unit_name",
+     "unit_code",
+     "agency_name",
+     "category",
      "fiscal_year"
     ],
     "columns_datatype": [
      "Text",
      "Text",
      "Text",
-     "Text",
-     "Text",
-     "Text",
      "Number",
      "Text",
      "Text",
      "Text",
      "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Text",
+     "Text",
      "Number",
-     "Text",
-     "Text",
      "Number"
     ],
     "columns_description": [
@@ -621,7 +621,7 @@
       "noCommas": "true"
      }
     ],
-    "download_count": 21411,
+    "download_count": 21420,
     "provenance": "official",
     "lens_view_type": "tabular",
     "lens_display_type": "table",
@@ -636,12 +636,12 @@
     "tags": [],
     "domain_category": "Budget",
     "domain_tags": [
-     "operating budget",
+     "department of budget and management",
      "dbm",
+     "operating budget",
      "budget",
      "appropriations",
-     "funding",
-     "department of budget and management"
+     "funding"
     ],
     "domain_metadata": [
      {
@@ -703,44 +703,44 @@
     "metadata_updated_at": "2026-08-10T17:51:10.000Z",
     "data_updated_at": "2026-08-10T17:51:15.000Z",
     "page_views": {
-     "page_views_last_week": 3,
-     "page_views_last_month": 42,
-     "page_views_total": 1218,
-     "page_views_last_week_log": 2.0,
-     "page_views_last_month_log": 5.426264754702098,
-     "page_views_total_log": 10.251482410620213
+     "page_views_last_week": 9,
+     "page_views_last_month": 47,
+     "page_views_total": 1225,
+     "page_views_last_week_log": 3.3219280948873626,
+     "page_views_last_month_log": 5.584962500721157,
+     "page_views_total_log": 10.259743263690781
     },
     "columns_name": [
-     "Agency Name",
      "Agency Code",
      "Unit Code",
-     "Program Code",
-     "Count",
+     "Program Name",
      "Fiscal Year",
      "Organization Code",
+     "Agency Name",
      "Unit Name",
-     "Program Name"
+     "Count",
+     "Program Code"
     ],
     "columns_field_name": [
-     "agency_name",
      "agency_code",
      "unit_code",
-     "program_code",
-     "count",
+     "program_name",
      "fiscal_year",
      "organization_code",
+     "agency_name",
      "unit_name",
-     "program_name"
+     "count",
+     "program_code"
     ],
     "columns_datatype": [
      "Text",
      "Text",
      "Text",
-     "Text",
-     "Number",
      "Number",
      "Text",
      "Text",
+     "Text",
+     "Number",
      "Text"
     ],
     "columns_description": [
@@ -758,16 +758,16 @@
      {},
      {},
      {},
-     {},
-     {},
      {
       "noCommas": "true"
      },
      {},
      {},
+     {},
+     {},
      {}
     ],
-    "download_count": 1973,
+    "download_count": 1976,
     "provenance": "official",
     "lens_view_type": "tabular",
     "lens_display_type": "table",
@@ -782,12 +782,12 @@
     "tags": [],
     "domain_category": "Budget",
     "domain_tags": [
-     "department of budget and management",
+     "operating budget",
      "funding",
-     "appropriations",
-     "budget",
+     "department of budget and management",
      "dbm",
-     "operating budget"
+     "budget",
+     "appropriations"
     ],
     "domain_metadata": [
      {

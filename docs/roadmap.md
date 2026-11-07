@@ -9,7 +9,7 @@ Six phases over about eight weeks; each phase's gate must pass before the next s
 | 2. Database | 2–3 | DuckDB `raw`, `core`, `ops`; type casting and code normalizing; reconciliation checks; non-zero exit on failure | Every check passes; yearly totals tie to the portal | **Passed Oct 29, 2026** (30 of 30) |
 | 3. Reference data | 3–4 | `ref` layer from `reference/` CSVs: agencies and aliases, stages, focus areas, payment-name and vendor maps; match-rate report | Match rates at or above the dashboard's master list quality | **Passed Oct 29, 2026** |
 | 4. Marts & dashboard | 4–5 | One `mart` table per dashboard file; `export.py` writes the CSVs; FY2027 payments as a partial year | Every dashboard file reproduced, or each difference explained | **Gate passed for the 21 base dashboard files (Nov 2, 2026).** `sql/mart/*.sql` (28 files at the gate, 43 now; the change measure applied by `marts.py` from each file's `-- yoy:` header), `make parity` against the legacy files: 12 reproduced exactly; 9 differ only as explained in `docs/parity/explanations.csv` (FY2027 partial year added; one company spelled differently). Also added: vendor master, payee types, agency functions, agency roll-up and results marts. Fixed on the way: scope precedence (client payments, then charges between agencies, then staff/grants/capital) and the payee-name pass-through exclusions (`reference/payee_area_exclusions.csv`). Left for Phase 5: the analytics files (opportunities, forecasts, savings checks, recommendations) and `export.py` |
-| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test and database snapshot done; cross-checks, ops history tables and the 18 carried analytics files still open |
+| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test, database snapshot and the Data & pipeline facts (sources, runs, checks, master quality) done; cross-checks, ops history tables and the 14 carried files still open |
 | 6. Automate & document | 7–8 | `make all`; launchd or cron on the Mac; run log, optional PDF report, wiki update | Two clean scheduled runs with no manual steps | |
 
 ## Open questions
@@ -51,21 +51,21 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 17 | Analytics | Savings checks against payments | `savings.py` | `d_savings`, `f_savings_check`, `d_savings_status` | **Carried** |
 | 18 | Analytics | Recommendations, path to $50M, history per run | `recs.py`, `model/rec_history.csv` | `d_rec_status`, `d_plan50`; no history | **Carried** |
 | 19 | Analytics | Vendor moves, payee-name detail, vendor pages | `payments_legacy.py`, `run.py` | `d_vendor_moves`, `d_vendor_names`, `f_vendor_detail` | **Carried** |
-| 20 | Quality | Master list quality | Computed each run | `d_master_quality` carried, so it still lists the four names decided Nov 4 | **Carried (stale)** |
+| 20 | Quality | Master list quality | Computed each run | `mart.d_master_quality`, computed each build from `ref` (143 of 145 agency names mapped; lists the two still unmapped) | Same |
 | 21 | Quality | Checks per run | 93 in 7 stages: raw 23, staged 3, model 14, cross-check 8, recommendations 7, page 28, publish 10 | 59 (raw 9, core 19, ref 11, mart 20) plus 34 page tests in `preview.py` | Partial: cross-checks and recommendation checks not ported |
 | 22 | Quality | Fault-injection test | `run.py --inject-fault` drops half of FY2015 and shows the repair | `make test-fault` drops half of one budget year in a copy of the raw run and checks that the build fails its stop checks and the last good database survives (`tests/test_fault_injection.py`); the download re-fetch is shown by `EXTRACT_FAULT=fte` | Same |
 | 23 | Quality | A failed check blocks publishing | Keeps the last good `out/` | Keeps the last good database; `export.py` refuses (exit 2) when a stop check failed, a newer build failed, or parity has an unexplained difference (`src/pipeline/gate.py`, `tests/test_gate.py`) | Same |
 | 24 | Quality | Unit tests and CI | Page test only | 7 test files (14 tests), GitHub Actions CI and extract smoke test | Better |
 | 25 | Quality | Parity with the old pipeline | n/a | `parity.py` with explanations | Better |
-| 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,000 of 1,000 columns, drift history, governance doc | Better |
-| 27 | Publish | Run log and checks on the dashboard | `pipeline_runs.csv`, `run_checks.csv` | `ops.run_log`, `data/check_history.csv` exist, but the dashboard still shows the old run files | **Carried** |
+| 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,031 of 1,031 columns, drift history, governance doc | Better |
+| 27 | Publish | Run log and checks on the dashboard | `pipeline_runs.csv`, `run_checks.csv` | `mart.pipeline_runs` (extract runs joined to each build's check counts) and `mart.run_checks` (every check of the build), written by `export.py`; run history comes from `data/runs.csv` and `data/check_history.csv` | Better |
 | 28 | Publish | Dashboard data files | Written to `out/` | `export.py` with a manifest and a "changed since last export" flag, plus a tested preview | Better |
 | 29 | Publish | PDF report | `report.py` | None (optional end-user feature) | Gap (optional) |
 | 30 | Publish | Power BI measures | `deploy/powerbi/measures.dax` | None | Gap (low) |
 | 31 | Run | Scheduling | Manual | Manual locally; CI on GitHub | Same (Phase 6) |
 | 32 | Docs | Figures | None | `figures.py`: 5 PNGs from the database | Better |
 
-Summary of the 32 rows: 13 Better, 7 Same, 2 Partial, 7 Carried, 3 Gap (one optional, one low priority). 26 of 44 dashboard files come from the new marts; 18 are carried.
+Summary of the 32 rows: 14 Better, 8 Same, 2 Partial, 5 Carried, 3 Gap (one optional, one low priority). 30 of 44 dashboard files come from the new marts; 14 are carried.
 
 ## Gap analysis and improvement backlog (Nov 5, 2026)
 
@@ -73,7 +73,7 @@ Ordered by value for the dashboard and the interview. Effort: S = under a day, M
 
 | # | Gap | Why it matters | Fix | Effort | Phase |
 |---|---|---|---|---|---|
-| 1 | The Data & pipeline tab shows the old pipeline's facts (rows 20, 27): 93 of 93 checks, the four agency names already decided, the corrected grants "$50,000" claim | A reviewer sees numbers that contradict the repo; integrity scores 2 of 5 | Marts for `sources`, `runs`, `checks`, `measures`, `d_master_quality` and `stage_evidence` from `ops` and `ref`; show new and old check counts during the switch | S | 5a (next) |
+| 1 | The Data & pipeline tab shows the old pipeline's facts (rows 20, 27): 93 of 93 checks, the four agency names already decided, the corrected grants "$50,000" claim | A reviewer sees numbers that contradict the repo; integrity scores 2 of 5 | Marts for `sources`, `runs`, `checks`, `measures`, `d_master_quality` and `stage_evidence` from `ops` and `ref`; show new and old check counts during the switch | S | 5a **done Nov 7 for `sources`, `runs`, `checks` and `d_master_quality`** (`src/pipeline/facts.py`); `measures` (hand-written metric definitions) and `stage_evidence` (comparison with DBM's budget-book PDFs) stay carried |
 | 2 | Analytics still carried (rows 15-19) | Calculator, Opportunities and Savings tracker score 3 only because of this | Port to `src/models/` on the marts: baselines first, backtest FY2017-FY2022 → FY2023-FY2025, seeded bootstrap, assumptions in `config/assumptions.yaml`, model cards in `docs/models/`; parity against the old files | M per module | 5 |
 | 3 | No cross-checks with the state's own sites (row 4) or DBM budget books (row 5) | The old pipeline proved totals against three independent publications; the new one against two | Port the 8 cross-checks into `checks.py` (warn if a site is down, stop if a total differs) | S | 5a |
 | 4 | Publishing is not gated (row 23) | A bad build could still be exported | `export.py` exits non-zero if the latest run has a failed stop check or parity has an unexplained difference | S | 5a **done Nov 7** |

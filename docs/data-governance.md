@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-05T15:40Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 05, 2026._
+_Generated 2026-11-07T03:40Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 07, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -165,7 +165,8 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| object_name | Object Name | Text | (none) | Comptroller object name |
+| description | Description | Text | (none) | Portal description column; not used |
 | agency_subobject_code | Agency Subobject Code | Text | (none) | Agency-specific spending code; not used (Comptroller sub-object is used) |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | program_code | Program Code | Text | (none) | Budget program code, two digits in core |
@@ -176,79 +177,78 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | program_name | Program Name | Text | (none) | Budget program name |
 | subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
 | subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
+| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
+| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
+| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
+| agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
 | budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 | type | Type | Text | (none) | Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead |
 | organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
 | organization_sub_code | Organization Sub Code | Text | (none) | Portal's combined code including subprogram |
 | category | Category | Number | (none) | Budget function code (renamed function_code in core) |
 | category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
-| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
-| agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
-| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
-| object_name | Object Name | Text | (none) | Comptroller object name |
-| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
-| description | Description | Text | (none) | Portal description column; not used |
 
 **fte** (x8qy-486w, 9 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
 | unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
-| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| count | Count | Number | (none) | Budgeted full-time-equivalent positions (renamed fte in core) |
+| program_name | Program Name | Text | (none) | Budget program name |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | unit_name | Unit Name | Text | (none) | Budget unit name |
-| program_name | Program Name | Text | (none) | Budget program name |
+| count | Count | Number | (none) | Budgeted full-time-equivalent positions (renamed fte in core) |
+| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
 
 **fund** (gy87-e27x, 15 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| program_name | Program Name | Text | (none) | Budget program name |
-| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| unit_name | Unit Name | Text | (none) | Budget unit name |
-| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
-| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| description | Description | Text | (none) | Portal description column; not used |
 | category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
 | organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
 | budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 | fund_source_name | Fund Source Name | Text | (none) | Fund source name |
 | fund_source_code | Fund Source Code | Text | (none) | Fund source code within a fund type |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| description | Description | Text | (none) | Portal description column; not used |
+| program_name | Program Name | Text | (none) | Budget program name |
+| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
+| unit_name | Unit Name | Text | (none) | Budget unit name |
+| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 
 **grants** (absk-avps, 10 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| description | Description | Text | (none) | Grant or loan purpose as written by the grantor |
-| grantee | Grantee | Text | (none) | Recipient of the grant or loan |
 | date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
-| fiscalperiod | Fiscal Period | Number | (none) | Accounting period in the grants dataset; not used |
-| nonprofit | Nonprofit | Text | Whether or not the grantee is a non-profit (503C) entity.  | Y when the portal marks the grantee as a non-profit |
-| category | Category | Text | (none) | Grant or Loan |
 | zipcode | Zip Code | Text | (none) | Grantee ZIP code as published |
-| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
 | fiscalyear | Fiscal Year | Number | (none) | Fiscal year in the grants dataset (renamed fiscal_year in core) |
+| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
+| description | Description | Text | (none) | Grant or loan purpose as written by the grantor |
+| category | Category | Text | (none) | Grant or Loan |
+| nonprofit | Nonprofit | Text | Whether or not the grantee is a non-profit (503C) entity.  | Y when the portal marks the grantee as a non-profit |
+| fiscalperiod | Fiscal Period | Number | (none) | Accounting period in the grants dataset; not used |
 | grantor | Grantor | Text | (none) | State agency and program awarding the grant or loan |
+| grantee | Grantee | Text | (none) | Recipient of the grant or loan |
 
 **payments** (7syw-q4cy, 8 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| vendor_zip | Vendor Zip | Text | (none) | Payee ZIP code as published |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | category | Category | Text | (none) | Payment category as published by the portal |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | vendor_name | Vendor Name | Text | (none) | Payee name as published; includes businesses and individuals |
+| vendor_zip | Vendor Zip | Text | (none) | Payee ZIP code as published |
 | amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
 | fiscal_period | Fiscal Period | Number | (none) | Accounting period; the portal fills it with a placeholder value so it is not used |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
 <!-- /gen:sources -->
 
@@ -640,6 +640,14 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 
+**mart.d_master_quality** (5 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| measure | VARCHAR | reference | Name of the quality measure |
+| value | VARCHAR | derived | Measured value |
+| ok | BIGINT | derived | True when the measure meets its target |
+
 **mart.d_multi** (216 rows)
 
 | column | type | origin | definition |
@@ -900,6 +908,49 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | is_government | BOOLEAN | derived | True when the payee is a government body (excluded from vendor analysis) |
 | area | VARCHAR | derived | One of GMI's six focus areas |
 | passthrough | BOOLEAN | derived | True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed |
+
+**mart.pipeline_runs** (2 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| run_id | VARCHAR | ops | Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ |
+| started_utc | VARCHAR | ops | When the run started (UTC) |
+| seconds | DOUBLE | ops | Run duration in seconds |
+| status | VARCHAR | ops | Run or source status |
+| published | BIGINT | ops | True when the run's outputs were published |
+| checks | DOUBLE | ops | Number of checks run |
+| passed | DOUBLE | ops | Checks passed |
+| warnings | DOUBLE | ops | Checks that warned |
+| failed | DOUBLE | ops | Checks that failed |
+| repairs | BIGINT | ops | Datasets re-downloaded by self-healing |
+| payment_rows | BIGINT | ops | Payment rows in the run |
+| budget_rows | BIGINT | ops | Budget rows in the run |
+| mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
+
+**mart.run_checks** (59 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| run_id | VARCHAR | ops | Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ |
+| stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
+| check | VARCHAR | ops | Check description |
+| status | VARCHAR | ops | pass, warn or fail |
+| detail | VARCHAR | ops | Numbers behind the check result |
+
+**mart.sources** (5 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| source | VARCHAR | derived | Short name of the source dataset |
+| dataset_id | VARCHAR | ops | Portal four-by-four identifier |
+| title | VARCHAR | derived | Dataset title used on the dashboard |
+| use | VARCHAR | derived | What the dataset contributes to the tracker |
+| portal_name | VARCHAR | ops | Dataset title as the portal publishes it |
+| portal_updated | VARCHAR | ops | Date the portal data last changed |
+| rows_portal | BIGINT | ops | Rows the portal reported |
+| rows_downloaded | BIGINT | ops | Rows in the downloaded file |
+| years | VARCHAR | derived | Fiscal years used |
+| reconciled | BIGINT | ops | True when downloaded rows equal the portal's count |
 
 **mart.spending_scope** (44 rows)
 
@@ -1873,7 +1924,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,000 of 1,000 columns documented (65 source, 676 warehouse, 259 dashboard).
+1,031 of 1,031 columns documented (65 source, 707 warehouse, 259 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**
