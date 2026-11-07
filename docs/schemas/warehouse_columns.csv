@@ -244,6 +244,28 @@ mart.d_families,family,VARCHAR,1257,Company that several payee names belong to,r
 mart.d_families,payee_name,VARCHAR,1257,One payee name grouped into the vendor,derived
 mart.d_families,agencies,BIGINT,1257,Agencies paying the vendor (or with payments in the year),derived
 mart.d_families,spend,DOUBLE,1257,Dollars spent (budget actuals or payments),derived
+mart.d_forecast_backtest,area,VARCHAR,189,One of GMI's six focus areas,derived
+mart.d_forecast_backtest,method,VARCHAR,189,"Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth)",derived
+mart.d_forecast_backtest,origin_fy,BIGINT,189,Last fiscal year of actual spending the model was allowed to see (the forecast origin),derived
+mart.d_forecast_backtest,horizon,BIGINT,189,Years ahead of the origin that the forecast looks (1 to 3),derived
+mart.d_forecast_backtest,forecast_fy,BIGINT,189,"Fiscal year being forecast: origin plus horizon, never later than the last actual year",derived
+mart.d_forecast_backtest,actual,DOUBLE,189,"Actual spending in the forecast year, in dollars",derived
+mart.d_forecast_backtest,forecast,DOUBLE,189,"The model's forecast for that year, in dollars, using only years up to the origin",derived
+mart.d_forecast_backtest,abs_error,DOUBLE,189,Absolute forecast error in dollars,derived
+mart.d_forecast_backtest,ape,DOUBLE,189,Absolute percentage error: absolute error divided by the actual,derived
+mart.d_forecast_backtest,mase,DOUBLE,189,Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error,derived
+mart.d_forecast_model,area,VARCHAR,7,One of GMI's six focus areas,derived
+mart.d_forecast_model,method,VARCHAR,7,Forecast model chosen by the backtest,derived
+mart.d_forecast_model,growth,DOUBLE,7,Annual growth rate of the chosen model,derived
+mart.d_forecast_model,backtest_mape,DOUBLE,7,Mean absolute percentage error of the chosen model (fit FY2017-2022; scored FY2023-2025),derived
+mart.d_forecast_model,trend_mape,DOUBLE,7,Backtest error of the log-linear trend model,derived
+mart.d_forecast_model,naive_mape,DOUBLE,7,Backtest error of the naive (last actual) model,derived
+mart.d_forecast_model,drift_mape,DOUBLE,7,Backtest error of the drift model,derived
+mart.d_forecast_model,baseline_fy2025,DOUBLE,7,FY2025 actual spending in the area,derived
+mart.d_forecast_model,gmi_recurring,DOUBLE,7,Recurring savings GMI reported for the area,source
+mart.d_forecast_model,gmi_rate,DOUBLE,7,gmi_recurring divided by baseline_fy2025,derived
+mart.d_forecast_model,gmi_note,VARCHAR,7,Which reported items make up gmi_recurring,source
+mart.d_forecast_model,gf_share,DOUBLE,7,General Fund share of the area's FY2025 spending,derived
 mart.d_master_quality,measure,VARCHAR,5,Name of the quality measure,reference
 mart.d_master_quality,value,VARCHAR,5,Measured value,derived
 mart.d_master_quality,ok,BIGINT,5,True when the measure meets its target,derived
@@ -310,6 +332,14 @@ mart.f_concentration,vendors,BIGINT,114,Distinct payees in the year,derived
 mart.f_concentration,spend,DOUBLE,114,Dollars spent (budget actuals or payments),derived
 mart.f_concentration,top5_share,DOUBLE,114,Share of the area's private-vendor spend held by its five largest vendors,derived
 mart.f_concentration,hhi,DOUBLE,114,"Herfindahl-Hirschman Index: sum of squared percentage shares of spend (0-10,000; above 1,800 is highly concentrated under the 2023 DOJ/FTC Merger Guidelines)",derived
+mart.f_forecast,area,VARCHAR,105,One of GMI's six focus areas,derived
+mart.f_forecast,fiscal_year,BIGINT,105,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.f_forecast,kind,VARCHAR,105,"Actual, forecast or plan",derived
+mart.f_forecast,value,DOUBLE,105,Actual or forecast spending in dollars,derived
+mart.f_forecast,p10,DOUBLE,105,10th percentile of the bootstrap forecast,derived
+mart.f_forecast,p50,DOUBLE,105,Median of the bootstrap forecast,derived
+mart.f_forecast,p90,DOUBLE,105,90th percentile of the bootstrap forecast,derived
+mart.f_forecast,plan,DOUBLE,105,Spending after GMI's reported savings rate,derived
 mart.f_function,fiscal_year,INTEGER,795,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.f_function,stage,VARCHAR,795,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 mart.f_function,agency_code,VARCHAR,795,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -416,11 +446,11 @@ mart.pipeline_runs,repairs,BIGINT,2,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,2,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,2,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,2,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,59,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,59,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,59,Check description,ops
-mart.run_checks,status,VARCHAR,59,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,59,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,63,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,63,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,63,Check description,ops
+mart.run_checks,status,VARCHAR,63,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,63,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,5,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,5,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,5,Dataset title used on the dashboard,derived
@@ -484,12 +514,12 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_result,run_id,VARCHAR,59,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,59,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,59,Check description,ops
-ops.check_result,severity,VARCHAR,59,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,59,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,59,Numbers behind the check result,ops
+ops.check_result,run_id,VARCHAR,63,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,63,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,63,Check description,ops
+ops.check_result,severity,VARCHAR,63,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,63,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,63,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops

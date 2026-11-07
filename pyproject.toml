@@ -13,7 +13,7 @@ dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "reque
 dev = ["pytest>=8", "ruff>=0.5"]
 
 [tool.setuptools]
-packages = ["src", "src.pipeline"]
+packages = ["src", "src.pipeline", "src.models"]
 
 [tool.ruff]
 line-length = 160

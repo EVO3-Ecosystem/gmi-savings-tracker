@@ -320,3 +320,12 @@ category,mart.f_grants,derived,"Grant or Loan, from the dataset's category code 
 payments,"mart.f_budget_vs_pay,mart.f_overlap",derived,"Payments to all payees in the year (vendor payments dataset, 7syw-q4cy)"
 partial_year,"mart.f_budget_vs_pay,mart.f_overlap",derived,True for the latest payments year while it is still being updated monthly
 grants,mart.f_overlap,derived,Grants dataset rows with category Grant
+method,mart.d_forecast_backtest,derived,"Forecast model scored: log-linear trend, naive (last actual) or drift (average yearly growth)"
+origin_fy,mart.d_forecast_backtest,derived,Last fiscal year of actual spending the model was allowed to see (the forecast origin)
+horizon,mart.d_forecast_backtest,derived,Years ahead of the origin that the forecast looks (1 to 3)
+forecast_fy,mart.d_forecast_backtest,derived,"Fiscal year being forecast: origin plus horizon, never later than the last actual year"
+actual,mart.d_forecast_backtest,derived,"Actual spending in the forecast year, in dollars"
+forecast,mart.d_forecast_backtest,derived,"The model's forecast for that year, in dollars, using only years up to the origin"
+abs_error,mart.d_forecast_backtest,derived,Absolute forecast error in dollars
+ape,mart.d_forecast_backtest,derived,Absolute percentage error: absolute error divided by the actual
+mase,mart.d_forecast_backtest,derived,Mean absolute scaled error: absolute error divided by the mean one-step naive error inside the origin's own training years; above 1 is worse than the naive baseline's in-sample error

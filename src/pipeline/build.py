@@ -12,6 +12,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
+from ..models import forecast
 from . import checks, facts, marts, reference
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -116,6 +117,7 @@ def build(run_id):
 
     reference.build(con, raw)  # Phase 3: reference CSVs -> ref layer, mapped payments, budget scope, MFR measures
     marts.build(con)  # Phase 4: sql/mart/*.sql -> mart layer
+    forecast.write(con)  # Phase 5: forecasts and their rolling-origin backtest, built on the marts
     res = checks.run(con, run_id, man)
     facts.build(con, run_id, man, DATA, checks.HIST)  # Data & pipeline tab: sources, runs, checks, master-list quality
     con.close()

@@ -9,7 +9,7 @@ Six phases over about eight weeks; each phase's gate must pass before the next s
 | 2. Database | 2–3 | DuckDB `raw`, `core`, `ops`; type casting and code normalizing; reconciliation checks; non-zero exit on failure | Every check passes; yearly totals tie to the portal | **Passed Oct 29, 2026** (30 of 30) |
 | 3. Reference data | 3–4 | `ref` layer from `reference/` CSVs: agencies and aliases, stages, focus areas, payment-name and vendor maps; match-rate report | Match rates at or above the dashboard's master list quality | **Passed Oct 29, 2026** |
 | 4. Marts & dashboard | 4–5 | One `mart` table per dashboard file; `export.py` writes the CSVs; FY2027 payments as a partial year | Every dashboard file reproduced, or each difference explained | **Gate passed for the 21 base dashboard files (Nov 2, 2026).** `sql/mart/*.sql` (28 files at the gate, 43 now; the change measure applied by `marts.py` from each file's `-- yoy:` header), `make parity` against the legacy files: 12 reproduced exactly; 9 differ only as explained in `docs/parity/explanations.csv` (FY2027 partial year added; one company spelled differently). Also added: vendor master, payee types, agency functions, agency roll-up and results marts. Fixed on the way: scope precedence (client payments, then charges between agencies, then staff/grants/capital) and the payee-name pass-through exclusions (`reference/payee_area_exclusions.csv`). Left for Phase 5: the analytics files (opportunities, forecasts, savings checks, recommendations) and `export.py` |
-| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test, database snapshot and the Data & pipeline facts (sources, runs, checks, master quality) done; cross-checks, ops history tables and the 14 carried files still open |
+| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test, database snapshot, the Data & pipeline facts and the forecasts (`f_forecast`, `d_forecast_model`) done; cross-checks, ops history tables and the 12 carried files (opportunities, savings, recommendations, vendor moves, `measures`, `stage_evidence`) still open |
 | 6. Automate & document | 7–8 | `make all`; launchd or cron on the Mac; run log, optional PDF report, wiki update | Two clean scheduled runs with no manual steps | |
 
 ## Open questions
@@ -46,7 +46,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 12 | Model | Change measure (year over year) | `measures.py`, defined once | `marts.py` from each SQL file's `-- yoy:` header, same definition | Same |
 | 13 | Model | The 21 base dashboard files | Built in pandas | SQL marts: 12 reproduced exactly, 9 differ only as explained (`docs/parity/`) | Same (proven) |
 | 14 | Model | Vendors tab and portal views | None | 10 vendor marts; budget vs payments, funding sources, programs, grants as listed, overlap | Better |
-| 15 | Analytics | Forecasts (trend vs naive vs drift, backtest, bootstrap band) | `forecast.py` | `f_forecast`, `d_forecast_model` | **Carried** |
+| 15 | Analytics | Forecasts (trend vs naive vs drift, backtest, bootstrap band) | `forecast.py` | `src/models/forecast.py` (identical output on the real marts, tested against the legacy script), assumptions in `config/assumptions.yaml`, a rolling-origin backtest against the naive baseline, model card in `docs/models/forecast.md` | Better |
 | 16 | Analytics | Opportunity detectors and bid list | `opportunities.py` (4 detectors) | `d_opps`, `d_bid_list` | **Carried** |
 | 17 | Analytics | Savings checks against payments | `savings.py` | `d_savings`, `f_savings_check`, `d_savings_status` | **Carried** |
 | 18 | Analytics | Recommendations, path to $50M, history per run | `recs.py`, `model/rec_history.csv` | `d_rec_status`, `d_plan50`; no history | **Carried** |
@@ -65,7 +65,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 31 | Run | Scheduling | Manual | Manual locally; CI on GitHub | Same (Phase 6) |
 | 32 | Docs | Figures | None | `figures.py`: 5 PNGs from the database | Better |
 
-Summary of the 32 rows: 14 Better, 8 Same, 2 Partial, 5 Carried, 3 Gap (one optional, one low priority). 30 of 44 dashboard files come from the new marts; 14 are carried.
+Summary of the 32 rows: 15 Better, 8 Same, 2 Partial, 4 Carried, 3 Gap (one optional, one low priority). 32 of 44 dashboard files come from the new marts; 12 are carried.
 
 ## Gap analysis and improvement backlog (Nov 5, 2026)
 
