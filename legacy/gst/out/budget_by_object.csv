@@ -1,0 +1,148 @@
+fiscal_year,stage,object_name,budget,controllable,budget_prior,controllable_prior,budget_yoy,controllable_yoy,stage_pair
+2017,Actual,Communications,89968542.0,66851562.0,,,,,
+2018,Actual,Communications,102310872.0,78194233.0,89968542.0,66851562.0,0.13718,0.16967,Actual vs Actual
+2019,Actual,Communications,99052320.0,72718562.0,102310872.0,78194233.0,-0.03185,-0.07003,Actual vs Actual
+2020,Actual,Communications,81564475.0,70561617.0,99052320.0,72718562.0,-0.17655,-0.02966,Actual vs Actual
+2021,Actual,Communications,85692302.0,74049794.0,81564475.0,70561617.0,0.05061,0.04943,Actual vs Actual
+2022,Actual,Communications,91309733.0,78731280.0,85692302.0,74049794.0,0.06555,0.06322,Actual vs Actual
+2023,Actual,Communications,98604242.0,85514733.0,91309733.0,78731280.0,0.07989,0.08616,Actual vs Actual
+2024,Actual,Communications,94122982.0,80084836.0,98604242.0,85514733.0,-0.04545,-0.0635,Actual vs Actual
+2025,Actual,Communications,94198317.0,78836324.0,94122982.0,80084836.0,0.0008,-0.01559,Actual vs Actual
+2026,Working budget,Communications,107427775.0,90063268.0,94198317.0,78836324.0,0.14044,0.14241,Working budget vs Actual
+2027,Legislative appropriation,Communications,108236752.0,90953530.0,107427775.0,90063268.0,0.00753,0.00988,Legislative appropriation vs Working budget
+2017,Actual,Contractual Services,14755968308.0,1993557865.0,,,,,
+2018,Actual,Contractual Services,15069532616.0,2040133901.0,14755968308.0,1993557865.0,0.02125,0.02336,Actual vs Actual
+2019,Actual,Contractual Services,15769042832.0,2182098728.0,15069532616.0,2040133901.0,0.04642,0.06959,Actual vs Actual
+2020,Actual,Contractual Services,16623475931.0,2203427089.0,15769042832.0,2182098728.0,0.05418,0.00977,Actual vs Actual
+2021,Actual,Contractual Services,18582989388.0,2528474317.0,16623475931.0,2203427089.0,0.11788,0.14752,Actual vs Actual
+2022,Actual,Contractual Services,21010581816.0,3083628120.0,18582989388.0,2528474317.0,0.13064,0.21956,Actual vs Actual
+2023,Actual,Contractual Services,22060470891.0,2886885750.0,21010581816.0,3083628120.0,0.04997,-0.0638,Actual vs Actual
+2024,Actual,Contractual Services,22776829780.0,2924927681.0,22060470891.0,2886885750.0,0.03247,0.01318,Actual vs Actual
+2025,Actual,Contractual Services,25110975102.0,2985916933.0,22776829780.0,2924927681.0,0.10248,0.02085,Actual vs Actual
+2026,Working budget,Contractual Services,27317948568.0,3594824711.0,25110975102.0,2985916933.0,0.08789,0.20393,Working budget vs Actual
+2027,Legislative appropriation,Contractual Services,26737877524.0,3632364959.0,27317948568.0,3594824711.0,-0.02123,0.01044,Legislative appropriation vs Working budget
+2017,Actual,Equipment - Additional,42296567.0,42250286.0,,,,,
+2018,Actual,Equipment - Additional,40226865.0,40096897.0,42296567.0,42250286.0,-0.04893,-0.05097,Actual vs Actual
+2019,Actual,Equipment - Additional,40791325.0,40463222.0,40226865.0,40096897.0,0.01403,0.00914,Actual vs Actual
+2020,Actual,Equipment - Additional,56210225.0,56057886.0,40791325.0,40463222.0,0.37799,0.3854,Actual vs Actual
+2021,Actual,Equipment - Additional,61438389.0,61400121.0,56210225.0,56057886.0,0.09301,0.0953,Actual vs Actual
+2022,Actual,Equipment - Additional,38934896.0,38869945.0,61438389.0,61400121.0,-0.36628,-0.36694,Actual vs Actual
+2023,Actual,Equipment - Additional,44020005.0,43886459.0,38934896.0,38869945.0,0.13061,0.12906,Actual vs Actual
+2024,Actual,Equipment - Additional,35187944.0,35145130.0,44020005.0,43886459.0,-0.20064,-0.19918,Actual vs Actual
+2025,Actual,Equipment - Additional,33636125.0,33601560.0,35187944.0,35145130.0,-0.0441,-0.04392,Actual vs Actual
+2026,Working budget,Equipment - Additional,35471351.0,34501376.0,33636125.0,33601560.0,0.05456,0.02678,Working budget vs Actual
+2027,Legislative appropriation,Equipment - Additional,25577576.0,24458601.0,35471351.0,34501376.0,-0.27892,-0.29108,Legislative appropriation vs Working budget
+2017,Actual,Equipment - Replacement,55138908.0,55015195.0,,,,,
+2018,Actual,Equipment - Replacement,49776051.0,49700697.0,55138908.0,55015195.0,-0.09726,-0.0966,Actual vs Actual
+2019,Actual,Equipment - Replacement,72732862.0,72730208.0,49776051.0,49700697.0,0.4612,0.46336,Actual vs Actual
+2020,Actual,Equipment - Replacement,61619762.0,61569749.0,72732862.0,72730208.0,-0.15279,-0.15345,Actual vs Actual
+2021,Actual,Equipment - Replacement,47753574.0,47700899.0,61619762.0,61569749.0,-0.22503,-0.22525,Actual vs Actual
+2022,Actual,Equipment - Replacement,61339256.0,61253872.0,47753574.0,47700899.0,0.2845,0.28412,Actual vs Actual
+2023,Actual,Equipment - Replacement,76132944.0,75990630.0,61339256.0,61253872.0,0.24118,0.24058,Actual vs Actual
+2024,Actual,Equipment - Replacement,68503588.0,68464755.0,76132944.0,75990630.0,-0.10021,-0.09904,Actual vs Actual
+2025,Actual,Equipment - Replacement,80554436.0,80552854.0,68503588.0,68464755.0,0.17592,0.17656,Actual vs Actual
+2026,Working budget,Equipment - Replacement,83660463.0,83630463.0,80554436.0,80552854.0,0.03856,0.03821,Working budget vs Actual
+2027,Legislative appropriation,Equipment - Replacement,97707435.0,97677435.0,83660463.0,83630463.0,0.1679,0.16796,Legislative appropriation vs Working budget
+2017,Actual,Fixed Charges,1701449400.0,172874155.0,,,,,
+2018,Actual,Fixed Charges,1811330924.0,170394452.0,1701449400.0,172874155.0,0.06458,-0.01434,Actual vs Actual
+2019,Actual,Fixed Charges,1858450259.0,178333459.0,1811330924.0,170394452.0,0.02601,0.04659,Actual vs Actual
+2020,Actual,Fixed Charges,1905516983.0,182163981.0,1858450259.0,178333459.0,0.02533,0.02148,Actual vs Actual
+2021,Actual,Fixed Charges,1937748839.0,199246351.0,1905516983.0,182163981.0,0.01692,0.09377,Actual vs Actual
+2022,Actual,Fixed Charges,2069275597.0,209874583.0,1937748839.0,199246351.0,0.06788,0.05334,Actual vs Actual
+2023,Actual,Fixed Charges,2155919082.0,186820989.0,2069275597.0,209874583.0,0.04187,-0.10984,Actual vs Actual
+2024,Actual,Fixed Charges,2153067015.0,211203485.0,2155919082.0,186820989.0,-0.00132,0.13051,Actual vs Actual
+2025,Actual,Fixed Charges,2290332222.0,213755737.0,2153067015.0,211203485.0,0.06375,0.01208,Actual vs Actual
+2026,Working budget,Fixed Charges,2499420838.0,264947619.0,2290332222.0,213755737.0,0.09129,0.23949,Working budget vs Actual
+2027,Legislative appropriation,Fixed Charges,2338676699.0,219164314.0,2499420838.0,264947619.0,-0.06431,-0.1728,Legislative appropriation vs Working budget
+2022,Actual,Food,48.0,48.0,,,,,
+2023,Actual,Food,377.0,377.0,48.0,48.0,6.85417,6.85417,Actual vs Actual
+2024,Actual,Food,1432.0,1432.0,377.0,377.0,2.79841,2.79841,Actual vs Actual
+2025,Actual,Food,1784.0,1784.0,1432.0,1432.0,0.24581,0.24581,Actual vs Actual
+2017,Actual,Fuel and Utilities,142493452.0,142479614.0,,,,,
+2018,Actual,Fuel and Utilities,142787743.0,142772910.0,142493452.0,142479614.0,0.00207,0.00206,Actual vs Actual
+2019,Actual,Fuel and Utilities,137120951.0,137102990.0,142787743.0,142772910.0,-0.03969,-0.03971,Actual vs Actual
+2020,Actual,Fuel and Utilities,143482703.0,143470415.0,137120951.0,137102990.0,0.0464,0.04644,Actual vs Actual
+2021,Actual,Fuel and Utilities,135645524.0,135635751.0,143482703.0,143470415.0,-0.05462,-0.05461,Actual vs Actual
+2022,Actual,Fuel and Utilities,154049747.0,153978731.0,135645524.0,135635751.0,0.13568,0.13524,Actual vs Actual
+2023,Actual,Fuel and Utilities,173542215.0,173189338.0,154049747.0,153978731.0,0.12653,0.12476,Actual vs Actual
+2024,Actual,Fuel and Utilities,162085249.0,161864689.0,173542215.0,173189338.0,-0.06602,-0.06539,Actual vs Actual
+2025,Actual,Fuel and Utilities,171239936.0,171232266.0,162085249.0,161864689.0,0.05648,0.05787,Actual vs Actual
+2026,Working budget,Fuel and Utilities,162116606.0,162108936.0,171239936.0,171232266.0,-0.05328,-0.05328,Working budget vs Actual
+2027,Legislative appropriation,Fuel and Utilities,163881562.0,163873892.0,162116606.0,162108936.0,0.01089,0.01089,Legislative appropriation vs Working budget
+2017,Actual,"Grants, Subsidies, and Contributions",13467338830.0,0.0,,,,,
+2018,Actual,"Grants, Subsidies, and Contributions",13394227764.0,0.0,13467338830.0,0.0,-0.00543,,Actual vs Actual
+2019,Actual,"Grants, Subsidies, and Contributions",13834376020.0,0.0,13394227764.0,0.0,0.03286,,Actual vs Actual
+2020,Actual,"Grants, Subsidies, and Contributions",15999271881.0,0.0,13834376020.0,0.0,0.15649,,Actual vs Actual
+2021,Actual,"Grants, Subsidies, and Contributions",20109403300.0,0.0,15999271881.0,0.0,0.25689,,Actual vs Actual
+2022,Actual,"Grants, Subsidies, and Contributions",23752676332.0,0.0,20109403300.0,0.0,0.18117,,Actual vs Actual
+2023,Actual,"Grants, Subsidies, and Contributions",24723127402.0,0.0,23752676332.0,0.0,0.04086,,Actual vs Actual
+2024,Actual,"Grants, Subsidies, and Contributions",23286662671.0,0.0,24723127402.0,0.0,-0.0581,,Actual vs Actual
+2025,Actual,"Grants, Subsidies, and Contributions",22381209875.0,0.0,23286662671.0,0.0,-0.03888,,Actual vs Actual
+2026,Working budget,"Grants, Subsidies, and Contributions",24058959901.0,0.0,22381209875.0,0.0,0.07496,,Working budget vs Actual
+2027,Legislative appropriation,"Grants, Subsidies, and Contributions",24637096747.0,0.0,24058959901.0,0.0,0.02403,,Legislative appropriation vs Working budget
+2017,Actual,Land and Structures,2040818790.0,0.0,,,,,
+2018,Actual,Land and Structures,1970977952.0,0.0,2040818790.0,0.0,-0.03422,,Actual vs Actual
+2019,Actual,Land and Structures,1869354947.0,0.0,1970977952.0,0.0,-0.05156,,Actual vs Actual
+2020,Actual,Land and Structures,2186118653.0,0.0,1869354947.0,0.0,0.16945,,Actual vs Actual
+2021,Actual,Land and Structures,1785277654.0,0.0,2186118653.0,0.0,-0.18336,,Actual vs Actual
+2022,Actual,Land and Structures,2481267748.0,0.0,1785277654.0,0.0,0.38985,,Actual vs Actual
+2023,Actual,Land and Structures,3011956349.0,0.0,2481267748.0,0.0,0.21388,,Actual vs Actual
+2024,Actual,Land and Structures,3047043736.0,0.0,3011956349.0,0.0,0.01165,,Actual vs Actual
+2025,Actual,Land and Structures,2310024082.0,0.0,3047043736.0,0.0,-0.24188,,Actual vs Actual
+2026,Working budget,Land and Structures,2286431213.0,0.0,2310024082.0,0.0,-0.01021,,Working budget vs Actual
+2027,Legislative appropriation,Land and Structures,2231844990.0,0.0,2286431213.0,0.0,-0.02387,,Legislative appropriation vs Working budget
+2017,Actual,Motor Vehicle Operation and Maintenance,171209606.0,171194104.0,,,,,
+2018,Actual,Motor Vehicle Operation and Maintenance,167377525.0,167357867.0,171209606.0,171194104.0,-0.02238,-0.02241,Actual vs Actual
+2019,Actual,Motor Vehicle Operation and Maintenance,156334827.0,156322021.0,167377525.0,167357867.0,-0.06597,-0.06594,Actual vs Actual
+2020,Actual,Motor Vehicle Operation and Maintenance,150089398.0,150068540.0,156334827.0,156322021.0,-0.03995,-0.04,Actual vs Actual
+2021,Actual,Motor Vehicle Operation and Maintenance,143109634.0,143093134.0,150089398.0,150068540.0,-0.0465,-0.04648,Actual vs Actual
+2022,Actual,Motor Vehicle Operation and Maintenance,162414965.0,162401350.0,143109634.0,143093134.0,0.1349,0.13493,Actual vs Actual
+2023,Actual,Motor Vehicle Operation and Maintenance,199124105.0,199100821.0,162414965.0,162401350.0,0.22602,0.22598,Actual vs Actual
+2024,Actual,Motor Vehicle Operation and Maintenance,239619289.0,239608032.0,199124105.0,199100821.0,0.20337,0.20345,Actual vs Actual
+2025,Actual,Motor Vehicle Operation and Maintenance,193111264.0,193100466.0,239619289.0,239608032.0,-0.19409,-0.1941,Actual vs Actual
+2026,Working budget,Motor Vehicle Operation and Maintenance,227641525.0,227616525.0,193111264.0,193100466.0,0.17881,0.17875,Working budget vs Actual
+2027,Legislative appropriation,Motor Vehicle Operation and Maintenance,224281909.0,224256909.0,227641525.0,227616525.0,-0.01476,-0.01476,Legislative appropriation vs Working budget
+2017,Actual,"Salaries, Wages and Fringe Benefits",4795666278.0,0.0,,,,,
+2018,Actual,"Salaries, Wages and Fringe Benefits",4694060116.0,0.0,4795666278.0,0.0,-0.02119,,Actual vs Actual
+2019,Actual,"Salaries, Wages and Fringe Benefits",4842721103.0,0.0,4694060116.0,0.0,0.03167,,Actual vs Actual
+2020,Actual,"Salaries, Wages and Fringe Benefits",5100180566.0,0.0,4842721103.0,0.0,0.05316,,Actual vs Actual
+2021,Actual,"Salaries, Wages and Fringe Benefits",5129272054.0,0.0,5100180566.0,0.0,0.0057,,Actual vs Actual
+2022,Actual,"Salaries, Wages and Fringe Benefits",5468179969.0,0.0,5129272054.0,0.0,0.06607,,Actual vs Actual
+2023,Actual,"Salaries, Wages and Fringe Benefits",6045661353.0,0.0,5468179969.0,0.0,0.10561,,Actual vs Actual
+2024,Actual,"Salaries, Wages and Fringe Benefits",6572376367.0,0.0,6045661353.0,0.0,0.08712,,Actual vs Actual
+2025,Actual,"Salaries, Wages and Fringe Benefits",7173353917.0,0.0,6572376367.0,0.0,0.09144,,Actual vs Actual
+2026,Working budget,"Salaries, Wages and Fringe Benefits",7365840399.0,0.0,7173353917.0,0.0,0.02683,,Working budget vs Actual
+2027,Legislative appropriation,"Salaries, Wages and Fringe Benefits",7912880431.0,0.0,7365840399.0,0.0,0.07427,,Legislative appropriation vs Working budget
+2017,Actual,Supplies and Materials,229897946.0,229604931.0,,,,,
+2018,Actual,Supplies and Materials,225433613.0,225263372.0,229897946.0,229604931.0,-0.01942,-0.01891,Actual vs Actual
+2019,Actual,Supplies and Materials,238967409.0,238785186.0,225433613.0,225263372.0,0.06003,0.06003,Actual vs Actual
+2020,Actual,Supplies and Materials,384412877.0,384220320.0,238967409.0,238785186.0,0.60864,0.60906,Actual vs Actual
+2021,Actual,Supplies and Materials,1037787150.0,1037656573.0,384412877.0,384220320.0,1.69967,1.70068,Actual vs Actual
+2022,Actual,Supplies and Materials,356227114.0,356124068.0,1037787150.0,1037656573.0,-0.65674,-0.6568,Actual vs Actual
+2023,Actual,Supplies and Materials,232061489.0,231777335.0,356227114.0,356124068.0,-0.34856,-0.34917,Actual vs Actual
+2024,Actual,Supplies and Materials,365591433.0,365314325.0,232061489.0,231777335.0,0.57541,0.57614,Actual vs Actual
+2025,Actual,Supplies and Materials,329463759.0,329330581.0,365591433.0,365314325.0,-0.09882,-0.0985,Actual vs Actual
+2026,Working budget,Supplies and Materials,354389845.0,354231509.0,329463759.0,329330581.0,0.07566,0.07561,Working budget vs Actual
+2027,Legislative appropriation,Supplies and Materials,358898457.0,358742690.0,354389845.0,354231509.0,0.01272,0.01274,Legislative appropriation vs Working budget
+2017,Actual,Technical and Special Fees,209332984.0,0.0,,,,,
+2018,Actual,Technical and Special Fees,229834085.0,0.0,209332984.0,0.0,0.09794,,Actual vs Actual
+2019,Actual,Technical and Special Fees,234320503.0,0.0,229834085.0,0.0,0.01952,,Actual vs Actual
+2020,Actual,Technical and Special Fees,237508004.0,0.0,234320503.0,0.0,0.0136,,Actual vs Actual
+2021,Actual,Technical and Special Fees,222863079.0,0.0,237508004.0,0.0,-0.06166,,Actual vs Actual
+2022,Actual,Technical and Special Fees,260581800.0,0.0,222863079.0,0.0,0.16925,,Actual vs Actual
+2023,Actual,Technical and Special Fees,298468122.0,0.0,260581800.0,0.0,0.14539,,Actual vs Actual
+2024,Actual,Technical and Special Fees,323412008.0,0.0,298468122.0,0.0,0.08357,,Actual vs Actual
+2025,Actual,Technical and Special Fees,347959884.0,0.0,323412008.0,0.0,0.0759,,Actual vs Actual
+2026,Working budget,Technical and Special Fees,306014821.0,0.0,347959884.0,0.0,-0.12055,,Working budget vs Actual
+2027,Legislative appropriation,Technical and Special Fees,316847064.0,0.0,306014821.0,0.0,0.0354,,Legislative appropriation vs Working budget
+2017,Actual,Travel,22737785.0,5808591.0,,,,,
+2018,Actual,Travel,24003994.0,6502772.0,22737785.0,5808591.0,0.05569,0.11951,Actual vs Actual
+2019,Actual,Travel,23924579.0,6568554.0,24003994.0,6502772.0,-0.00331,0.01012,Actual vs Actual
+2020,Actual,Travel,21900871.0,4982560.0,23924579.0,6568554.0,-0.08459,-0.24145,Actual vs Actual
+2021,Actual,Travel,9487307.0,999452.0,21900871.0,4982560.0,-0.56681,-0.79941,Actual vs Actual
+2022,Actual,Travel,16064006.0,3937408.0,9487307.0,999452.0,0.69321,2.93957,Actual vs Actual
+2023,Actual,Travel,21470049.0,6384759.0,16064006.0,3937408.0,0.33653,0.62156,Actual vs Actual
+2024,Actual,Travel,24690456.0,6849187.0,21470049.0,6384759.0,0.15,0.07274,Actual vs Actual
+2025,Actual,Travel,25494941.0,7526803.0,24690456.0,6849187.0,0.03258,0.09893,Actual vs Actual
+2026,Working budget,Travel,27927945.0,8288572.0,25494941.0,7526803.0,0.09543,0.10121,Working budget vs Actual
+2027,Legislative appropriation,Travel,30696978.0,8910825.0,27927945.0,8288572.0,0.09915,0.07507,Legislative appropriation vs Working budget

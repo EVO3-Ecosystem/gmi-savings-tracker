@@ -1,0 +1,1920 @@
+fiscal_year,stage,agency_code,fund_type_name,budget
+2017,Actual,A15,General Funds,179150027.0
+2017,Actual,B75,General Funds,89155728.0
+2017,Actual,C00,Federal Funds,701678.0
+2017,Actual,C00,General Funds,479643047.0
+2017,Actual,C00,Special Funds,51659656.0
+2017,Actual,C80,Federal Funds,45264.0
+2017,Actual,C80,General Funds,109463666.0
+2017,Actual,C80,Special Funds,301913.0
+2017,Actual,C81,Federal Funds,3319761.0
+2017,Actual,C81,General Funds,18738059.0
+2017,Actual,C81,Special Funds,10458365.0
+2017,Actual,C82,General Funds,1480994.0
+2017,Actual,C85,General Funds,631993.0
+2017,Actual,C90,Federal Funds,695345.0
+2017,Actual,C90,Special Funds,25994625.0
+2017,Actual,C91,Special Funds,4031072.0
+2017,Actual,C94,Special Funds,2303632.0
+2017,Actual,C96,Special Funds,1589940.0
+2017,Actual,C98,Special Funds,15050908.0
+2017,Actual,D05,General Funds,7092008.0
+2017,Actual,D05,Special Funds,500000.0
+2017,Actual,D10,General Funds,10980083.0
+2017,Actual,D11,General Funds,427188.0
+2017,Actual,D12,Federal Funds,6940726.0
+2017,Actual,D12,General Funds,3318234.0
+2017,Actual,D12,Special Funds,375100.0
+2017,Actual,D13,Federal Funds,906653.0
+2017,Actual,D13,Federal Funds (ARRA),1000000.0
+2017,Actual,D13,Special Funds,38703181.0
+2017,Actual,D15,Federal Funds,30585197.0
+2017,Actual,D15,General Funds,110370586.0
+2017,Actual,D15,Special Funds,2501473.0
+2017,Actual,D16,General Funds,2117621.0
+2017,Actual,D16,Special Funds,882205.0
+2017,Actual,D17,Federal Funds,95427.0
+2017,Actual,D17,General Funds,2661280.0
+2017,Actual,D17,Special Funds,634359.0
+2017,Actual,D18,General Funds,1814548.0
+2017,Actual,D25,General Funds,2000527.0
+2017,Actual,D26,Federal Funds,26369452.0
+2017,Actual,D26,General Funds,21583350.0
+2017,Actual,D26,Special Funds,406078.0
+2017,Actual,D27,Federal Funds,625003.0
+2017,Actual,D27,General Funds,2565108.0
+2017,Actual,D28,General Funds,9224856.0
+2017,Actual,D28,Special Funds,40000000.0
+2017,Actual,D38,Federal Funds,122968.0
+2017,Actual,D38,General Funds,9261209.0
+2017,Actual,D38,Special Funds,13231439.0
+2017,Actual,D40,Federal Funds,1403797.0
+2017,Actual,D40,General Funds,21151074.0
+2017,Actual,D40,Special Funds,3735580.0
+2017,Actual,D50,Federal Funds,114354568.0
+2017,Actual,D50,General Funds,12090663.0
+2017,Actual,D50,Special Funds,19958602.0
+2017,Actual,D53,Federal Funds,1875186.0
+2017,Actual,D53,Special Funds,14116889.0
+2017,Actual,D55,Federal Funds,18828643.0
+2017,Actual,D55,General Funds,9828416.0
+2017,Actual,D55,Special Funds,1069710.0
+2017,Actual,D60,Federal Funds,52778.0
+2017,Actual,D60,General Funds,2402731.0
+2017,Actual,D60,Special Funds,6326877.0
+2017,Actual,D78,Federal Funds,44725640.0
+2017,Actual,D78,Special Funds,72156069.0
+2017,Actual,D80,Federal Funds,501951.0
+2017,Actual,D80,Special Funds,30328059.0
+2017,Actual,D90,General Funds,386024.0
+2017,Actual,D90,Special Funds,427305.0
+2017,Actual,D99,Special Funds,7900.0
+2017,Actual,E00,General Funds,92994845.0
+2017,Actual,E00,Special Funds,24059184.0
+2017,Actual,E20,General Funds,5145349.0
+2017,Actual,E20,Special Funds,935629.0
+2017,Actual,E50,General Funds,104891188.0
+2017,Actual,E50,Special Funds,27760169.0
+2017,Actual,E75,General Funds,20706321.0
+2017,Actual,E75,Special Funds,76778216.0
+2017,Actual,E80,General Funds,1037558.0
+2017,Actual,F10,General Funds,17902386.0
+2017,Actual,F10,Special Funds,16462038.0
+2017,Actual,F50,Federal Funds,36190.0
+2017,Actual,F50,General Funds,64860215.0
+2017,Actual,F50,Special Funds,9484570.0
+2017,Actual,G20,Special Funds,20070260.0
+2017,Actual,G50,Special Funds,1782930.0
+2017,Actual,H00,Federal Funds,661455.0
+2017,Actual,H00,General Funds,69853836.0
+2017,Actual,H00,Special Funds,4147689.0
+2017,Actual,J00,Federal Funds,952684828.0
+2017,Actual,J00,Special Funds,4016852616.0
+2017,Actual,K00,Federal Funds,32252712.0
+2017,Actual,K00,General Funds,59942642.0
+2017,Actual,K00,Special Funds,237640929.0
+2017,Actual,L00,Federal Funds,3774561.0
+2017,Actual,L00,General Funds,29905248.0
+2017,Actual,L00,Special Funds,36896841.0
+2017,Actual,M00,Federal Funds,7491198373.0
+2017,Actual,M00,General Funds,4390610377.0
+2017,Actual,M00,Special Funds,1298484784.0
+2017,Actual,N00,Federal Funds,1664210753.0
+2017,Actual,N00,General Funds,648831537.0
+2017,Actual,N00,Special Funds,105199139.0
+2017,Actual,P00,Federal Funds,166318984.0
+2017,Actual,P00,General Funds,43910106.0
+2017,Actual,P00,Special Funds,137040458.0
+2017,Actual,Q00,Federal Funds,28634971.0
+2017,Actual,Q00,General Funds,1229941185.0
+2017,Actual,Q00,Special Funds,128896111.0
+2017,Actual,R00,Federal Funds,1051435352.0
+2017,Actual,R00,Federal Funds (ARRA),1835192.0
+2017,Actual,R00,General Funds,6109171558.0
+2017,Actual,R00,Special Funds,498477244.0
+2017,Actual,R15,Federal Funds,513269.0
+2017,Actual,R15,General Funds,8233878.0
+2017,Actual,R15,Special Funds,17760765.0
+2017,Actual,R62,Federal Funds,1578964.0
+2017,Actual,R62,General Funds,474162953.0
+2017,Actual,R62,Special Funds,22809070.0
+2017,Actual,R75,General Funds,1422150927.0
+2017,Actual,R75,Special Funds,70232004.0
+2017,Actual,R99,Federal Funds,494798.0
+2017,Actual,R99,General Funds,31271349.0
+2017,Actual,R99,Special Funds,392383.0
+2017,Actual,S00,Federal Funds,267977481.0
+2017,Actual,S00,General Funds,55560175.0
+2017,Actual,S00,Special Funds,117247455.0
+2017,Actual,S50,General Funds,1959000.0
+2017,Actual,T00,Federal Funds,9583281.0
+2017,Actual,T00,General Funds,88976551.0
+2017,Actual,T00,Special Funds,54071762.0
+2017,Actual,T50,General Funds,19467480.0
+2017,Actual,T50,Special Funds,7344532.0
+2017,Actual,U00,Federal Funds,74210900.0
+2017,Actual,U00,General Funds,29885460.0
+2017,Actual,U00,Special Funds,292848128.0
+2017,Actual,V00,Federal Funds,4965101.0
+2017,Actual,V00,General Funds,269985026.0
+2017,Actual,V00,Special Funds,3813782.0
+2017,Actual,W00,Federal Funds,4225173.0
+2017,Actual,W00,General Funds,283701061.0
+2017,Actual,W00,Special Funds,96633905.0
+2017,Actual,X00,Federal Funds,11532864.0
+2017,Actual,X00,General Funds,259395129.0
+2017,Actual,X00,Special Funds,919799709.0
+2017,Actual,Y01,General Funds,160376558.0
+2018,Actual,A15,General Funds,166483732.0
+2018,Actual,B75,General Funds,89333621.0
+2018,Actual,C00,Federal Funds,469530.0
+2018,Actual,C00,General Funds,484179869.0
+2018,Actual,C00,Special Funds,58121249.0
+2018,Actual,C80,Federal Funds,145452.0
+2018,Actual,C80,General Funds,106114873.0
+2018,Actual,C80,Special Funds,336893.0
+2018,Actual,C81,Federal Funds,3146027.0
+2018,Actual,C81,General Funds,18504256.0
+2018,Actual,C81,Special Funds,8183502.0
+2018,Actual,C82,General Funds,1456401.0
+2018,Actual,C85,General Funds,614972.0
+2018,Actual,C90,Federal Funds,702755.0
+2018,Actual,C90,Special Funds,24619571.0
+2018,Actual,C91,Special Funds,3964403.0
+2018,Actual,C94,Special Funds,2286283.0
+2018,Actual,C96,Special Funds,1787862.0
+2018,Actual,C98,Special Funds,15056461.0
+2018,Actual,D05,General Funds,7062422.0
+2018,Actual,D10,General Funds,10578308.0
+2018,Actual,D11,General Funds,373983.0
+2018,Actual,D12,Federal Funds,7194817.0
+2018,Actual,D12,General Funds,3312341.0
+2018,Actual,D12,Special Funds,287925.0
+2018,Actual,D13,Federal Funds,731636.0
+2018,Actual,D13,Special Funds,37578230.0
+2018,Actual,D15,Federal Funds,41307641.0
+2018,Actual,D15,General Funds,115038435.0
+2018,Actual,D15,Special Funds,2997873.0
+2018,Actual,D16,General Funds,2097908.0
+2018,Actual,D16,Special Funds,820858.0
+2018,Actual,D17,General Funds,2684097.0
+2018,Actual,D17,Special Funds,499759.0
+2018,Actual,D18,General Funds,1440529.0
+2018,Actual,D26,Federal Funds,32229248.0
+2018,Actual,D26,General Funds,22026447.0
+2018,Actual,D26,Special Funds,600699.0
+2018,Actual,D27,Federal Funds,582153.0
+2018,Actual,D27,General Funds,2461714.0
+2018,Actual,D27,Special Funds,61060.0
+2018,Actual,D28,General Funds,10892962.0
+2018,Actual,D28,Special Funds,40000000.0
+2018,Actual,D38,General Funds,8614035.0
+2018,Actual,D38,Special Funds,11250302.0
+2018,Actual,D40,Federal Funds,1232517.0
+2018,Actual,D40,General Funds,20821952.0
+2018,Actual,D40,Special Funds,4031027.0
+2018,Actual,D50,Federal Funds,85198976.0
+2018,Actual,D50,General Funds,12127080.0
+2018,Actual,D50,Special Funds,20075840.0
+2018,Actual,D53,Federal Funds,2058420.0
+2018,Actual,D53,Special Funds,24560632.0
+2018,Actual,D55,Federal Funds,27324907.0
+2018,Actual,D55,General Funds,8227519.0
+2018,Actual,D55,Special Funds,2494571.0
+2018,Actual,D60,Federal Funds,3544.0
+2018,Actual,D60,General Funds,5347255.0
+2018,Actual,D60,Special Funds,3185801.0
+2018,Actual,D78,Federal Funds,42975274.0
+2018,Actual,D78,Special Funds,49153697.0
+2018,Actual,D80,Federal Funds,655435.0
+2018,Actual,D80,Special Funds,29582213.0
+2018,Actual,D90,General Funds,158000.0
+2018,Actual,D90,Special Funds,504406.0
+2018,Actual,D99,Special Funds,29760.0
+2018,Actual,E00,General Funds,91668947.0
+2018,Actual,E00,Special Funds,26175765.0
+2018,Actual,E20,General Funds,5254328.0
+2018,Actual,E20,Special Funds,1223510.0
+2018,Actual,E50,General Funds,114798221.0
+2018,Actual,E50,Special Funds,27341778.0
+2018,Actual,E75,General Funds,7474980.0
+2018,Actual,E75,Special Funds,79939187.0
+2018,Actual,E80,General Funds,931717.0
+2018,Actual,F10,General Funds,17170631.0
+2018,Actual,F10,Special Funds,15229409.0
+2018,Actual,F50,General Funds,61779449.0
+2018,Actual,F50,Special Funds,8811036.0
+2018,Actual,G20,Special Funds,22409549.0
+2018,Actual,G50,Special Funds,2016003.0
+2018,Actual,H00,Federal Funds,1286836.0
+2018,Actual,H00,General Funds,66137333.0
+2018,Actual,H00,Special Funds,7984932.0
+2018,Actual,J00,Federal Funds,981164796.0
+2018,Actual,J00,Special Funds,3992936726.0
+2018,Actual,K00,Federal Funds,30331259.0
+2018,Actual,K00,General Funds,59748200.0
+2018,Actual,K00,Special Funds,276972102.0
+2018,Actual,L00,Federal Funds,3608341.0
+2018,Actual,L00,General Funds,32036958.0
+2018,Actual,L00,Special Funds,48041307.0
+2018,Actual,M00,Federal Funds,7585252333.0
+2018,Actual,M00,General Funds,4669099238.0
+2018,Actual,M00,Special Funds,1251676124.0
+2018,Actual,N00,Federal Funds,1627625674.0
+2018,Actual,N00,General Funds,610169945.0
+2018,Actual,N00,Special Funds,99330101.0
+2018,Actual,P00,Federal Funds,155695483.0
+2018,Actual,P00,General Funds,46338219.0
+2018,Actual,P00,Special Funds,167648723.0
+2018,Actual,Q00,Federal Funds,29985859.0
+2018,Actual,Q00,General Funds,1193412507.0
+2018,Actual,Q00,Special Funds,125601113.0
+2018,Actual,R00,Federal Funds,1092656385.0
+2018,Actual,R00,General Funds,6110573353.0
+2018,Actual,R00,Special Funds,500571087.0
+2018,Actual,R11,Federal Funds,2942729.0
+2018,Actual,R11,General Funds,81790913.0
+2018,Actual,R15,Federal Funds,2951260.0
+2018,Actual,R15,General Funds,7933452.0
+2018,Actual,R15,Special Funds,18078766.0
+2018,Actual,R62,Federal Funds,828205.0
+2018,Actual,R62,General Funds,481845564.0
+2018,Actual,R62,Special Funds,23922476.0
+2018,Actual,R75,General Funds,1432638154.0
+2018,Actual,R75,Special Funds,71516184.0
+2018,Actual,R99,Federal Funds,486028.0
+2018,Actual,R99,General Funds,30140314.0
+2018,Actual,R99,Special Funds,338744.0
+2018,Actual,S00,Federal Funds,292204074.0
+2018,Actual,S00,General Funds,9886140.0
+2018,Actual,S00,Special Funds,103948238.0
+2018,Actual,S50,General Funds,1959000.0
+2018,Actual,T00,Federal Funds,2182259.0
+2018,Actual,T00,General Funds,84044697.0
+2018,Actual,T00,Special Funds,39380848.0
+2018,Actual,T50,General Funds,19474480.0
+2018,Actual,T50,Special Funds,7347580.0
+2018,Actual,U00,Federal Funds,70863231.0
+2018,Actual,U00,General Funds,28868614.0
+2018,Actual,U00,Special Funds,277494447.0
+2018,Actual,V00,Federal Funds,4599376.0
+2018,Actual,V00,General Funds,257998145.0
+2018,Actual,V00,Special Funds,3265238.0
+2018,Actual,W00,Federal Funds,4474706.0
+2018,Actual,W00,General Funds,276322336.0
+2018,Actual,W00,Special Funds,101141787.0
+2018,Actual,X00,Federal Funds,11547114.0
+2018,Actual,X00,General Funds,259648777.0
+2018,Actual,X00,Special Funds,963724880.0
+2018,Actual,Y01,General Funds,10000000.0
+2019,Actual,A15,General Funds,168462833.0
+2019,Actual,B75,General Funds,91628875.0
+2019,Actual,C00,Federal Funds,544637.0
+2019,Actual,C00,General Funds,508038448.0
+2019,Actual,C00,Special Funds,53001173.0
+2019,Actual,C80,Federal Funds,96502.0
+2019,Actual,C80,General Funds,106603202.0
+2019,Actual,C80,Special Funds,247596.0
+2019,Actual,C81,Federal Funds,3539243.0
+2019,Actual,C81,General Funds,18991459.0
+2019,Actual,C81,Special Funds,9732354.0
+2019,Actual,C82,General Funds,1400508.0
+2019,Actual,C85,General Funds,631670.0
+2019,Actual,C90,Federal Funds,613828.0
+2019,Actual,C90,Special Funds,17279787.0
+2019,Actual,C91,Special Funds,4103969.0
+2019,Actual,C94,Special Funds,2324635.0
+2019,Actual,C96,Special Funds,2010988.0
+2019,Actual,C98,Special Funds,16901399.0
+2019,Actual,D05,General Funds,7498289.0
+2019,Actual,D06,General Funds,31073500.0
+2019,Actual,D10,General Funds,10559469.0
+2019,Actual,D11,General Funds,359223.0
+2019,Actual,D12,Federal Funds,5178864.0
+2019,Actual,D12,General Funds,3239149.0
+2019,Actual,D12,Special Funds,313443.0
+2019,Actual,D13,Federal Funds,1073034.0
+2019,Actual,D13,Special Funds,32024319.0
+2019,Actual,D15,Federal Funds,4559736.0
+2019,Actual,D15,General Funds,7738701.0
+2019,Actual,D15,Special Funds,684190.0
+2019,Actual,D16,General Funds,2206301.0
+2019,Actual,D16,Special Funds,721300.0
+2019,Actual,D17,General Funds,3024349.0
+2019,Actual,D17,Special Funds,786392.0
+2019,Actual,D21,Federal Funds,48786883.0
+2019,Actual,D21,General Funds,119277282.0
+2019,Actual,D21,Special Funds,6252194.0
+2019,Actual,D26,Federal Funds,33374020.0
+2019,Actual,D26,General Funds,24726931.0
+2019,Actual,D26,Special Funds,511904.0
+2019,Actual,D27,Federal Funds,697390.0
+2019,Actual,D27,General Funds,2543675.0
+2019,Actual,D27,Special Funds,850.0
+2019,Actual,D28,General Funds,9816336.0
+2019,Actual,D28,Special Funds,40000000.0
+2019,Actual,D38,Federal Funds,667716.0
+2019,Actual,D38,General Funds,11864510.0
+2019,Actual,D38,Special Funds,13712798.0
+2019,Actual,D40,Federal Funds,1374868.0
+2019,Actual,D40,General Funds,20744872.0
+2019,Actual,D40,Special Funds,7031348.0
+2019,Actual,D50,Federal Funds,53601544.0
+2019,Actual,D50,General Funds,13451161.0
+2019,Actual,D50,Special Funds,21417796.0
+2019,Actual,D53,Federal Funds,2259871.0
+2019,Actual,D53,Special Funds,19252514.0
+2019,Actual,D55,Federal Funds,22547875.0
+2019,Actual,D55,General Funds,10547164.0
+2019,Actual,D55,Special Funds,3471476.0
+2019,Actual,D60,Federal Funds,15000.0
+2019,Actual,D60,General Funds,6319556.0
+2019,Actual,D60,Special Funds,2591757.0
+2019,Actual,D78,Federal Funds,42067567.0
+2019,Actual,D78,Special Funds,28808289.0
+2019,Actual,D80,Federal Funds,202724.0
+2019,Actual,D80,Special Funds,30741256.0
+2019,Actual,D90,General Funds,128000.0
+2019,Actual,D90,Special Funds,500317.0
+2019,Actual,D99,Special Funds,16284.0
+2019,Actual,E00,General Funds,93229370.0
+2019,Actual,E00,Special Funds,27382629.0
+2019,Actual,E20,General Funds,6194531.0
+2019,Actual,E20,Special Funds,1228263.0
+2019,Actual,E50,General Funds,121926847.0
+2019,Actual,E50,Special Funds,27035640.0
+2019,Actual,E75,General Funds,6715636.0
+2019,Actual,E75,Special Funds,90386131.0
+2019,Actual,E80,General Funds,912738.0
+2019,Actual,F10,General Funds,18757174.0
+2019,Actual,F10,Special Funds,15990650.0
+2019,Actual,F50,General Funds,101861779.0
+2019,Actual,F50,Special Funds,13593731.0
+2019,Actual,G20,Special Funds,20353368.0
+2019,Actual,G50,Special Funds,1835615.0
+2019,Actual,H00,Federal Funds,1330227.0
+2019,Actual,H00,General Funds,69900890.0
+2019,Actual,H00,Special Funds,5525852.0
+2019,Actual,J00,Federal Funds,942571636.0
+2019,Actual,J00,Special Funds,4018835129.0
+2019,Actual,K00,Federal Funds,29285334.0
+2019,Actual,K00,General Funds,65356262.0
+2019,Actual,K00,Special Funds,334010748.0
+2019,Actual,L00,Federal Funds,5573175.0
+2019,Actual,L00,General Funds,34979726.0
+2019,Actual,L00,Special Funds,53249624.0
+2019,Actual,M00,Federal Funds,7873298213.0
+2019,Actual,M00,General Funds,4935669217.0
+2019,Actual,M00,Special Funds,1292417398.0
+2019,Actual,N00,Federal Funds,1615865939.0
+2019,Actual,N00,General Funds,605772802.0
+2019,Actual,N00,Special Funds,113942848.0
+2019,Actual,P00,Federal Funds,152373090.0
+2019,Actual,P00,General Funds,44166495.0
+2019,Actual,P00,Special Funds,177700878.0
+2019,Actual,Q00,Federal Funds,29290817.0
+2019,Actual,Q00,General Funds,1235273101.0
+2019,Actual,Q00,Special Funds,125740049.0
+2019,Actual,R00,Federal Funds,1137220436.0
+2019,Actual,R00,General Funds,6216672432.0
+2019,Actual,R00,Special Funds,581839462.0
+2019,Actual,R11,Federal Funds,3120668.0
+2019,Actual,R11,General Funds,82481578.0
+2019,Actual,R11,Special Funds,4240.0
+2019,Actual,R15,Federal Funds,3120791.0
+2019,Actual,R15,General Funds,11613062.0
+2019,Actual,R15,Special Funds,18378304.0
+2019,Actual,R62,Federal Funds,292139.0
+2019,Actual,R62,General Funds,501857163.0
+2019,Actual,R62,Special Funds,21580593.0
+2019,Actual,R75,General Funds,1493602758.0
+2019,Actual,R75,Special Funds,77494938.0
+2019,Actual,R99,Federal Funds,557829.0
+2019,Actual,R99,General Funds,31868465.0
+2019,Actual,R99,Special Funds,351267.0
+2019,Actual,S00,Federal Funds,282907481.0
+2019,Actual,S00,General Funds,20655751.0
+2019,Actual,S00,Special Funds,97963472.0
+2019,Actual,S50,General Funds,1959000.0
+2019,Actual,T00,Federal Funds,2869600.0
+2019,Actual,T00,General Funds,79880920.0
+2019,Actual,T00,Special Funds,45950575.0
+2019,Actual,T50,General Funds,19474480.0
+2019,Actual,T50,Special Funds,7714159.0
+2019,Actual,U00,Federal Funds,75467381.0
+2019,Actual,U00,General Funds,30985752.0
+2019,Actual,U00,Special Funds,318439642.0
+2019,Actual,V00,Federal Funds,3695903.0
+2019,Actual,V00,General Funds,262110213.0
+2019,Actual,V00,Special Funds,3244926.0
+2019,Actual,W00,Federal Funds,6137922.0
+2019,Actual,W00,General Funds,294239658.0
+2019,Actual,W00,Special Funds,102723585.0
+2019,Actual,X00,Federal Funds,11591033.0
+2019,Actual,X00,General Funds,286000000.0
+2019,Actual,X00,Special Funds,1000726473.0
+2019,Actual,Y01,General Funds,14345241.0
+2020,Actual,A15,General Funds,173831514.0
+2020,Actual,A15,Special Funds,1132963.0
+2020,Actual,B75,General Funds,97629251.0
+2020,Actual,C00,Federal Funds,373679.0
+2020,Actual,C00,General Funds,536253974.0
+2020,Actual,C00,Special Funds,53666769.0
+2020,Actual,C80,Federal Funds,1448863.0
+2020,Actual,C80,General Funds,114986067.0
+2020,Actual,C80,Special Funds,407809.0
+2020,Actual,C81,Federal Funds,3821529.0
+2020,Actual,C81,General Funds,20362384.0
+2020,Actual,C81,Special Funds,9113130.0
+2020,Actual,C82,General Funds,1714611.0
+2020,Actual,C85,General Funds,659018.0
+2020,Actual,C90,Federal Funds,579355.0
+2020,Actual,C90,Special Funds,19714495.0
+2020,Actual,C91,Special Funds,3995945.0
+2020,Actual,C94,Special Funds,2382881.0
+2020,Actual,C96,Special Funds,2015260.0
+2020,Actual,C98,Special Funds,18276791.0
+2020,Actual,D05,General Funds,9906106.0
+2020,Actual,D10,General Funds,11308775.0
+2020,Actual,D11,General Funds,372642.0
+2020,Actual,D12,Federal Funds,3831911.0
+2020,Actual,D12,General Funds,3683660.0
+2020,Actual,D12,Special Funds,291608.0
+2020,Actual,D13,Federal Funds,4217806.0
+2020,Actual,D13,Special Funds,35678471.0
+2020,Actual,D15,Federal Funds,4817405.0
+2020,Actual,D15,General Funds,8623246.0
+2020,Actual,D15,Special Funds,565037.0
+2020,Actual,D16,General Funds,2687578.0
+2020,Actual,D16,Special Funds,849189.0
+2020,Actual,D17,General Funds,3225307.0
+2020,Actual,D17,Special Funds,521060.0
+2020,Actual,D21,Federal Funds,59740664.0
+2020,Actual,D21,General Funds,124762452.0
+2020,Actual,D21,Special Funds,9709537.0
+2020,Actual,D26,Federal Funds,35330488.0
+2020,Actual,D26,Federal Funds (COVID),8616596.0
+2020,Actual,D26,General Funds,25787641.0
+2020,Actual,D26,Special Funds,863518.0
+2020,Actual,D27,Federal Funds,610882.0
+2020,Actual,D27,Federal Funds (COVID),11180.0
+2020,Actual,D27,General Funds,2632008.0
+2020,Actual,D27,Special Funds,15701.0
+2020,Actual,D28,General Funds,10812811.0
+2020,Actual,D28,Special Funds,37927625.0
+2020,Actual,D38,Federal Funds,3730663.0
+2020,Actual,D38,Federal Funds (COVID),7422125.0
+2020,Actual,D38,General Funds,13960352.0
+2020,Actual,D38,Special Funds,17380923.0
+2020,Actual,D40,Federal Funds,1008673.0
+2020,Actual,D40,General Funds,21603042.0
+2020,Actual,D40,Special Funds,14646441.0
+2020,Actual,D50,Federal Funds,108796817.0
+2020,Actual,D50,General Funds,22373799.0
+2020,Actual,D50,Special Funds,18120196.0
+2020,Actual,D53,Federal Funds,1649093.0
+2020,Actual,D53,Special Funds,15828876.0
+2020,Actual,D55,Federal Funds,33090333.0
+2020,Actual,D55,General Funds,10239267.0
+2020,Actual,D55,Special Funds,3635072.0
+2020,Actual,D60,Federal Funds,34985.0
+2020,Actual,D60,General Funds,6954195.0
+2020,Actual,D60,Special Funds,1841554.0
+2020,Actual,D78,Federal Funds,44649632.0
+2020,Actual,D78,Special Funds,31462738.0
+2020,Actual,D80,Federal Funds,80000.0
+2020,Actual,D80,Special Funds,31840274.0
+2020,Actual,D90,General Funds,168000.0
+2020,Actual,D90,Special Funds,552592.0
+2020,Actual,D99,Special Funds,4755.0
+2020,Actual,E00,General Funds,93665413.0
+2020,Actual,E00,Special Funds,28903166.0
+2020,Actual,E20,General Funds,6105452.0
+2020,Actual,E20,Special Funds,1616775.0
+2020,Actual,E50,General Funds,115496497.0
+2020,Actual,E50,Special Funds,31472063.0
+2020,Actual,E75,General Funds,6461424.0
+2020,Actual,E75,Special Funds,88615120.0
+2020,Actual,E80,General Funds,953522.0
+2020,Actual,F10,General Funds,20813787.0
+2020,Actual,F10,Special Funds,15407615.0
+2020,Actual,F50,General Funds,105172205.0
+2020,Actual,F50,Special Funds,12060934.0
+2020,Actual,G20,Special Funds,19977131.0
+2020,Actual,G50,Special Funds,1833644.0
+2020,Actual,H00,Federal Funds,1423032.0
+2020,Actual,H00,General Funds,73896684.0
+2020,Actual,H00,Special Funds,3640365.0
+2020,Actual,J00,Federal Funds,1126859730.0
+2020,Actual,J00,Federal Funds (COVID),348172424.0
+2020,Actual,J00,Special Funds,3897606532.0
+2020,Actual,K00,Federal Funds,29421210.0
+2020,Actual,K00,General Funds,63835946.0
+2020,Actual,K00,Special Funds,299565252.0
+2020,Actual,L00,Federal Funds,5327364.0
+2020,Actual,L00,General Funds,38981779.0
+2020,Actual,L00,Special Funds,81241528.0
+2020,Actual,M00,Federal Funds,8103107207.0
+2020,Actual,M00,Federal Funds (COVID),757512403.0
+2020,Actual,M00,General Funds,5118330742.0
+2020,Actual,M00,Special Funds,1370837998.0
+2020,Actual,N00,Federal Funds,2016555534.0
+2020,Actual,N00,Federal Funds (COVID),5885167.0
+2020,Actual,N00,General Funds,613454082.0
+2020,Actual,N00,Special Funds,98658060.0
+2020,Actual,P00,Federal Funds,153552339.0
+2020,Actual,P00,Federal Funds (COVID),7000000.0
+2020,Actual,P00,General Funds,47499285.0
+2020,Actual,P00,Special Funds,156828688.0
+2020,Actual,Q00,Federal Funds,30911052.0
+2020,Actual,Q00,General Funds,1258446477.0
+2020,Actual,Q00,Special Funds,164948413.0
+2020,Actual,R00,Federal Funds,1147881495.0
+2020,Actual,R00,Federal Funds (COVID),311265024.0
+2020,Actual,R00,General Funds,6581263300.0
+2020,Actual,R00,Special Funds,720403522.0
+2020,Actual,R11,Federal Funds,3425638.0
+2020,Actual,R11,Federal Funds (COVID),546279.0
+2020,Actual,R11,General Funds,86203359.0
+2020,Actual,R15,Federal Funds,3291112.0
+2020,Actual,R15,General Funds,9416415.0
+2020,Actual,R15,Special Funds,18847098.0
+2020,Actual,R62,Federal Funds,319744.0
+2020,Actual,R62,General Funds,527326191.0
+2020,Actual,R62,Special Funds,23823726.0
+2020,Actual,R75,General Funds,1577857668.0
+2020,Actual,R75,Special Funds,94262180.0
+2020,Actual,R99,Federal Funds,666640.0
+2020,Actual,R99,General Funds,33537080.0
+2020,Actual,R99,Special Funds,360687.0
+2020,Actual,S00,Federal Funds,310511693.0
+2020,Actual,S00,Federal Funds (COVID),15988834.0
+2020,Actual,S00,General Funds,28118356.0
+2020,Actual,S00,Special Funds,117179810.0
+2020,Actual,S50,General Funds,1959000.0
+2020,Actual,T00,Federal Funds,2549684.0
+2020,Actual,T00,Federal Funds (COVID),97284678.0
+2020,Actual,T00,General Funds,81249297.0
+2020,Actual,T00,Special Funds,29198583.0
+2020,Actual,T50,General Funds,20724480.0
+2020,Actual,T50,Special Funds,5261102.0
+2020,Actual,U00,Federal Funds,136242070.0
+2020,Actual,U00,General Funds,35598633.0
+2020,Actual,U00,Special Funds,276695621.0
+2020,Actual,V00,Federal Funds,3127484.0
+2020,Actual,V00,General Funds,259560291.0
+2020,Actual,V00,Special Funds,2781984.0
+2020,Actual,W00,Federal Funds,6475903.0
+2020,Actual,W00,General Funds,238408124.0
+2020,Actual,W00,Special Funds,111396112.0
+2020,Actual,X00,Federal Funds,10384746.0
+2020,Actual,X00,General Funds,287000000.0
+2020,Actual,X00,Special Funds,1024441843.0
+2020,Actual,Y01,General Funds,405621213.0
+2021,Actual,A15,American Rescue Plan Act of 21,5000000.0
+2021,Actual,A15,General Funds,185980184.0
+2021,Actual,A15,Special Funds,783420.0
+2021,Actual,B75,General Funds,104831636.0
+2021,Actual,C00,American Rescue Plan Act of 21,3000000.0
+2021,Actual,C00,Federal Funds,264032.0
+2021,Actual,C00,General Funds,555290789.0
+2021,Actual,C00,Special Funds,49732111.0
+2021,Actual,C80,Federal Funds,2004196.0
+2021,Actual,C80,General Funds,109666904.0
+2021,Actual,C80,Special Funds,515801.0
+2021,Actual,C81,Federal Funds,3567471.0
+2021,Actual,C81,General Funds,19944195.0
+2021,Actual,C81,Special Funds,19921832.0
+2021,Actual,C82,General Funds,1717166.0
+2021,Actual,C85,General Funds,709743.0
+2021,Actual,C90,American Rescue Plan Act of 21,83000000.0
+2021,Actual,C90,Federal Funds,708690.0
+2021,Actual,C90,Special Funds,18235806.0
+2021,Actual,C91,Special Funds,4260569.0
+2021,Actual,C94,Special Funds,2445027.0
+2021,Actual,C96,Special Funds,1940363.0
+2021,Actual,C98,American Rescue Plan Act of 21,12186.0
+2021,Actual,C98,Special Funds,19118332.0
+2021,Actual,D05,General Funds,11940494.0
+2021,Actual,D10,General Funds,11557252.0
+2021,Actual,D11,General Funds,413923.0
+2021,Actual,D12,Federal Funds,2109721.0
+2021,Actual,D12,General Funds,3750483.0
+2021,Actual,D12,Special Funds,4151071.0
+2021,Actual,D13,Federal Funds,1126470.0
+2021,Actual,D13,Special Funds,33285184.0
+2021,Actual,D15,Federal Funds,4610768.0
+2021,Actual,D15,General Funds,8158525.0
+2021,Actual,D15,Special Funds,570882.0
+2021,Actual,D16,General Funds,2272785.0
+2021,Actual,D16,Special Funds,1198249.0
+2021,Actual,D17,Federal Funds,32789.0
+2021,Actual,D17,General Funds,3587988.0
+2021,Actual,D17,Special Funds,464954.0
+2021,Actual,D21,"Coronavirus Aid, Relief, and Economic Security Act",1687608.0
+2021,Actual,D21,Federal Funds,54305387.0
+2021,Actual,D21,General Funds,132539495.0
+2021,Actual,D21,Special Funds,7585184.0
+2021,Actual,D26,American Rescue Plan Act of 21,1580287.0
+2021,Actual,D26,"Coronavirus Aid, Relief, and Economic Security Act",13797233.0
+2021,Actual,D26,Coronavirus Response & Relief Sup Act,203076.0
+2021,Actual,D26,Federal Funds,36477804.0
+2021,Actual,D26,General Funds,26630977.0
+2021,Actual,D26,Special Funds,754346.0
+2021,Actual,D27,Federal Funds,980660.0
+2021,Actual,D27,General Funds,2626438.0
+2021,Actual,D28,General Funds,19097839.0
+2021,Actual,D28,Special Funds,35207978.0
+2021,Actual,D38,Federal Funds,1102560.0
+2021,Actual,D38,General Funds,21538432.0
+2021,Actual,D38,Special Funds,22226642.0
+2021,Actual,D40,"Coronavirus Aid, Relief, and Economic Security Act",25905.0
+2021,Actual,D40,Federal Funds,1134606.0
+2021,Actual,D40,General Funds,17331685.0
+2021,Actual,D40,Special Funds,6982829.0
+2021,Actual,D50,American Rescue Plan Act of 21,4000000.0
+2021,Actual,D50,"Coronavirus Aid, Relief, and Economic Security Act",338168.0
+2021,Actual,D50,Federal Funds,922695715.0
+2021,Actual,D50,General Funds,14680440.0
+2021,Actual,D50,Special Funds,19326575.0
+2021,Actual,D53,Federal Funds,1464535.0
+2021,Actual,D53,Special Funds,15624518.0
+2021,Actual,D55,American Rescue Plan Act of 21,3915716.0
+2021,Actual,D55,Coronavirus Response & Relief Sup Act,1554674.0
+2021,Actual,D55,Federal Funds,18486313.0
+2021,Actual,D55,General Funds,11970503.0
+2021,Actual,D55,Special Funds,3375391.0
+2021,Actual,D60,Federal Funds,19458.0
+2021,Actual,D60,General Funds,6972829.0
+2021,Actual,D60,Special Funds,2070792.0
+2021,Actual,D78,Federal Funds,397505969.0
+2021,Actual,D78,Special Funds,29449912.0
+2021,Actual,D80,Federal Funds,122487.0
+2021,Actual,D80,Special Funds,28418179.0
+2021,Actual,D90,General Funds,128000.0
+2021,Actual,D90,Special Funds,505182.0
+2021,Actual,D99,Special Funds,13258.0
+2021,Actual,E00,American Rescue Plan Act of 21,40292059.0
+2021,Actual,E00,"Coronavirus Aid, Relief, and Economic Security Act",177800000.0
+2021,Actual,E00,General Funds,96960800.0
+2021,Actual,E00,Special Funds,30806768.0
+2021,Actual,E17,General Funds,1475309.0
+2021,Actual,E20,General Funds,5883610.0
+2021,Actual,E20,Special Funds,1709676.0
+2021,Actual,E50,General Funds,109340443.0
+2021,Actual,E50,Special Funds,32623139.0
+2021,Actual,E75,General Funds,4943387.0
+2021,Actual,E75,Special Funds,103823927.0
+2021,Actual,E80,General Funds,970981.0
+2021,Actual,F10,General Funds,19368085.0
+2021,Actual,F10,Special Funds,14491592.0
+2021,Actual,F50,General Funds,89064872.0
+2021,Actual,F50,Special Funds,1894000.0
+2021,Actual,G20,Special Funds,19037510.0
+2021,Actual,G50,Special Funds,1935723.0
+2021,Actual,H00,American Rescue Plan Act of 21,342414.0
+2021,Actual,H00,Federal Funds,2613078.0
+2021,Actual,H00,General Funds,72771024.0
+2021,Actual,H00,Special Funds,5487876.0
+2021,Actual,J00,American Rescue Plan Act of 21,20935388.0
+2021,Actual,J00,"Coronavirus Aid, Relief, and Economic Security Act",169545707.0
+2021,Actual,J00,Coronavirus Response & Relief Sup Act,210066731.0
+2021,Actual,J00,Federal Funds,997687789.0
+2021,Actual,J00,Special Funds,3659276376.0
+2021,Actual,K00,American Rescue Plan Act of 21,1131257.0
+2021,Actual,K00,Federal Funds,32850947.0
+2021,Actual,K00,General Funds,61916537.0
+2021,Actual,K00,Special Funds,300591839.0
+2021,Actual,L00,American Rescue Plan Act of 21,2061001.0
+2021,Actual,L00,"Coronavirus Aid, Relief, and Economic Security Act",4886853.0
+2021,Actual,L00,Federal Funds,5245887.0
+2021,Actual,L00,General Funds,37230509.0
+2021,Actual,L00,Special Funds,66392937.0
+2021,Actual,M00,American Rescue Plan Act of 21,37040526.0
+2021,Actual,M00,"Coronavirus Aid, Relief, and Economic Security Act",730929496.0
+2021,Actual,M00,Coronavirus Response & Relief Sup Act,85531240.0
+2021,Actual,M00,Federal Funds,9406258296.0
+2021,Actual,M00,General Funds,5125969514.0
+2021,Actual,M00,Special Funds,2181489810.0
+2021,Actual,N00,American Rescue Plan Act of 21,89292747.0
+2021,Actual,N00,"Coronavirus Aid, Relief, and Economic Security Act",51150233.0
+2021,Actual,N00,Coronavirus Response & Relief Sup Act,413060642.0
+2021,Actual,N00,Federal Funds,2696706343.0
+2021,Actual,N00,General Funds,707055125.0
+2021,Actual,N00,Special Funds,90820311.0
+2021,Actual,P00,American Rescue Plan Act of 21,7003026.0
+2021,Actual,P00,"Coronavirus Aid, Relief, and Economic Security Act",15000000.0
+2021,Actual,P00,Federal Funds,231598894.0
+2021,Actual,P00,General Funds,49068361.0
+2021,Actual,P00,Special Funds,242749585.0
+2021,Actual,Q00,American Rescue Plan Act of 21,26610565.0
+2021,Actual,Q00,"Coronavirus Aid, Relief, and Economic Security Act",18144800.0
+2021,Actual,Q00,Federal Funds,26761691.0
+2021,Actual,Q00,General Funds,1217312911.0
+2021,Actual,Q00,Special Funds,173446663.0
+2021,Actual,R00,American Rescue Plan Act of 21,45000000.0
+2021,Actual,R00,"Coronavirus Aid, Relief, and Economic Security Act",78223593.0
+2021,Actual,R00,Coronavirus Response & Relief Sup Act,871951111.0
+2021,Actual,R00,Federal Funds,1087653190.0
+2021,Actual,R00,General Funds,6810962901.0
+2021,Actual,R00,Special Funds,703722764.0
+2021,Actual,R11,American Rescue Plan Act of 21,360000.0
+2021,Actual,R11,Federal Funds,3410145.0
+2021,Actual,R11,General Funds,86996731.0
+2021,Actual,R15,Federal Funds,295144.0
+2021,Actual,R15,General Funds,9142586.0
+2021,Actual,R15,Special Funds,18029314.0
+2021,Actual,R62,American Rescue Plan Act of 21,8782215.0
+2021,Actual,R62,Federal Funds,357304.0
+2021,Actual,R62,General Funds,529312787.0
+2021,Actual,R62,Special Funds,28623276.0
+2021,Actual,R75,American Rescue Plan Act of 21,1217785.0
+2021,Actual,R75,General Funds,1596651814.0
+2021,Actual,R75,Special Funds,116987369.0
+2021,Actual,R99,Federal Funds,675034.0
+2021,Actual,R99,General Funds,32939952.0
+2021,Actual,R99,Special Funds,444531.0
+2021,Actual,S00,American Rescue Plan Act of 21,332970936.0
+2021,Actual,S00,"Coronavirus Aid, Relief, and Economic Security Act",105939281.0
+2021,Actual,S00,Coronavirus Response & Relief Sup Act,214572408.0
+2021,Actual,S00,Federal Funds,321245139.0
+2021,Actual,S00,General Funds,35300704.0
+2021,Actual,S00,Special Funds,133194269.0
+2021,Actual,S50,General Funds,1959000.0
+2021,Actual,T00,American Rescue Plan Act of 21,66467087.0
+2021,Actual,T00,"Coronavirus Aid, Relief, and Economic Security Act",79851957.0
+2021,Actual,T00,Federal Funds,3330254.0
+2021,Actual,T00,General Funds,76108136.0
+2021,Actual,T00,Special Funds,259395280.0
+2021,Actual,T50,American Rescue Plan Act of 21,1500000.0
+2021,Actual,T50,General Funds,20474480.0
+2021,Actual,T50,Special Funds,5000000.0
+2021,Actual,U00,Federal Funds,83083032.0
+2021,Actual,U00,General Funds,33476953.0
+2021,Actual,U00,Special Funds,314426736.0
+2021,Actual,V00,American Rescue Plan Act of 21,4854582.0
+2021,Actual,V00,Federal Funds,2956151.0
+2021,Actual,V00,General Funds,244059738.0
+2021,Actual,V00,Special Funds,1465263.0
+2021,Actual,W00,American Rescue Plan Act of 21,6988776.0
+2021,Actual,W00,Federal Funds,8187660.0
+2021,Actual,W00,General Funds,200466647.0
+2021,Actual,W00,Special Funds,113043596.0
+2021,Actual,X00,Federal Funds,9302492.0
+2021,Actual,X00,General Funds,131000000.0
+2021,Actual,X00,Special Funds,1137313705.0
+2021,Actual,Y01,General Funds,114000000.0
+2022,Actual,A15,General Funds,185875343.0
+2022,Actual,A15,Special Funds,1052330.0
+2022,Actual,B75,American Rescue Plan Act of 21,10600.0
+2022,Actual,B75,General Funds,108469030.0
+2022,Actual,C00,American Rescue Plan Act of 21,5000000.0
+2022,Actual,C00,Federal Funds,261693.0
+2022,Actual,C00,General Funds,592140664.0
+2022,Actual,C00,Special Funds,52269324.0
+2022,Actual,C80,Federal Funds,2018189.0
+2022,Actual,C80,General Funds,114458274.0
+2022,Actual,C80,Special Funds,475756.0
+2022,Actual,C81,Federal Funds,3671686.0
+2022,Actual,C81,General Funds,22178994.0
+2022,Actual,C81,Special Funds,10903632.0
+2022,Actual,C82,General Funds,1829050.0
+2022,Actual,C85,General Funds,723062.0
+2022,Actual,C90,Federal Funds,677938.0
+2022,Actual,C90,Special Funds,18851198.0
+2022,Actual,C91,Special Funds,5160526.0
+2022,Actual,C94,Special Funds,2599220.0
+2022,Actual,C96,Special Funds,4098804.0
+2022,Actual,C98,Special Funds,18648808.0
+2022,Actual,D05,General Funds,13476416.0
+2022,Actual,D06,General Funds,153415000.0
+2022,Actual,D10,General Funds,12159977.0
+2022,Actual,D11,General Funds,435503.0
+2022,Actual,D12,Federal Funds,2087292.0
+2022,Actual,D12,General Funds,3832163.0
+2022,Actual,D12,Special Funds,4699951.0
+2022,Actual,D13,Federal Funds,1011317.0
+2022,Actual,D13,Special Funds,69122383.0
+2022,Actual,D15,American Rescue Plan Act of 21,755132.0
+2022,Actual,D15,Federal Funds,4489192.0
+2022,Actual,D15,General Funds,9058441.0
+2022,Actual,D15,Special Funds,598963.0
+2022,Actual,D16,American Rescue Plan Act of 21,361728.0
+2022,Actual,D16,General Funds,2893089.0
+2022,Actual,D16,Special Funds,1423354.0
+2022,Actual,D17,Federal Funds,43595.0
+2022,Actual,D17,General Funds,4844812.0
+2022,Actual,D17,Special Funds,761882.0
+2022,Actual,D21,American Rescue Plan Act of 21,216500.0
+2022,Actual,D21,Federal Funds,68439774.0
+2022,Actual,D21,General Funds,124706105.0
+2022,Actual,D21,Special Funds,9522413.0
+2022,Actual,D26,American Rescue Plan Act of 21,4407869.0
+2022,Actual,D26,"Coronavirus Aid, Relief, and Economic Security Act",5173635.0
+2022,Actual,D26,Coronavirus Response & Relief Sup Act,2746201.0
+2022,Actual,D26,Federal Funds,42981222.0
+2022,Actual,D26,General Funds,26438817.0
+2022,Actual,D26,Special Funds,1204531.0
+2022,Actual,D27,Federal Funds,1329467.0
+2022,Actual,D27,General Funds,2470769.0
+2022,Actual,D27,Special Funds,3350.0
+2022,Actual,D28,General Funds,16389524.0
+2022,Actual,D28,Special Funds,36389893.0
+2022,Actual,D38,Federal Funds,943687.0
+2022,Actual,D38,General Funds,22705664.0
+2022,Actual,D38,Special Funds,23836524.0
+2022,Actual,D40,American Rescue Plan Act of 21,6594.0
+2022,Actual,D40,Federal Funds,1135813.0
+2022,Actual,D40,General Funds,20887193.0
+2022,Actual,D40,Special Funds,6895268.0
+2022,Actual,D50,Federal Funds,22563186.0
+2022,Actual,D50,General Funds,12367883.0
+2022,Actual,D50,Special Funds,4857.0
+2022,Actual,D52,American Rescue Plan Act of 21,887753.0
+2022,Actual,D52,Federal Funds,372145943.0
+2022,Actual,D52,General Funds,2391121.0
+2022,Actual,D52,Special Funds,142528896.0
+2022,Actual,D53,Federal Funds,2037742.0
+2022,Actual,D53,Special Funds,16113736.0
+2022,Actual,D55,American Rescue Plan Act of 21,2575000.0
+2022,Actual,D55,Federal Funds,17648229.0
+2022,Actual,D55,General Funds,11712479.0
+2022,Actual,D55,Special Funds,3648954.0
+2022,Actual,D60,General Funds,6724584.0
+2022,Actual,D60,Special Funds,1917353.0
+2022,Actual,D78,American Rescue Plan Act of 21,490891.0
+2022,Actual,D78,Federal Funds,446204928.0
+2022,Actual,D78,Special Funds,37198420.0
+2022,Actual,D80,Special Funds,32610175.0
+2022,Actual,D90,General Funds,147259.0
+2022,Actual,D90,Special Funds,541019.0
+2022,Actual,D99,Special Funds,52399.0
+2022,Actual,E00,American Rescue Plan Act of 21,18990.0
+2022,Actual,E00,General Funds,96364354.0
+2022,Actual,E00,Special Funds,33867698.0
+2022,Actual,E17,American Rescue Plan Act of 21,24131.0
+2022,Actual,E17,General Funds,3689052.0
+2022,Actual,E20,General Funds,6057620.0
+2022,Actual,E20,Special Funds,2155349.0
+2022,Actual,E50,General Funds,102857812.0
+2022,Actual,E50,Special Funds,37008172.0
+2022,Actual,E75,American Rescue Plan Act of 21,2000000.0
+2022,Actual,E75,General Funds,5205432.0
+2022,Actual,E75,Special Funds,108755487.0
+2022,Actual,E80,General Funds,983482.0
+2022,Actual,F10,General Funds,103701675.0
+2022,Actual,F10,Special Funds,20091285.0
+2022,Actual,F50,American Rescue Plan Act of 21,4796804.0
+2022,Actual,F50,General Funds,99626674.0
+2022,Actual,F50,Special Funds,11743810.0
+2022,Actual,G20,Special Funds,19507571.0
+2022,Actual,G50,Special Funds,2183891.0
+2022,Actual,H00,Federal Funds,1778366.0
+2022,Actual,H00,General Funds,97328522.0
+2022,Actual,H00,Special Funds,8163477.0
+2022,Actual,J00,American Rescue Plan Act of 21,637970284.0
+2022,Actual,J00,"Coronavirus Aid, Relief, and Economic Security Act",35095913.0
+2022,Actual,J00,Coronavirus Response & Relief Sup Act,51890318.0
+2022,Actual,J00,Federal Funds,1033464250.0
+2022,Actual,J00,General Funds,30200000.0
+2022,Actual,J00,Special Funds,3831040744.0
+2022,Actual,K00,American Rescue Plan Act of 21,881419.0
+2022,Actual,K00,Federal Funds,32764257.0
+2022,Actual,K00,General Funds,100684888.0
+2022,Actual,K00,Special Funds,307349391.0
+2022,Actual,L00,Coronavirus Response & Relief Sup Act,865218.0
+2022,Actual,L00,Federal Funds,16093424.0
+2022,Actual,L00,General Funds,40812866.0
+2022,Actual,L00,Special Funds,85668525.0
+2022,Actual,M00,American Rescue Plan Act of 21,386380877.0
+2022,Actual,M00,"Coronavirus Aid, Relief, and Economic Security Act",721759774.0
+2022,Actual,M00,Coronavirus Response & Relief Sup Act,230674806.0
+2022,Actual,M00,Federal Funds,10007440963.0
+2022,Actual,M00,General Funds,5783900899.0
+2022,Actual,M00,Special Funds,1704300945.0
+2022,Actual,N00,American Rescue Plan Act of 21,217040314.0
+2022,Actual,N00,"Coronavirus Aid, Relief, and Economic Security Act",4262331.0
+2022,Actual,N00,Coronavirus Response & Relief Sup Act,7876703.0
+2022,Actual,N00,Federal Funds,3497788111.0
+2022,Actual,N00,General Funds,721858929.0
+2022,Actual,N00,Special Funds,111296618.0
+2022,Actual,P00,American Rescue Plan Act of 21,867500000.0
+2022,Actual,P00,Federal Funds,301888856.0
+2022,Actual,P00,General Funds,69850917.0
+2022,Actual,P00,Special Funds,241843219.0
+2022,Actual,Q00,American Rescue Plan Act of 21,290258017.0
+2022,Actual,Q00,"Coronavirus Aid, Relief, and Economic Security Act",100000000.0
+2022,Actual,Q00,Federal Funds,23127159.0
+2022,Actual,Q00,General Funds,951493711.0
+2022,Actual,Q00,Special Funds,69720047.0
+2022,Actual,R00,American Rescue Plan Act of 21,2680234721.0
+2022,Actual,R00,"Coronavirus Aid, Relief, and Economic Security Act",25533970.0
+2022,Actual,R00,Coronavirus Response & Relief Sup Act,87593538.0
+2022,Actual,R00,Federal Funds,1568073466.0
+2022,Actual,R00,General Funds,6822695080.0
+2022,Actual,R00,Special Funds,722412946.0
+2022,Actual,R11,American Rescue Plan Act of 21,2959475.0
+2022,Actual,R11,"Coronavirus Aid, Relief, and Economic Security Act",136866.0
+2022,Actual,R11,Federal Funds,3410305.0
+2022,Actual,R11,General Funds,90785680.0
+2022,Actual,R12,Special Funds,119675.0
+2022,Actual,R15,Federal Funds,423253.0
+2022,Actual,R15,General Funds,10074015.0
+2022,Actual,R15,Special Funds,18968889.0
+2022,Actual,R62,American Rescue Plan Act of 21,1000000.0
+2022,Actual,R62,Federal Funds,383239.0
+2022,Actual,R62,General Funds,613981359.0
+2022,Actual,R62,Special Funds,27168832.0
+2022,Actual,R75,American Rescue Plan Act of 21,6000000.0
+2022,Actual,R75,General Funds,1851188877.0
+2022,Actual,R75,Special Funds,155696447.0
+2022,Actual,R99,Federal Funds,657244.0
+2022,Actual,R99,General Funds,36023174.0
+2022,Actual,R99,Special Funds,390742.0
+2022,Actual,S00,American Rescue Plan Act of 21,747854110.0
+2022,Actual,S00,"Coronavirus Aid, Relief, and Economic Security Act",1984578.0
+2022,Actual,S00,Coronavirus Response & Relief Sup Act,42635410.0
+2022,Actual,S00,Federal Funds,331245447.0
+2022,Actual,S00,General Funds,40037023.0
+2022,Actual,S00,Special Funds,120654229.0
+2022,Actual,S50,General Funds,1959000.0
+2022,Actual,T00,American Rescue Plan Act of 21,831700.0
+2022,Actual,T00,"Coronavirus Aid, Relief, and Economic Security Act",942008.0
+2022,Actual,T00,Federal Funds,2168167.0
+2022,Actual,T00,General Funds,86423701.0
+2022,Actual,T00,Special Funds,64345120.0
+2022,Actual,T50,General Funds,20835816.0
+2022,Actual,T50,Special Funds,264205.0
+2022,Actual,U00,Federal Funds,87068237.0
+2022,Actual,U00,General Funds,39633286.0
+2022,Actual,U00,Special Funds,356181195.0
+2022,Actual,V00,American Rescue Plan Act of 21,4045480.0
+2022,Actual,V00,Federal Funds,2194876.0
+2022,Actual,V00,General Funds,246450658.0
+2022,Actual,V00,Special Funds,1695909.0
+2022,Actual,W00,American Rescue Plan Act of 21,5315480.0
+2022,Actual,W00,Federal Funds,7060352.0
+2022,Actual,W00,General Funds,343439758.0
+2022,Actual,W00,Special Funds,108601200.0
+2022,Actual,X00,Federal Funds,7864432.0
+2022,Actual,X00,General Funds,260000000.0
+2022,Actual,X00,Special Funds,1111198147.0
+2022,Actual,Y01,General Funds,882919432.0
+2023,Actual,A15,General Funds,173507741.0
+2023,Actual,A15,Special Funds,17965062.0
+2023,Actual,B75,General Funds,143283099.0
+2023,Actual,C00,Federal Funds,512985.0
+2023,Actual,C00,General Funds,645647417.0
+2023,Actual,C00,Special Funds,64086397.0
+2023,Actual,C80,American Rescue Plan Act of 21,125963.0
+2023,Actual,C80,Federal Funds,1847046.0
+2023,Actual,C80,General Funds,126085854.0
+2023,Actual,C80,Special Funds,466722.0
+2023,Actual,C81,Federal Funds,4196782.0
+2023,Actual,C81,General Funds,26863130.0
+2023,Actual,C81,Special Funds,13089825.0
+2023,Actual,C82,General Funds,2323460.0
+2023,Actual,C85,General Funds,895503.0
+2023,Actual,C90,Federal Funds,848511.0
+2023,Actual,C90,Special Funds,21955956.0
+2023,Actual,C91,American Rescue Plan Act of 21,1482.0
+2023,Actual,C91,Special Funds,6922447.0
+2023,Actual,C94,Special Funds,2669078.0
+2023,Actual,C96,Special Funds,4880612.0
+2023,Actual,C98,Special Funds,20611690.0
+2023,Actual,D05,General Funds,16260662.0
+2023,Actual,D05,Special Funds,500000.0
+2023,Actual,D10,General Funds,13336336.0
+2023,Actual,D11,General Funds,492931.0
+2023,Actual,D12,Federal Funds,2040087.0
+2023,Actual,D12,General Funds,3810612.0
+2023,Actual,D12,Special Funds,5384948.0
+2023,Actual,D13,Federal Funds,1244163.0
+2023,Actual,D13,Special Funds,80548879.0
+2023,Actual,D15,American Rescue Plan Act of 21,830075.0
+2023,Actual,D15,Federal Funds,5506904.0
+2023,Actual,D15,General Funds,9495002.0
+2023,Actual,D15,Special Funds,599855.0
+2023,Actual,D16,General Funds,3145357.0
+2023,Actual,D16,Special Funds,1181702.0
+2023,Actual,D17,Federal Funds,87286.0
+2023,Actual,D17,General Funds,4885313.0
+2023,Actual,D17,Special Funds,716906.0
+2023,Actual,D21,American Rescue Plan Act of 21,5319921.0
+2023,Actual,D21,Federal Funds,64553028.0
+2023,Actual,D21,General Funds,283352205.0
+2023,Actual,D21,Special Funds,12640222.0
+2023,Actual,D22,General Funds,833457.0
+2023,Actual,D22,Special Funds,991.0
+2023,Actual,D25,American Rescue Plan Act of 21,40000000.0
+2023,Actual,D25,General Funds,277948440.0
+2023,Actual,D26,American Rescue Plan Act of 21,5750729.0
+2023,Actual,D26,Coronavirus Response & Relief Sup Act,595358.0
+2023,Actual,D26,Federal Funds,39440948.0
+2023,Actual,D26,General Funds,33039562.0
+2023,Actual,D26,Special Funds,1185523.0
+2023,Actual,D27,Federal Funds,1230211.0
+2023,Actual,D27,General Funds,3214567.0
+2023,Actual,D27,Special Funds,14250.0
+2023,Actual,D28,General Funds,20910416.0
+2023,Actual,D28,Special Funds,47102307.0
+2023,Actual,D38,Federal Funds,1752986.0
+2023,Actual,D38,General Funds,25106574.0
+2023,Actual,D38,Special Funds,19153326.0
+2023,Actual,D40,Federal Funds,1185204.0
+2023,Actual,D40,General Funds,27780508.0
+2023,Actual,D40,Special Funds,17159746.0
+2023,Actual,D50,Federal Funds,25671939.0
+2023,Actual,D50,General Funds,13493780.0
+2023,Actual,D50,Special Funds,7706161.0
+2023,Actual,D52,American Rescue Plan Act of 21,9123609.0
+2023,Actual,D52,Federal Funds,330667913.0
+2023,Actual,D52,General Funds,33585339.0
+2023,Actual,D52,Special Funds,129883713.0
+2023,Actual,D53,Federal Funds,2034456.0
+2023,Actual,D53,General Funds,10000000.0
+2023,Actual,D53,Special Funds,18159501.0
+2023,Actual,D55,Federal Funds,18380740.0
+2023,Actual,D55,General Funds,18443356.0
+2023,Actual,D55,Special Funds,4621994.0
+2023,Actual,D60,Federal Funds,57466.0
+2023,Actual,D60,General Funds,7441642.0
+2023,Actual,D60,Special Funds,2134645.0
+2023,Actual,D76,Federal Funds,1881895.0
+2023,Actual,D76,General Funds,2780444.0
+2023,Actual,D77,Special Funds,1118957.0
+2023,Actual,D78,Federal Funds,522734940.0
+2023,Actual,D78,General Funds,3549620.0
+2023,Actual,D78,Special Funds,45243251.0
+2023,Actual,D80,American Rescue Plan Act of 21,35566.0
+2023,Actual,D80,Special Funds,36549785.0
+2023,Actual,D90,General Funds,193109.0
+2023,Actual,D90,Special Funds,530065.0
+2023,Actual,D99,Special Funds,33959.0
+2023,Actual,E00,American Rescue Plan Act of 21,154120.0
+2023,Actual,E00,General Funds,113136537.0
+2023,Actual,E00,Special Funds,45315429.0
+2023,Actual,E17,General Funds,5997012.0
+2023,Actual,E20,Federal Funds,88915.0
+2023,Actual,E20,General Funds,8168781.0
+2023,Actual,E20,Special Funds,1507165.0
+2023,Actual,E50,General Funds,107871883.0
+2023,Actual,E50,Special Funds,37192874.0
+2023,Actual,E75,General Funds,7878758.0
+2023,Actual,E75,Special Funds,115007347.0
+2023,Actual,E80,General Funds,981100.0
+2023,Actual,F10,General Funds,119865510.0
+2023,Actual,F10,Special Funds,16930340.0
+2023,Actual,F50,Federal Funds,190036.0
+2023,Actual,F50,General Funds,139163511.0
+2023,Actual,F50,Special Funds,56893716.0
+2023,Actual,G20,American Rescue Plan Act of 21,27557.0
+2023,Actual,G20,Special Funds,20444207.0
+2023,Actual,G50,Special Funds,2320912.0
+2023,Actual,H00,Federal Funds,2252978.0
+2023,Actual,H00,General Funds,336801863.0
+2023,Actual,H00,Special Funds,263108647.0
+2023,Actual,I00,General Funds,338854.0
+2023,Actual,J00,American Rescue Plan Act of 21,351383099.0
+2023,Actual,J00,"Coronavirus Aid, Relief, and Economic Security Act",13274101.0
+2023,Actual,J00,Coronavirus Response & Relief Sup Act,5365939.0
+2023,Actual,J00,Federal Funds,1035708267.0
+2023,Actual,J00,Special Funds,3822500406.0
+2023,Actual,K00,Federal Funds,43568085.0
+2023,Actual,K00,General Funds,106574357.0
+2023,Actual,K00,Special Funds,491318921.0
+2023,Actual,L00,Federal Funds,8953644.0
+2023,Actual,L00,General Funds,42655920.0
+2023,Actual,L00,Special Funds,122034017.0
+2023,Actual,M00,American Rescue Plan Act of 21,78536300.0
+2023,Actual,M00,"Coronavirus Aid, Relief, and Economic Security Act",200242276.0
+2023,Actual,M00,Coronavirus Response & Relief Sup Act,101856827.0
+2023,Actual,M00,Federal Funds,11385020518.0
+2023,Actual,M00,General Funds,6491203942.0
+2023,Actual,M00,Special Funds,1632692866.0
+2023,Actual,N00,American Rescue Plan Act of 21,26505796.0
+2023,Actual,N00,Coronavirus Response & Relief Sup Act,4164608.0
+2023,Actual,N00,Federal Funds,2854629109.0
+2023,Actual,N00,General Funds,782549064.0
+2023,Actual,N00,Special Funds,206218678.0
+2023,Actual,P00,American Rescue Plan Act of 21,52070000.0
+2023,Actual,P00,Federal Funds,240289077.0
+2023,Actual,P00,General Funds,55678500.0
+2023,Actual,P00,Special Funds,248081390.0
+2023,Actual,Q00,American Rescue Plan Act of 21,1314464.0
+2023,Actual,Q00,Federal Funds,41069024.0
+2023,Actual,Q00,General Funds,1403247440.0
+2023,Actual,Q00,Special Funds,94641496.0
+2023,Actual,R00,American Rescue Plan Act of 21,218097021.0
+2023,Actual,R00,"Coronavirus Aid, Relief, and Economic Security Act",526502.0
+2023,Actual,R00,Coronavirus Response & Relief Sup Act,33869485.0
+2023,Actual,R00,Federal Funds,1477207427.0
+2023,Actual,R00,General Funds,7263871206.0
+2023,Actual,R00,Special Funds,944707525.0
+2023,Actual,R11,Federal Funds,3196898.0
+2023,Actual,R11,General Funds,92812826.0
+2023,Actual,R12,Special Funds,4383772.0
+2023,Actual,R15,American Rescue Plan Act of 21,19265.0
+2023,Actual,R15,Federal Funds,372798.0
+2023,Actual,R15,General Funds,11033443.0
+2023,Actual,R15,Special Funds,20990221.0
+2023,Actual,R62,Federal Funds,402616.0
+2023,Actual,R62,General Funds,758509214.0
+2023,Actual,R62,Special Funds,45214495.0
+2023,Actual,R75,General Funds,2030649074.0
+2023,Actual,R75,Special Funds,559856079.0
+2023,Actual,R99,Federal Funds,725829.0
+2023,Actual,R99,General Funds,42736930.0
+2023,Actual,R99,Special Funds,392757.0
+2023,Actual,S00,American Rescue Plan Act of 21,388876585.0
+2023,Actual,S00,"Coronavirus Aid, Relief, and Economic Security Act",1197154.0
+2023,Actual,S00,Coronavirus Response & Relief Sup Act,645539.0
+2023,Actual,S00,Federal Funds,337428153.0
+2023,Actual,S00,General Funds,264661853.0
+2023,Actual,S00,Special Funds,151896733.0
+2023,Actual,S50,General Funds,2000000.0
+2023,Actual,T00,American Rescue Plan Act of 21,8141274.0
+2023,Actual,T00,Federal Funds,5131355.0
+2023,Actual,T00,General Funds,184155422.0
+2023,Actual,T00,Special Funds,131771530.0
+2023,Actual,T50,American Rescue Plan Act of 21,11679163.0
+2023,Actual,T50,General Funds,39075816.0
+2023,Actual,U00,Federal Funds,244545987.0
+2023,Actual,U00,General Funds,79097682.0
+2023,Actual,U00,Special Funds,348551933.0
+2023,Actual,V00,Federal Funds,5924175.0
+2023,Actual,V00,General Funds,293184228.0
+2023,Actual,V00,Special Funds,10805892.0
+2023,Actual,W00,Federal Funds,7989878.0
+2023,Actual,W00,General Funds,402136719.0
+2023,Actual,W00,Special Funds,126636951.0
+2023,Actual,X00,Federal Funds,6392583.0
+2023,Actual,X00,General Funds,649000000.0
+2023,Actual,X00,Special Funds,775499502.0
+2023,Actual,Y01,General Funds,4205388848.0
+2024,Actual,A15,General Funds,258063180.0
+2024,Actual,A15,Special Funds,1600000.0
+2024,Actual,B75,General Funds,155160017.0
+2024,Actual,C00,Federal Funds,731807.0
+2024,Actual,C00,General Funds,670323313.0
+2024,Actual,C00,Special Funds,85285415.0
+2024,Actual,C80,Federal Funds,2058005.0
+2024,Actual,C80,General Funds,142599130.0
+2024,Actual,C80,Special Funds,756946.0
+2024,Actual,C81,Federal Funds,5101581.0
+2024,Actual,C81,General Funds,34195771.0
+2024,Actual,C81,Special Funds,29538300.0
+2024,Actual,C82,General Funds,2800378.0
+2024,Actual,C85,General Funds,930461.0
+2024,Actual,C90,Federal Funds,701562.0
+2024,Actual,C90,Special Funds,22988755.0
+2024,Actual,C91,Special Funds,7134246.0
+2024,Actual,C94,Special Funds,3039740.0
+2024,Actual,C96,Special Funds,4681767.0
+2024,Actual,C98,Special Funds,22798479.0
+2024,Actual,D05,General Funds,41655676.0
+2024,Actual,D05,Special Funds,3008802.0
+2024,Actual,D10,General Funds,16565188.0
+2024,Actual,D11,General Funds,873295.0
+2024,Actual,D12,Federal Funds,1749695.0
+2024,Actual,D12,General Funds,4284263.0
+2024,Actual,D12,Special Funds,5379999.0
+2024,Actual,D13,Federal Funds,1090651.0
+2024,Actual,D13,Special Funds,142873330.0
+2024,Actual,D15,General Funds,8742177.0
+2024,Actual,D15,Special Funds,465816.0
+2024,Actual,D16,General Funds,4204481.0
+2024,Actual,D16,Special Funds,1636335.0
+2024,Actual,D17,Federal Funds,45961.0
+2024,Actual,D17,General Funds,6382132.0
+2024,Actual,D17,Special Funds,472390.0
+2024,Actual,D18,General Funds,615177.0
+2024,Actual,D21,American Rescue Plan Act of 21,15927772.0
+2024,Actual,D21,Federal Funds,39388334.0
+2024,Actual,D21,General Funds,282326978.0
+2024,Actual,D21,Special Funds,29630508.0
+2024,Actual,D22,General Funds,1530391.0
+2024,Actual,D22,Special Funds,34000.0
+2024,Actual,D23,Special Funds,24166366.0
+2024,Actual,D25,General Funds,363018225.0
+2024,Actual,D25,Special Funds,268450784.0
+2024,Actual,D26,American Rescue Plan Act of 21,8572425.0
+2024,Actual,D26,Coronavirus Response & Relief Sup Act,634281.0
+2024,Actual,D26,Federal Funds,33058821.0
+2024,Actual,D26,General Funds,37826656.0
+2024,Actual,D26,Special Funds,1794911.0
+2024,Actual,D27,Federal Funds,1386642.0
+2024,Actual,D27,General Funds,3745732.0
+2024,Actual,D27,Special Funds,7395.0
+2024,Actual,D28,General Funds,18986618.0
+2024,Actual,D28,Special Funds,186223975.0
+2024,Actual,D29,Special Funds,1623195.0
+2024,Actual,D38,Federal Funds,948745.0
+2024,Actual,D38,General Funds,23508655.0
+2024,Actual,D38,Special Funds,22768339.0
+2024,Actual,D40,Federal Funds,1620834.0
+2024,Actual,D40,General Funds,41741563.0
+2024,Actual,D40,Special Funds,8830699.0
+2024,Actual,D50,Federal Funds,66089487.0
+2024,Actual,D50,General Funds,15544194.0
+2024,Actual,D50,Special Funds,4857.0
+2024,Actual,D52,Federal Funds,732260142.0
+2024,Actual,D52,General Funds,11249336.0
+2024,Actual,D52,Special Funds,160917629.0
+2024,Actual,D53,Federal Funds,2212465.0
+2024,Actual,D53,General Funds,25500000.0
+2024,Actual,D53,Special Funds,19613873.0
+2024,Actual,D55,Federal Funds,24405277.0
+2024,Actual,D55,General Funds,24936707.0
+2024,Actual,D55,Special Funds,11474966.0
+2024,Actual,D60,General Funds,8599854.0
+2024,Actual,D60,Special Funds,2062806.0
+2024,Actual,D73,General Funds,1178392.0
+2024,Actual,D76,Federal Funds,2021882.0
+2024,Actual,D76,General Funds,2820632.0
+2024,Actual,D77,General Funds,1000000.0
+2024,Actual,D77,Special Funds,664834.0
+2024,Actual,D78,Federal Funds,478168672.0
+2024,Actual,D78,General Funds,5668276.0
+2024,Actual,D78,Special Funds,116495664.0
+2024,Actual,D80,Special Funds,43908043.0
+2024,Actual,D90,General Funds,1736570.0
+2024,Actual,D90,Special Funds,580328.0
+2024,Actual,D91,General Funds,11311526.0
+2024,Actual,D99,Special Funds,30280.0
+2024,Actual,E00,General Funds,131783990.0
+2024,Actual,E00,Special Funds,62754266.0
+2024,Actual,E17,General Funds,7527228.0
+2024,Actual,E20,General Funds,15954902.0
+2024,Actual,E20,Special Funds,6582391.0
+2024,Actual,E50,General Funds,126946199.0
+2024,Actual,E50,Special Funds,39990619.0
+2024,Actual,E75,General Funds,9998894.0
+2024,Actual,E75,Special Funds,114963785.0
+2024,Actual,E80,General Funds,1140515.0
+2024,Actual,F10,General Funds,29177570.0
+2024,Actual,F10,Special Funds,31983505.0
+2024,Actual,F50,General Funds,128375232.0
+2024,Actual,F50,Special Funds,35787879.0
+2024,Actual,G20,Special Funds,22373584.0
+2024,Actual,G50,Special Funds,2311169.0
+2024,Actual,H00,Federal Funds,1575156.0
+2024,Actual,H00,General Funds,401437858.0
+2024,Actual,H00,Special Funds,66105565.0
+2024,Actual,I00,Federal Funds,5866341.0
+2024,Actual,I00,General Funds,16764095.0
+2024,Actual,I00,Special Funds,9543853.0
+2024,Actual,J00,American Rescue Plan Act of 21,123870964.0
+2024,Actual,J00,"Coronavirus Aid, Relief, and Economic Security Act",2289849.0
+2024,Actual,J00,Coronavirus Response & Relief Sup Act,467226.0
+2024,Actual,J00,Federal Funds,1192558639.0
+2024,Actual,J00,General Funds,350000.0
+2024,Actual,J00,Special Funds,4445374844.0
+2024,Actual,K00,Federal Funds,43373328.0
+2024,Actual,K00,General Funds,237995928.0
+2024,Actual,K00,Special Funds,461998070.0
+2024,Actual,L00,American Rescue Plan Act of 21,2671741.0
+2024,Actual,L00,Federal Funds,7674985.0
+2024,Actual,L00,General Funds,78433438.0
+2024,Actual,L00,Special Funds,118866879.0
+2024,Actual,M00,American Rescue Plan Act of 21,35010613.0
+2024,Actual,M00,"Coronavirus Aid, Relief, and Economic Security Act",26506616.0
+2024,Actual,M00,Coronavirus Response & Relief Sup Act,27424387.0
+2024,Actual,M00,Federal Funds,11404810129.0
+2024,Actual,M00,General Funds,7491581129.0
+2024,Actual,M00,Special Funds,1353590908.0
+2024,Actual,N00,Federal Funds,2608392237.0
+2024,Actual,N00,General Funds,832497091.0
+2024,Actual,N00,Special Funds,183765319.0
+2024,Actual,P00,American Rescue Plan Act of 21,26300000.0
+2024,Actual,P00,Federal Funds,205774672.0
+2024,Actual,P00,General Funds,62129789.0
+2024,Actual,P00,Special Funds,300184708.0
+2024,Actual,Q00,Federal Funds,28344508.0
+2024,Actual,Q00,General Funds,1548816961.0
+2024,Actual,Q00,Special Funds,111776292.0
+2024,Actual,R00,American Rescue Plan Act of 21,105410876.0
+2024,Actual,R00,Coronavirus Response & Relief Sup Act,2192653.0
+2024,Actual,R00,Federal Funds,1483121950.0
+2024,Actual,R00,General Funds,7597354875.0
+2024,Actual,R00,Special Funds,1570604126.0
+2024,Actual,R11,Federal Funds,3354251.0
+2024,Actual,R11,General Funds,95362599.0
+2024,Actual,R12,Special Funds,5675610.0
+2024,Actual,R15,Federal Funds,375034.0
+2024,Actual,R15,General Funds,12762180.0
+2024,Actual,R15,Special Funds,22518918.0
+2024,Actual,R62,Federal Funds,463372.0
+2024,Actual,R62,General Funds,829720847.0
+2024,Actual,R62,Special Funds,69394115.0
+2024,Actual,R75,General Funds,2333704486.0
+2024,Actual,R75,Special Funds,217286848.0
+2024,Actual,R99,Federal Funds,811252.0
+2024,Actual,R99,General Funds,45365223.0
+2024,Actual,R99,Special Funds,477365.0
+2024,Actual,S00,American Rescue Plan Act of 21,92572183.0
+2024,Actual,S00,"Coronavirus Aid, Relief, and Economic Security Act",431626.0
+2024,Actual,S00,Federal Funds,467372249.0
+2024,Actual,S00,General Funds,233228834.0
+2024,Actual,S00,Special Funds,120848593.0
+2024,Actual,S50,General Funds,2700000.0
+2024,Actual,T00,American Rescue Plan Act of 21,7219620.0
+2024,Actual,T00,Federal Funds,2803021.0
+2024,Actual,T00,General Funds,198492166.0
+2024,Actual,T00,Special Funds,113471009.0
+2024,Actual,T50,General Funds,54715816.0
+2024,Actual,U00,Federal Funds,150700404.0
+2024,Actual,U00,General Funds,70211350.0
+2024,Actual,U00,Special Funds,381930963.0
+2024,Actual,V00,American Rescue Plan Act of 21,2406379.0
+2024,Actual,V00,Federal Funds,6986535.0
+2024,Actual,V00,General Funds,321421577.0
+2024,Actual,V00,Special Funds,2534468.0
+2024,Actual,W00,Federal Funds,7796886.0
+2024,Actual,W00,General Funds,432507053.0
+2024,Actual,W00,Special Funds,145809159.0
+2024,Actual,X00,Federal Funds,6369404.0
+2024,Actual,X00,General Funds,425100000.0
+2024,Actual,X00,Special Funds,1001184674.0
+2024,Actual,Y01,General Funds,1393903798.0
+2025,Actual,A15,General Funds,216198168.0
+2025,Actual,A15,Special Funds,1416434.0
+2025,Actual,B75,General Funds,164982644.0
+2025,Actual,C00,Federal Funds,1238188.0
+2025,Actual,C00,General Funds,708327889.0
+2025,Actual,C00,Special Funds,73159672.0
+2025,Actual,C80,Federal Funds,2077125.0
+2025,Actual,C80,General Funds,153654662.0
+2025,Actual,C80,Special Funds,947886.0
+2025,Actual,C81,Federal Funds,6835962.0
+2025,Actual,C81,General Funds,31382322.0
+2025,Actual,C81,Special Funds,42042508.0
+2025,Actual,C82,General Funds,3476685.0
+2025,Actual,C85,General Funds,907012.0
+2025,Actual,C90,Federal Funds,955517.0
+2025,Actual,C90,Special Funds,25751619.0
+2025,Actual,C91,Special Funds,7981421.0
+2025,Actual,C94,Special Funds,3301583.0
+2025,Actual,C96,Special Funds,4650795.0
+2025,Actual,C98,Special Funds,24280448.0
+2025,Actual,D05,General Funds,23078964.0
+2025,Actual,D05,Special Funds,7684900.0
+2025,Actual,D10,American Rescue Plan Act of 21,51200.0
+2025,Actual,D10,General Funds,18905216.0
+2025,Actual,D10,Special Funds,827338.0
+2025,Actual,D11,General Funds,638317.0
+2025,Actual,D12,Federal Funds,2432854.0
+2025,Actual,D12,General Funds,4475223.0
+2025,Actual,D12,Special Funds,6133610.0
+2025,Actual,D13,Federal Funds,1404746.0
+2025,Actual,D13,Special Funds,224069345.0
+2025,Actual,D15,General Funds,10648065.0
+2025,Actual,D15,Special Funds,483649.0
+2025,Actual,D16,General Funds,3223238.0
+2025,Actual,D16,Special Funds,2186022.0
+2025,Actual,D17,Federal Funds,178159.0
+2025,Actual,D17,General Funds,5942666.0
+2025,Actual,D17,Special Funds,544403.0
+2025,Actual,D18,American Rescue Plan Act of 21,250000.0
+2025,Actual,D18,General Funds,48997043.0
+2025,Actual,D18,Special Funds,18878457.0
+2025,Actual,D21,Federal Funds,48593060.0
+2025,Actual,D21,General Funds,261137268.0
+2025,Actual,D21,Special Funds,29201803.0
+2025,Actual,D22,General Funds,1587799.0
+2025,Actual,D22,Special Funds,38000.0
+2025,Actual,D23,General Funds,2000000.0
+2025,Actual,D23,Special Funds,28321240.0
+2025,Actual,D25,General Funds,19522793.0
+2025,Actual,D25,Special Funds,69000000.0
+2025,Actual,D26,American Rescue Plan Act of 21,10129910.0
+2025,Actual,D26,Coronavirus Response & Relief Sup Act,39985.0
+2025,Actual,D26,Federal Funds,37580449.0
+2025,Actual,D26,General Funds,38556969.0
+2025,Actual,D26,Special Funds,1124619.0
+2025,Actual,D27,Federal Funds,1461343.0
+2025,Actual,D27,General Funds,4618993.0
+2025,Actual,D27,Special Funds,44769.0
+2025,Actual,D28,General Funds,18872486.0
+2025,Actual,D28,Special Funds,234663642.0
+2025,Actual,D29,Special Funds,13484063.0
+2025,Actual,D38,Federal Funds,1164382.0
+2025,Actual,D38,General Funds,23365148.0
+2025,Actual,D38,Special Funds,29837102.0
+2025,Actual,D40,American Rescue Plan Act of 21,1500000.0
+2025,Actual,D40,Federal Funds,3117329.0
+2025,Actual,D40,General Funds,42346593.0
+2025,Actual,D40,Special Funds,8104349.0
+2025,Actual,D50,Federal Funds,30313068.0
+2025,Actual,D50,General Funds,22854347.0
+2025,Actual,D52,Federal Funds,234333012.0
+2025,Actual,D52,General Funds,10614913.0
+2025,Actual,D52,Special Funds,215062699.0
+2025,Actual,D53,Federal Funds,2008389.0
+2025,Actual,D53,Special Funds,20769393.0
+2025,Actual,D55,Federal Funds,20727578.0
+2025,Actual,D55,General Funds,42090256.0
+2025,Actual,D55,Special Funds,1369607.0
+2025,Actual,D60,General Funds,8588266.0
+2025,Actual,D60,Special Funds,3190891.0
+2025,Actual,D73,General Funds,2732238.0
+2025,Actual,D74,General Funds,603067.0
+2025,Actual,D74,Special Funds,374824.0
+2025,Actual,D76,Federal Funds,2459374.0
+2025,Actual,D76,General Funds,3372940.0
+2025,Actual,D77,Special Funds,1064447.0
+2025,Actual,D78,Federal Funds,531042501.0
+2025,Actual,D78,General Funds,5643870.0
+2025,Actual,D78,Special Funds,154242276.0
+2025,Actual,D80,Special Funds,54907185.0
+2025,Actual,D90,General Funds,237001.0
+2025,Actual,D90,Special Funds,636609.0
+2025,Actual,D91,General Funds,15801741.0
+2025,Actual,E00,General Funds,139899204.0
+2025,Actual,E00,Special Funds,49803154.0
+2025,Actual,E17,General Funds,8802138.0
+2025,Actual,E20,General Funds,20283361.0
+2025,Actual,E20,Special Funds,7906411.0
+2025,Actual,E50,General Funds,133422370.0
+2025,Actual,E50,Special Funds,42572707.0
+2025,Actual,E75,General Funds,11328251.0
+2025,Actual,E75,Special Funds,117461281.0
+2025,Actual,E80,General Funds,1229848.0
+2025,Actual,F10,American Rescue Plan Act of 21,91386746.0
+2025,Actual,F10,General Funds,28862997.0
+2025,Actual,F10,Special Funds,23742453.0
+2025,Actual,F50,General Funds,149743665.0
+2025,Actual,F50,Special Funds,2944243.0
+2025,Actual,G20,Special Funds,26370875.0
+2025,Actual,G50,Special Funds,2484397.0
+2025,Actual,H00,Federal Funds,2662396.0
+2025,Actual,H00,General Funds,160534825.0
+2025,Actual,H00,Special Funds,49130119.0
+2025,Actual,I00,Federal Funds,6858381.0
+2025,Actual,I00,General Funds,27003286.0
+2025,Actual,I00,Special Funds,19220748.0
+2025,Actual,J00,American Rescue Plan Act of 21,1567004.0
+2025,Actual,J00,"Coronavirus Aid, Relief, and Economic Security Act",4246225.0
+2025,Actual,J00,Coronavirus Response & Relief Sup Act,1179330.0
+2025,Actual,J00,Federal Funds,1321480178.0
+2025,Actual,J00,General Funds,50998349.0
+2025,Actual,J00,Special Funds,5125568305.0
+2025,Actual,K00,Federal Funds,46275338.0
+2025,Actual,K00,General Funds,120406120.0
+2025,Actual,K00,Special Funds,314219259.0
+2025,Actual,L00,Federal Funds,10541688.0
+2025,Actual,L00,General Funds,49972462.0
+2025,Actual,L00,Special Funds,69467154.0
+2025,Actual,M00,American Rescue Plan Act of 21,47611813.0
+2025,Actual,M00,"Coronavirus Aid, Relief, and Economic Security Act",5863318.0
+2025,Actual,M00,Coronavirus Response & Relief Sup Act,51124098.0
+2025,Actual,M00,Federal Funds,12094437908.0
+2025,Actual,M00,General Funds,8791640194.0
+2025,Actual,M00,Special Funds,1381937622.0
+2025,Actual,N00,Federal Funds,2682698453.0
+2025,Actual,N00,General Funds,958531162.0
+2025,Actual,N00,Special Funds,176008298.0
+2025,Actual,P00,American Rescue Plan Act of 21,22860633.0
+2025,Actual,P00,Federal Funds,191808890.0
+2025,Actual,P00,General Funds,96609815.0
+2025,Actual,P00,Special Funds,275516231.0
+2025,Actual,Q00,American Rescue Plan Act of 21,1659177.0
+2025,Actual,Q00,Federal Funds,26340828.0
+2025,Actual,Q00,General Funds,1751559151.0
+2025,Actual,Q00,Special Funds,89484736.0
+2025,Actual,R00,American Rescue Plan Act of 21,13003783.0
+2025,Actual,R00,Coronavirus Response & Relief Sup Act,1448489.0
+2025,Actual,R00,Federal Funds,1565191925.0
+2025,Actual,R00,General Funds,7947003605.0
+2025,Actual,R00,Special Funds,1854439881.0
+2025,Actual,R11,Federal Funds,3332465.0
+2025,Actual,R11,General Funds,101451705.0
+2025,Actual,R12,Special Funds,4400826.0
+2025,Actual,R15,Federal Funds,438124.0
+2025,Actual,R15,General Funds,14106786.0
+2025,Actual,R15,Special Funds,23226096.0
+2025,Actual,R62,Federal Funds,479932.0
+2025,Actual,R62,General Funds,737109146.0
+2025,Actual,R62,Special Funds,85965618.0
+2025,Actual,R75,General Funds,2433343806.0
+2025,Actual,R75,Special Funds,177321931.0
+2025,Actual,R99,Federal Funds,907216.0
+2025,Actual,R99,General Funds,49253315.0
+2025,Actual,R99,Special Funds,530248.0
+2025,Actual,S00,American Rescue Plan Act of 21,34939103.0
+2025,Actual,S00,"Coronavirus Aid, Relief, and Economic Security Act",105554.0
+2025,Actual,S00,Federal Funds,576287493.0
+2025,Actual,S00,General Funds,149516721.0
+2025,Actual,S00,Special Funds,162505868.0
+2025,Actual,S50,General Funds,2700000.0
+2025,Actual,T00,American Rescue Plan Act of 21,5155392.0
+2025,Actual,T00,Federal Funds,3528366.0
+2025,Actual,T00,General Funds,127988038.0
+2025,Actual,T00,Special Funds,46261300.0
+2025,Actual,T50,General Funds,52610816.0
+2025,Actual,U00,Federal Funds,212505119.0
+2025,Actual,U00,General Funds,49451584.0
+2025,Actual,U00,Special Funds,337040975.0
+2025,Actual,V00,American Rescue Plan Act of 21,772298.0
+2025,Actual,V00,Federal Funds,7380160.0
+2025,Actual,V00,General Funds,341866244.0
+2025,Actual,V00,Special Funds,3253710.0
+2025,Actual,W00,Federal Funds,6330128.0
+2025,Actual,W00,General Funds,456704076.0
+2025,Actual,W00,Special Funds,151136322.0
+2025,Actual,X00,Federal Funds,4051249.0
+2025,Actual,X00,General Funds,397100000.0
+2025,Actual,X00,Special Funds,1102586096.0
+2025,Actual,Y01,General Funds,152500000.0
+2025,Actual,Y01,Special Funds,90000000.0
+2026,Working budget,A15,General Funds,207571779.0
+2026,Working budget,A15,Special Funds,3733097.0
+2026,Working budget,B75,General Funds,163474929.0
+2026,Working budget,C00,Federal Funds,1598179.0
+2026,Working budget,C00,General Funds,707964520.0
+2026,Working budget,C00,Special Funds,108460266.0
+2026,Working budget,C80,Federal Funds,2449710.0
+2026,Working budget,C80,General Funds,174410374.0
+2026,Working budget,C80,Special Funds,1009993.0
+2026,Working budget,C81,Federal Funds,6450877.0
+2026,Working budget,C81,General Funds,35719171.0
+2026,Working budget,C81,Special Funds,44608601.0
+2026,Working budget,C82,General Funds,3628937.0
+2026,Working budget,C85,General Funds,1031335.0
+2026,Working budget,C90,Federal Funds,958912.0
+2026,Working budget,C90,Special Funds,228910026.0
+2026,Working budget,C91,Special Funds,8285741.0
+2026,Working budget,C94,Special Funds,3554921.0
+2026,Working budget,C96,Special Funds,6047988.0
+2026,Working budget,C98,Special Funds,25064636.0
+2026,Working budget,D05,General Funds,21969813.0
+2026,Working budget,D05,Special Funds,11500000.0
+2026,Working budget,D10,General Funds,20255468.0
+2026,Working budget,D10,Special Funds,2523492.0
+2026,Working budget,D11,General Funds,1120157.0
+2026,Working budget,D11,Special Funds,12000.0
+2026,Working budget,D12,Federal Funds,4453726.0
+2026,Working budget,D12,General Funds,5039948.0
+2026,Working budget,D12,Special Funds,5388553.0
+2026,Working budget,D13,Federal Funds,7116261.0
+2026,Working budget,D13,Special Funds,329177869.0
+2026,Working budget,D15,General Funds,10978180.0
+2026,Working budget,D15,Special Funds,550913.0
+2026,Working budget,D16,General Funds,3729867.0
+2026,Working budget,D16,Special Funds,2026291.0
+2026,Working budget,D17,Federal Funds,187515.0
+2026,Working budget,D17,General Funds,5770245.0
+2026,Working budget,D17,Special Funds,862744.0
+2026,Working budget,D18,General Funds,44802789.0
+2026,Working budget,D18,Special Funds,18764610.0
+2026,Working budget,D21,Federal Funds,36964572.0
+2026,Working budget,D21,General Funds,269958112.0
+2026,Working budget,D21,Special Funds,35543795.0
+2026,Working budget,D22,General Funds,1814332.0
+2026,Working budget,D22,Special Funds,13000.0
+2026,Working budget,D23,General Funds,5000000.0
+2026,Working budget,D23,Special Funds,27766344.0
+2026,Working budget,D24,General Funds,4110067.0
+2026,Working budget,D24,Special Funds,12432033.0
+2026,Working budget,D25,General Funds,18122707.0
+2026,Working budget,D25,Special Funds,79143411.0
+2026,Working budget,D26,American Rescue Plan Act of 21,6410181.0
+2026,Working budget,D26,Federal Funds,41126289.0
+2026,Working budget,D26,General Funds,40792569.0
+2026,Working budget,D26,Special Funds,1122816.0
+2026,Working budget,D27,Federal Funds,1868501.0
+2026,Working budget,D27,General Funds,4801601.0
+2026,Working budget,D27,Special Funds,218800.0
+2026,Working budget,D28,General Funds,21187915.0
+2026,Working budget,D28,Special Funds,243770068.0
+2026,Working budget,D38,Federal Funds,2626430.0
+2026,Working budget,D38,General Funds,25366636.0
+2026,Working budget,D38,Special Funds,27063867.0
+2026,Working budget,D40,Federal Funds,2212765.0
+2026,Working budget,D40,General Funds,38197581.0
+2026,Working budget,D40,Special Funds,8102909.0
+2026,Working budget,D50,Federal Funds,23388395.0
+2026,Working budget,D50,General Funds,22607473.0
+2026,Working budget,D50,Special Funds,4857.0
+2026,Working budget,D52,Federal Funds,695276435.0
+2026,Working budget,D52,General Funds,13935660.0
+2026,Working budget,D52,Special Funds,198554653.0
+2026,Working budget,D53,Federal Funds,2404911.0
+2026,Working budget,D53,Special Funds,22172766.0
+2026,Working budget,D55,Federal Funds,20246145.0
+2026,Working budget,D55,General Funds,45653396.0
+2026,Working budget,D55,Special Funds,2552187.0
+2026,Working budget,D60,Federal Funds,40000.0
+2026,Working budget,D60,General Funds,10979647.0
+2026,Working budget,D60,Special Funds,2670000.0
+2026,Working budget,D73,General Funds,2608379.0
+2026,Working budget,D74,General Funds,859194.0
+2026,Working budget,D74,Special Funds,1000000.0
+2026,Working budget,D76,Federal Funds,2338006.0
+2026,Working budget,D76,General Funds,3454329.0
+2026,Working budget,D77,Special Funds,1269283.0
+2026,Working budget,D78,Federal Funds,588012685.0
+2026,Working budget,D78,General Funds,6271672.0
+2026,Working budget,D78,Special Funds,258419764.0
+2026,Working budget,D80,Special Funds,57441809.0
+2026,Working budget,D90,General Funds,1598237.0
+2026,Working budget,D90,Special Funds,615869.0
+2026,Working budget,D91,General Funds,22305124.0
+2026,Working budget,D91,Special Funds,260000.0
+2026,Working budget,D99,Special Funds,51943.0
+2026,Working budget,E00,General Funds,155325354.0
+2026,Working budget,E00,Special Funds,59480296.0
+2026,Working budget,E17,General Funds,8243045.0
+2026,Working budget,E20,General Funds,22000071.0
+2026,Working budget,E20,Special Funds,11070729.0
+2026,Working budget,E50,General Funds,106570779.0
+2026,Working budget,E50,Special Funds,83452182.0
+2026,Working budget,E75,General Funds,13575099.0
+2026,Working budget,E75,Special Funds,119555094.0
+2026,Working budget,E80,General Funds,1281803.0
+2026,Working budget,F10,Federal Funds,28551253.0
+2026,Working budget,F10,General Funds,103791389.0
+2026,Working budget,F10,Special Funds,58328821.0
+2026,Working budget,F50,General Funds,206738295.0
+2026,Working budget,F50,Special Funds,77379006.0
+2026,Working budget,G20,Special Funds,24908977.0
+2026,Working budget,G50,Special Funds,2499730.0
+2026,Working budget,H00,Federal Funds,1595498.0
+2026,Working budget,H00,General Funds,181868569.0
+2026,Working budget,H00,Special Funds,16238472.0
+2026,Working budget,I00,Federal Funds,7310841.0
+2026,Working budget,I00,General Funds,24314550.0
+2026,Working budget,I00,Special Funds,23324747.0
+2026,Working budget,J00,Federal Funds,1555357767.0
+2026,Working budget,J00,General Funds,7100000.0
+2026,Working budget,J00,Special Funds,5176546176.0
+2026,Working budget,K00,Federal Funds,61077097.0
+2026,Working budget,K00,General Funds,114610574.0
+2026,Working budget,K00,Special Funds,347586342.0
+2026,Working budget,L00,American Rescue Plan Act of 21,2000000.0
+2026,Working budget,L00,Federal Funds,15403225.0
+2026,Working budget,L00,General Funds,44189392.0
+2026,Working budget,L00,Special Funds,58077198.0
+2026,Working budget,M00,American Rescue Plan Act of 21,23035307.0
+2026,Working budget,M00,"Coronavirus Aid, Relief, and Economic Security Act",1483987.0
+2026,Working budget,M00,Coronavirus Response & Relief Sup Act,62438912.0
+2026,Working budget,M00,Federal Funds,12836880847.0
+2026,Working budget,M00,General Funds,9397289600.0
+2026,Working budget,M00,Special Funds,1551421396.0
+2026,Working budget,N00,Federal Funds,2705282025.0
+2026,Working budget,N00,General Funds,1048765372.0
+2026,Working budget,N00,Special Funds,270089252.0
+2026,Working budget,P00,American Rescue Plan Act of 21,19843562.0
+2026,Working budget,P00,Federal Funds,241955542.0
+2026,Working budget,P00,General Funds,127730234.0
+2026,Working budget,P00,Special Funds,318829759.0
+2026,Working budget,Q00,Federal Funds,48598296.0
+2026,Working budget,Q00,General Funds,1776188400.0
+2026,Working budget,Q00,Special Funds,104278678.0
+2026,Working budget,R00,Federal Funds,1655939756.0
+2026,Working budget,R00,General Funds,7984798933.0
+2026,Working budget,R00,Special Funds,2545961660.0
+2026,Working budget,R11,Federal Funds,3991730.0
+2026,Working budget,R11,General Funds,106224033.0
+2026,Working budget,R12,Special Funds,3403097.0
+2026,Working budget,R15,Federal Funds,457914.0
+2026,Working budget,R15,General Funds,13604071.0
+2026,Working budget,R15,Special Funds,24229790.0
+2026,Working budget,R62,Federal Funds,491594.0
+2026,Working budget,R62,General Funds,772980955.0
+2026,Working budget,R62,Special Funds,66953859.0
+2026,Working budget,R75,General Funds,2411265292.0
+2026,Working budget,R75,Special Funds,190740516.0
+2026,Working budget,R99,Federal Funds,855728.0
+2026,Working budget,R99,General Funds,47786371.0
+2026,Working budget,R99,Special Funds,601768.0
+2026,Working budget,S00,American Rescue Plan Act of 21,31589291.0
+2026,Working budget,S00,Federal Funds,443983595.0
+2026,Working budget,S00,General Funds,93854638.0
+2026,Working budget,S00,Special Funds,253690978.0
+2026,Working budget,S50,General Funds,2700000.0
+2026,Working budget,T00,American Rescue Plan Act of 21,6300000.0
+2026,Working budget,T00,Federal Funds,4795306.0
+2026,Working budget,T00,General Funds,119752233.0
+2026,Working budget,T00,Special Funds,157043467.0
+2026,Working budget,T50,American Rescue Plan Act of 21,5045833.0
+2026,Working budget,T50,General Funds,39995816.0
+2026,Working budget,T50,Special Funds,8415000.0
+2026,Working budget,U00,Federal Funds,220291088.0
+2026,Working budget,U00,General Funds,47677069.0
+2026,Working budget,U00,Special Funds,355197082.0
+2026,Working budget,V00,Federal Funds,6328273.0
+2026,Working budget,V00,General Funds,370142548.0
+2026,Working budget,V00,Special Funds,3464918.0
+2026,Working budget,W00,Federal Funds,10092987.0
+2026,Working budget,W00,General Funds,480634730.0
+2026,Working budget,W00,Special Funds,168444609.0
+2026,Working budget,X00,Federal Funds,2866629.0
+2026,Working budget,X00,General Funds,154700000.0
+2026,Working budget,X00,Special Funds,1473100000.0
+2026,Working budget,Y01,General Funds,95500000.0
+2027,Legislative appropriation,A15,General Funds,203599585.0
+2027,Legislative appropriation,A15,Special Funds,4644887.0
+2027,Legislative appropriation,B75,General Funds,164443659.0
+2027,Legislative appropriation,C00,Federal Funds,1406386.0
+2027,Legislative appropriation,C00,General Funds,764033643.0
+2027,Legislative appropriation,C00,Special Funds,80209464.0
+2027,Legislative appropriation,C80,Federal Funds,2156772.0
+2027,Legislative appropriation,C80,General Funds,170978759.0
+2027,Legislative appropriation,C80,Special Funds,644111.0
+2027,Legislative appropriation,C81,Federal Funds,6621726.0
+2027,Legislative appropriation,C81,General Funds,45807846.0
+2027,Legislative appropriation,C81,Special Funds,32850915.0
+2027,Legislative appropriation,C82,General Funds,3925069.0
+2027,Legislative appropriation,C85,General Funds,1038914.0
+2027,Legislative appropriation,C90,Federal Funds,973074.0
+2027,Legislative appropriation,C90,Special Funds,170716848.0
+2027,Legislative appropriation,C91,Special Funds,8436033.0
+2027,Legislative appropriation,C94,Special Funds,3557450.0
+2027,Legislative appropriation,C96,Special Funds,6139680.0
+2027,Legislative appropriation,C98,Special Funds,26494194.0
+2027,Legislative appropriation,D05,General Funds,31673577.0
+2027,Legislative appropriation,D05,Special Funds,11500000.0
+2027,Legislative appropriation,D10,General Funds,22427346.0
+2027,Legislative appropriation,D10,Special Funds,2661106.0
+2027,Legislative appropriation,D11,General Funds,1156273.0
+2027,Legislative appropriation,D11,Special Funds,45000.0
+2027,Legislative appropriation,D12,Federal Funds,3841534.0
+2027,Legislative appropriation,D12,General Funds,5664228.0
+2027,Legislative appropriation,D12,Special Funds,5124898.0
+2027,Legislative appropriation,D13,Federal Funds,15250450.0
+2027,Legislative appropriation,D13,General Funds,3000000.0
+2027,Legislative appropriation,D13,Special Funds,410124221.0
+2027,Legislative appropriation,D15,General Funds,11087322.0
+2027,Legislative appropriation,D15,Special Funds,521830.0
+2027,Legislative appropriation,D16,General Funds,4158919.0
+2027,Legislative appropriation,D16,Special Funds,2166788.0
+2027,Legislative appropriation,D17,Federal Funds,63102.0
+2027,Legislative appropriation,D17,General Funds,6427103.0
+2027,Legislative appropriation,D17,Special Funds,621158.0
+2027,Legislative appropriation,D18,General Funds,63649105.0
+2027,Legislative appropriation,D18,Special Funds,32000000.0
+2027,Legislative appropriation,D21,Federal Funds,50557006.0
+2027,Legislative appropriation,D21,General Funds,264908861.0
+2027,Legislative appropriation,D21,Special Funds,36569876.0
+2027,Legislative appropriation,D22,General Funds,1948037.0
+2027,Legislative appropriation,D22,Special Funds,13000.0
+2027,Legislative appropriation,D23,General Funds,2000000.0
+2027,Legislative appropriation,D23,Special Funds,29338189.0
+2027,Legislative appropriation,D24,General Funds,4534126.0
+2027,Legislative appropriation,D24,Special Funds,20642019.0
+2027,Legislative appropriation,D25,General Funds,18616318.0
+2027,Legislative appropriation,D25,Special Funds,87850000.0
+2027,Legislative appropriation,D26,Federal Funds,39157686.0
+2027,Legislative appropriation,D26,General Funds,43151602.0
+2027,Legislative appropriation,D26,Special Funds,1230432.0
+2027,Legislative appropriation,D27,Federal Funds,2233495.0
+2027,Legislative appropriation,D27,General Funds,4953725.0
+2027,Legislative appropriation,D27,Special Funds,218800.0
+2027,Legislative appropriation,D28,General Funds,21905356.0
+2027,Legislative appropriation,D28,Special Funds,290487371.0
+2027,Legislative appropriation,D38,Federal Funds,3901176.0
+2027,Legislative appropriation,D38,General Funds,24496812.0
+2027,Legislative appropriation,D38,Special Funds,46072419.0
+2027,Legislative appropriation,D40,Federal Funds,1307377.0
+2027,Legislative appropriation,D40,General Funds,42001575.0
+2027,Legislative appropriation,D40,Special Funds,8377873.0
+2027,Legislative appropriation,D50,Federal Funds,21531429.0
+2027,Legislative appropriation,D50,General Funds,17239805.0
+2027,Legislative appropriation,D50,Special Funds,4857.0
+2027,Legislative appropriation,D52,Federal Funds,695051480.0
+2027,Legislative appropriation,D52,General Funds,14003875.0
+2027,Legislative appropriation,D52,Special Funds,234759157.0
+2027,Legislative appropriation,D53,Federal Funds,2347347.0
+2027,Legislative appropriation,D53,Special Funds,23644369.0
+2027,Legislative appropriation,D55,Federal Funds,23225343.0
+2027,Legislative appropriation,D55,General Funds,45199157.0
+2027,Legislative appropriation,D55,Special Funds,255052.0
+2027,Legislative appropriation,D60,Federal Funds,40000.0
+2027,Legislative appropriation,D60,General Funds,13657533.0
+2027,Legislative appropriation,D60,Special Funds,1366326.0
+2027,Legislative appropriation,D73,General Funds,2885210.0
+2027,Legislative appropriation,D74,General Funds,1162141.0
+2027,Legislative appropriation,D74,Special Funds,1000000.0
+2027,Legislative appropriation,D76,Federal Funds,2410532.0
+2027,Legislative appropriation,D76,General Funds,3648257.0
+2027,Legislative appropriation,D77,Special Funds,1348049.0
+2027,Legislative appropriation,D78,Federal Funds,652970010.0
+2027,Legislative appropriation,D78,General Funds,12872701.0
+2027,Legislative appropriation,D78,Special Funds,291507639.0
+2027,Legislative appropriation,D80,Special Funds,59255161.0
+2027,Legislative appropriation,D90,General Funds,247037.0
+2027,Legislative appropriation,D90,Special Funds,668594.0
+2027,Legislative appropriation,D91,General Funds,21588415.0
+2027,Legislative appropriation,D99,Special Funds,51943.0
+2027,Legislative appropriation,E00,General Funds,167543599.0
+2027,Legislative appropriation,E00,Special Funds,57768822.0
+2027,Legislative appropriation,E17,General Funds,8297028.0
+2027,Legislative appropriation,E20,General Funds,23653141.0
+2027,Legislative appropriation,E20,Special Funds,10240764.0
+2027,Legislative appropriation,E50,General Funds,97590575.0
+2027,Legislative appropriation,E50,Special Funds,87755168.0
+2027,Legislative appropriation,E75,General Funds,14130888.0
+2027,Legislative appropriation,E75,Special Funds,121136766.0
+2027,Legislative appropriation,E80,General Funds,1386316.0
+2027,Legislative appropriation,F10,Federal Funds,20114264.0
+2027,Legislative appropriation,F10,General Funds,190315741.0
+2027,Legislative appropriation,F10,Special Funds,74647012.0
+2027,Legislative appropriation,F50,Federal Funds,58040280.0
+2027,Legislative appropriation,F50,General Funds,161080854.0
+2027,Legislative appropriation,F50,Special Funds,30119578.0
+2027,Legislative appropriation,G20,Special Funds,40762151.0
+2027,Legislative appropriation,G50,Special Funds,2648232.0
+2027,Legislative appropriation,H00,Federal Funds,1675071.0
+2027,Legislative appropriation,H00,General Funds,191537601.0
+2027,Legislative appropriation,H00,Special Funds,36267081.0
+2027,Legislative appropriation,I00,Federal Funds,7349464.0
+2027,Legislative appropriation,I00,General Funds,36200733.0
+2027,Legislative appropriation,I00,Special Funds,26422821.0
+2027,Legislative appropriation,J00,Federal Funds,1628055830.0
+2027,Legislative appropriation,J00,General Funds,2980000.0
+2027,Legislative appropriation,J00,Special Funds,5426110917.0
+2027,Legislative appropriation,K00,Federal Funds,64135173.0
+2027,Legislative appropriation,K00,General Funds,122464761.0
+2027,Legislative appropriation,K00,Special Funds,404732097.0
+2027,Legislative appropriation,L00,American Rescue Plan Act of 21,2000000.0
+2027,Legislative appropriation,L00,Federal Funds,11303850.0
+2027,Legislative appropriation,L00,General Funds,48073704.0
+2027,Legislative appropriation,L00,Special Funds,79731380.0
+2027,Legislative appropriation,M00,American Rescue Plan Act of 21,7487576.0
+2027,Legislative appropriation,M00,"Coronavirus Aid, Relief, and Economic Security Act",2193183.0
+2027,Legislative appropriation,M00,Federal Funds,12587548035.0
+2027,Legislative appropriation,M00,General Funds,9112172161.0
+2027,Legislative appropriation,M00,Special Funds,1535566496.0
+2027,Legislative appropriation,N00,Federal Funds,2401568679.0
+2027,Legislative appropriation,N00,General Funds,1035788634.0
+2027,Legislative appropriation,N00,Special Funds,253694165.0
+2027,Legislative appropriation,P00,Federal Funds,199716968.0
+2027,Legislative appropriation,P00,General Funds,88605682.0
+2027,Legislative appropriation,P00,Special Funds,380511084.0
+2027,Legislative appropriation,Q00,Federal Funds,40322901.0
+2027,Legislative appropriation,Q00,General Funds,1777610523.0
+2027,Legislative appropriation,Q00,Special Funds,97178279.0
+2027,Legislative appropriation,R00,Federal Funds,1678199524.0
+2027,Legislative appropriation,R00,General Funds,8032499071.0
+2027,Legislative appropriation,R00,Special Funds,2902594886.0
+2027,Legislative appropriation,R11,Federal Funds,3951256.0
+2027,Legislative appropriation,R11,General Funds,109209824.0
+2027,Legislative appropriation,R12,Special Funds,3481509.0
+2027,Legislative appropriation,R15,Federal Funds,457801.0
+2027,Legislative appropriation,R15,General Funds,14530144.0
+2027,Legislative appropriation,R15,Special Funds,27554273.0
+2027,Legislative appropriation,R62,Federal Funds,511150.0
+2027,Legislative appropriation,R62,General Funds,780300438.0
+2027,Legislative appropriation,R62,Special Funds,80721025.0
+2027,Legislative appropriation,R75,General Funds,2403355276.0
+2027,Legislative appropriation,R75,Special Funds,204663250.0
+2027,Legislative appropriation,R99,Federal Funds,866190.0
+2027,Legislative appropriation,R99,General Funds,49758404.0
+2027,Legislative appropriation,R99,Special Funds,589392.0
+2027,Legislative appropriation,S00,American Rescue Plan Act of 21,6916627.0
+2027,Legislative appropriation,S00,Federal Funds,512852020.0
+2027,Legislative appropriation,S00,General Funds,98876636.0
+2027,Legislative appropriation,S00,Special Funds,283577978.0
+2027,Legislative appropriation,S50,General Funds,2700000.0
+2027,Legislative appropriation,T00,American Rescue Plan Act of 21,6300000.0
+2027,Legislative appropriation,T00,Federal Funds,4826651.0
+2027,Legislative appropriation,T00,General Funds,128328905.0
+2027,Legislative appropriation,T00,Special Funds,125004549.0
+2027,Legislative appropriation,T50,American Rescue Plan Act of 21,10583168.0
+2027,Legislative appropriation,T50,General Funds,48795816.0
+2027,Legislative appropriation,T50,Special Funds,8415000.0
+2027,Legislative appropriation,U00,Federal Funds,274395623.0
+2027,Legislative appropriation,U00,General Funds,48848824.0
+2027,Legislative appropriation,U00,Special Funds,315309136.0
+2027,Legislative appropriation,V00,Federal Funds,7152815.0
+2027,Legislative appropriation,V00,General Funds,372170112.0
+2027,Legislative appropriation,V00,Special Funds,3288142.0
+2027,Legislative appropriation,W00,Federal Funds,8673950.0
+2027,Legislative appropriation,W00,General Funds,497533576.0
+2027,Legislative appropriation,W00,Special Funds,178606168.0
+2027,Legislative appropriation,X00,Federal Funds,823736.0
+2027,Legislative appropriation,X00,General Funds,177693158.0
+2027,Legislative appropriation,X00,Special Funds,1317844568.0
+2027,Legislative appropriation,Y01,General Funds,38600000.0
+2027,Legislative appropriation,Y01,Special Funds,114650000.0

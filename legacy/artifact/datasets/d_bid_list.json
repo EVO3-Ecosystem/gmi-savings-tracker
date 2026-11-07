@@ -1,0 +1,20 @@
+{
+  "description": "Commercial vendors paid separately by ten or more agencies in FY2026 (regulated utilities and service providers left out), with FY2025 and FY2026 payments, largest buyers and a 2-5% savings range. From Payments Data (7syw-q4cy).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_bid_list.csv",
+    "url": "/_blob/2634985271deb0cf65f521f5ffa098c2"
+  },
+  "staleAfterHours": 1500,
+  "title": "Statewide bid list",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

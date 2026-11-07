@@ -1,0 +1,127 @@
+fiscal_year,stage,category_title,budget,budget_prior,budget_yoy,stage_pair
+2017,Actual,Elementary and Secondary Education,7695078403.0,,,
+2018,Actual,Elementary and Secondary Education,7734765911.0,7695078403.0,0.00516,Actual vs Actual
+2019,Actual,Elementary and Secondary Education,7968509891.0,7734765911.0,0.03022,Actual vs Actual
+2020,Actual,Elementary and Secondary Education,8795377748.0,7968509891.0,0.10377,Actual vs Actual
+2021,Actual,Elementary and Secondary Education,9631573076.0,8795377748.0,0.09507,Actual vs Actual
+2022,Actual,Elementary and Secondary Education,11943734556.0,9631573076.0,0.24006,Actual vs Actual
+2023,Actual,Elementary and Secondary Education,10304466894.0,11943734556.0,-0.13725,Actual vs Actual
+2024,Actual,Elementary and Secondary Education,11443661331.0,10304466894.0,0.11055,Actual vs Actual
+2025,Actual,Elementary and Secondary Education,11527434322.0,11443661331.0,0.00732,Actual vs Actual
+2026,Working budget,Elementary and Secondary Education,12339221810.0,11527434322.0,0.07042,Working budget vs Actual
+2027,Legislative appropriation,Elementary and Secondary Education,12777340504.0,12339221810.0,0.03551,Legislative appropriation vs Working budget
+2023,Actual,Government Services,1327597568.0,,,
+2024,Actual,Government Services,1184279883.0,1327597568.0,-0.10795,Actual vs Actual
+2025,Actual,Government Services,1005208412.0,1184279883.0,-0.15121,Actual vs Actual
+2026,Working budget,Government Services,1221266934.0,1005208412.0,0.21494,Working budget vs Actual
+2027,Legislative appropriation,Government Services,1346694974.0,1221266934.0,0.1027,Legislative appropriation vs Working budget
+2017,Actual,Health,13387425381.0,,,
+2018,Actual,Health,13694419774.0,13387425381.0,0.02293,Actual vs Actual
+2019,Actual,Health,14270908198.0,13694419774.0,0.0421,Actual vs Actual
+2020,Actual,Health,15536599058.0,14270908198.0,0.08869,Actual vs Actual
+2021,Actual,Health,18112584350.0,15536599058.0,0.1658,Actual vs Actual
+2022,Actual,Health,19444969862.0,18112584350.0,0.07356,Actual vs Actual
+2023,Actual,Health,20595187885.0,19444969862.0,0.05915,Actual vs Actual
+2024,Actual,Health,21083806452.0,20595187885.0,0.02372,Actual vs Actual
+2025,Actual,Health,23226459482.0,21083806452.0,0.10163,Actual vs Actual
+2026,Working budget,Health,24895223836.0,23226459482.0,0.07185,Working budget vs Actual
+2027,Legislative appropriation,Health,24368351453.0,24895223836.0,-0.02116,Legislative appropriation vs Working budget
+2017,Actual,Higher Education,2017441830.0,,,
+2018,Actual,Higher Education,2039714061.0,2017441830.0,0.01104,Actual vs Actual
+2019,Actual,Higher Education,2127939748.0,2039714061.0,0.04325,Actual vs Actual
+2020,Actual,Higher Education,2255144134.0,2127939748.0,0.05978,Actual vs Actual
+2021,Actual,Higher Education,2309399594.0,2255144134.0,0.02406,Actual vs Actual
+2022,Actual,Higher Education,2684884911.0,2309399594.0,0.16259,Actual vs Actual
+2023,Actual,Higher Education,3427047205.0,2684884911.0,0.27642,Actual vs Actual
+2024,Actual,Higher Education,3486225800.0,3427047205.0,0.01727,Actual vs Actual
+2025,Actual,Higher Education,3471991440.0,3486225800.0,-0.00408,Actual vs Actual
+2026,Working budget,Higher Education,3480723991.0,3471991440.0,0.00252,Working budget vs Actual
+2027,Legislative appropriation,Higher Education,3512093357.0,3480723991.0,0.00901,Legislative appropriation vs Working budget
+2017,Actual,Human Services,2864031199.0,,,
+2018,Actual,Human Services,2747709628.0,2864031199.0,-0.04061,Actual vs Actual
+2019,Actual,Human Services,2740350208.0,2747709628.0,-0.00268,Actual vs Actual
+2020,Actual,Human Services,3209621307.0,2740350208.0,0.17124,Actual vs Actual
+2021,Actual,Human Services,5194915236.0,3209621307.0,0.61854,Actual vs Actual
+2022,Actual,Human Services,5848337389.0,5194915236.0,0.12578,Actual vs Actual
+2023,Actual,Human Services,5023232300.0,5848337389.0,-0.14108,Actual vs Actual
+2024,Actual,Human Services,4544863078.0,5023232300.0,-0.09523,Actual vs Actual
+2025,Actual,Human Services,4814843257.0,4544863078.0,0.0594,Actual vs Actual
+2026,Working budget,Human Services,4917711452.0,4814843257.0,0.02136,Working budget vs Actual
+2027,Legislative appropriation,Human Services,4696329864.0,4917711452.0,-0.04502,Legislative appropriation vs Working budget
+2017,Actual,"Legislative, Judicial, Legal",788575676.0,,,
+2018,Actual,"Legislative, Judicial, Legal",793701654.0,788575676.0,0.0065,Actual vs Actual
+2019,Actual,"Legislative, Judicial, Legal",819796658.0,793701654.0,0.03288,Actual vs Actual
+2020,Actual,"Legislative, Judicial, Legal",867107961.0,819796658.0,0.05771,Actual vs Actual
+2021,Actual,"Legislative, Judicial, Legal",898942353.0,867107961.0,0.03671,Actual vs Actual
+2022,Actual,"Legislative, Judicial, Legal",944917312.0,898942353.0,0.05114,Actual vs Actual
+2023,Actual,"Legislative, Judicial, Legal",1064509492.0,944917312.0,0.12656,Actual vs Actual
+2024,Actual,"Legislative, Judicial, Legal",1167135356.0,1064509492.0,0.09641,Actual vs Actual
+2025,Actual,"Legislative, Judicial, Legal",1229246802.0,1167135356.0,0.05322,Actual vs Actual
+2026,Working budget,"Legislative, Judicial, Legal",1293760178.0,1229246802.0,0.05248,Working budget vs Actual
+2027,Legislative appropriation,"Legislative, Judicial, Legal",1318744621.0,1293760178.0,0.01931,Legislative appropriation vs Working budget
+2017,Actual,Natural Resources and Environment,864257706.0,,,
+2018,Actual,Natural Resources and Environment,892359821.0,864257706.0,0.03252,Actual vs Actual
+2019,Actual,Natural Resources and Environment,1009596085.0,892359821.0,0.13138,Actual vs Actual
+2020,Actual,Natural Resources and Environment,1044063836.0,1009596085.0,0.03414,Actual vs Actual
+2021,Actual,Natural Resources and Environment,1003181167.0,1044063836.0,-0.03916,Actual vs Actual
+2022,Actual,Natural Resources and Environment,1167061274.0,1003181167.0,0.16336,Actual vs Actual
+2023,Actual,Natural Resources and Environment,1638023513.0,1167061274.0,0.40355,Actual vs Actual
+2024,Actual,Natural Resources and Environment,1773704480.0,1638023513.0,0.08283,Actual vs Actual
+2025,Actual,Natural Resources and Environment,1517129197.0,1773704480.0,-0.14466,Actual vs Actual
+2026,Working budget,Natural Resources and Environment,1880785390.0,1517129197.0,0.2397,Working budget vs Actual
+2027,Legislative appropriation,Natural Resources and Environment,2022745966.0,1880785390.0,0.07548,Legislative appropriation vs Working budget
+2017,Actual,Other,1573673274.0,,,
+2018,Actual,Other,1659364963.0,1573673274.0,0.05445,Actual vs Actual
+2019,Actual,Other,1793580577.0,1659364963.0,0.08088,Actual vs Actual
+2020,Actual,Other,1900527176.0,1793580577.0,0.05963,Actual vs Actual
+2021,Actual,Other,2666315236.0,1900527176.0,0.40293,Actual vs Actual
+2022,Actual,Other,3282910439.0,2666315236.0,0.23125,Actual vs Actual
+2023,Actual,Other,1928704345.0,3282910439.0,-0.4125,Actual vs Actual
+2024,Actual,Other,2232256371.0,1928704345.0,0.15739,Actual vs Actual
+2025,Actual,Other,2124545459.0,2232256371.0,-0.04825,Actual vs Actual
+2026,Working budget,Other,2391009304.0,2124545459.0,0.12542,Working budget vs Actual
+2027,Legislative appropriation,Other,2442164250.0,2391009304.0,0.02139,Legislative appropriation vs Working budget
+2017,Actual,Public Debt,1190727702.0,,,
+2018,Actual,Public Debt,1234920771.0,1190727702.0,0.03711,Actual vs Actual
+2019,Actual,Public Debt,1298317506.0,1234920771.0,0.05134,Actual vs Actual
+2020,Actual,Public Debt,1321826589.0,1298317506.0,0.01811,Actual vs Actual
+2021,Actual,Public Debt,1277616197.0,1321826589.0,-0.03345,Actual vs Actual
+2022,Actual,Public Debt,1379062579.0,1277616197.0,0.0794,Actual vs Actual
+2023,Actual,Public Debt,1430892085.0,1379062579.0,0.03758,Actual vs Actual
+2024,Actual,Public Debt,1432654078.0,1430892085.0,0.00123,Actual vs Actual
+2025,Actual,Public Debt,1503737345.0,1432654078.0,0.04962,Actual vs Actual
+2026,Working budget,Public Debt,1630666629.0,1503737345.0,0.08441,Working budget vs Actual
+2027,Legislative appropriation,Public Debt,1496361462.0,1630666629.0,-0.08236,Legislative appropriation vs Working budget
+2017,Actual,Public Safety,2213192223.0,,,
+2018,Actual,Public Safety,2140822015.0,2213192223.0,-0.0327,Actual vs Actual
+2019,Actual,Public Safety,2172439060.0,2140822015.0,0.01477,Actual vs Actual
+2020,Actual,Public Safety,2242824621.0,2172439060.0,0.0324,Actual vs Actual
+2021,Actual,Public Safety,3022428994.0,2242824621.0,0.3476,Actual vs Actual
+2022,Actual,Public Safety,2724443764.0,3022428994.0,-0.09859,Actual vs Actual
+2023,Actual,Public Safety,2967276678.0,2724443764.0,0.08913,Actual vs Actual
+2024,Actual,Public Safety,3641791801.0,2967276678.0,0.22732,Actual vs Actual
+2025,Actual,Public Safety,3373420537.0,3641791801.0,-0.07369,Actual vs Actual
+2026,Working budget,Public Safety,3948377783.0,3373420537.0,0.17044,Working budget vs Actual
+2027,Legislative appropriation,Public Safety,3993280926.0,3948377783.0,0.01137,Legislative appropriation vs Working budget
+2017,Actual,Reserve Fund,160376558.0,,,
+2018,Actual,Reserve Fund,10000000.0,160376558.0,-0.93765,Actual vs Actual
+2019,Actual,Reserve Fund,14345241.0,10000000.0,0.43452,Actual vs Actual
+2020,Actual,Reserve Fund,405621213.0,14345241.0,27.27566,Actual vs Actual
+2021,Actual,Reserve Fund,114000000.0,405621213.0,-0.71895,Actual vs Actual
+2022,Actual,Reserve Fund,882919432.0,114000000.0,6.74491,Actual vs Actual
+2023,Actual,Reserve Fund,4205388848.0,882919432.0,3.76305,Actual vs Actual
+2024,Actual,Reserve Fund,1393903798.0,4205388848.0,-0.66854,Actual vs Actual
+2025,Actual,Reserve Fund,242500000.0,1393903798.0,-0.82603,Actual vs Actual
+2026,Working budget,Reserve Fund,95500000.0,242500000.0,-0.60619,Working budget vs Actual
+2027,Legislative appropriation,Reserve Fund,153250000.0,95500000.0,0.60471,Legislative appropriation vs Working budget
+2017,Actual,Transportation,4969537444.0,,,
+2018,Actual,Transportation,4974101522.0,4969537444.0,0.00092,Actual vs Actual
+2019,Actual,Transportation,4961406765.0,4974101522.0,-0.00255,Actual vs Actual
+2020,Actual,Transportation,5372638686.0,4961406765.0,0.08289,Actual vs Actual
+2021,Actual,Transportation,5057511991.0,5372638686.0,-0.05865,Actual vs Actual
+2022,Actual,Transportation,5619661509.0,5057511991.0,0.11115,Actual vs Actual
+2023,Actual,Transportation,5228231812.0,5619661509.0,-0.06965,Actual vs Actual
+2024,Actual,Transportation,5764911522.0,5228231812.0,0.10265,Actual vs Actual
+2025,Actual,Transportation,6505039391.0,5764911522.0,0.12838,Actual vs Actual
+2026,Working budget,Transportation,6739003943.0,6505039391.0,0.03597,Working budget vs Actual
+2027,Legislative appropriation,Transportation,7057146747.0,6739003943.0,0.04721,Legislative appropriation vs Working budget

@@ -1,0 +1,20 @@
+{
+  "description": "Status of every savings payment check this run (seen, partly seen, not seen yet) with the previous run's status, kept in the pipeline's history.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_savings_status.csv",
+    "url": "/_blob/628afadd678eb477c3802198be18e7c8"
+  },
+  "staleAfterHours": 1500,
+  "title": "Savings check status and change since last refresh",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

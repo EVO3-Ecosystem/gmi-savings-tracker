@@ -1,0 +1,20 @@
+{
+  "description": "For each area: the forecast model chosen by backtest (trend, naive or drift), each model's FY2023\u2013FY2025 error, FY2025 baseline, GMI's reported recurring saving and the rate it implies, and the General Fund share.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "d_forecast_model.csv",
+    "url": "/_blob/a19ea247d8ed2e7ec94baed03a325a95"
+  },
+  "staleAfterHours": 1500,
+  "title": "Forecast models, accuracy and default savings rates",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

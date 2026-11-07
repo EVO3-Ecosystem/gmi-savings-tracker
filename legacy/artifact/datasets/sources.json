@@ -1,0 +1,20 @@
+{
+  "description": "The five opendata.maryland.gov datasets the pipeline reads, with portal row counts, rows downloaded, whether every year matched, and the portal's last update.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "sources.csv",
+    "url": "/_blob/836977af1cc028c128b29a3b74e47b46"
+  },
+  "staleAfterHours": 1500,
+  "title": "State datasets used",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

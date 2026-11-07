@@ -1,0 +1,20 @@
+{
+  "description": "Payments to vendors in each focus area by agency and fiscal year, FY2022\u2013FY2026, with payee names merged by the vendor master list.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "f_vendor.csv",
+    "url": "/_blob/dd1ccb9bcb5d81e542ff2979e79d2565"
+  },
+  "staleAfterHours": 1500,
+  "title": "Focus-area payments by vendor",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

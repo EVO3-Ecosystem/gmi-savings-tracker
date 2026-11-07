@@ -1,0 +1,20 @@
+{
+  "description": "Private companies paid under two or more payee names in a fiscal year (and $250K or more), FY2022\u2013FY2026, with each payee name's spend and agencies.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_families.csv",
+    "url": "/_blob/04c93f46aef6eec7a665f3b37fe7dee1"
+  },
+  "staleAfterHours": 1500,
+  "title": "Companies under several payee names",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

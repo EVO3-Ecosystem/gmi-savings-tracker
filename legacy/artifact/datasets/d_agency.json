@@ -1,0 +1,20 @@
+{
+  "description": "Agency codes and names used by every table and the Agencies filter.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "d_agency.csv",
+    "url": "/_blob/ad96c7a7d4984a2a1b5bae28fc1edf2e"
+  },
+  "staleAfterHours": 1500,
+  "title": "Agencies",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

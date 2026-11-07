@@ -1,0 +1,20 @@
+{
+  "description": "One row per pipeline run: start time, result, checks passed, warnings, failures, automatic repairs and mode.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "pipeline_runs.csv",
+    "url": "/_blob/e667f79c9d05c73a0261a02d23159766"
+  },
+  "staleAfterHours": 1500,
+  "title": "Pipeline runs",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

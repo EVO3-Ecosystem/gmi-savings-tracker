@@ -1,0 +1,20 @@
+{
+  "description": "Spending in each focus area by agency and fiscal year: by spending code (FY2017\u2013FY2027) and by payee name from payments to vendors (FY2008\u2013FY2026).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "f_area.csv",
+    "url": "/_blob/dfd08f0087bffe9cfafb90b7686cb836"
+  },
+  "staleAfterHours": 1500,
+  "title": "Focus-area spending by agency",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Budget split into controllable purchases, charges between agencies, client payments and debt service, and staff, grants and capital, by agency and fiscal year, FY2017\u2013FY2027.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "f_scope.csv",
+    "url": "/_blob/d40487123c29e79a2134a82e2c468f7d"
+  },
+  "staleAfterHours": 1500,
+  "title": "Operating budget by what agencies can change",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

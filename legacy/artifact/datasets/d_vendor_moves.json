@@ -1,0 +1,20 @@
+{
+  "description": "Commercial vendors paid by five or more agencies whose operating payments fell most from FY2025 to FY2026 (capital, construction, health plans, schools, banks and governments left out), from State of Maryland Payments Data (7syw-q4cy). Candidates for GMI's unnamed renegotiated contracts.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "d_vendor_moves.csv",
+    "url": "/_blob/d408eb7063501596a75fd4a91b7cc3ea"
+  },
+  "staleAfterHours": 1500,
+  "title": "Largest vendor decreases, FY2025 to FY2026",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

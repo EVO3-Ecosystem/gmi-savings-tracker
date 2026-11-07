@@ -1,0 +1,20 @@
+{
+  "description": "Share of FY2026 payments matched to a budget agency, agency names mapped, payee names grouped into companies, and new payee names since the last run.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_master_quality.csv",
+    "url": "/_blob/f4a561da1422bc0ee69740e6faebdbe0"
+  },
+  "staleAfterHours": 1500,
+  "title": "Master list quality",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}
