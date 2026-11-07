@@ -20,6 +20,8 @@ import duckdb
 import pandas as pd
 import yaml
 
+from . import gate
+
 ROOT = Path(__file__).resolve().parents[2]
 EXP = ROOT / "data" / "export"
 RATIO = ("_yoy", "_rate", "_mape", "_share", "growth", "share")
@@ -39,7 +41,12 @@ def main(argv=None):
     ap.add_argument("--carry", help="folder with the legacy files for datasets that have no mart yet")
     a = ap.parse_args(argv)
     files = sorted(set(v for v in yaml.safe_load((ROOT / "config" / "dashboard.yaml").read_text()).values()))
-    con = duckdb.connect(str(ROOT / "data" / "md_transparency.duckdb"), read_only=True)
+    db = ROOT / "data" / "md_transparency.duckdb"
+    con = duckdb.connect(str(db), read_only=True)
+    blocked = gate.problems(con, db, ROOT / "docs" / "parity" / "summary.csv")  # write-audit-publish: nothing unaudited is exported
+    if blocked:
+        print("export refused:\n  - " + "\n  - ".join(blocked), file=sys.stderr)
+        return 2
     run_id = con.execute("SELECT max(run_id) FROM ops.run_log").fetchone()[0]
     hold = True  # hold_partial_payments: the page has no partial-year label yet
     full = con.execute("SELECT max(fiscal_year) FROM core.fact_payment WHERE NOT partial_year").fetchone()[0]

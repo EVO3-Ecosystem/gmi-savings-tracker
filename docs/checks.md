@@ -1,6 +1,6 @@
 # Checks catalog
 
-A failed "Stop" check ends the run before anything is exported.
+A failed "Stop" check ends the run before anything is exported. The export itself is gated (`src/pipeline/gate.py`): it refuses to run when the database has a failed check, when a newer build failed (the database is stale), or when `docs/parity/summary.csv` is missing or has an unexplained difference. `make test-fault` shows a damaged extract failing its checks while the last good database is kept.
 
 | Check | Layer | On failure | Phase | Implemented |
 |---|---|---|---|---|

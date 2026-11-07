@@ -83,7 +83,7 @@ The website's budget download labels FY2021 "Working", FY2022 "Appropriation" an
 | 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
 | 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ |
 | 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 12 reproduced exactly, 9 differences explained (`docs/parity/`) ✔; vendor, budget and overlap marts added since; analytics files move with Phase 5 |
-| 5. Analytics | — | Outputs match the dashboard |
+| 5. Analytics | **5a in progress** | Outputs match the dashboard; publish gate, fault-injection test and snapshots done, analytics files still carried |
 | 6. Automate & document | — | Two clean scheduled runs with no manual steps |
 
 Next up is Phase 5a: replace the Data & pipeline tab's old-pipeline facts, port the cross-checks, and make `export.py` refuse a failed build. The full gap list is in [docs/roadmap.md](docs/roadmap.md).
@@ -102,6 +102,10 @@ make gate1          # Phase 1 gate: last two runs matched the portal
 make build          # Phase 2: DuckDB layers + checks (non-zero exit on a failed check)
 make all            # extract then build
 make test           # CI runs the same; data-dependent tests skip when data/ is absent
+make test-fault     # damage a copy of the raw run and check the build fails and keeps the last good database
+make snapshot       # portable Parquet snapshot of the database in data/snapshots/ (manifest with row counts and checksums)
+make restore SNAP=data/snapshots/<folder>   # verify checksums, import, check row counts (RESTORE_FLAGS=--force to replace)
+make export         # dashboard CSVs; refused unless every stop check passed and parity has no unexplained difference
 make parity         # compare the marts with the legacy dashboard files (LEGACY=path to the old out/ folder)
 python -m src.pipeline.export --carry ../gst/out   # dashboard CSVs from the marts into data/export/
 python -m src.pipeline.preview                     # dashboard page tests on the export, then a self-contained preview

@@ -9,7 +9,7 @@ Six phases over about eight weeks; each phase's gate must pass before the next s
 | 2. Database | 2–3 | DuckDB `raw`, `core`, `ops`; type casting and code normalizing; reconciliation checks; non-zero exit on failure | Every check passes; yearly totals tie to the portal | **Passed Oct 29, 2026** (30 of 30) |
 | 3. Reference data | 3–4 | `ref` layer from `reference/` CSVs: agencies and aliases, stages, focus areas, payment-name and vendor maps; match-rate report | Match rates at or above the dashboard's master list quality | **Passed Oct 29, 2026** |
 | 4. Marts & dashboard | 4–5 | One `mart` table per dashboard file; `export.py` writes the CSVs; FY2027 payments as a partial year | Every dashboard file reproduced, or each difference explained | **Gate passed for the 21 base dashboard files (Nov 2, 2026).** `sql/mart/*.sql` (28 files at the gate, 43 now; the change measure applied by `marts.py` from each file's `-- yoy:` header), `make parity` against the legacy files: 12 reproduced exactly; 9 differ only as explained in `docs/parity/explanations.csv` (FY2027 partial year added; one company spelled differently). Also added: vendor master, payee types, agency functions, agency roll-up and results marts. Fixed on the way: scope precedence (client payments, then charges between agencies, then staff/grants/capital) and the payee-name pass-through exclusions (`reference/payee_area_exclusions.csv`). Left for Phase 5: the analytics files (opportunities, forecasts, savings checks, recommendations) and `export.py` |
-| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | Next |
+| 5. Analytics | 5–7 | Forecasts, savings detectors, savings checks, path to $50M on the database; 5a first: pipeline facts, cross-checks, publish gate, fault test (gap analysis below) | Outputs match the dashboard; no carried files | **5a in progress (Nov 7, 2026):** publish gate, fault-injection test and database snapshot done; cross-checks, ops history tables and the 18 carried analytics files still open |
 | 6. Automate & document | 7–8 | `make all`; launchd or cron on the Mac; run log, optional PDF report, wiki update | Two clean scheduled runs with no manual steps | |
 
 ## Open questions
@@ -53,8 +53,8 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 19 | Analytics | Vendor moves, payee-name detail, vendor pages | `payments_legacy.py`, `run.py` | `d_vendor_moves`, `d_vendor_names`, `f_vendor_detail` | **Carried** |
 | 20 | Quality | Master list quality | Computed each run | `d_master_quality` carried, so it still lists the four names decided Nov 4 | **Carried (stale)** |
 | 21 | Quality | Checks per run | 93 in 7 stages: raw 23, staged 3, model 14, cross-check 8, recommendations 7, page 28, publish 10 | 59 (raw 9, core 19, ref 11, mart 20) plus 34 page tests in `preview.py` | Partial: cross-checks and recommendation checks not ported |
-| 22 | Quality | Fault-injection test | `run.py --inject-fault` drops half of FY2015 and shows the repair | None | **Gap** |
-| 23 | Quality | A failed check blocks publishing | Keeps the last good `out/` | Keeps the last good database; `export.py` does not yet refuse when checks fail or parity is unexplained | Partial |
+| 22 | Quality | Fault-injection test | `run.py --inject-fault` drops half of FY2015 and shows the repair | `make test-fault` drops half of one budget year in a copy of the raw run and checks that the build fails its stop checks and the last good database survives (`tests/test_fault_injection.py`); the download re-fetch is shown by `EXTRACT_FAULT=fte` | Same |
+| 23 | Quality | A failed check blocks publishing | Keeps the last good `out/` | Keeps the last good database; `export.py` refuses (exit 2) when a stop check failed, a newer build failed, or parity has an unexplained difference (`src/pipeline/gate.py`, `tests/test_gate.py`) | Same |
 | 24 | Quality | Unit tests and CI | Page test only | 7 test files (14 tests), GitHub Actions CI and extract smoke test | Better |
 | 25 | Quality | Parity with the old pipeline | n/a | `parity.py` with explanations | Better |
 | 26 | Governance | Column definitions and schema drift | None | `governance.py`: 1,000 of 1,000 columns, drift history, governance doc | Better |
@@ -65,7 +65,7 @@ Old: `legacy/gst` (pandas scripts, CSV folders, about 2,000 lines of Python in 1
 | 31 | Run | Scheduling | Manual | Manual locally; CI on GitHub | Same (Phase 6) |
 | 32 | Docs | Figures | None | `figures.py`: 5 PNGs from the database | Better |
 
-Summary of the 32 rows: 13 Better, 5 Same, 3 Partial, 7 Carried, 4 Gap (one optional, one low priority). 26 of 44 dashboard files come from the new marts; 18 are carried.
+Summary of the 32 rows: 13 Better, 7 Same, 2 Partial, 7 Carried, 3 Gap (one optional, one low priority). 26 of 44 dashboard files come from the new marts; 18 are carried.
 
 ## Gap analysis and improvement backlog (Nov 5, 2026)
 
@@ -76,9 +76,9 @@ Ordered by value for the dashboard and the interview. Effort: S = under a day, M
 | 1 | The Data & pipeline tab shows the old pipeline's facts (rows 20, 27): 93 of 93 checks, the four agency names already decided, the corrected grants "$50,000" claim | A reviewer sees numbers that contradict the repo; integrity scores 2 of 5 | Marts for `sources`, `runs`, `checks`, `measures`, `d_master_quality` and `stage_evidence` from `ops` and `ref`; show new and old check counts during the switch | S | 5a (next) |
 | 2 | Analytics still carried (rows 15-19) | Calculator, Opportunities and Savings tracker score 3 only because of this | Port to `src/models/` on the marts: baselines first, backtest FY2017-FY2022 → FY2023-FY2025, seeded bootstrap, assumptions in `config/assumptions.yaml`, model cards in `docs/models/`; parity against the old files | M per module | 5 |
 | 3 | No cross-checks with the state's own sites (row 4) or DBM budget books (row 5) | The old pipeline proved totals against three independent publications; the new one against two | Port the 8 cross-checks into `checks.py` (warn if a site is down, stop if a total differs) | S | 5a |
-| 4 | Publishing is not gated (row 23) | A bad build could still be exported | `export.py` exits non-zero if the latest run has a failed stop check or parity has an unexplained difference | S | 5a |
+| 4 | Publishing is not gated (row 23) | A bad build could still be exported | `export.py` exits non-zero if the latest run has a failed stop check or parity has an unexplained difference | S | 5a **done Nov 7** |
 | 5 | No history of recommendations or new payee names (row 18) | The "changed since last refresh" feedback loop is lost | `ops.rec_history` and `ops.payee_name_seen`, appended each run | S | 5 |
-| 6 | No fault-injection test (row 22) | Self-healing is claimed but not demonstrated | `make test-fault`: drop rows from one year in a copy of raw and show the re-download and the check | S | 5a |
+| 6 | No fault-injection test (row 22) | Self-healing is claimed but not demonstrated | `make test-fault`: drop rows from one year in a copy of raw and show the check fails and the last good database is kept | S | 5a **done Nov 7** |
 | 7 | Analysis quality from the tab review: small-base changes (+4,177%, +42,462%), nominal dollars only, nine-year sums in Overview tiles | Over-reading risk; executives read one year | Minimum base for changes (about $1M); real and per-resident dollars (`core.cpi_fy`, `core.fact_population`); FY2026 vs FY2025 tiles | M | 5 |
 | 8 | Higher education budget (4mca-332u) not loaded | All-funds totals leave out about $8.6B a year | Raw table, `source_dataset` column, labeled totals, kept out of savings baselines | M | 5 |
 | 9 | Grants have no groupings; overlap is a name-match minimum | WMATA, the largest grants, show no match | Grantor and grantee groupings (see "Next phase suggestions") | M | 5-6 |
@@ -127,3 +127,16 @@ Dashboard-level gaps added in the *GMI Dashboard Optimization Roadmap v2* (Claud
 | genai-engineering | TF-IDF + logistic regression classifier | Payee-type classifier trained on rule-labeled payees, to catch rule misses; grant description groups | 5 |
 
 **Portfolio housekeeping done Nov 5, 2026:** genai-engineering README counts and claims corrected to its data files (pushed); sierra-applied-ml README corrected to its results files and its links moved to snapaiarchitect (patch ready; this session can't push to that repo); profile README in `snapaiarchitect/snapaiarchitect` links all three repos (pushed; the repo is private, so it shows on the profile only once made public). Pinning is a manual step on GitHub.
+
+## Best practices applied and planned (Nov 7, 2026)
+
+Researched for each open suggestion; what is done is marked, the rest is the standard Phase 5 will follow.
+
+| Area | Practice | Status |
+|---|---|---|
+| Publishing | Write-audit-publish: stage, audit, publish only if the audit passes ([overview](https://www.tabular.io/?p=549), [orchestration example](https://docs.coginiti.co/tutorials/wap-awap-tutorial/)) | Done: `gate.py` gates `export.py`; the build already keeps the last good database |
+| Persistence | Export with `EXPORT DATABASE` to Parquet and import into an empty database ([DuckDB docs](https://duckdb.org/docs/stable/sql/statements/export)); never copy a file that is open for writing | Done: `make snapshot` / `make restore` with a manifest and SHA-256 per file; copy the folder to storage outside the sandbox to keep it |
+| Fault injection | Damage an input on purpose and show the checks catch it and nothing bad is published | Done: `make test-fault` |
+| Actions security | Read-only default token, third-party actions pinned to full commit SHAs with a version comment, `persist-credentials: false`, Dependabot to keep pins current ([guide](https://boostsecurity.io/blog/how-to-secure-github-actions), [pinning notes](https://medium.com/@jordanritter/security-hardening-github-workflows-at-scale-d291a33774e1)) | Done: all three actions at v7 (Node 24), pinned; `.github/dependabot.yml` added |
+| Forecast evaluation | Rolling-origin (walk-forward) evaluation, never shuffled folds; every model compared with the naive last-value baseline on the same origins and horizons; MASE scale recomputed from each origin's training history ([tsCV](https://pkg.robjhyndman.com/forecast/reference/tsCV.html), [workflow](https://metricgate.com/blogs/workflow-for-validating-a-forecasting-model/)) | Planned for the analytics port (gap 2); intervals need a separate source (Hyndman and Athanasopoulos, *Forecasting: Principles and Practice*) |
+| Branch protection | Require the `test` check on `main` | Open: a repository setting only an admin can change |
