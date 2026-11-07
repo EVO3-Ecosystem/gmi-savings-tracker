@@ -12,6 +12,8 @@ Kept so the Phase 5 parity gate can compare the new pipeline's 44 exports with w
 ## Notes for the parity gate
 
 - The live dashboard's data files were replaced on Nov 4, 2026 by the new pipeline's export (39 files) and are not downloadable from a cloud session; `artifact/datasets/*.json` records which file each dataset points to. The pre-Nov 4 published data is `gst/out/`.
-- `gst/out/` has 41 files; the dashboard reads 44. The three it lacks were added with the Vendors tab and portal views (`d_vendors`, `f_vendor_pay`, `f_payee_type`, `f_vendor_year`, `d_multi`, `f_concentration`, `d_area_top`, `d_families`, `d_multi_basis` and the portal-view files have no legacy counterpart); compare those against their marts' tests instead.
+- **30 of the 44 exports have a legacy file of the same name** in `gst/out/`; compare those file by file.
+- **14 exports have no legacy counterpart** because they were added after the original pipeline: the Vendors tab (`d_vendors`, `f_vendor_pay`, `f_payee_type`, `f_vendor_year`, `d_multi`, `d_multi_basis`, `f_concentration`, `d_area_top`, `d_families`) and the portal views (`f_budget_vs_pay`, `f_fund_source`, `f_program`, `f_grants`, `f_overlap`). Check them against their marts' tests and the source totals instead.
+- **11 legacy files are not dashboard exports**: the intermediate tables `agency_year`, `area_year`, `area_agency_year`, `area_code_year`, `area_vendor_year`, `budget_by_function`, `budget_by_fund`, `budget_by_object` and `spending_scope` (the 21-file base parity in `docs/parity/` already uses these), plus `reports` and `run_checks_failed`.
 - `run_checks_failed.csv` is the original pipeline's record of its last failed run (`20261102T182752Z`), kept for the fault history.
 - The original pipeline's `reports.csv` points to PDF reports stored in the artifact; the PDFs themselves are not copied.
