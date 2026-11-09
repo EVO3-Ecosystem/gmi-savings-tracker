@@ -4,6 +4,12 @@
 
 An independent savings tracker for Maryland's Government Modernization Initiative (GMI): it checks reported savings against the state's own payments, and finds the next $50M. Prototype by Sierra Napier; not an official State of Maryland product.
 
+## Live demo
+
+**https://evo3-ecosystem.github.io/gmi-savings-tracker/**: the dashboard, built by `make site` from the checked-in export snapshot in `site_data/` and published by `.github/workflows/pages.yml` on every push to `main`. GitHub Pages must be enabled once in Settings > Pages > Source: GitHub Actions. To refresh the published data: `make export && make site-snapshot`, then commit `site_data/`.
+
+![Dashboard overview](docs/figures/dashboard_overview.png)
+
 
 A free, local pipeline for Maryland's budget, payments, funding, staffing and grants data: SODA pulls → Parquet files → one DuckDB database → dashboard CSVs. It replaces the pipeline that built the **GMI Savings Tracker** and **Maryland Spend Lens** dashboards, whose original code is saved here under `legacy/`.
 

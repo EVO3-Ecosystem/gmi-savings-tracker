@@ -1,0 +1,8 @@
+area,method,growth,backtest_mape,trend_mape,naive_mape,drift_mape,baseline_fy2025,gmi_recurring,gmi_rate,gmi_note,gf_share
+Fleet & fuel,Naive (last actual),0.03598,0.22184,0.31427,0.22184,0.23814,193100466.0,2100000.0,0.01088,fuel and maintenance $0.8M + maintenance vendors $1.3M,0.21444
+"IT hardware, software & services",Naive (last actual),0.09918,0.03675,0.28941,0.03675,0.32427,692249948.0,4900000.0,0.00708,laptop refresh $1.5M + specifications $1.5M + pricing $1.9M,0.36162
+Other controllable purchases,Naive (last actual),0.05017,0.07789,0.33117,0.07789,0.24915,2806136520.0,18000000.0,0.00641,contract renegotiation $18M year over year,0.45313
+"Print, copy & mail",Naive (last actual),0.00255,0.08573,0.12313,0.08573,0.12018,52438200.0,800000.0,0.01526,shipping contract $0.8M,0.34102
+Real estate & leases,Log-linear trend,0.01358,0.03068,0.03068,0.04745,0.03811,141564622.0,,,GMI reported no recurring saving for this area,0.4002
+Telecom,Naive (last actual),0.03105,0.06689,0.13412,0.06689,0.19082,46824618.0,4250000.0,0.09076,phone lines $0.5M + plan catalog $2.1-2.3M + copper lines $1.4-1.7M,0.47148
+Utilities & facility energy,Naive (last actual),0.03188,0.11406,0.16456,0.11406,0.08894,161540934.0,,,GMI reported no recurring saving for this area,0.53389
