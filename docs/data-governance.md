@@ -68,6 +68,7 @@ Each issue was checked against the portal's own metadata or the data on Nov 2, 2
 | Funding source (gy87-e27x), FTE (x8qy-486w) | Descriptions still say FY2026 is the Governor's Allowance; data runs to FY2027 | Portal description vs data | Same stage table as the budget |
 | Budget | Code spellings vary ("0930"/"930", "1"/"01"); function codes 10–12 have more than one title; A15's name carries ":A15" in FY2026–FY2027 | Phase 2 checks | Normalized in `core` |
 | All five | 50,000-row pages drop without an app token | Phase 1 runs | 20,000-row pages, retries, self-healing re-download |
+| Budget (yu65-jmmv) vs higher education (4mca-332u) | The operating budget dataset leaves out public higher education: R13 Morgan State, R14 St. Mary's College, R30 University System of Maryland and R95 Baltimore City Community College are published separately as CUR and CR funds | Checked Nov 4, 2026 (no rows for the four agencies in yu65-jmmv); stop check on every build since Nov 9, 2026 | `raw.highered` / `core.fact_budget_highered` with `source_dataset`; added only in `mart.d_all_funds`, labeled "including public higher education"; out of every GMI savings baseline (below) |
 
 ## 4. Lineage
 
@@ -119,6 +120,7 @@ Portal views reproduced as marts: where it's going (`mart.f_program`, budget by 
 - Every reported saving has a source, URL, page and verbatim quote in `reference/gmi_reported_savings.csv`. The run fails if any is missing ("Every reported savings item cites its source and page").
 - A figure the sources don't publish is not filled in. For example, GMI names four contract types under the $18M but no vendors and no split, so the tracker checks payment categories and labels each match as a best match.
 - Cost avoidance (DGS $326.3M) is kept apart from recurring yearly savings.
+- **Needs verification before publishing:** the procurement-statute citations for leaving public higher education out of GMI's scope (section 6). The pipeline publishes none.
 
 ## 8. Assumptions register
 

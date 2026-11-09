@@ -6,7 +6,7 @@ fiscalperiod,raw.grants,portal,Accounting period in the grants dataset; not used
 date,,portal,Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used
 category,raw.payments,portal,Payment category as published by the portal
 category,"raw.grants,core.fact_grant",portal,Grant or Loan
-category,"raw.budget,raw.fund",portal,Budget function code (renamed function_code in core)
+category,"raw.budget,raw.fund,raw.highered",portal,Budget function code (renamed function_code in core)
 category_title,,portal,Budget function title (renamed function_name in core)
 type,raw.budget,portal,Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead
 type,"ref.gmi_reported_savings,d_savings",reference,"Kind of saving GMI reported: year over year, one-time, cost avoidance"
@@ -17,8 +17,8 @@ agency_name_as_paid,,derived,Agency name exactly as it appears in the payments d
 agency,,derived,Agency name shown on the dashboard
 agency_title,core.mfr_document,source,Agency name on the Managing for Results plan's web page
 agency_file,,source,File name of an agency's Managing for Results plan PDF
-agency_subobject_code,raw.budget,portal,Agency-specific spending code; not used (Comptroller sub-object is used)
-agency_subobject_name,raw.budget,portal,Agency-specific spending code name; not used
+agency_subobject_code,"raw.budget,raw.highered",portal,Agency-specific spending code; not used (Comptroller sub-object is used)
+agency_subobject_name,"raw.budget,raw.highered",portal,Agency-specific spending code name; not used
 unit_code,,portal,Budget unit code within an agency
 unit_name,,portal,Budget unit name
 program_code,,portal,"Budget program code, two digits in core"
@@ -29,8 +29,8 @@ organization_code,,portal,Portal's combined agency-unit-program code
 organization_sub_code,raw.budget,portal,Portal's combined code including subprogram
 object_code,,portal,"Comptroller object code, two digits (for example 08 Contractual services)"
 object_name,,portal,Comptroller object name
-comptroller_subobject_code,raw.budget,portal,Comptroller sub-object (detailed spending) code; renamed subobject_code in core
-comptroller_subobject_name,raw.budget,portal,Comptroller sub-object name; renamed subobject_name in core
+comptroller_subobject_code,"raw.budget,raw.highered",portal,Comptroller sub-object (detailed spending) code; renamed subobject_code in core
+comptroller_subobject_name,"raw.budget,raw.highered",portal,Comptroller sub-object name; renamed subobject_name in core
 subobject_code,,derived,Comptroller sub-object code without leading zeros
 subobject_name,,derived,Comptroller sub-object name
 code,f_code,derived,Comptroller sub-object code
@@ -345,3 +345,9 @@ first_seen_run_id,ops.payee_name_seen,ops,Extract run of the first build that pa
 first_seen_date,ops.payee_name_seen,ops,UTC date of that extract run (YYYY-MM-DD)
 last_seen_run_id,ops.payee_name_seen,ops,Extract run of the latest passing build that saw this payee name
 last_seen_date,ops.payee_name_seen,ops,UTC date of that extract run (YYYY-MM-DD)
+source_dataset,"core.fact_budget_highered,core.fact_budget_all_funds",derived,"Portal dataset the row comes from: yu65-jmmv (operating budget) or 4mca-332u (public higher education, CUR and CR funds)"
+operating_budget,"mart.d_all_funds,d_all_funds",derived,"Operating budget, all funds, from the operating budget dataset (yu65-jmmv) only: the figure every other budget view uses; nominal dollars"
+public_higher_education,"mart.d_all_funds,d_all_funds",derived,"Operating budget of R13 Morgan State, R14 St. Mary's College, R30 University System of Maryland and R95 Baltimore City Community College (4mca-332u, CUR and CR funds), which yu65-jmmv leaves out; nominal dollars"
+all_funds_including_higher_education,"mart.d_all_funds,d_all_funds",derived,"Operating budget plus public higher education: the all-funds total including public higher education, a separate labeled figure that no GMI savings baseline uses"
+label,"mart.d_all_funds,d_all_funds",derived,How the all-funds figure must be labeled wherever it is shown
+source_datasets,"mart.d_all_funds,d_all_funds",derived,Portal datasets summed in the row

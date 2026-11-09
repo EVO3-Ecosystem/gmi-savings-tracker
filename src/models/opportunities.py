@@ -136,14 +136,21 @@ def bid_list(payments, agency_year, cfg=None):
     return d
 
 
+def excluded_agencies():
+    """Agencies kept out of every GMI savings baseline (public higher education; config/assumptions.yaml)."""
+    cfg = yaml.safe_load((ROOT / "config" / "assumptions.yaml").read_text())
+    return list(cfg.get("gmi_baseline_exclusions", {}).get("agency_codes", []))
+
+
 def inputs(con):
-    """The three inputs, read from the marts."""
+    """The three inputs, read from the marts, without the agencies left out of GMI savings baselines."""
     code_agency = con.execute("""SELECT b.fiscal_year, s.stage, b.agency_code, b.object_name, b.subobject_code AS code,
           b.subobject_name AS comptroller_subobject_name, b.controllable, b.focus_area AS area, sum(b.budget) AS budget
         FROM core.fact_budget_scope b JOIN ref.dim_stage s USING (fiscal_year) GROUP BY ALL""").df()
     agency_year = con.execute("SELECT agency_code, agency, fiscal_year, fte FROM mart.agency_year").df()
     payments = con.execute("SELECT fiscal_year, agency_code, vendor, area, amount, is_government, passthrough FROM mart.payment_area").df()
-    return code_agency, agency_year, payments
+    out = excluded_agencies()
+    return code_agency[~code_agency.agency_code.isin(out)], agency_year, payments[~payments.agency_code.isin(out)].reset_index(drop=True)
 
 
 def write(con, cfg=None):

@@ -12,7 +12,8 @@ from ..models import opportunities, recommendations, savings
 
 HIST = Path(__file__).resolve().parents[2] / "data" / "check_history.csv"
 SUM_COL = {"budget": ("core.fact_budget", "budget"), "fund": ("core.fact_fund", "budget"), "fte": ("core.fact_fte", "fte"),
-           "payments": ("core.fact_payment", "amount"), "grants": ("core.fact_grant", "amount")}
+           "payments": ("core.fact_payment", "amount"), "grants": ("core.fact_grant", "amount"), "highered": ("core.fact_budget_highered", "budget")}
+HIGHER_ED = ("R13", "R14", "R30", "R95")  # agencies of 4mca-332u: kept out of every GMI savings baseline
 
 
 def run(con, run_id, manifest):
@@ -31,7 +32,10 @@ def run(con, run_id, manifest):
         check("raw", f"Rows loaded = portal count: {d['dataset']}", n == d["portal_count"], f"{n:,} loaded, {d['portal_count']:,} on the portal")
 
     # core: yearly totals and row counts tie to the portal's own sums; typing lost nothing
+    loaded = {d["dataset"] for d in manifest["datasets"]}
     for ds, (table, col) in SUM_COL.items():
+        if ds not in loaded:  # an extract run from before the dataset was added
+            continue
         g = con.execute(f"""SELECT p.fiscal_year, p.total, p.rows, coalesce(c.t, 0), coalesce(c.n, 0) FROM ops.portal_year_total p
             LEFT JOIN (SELECT fiscal_year, sum({col}) t, count(*) n FROM {table} GROUP BY 1) c USING (fiscal_year) WHERE p.dataset = ?""", [ds]).fetchall()
         gap = max(abs(r[1] - r[3]) for r in g)
@@ -90,6 +94,7 @@ def run(con, run_id, manifest):
     phase5_savings(con, check, one)
     phase5_recommendations(con, check, one)
     phase5_reference_marts(con, check, one)
+    phase5_higher_education(con, check, one, "highered" in loaded)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -354,6 +359,37 @@ def phase5_reference_marts(con, check, one):
     check("mart", "Every year whose portal stage label differs from the confirmed stage has evidence", unevidenced == 0,
           f"{unevidenced} years where the portal's label and the confirmed stage differ but no evidence is recorded")
 
+
+def phase5_higher_education(con, check, one, loaded):
+    """Public higher education (4mca-332u): disjoint from the operating budget dataset, added only in the labeled all-funds
+    figure, and kept out of every GMI savings baseline."""
+    if not loaded or not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_all_funds'"):
+        return
+    codes = ", ".join(f"'{c}'" for c in HIGHER_ED)
+    have = [r[0] for r in con.execute("SELECT DISTINCT agency_code FROM core.fact_budget_highered ORDER BY 1").fetchall()]
+    overlap = one(f"SELECT count(*) FROM core.fact_budget WHERE agency_code IN ({codes})")
+    other = [c for c in have if c not in HIGHER_ED]
+    check("core", "Higher education dataset holds only its four agencies, none of them in the operating budget dataset", overlap == 0 and not other and have,
+          f"agencies {', '.join(have)}; {overlap} operating-budget rows for them; {len(other)} unexpected agencies")
+    bad = one("""SELECT count(*) FROM mart.d_all_funds a
+        FULL JOIN (SELECT fiscal_year, sum(budget) b FROM core.fact_budget GROUP BY 1) o USING (fiscal_year)
+        LEFT JOIN (SELECT fiscal_year, sum(budget) h FROM core.fact_budget_highered GROUP BY 1) h USING (fiscal_year)
+        WHERE abs(coalesce(a.operating_budget, 0) - coalesce(o.b, 0)) > 1 OR abs(coalesce(a.public_higher_education, 0) - coalesce(h.h, 0)) > 1
+           OR abs(a.all_funds_including_higher_education - coalesce(o.b, 0) - coalesce(h.h, 0)) > 1""")
+    fy = one("SELECT max(fiscal_year) FROM ref.dim_stage WHERE stage = 'Working budget'")
+    row = con.execute("SELECT public_higher_education, all_funds_including_higher_education FROM mart.d_all_funds WHERE fiscal_year = ?", [fy]).fetchone()
+    check("mart", "All-funds total including public higher education = operating budget + higher education (every year, to the dollar)", bad == 0,
+          f"{bad} years differ; FY{fy}: ${(row[0] or 0) / 1e9:,.2f}B higher education, ${row[1] / 1e9:,.2f}B all funds including it" if row else f"{bad} years differ")
+    scope = one(f"SELECT count(*) FROM core.fact_budget_scope WHERE agency_code IN ({codes})")
+    opps = one(f"SELECT count(*) FROM mart.d_opps WHERE agency_code IN ({codes})")
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[2] / "config" / "assumptions.yaml").read_text())
+    excl = set(cfg.get("gmi_baseline_exclusions", {}).get("agency_codes", []))
+    moves = set(cfg["savings"]["vendor_moves"]["excluded_agency_codes"])
+    paid = one(f"""SELECT coalesce(sum(amount), 0) FROM mart.payment_area WHERE agency_code IN ({codes})
+        AND fiscal_year = {int(cfg['opportunities']['payments_fy'])} AND NOT is_government AND NOT passthrough""")
+    check("mart", "Public higher education is kept out of every GMI savings baseline", scope == 0 and opps == 0 and set(HIGHER_ED) <= excl and set(HIGHER_ED) <= moves,
+          f"{scope} budget-scope rows and {opps} opportunity findings for {', '.join(HIGHER_ED)}; the payment detectors, bid list and vendor moves leave out "
+          f"${paid / 1e6:,.1f}M of FY{cfg['opportunities']['payments_fy']} private payments by these agencies")
 
 
 # ---- New-payee-name history (ops.payee_name_seen). Only a build whose stop checks all pass writes it (build.py calls
