@@ -32,6 +32,8 @@
 .gs .panel{display:grid;gap:var(--cds-gap-md)}
 .gs .panel[hidden]{display:none}
 .gs .lede{font-size:var(--cds-font-size-body);margin:0;max-width:78ch;line-height:1.5}
+.gs .lede.find{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);text-wrap:pretty}
+.gs .st.stg{color:var(--color-fg-muted)}.gs .st.stg:empty{display:none}
 .gs .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:var(--cds-gap-md)}
 .gs .tile,.gs .card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0}
 .gs .tile{display:grid;gap:var(--cds-gap-xs);align-content:start;position:relative}
@@ -134,12 +136,12 @@
 
   <!-- OVERVIEW -->
   <section class="panel" id="p-over" role="tabpanel" aria-labelledby="t-over">
-    <p class="lede" id="overLede" data-source="f_function f_scope f_area">—</p>
+    <p class="lede find" id="overLede" data-source="f_function f_scope f_area">—</p>
     <div class="tiles">
-      <div class="tile"><span class="k" id="kBud">Operating spending</span><button class="xp" data-expand="budget">Expand</button><span class="v" id="vBud" data-source="f_function">—</span><span class="d chg" id="dBud">—</span><span class="d" id="sBud"></span><div class="spark" id="spBud"></div></div>
-      <div class="tile"><span class="k" id="kCtl">Controllable purchases</span><button class="xp" data-expand="controllable">Expand</button><span class="v" id="vCtl" data-source="f_scope">—</span><span class="d chg" id="dCtl">—</span><span class="d" id="sCtl"></span><div class="spark" id="spCtl"></div></div>
-      <div class="tile"><span class="k" id="kArea">Focus areas, by spending code</span><button class="xp" data-expand="areas">Expand</button><span class="v" id="vArea" data-source="f_area">—</span><span class="d chg" id="dArea">—</span><span class="d" id="sArea"></span><div class="spark" id="spArea"></div></div>
-      <div class="tile"><span class="k" id="kPay">Payments to vendors</span><button class="xp" data-expand="payments">Expand</button><span class="v" id="vPay" data-source="f_agency totals f_area">—</span><span class="d chg" id="dPay">—</span><span class="d" id="sPay"></span><div class="spark" id="spPay"></div></div>
+      <div class="tile"><span class="k" id="kBud">Operating spending</span><button class="xp" data-expand="budget">Expand</button><span class="v" id="vBud" data-source="f_function">—</span><span class="d"><span class="st stg" id="gBud"></span></span><span class="d chg" id="dBud">—</span><span class="d" id="sBud"></span><div class="spark" id="spBud"></div></div>
+      <div class="tile"><span class="k" id="kCtl">Controllable purchases</span><button class="xp" data-expand="controllable">Expand</button><span class="v" id="vCtl" data-source="f_scope">—</span><span class="d"><span class="st stg" id="gCtl"></span></span><span class="d chg" id="dCtl">—</span><span class="d" id="sCtl"></span><div class="spark" id="spCtl"></div></div>
+      <div class="tile"><span class="k" id="kArea">Focus areas, by spending code</span><button class="xp" data-expand="areas">Expand</button><span class="v" id="vArea" data-source="f_area">—</span><span class="d"><span class="st stg" id="gArea"></span></span><span class="d chg" id="dArea">—</span><span class="d" id="sArea"></span><div class="spark" id="spArea"></div></div>
+      <div class="tile"><span class="k" id="kPay">Payments to vendors</span><button class="xp" data-expand="payments">Expand</button><span class="v" id="vPay" data-source="f_agency totals f_area">—</span><span class="d"><span class="st stg" id="gPay"></span></span><span class="d chg" id="dPay">—</span><span class="d" id="sPay"></span><div class="spark" id="spPay"></div></div>
     </div>
     <div class="card">
       <div class="hd"><h2 id="ovBPH">Budget and payments, FY2017–FY2026</h2><button class="xp" data-expand="budget">Expand</button></div>
@@ -161,18 +163,10 @@
         <p class="insight" id="ov50Detail"></p>
       </div>
     </div>
-    <div class="grid">
-      <div class="card">
-        <div class="hd"><h2 id="scopeH">Where savings can come from</h2><button class="xp" data-expand="scope">Expand</button></div>
-        <p class="note" id="scopeNote">Operating budget by what an agency can change.</p>
-        <div class="legend" id="scopeLegend"></div>
-        <div class="chart" id="scopeChart" data-source="f_scope"></div>
-      </div>
-      <div class="card">
+    <div class="card">
         <div class="hd"><h2 id="overAreasH">Focus areas</h2><button class="xp" data-expand="areas">Expand</button></div>
         <p class="note" id="overAreasNote">Spending by the state's spending codes (solid) and the part payee names alone can find (thin), for the selected years combined. Click a bar to filter by that area.</p>
         <div class="chart" id="overAreas" data-source="f_area"></div>
-      </div>
     </div>
     <div class="card">
       <div class="hd"><h2>Recommended next steps</h2></div>
@@ -198,6 +192,12 @@
         <thead><tr><th data-field="area">Area</th><th class="n" data-field="spend">By spending code</th><th class="n">Change</th><th class="n">Share</th><th class="n">Agencies</th><th class="n" data-field="payee_spend">By payee name</th><th class="n">Coverage</th></tr></thead>
         <tbody id="areasBody"></tbody></table></div>
       <p class="stagenote" id="areasStage"></p>
+    </div>
+    <div class="card">
+        <div class="hd"><h2 id="scopeH">Where savings can come from</h2><button class="xp" data-expand="scope">Expand</button></div>
+        <p class="note" id="scopeNote">Operating budget by what an agency can change.</p>
+        <div class="legend" id="scopeLegend"></div>
+        <div class="chart" id="scopeChart" data-source="f_scope"></div>
     </div>
   </section>
 
@@ -550,6 +550,8 @@ const num = rows => rows.map(r => Object.fromEntries(Object.entries(r).map(([k,v
 const ARROW = v => v==null||isNaN(v)||!isFinite(v)?'—':Math.abs(v)<=0.0005?'■ flat':(v>0?'▲ ':'▼ ')+d3.format('.1%')(Math.abs(v));
 const toneOf = (v,good) => v==null||isNaN(v)||!isFinite(v)||Math.abs(v)<=0.0005||good==='neutral'?'flat':((v>0)===(good==='higher')?'good':'bad');
 const stageShort = s => ({'Actual':'actual','Working budget':'working budget','Appropriation':'appropriation','Legislative appropriation':'Legislative Appropriation','Legislative Appropriation':'Legislative Appropriation','Payments only':'payments'})[s]||String(s||'').toLowerCase();
+const GMI_TARGET = 50e6; // GMI's yearly savings target (WYPR, Jan 10, 2025; listed under Sources on the Savings tracker tab)
+const PAY_LAST = 2026;   // last fiscal year with a full year of payments
 const AREAS = ['IT hardware, software & services','Fleet & fuel','Utilities & facility energy','Real estate & leases','Print, copy & mail','Telecom'];
 const SCOPES = ['Controllable purchases','Charges between agencies','Client payments and debt service','Staff, grants and capital'];
 const areaColor = a => dash.colors[AREAS.indexOf(a) % dash.colors.length];
@@ -588,6 +590,7 @@ function measure(rows, key, p, o = {}){
     else { const f = tot(ys[0]), l = tot(ys[ys.length-1]); if (f) { res.change = (l - f)/Math.abs(f); res.label = `FY${ys[0]} to FY${ys[ys.length-1]}`; } }
     const f = tot(ys[0]), l = tot(ys[ys.length-1]); if (f > 0 && l > 0) res.cagr = Math.pow(l/f, 1/(ys[ys.length-1] - ys[0])) - 1; }
   return res; }
+const tileYear = p => p.years.length ? d3.max(p.years) : (d3.max(Object.keys(STAGE_OF).map(Number).filter(y => y <= PAY_LAST)) || PAY_LAST);
 const subline = m => !m.n ? '' : (m.n > 1 ? `${fyLabel(m.years)} combined · ${M(m.avg)} a year` : fyLabel(m.years)) + (m.mixed ? ' · mixes actual spending and budgets' : '');
 
 /* ======================= self-healing state + feedback ======================= */
@@ -826,23 +829,33 @@ function drawRecTables(){
 function drawOver(p){
   drawRecs(); drawPortalOver(p);
   const ff = ok('f_function'), fs = ok('f_scope'), fa = ok('f_area'); if (!ff || !fs || !fa) return;
-  const bud = measure(ff, 'budget', p, {ignoreArea:true}), ctl = measure(fs.filter(r => r.scope === 'Controllable purchases'), 'budget', p, {ignoreArea:true}), ar = measure(fa.filter(r => r.spend != null), 'spend', p);
-  setText('kBud', 'Operating spending' + (p.stage === 'budget' ? ' (budgets)' : p.stage === 'all' ? ' (actual and budgets)' : ''));
-  setText('vBud', M(bud.value)); setChg('dBud', bud, 'neutral'); setText('sBud', subline(bud));
-  setText('vCtl', M(ctl.value)); setChg('dCtl', ctl, 'lower'); setText('sCtl', (bud.value ? PCT(ctl.value/bud.value) + ' of operating spending · ' : '') + subline(ctl));
-  setText('kArea', p.areas.length === 1 ? p.areas[0] + ', by spending code' : p.areas.length ? `${p.areas.length} focus areas, by spending code` : 'Six focus areas, by spending code');
-  setText('vArea', M(ar.value)); setChg('dArea', ar, 'lower'); setText('sArea', subline(ar));
+  // tiles: one year (the latest selected, or the latest budget year with full payments) against the year before, with its stage
+  const Y = tileYear(p), YP = Math.min(Y, PAY_LAST), one = {years:[Y], ignoreArea:true};
+  const bud = measure(ff, 'budget', p, one), ctl = measure(fs.filter(r => r.scope === 'Controllable purchases'), 'budget', p, one), ar = measure(fa.filter(r => r.spend != null), 'spend', p, {years:[Y]});
+  const arSel = measure(fa.filter(r => r.spend != null), 'spend', p); // the selection, for the focus-area chart below
+  const hasB = !!(bud.value);
+  const chip = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t || ''; };
+  const stg = STAGE_OF[Y] ? stageShort(STAGE_OF[Y]) : '';
+  const many = p.years.length > 1 ? ` · latest of ${p.years.length} selected years` : '';
+  setText('kBud', `Operating spending, FY${Y}`);
+  setText('vBud', hasB ? M(bud.value) : '—'); setChg('dBud', bud, 'neutral'); setText('sBud', hasB ? `one year, not a sum${many}` : `no operating budget for FY${Y}`); chip('gBud', hasB ? stg : '');
+  setText('kCtl', `Controllable purchases, FY${Y}`);
+  setText('vCtl', ctl.value ? M(ctl.value) : '—'); setChg('dCtl', ctl, 'lower'); setText('sCtl', ctl.value && bud.value ? PCT(ctl.value/bud.value) + ' of operating spending' : ''); chip('gCtl', ctl.value ? stg : '');
+  setText('kArea', (p.areas.length === 1 ? p.areas[0] : p.areas.length ? `${p.areas.length} focus areas` : 'Six focus areas') + `, FY${Y}`);
+  setText('vArea', ar.value ? M(ar.value) : '—'); setChg('dArea', ar, 'lower'); setText('sArea', ar.value ? 'by spending code' : ''); chip('gArea', ar.value ? stg : '');
   const sp = (m, id) => spark(document.getElementById(id), (m.series || []).map(d => ({x:d.year, y:d.v})), m.years);
   sp(bud, 'spBud'); sp(ctl, 'spCtl'); sp(ar, 'spArea');
-  const py = payments(p); if (py) { const pm = measure(py.rows, py.key, p, {payments:true, ignoreArea: !py.area});
-    setText('kPay', py.label); setText('vPay', pm.n ? M(pm.value) : '—'); setChg('dPay', pm, 'neutral'); setText('sPay', pm.n ? subline(pm) + ' · payments are actual spending' : 'Payments are actual spending only (FY2017–FY2026); choose those years to see them.');
+  const py = payments(p); if (py) { const pm = measure(py.rows, py.key, p, {payments:true, ignoreArea: !py.area, years:[YP]}); const ovr = (ok('f_overlap') || []).find(r => r.fiscal_year === YP);
+    setText('kPay', py.label + `, FY${YP}`); setText('vPay', pm.value ? M(pm.value) : '—'); setChg('dPay', pm, 'neutral');
+    setText('sPay', pm.value ? 'payments are actual spending' + (YP !== Y ? `; FY${Y} payments are not a full year yet` : '') : `no payments for FY${YP}`); chip('gPay', pm.value ? (ovr && isTrue(ovr.partial_year) ? 'partial year' : 'actual payments') : '');
     spark(document.getElementById('spPay'), (pm.series || []).map(d => ({x:d.year, y:d.v})), pm.years); }
-  setText('overLede', !bud.n ? (p.years.includes(2026) ? 'FY2026 is still a working budget, so only its payments to vendors are actual spending. Choose Budgets to see the FY2026 budget.' : 'No years match this selection. Choose other years or reset the filters.') : `${who(p)} ${p.stage === 'budget' ? 'budgeted' : p.stage === 'all' ? 'spent and budgeted' : 'spent'} ${M(bud.value)} through the operating budget in ${fyLabel(bud.years)}${bud.n > 1 ? ' combined, ' + M(bud.avg) + ' a year' : ''}. ${M(ctl.value)} of it (${bud.value ? PCT(ctl.value/bud.value) : '—'}) went to purchases agencies control${ctl.change != null ? ', ' + ARROW(ctl.change) + ' ' + ctl.label : ''}. ${p.areas.length ? (p.areas.length === 1 ? p.areas[0] : 'The selected focus areas') : 'The six GMI focus areas'} account for ${M(ar.value)}.` + (!p.agencies.length && ctl.n ? ` GMI's $50M yearly target is ${PCT(50e6/(ctl.value/ctl.n))} of controllable purchases in an average selected year.` : ''));
-  stacked(document.getElementById('scopeChart'), 'scopeLegend', scopeRows(fs, p), SCOPES, scopeCol, {labelKey:'Controllable purchases', selYears: hi(p, bud), click: yearClick, aria:'Operating budget by what agencies can change, by year'});
-  setText('scopeNote', `Operating budget by what an agency can change${p.agencies.length ? ', ' + who(p) : ''}. Savings work targets controllable purchases: contracts, supplies, equipment, vehicles, energy, telecom and leases. Selected years are solid; dashed outlines mark budget years. Click a year to add or remove it.` + (p.areas.length ? ' The focus-area filter does not apply to this chart.' : ''));
-  const data = AREAS.map(a => { const sub = fa.filter(r => r.area === a); const m = measure(sub.filter(r => r.spend != null), 'spend', p, {ignoreArea:true, years: ar.years}); const pm = p.stage !== 'budget' ? measure(sub.filter(r => r.payee_spend != null), 'payee_spend', p, {ignoreArea:true, years: ar.years.filter(y => y <= 2026)}) : {value:null};
+  // one-sentence finding, computed from the same figures as the tiles
+  const tgt = !p.agencies.length && ctl.value ? `, so GMI's ${M(GMI_TARGET)} yearly target is ${PCT(GMI_TARGET/ctl.value)} of them` : '';
+  setText('overLede', !hasB ? `No operating budget is published for FY${Y}${p.agencies.length ? ' at ' + who(p) : ''}; choose another year or reset the filters.`
+    : `In the FY${Y} ${stg}, ${who(p)}'s purchases agencies can control are ${M(ctl.value)}${ctl.change != null ? `, ${ctl.change >= 0 ? 'up' : 'down'} ${PCT(Math.abs(ctl.change))} from the FY${Y-1} ${stageShort(STAGE_OF[Y-1])}` : ''}, ${PCT(ctl.value/bud.value)} of ${M(bud.value)} in operating spending${tgt}.`);
+  const data = AREAS.map(a => { const sub = fa.filter(r => r.area === a); const m = measure(sub.filter(r => r.spend != null), 'spend', p, {ignoreArea:true, years: arSel.years}); const pm = p.stage !== 'budget' ? measure(sub.filter(r => r.payee_spend != null), 'payee_spend', p, {ignoreArea:true, years: arSel.years.filter(y => y <= PAY_LAST)}) : {value:null};
     return {label:a, a:m.value || 0, b:pm.value, chg:m.change, lab:m.label, sel:p.areas.includes(a), color: areaColor(a)}; }).sort((x,y) => y.a - x.a);
-  setText('overAreasH', `Focus areas, ${fyLabel(ar.years)}`);
+  setText('overAreasH', `Focus areas, ${fyLabel(arSel.years)}${arSel.n > 1 ? ' combined' : ''}`);
   hbars(document.getElementById('overAreas'), data, {anySel: p.areas.length > 0, aria:'Focus-area spending', tip:d => [`By spending code: ${M(d.a)}  ${ARROW(d.chg)} ${d.lab}`].concat(d.b != null ? [`Found by payee name: ${M(d.b)} (${d.a ? d3.format('.0%')(d.b/d.a) : '—'})`] : []).concat([p.areas.includes(d.label) ? 'Click to remove this area from the filter' : 'Click to filter by this area']), click:d => toggleIn('areas', d.label)});
 }
 function drawAreas(p){
@@ -857,6 +870,9 @@ function drawAreas(p){
     const x = document.createElement('button'); x.type = 'button'; x.className = 'xp'; x.textContent = 'Open page'; x.style.justifySelf = 'start'; x.setAttribute('data-expand', 'area:' + a); b.appendChild(x);
     const go = e => { if (e.target.closest('[data-expand]')) return; toggleIn('areas', a); }; b.addEventListener('click', go); b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(e); } }); box.appendChild(b);
     spark(sp, (m.series || []).map(r => ({x:r.year, y:r.v})), m.years); });
+  const fs = ok('f_scope'); if (fs) { const sm = measure(fs, 'budget', p, {ignoreArea:true});
+    stacked(document.getElementById('scopeChart'), 'scopeLegend', scopeRows(fs, p), SCOPES, scopeCol, {labelKey:'Controllable purchases', selYears: hi(p, sm), click: yearClick, aria:'Operating budget by what agencies can change, by year'});
+    setText('scopeNote', `Operating budget by what an agency can change${p.agencies.length ? ', ' + who(p) : ''}: the six focus areas sit inside controllable purchases. Savings work targets contracts, supplies, equipment, vehicles, energy, telecom and leases. Selected years are solid; dashed outlines mark budget years. Click a year to add or remove it.` + (p.areas.length ? ' The focus-area filter does not apply to this chart.' : '')); }
   const sAll = sel(base, p, {ignoreArea:true}); const years = [...new Set(sAll.map(r => r.fiscal_year))].sort((a,b) => a-b);
   const rows = years.map(y => { const v = sAll.filter(r => r.fiscal_year === y); const o = {year:y, stage:STAGE_OF[y]}; AREAS.forEach(a => o[a] = sum(v.filter(r => r.area === a), 'spend')); o.total = sum(v, 'spend'); return o; });
   stacked(document.getElementById('areasChart'), 'areasLegend', rows, AREAS, areaColor, {selYears: hi(p, {years:ys}), dimKey:k => p.areas.length && !p.areas.includes(k), click: yearClick, aria:'Focus-area spending by year'});

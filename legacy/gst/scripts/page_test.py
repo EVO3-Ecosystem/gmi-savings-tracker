@@ -110,6 +110,15 @@ PROBE = """(tab) => {
   // changes must show when there is an earlier year to compare with
   const chg = [...document.querySelectorAll('.gs .panel:not([hidden]) .chg')]; const blank = chg.filter(e => e.textContent.trim().startsWith('—') || !e.textContent.trim()).length;
   if (p.years.length === 1 && G.STAGE_OF[p.years[0] - 1] && G.STAGE_OF[p.years[0]] && chg.length && blank === chg.length) out.issues.push('no year-over-year changes shown although the prior year exists');
+  // v2 layout probes: new elements exist and say what they should (one entry per tab)
+  const T = id => (document.getElementById(id) || {}).textContent || '';
+  const NEED = {
+    over: () => [[/^In the FY\\d{4} |^No operating budget/.test(T('overLede')), 'Overview finding missing'],
+                 [/, FY\\d{4}$/.test(T('kBud')) && !/combined/.test(T('sBud')), 'Overview tiles are not one year'],
+                 [!document.querySelector('#p-over #scopeChart'), 'scope chart still on the Overview']],
+    areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
+  }[tab];
+  if (NEED) NEED().forEach(([ok2, msg]) => { if (!ok2) out.issues.push(msg); });
   out.years = m.years.length; out.total = m.value; return out; }"""
 
 
