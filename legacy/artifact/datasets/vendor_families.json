@@ -1,0 +1,20 @@
+{
+  "description": "FY2026 private vendors paid under two or more payee names, merged by the vendor master list, with spend and agencies paying.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "vendor_families.csv",
+    "url": "/_blob/aea5e19fb530ea9a628a9df135226f12"
+  },
+  "staleAfterHours": 1500,
+  "title": "Vendors under several names",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

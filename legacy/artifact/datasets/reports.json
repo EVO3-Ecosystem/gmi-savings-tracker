@@ -1,0 +1,16 @@
+{
+  "description": "One row per PDF report the pipeline generated: run date, title, link to the PDF stored with this dashboard, and page count. Each report shows the dashboard as of its run.",
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "reports.csv",
+    "url": "/_blob/071025cbde70050734f8076c9e8f7d23"
+  },
+  "staleAfterHours": 1500,
+  "title": "PDF reports",
+  "updated": {
+    "at": "2026-10-27T21:10:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

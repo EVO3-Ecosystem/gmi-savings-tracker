@@ -1,0 +1,15 @@
+table,measure,definition,grouped_by,higher_is
+totals_by_fy,total_payments_yoy,"Change in total_payments from the previous fiscal year, as a share of the previous year",fiscal year,neutral
+budget_by_function,budget_yoy,"Change in budget from the previous fiscal year, as a share of the previous year",category_title,neutral
+budget_by_fund,budget_yoy,"Change in budget from the previous fiscal year, as a share of the previous year",fund_type_name,neutral
+budget_by_object,budget_yoy,"Change in budget from the previous fiscal year, as a share of the previous year",object_name,lower
+budget_by_object,controllable_yoy,"Change in controllable from the previous fiscal year, as a share of the previous year",object_name,lower
+spending_scope,budget_yoy,"Change in budget from the previous fiscal year, as a share of the previous year",scope,neutral
+agency_year,controllable_yoy,"Change in controllable from the previous fiscal year, as a share of the previous year",agency_code,lower
+agency_year,fte_yoy,"Change in fte from the previous fiscal year, as a share of the previous year",agency_code,lower
+agency_year,controllable_per_fte_yoy,"Change in controllable_per_fte from the previous fiscal year, as a share of the previous year",agency_code,lower
+area_year,spend_yoy,"Change in spend from the previous fiscal year, as a share of the previous year",area,lower
+area_year,payee_spend_yoy,"Change in payee_spend from the previous fiscal year, as a share of the previous year",area,lower
+area_agency_year,spend_yoy,"Change in spend from the previous fiscal year, as a share of the previous year","area, agency_code",lower
+area_code_year,spend_yoy,"Change in spend from the previous fiscal year, as a share of the previous year","area, code",lower
+area_vendor_year,spend_yoy,"Change in spend from the previous fiscal year, as a share of the previous year","area, vendor",lower

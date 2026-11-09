@@ -1,0 +1,20 @@
+{
+  "description": "Catalog of the year-over-year measures the pipeline computes: table, measure, what it is grouped by, whether higher is better, and its definition. The same measures ship as DAX for Power BI.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "measures.csv",
+    "url": "/_blob/94f832113ff0a9527dc74a3e6d1217de"
+  },
+  "staleAfterHours": 1500,
+  "title": "Year-over-year measures",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

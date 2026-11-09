@@ -1,0 +1,121 @@
+fiscal_year,stage,area,spend,agencies,codes,payee_spend,vendors,spend_prior,payee_spend_prior,spend_yoy,payee_spend_yoy,stage_pair
+2008,Payments only,Fleet & fuel,,,,58030085.81,44.0,,,,,
+2009,Payments only,Fleet & fuel,,,,66501921.08,43.0,,58030085.81,,0.14599,Payments only vs Payments only
+2010,Payments only,Fleet & fuel,,,,42038185.85,39.0,,66501921.08,,-0.36787,Payments only vs Payments only
+2011,Payments only,Fleet & fuel,,,,55872675.1,43.0,,42038185.85,,0.32909,Payments only vs Payments only
+2012,Payments only,Fleet & fuel,,,,50460885.61,43.0,,55872675.1,,-0.09686,Payments only vs Payments only
+2013,Payments only,Fleet & fuel,,,,24865796.42,41.0,,50460885.61,,-0.50723,Payments only vs Payments only
+2014,Payments only,Fleet & fuel,,,,19189227.39,39.0,,24865796.42,,-0.22829,Payments only vs Payments only
+2015,Payments only,Fleet & fuel,,,,25390749.65,39.0,,19189227.39,,0.32318,Payments only vs Payments only
+2016,Payments only,Fleet & fuel,,,,27991353.23,30.0,,25390749.65,,0.10242,Payments only vs Payments only
+2017,Actual,Fleet & fuel,171194104.0,52.0,20.0,30928307.98,34.0,,27991353.23,,0.10492,Actual vs Payments only
+2018,Actual,Fleet & fuel,167357867.0,51.0,22.0,37980697.74,39.0,171194104.0,30928307.98,-0.02241,0.22802,Actual vs Actual
+2019,Actual,Fleet & fuel,156322021.0,52.0,21.0,43183151.02,39.0,167357867.0,37980697.74,-0.06594,0.13698,Actual vs Actual
+2020,Actual,Fleet & fuel,150068540.0,52.0,22.0,27755717.5,43.0,156322021.0,43183151.02,-0.04,-0.35726,Actual vs Actual
+2021,Actual,Fleet & fuel,143093134.0,53.0,20.0,30368608.82,40.0,150068540.0,27755717.5,-0.04648,0.09414,Actual vs Actual
+2022,Actual,Fleet & fuel,162401350.0,54.0,21.0,62925429.31,55.0,143093134.0,30368608.82,0.13493,1.07206,Actual vs Actual
+2023,Actual,Fleet & fuel,199100821.0,56.0,22.0,114024515.83,51.0,162401350.0,62925429.31,0.22598,0.81206,Actual vs Actual
+2024,Actual,Fleet & fuel,239608032.0,57.0,22.0,126154323.66,52.0,199100821.0,114024515.83,0.20345,0.10638,Actual vs Actual
+2025,Actual,Fleet & fuel,193100466.0,59.0,23.0,123290696.21,49.0,239608032.0,126154323.66,-0.1941,-0.0227,Actual vs Actual
+2026,Working budget,Fleet & fuel,227616525.0,58.0,21.0,124698506.33,44.0,193100466.0,123290696.21,0.17875,0.01142,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,224256909.0,59.0,22.0,,,227616525.0,124698506.33,-0.01476,,Legislative appropriation vs Working budget
+2008,Payments only,"IT hardware, software & services",,,,50674434.07,27.0,,,,,
+2009,Payments only,"IT hardware, software & services",,,,60175946.98,32.0,,50674434.07,,0.1875,Payments only vs Payments only
+2010,Payments only,"IT hardware, software & services",,,,52974649.56,26.0,,60175946.98,,-0.11967,Payments only vs Payments only
+2011,Payments only,"IT hardware, software & services",,,,63759708.29,36.0,,52974649.56,,0.20359,Payments only vs Payments only
+2012,Payments only,"IT hardware, software & services",,,,63301011.15,33.0,,63759708.29,,-0.00719,Payments only vs Payments only
+2013,Payments only,"IT hardware, software & services",,,,70548493.8,29.0,,63301011.15,,0.11449,Payments only vs Payments only
+2014,Payments only,"IT hardware, software & services",,,,78481688.57,35.0,,70548493.8,,0.11245,Payments only vs Payments only
+2015,Payments only,"IT hardware, software & services",,,,106649268.07,42.0,,78481688.57,,0.35891,Payments only vs Payments only
+2016,Payments only,"IT hardware, software & services",,,,97664407.31,35.0,,106649268.07,,-0.08425,Payments only vs Payments only
+2017,Actual,"IT hardware, software & services",341124167.0,57.0,42.0,87430410.26,36.0,,97664407.31,,-0.10479,Actual vs Payments only
+2018,Actual,"IT hardware, software & services",404034828.0,57.0,43.0,106168391.5,36.0,341124167.0,87430410.26,0.18442,0.21432,Actual vs Actual
+2019,Actual,"IT hardware, software & services",451913588.0,58.0,45.0,123988395.1,43.0,404034828.0,106168391.5,0.1185,0.16785,Actual vs Actual
+2020,Actual,"IT hardware, software & services",458333139.0,57.0,43.0,133207374.48,46.0,451913588.0,123988395.1,0.01421,0.07435,Actual vs Actual
+2021,Actual,"IT hardware, software & services",616432993.0,58.0,42.0,124690743.0,44.0,458333139.0,133207374.48,0.34495,-0.06394,Actual vs Actual
+2022,Actual,"IT hardware, software & services",687702017.0,60.0,45.0,132751670.48,50.0,616432993.0,124690743.0,0.11562,0.06465,Actual vs Actual
+2023,Actual,"IT hardware, software & services",732597997.0,65.0,43.0,161920016.57,52.0,687702017.0,132751670.48,0.06528,0.21972,Actual vs Actual
+2024,Actual,"IT hardware, software & services",659739881.0,70.0,43.0,203371148.86,57.0,732597997.0,161920016.57,-0.09945,0.256,Actual vs Actual
+2025,Actual,"IT hardware, software & services",692249948.0,71.0,47.0,244430736.02,56.0,659739881.0,203371148.86,0.04928,0.20189,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",682100533.0,72.0,42.0,247366634.82,55.0,692249948.0,244430736.02,-0.01466,0.01201,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",723618834.0,72.0,44.0,,,682100533.0,247366634.82,0.06087,,Legislative appropriation vs Working budget
+2008,Payments only,"Print, copy & mail",,,,11924622.73,19.0,,,,,
+2009,Payments only,"Print, copy & mail",,,,12802399.29,16.0,,11924622.73,,0.07361,Payments only vs Payments only
+2010,Payments only,"Print, copy & mail",,,,12518237.63,13.0,,12802399.29,,-0.0222,Payments only vs Payments only
+2011,Payments only,"Print, copy & mail",,,,12517838.23,15.0,,12518237.63,,-3e-05,Payments only vs Payments only
+2012,Payments only,"Print, copy & mail",,,,12484393.01,14.0,,12517838.23,,-0.00267,Payments only vs Payments only
+2013,Payments only,"Print, copy & mail",,,,11701001.77,14.0,,12484393.01,,-0.06275,Payments only vs Payments only
+2014,Payments only,"Print, copy & mail",,,,13393697.36,15.0,,11701001.77,,0.14466,Payments only vs Payments only
+2015,Payments only,"Print, copy & mail",,,,13516317.45,13.0,,13393697.36,,0.00916,Payments only vs Payments only
+2016,Payments only,"Print, copy & mail",,,,12046940.69,14.0,,13516317.45,,-0.10871,Payments only vs Payments only
+2017,Actual,"Print, copy & mail",51434355.0,58.0,2.0,13066223.56,14.0,,12046940.69,,0.08461,Actual vs Payments only
+2018,Actual,"Print, copy & mail",48288386.0,58.0,2.0,12182341.14,10.0,51434355.0,13066223.56,-0.06116,-0.06765,Actual vs Actual
+2019,Actual,"Print, copy & mail",49672890.0,58.0,2.0,12283111.35,14.0,48288386.0,12182341.14,0.02867,0.00827,Actual vs Actual
+2020,Actual,"Print, copy & mail",49147554.0,58.0,2.0,16118373.34,13.0,49672890.0,12283111.35,-0.01058,0.31224,Actual vs Actual
+2021,Actual,"Print, copy & mail",46200529.0,59.0,2.0,20047929.57,19.0,49147554.0,16118373.34,-0.05996,0.24379,Actual vs Actual
+2022,Actual,"Print, copy & mail",46712105.0,60.0,2.0,10874378.77,15.0,46200529.0,20047929.57,0.01107,-0.45758,Actual vs Actual
+2023,Actual,"Print, copy & mail",52525463.0,65.0,2.0,24861738.69,18.0,46712105.0,10874378.77,0.12445,1.28627,Actual vs Actual
+2024,Actual,"Print, copy & mail",48522716.0,69.0,2.0,26240059.38,20.0,52525463.0,24861738.69,-0.07621,0.05544,Actual vs Actual
+2025,Actual,"Print, copy & mail",52438200.0,71.0,2.0,27439060.81,19.0,48522716.0,26240059.38,0.08069,0.04569,Actual vs Actual
+2026,Working budget,"Print, copy & mail",56182667.0,71.0,2.0,27730400.86,17.0,52438200.0,27439060.81,0.07141,0.01062,Working budget vs Actual
+2027,Legislative appropriation,"Print, copy & mail",60135947.0,71.0,2.0,,,56182667.0,27730400.86,0.07036,,Legislative appropriation vs Working budget
+2008,Payments only,Real estate & leases,,,,21939923.78,59.0,,,,,
+2009,Payments only,Real estate & leases,,,,22067259.5,56.0,,21939923.78,,0.0058,Payments only vs Payments only
+2010,Payments only,Real estate & leases,,,,24255997.1,61.0,,22067259.5,,0.09918,Payments only vs Payments only
+2011,Payments only,Real estate & leases,,,,28348024.1,71.0,,24255997.1,,0.1687,Payments only vs Payments only
+2012,Payments only,Real estate & leases,,,,30811518.07,73.0,,28348024.1,,0.0869,Payments only vs Payments only
+2013,Payments only,Real estate & leases,,,,31792570.67,77.0,,30811518.07,,0.03184,Payments only vs Payments only
+2014,Payments only,Real estate & leases,,,,26804512.65,73.0,,31792570.67,,-0.15689,Payments only vs Payments only
+2015,Payments only,Real estate & leases,,,,23793811.74,76.0,,26804512.65,,-0.11232,Payments only vs Payments only
+2016,Payments only,Real estate & leases,,,,23942092.21,77.0,,23793811.74,,0.00623,Payments only vs Payments only
+2017,Actual,Real estate & leases,124383615.0,41.0,1.0,20996406.1,79.0,,23942092.21,,-0.12303,Actual vs Payments only
+2018,Actual,Real estate & leases,122969641.0,40.0,1.0,22039088.21,75.0,124383615.0,20996406.1,-0.01137,0.04966,Actual vs Actual
+2019,Actual,Real estate & leases,128873710.0,40.0,1.0,20478263.55,67.0,122969641.0,22039088.21,0.04801,-0.07082,Actual vs Actual
+2020,Actual,Real estate & leases,132547189.0,41.0,1.0,23037967.51,70.0,128873710.0,20478263.55,0.0285,0.125,Actual vs Actual
+2021,Actual,Real estate & leases,128768070.0,40.0,1.0,16677880.04,74.0,132547189.0,23037967.51,-0.02851,-0.27607,Actual vs Actual
+2022,Actual,Real estate & leases,129224329.0,39.0,1.0,18554469.66,86.0,128768070.0,16677880.04,0.00354,0.11252,Actual vs Actual
+2023,Actual,Real estate & leases,129042629.0,43.0,1.0,16945642.91,62.0,129224329.0,18554469.66,-0.00141,-0.08671,Actual vs Actual
+2024,Actual,Real estate & leases,136568262.0,45.0,1.0,14994467.58,61.0,129042629.0,16945642.91,0.05832,-0.11514,Actual vs Actual
+2025,Actual,Real estate & leases,141564622.0,48.0,1.0,16900917.83,70.0,136568262.0,14994467.58,0.03659,0.12714,Actual vs Actual
+2026,Working budget,Real estate & leases,149701878.0,49.0,1.0,20664931.08,66.0,141564622.0,16900917.83,0.05748,0.22271,Working budget vs Actual
+2027,Legislative appropriation,Real estate & leases,144493245.0,49.0,1.0,,,149701878.0,20664931.08,-0.03479,,Legislative appropriation vs Working budget
+2008,Payments only,Telecom,,,,54243953.09,4.0,,,,,
+2009,Payments only,Telecom,,,,56780326.36,4.0,,54243953.09,,0.04676,Payments only vs Payments only
+2010,Payments only,Telecom,,,,55725581.63,4.0,,56780326.36,,-0.01858,Payments only vs Payments only
+2011,Payments only,Telecom,,,,52686554.14,4.0,,55725581.63,,-0.05454,Payments only vs Payments only
+2012,Payments only,Telecom,,,,38881851.38,4.0,,52686554.14,,-0.26202,Payments only vs Payments only
+2013,Payments only,Telecom,,,,38847409.78,4.0,,38881851.38,,-0.00089,Payments only vs Payments only
+2014,Payments only,Telecom,,,,41744992.1,4.0,,38847409.78,,0.07459,Payments only vs Payments only
+2015,Payments only,Telecom,,,,37329139.04,4.0,,41744992.1,,-0.10578,Payments only vs Payments only
+2016,Payments only,Telecom,,,,43923682.67,5.0,,37329139.04,,0.17666,Payments only vs Payments only
+2017,Actual,Telecom,36357900.0,58.0,6.0,27906739.19,4.0,,43923682.67,,-0.36465,Actual vs Payments only
+2018,Actual,Telecom,48829853.0,58.0,7.0,24748223.47,5.0,36357900.0,27906739.19,0.34303,-0.11318,Actual vs Actual
+2019,Actual,Telecom,44136742.0,58.0,6.0,28034230.48,6.0,48829853.0,24748223.47,-0.09611,0.13278,Actual vs Actual
+2020,Actual,Telecom,42531326.0,58.0,7.0,37105993.22,5.0,44136742.0,28034230.48,-0.03637,0.3236,Actual vs Actual
+2021,Actual,Telecom,48054379.0,59.0,5.0,35064800.0,5.0,42531326.0,37105993.22,0.12986,-0.05501,Actual vs Actual
+2022,Actual,Telecom,52262975.0,60.0,7.0,37809976.99,5.0,48054379.0,35064800.0,0.08758,0.07829,Actual vs Actual
+2023,Actual,Telecom,55879037.0,66.0,6.0,37299539.38,5.0,52262975.0,37809976.99,0.06919,-0.0135,Actual vs Actual
+2024,Actual,Telecom,51247817.0,71.0,6.0,40130639.11,5.0,55879037.0,37299539.38,-0.08288,0.0759,Actual vs Actual
+2025,Actual,Telecom,46824618.0,72.0,6.0,43639162.83,5.0,51247817.0,40130639.11,-0.08631,0.08743,Actual vs Actual
+2026,Working budget,Telecom,57995139.0,72.0,6.0,48016424.53,5.0,46824618.0,43639162.83,0.23856,0.10031,Working budget vs Actual
+2027,Legislative appropriation,Telecom,55564011.0,72.0,6.0,,,57995139.0,48016424.53,-0.04192,,Legislative appropriation vs Working budget
+2008,Payments only,Utilities & facility energy,,,,76146971.07,4.0,,,,,
+2009,Payments only,Utilities & facility energy,,,,86416635.86,5.0,,76146971.07,,0.13487,Payments only vs Payments only
+2010,Payments only,Utilities & facility energy,,,,64106432.58,6.0,,86416635.86,,-0.25817,Payments only vs Payments only
+2011,Payments only,Utilities & facility energy,,,,71508556.23,6.0,,64106432.58,,0.11547,Payments only vs Payments only
+2012,Payments only,Utilities & facility energy,,,,103065308.59,7.0,,71508556.23,,0.4413,Payments only vs Payments only
+2013,Payments only,Utilities & facility energy,,,,98357367.39,7.0,,103065308.59,,-0.04568,Payments only vs Payments only
+2014,Payments only,Utilities & facility energy,,,,117783323.5,8.0,,98357367.39,,0.1975,Payments only vs Payments only
+2015,Payments only,Utilities & facility energy,,,,57538140.64,8.0,,117783323.5,,-0.51149,Payments only vs Payments only
+2016,Payments only,Utilities & facility energy,,,,58583684.14,8.0,,57538140.64,,0.01817,Payments only vs Payments only
+2017,Actual,Utilities & facility energy,130258616.0,35.0,11.0,61422539.59,8.0,,58583684.14,,0.04846,Actual vs Payments only
+2018,Actual,Utilities & facility energy,130768151.0,37.0,11.0,57275045.99,8.0,130258616.0,61422539.59,0.00391,-0.06752,Actual vs Actual
+2019,Actual,Utilities & facility energy,125225869.0,36.0,10.0,52116436.92,8.0,130768151.0,57275045.99,-0.04238,-0.09007,Actual vs Actual
+2020,Actual,Utilities & facility energy,127820518.0,36.0,11.0,52355513.7,8.0,125225869.0,52116436.92,0.02072,0.00459,Actual vs Actual
+2021,Actual,Utilities & facility energy,121717965.0,36.0,11.0,51707726.63,8.0,127820518.0,52355513.7,-0.04774,-0.01237,Actual vs Actual
+2022,Actual,Utilities & facility energy,139673794.0,36.0,11.0,54286372.44,9.0,121717965.0,51707726.63,0.14752,0.04987,Actual vs Actual
+2023,Actual,Utilities & facility energy,160694898.0,38.0,11.0,57333500.17,9.0,139673794.0,54286372.44,0.1505,0.05613,Actual vs Actual
+2024,Actual,Utilities & facility energy,151161738.0,37.0,11.0,59178980.67,9.0,160694898.0,57333500.17,-0.05932,0.03219,Actual vs Actual
+2025,Actual,Utilities & facility energy,161540934.0,38.0,12.0,73812500.57,9.0,151161738.0,59178980.67,0.06866,0.24728,Actual vs Actual
+2026,Working budget,Utilities & facility energy,154196456.0,39.0,10.0,80721532.5,10.0,161540934.0,73812500.57,-0.04547,0.0936,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,160250115.0,39.0,10.0,,,154196456.0,80721532.5,0.03926,,Legislative appropriation vs Working budget

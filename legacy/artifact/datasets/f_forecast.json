@@ -1,0 +1,20 @@
+{
+  "description": "Actual spending FY2017\u2013FY2025 and forecasts FY2026\u2013FY2031 (low, likely, high from 4,000 bootstrap paths) for the six focus areas and other controllable purchases, with the state's FY2026 working budget and FY2027 Legislative Appropriation for comparison. From the operating budget (yu65-jmmv).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "f_forecast.csv",
+    "url": "/_blob/af2a38c5a5e09ffc1642a88089a07a7d"
+  },
+  "staleAfterHours": 1500,
+  "title": "Spending forecasts by area",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

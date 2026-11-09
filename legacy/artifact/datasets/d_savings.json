@@ -1,0 +1,20 @@
+{
+  "description": "Every savings item in DBM's Government Modernization Initiative Final Report (Jan 26, 2026), each with its page number and the report's own words, plus DGS's $326.3M facility cost-avoidance estimate shown separately; the four contract types behind the $18M are listed as their own rows.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Updated when GMI publishes a new savings report",
+  "source": {
+    "kind": "file",
+    "name": "d_savings.csv",
+    "url": "/_blob/273c01db42e7a30e4ce4dbceae8cf5cd"
+  },
+  "staleAfterHours": 4400,
+  "title": "GMI reported savings",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

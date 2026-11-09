@@ -1,0 +1,936 @@
+fiscal_year,stage,area,code,spending_code,spend,agencies,spend_prior,spend_yoy,stage_pair
+2017,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,19900004.0,26,,,
+2018,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,22700797.0,28,19900004.0,0.14074,Actual vs Actual
+2019,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,20273595.0,27,22700797.0,-0.10692,Actual vs Actual
+2020,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,15534185.0,32,20273595.0,-0.23377,Actual vs Actual
+2021,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,14289987.0,24,15534185.0,-0.08009,Actual vs Actual
+2022,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,17044615.0,29,14289987.0,0.19277,Actual vs Actual
+2023,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,20163801.0,31,17044615.0,0.183,Actual vs Actual
+2024,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,34471514.0,34,20163801.0,0.70957,Actual vs Actual
+2025,Actual,Fleet & fuel,701,Purchase Cost Or Lease Cost,24843883.0,28,34471514.0,-0.27929,Actual vs Actual
+2026,Working budget,Fleet & fuel,701,Purchase Cost Or Lease Cost,29456185.0,23,24843883.0,0.18565,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,701,Purchase Cost Or Lease Cost,23763156.0,23,29456185.0,-0.19327,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,702,Gas and Oil,12184063.0,47,,,
+2018,Actual,Fleet & fuel,702,Gas and Oil,14667459.0,46,12184063.0,0.20382,Actual vs Actual
+2019,Actual,Fleet & fuel,702,Gas and Oil,15750624.0,44,14667459.0,0.07385,Actual vs Actual
+2020,Actual,Fleet & fuel,702,Gas and Oil,14125800.0,45,15750624.0,-0.10316,Actual vs Actual
+2021,Actual,Fleet & fuel,702,Gas and Oil,11605149.0,45,14125800.0,-0.17844,Actual vs Actual
+2022,Actual,Fleet & fuel,702,Gas and Oil,18931877.0,46,11605149.0,0.63133,Actual vs Actual
+2023,Actual,Fleet & fuel,702,Gas and Oil,19722917.0,49,18931877.0,0.04178,Actual vs Actual
+2024,Actual,Fleet & fuel,702,Gas and Oil,19432070.0,49,19722917.0,-0.01475,Actual vs Actual
+2025,Actual,Fleet & fuel,702,Gas and Oil,17288161.0,50,19432070.0,-0.11033,Actual vs Actual
+2026,Working budget,Fleet & fuel,702,Gas and Oil,20391255.0,52,17288161.0,0.17949,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,702,Gas and Oil,19219143.0,48,20391255.0,-0.05748,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,703,Maintenance and Repair,14762683.0,46,,,
+2018,Actual,Fleet & fuel,703,Maintenance and Repair,14205645.0,46,14762683.0,-0.03773,Actual vs Actual
+2019,Actual,Fleet & fuel,703,Maintenance and Repair,13845946.0,47,14205645.0,-0.02532,Actual vs Actual
+2020,Actual,Fleet & fuel,703,Maintenance and Repair,12373977.0,46,13845946.0,-0.10631,Actual vs Actual
+2021,Actual,Fleet & fuel,703,Maintenance and Repair,11276108.0,46,12373977.0,-0.08872,Actual vs Actual
+2022,Actual,Fleet & fuel,703,Maintenance and Repair,14300251.0,47,11276108.0,0.26819,Actual vs Actual
+2023,Actual,Fleet & fuel,703,Maintenance and Repair,17529165.0,49,14300251.0,0.22579,Actual vs Actual
+2024,Actual,Fleet & fuel,703,Maintenance and Repair,19966819.0,50,17529165.0,0.13906,Actual vs Actual
+2025,Actual,Fleet & fuel,703,Maintenance and Repair,17943854.0,51,19966819.0,-0.10132,Actual vs Actual
+2026,Working budget,Fleet & fuel,703,Maintenance and Repair,20166475.0,52,17943854.0,0.12387,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,703,Maintenance and Repair,19033801.0,49,20166475.0,-0.05617,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,704,Insurance,2851011.0,47,,,
+2018,Actual,Fleet & fuel,704,Insurance,2905448.0,46,2851011.0,0.01909,Actual vs Actual
+2019,Actual,Fleet & fuel,704,Insurance,2790461.0,47,2905448.0,-0.03958,Actual vs Actual
+2020,Actual,Fleet & fuel,704,Insurance,2769211.0,46,2790461.0,-0.00762,Actual vs Actual
+2021,Actual,Fleet & fuel,704,Insurance,2831274.0,49,2769211.0,0.02241,Actual vs Actual
+2022,Actual,Fleet & fuel,704,Insurance,2769244.0,47,2831274.0,-0.02191,Actual vs Actual
+2023,Actual,Fleet & fuel,704,Insurance,2983987.0,48,2769244.0,0.07755,Actual vs Actual
+2024,Actual,Fleet & fuel,704,Insurance,2817365.0,42,2983987.0,-0.05584,Actual vs Actual
+2025,Actual,Fleet & fuel,704,Insurance,2704981.0,41,2817365.0,-0.03989,Actual vs Actual
+2026,Working budget,Fleet & fuel,704,Insurance,2836063.0,49,2704981.0,0.04846,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,704,Insurance,2984523.0,49,2836063.0,0.05235,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,705,Garage Rent,3388733.0,31,,,
+2018,Actual,Fleet & fuel,705,Garage Rent,3361916.0,31,3388733.0,-0.00791,Actual vs Actual
+2019,Actual,Fleet & fuel,705,Garage Rent,3538661.0,30,3361916.0,0.05257,Actual vs Actual
+2020,Actual,Fleet & fuel,705,Garage Rent,3867023.0,29,3538661.0,0.09279,Actual vs Actual
+2021,Actual,Fleet & fuel,705,Garage Rent,3814934.0,29,3867023.0,-0.01347,Actual vs Actual
+2022,Actual,Fleet & fuel,705,Garage Rent,3723442.0,30,3814934.0,-0.02398,Actual vs Actual
+2023,Actual,Fleet & fuel,705,Garage Rent,4622695.0,30,3723442.0,0.24151,Actual vs Actual
+2024,Actual,Fleet & fuel,705,Garage Rent,4334133.0,32,4622695.0,-0.06242,Actual vs Actual
+2025,Actual,Fleet & fuel,705,Garage Rent,4929614.0,32,4334133.0,0.13739,Actual vs Actual
+2026,Working budget,Fleet & fuel,705,Garage Rent,6460601.0,31,4929614.0,0.31057,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,705,Garage Rent,5697278.0,31,6460601.0,-0.11815,Legislative appropriation vs Working budget
+2018,Actual,Fleet & fuel,710,Purchase Cost Or Lease Cost,51514.0,2,,,
+2019,Actual,Fleet & fuel,710,Purchase Cost Or Lease Cost,-18183.0,2,51514.0,-1.35297,Actual vs Actual
+2020,Actual,Fleet & fuel,710,Purchase Cost Or Lease Cost,2549524.0,1,-18183.0,141.21471,Actual vs Actual
+2023,Actual,Fleet & fuel,710,Purchase Cost Or Lease Cost,6297267.0,1,,,
+2024,Actual,Fleet & fuel,710,Purchase Cost Or Lease Cost,56.0,1,6297267.0,-0.99999,Actual vs Actual
+2017,Actual,Fleet & fuel,711,Gas and Oil,1520595.0,4,,,
+2018,Actual,Fleet & fuel,711,Gas and Oil,1920159.0,4,1520595.0,0.26277,Actual vs Actual
+2019,Actual,Fleet & fuel,711,Gas and Oil,1701745.0,4,1920159.0,-0.11375,Actual vs Actual
+2020,Actual,Fleet & fuel,711,Gas and Oil,1472684.0,4,1701745.0,-0.1346,Actual vs Actual
+2021,Actual,Fleet & fuel,711,Gas and Oil,1422150.0,4,1472684.0,-0.03431,Actual vs Actual
+2022,Actual,Fleet & fuel,711,Gas and Oil,1565214.0,4,1422150.0,0.1006,Actual vs Actual
+2023,Actual,Fleet & fuel,711,Gas and Oil,2487628.0,5,1565214.0,0.58932,Actual vs Actual
+2024,Actual,Fleet & fuel,711,Gas and Oil,2496503.0,4,2487628.0,0.00357,Actual vs Actual
+2025,Actual,Fleet & fuel,711,Gas and Oil,2075285.0,4,2496503.0,-0.16872,Actual vs Actual
+2026,Working budget,Fleet & fuel,711,Gas and Oil,2367955.0,4,2075285.0,0.14103,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,711,Gas and Oil,2226132.0,4,2367955.0,-0.05989,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,712,Maintenance and Repair,5452807.0,4,,,
+2018,Actual,Fleet & fuel,712,Maintenance and Repair,5092615.0,5,5452807.0,-0.06606,Actual vs Actual
+2019,Actual,Fleet & fuel,712,Maintenance and Repair,4532873.0,5,5092615.0,-0.10991,Actual vs Actual
+2020,Actual,Fleet & fuel,712,Maintenance and Repair,6496331.0,4,4532873.0,0.43316,Actual vs Actual
+2021,Actual,Fleet & fuel,712,Maintenance and Repair,4909024.0,4,6496331.0,-0.24434,Actual vs Actual
+2022,Actual,Fleet & fuel,712,Maintenance and Repair,6229844.0,4,4909024.0,0.26906,Actual vs Actual
+2023,Actual,Fleet & fuel,712,Maintenance and Repair,7087665.0,4,6229844.0,0.1377,Actual vs Actual
+2024,Actual,Fleet & fuel,712,Maintenance and Repair,9802892.0,7,7087665.0,0.38309,Actual vs Actual
+2025,Actual,Fleet & fuel,712,Maintenance and Repair,8013330.0,4,9802892.0,-0.18255,Actual vs Actual
+2026,Working budget,Fleet & fuel,712,Maintenance and Repair,10160774.0,5,8013330.0,0.26798,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,712,Maintenance and Repair,10160774.0,5,10160774.0,0.0,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,713,Insurance,1322309.0,4,,,
+2018,Actual,Fleet & fuel,713,Insurance,831831.0,4,1322309.0,-0.37093,Actual vs Actual
+2019,Actual,Fleet & fuel,713,Insurance,831831.0,4,831831.0,0.0,Actual vs Actual
+2020,Actual,Fleet & fuel,713,Insurance,1098416.0,4,831831.0,0.32048,Actual vs Actual
+2021,Actual,Fleet & fuel,713,Insurance,1461549.0,4,1098416.0,0.3306,Actual vs Actual
+2022,Actual,Fleet & fuel,713,Insurance,1250774.0,4,1461549.0,-0.14421,Actual vs Actual
+2023,Actual,Fleet & fuel,713,Insurance,1349911.0,4,1250774.0,0.07926,Actual vs Actual
+2024,Actual,Fleet & fuel,713,Insurance,1484237.0,4,1349911.0,0.09951,Actual vs Actual
+2025,Actual,Fleet & fuel,713,Insurance,1548831.0,4,1484237.0,0.04352,Actual vs Actual
+2026,Working budget,Fleet & fuel,713,Insurance,1787775.0,5,1548831.0,0.15427,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,713,Insurance,1707117.0,4,1787775.0,-0.04512,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,17865.0,3,,,
+2018,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,15193.0,2,17865.0,-0.14957,Actual vs Actual
+2019,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,19321.0,3,15193.0,0.2717,Actual vs Actual
+2020,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,20950.0,1,19321.0,0.08431,Actual vs Actual
+2021,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,20015.0,2,20950.0,-0.04463,Actual vs Actual
+2022,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,20500.0,1,20015.0,0.02423,Actual vs Actual
+2023,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,17020.0,2,20500.0,-0.16976,Actual vs Actual
+2024,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,30412.0,2,17020.0,0.78684,Actual vs Actual
+2025,Actual,Fleet & fuel,714,Hangar Rental/Landing Fee,43880.0,2,30412.0,0.44285,Actual vs Actual
+2026,Working budget,Fleet & fuel,714,Hangar Rental/Landing Fee,47400.0,2,43880.0,0.08022,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,714,Hangar Rental/Landing Fee,47400.0,2,47400.0,0.0,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,1069144.0,1,,,
+2018,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,1373797.0,2,1069144.0,0.28495,Actual vs Actual
+2019,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,996485.0,2,1373797.0,-0.27465,Actual vs Actual
+2020,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,668278.0,1,996485.0,-0.32936,Actual vs Actual
+2021,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,732929.0,1,668278.0,0.09674,Actual vs Actual
+2022,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,456760.0,2,732929.0,-0.3768,Actual vs Actual
+2023,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,1525193.0,2,456760.0,2.33916,Actual vs Actual
+2024,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,4816155.0,2,1525193.0,2.15773,Actual vs Actual
+2025,Actual,Fleet & fuel,720,Purchase Cost Or Lease Cost,3485275.0,2,4816155.0,-0.27634,Actual vs Actual
+2026,Working budget,Fleet & fuel,720,Purchase Cost Or Lease Cost,3372149.0,1,3485275.0,-0.03246,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,720,Purchase Cost Or Lease Cost,4876492.0,1,3372149.0,0.44611,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,721,Gas and Oil,229269.0,6,,,
+2018,Actual,Fleet & fuel,721,Gas and Oil,262687.0,4,229269.0,0.14576,Actual vs Actual
+2019,Actual,Fleet & fuel,721,Gas and Oil,293479.0,4,262687.0,0.11722,Actual vs Actual
+2020,Actual,Fleet & fuel,721,Gas and Oil,303229.0,5,293479.0,0.03322,Actual vs Actual
+2021,Actual,Fleet & fuel,721,Gas and Oil,284223.0,3,303229.0,-0.06268,Actual vs Actual
+2022,Actual,Fleet & fuel,721,Gas and Oil,350494.0,3,284223.0,0.23317,Actual vs Actual
+2023,Actual,Fleet & fuel,721,Gas and Oil,364353.0,2,350494.0,0.03954,Actual vs Actual
+2024,Actual,Fleet & fuel,721,Gas and Oil,446340.0,4,364353.0,0.22502,Actual vs Actual
+2025,Actual,Fleet & fuel,721,Gas and Oil,369922.0,5,446340.0,-0.17121,Actual vs Actual
+2026,Working budget,Fleet & fuel,721,Gas and Oil,553314.0,4,369922.0,0.49576,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,721,Gas and Oil,463965.0,4,553314.0,-0.16148,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,722,Maintenance and Repair,767859.0,7,,,
+2018,Actual,Fleet & fuel,722,Maintenance and Repair,482362.0,5,767859.0,-0.37181,Actual vs Actual
+2019,Actual,Fleet & fuel,722,Maintenance and Repair,656760.0,6,482362.0,0.36155,Actual vs Actual
+2020,Actual,Fleet & fuel,722,Maintenance and Repair,441443.0,5,656760.0,-0.32785,Actual vs Actual
+2021,Actual,Fleet & fuel,722,Maintenance and Repair,243821.0,5,441443.0,-0.44767,Actual vs Actual
+2022,Actual,Fleet & fuel,722,Maintenance and Repair,467776.0,5,243821.0,0.91852,Actual vs Actual
+2023,Actual,Fleet & fuel,722,Maintenance and Repair,727256.0,6,467776.0,0.55471,Actual vs Actual
+2024,Actual,Fleet & fuel,722,Maintenance and Repair,1453973.0,4,727256.0,0.99926,Actual vs Actual
+2025,Actual,Fleet & fuel,722,Maintenance and Repair,33878.0,5,1453973.0,-0.9767,Actual vs Actual
+2026,Working budget,Fleet & fuel,722,Maintenance and Repair,903504.0,4,33878.0,25.66934,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,722,Maintenance and Repair,1035098.0,4,903504.0,0.14565,Legislative appropriation vs Working budget
+2018,Actual,Fleet & fuel,723,Insurance,1542.0,1,,,
+2020,Actual,Fleet & fuel,723,Insurance,35.0,1,,,
+2022,Actual,Fleet & fuel,723,Insurance,-4194.0,1,,,
+2023,Actual,Fleet & fuel,723,Insurance,453.0,1,-4194.0,1.10801,Actual vs Actual
+2025,Actual,Fleet & fuel,723,Insurance,599.0,1,,,
+2026,Working budget,Fleet & fuel,723,Insurance,148.0,1,599.0,-0.75292,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,723,Insurance,148.0,1,148.0,0.0,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,38113.0,1,,,
+2018,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,30613.0,1,38113.0,-0.19678,Actual vs Actual
+2019,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,29109.0,1,30613.0,-0.04913,Actual vs Actual
+2020,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,24818.0,1,29109.0,-0.14741,Actual vs Actual
+2021,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,30826.0,1,24818.0,0.24208,Actual vs Actual
+2022,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,33257.0,1,30826.0,0.07886,Actual vs Actual
+2023,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,25814.0,1,33257.0,-0.2238,Actual vs Actual
+2024,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,37624.0,2,25814.0,0.4575,Actual vs Actual
+2025,Actual,Fleet & fuel,724,Boat Ship Rental/Launching Fees,41331.0,1,37624.0,0.09853,Actual vs Actual
+2026,Working budget,Fleet & fuel,724,Boat Ship Rental/Launching Fees,32525.0,1,41331.0,-0.21306,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,724,Boat Ship Rental/Launching Fees,33100.0,1,32525.0,0.01768,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,23133032.0,5,,,
+2018,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,23844624.0,6,23133032.0,0.03076,Actual vs Actual
+2019,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,9518509.0,5,23844624.0,-0.60081,Actual vs Actual
+2020,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,14174908.0,6,9518509.0,0.48919,Actual vs Actual
+2021,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,12688359.0,4,14174908.0,-0.10487,Actual vs Actual
+2022,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,5855841.0,7,12688359.0,-0.53849,Actual vs Actual
+2023,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,5511227.0,4,5855841.0,-0.05885,Actual vs Actual
+2024,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,35055527.0,7,5511227.0,5.36075,Actual vs Actual
+2025,Actual,Fleet & fuel,730,Purchase Cost Or Lease Cost,8782569.0,6,35055527.0,-0.74947,Actual vs Actual
+2026,Working budget,Fleet & fuel,730,Purchase Cost Or Lease Cost,9579424.0,5,8782569.0,0.09073,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,730,Purchase Cost Or Lease Cost,10853085.0,5,9579424.0,0.13296,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,731,Gas and Oil,20298807.0,8,,,
+2018,Actual,Fleet & fuel,731,Gas and Oil,25909202.0,7,20298807.0,0.27639,Actual vs Actual
+2019,Actual,Fleet & fuel,731,Gas and Oil,26937749.0,8,25909202.0,0.0397,Actual vs Actual
+2020,Actual,Fleet & fuel,731,Gas and Oil,20352658.0,6,26937749.0,-0.24446,Actual vs Actual
+2021,Actual,Fleet & fuel,731,Gas and Oil,17203821.0,7,20352658.0,-0.15471,Actual vs Actual
+2022,Actual,Fleet & fuel,731,Gas and Oil,36058641.0,7,17203821.0,1.09597,Actual vs Actual
+2023,Actual,Fleet & fuel,731,Gas and Oil,41356021.0,7,36058641.0,0.14691,Actual vs Actual
+2024,Actual,Fleet & fuel,731,Gas and Oil,38864552.0,7,41356021.0,-0.06024,Actual vs Actual
+2025,Actual,Fleet & fuel,731,Gas and Oil,34319028.0,7,38864552.0,-0.11696,Actual vs Actual
+2026,Working budget,Fleet & fuel,731,Gas and Oil,41784717.0,6,34319028.0,0.21754,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,731,Gas and Oil,43041761.0,6,41784717.0,0.03008,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,732,Maintenance and Repair,50795126.0,9,,,
+2018,Actual,Fleet & fuel,732,Maintenance and Repair,40015103.0,9,50795126.0,-0.21223,Actual vs Actual
+2019,Actual,Fleet & fuel,732,Maintenance and Repair,37970461.0,10,40015103.0,-0.0511,Actual vs Actual
+2020,Actual,Fleet & fuel,732,Maintenance and Repair,37819367.0,10,37970461.0,-0.00398,Actual vs Actual
+2021,Actual,Fleet & fuel,732,Maintenance and Repair,40810226.0,10,37819367.0,0.07908,Actual vs Actual
+2022,Actual,Fleet & fuel,732,Maintenance and Repair,38101991.0,10,40810226.0,-0.06636,Actual vs Actual
+2023,Actual,Fleet & fuel,732,Maintenance and Repair,47949844.0,10,38101991.0,0.25846,Actual vs Actual
+2024,Actual,Fleet & fuel,732,Maintenance and Repair,46307517.0,11,47949844.0,-0.03425,Actual vs Actual
+2025,Actual,Fleet & fuel,732,Maintenance and Repair,46856976.0,9,46307517.0,0.01187,Actual vs Actual
+2026,Working budget,Fleet & fuel,732,Maintenance and Repair,48003206.0,10,46856976.0,0.02446,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,732,Maintenance and Repair,49491841.0,10,48003206.0,0.03101,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,733,Insurance,10550756.0,2,,,
+2018,Actual,Fleet & fuel,733,Insurance,9038560.0,2,10550756.0,-0.14333,Actual vs Actual
+2019,Actual,Fleet & fuel,733,Insurance,16342187.0,2,9038560.0,0.80805,Actual vs Actual
+2020,Actual,Fleet & fuel,733,Insurance,16146403.0,2,16342187.0,-0.01198,Actual vs Actual
+2021,Actual,Fleet & fuel,733,Insurance,19242742.0,3,16146403.0,0.19177,Actual vs Actual
+2022,Actual,Fleet & fuel,733,Insurance,14831448.0,2,19242742.0,-0.22924,Actual vs Actual
+2023,Actual,Fleet & fuel,733,Insurance,18766648.0,3,14831448.0,0.26533,Actual vs Actual
+2024,Actual,Fleet & fuel,733,Insurance,17011782.0,2,18766648.0,-0.09351,Actual vs Actual
+2025,Actual,Fleet & fuel,733,Insurance,19000475.0,3,17011782.0,0.1169,Actual vs Actual
+2026,Working budget,Fleet & fuel,733,Insurance,21729004.0,2,19000475.0,0.1436,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,733,Insurance,22829004.0,2,21729004.0,0.05062,Legislative appropriation vs Working budget
+2017,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,13923.0,4,,,
+2018,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,13934.0,4,13923.0,0.00079,Actual vs Actual
+2019,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,15529.0,3,13934.0,0.11447,Actual vs Actual
+2020,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,12425.0,4,15529.0,-0.19988,Actual vs Actual
+2021,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,4037.0,3,12425.0,-0.67509,Actual vs Actual
+2022,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,10337.0,4,4037.0,1.56056,Actual vs Actual
+2023,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,13482.0,4,10337.0,0.30425,Actual vs Actual
+2024,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,15258.0,5,13482.0,0.13173,Actual vs Actual
+2025,Actual,Fleet & fuel,734,Garage Or Storage Space Rental,27885.0,5,15258.0,0.82757,Actual vs Actual
+2026,Working budget,Fleet & fuel,734,Garage Or Storage Space Rental,20913.0,4,27885.0,-0.25003,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,734,Garage Or Storage Space Rental,21355.0,5,20913.0,0.02114,Legislative appropriation vs Working budget
+2024,Actual,Fleet & fuel,741,Electricity usage for vehicles,605.0,2,,,
+2025,Actual,Fleet & fuel,741,Electricity usage for vehicles,26082.0,2,605.0,42.11074,Actual vs Actual
+2027,Legislative appropriation,Fleet & fuel,741,Electricity usage for vehicles,24924.0,1,,,
+2017,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-94157.0,8,,,
+2018,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-82947.0,8,-94157.0,0.11906,Actual vs Actual
+2019,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-77888.0,11,-82947.0,0.06099,Actual vs Actual
+2020,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-60133.0,8,-77888.0,0.22796,Actual vs Actual
+2021,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-52784.0,7,-60133.0,0.12221,Actual vs Actual
+2022,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-62265.0,8,-52784.0,-0.17962,Actual vs Actual
+2023,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-41383.0,6,-62265.0,0.33537,Actual vs Actual
+2024,Actual,Fleet & fuel,789,Vehicle Commuter Charge,12236.0,7,-41383.0,1.29568,Actual vs Actual
+2025,Actual,Fleet & fuel,789,Vehicle Commuter Charge,-17575.0,10,12236.0,-2.43634,Actual vs Actual
+2026,Working budget,Fleet & fuel,789,Vehicle Commuter Charge,-204048.0,4,-17575.0,-10.61013,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,789,Vehicle Commuter Charge,-192236.0,4,-204048.0,0.05789,Legislative appropriation vs Working budget
+2025,Actual,Fleet & fuel,795,Corporate Purchasing Card,276.0,1,,,
+2017,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,2992162.0,21,,,
+2018,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,715813.0,17,2992162.0,-0.76077,Actual vs Actual
+2019,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,372767.0,23,715813.0,-0.47924,Actual vs Actual
+2020,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,-122992.0,21,372767.0,-1.32994,Actual vs Actual
+2021,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,274744.0,17,-122992.0,3.23384,Actual vs Actual
+2022,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,465503.0,18,274744.0,0.69432,Actual vs Actual
+2023,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,639857.0,18,465503.0,0.37455,Actual vs Actual
+2024,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,750462.0,19,639857.0,0.17286,Actual vs Actual
+2025,Actual,Fleet & fuel,799,Other Motor Vehicle Charges,781926.0,20,750462.0,0.04193,Actual vs Actual
+2026,Working budget,Fleet & fuel,799,Other Motor Vehicle Charges,8167186.0,15,781926.0,9.44496,Working budget vs Actual
+2027,Legislative appropriation,Fleet & fuel,799,Other Motor Vehicle Charges,6939048.0,14,8167186.0,-0.15037,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",802,Applications Software Maintenance,1660.0,1,,,
+2018,Actual,"IT hardware, software & services",802,Applications Software Maintenance,31480.0,3,1660.0,17.96386,Actual vs Actual
+2019,Actual,"IT hardware, software & services",802,Applications Software Maintenance,41194.0,4,31480.0,0.30858,Actual vs Actual
+2020,Actual,"IT hardware, software & services",802,Applications Software Maintenance,26863.0,5,41194.0,-0.34789,Actual vs Actual
+2021,Actual,"IT hardware, software & services",802,Applications Software Maintenance,28813.0,2,26863.0,0.07259,Actual vs Actual
+2022,Actual,"IT hardware, software & services",802,Applications Software Maintenance,132174.0,5,28813.0,3.5873,Actual vs Actual
+2023,Actual,"IT hardware, software & services",802,Applications Software Maintenance,136404.0,4,132174.0,0.032,Actual vs Actual
+2024,Actual,"IT hardware, software & services",802,Applications Software Maintenance,34671.0,5,136404.0,-0.74582,Actual vs Actual
+2025,Actual,"IT hardware, software & services",802,Applications Software Maintenance,2924573.0,6,34671.0,83.35214,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",802,Applications Software Maintenance,434938.0,5,2924573.0,-0.85128,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",802,Applications Software Maintenance,50009.0,4,434938.0,-0.88502,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),32243993.0,53,,,
+2018,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),46383174.0,53,32243993.0,0.43851,Actual vs Actual
+2019,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),56548938.0,54,46383174.0,0.21917,Actual vs Actual
+2020,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),31274360.0,53,56548938.0,-0.44695,Actual vs Actual
+2021,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),105972068.0,54,31274360.0,2.38846,Actual vs Actual
+2022,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),55714771.0,54,105972068.0,-0.47425,Actual vs Actual
+2023,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),130831463.0,57,55714771.0,1.34824,Actual vs Actual
+2024,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),45912560.0,60,130831463.0,-0.64907,Actual vs Actual
+2025,Actual,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),67655481.0,61,45912560.0,0.47357,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),52875909.0,63,67655481.0,-0.21845,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",808,Equip Rental(Other Than Data Processing),60866935.0,63,52875909.0,0.15113,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,2383521.0,3,,,
+2018,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,1903235.0,4,2383521.0,-0.2015,Actual vs Actual
+2019,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,2523937.0,5,1903235.0,0.32613,Actual vs Actual
+2020,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,2433803.0,2,2523937.0,-0.03571,Actual vs Actual
+2021,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,2113769.0,1,2433803.0,-0.1315,Actual vs Actual
+2022,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,3281953.0,1,2113769.0,0.55265,Actual vs Actual
+2023,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,2325626.0,1,3281953.0,-0.29139,Actual vs Actual
+2024,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,1847998.0,1,2325626.0,-0.20538,Actual vs Actual
+2025,Actual,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,1787158.0,1,1847998.0,-0.03292,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,3407202.0,2,1787158.0,0.90649,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",841,Data Process Central Processing  Unit and Co,3406740.0,2,3407202.0,-0.00014,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",852,Data Entry Devices,127.0,1,,,
+2018,Actual,"IT hardware, software & services",852,Data Entry Devices,100.0,1,127.0,-0.2126,Actual vs Actual
+2019,Actual,"IT hardware, software & services",852,Data Entry Devices,420.0,1,100.0,3.2,Actual vs Actual
+2020,Actual,"IT hardware, software & services",852,Data Entry Devices,4183.0,3,420.0,8.95952,Actual vs Actual
+2022,Actual,"IT hardware, software & services",852,Data Entry Devices,170.0,1,,,
+2023,Actual,"IT hardware, software & services",852,Data Entry Devices,2849.0,1,170.0,15.75882,Actual vs Actual
+2025,Actual,"IT hardware, software & services",852,Data Entry Devices,108.0,1,,,
+2026,Working budget,"IT hardware, software & services",852,Data Entry Devices,3500.0,1,108.0,31.40741,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",852,Data Entry Devices,3500.0,1,3500.0,0.0,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,19277007.0,39,,,
+2018,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,24174202.0,37,19277007.0,0.25404,Actual vs Actual
+2019,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,19524609.0,36,24174202.0,-0.19234,Actual vs Actual
+2020,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,18301526.0,34,19524609.0,-0.06264,Actual vs Actual
+2021,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,19257257.0,35,18301526.0,0.05222,Actual vs Actual
+2022,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,25076284.0,34,19257257.0,0.30217,Actual vs Actual
+2023,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,26871762.0,36,25076284.0,0.0716,Actual vs Actual
+2024,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,22995470.0,38,26871762.0,-0.14425,Actual vs Actual
+2025,Actual,"IT hardware, software & services",854,Computer Maintenance Contracts,24429141.0,35,22995470.0,0.06235,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",854,Computer Maintenance Contracts,24345493.0,42,24429141.0,-0.00342,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",854,Computer Maintenance Contracts,26116886.0,42,24345493.0,0.07276,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,140170.0,5,,,
+2018,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,626315.0,6,140170.0,3.46825,Actual vs Actual
+2019,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,249853.0,5,626315.0,-0.60107,Actual vs Actual
+2020,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,703734.0,3,249853.0,1.81659,Actual vs Actual
+2021,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,177769.0,5,703734.0,-0.74739,Actual vs Actual
+2022,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,298267.0,5,177769.0,0.67783,Actual vs Actual
+2023,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,161484.0,5,298267.0,-0.45859,Actual vs Actual
+2024,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,157053.0,5,161484.0,-0.02744,Actual vs Actual
+2025,Actual,"IT hardware, software & services",857,Other Data Processing Hardware,166003.0,5,157053.0,0.05699,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",857,Other Data Processing Hardware,122900.0,3,166003.0,-0.25965,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",857,Other Data Processing Hardware,122900.0,3,122900.0,0.0,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",858,Software Licenses,12567650.0,34,,,
+2018,Actual,"IT hardware, software & services",858,Software Licenses,26016831.0,38,12567650.0,1.07014,Actual vs Actual
+2019,Actual,"IT hardware, software & services",858,Software Licenses,32559706.0,36,26016831.0,0.25149,Actual vs Actual
+2020,Actual,"IT hardware, software & services",858,Software Licenses,33032684.0,40,32559706.0,0.01453,Actual vs Actual
+2021,Actual,"IT hardware, software & services",858,Software Licenses,27583046.0,41,33032684.0,-0.16498,Actual vs Actual
+2022,Actual,"IT hardware, software & services",858,Software Licenses,40321482.0,41,27583046.0,0.46182,Actual vs Actual
+2023,Actual,"IT hardware, software & services",858,Software Licenses,54418784.0,47,40321482.0,0.34962,Actual vs Actual
+2024,Actual,"IT hardware, software & services",858,Software Licenses,87779797.0,51,54418784.0,0.61304,Actual vs Actual
+2025,Actual,"IT hardware, software & services",858,Software Licenses,95629123.0,50,87779797.0,0.08942,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",858,Software Licenses,88695576.0,52,95629123.0,-0.0725,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",858,Software Licenses,99187175.0,52,88695576.0,0.11829,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),15089050.0,28,,,
+2018,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),9116326.0,26,15089050.0,-0.39583,Actual vs Actual
+2019,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),8476836.0,25,9116326.0,-0.07015,Actual vs Actual
+2020,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),3366881.0,25,8476836.0,-0.60281,Actual vs Actual
+2021,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),15555082.0,22,3366881.0,3.62003,Actual vs Actual
+2022,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),21337417.0,25,15555082.0,0.37173,Actual vs Actual
+2023,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),13733033.0,24,21337417.0,-0.35639,Actual vs Actual
+2024,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),13503998.0,28,13733033.0,-0.01668,Actual vs Actual
+2025,Actual,"IT hardware, software & services",861,Applications Software (Acquistions),15125376.0,27,13503998.0,0.12007,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",861,Applications Software (Acquistions),32659549.0,24,15125376.0,1.15926,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",861,Applications Software (Acquistions),13784547.0,24,32659549.0,-0.57793,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),27284901.0,29,,,
+2018,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),21848213.0,29,27284901.0,-0.19926,Actual vs Actual
+2019,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),19467395.0,28,21848213.0,-0.10897,Actual vs Actual
+2020,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),17392510.0,28,19467395.0,-0.10658,Actual vs Actual
+2021,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),16190871.0,28,17392510.0,-0.06909,Actual vs Actual
+2022,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),16430409.0,30,16190871.0,0.01479,Actual vs Actual
+2023,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),16793535.0,31,16430409.0,0.0221,Actual vs Actual
+2024,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),25466368.0,32,16793535.0,0.51644,Actual vs Actual
+2025,Actual,"IT hardware, software & services",862,Applications Software (Maintenance),22912817.0,33,25466368.0,-0.10027,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",862,Applications Software (Maintenance),27726940.0,33,22912817.0,0.21011,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",862,Applications Software (Maintenance),35406081.0,33,27726940.0,0.27696,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),5833498.0,13,,,
+2018,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),6188335.0,12,5833498.0,0.06083,Actual vs Actual
+2019,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),10340673.0,16,6188335.0,0.67099,Actual vs Actual
+2020,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),9217066.0,10,10340673.0,-0.10866,Actual vs Actual
+2021,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),12876318.0,13,9217066.0,0.39701,Actual vs Actual
+2022,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),15902629.0,17,12876318.0,0.23503,Actual vs Actual
+2023,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),24756149.0,19,15902629.0,0.55673,Actual vs Actual
+2024,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),22902882.0,22,24756149.0,-0.07486,Actual vs Actual
+2025,Actual,"IT hardware, software & services",863,Systems Software (Acquisitions),48797525.0,20,22902882.0,1.13063,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",863,Systems Software (Acquisitions),27391090.0,19,48797525.0,-0.43868,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",863,Systems Software (Acquisitions),62677044.0,20,27391090.0,1.28823,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),27253728.0,28,,,
+2018,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),33497066.0,28,27253728.0,0.22908,Actual vs Actual
+2019,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),40995212.0,25,33497066.0,0.22384,Actual vs Actual
+2020,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),45883770.0,26,40995212.0,0.11925,Actual vs Actual
+2021,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),47648630.0,23,45883770.0,0.03846,Actual vs Actual
+2022,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),43366829.0,26,47648630.0,-0.08986,Actual vs Actual
+2023,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),56589869.0,28,43366829.0,0.30491,Actual vs Actual
+2024,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),66207342.0,31,56589869.0,0.16995,Actual vs Actual
+2025,Actual,"IT hardware, software & services",864,Systems Software (Maintenance),71497169.0,33,66207342.0,0.0799,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",864,Systems Software (Maintenance),69817483.0,34,71497169.0,-0.02349,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",864,Systems Software (Maintenance),74768088.0,35,69817483.0,0.07091,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,16999131.0,11,,,
+2018,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,24371888.0,12,16999131.0,0.43371,Actual vs Actual
+2019,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,31023772.0,15,24371888.0,0.27293,Actual vs Actual
+2020,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,21780714.0,11,31023772.0,-0.29793,Actual vs Actual
+2021,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,39303345.0,12,21780714.0,0.8045,Actual vs Actual
+2022,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,20719080.0,14,39303345.0,-0.47284,Actual vs Actual
+2023,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,69182603.0,14,20719080.0,2.33908,Actual vs Actual
+2024,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,60901632.0,20,69182603.0,-0.1197,Actual vs Actual
+2025,Actual,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,41281430.0,18,60901632.0,-0.32216,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,40567435.0,16,41281430.0,-0.0173,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",865,Outside Services Sys Analysis and Design,59162486.0,16,40567435.0,0.45837,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",866,Outside Services Programming,58408818.0,11,,,
+2018,Actual,"IT hardware, software & services",866,Outside Services Programming,87233018.0,13,58408818.0,0.49349,Actual vs Actual
+2019,Actual,"IT hardware, software & services",866,Outside Services Programming,96953840.0,11,87233018.0,0.11144,Actual vs Actual
+2020,Actual,"IT hardware, software & services",866,Outside Services Programming,134082761.0,13,96953840.0,0.38295,Actual vs Actual
+2021,Actual,"IT hardware, software & services",866,Outside Services Programming,126016785.0,8,134082761.0,-0.06016,Actual vs Actual
+2022,Actual,"IT hardware, software & services",866,Outside Services Programming,147881378.0,14,126016785.0,0.17351,Actual vs Actual
+2023,Actual,"IT hardware, software & services",866,Outside Services Programming,139381051.0,11,147881378.0,-0.05748,Actual vs Actual
+2024,Actual,"IT hardware, software & services",866,Outside Services Programming,157090231.0,13,139381051.0,0.12706,Actual vs Actual
+2025,Actual,"IT hardware, software & services",866,Outside Services Programming,127009402.0,14,157090231.0,-0.19149,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",866,Outside Services Programming,145775660.0,13,127009402.0,0.14775,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",866,Outside Services Programming,116484675.0,13,145775660.0,-0.20093,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",867,Outside Services Data Entry,809723.0,3,,,
+2018,Actual,"IT hardware, software & services",867,Outside Services Data Entry,658859.0,2,809723.0,-0.18632,Actual vs Actual
+2019,Actual,"IT hardware, software & services",867,Outside Services Data Entry,634584.0,3,658859.0,-0.03684,Actual vs Actual
+2020,Actual,"IT hardware, software & services",867,Outside Services Data Entry,538116.0,1,634584.0,-0.15202,Actual vs Actual
+2021,Actual,"IT hardware, software & services",867,Outside Services Data Entry,72510428.0,4,538116.0,133.74869,Actual vs Actual
+2022,Actual,"IT hardware, software & services",867,Outside Services Data Entry,164382256.0,4,72510428.0,1.26702,Actual vs Actual
+2023,Actual,"IT hardware, software & services",867,Outside Services Data Entry,38746314.0,4,164382256.0,-0.76429,Actual vs Actual
+2024,Actual,"IT hardware, software & services",867,Outside Services Data Entry,42756149.0,5,38746314.0,0.10349,Actual vs Actual
+2025,Actual,"IT hardware, software & services",867,Outside Services Data Entry,24755073.0,4,42756149.0,-0.42102,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",867,Outside Services Data Entry,20847082.0,4,24755073.0,-0.15787,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",867,Outside Services Data Entry,2565524.0,4,20847082.0,-0.87694,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,503250.0,10,,,
+2018,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,433392.0,9,503250.0,-0.13881,Actual vs Actual
+2019,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,471457.0,11,433392.0,0.08783,Actual vs Actual
+2020,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,473963.0,8,471457.0,0.00532,Actual vs Actual
+2021,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,148404.0,5,473963.0,-0.68689,Actual vs Actual
+2022,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,282119.0,9,148404.0,0.90102,Actual vs Actual
+2023,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,406364.0,5,282119.0,0.4404,Actual vs Actual
+2024,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,926773.0,7,406364.0,1.28065,Actual vs Actual
+2025,Actual,"IT hardware, software & services",868,Outside Services Data Processing Trainng,69741.0,6,926773.0,-0.92475,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",868,Outside Services Data Processing Trainng,133967.0,6,69741.0,0.92092,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",868,Outside Services Data Processing Trainng,112950.0,6,133967.0,-0.15688,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,6434300.0,8,,,
+2018,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,6093921.0,7,6434300.0,-0.0529,Actual vs Actual
+2019,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,6159833.0,8,6093921.0,0.01082,Actual vs Actual
+2020,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,9422497.0,10,6159833.0,0.52967,Actual vs Actual
+2021,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,12244289.0,8,9422497.0,0.29947,Actual vs Actual
+2022,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,10709174.0,7,12244289.0,-0.12537,Actual vs Actual
+2023,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,15585240.0,8,10709174.0,0.45532,Actual vs Actual
+2024,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,7166398.0,10,15585240.0,-0.54018,Actual vs Actual
+2025,Actual,"IT hardware, software & services",869,Outside Services Computer Usage,17501914.0,8,7166398.0,1.44222,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",869,Outside Services Computer Usage,19774148.0,8,17501914.0,0.12983,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",869,Outside Services Computer Usage,19402451.0,9,19774148.0,-0.0188,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,10218.0,1,,,
+2018,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,267517.0,3,10218.0,25.18096,Actual vs Actual
+2019,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,6395.0,2,267517.0,-0.97609,Actual vs Actual
+2020,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,1666.0,1,6395.0,-0.73948,Actual vs Actual
+2021,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,1351.0,1,1666.0,-0.18908,Actual vs Actual
+2022,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,2558.0,2,1351.0,0.89341,Actual vs Actual
+2023,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,18325.0,4,2558.0,6.1638,Actual vs Actual
+2024,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,37332.0,4,18325.0,1.03722,Actual vs Actual
+2025,Actual,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,13861.0,2,37332.0,-0.62871,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,17192.0,3,13861.0,0.24031,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",886,Inst Ser-Computer Usage-Other Than ADC,15692.0,2,17192.0,-0.08725,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",887,Data Processing Air Conditioning,396.0,1,,,
+2020,Actual,"IT hardware, software & services",887,Data Processing Air Conditioning,61270.0,1,,,
+2024,Actual,"IT hardware, software & services",887,Data Processing Air Conditioning,1441.0,1,,,
+2025,Actual,"IT hardware, software & services",887,Data Processing Air Conditioning,2836.0,2,1441.0,0.96808,Actual vs Actual
+2018,Actual,"IT hardware, software & services",889,Data Processing Computer Flooring,160.0,2,,,
+2021,Actual,"IT hardware, software & services",889,Data Processing Computer Flooring,1830.0,1,,,
+2022,Actual,"IT hardware, software & services",889,Data Processing Computer Flooring,2400.0,1,1830.0,0.31148,Actual vs Actual
+2025,Actual,"IT hardware, software & services",889,Data Processing Computer Flooring,137.0,1,,,
+2017,Actual,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,64727.0,1,,,
+2018,Actual,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,71473.0,3,64727.0,0.10422,Actual vs Actual
+2020,Actual,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,188975.0,2,,,
+2023,Actual,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,704.0,2,,,
+2025,Actual,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,833.0,1,,,
+2026,Working budget,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,106500.0,2,833.0,126.85114,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",890,Data Processing Microfilm/Microfiching,106500.0,2,106500.0,0.0,Legislative appropriation vs Working budget
+2021,Actual,"IT hardware, software & services",891,Data Processing Freight,2700643.0,1,,,
+2022,Actual,"IT hardware, software & services",891,Data Processing Freight,3821775.0,2,2700643.0,0.41514,Actual vs Actual
+2023,Actual,"IT hardware, software & services",891,Data Processing Freight,5275362.0,1,3821775.0,0.38034,Actual vs Actual
+2024,Actual,"IT hardware, software & services",891,Data Processing Freight,6645406.0,2,5275362.0,0.25971,Actual vs Actual
+2025,Actual,"IT hardware, software & services",891,Data Processing Freight,7205455.0,2,6645406.0,0.08428,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",891,Data Processing Freight,7078166.0,1,7205455.0,-0.01767,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",891,Data Processing Freight,7302812.0,1,7078166.0,0.03174,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,1296984.0,2,,,
+2018,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,1227891.0,3,1296984.0,-0.05327,Actual vs Actual
+2019,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,1246370.0,2,1227891.0,0.01505,Actual vs Actual
+2020,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,1532318.0,3,1246370.0,0.22942,Actual vs Actual
+2021,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,4957106.0,3,1532318.0,2.23504,Actual vs Actual
+2022,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,5273613.0,3,4957106.0,0.06385,Actual vs Actual
+2023,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,5401758.0,4,5273613.0,0.0243,Actual vs Actual
+2024,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,6152548.0,5,5401758.0,0.13899,Actual vs Actual
+2025,Actual,"IT hardware, software & services",892,Data Processing - Academic/Research,6364926.0,4,6152548.0,0.03452,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",892,Data Processing - Academic/Research,6692088.0,4,6364926.0,0.0514,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",892,Data Processing - Academic/Research,6815285.0,5,6692088.0,0.01841,Legislative appropriation vs Working budget
+2018,Actual,"IT hardware, software & services",893,Data Processing - Administrative,277.0,2,,,
+2019,Actual,"IT hardware, software & services",893,Data Processing - Administrative,1114.0,2,277.0,3.02166,Actual vs Actual
+2020,Actual,"IT hardware, software & services",893,Data Processing - Administrative,2050.0,2,1114.0,0.84022,Actual vs Actual
+2021,Actual,"IT hardware, software & services",893,Data Processing - Administrative,225738.0,1,2050.0,109.1161,Actual vs Actual
+2022,Actual,"IT hardware, software & services",893,Data Processing - Administrative,106607.0,2,225738.0,-0.52774,Actual vs Actual
+2023,Actual,"IT hardware, software & services",893,Data Processing - Administrative,169948.0,2,106607.0,0.59415,Actual vs Actual
+2024,Actual,"IT hardware, software & services",893,Data Processing - Administrative,254970.0,2,169948.0,0.50028,Actual vs Actual
+2025,Actual,"IT hardware, software & services",893,Data Processing - Administrative,201696.0,1,254970.0,-0.20894,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",893,Data Processing - Administrative,413491.0,1,201696.0,1.05007,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",893,Data Processing - Administrative,329054.0,1,413491.0,-0.20421,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,76317284.0,15,,,
+2018,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,68126138.0,22,76317284.0,-0.10733,Actual vs Actual
+2019,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,73363882.0,16,68126138.0,0.07688,Actual vs Actual
+2020,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,84577809.0,16,73363882.0,0.15285,Actual vs Actual
+2021,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,72992338.0,15,84577809.0,-0.13698,Actual vs Actual
+2022,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,59481957.0,16,72992338.0,-0.18509,Actual vs Actual
+2023,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,79794076.0,16,59481957.0,0.34148,Actual vs Actual
+2024,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,54860228.0,16,79794076.0,-0.31248,Actual vs Actual
+2025,Actual,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,63145862.0,15,54860228.0,0.15103,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,64459045.0,18,63145862.0,0.0208,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",898,Data Proc Other Contractual Services-DP,69988047.0,18,64459045.0,0.08578,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,61226.0,2,,,
+2018,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,37093.0,4,61226.0,-0.39416,Actual vs Actual
+2019,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,71894.0,6,37093.0,0.93821,Actual vs Actual
+2020,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,71365.0,5,71894.0,-0.00736,Actual vs Actual
+2021,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,71465.0,5,71365.0,0.0014,Actual vs Actual
+2022,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,81906.0,3,71465.0,0.1461,Actual vs Actual
+2023,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,39774.0,6,81906.0,-0.51439,Actual vs Actual
+2024,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,67630.0,2,39774.0,0.70036,Actual vs Actual
+2025,Actual,"IT hardware, software & services",921,Data Processing Computer Forms,49888.0,3,67630.0,-0.26234,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",921,Data Processing Computer Forms,83215.0,4,49888.0,0.66804,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",921,Data Processing Computer Forms,89320.0,3,83215.0,0.07336,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",922,Data Processing Computer Forms (Special),3623.0,1,,,
+2018,Actual,"IT hardware, software & services",922,Data Processing Computer Forms (Special),1425.0,1,3623.0,-0.60668,Actual vs Actual
+2019,Actual,"IT hardware, software & services",922,Data Processing Computer Forms (Special),2020.0,1,1425.0,0.41754,Actual vs Actual
+2024,Actual,"IT hardware, software & services",922,Data Processing Computer Forms (Special),2502.0,1,,,
+2019,Actual,"IT hardware, software & services",923,Data Processing Punched Cards,5730.0,1,,,
+2022,Actual,"IT hardware, software & services",923,Data Processing Punched Cards,813.0,2,,,
+2019,Actual,"IT hardware, software & services",924,Data Processing Magnetic Tape,2975.0,2,,,
+2023,Actual,"IT hardware, software & services",924,Data Processing Magnetic Tape,1166.0,1,,,
+2025,Actual,"IT hardware, software & services",924,Data Processing Magnetic Tape,10502.0,1,,,
+2027,Legislative appropriation,"IT hardware, software & services",924,Data Processing Magnetic Tape,10502.0,1,,,
+2017,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,23931.0,1,,,
+2018,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,23568.0,2,23931.0,-0.01517,Actual vs Actual
+2019,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,8274.0,2,23568.0,-0.64893,Actual vs Actual
+2020,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,7561.0,4,8274.0,-0.08617,Actual vs Actual
+2021,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,10170.0,2,7561.0,0.34506,Actual vs Actual
+2022,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,15429.0,3,10170.0,0.51711,Actual vs Actual
+2023,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,5512.0,1,15429.0,-0.64275,Actual vs Actual
+2024,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,3039.0,2,5512.0,-0.44866,Actual vs Actual
+2025,Actual,"IT hardware, software & services",925,Data Processing Printer Ribbons,2430.0,3,3039.0,-0.20039,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",925,Data Processing Printer Ribbons,19070.0,1,2430.0,6.84774,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",925,Data Processing Printer Ribbons,20051.0,2,19070.0,0.05144,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",926,Data Processing Supplies,1935072.0,35,,,
+2018,Actual,"IT hardware, software & services",926,Data Processing Supplies,1985767.0,33,1935072.0,0.0262,Actual vs Actual
+2019,Actual,"IT hardware, software & services",926,Data Processing Supplies,2215283.0,35,1985767.0,0.11558,Actual vs Actual
+2020,Actual,"IT hardware, software & services",926,Data Processing Supplies,2089505.0,35,2215283.0,-0.05678,Actual vs Actual
+2021,Actual,"IT hardware, software & services",926,Data Processing Supplies,1923541.0,33,2089505.0,-0.07943,Actual vs Actual
+2022,Actual,"IT hardware, software & services",926,Data Processing Supplies,1845704.0,37,1923541.0,-0.04047,Actual vs Actual
+2023,Actual,"IT hardware, software & services",926,Data Processing Supplies,2109434.0,34,1845704.0,0.14289,Actual vs Actual
+2024,Actual,"IT hardware, software & services",926,Data Processing Supplies,1634902.0,33,2109434.0,-0.22496,Actual vs Actual
+2025,Actual,"IT hardware, software & services",926,Data Processing Supplies,1916523.0,33,1634902.0,0.17226,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",926,Data Processing Supplies,2114661.0,35,1916523.0,0.10338,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",926,Data Processing Supplies,3510822.0,36,2114661.0,0.66023,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,415246.0,19,,,
+2018,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,1994982.0,15,415246.0,3.80434,Actual vs Actual
+2019,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,1550771.0,19,1994982.0,-0.22266,Actual vs Actual
+2020,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,968318.0,15,1550771.0,-0.37559,Actual vs Actual
+2021,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,783297.0,13,968318.0,-0.19107,Actual vs Actual
+2022,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,1138223.0,15,783297.0,0.45312,Actual vs Actual
+2023,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,2012159.0,14,1138223.0,0.76781,Actual vs Actual
+2024,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,3666708.0,16,2012159.0,0.82228,Actual vs Actual
+2025,Actual,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,2273365.0,13,3666708.0,-0.38,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,3166448.0,12,2273365.0,0.39285,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",930,Microcomputer Packagd Application Sware,3270327.0,14,3166448.0,0.03281,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,491306.0,6,,,
+2018,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,506299.0,5,491306.0,0.03052,Actual vs Actual
+2019,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,343267.0,6,506299.0,-0.32201,Actual vs Actual
+2020,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,750013.0,6,343267.0,1.18493,Actual vs Actual
+2021,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,511912.0,9,750013.0,-0.31746,Actual vs Actual
+2022,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,559765.0,5,511912.0,0.09348,Actual vs Actual
+2023,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,730256.0,6,559765.0,0.30458,Actual vs Actual
+2024,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,463956.0,5,730256.0,-0.36467,Actual vs Actual
+2025,Actual,"IT hardware, software & services",932,Microcomputer Operating Sys Software,536332.0,3,463956.0,0.156,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",932,Microcomputer Operating Sys Software,873500.0,5,536332.0,0.62866,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",932,Microcomputer Operating Sys Software,532878.0,6,873500.0,-0.38995,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",933,Software Upgrades,164475.0,13,,,
+2018,Actual,"IT hardware, software & services",933,Software Upgrades,121800.0,15,164475.0,-0.25946,Actual vs Actual
+2019,Actual,"IT hardware, software & services",933,Software Upgrades,120242.0,13,121800.0,-0.01279,Actual vs Actual
+2020,Actual,"IT hardware, software & services",933,Software Upgrades,58486.0,14,120242.0,-0.5136,Actual vs Actual
+2021,Actual,"IT hardware, software & services",933,Software Upgrades,64032.0,9,58486.0,0.09483,Actual vs Actual
+2022,Actual,"IT hardware, software & services",933,Software Upgrades,120747.0,11,64032.0,0.88573,Actual vs Actual
+2023,Actual,"IT hardware, software & services",933,Software Upgrades,134529.0,10,120747.0,0.11414,Actual vs Actual
+2024,Actual,"IT hardware, software & services",933,Software Upgrades,389703.0,10,134529.0,1.8968,Actual vs Actual
+2025,Actual,"IT hardware, software & services",933,Software Upgrades,150869.0,9,389703.0,-0.61286,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",933,Software Upgrades,155503.0,15,150869.0,0.03072,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",933,Software Upgrades,193166.0,15,155503.0,0.2422,Legislative appropriation vs Working budget
+2019,Actual,"IT hardware, software & services",990,Data Processing Academic/Research,1080.0,2,,,
+2024,Actual,"IT hardware, software & services",990,Data Processing Academic/Research,34.0,1,,,
+2025,Actual,"IT hardware, software & services",990,Data Processing Academic/Research,2630.0,1,34.0,76.35294,Actual vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",990,Data Processing Academic/Research,8275.0,1,,,
+2017,Actual,"IT hardware, software & services",991,Data Processing,2109.0,1,,,
+2018,Actual,"IT hardware, software & services",991,Data Processing,1834.0,1,2109.0,-0.13039,Actual vs Actual
+2019,Actual,"IT hardware, software & services",991,Data Processing,1198.0,1,1834.0,-0.34678,Actual vs Actual
+2020,Actual,"IT hardware, software & services",991,Data Processing,26.0,1,1198.0,-0.9783,Actual vs Actual
+2021,Actual,"IT hardware, software & services",991,Data Processing,5189.0,1,26.0,198.57692,Actual vs Actual
+2022,Actual,"IT hardware, software & services",991,Data Processing,54791.0,3,5189.0,9.55907,Actual vs Actual
+2023,Actual,"IT hardware, software & services",991,Data Processing,6383.0,1,54791.0,-0.8835,Actual vs Actual
+2024,Actual,"IT hardware, software & services",991,Data Processing,2148.0,3,6383.0,-0.66348,Actual vs Actual
+2025,Actual,"IT hardware, software & services",991,Data Processing,1410.0,2,2148.0,-0.34358,Actual vs Actual
+2017,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,208593.0,11,,,
+2018,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,134859.0,13,208593.0,-0.35348,Actual vs Actual
+2019,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,205738.0,13,134859.0,0.52558,Actual vs Actual
+2020,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,188630.0,11,205738.0,-0.08315,Actual vs Actual
+2021,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,152410.0,12,188630.0,-0.19202,Actual vs Actual
+2022,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,360071.0,10,152410.0,1.36252,Actual vs Actual
+2023,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,244199.0,9,360071.0,-0.3218,Actual vs Actual
+2024,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,320547.0,11,244199.0,0.31265,Actual vs Actual
+2025,Actual,"IT hardware, software & services",998,Data Processing-Other Materials,616655.0,10,320547.0,0.92376,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",998,Data Processing-Other Materials,386357.0,12,616655.0,-0.37346,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",998,Data Processing-Other Materials,188244.0,7,386357.0,-0.51277,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,5779626.0,9,,,
+2018,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,7962303.0,9,5779626.0,0.37765,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,10427110.0,7,7962303.0,0.30956,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,4612705.0,5,10427110.0,-0.55762,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,7838221.0,6,4612705.0,0.69927,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,5008199.0,8,7838221.0,-0.36105,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,8877907.0,10,5008199.0,0.77267,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,6786895.0,7,8877907.0,-0.23553,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,12494060.0,8,6786895.0,0.84091,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,10557343.0,7,12494060.0,-0.15501,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1031,Data Processing Equipment-Mainframe,4319708.0,5,10557343.0,-0.59083,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1789602.0,9,,,
+2018,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,765326.0,7,1789602.0,-0.57235,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1317244.0,12,765326.0,0.72115,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1402324.0,7,1317244.0,0.06459,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1340424.0,8,1402324.0,-0.04414,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,4372344.0,8,1340424.0,2.26191,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,2844023.0,12,4372344.0,-0.34954,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,578523.0,10,2844023.0,-0.79658,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1868168.0,11,578523.0,2.2292,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1641804.0,8,1868168.0,-0.12117,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1032,Data Processing Equipment-Minicomputer,1683867.0,8,1641804.0,0.02562,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,10502944.0,31,,,
+2018,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,8241714.0,33,10502944.0,-0.21529,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,12868988.0,32,8241714.0,0.56145,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,8642361.0,27,12868988.0,-0.32844,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,8354765.0,32,8642361.0,-0.03328,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,7921755.0,31,8354765.0,-0.05183,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,7300407.0,33,7921755.0,-0.07844,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,8236159.0,35,7300407.0,0.12818,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,13101901.0,31,8236159.0,0.59078,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,15106172.0,39,13101901.0,0.15298,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1033,Data Processing Equipment-Microcomputer,17577426.0,36,15106172.0,0.16359,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,1864580.0,7,,,
+2018,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,225328.0,9,1864580.0,-0.87915,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,189999.0,9,225328.0,-0.15679,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,2771931.0,9,189999.0,13.58919,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,313916.0,8,2771931.0,-0.88675,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,175144.0,6,313916.0,-0.44207,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,1923580.0,10,175144.0,9.98285,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,696948.0,8,1923580.0,-0.63768,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,420725.0,9,696948.0,-0.39633,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,741590.0,11,420725.0,0.76265,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1034,Data Processing Equipment-Workstations,514301.0,12,741590.0,-0.30649,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,1225.0,1,,,
+2018,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,1124.0,1,1225.0,-0.08245,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,12102.0,4,1124.0,9.7669,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,2475.0,3,12102.0,-0.79549,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,10604.0,6,2475.0,3.28444,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,3670.0,4,10604.0,-0.6539,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,27109.0,6,3670.0,6.38665,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,4223.0,4,27109.0,-0.84422,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,2672.0,3,4223.0,-0.36727,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,14250.0,5,2672.0,4.33308,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1035,Data Processing Equip-Imaging Systems,14100.0,4,14250.0,-0.01053,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,3419327.0,26,,,
+2018,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,2612647.0,27,3419327.0,-0.23592,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,4712589.0,29,2612647.0,0.80376,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,3025063.0,28,4712589.0,-0.35809,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,2420949.0,25,3025063.0,-0.1997,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,6537080.0,24,2420949.0,1.70021,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,1953968.0,24,6537080.0,-0.70109,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,4541218.0,24,1953968.0,1.3241,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,3566891.0,25,4541218.0,-0.21455,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,2491426.0,26,3566891.0,-0.30151,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1036,Data Processing Equipment-Peripherals,27114383.0,25,2491426.0,9.88308,Legislative appropriation vs Working budget
+2019,Actual,"IT hardware, software & services",1090,Data Processing-Academic Research,859.0,1,,,
+2020,Actual,"IT hardware, software & services",1090,Data Processing-Academic Research,6486.0,1,859.0,6.55064,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1090,Data Processing-Academic Research,9078.0,1,6486.0,0.39963,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1090,Data Processing-Academic Research,10167.0,1,9078.0,0.11996,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1091,Data Processing-Administrative,20545.0,1,,,
+2025,Actual,"IT hardware, software & services",1091,Data Processing-Administrative,6639.0,1,,,
+2026,Working budget,"IT hardware, software & services",1091,Data Processing-Administrative,1000.0,1,6639.0,-0.84937,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1091,Data Processing-Administrative,1000.0,1,1000.0,0.0,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,6470879.0,6,,,
+2018,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,15975575.0,8,6470879.0,1.46884,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,9320347.0,10,15975575.0,-0.41659,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,12927785.0,6,9320347.0,0.38705,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,11383837.0,6,12927785.0,-0.11943,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,17463364.0,7,11383837.0,0.53405,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,13629008.0,8,17463364.0,-0.21957,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,2543204.0,7,13629008.0,-0.8134,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,9651010.0,8,2543204.0,2.79482,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,3644852.0,5,9651010.0,-0.62233,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1131,Data Processing Equipment-Mainframe,1334836.0,5,3644852.0,-0.63377,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,121452.0,8,,,
+2018,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,845156.0,7,121452.0,5.95877,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,33831.0,8,845156.0,-0.95997,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,231612.0,7,33831.0,5.84615,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,158600.0,7,231612.0,-0.31523,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,409493.0,6,158600.0,1.58192,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,3896564.0,8,409493.0,8.51558,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,1222338.0,7,3896564.0,-0.6863,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,987433.0,7,1222338.0,-0.19218,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,302968.0,9,987433.0,-0.69318,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1132,Data Processing Equipment-Minicomputer,266286.0,7,302968.0,-0.12108,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2587797.0,28,,,
+2018,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2911591.0,27,2587797.0,0.12512,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,4392407.0,31,2911591.0,0.50859,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2632190.0,22,4392407.0,-0.40074,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,1846560.0,26,2632190.0,-0.29847,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,4044707.0,22,1846560.0,1.1904,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2085001.0,21,4044707.0,-0.48451,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2629362.0,28,2085001.0,0.26108,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2095077.0,27,2629362.0,-0.2032,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,3370609.0,30,2095077.0,0.60882,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1133,Data Processing Equipment-Microcomputer,2617819.0,28,3370609.0,-0.22334,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,49316.0,5,,,
+2018,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,91855.0,7,49316.0,0.86258,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,175911.0,6,91855.0,0.91509,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,228991.0,8,175911.0,0.30174,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,40466.0,4,228991.0,-0.82329,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,79815.0,6,40466.0,0.9724,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,501584.0,4,79815.0,5.28433,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,80344.0,9,501584.0,-0.83982,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,559914.0,10,80344.0,5.96896,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,66046.0,4,559914.0,-0.88204,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1134,Data Processing Equipment-Workstations,326648.0,8,66046.0,3.94577,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,10631.0,3,,,
+2018,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,125016.0,2,10631.0,10.75957,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,4871.0,2,125016.0,-0.96104,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,33568.0,8,4871.0,5.8914,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,16761.0,4,33568.0,-0.50069,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,1504.0,4,16761.0,-0.91027,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,14588.0,7,1504.0,8.69947,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,109888.0,5,14588.0,6.53277,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,15140.0,7,109888.0,-0.86222,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,638200.0,3,15140.0,41.15324,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1135,Data Processing Equip-Imaging Systems,3600.0,1,638200.0,-0.99436,Legislative appropriation vs Working budget
+2017,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,2301071.0,28,,,
+2018,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,1199755.0,25,2301071.0,-0.47861,Actual vs Actual
+2019,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,3338838.0,23,1199755.0,1.78293,Actual vs Actual
+2020,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,3382225.0,21,3338838.0,0.01299,Actual vs Actual
+2021,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,670916.0,25,3382225.0,-0.80163,Actual vs Actual
+2022,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,2951479.0,24,670916.0,3.39918,Actual vs Actual
+2023,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,3678143.0,27,2951479.0,0.2462,Actual vs Actual
+2024,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,2158363.0,23,3678143.0,-0.41319,Actual vs Actual
+2025,Actual,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,3442074.0,19,2158363.0,0.59476,Actual vs Actual
+2026,Working budget,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,3380165.0,20,3442074.0,-0.01799,Working budget vs Actual
+2027,Legislative appropriation,"IT hardware, software & services",1136,Data Processing Equipment-Peripherals,1345894.0,17,3380165.0,-0.60183,Legislative appropriation vs Working budget
+2017,Actual,"Print, copy & mail",301,Postage,30493662.0,58,,,
+2018,Actual,"Print, copy & mail",301,Postage,29364380.0,58,30493662.0,-0.03703,Actual vs Actual
+2019,Actual,"Print, copy & mail",301,Postage,28581820.0,58,29364380.0,-0.02665,Actual vs Actual
+2020,Actual,"Print, copy & mail",301,Postage,28030291.0,58,28581820.0,-0.0193,Actual vs Actual
+2021,Actual,"Print, copy & mail",301,Postage,25995415.0,59,28030291.0,-0.0726,Actual vs Actual
+2022,Actual,"Print, copy & mail",301,Postage,26468305.0,59,25995415.0,0.01819,Actual vs Actual
+2023,Actual,"Print, copy & mail",301,Postage,29635696.0,64,26468305.0,0.11967,Actual vs Actual
+2024,Actual,"Print, copy & mail",301,Postage,28837019.0,65,29635696.0,-0.02695,Actual vs Actual
+2025,Actual,"Print, copy & mail",301,Postage,32011706.0,68,28837019.0,0.11009,Actual vs Actual
+2026,Working budget,"Print, copy & mail",301,Postage,32068129.0,69,32011706.0,0.00176,Working budget vs Actual
+2027,Legislative appropriation,"Print, copy & mail",301,Postage,35389519.0,69,32068129.0,0.10357,Legislative appropriation vs Working budget
+2017,Actual,"Print, copy & mail",804,Printing/Reproduction,20940693.0,52,,,
+2018,Actual,"Print, copy & mail",804,Printing/Reproduction,18924006.0,52,20940693.0,-0.0963,Actual vs Actual
+2019,Actual,"Print, copy & mail",804,Printing/Reproduction,21091070.0,51,18924006.0,0.11451,Actual vs Actual
+2020,Actual,"Print, copy & mail",804,Printing/Reproduction,21117263.0,48,21091070.0,0.00124,Actual vs Actual
+2021,Actual,"Print, copy & mail",804,Printing/Reproduction,20205114.0,48,21117263.0,-0.04319,Actual vs Actual
+2022,Actual,"Print, copy & mail",804,Printing/Reproduction,20243800.0,51,20205114.0,0.00191,Actual vs Actual
+2023,Actual,"Print, copy & mail",804,Printing/Reproduction,22889767.0,52,20243800.0,0.13071,Actual vs Actual
+2024,Actual,"Print, copy & mail",804,Printing/Reproduction,19685697.0,58,22889767.0,-0.13998,Actual vs Actual
+2025,Actual,"Print, copy & mail",804,Printing/Reproduction,20426494.0,60,19685697.0,0.03763,Actual vs Actual
+2026,Working budget,"Print, copy & mail",804,Printing/Reproduction,24114538.0,63,20426494.0,0.18055,Working budget vs Actual
+2027,Legislative appropriation,"Print, copy & mail",804,Printing/Reproduction,24746428.0,62,24114538.0,0.0262,Legislative appropriation vs Working budget
+2017,Actual,Real estate & leases,1301,Rent (Non-DGS),124383615.0,41,,,
+2018,Actual,Real estate & leases,1301,Rent (Non-DGS),122969641.0,40,124383615.0,-0.01137,Actual vs Actual
+2019,Actual,Real estate & leases,1301,Rent (Non-DGS),128873710.0,40,122969641.0,0.04801,Actual vs Actual
+2020,Actual,Real estate & leases,1301,Rent (Non-DGS),132547189.0,41,128873710.0,0.0285,Actual vs Actual
+2021,Actual,Real estate & leases,1301,Rent (Non-DGS),128768070.0,40,132547189.0,-0.02851,Actual vs Actual
+2022,Actual,Real estate & leases,1301,Rent (Non-DGS),129224329.0,39,128768070.0,0.00354,Actual vs Actual
+2023,Actual,Real estate & leases,1301,Rent (Non-DGS),129042629.0,43,129224329.0,-0.00141,Actual vs Actual
+2024,Actual,Real estate & leases,1301,Rent (Non-DGS),136568262.0,45,129042629.0,0.05832,Actual vs Actual
+2025,Actual,Real estate & leases,1301,Rent (Non-DGS),141564622.0,48,136568262.0,0.03659,Actual vs Actual
+2026,Working budget,Real estate & leases,1301,Rent (Non-DGS),149701878.0,49,141564622.0,0.05748,Working budget vs Actual
+2027,Legislative appropriation,Real estate & leases,1301,Rent (Non-DGS),144493245.0,49,149701878.0,-0.03479,Legislative appropriation vs Working budget
+2017,Actual,Telecom,302,Telephone,19492438.0,54,,,
+2018,Actual,Telecom,302,Telephone,19860976.0,54,19492438.0,0.01891,Actual vs Actual
+2019,Actual,Telecom,302,Telephone,19631142.0,54,19860976.0,-0.01157,Actual vs Actual
+2020,Actual,Telecom,302,Telephone,18087314.0,53,19631142.0,-0.07864,Actual vs Actual
+2021,Actual,Telecom,302,Telephone,24356457.0,54,18087314.0,0.3466,Actual vs Actual
+2022,Actual,Telecom,302,Telephone,24552446.0,53,24356457.0,0.00805,Actual vs Actual
+2023,Actual,Telecom,302,Telephone,18392284.0,52,24552446.0,-0.2509,Actual vs Actual
+2024,Actual,Telecom,302,Telephone,22960458.0,54,18392284.0,0.24837,Actual vs Actual
+2025,Actual,Telecom,302,Telephone,21218859.0,53,22960458.0,-0.07585,Actual vs Actual
+2026,Working budget,Telecom,302,Telephone,25606554.0,58,21218859.0,0.20678,Working budget vs Actual
+2027,Legislative appropriation,Telecom,302,Telephone,24039183.0,56,25606554.0,-0.06121,Legislative appropriation vs Working budget
+2017,Actual,Telecom,303,Telecommunications,4563778.0,25,,,
+2018,Actual,Telecom,303,Telecommunications,15587076.0,24,4563778.0,2.41539,Actual vs Actual
+2019,Actual,Telecom,303,Telecommunications,10510489.0,23,15587076.0,-0.32569,Actual vs Actual
+2020,Actual,Telecom,303,Telecommunications,6872295.0,22,10510489.0,-0.34615,Actual vs Actual
+2021,Actual,Telecom,303,Telecommunications,6646121.0,21,6872295.0,-0.03291,Actual vs Actual
+2022,Actual,Telecom,303,Telecommunications,7591151.0,17,6646121.0,0.14219,Actual vs Actual
+2023,Actual,Telecom,303,Telecommunications,7509760.0,22,7591151.0,-0.01072,Actual vs Actual
+2024,Actual,Telecom,303,Telecommunications,7578150.0,21,7509760.0,0.00911,Actual vs Actual
+2025,Actual,Telecom,303,Telecommunications,6585020.0,22,7578150.0,-0.13105,Actual vs Actual
+2026,Working budget,Telecom,303,Telecommunications,10277331.0,24,6585020.0,0.56071,Working budget vs Actual
+2027,Legislative appropriation,Telecom,303,Telecommunications,10169047.0,23,10277331.0,-0.01054,Legislative appropriation vs Working budget
+2017,Actual,Telecom,304,Miscellaneous Communications Charges,4857997.0,28,,,
+2018,Actual,Telecom,304,Miscellaneous Communications Charges,4953191.0,26,4857997.0,0.0196,Actual vs Actual
+2019,Actual,Telecom,304,Miscellaneous Communications Charges,5412268.0,22,4953191.0,0.09268,Actual vs Actual
+2020,Actual,Telecom,304,Miscellaneous Communications Charges,4016851.0,21,5412268.0,-0.25782,Actual vs Actual
+2021,Actual,Telecom,304,Miscellaneous Communications Charges,2407606.0,21,4016851.0,-0.40062,Actual vs Actual
+2022,Actual,Telecom,304,Miscellaneous Communications Charges,2849561.0,24,2407606.0,0.18357,Actual vs Actual
+2023,Actual,Telecom,304,Miscellaneous Communications Charges,12513699.0,26,2849561.0,3.39145,Actual vs Actual
+2024,Actual,Telecom,304,Miscellaneous Communications Charges,4085654.0,26,12513699.0,-0.67351,Actual vs Actual
+2025,Actual,Telecom,304,Miscellaneous Communications Charges,4342383.0,27,4085654.0,0.06284,Actual vs Actual
+2026,Working budget,Telecom,304,Miscellaneous Communications Charges,6241276.0,28,4342383.0,0.43729,Working budget vs Actual
+2027,Legislative appropriation,Telecom,304,Miscellaneous Communications Charges,6019575.0,26,6241276.0,-0.03552,Legislative appropriation vs Working budget
+2017,Actual,Telecom,306,Cellular Telephone Services and Equipment,7416265.0,49,,,
+2018,Actual,Telecom,306,Cellular Telephone Services and Equipment,8195249.0,48,7416265.0,0.10504,Actual vs Actual
+2019,Actual,Telecom,306,Cellular Telephone Services and Equipment,8556311.0,48,8195249.0,0.04406,Actual vs Actual
+2020,Actual,Telecom,306,Cellular Telephone Services and Equipment,12964205.0,49,8556311.0,0.51516,Actual vs Actual
+2021,Actual,Telecom,306,Cellular Telephone Services and Equipment,13093502.0,51,12964205.0,0.00997,Actual vs Actual
+2022,Actual,Telecom,306,Cellular Telephone Services and Equipment,17126033.0,47,13093502.0,0.30798,Actual vs Actual
+2023,Actual,Telecom,306,Cellular Telephone Services and Equipment,17189168.0,53,17126033.0,0.00369,Actual vs Actual
+2024,Actual,Telecom,306,Cellular Telephone Services and Equipment,16585673.0,56,17189168.0,-0.03511,Actual vs Actual
+2025,Actual,Telecom,306,Cellular Telephone Services and Equipment,14638484.0,56,16585673.0,-0.1174,Actual vs Actual
+2026,Working budget,Telecom,306,Cellular Telephone Services and Equipment,15782341.0,60,14638484.0,0.07814,Working budget vs Actual
+2027,Legislative appropriation,Telecom,306,Cellular Telephone Services and Equipment,15285543.0,60,15782341.0,-0.03148,Legislative appropriation vs Working budget
+2017,Actual,Telecom,322,Capital Lease (s) Telecommunications,1185.0,2,,,
+2018,Actual,Telecom,322,Capital Lease (s) Telecommunications,-34.0,1,1185.0,-1.02869,Actual vs Actual
+2019,Actual,Telecom,322,Capital Lease (s) Telecommunications,-1000.0,1,-34.0,-28.41176,Actual vs Actual
+2020,Actual,Telecom,322,Capital Lease (s) Telecommunications,3814.0,2,-1000.0,4.814,Actual vs Actual
+2022,Actual,Telecom,322,Capital Lease (s) Telecommunications,4.0,1,,,
+2017,Actual,Telecom,397,Paycheck Postage Costs,26237.0,49,,,
+2018,Actual,Telecom,397,Paycheck Postage Costs,21394.0,52,26237.0,-0.18459,Actual vs Actual
+2019,Actual,Telecom,397,Paycheck Postage Costs,27532.0,52,21394.0,0.2869,Actual vs Actual
+2020,Actual,Telecom,397,Paycheck Postage Costs,22018.0,49,27532.0,-0.20028,Actual vs Actual
+2021,Actual,Telecom,397,Paycheck Postage Costs,1550693.0,51,22018.0,69.42842,Actual vs Actual
+2022,Actual,Telecom,397,Paycheck Postage Costs,25263.0,53,1550693.0,-0.98371,Actual vs Actual
+2023,Actual,Telecom,397,Paycheck Postage Costs,12472.0,58,25263.0,-0.50631,Actual vs Actual
+2024,Actual,Telecom,397,Paycheck Postage Costs,39402.0,69,12472.0,2.15924,Actual vs Actual
+2025,Actual,Telecom,397,Paycheck Postage Costs,17500.0,70,39402.0,-0.55586,Actual vs Actual
+2026,Working budget,Telecom,397,Paycheck Postage Costs,50656.0,37,17500.0,1.89463,Working budget vs Actual
+2027,Legislative appropriation,Telecom,397,Paycheck Postage Costs,20617.0,35,50656.0,-0.593,Legislative appropriation vs Working budget
+2018,Actual,Telecom,399,Misc Communications,212001.0,1,,,
+2020,Actual,Telecom,399,Misc Communications,564829.0,1,,,
+2022,Actual,Telecom,399,Misc Communications,118517.0,3,,,
+2023,Actual,Telecom,399,Misc Communications,261654.0,1,118517.0,1.20773,Actual vs Actual
+2024,Actual,Telecom,399,Misc Communications,-1520.0,2,261654.0,-1.00581,Actual vs Actual
+2025,Actual,Telecom,399,Misc Communications,22372.0,1,-1520.0,15.71842,Actual vs Actual
+2026,Working budget,Telecom,399,Misc Communications,36981.0,3,22372.0,0.653,Working budget vs Actual
+2027,Legislative appropriation,Telecom,399,Misc Communications,30046.0,3,36981.0,-0.18753,Legislative appropriation vs Working budget
+2018,Actual,Utilities & facility energy,602,Fuel - Coal,3532.0,1,,,
+2025,Actual,Utilities & facility energy,602,Fuel - Coal,171.0,1,,,
+2017,Actual,Utilities & facility energy,603,Fuel - Oil #2,2134899.0,14,,,
+2018,Actual,Utilities & facility energy,603,Fuel - Oil #2,2749517.0,13,2134899.0,0.28789,Actual vs Actual
+2019,Actual,Utilities & facility energy,603,Fuel - Oil #2,2029041.0,15,2749517.0,-0.26204,Actual vs Actual
+2020,Actual,Utilities & facility energy,603,Fuel - Oil #2,1594804.0,14,2029041.0,-0.21401,Actual vs Actual
+2021,Actual,Utilities & facility energy,603,Fuel - Oil #2,1404380.0,14,1594804.0,-0.1194,Actual vs Actual
+2022,Actual,Utilities & facility energy,603,Fuel - Oil #2,2278624.0,14,1404380.0,0.62251,Actual vs Actual
+2023,Actual,Utilities & facility energy,603,Fuel - Oil #2,2885070.0,14,2278624.0,0.26615,Actual vs Actual
+2024,Actual,Utilities & facility energy,603,Fuel - Oil #2,2023177.0,14,2885070.0,-0.29874,Actual vs Actual
+2025,Actual,Utilities & facility energy,603,Fuel - Oil #2,2112253.0,14,2023177.0,0.04403,Actual vs Actual
+2026,Working budget,Utilities & facility energy,603,Fuel - Oil #2,2412815.0,14,2112253.0,0.14229,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,603,Fuel - Oil #2,2168513.0,15,2412815.0,-0.10125,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,604,Fuel - Oil #3,10610.0,1,,,
+2020,Actual,Utilities & facility energy,604,Fuel - Oil #3,306.0,1,,,
+2021,Actual,Utilities & facility energy,604,Fuel - Oil #3,275.0,1,306.0,-0.10131,Actual vs Actual
+2022,Actual,Utilities & facility energy,604,Fuel - Oil #3,724.0,1,275.0,1.63273,Actual vs Actual
+2023,Actual,Utilities & facility energy,604,Fuel - Oil #3,2130.0,1,724.0,1.94199,Actual vs Actual
+2024,Actual,Utilities & facility energy,604,Fuel - Oil #3,1099.0,1,2130.0,-0.48404,Actual vs Actual
+2025,Actual,Utilities & facility energy,604,Fuel - Oil #3,3957.0,1,1099.0,2.60055,Actual vs Actual
+2017,Actual,Utilities & facility energy,605,Fuel - Oil #6,112882.0,1,,,
+2018,Actual,Utilities & facility energy,605,Fuel - Oil #6,158177.0,1,112882.0,0.40126,Actual vs Actual
+2019,Actual,Utilities & facility energy,605,Fuel - Oil #6,124010.0,2,158177.0,-0.216,Actual vs Actual
+2020,Actual,Utilities & facility energy,605,Fuel - Oil #6,175978.0,2,124010.0,0.41906,Actual vs Actual
+2021,Actual,Utilities & facility energy,605,Fuel - Oil #6,1752677.0,2,175978.0,8.95964,Actual vs Actual
+2022,Actual,Utilities & facility energy,605,Fuel - Oil #6,858531.0,2,1752677.0,-0.51016,Actual vs Actual
+2023,Actual,Utilities & facility energy,605,Fuel - Oil #6,130503.0,2,858531.0,-0.84799,Actual vs Actual
+2024,Actual,Utilities & facility energy,605,Fuel - Oil #6,119612.0,2,130503.0,-0.08345,Actual vs Actual
+2025,Actual,Utilities & facility energy,605,Fuel - Oil #6,120481.0,1,119612.0,0.00727,Actual vs Actual
+2026,Working budget,Utilities & facility energy,605,Fuel - Oil #6,141758.0,2,120481.0,0.1766,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,605,Fuel - Oil #6,123200.0,1,141758.0,-0.13091,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,10152896.0,18,,,
+2018,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,11572150.0,18,10152896.0,0.13979,Actual vs Actual
+2019,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,10928246.0,18,11572150.0,-0.05564,Actual vs Actual
+2020,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,10661138.0,20,10928246.0,-0.02444,Actual vs Actual
+2021,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,10548338.0,21,10661138.0,-0.01058,Actual vs Actual
+2022,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,12019311.0,19,10548338.0,0.13945,Actual vs Actual
+2023,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,14453012.0,20,12019311.0,0.20248,Actual vs Actual
+2024,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,13950377.0,21,14453012.0,-0.03478,Actual vs Actual
+2025,Actual,Utilities & facility energy,606,Fuel - Natural Gas/Propane,17524011.0,19,13950377.0,0.25617,Actual vs Actual
+2026,Working budget,Utilities & facility energy,606,Fuel - Natural Gas/Propane,13554529.0,20,17524011.0,-0.22652,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,606,Fuel - Natural Gas/Propane,16189026.0,20,13554529.0,0.19436,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,608,Fuel - Steam,2895444.0,4,,,
+2018,Actual,Utilities & facility energy,608,Fuel - Steam,3880322.0,4,2895444.0,0.34015,Actual vs Actual
+2019,Actual,Utilities & facility energy,608,Fuel - Steam,4087265.0,4,3880322.0,0.05333,Actual vs Actual
+2020,Actual,Utilities & facility energy,608,Fuel - Steam,3618542.0,4,4087265.0,-0.11468,Actual vs Actual
+2021,Actual,Utilities & facility energy,608,Fuel - Steam,3436663.0,4,3618542.0,-0.05026,Actual vs Actual
+2022,Actual,Utilities & facility energy,608,Fuel - Steam,3917628.0,4,3436663.0,0.13995,Actual vs Actual
+2023,Actual,Utilities & facility energy,608,Fuel - Steam,4356119.0,4,3917628.0,0.11193,Actual vs Actual
+2024,Actual,Utilities & facility energy,608,Fuel - Steam,4269769.0,4,4356119.0,-0.01982,Actual vs Actual
+2025,Actual,Utilities & facility energy,608,Fuel - Steam,4767393.0,4,4269769.0,0.11655,Actual vs Actual
+2026,Working budget,Utilities & facility energy,608,Fuel - Steam,3438625.0,3,4767393.0,-0.27872,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,608,Fuel - Steam,4729825.0,3,3438625.0,0.3755,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,39755.0,2,,,
+2018,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,81941.0,4,39755.0,1.06115,Actual vs Actual
+2019,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,282208.0,5,81941.0,2.44404,Actual vs Actual
+2020,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,109610.0,3,282208.0,-0.6116,Actual vs Actual
+2021,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,99014.0,3,109610.0,-0.09667,Actual vs Actual
+2022,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,178933.0,4,99014.0,0.80715,Actual vs Actual
+2023,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,246848.0,4,178933.0,0.37956,Actual vs Actual
+2024,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,167498.0,3,246848.0,-0.32145,Actual vs Actual
+2025,Actual,Utilities & facility energy,619,Fuel - Miscellaneous,204575.0,4,167498.0,0.22136,Actual vs Actual
+2026,Working budget,Utilities & facility energy,619,Fuel - Miscellaneous,601031.0,4,204575.0,1.93795,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,619,Fuel - Miscellaneous,278486.0,4,601031.0,-0.53665,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,620,Utilities - Electricity,75639930.0,35,,,
+2018,Actual,Utilities & facility energy,620,Utilities - Electricity,73294230.0,34,75639930.0,-0.03101,Actual vs Actual
+2019,Actual,Utilities & facility energy,620,Utilities - Electricity,69465883.0,35,73294230.0,-0.05223,Actual vs Actual
+2020,Actual,Utilities & facility energy,620,Utilities - Electricity,63360953.0,35,69465883.0,-0.08788,Actual vs Actual
+2021,Actual,Utilities & facility energy,620,Utilities - Electricity,61727429.0,35,63360953.0,-0.02578,Actual vs Actual
+2022,Actual,Utilities & facility energy,620,Utilities - Electricity,74139144.0,35,61727429.0,0.20107,Actual vs Actual
+2023,Actual,Utilities & facility energy,620,Utilities - Electricity,85214674.0,36,74139144.0,0.14939,Actual vs Actual
+2024,Actual,Utilities & facility energy,620,Utilities - Electricity,76612096.0,36,85214674.0,-0.10095,Actual vs Actual
+2025,Actual,Utilities & facility energy,620,Utilities - Electricity,77092479.0,36,76612096.0,0.00627,Actual vs Actual
+2026,Working budget,Utilities & facility energy,620,Utilities - Electricity,80156977.0,37,77092479.0,0.03975,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,620,Utilities - Electricity,82662508.0,37,80156977.0,0.03126,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,11972528.0,20,,,
+2018,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,12984551.0,21,11972528.0,0.08453,Actual vs Actual
+2019,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,11449177.0,21,12984551.0,-0.11825,Actual vs Actual
+2020,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,18317233.0,20,11449177.0,0.59987,Actual vs Actual
+2021,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,11893230.0,21,18317233.0,-0.35071,Actual vs Actual
+2022,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,14158628.0,21,11893230.0,0.19048,Actual vs Actual
+2023,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,14617246.0,20,14158628.0,0.03239,Actual vs Actual
+2024,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,14757869.0,22,14617246.0,0.00962,Actual vs Actual
+2025,Actual,Utilities & facility energy,621,Utilities - Water/Sewage,17897485.0,23,14757869.0,0.21274,Actual vs Actual
+2026,Working budget,Utilities & facility energy,621,Utilities - Water/Sewage,14280876.0,20,17897485.0,-0.20207,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,621,Utilities - Water/Sewage,15909736.0,20,14280876.0,0.11406,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,109564.0,2,,,
+2018,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,89210.0,5,109564.0,-0.18577,Actual vs Actual
+2019,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,100922.0,5,89210.0,0.13129,Actual vs Actual
+2020,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,89655.0,4,100922.0,-0.11164,Actual vs Actual
+2021,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,99804.0,4,89655.0,0.1132,Actual vs Actual
+2022,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,89126.0,5,99804.0,-0.10699,Actual vs Actual
+2023,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,93889.0,5,89126.0,0.05344,Actual vs Actual
+2024,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,105334.0,4,93889.0,0.1219,Actual vs Actual
+2025,Actual,Utilities & facility energy,622,Utilities - Combined Utility Purchases,81247.0,4,105334.0,-0.22867,Actual vs Actual
+2026,Working budget,Utilities & facility energy,622,Utilities - Combined Utility Purchases,97713.0,4,81247.0,0.20267,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,622,Utilities - Combined Utility Purchases,108213.0,4,97713.0,0.10746,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,697,Mes Charges,26306357.0,7,,,
+2018,Actual,Utilities & facility energy,697,Mes Charges,25002400.0,8,26306357.0,-0.04957,Actual vs Actual
+2019,Actual,Utilities & facility energy,697,Mes Charges,25775834.0,8,25002400.0,0.03093,Actual vs Actual
+2020,Actual,Utilities & facility energy,697,Mes Charges,28923360.0,7,25775834.0,0.12211,Actual vs Actual
+2021,Actual,Utilities & facility energy,697,Mes Charges,29858011.0,8,28923360.0,0.03231,Actual vs Actual
+2022,Actual,Utilities & facility energy,697,Mes Charges,31011899.0,8,29858011.0,0.03865,Actual vs Actual
+2023,Actual,Utilities & facility energy,697,Mes Charges,37017294.0,7,31011899.0,0.19365,Actual vs Actual
+2024,Actual,Utilities & facility energy,697,Mes Charges,38544016.0,7,37017294.0,0.04124,Actual vs Actual
+2025,Actual,Utilities & facility energy,697,Mes Charges,40902742.0,7,38544016.0,0.0612,Actual vs Actual
+2026,Working budget,Utilities & facility energy,697,Mes Charges,38503734.0,7,40902742.0,-0.05865,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,697,Mes Charges,37348007.0,7,38503734.0,-0.03002,Legislative appropriation vs Working budget
+2017,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,883751.0,7,,,
+2018,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,952121.0,7,883751.0,0.07736,Actual vs Actual
+2019,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,983283.0,7,952121.0,0.03273,Actual vs Actual
+2020,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,968939.0,6,983283.0,-0.01459,Actual vs Actual
+2021,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,898144.0,5,968939.0,-0.07306,Actual vs Actual
+2022,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,1021246.0,7,898144.0,0.13706,Actual vs Actual
+2023,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,1678113.0,5,1021246.0,0.6432,Actual vs Actual
+2024,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,610891.0,4,1678113.0,-0.63597,Actual vs Actual
+2025,Actual,Utilities & facility energy,699,Utilities - Miscellaneous,834140.0,5,610891.0,0.36545,Actual vs Actual
+2026,Working budget,Utilities & facility energy,699,Utilities - Miscellaneous,1008398.0,7,834140.0,0.20891,Working budget vs Actual
+2027,Legislative appropriation,Utilities & facility energy,699,Utilities - Miscellaneous,732601.0,7,1008398.0,-0.2735,Legislative appropriation vs Working budget

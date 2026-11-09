@@ -1,0 +1,20 @@
+{
+  "description": "Budget by Comptroller object, agency and fiscal year, with the controllable-purchases part, FY2017\u2013FY2027.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "f_object.csv",
+    "url": "/_blob/17932a51c71e188f0a5a8685c168a905"
+  },
+  "staleAfterHours": 1500,
+  "title": "Operating budget by type of spending and agency",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

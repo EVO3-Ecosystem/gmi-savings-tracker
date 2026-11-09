@@ -1,0 +1,20 @@
+{
+  "description": "Non-government payees per fiscal year, their payments, and the share held by the 10 and 100 largest.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "f_vendor_year.csv",
+    "url": "/_blob/b7fcbf66518569a915609d96c6f266bd"
+  },
+  "staleAfterHours": 1500,
+  "title": "Vendor counts and concentration",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

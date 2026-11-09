@@ -1,0 +1,18 @@
+{
+  "description": "How each fiscal year's budget stage was confirmed: the budget file's own label, the confirmed stage, and the evidence (DBM's Operating Budget site, the FY2022 Fiscal Digest, and program-by-program comparisons with the actuals in the FY2023 and FY2024 budget books, Volume 2).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "source": {
+    "kind": "file",
+    "name": "stage_evidence.csv",
+    "url": "/_blob/0bc6d8d283a8fc65a812fd0ffac3a92e"
+  },
+  "title": "Budget stage evidence",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

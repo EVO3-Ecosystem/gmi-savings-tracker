@@ -1,0 +1,20 @@
+{
+  "description": "Private vendors (no government or institutional payees, no pass-through payments) paid separately by 15 or more State budget agencies each year, FY2022\u2013FY2026, with spend, payee names and the year before.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_multi.csv",
+    "url": "/_blob/52e42e5fb4046131a670b165c7515afe"
+  },
+  "staleAfterHours": 1500,
+  "title": "Vendors paid by 15+ agencies",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}
