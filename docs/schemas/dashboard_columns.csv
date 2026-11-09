@@ -77,6 +77,36 @@ d_opps,low,number,396,Low end of the estimated saving; uses a screening assumpti
 d_opps,high,number,396,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 d_opps,evidence,text,396,Plain-language reason the detector flagged the row,derived
 d_opps,likely,number,396,Midpoint of low and high,derived
+d_payment_screen,group_id,text,205,Identifier of a flagged group of payment records (hash of the rule and its grouping keys),derived
+d_payment_screen,rule,text,205,"Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md)",derived
+d_payment_screen,fiscal_year,number,205,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+d_payment_screen,agency_code,text,205,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+d_payment_screen,agency,text,205,Agency name shown on the dashboard,derived
+d_payment_screen,vendor,text,205,Company name after grouping payee names; 'Payee not named (may be an individual)' when the payee type is Business or other and no payee name looks like an organization,derived
+d_payment_screen,payee_type,text,205,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
+d_payment_screen,first_date,text,205,Earliest record date in the group,derived
+d_payment_screen,last_date,text,205,Latest record date in the group,derived
+d_payment_screen,n,number,205,Number of payment records in the group,derived
+d_payment_screen,amount,number,205,Dollars of each record in the group (equal for duplicates and repeated lines); blank for split purchases,derived
+d_payment_screen,total_amount,number,205,Dollars of all records in the group(s),derived
+d_payment_screen,review_amount,number,205,Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead),derived
+d_payment_screen,payee_names,number,205,Distinct payee names (as paid) in the group,derived
+d_payment_screen,zips,number,205,Distinct payee ZIP codes in the group,derived
+d_payment_screen,also_flagged_under,number,205,"Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap)",derived
+d_payment_screen,date_grain,text,205,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)",derived
+d_payment_screen_summary,rule,text,15,"Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md)",derived
+d_payment_screen_summary,rule_order,number,15,Display order of the rule,derived
+d_payment_screen_summary,fiscal_year,number,15,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+d_payment_screen_summary,groups,number,15,Number of flagged groups,derived
+d_payment_screen_summary,records,number,15,Number of payment records in the flagged groups,derived
+d_payment_screen_summary,total_amount,number,15,Dollars of all records in the group(s),derived
+d_payment_screen_summary,review_amount,number,15,Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead),derived
+d_payment_screen_summary,date_grain,text,15,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)",derived
+d_payment_screen_summary,status,text,15,"Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied",derived
+d_payment_screen_summary,lever_fy,number,15,Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy),reference
+d_payment_screen_summary,lever_rate_low,number,15,"Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample",reference
+d_payment_screen_summary,lever_rate_likely,number,15,"Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample",reference
+d_payment_screen_summary,lever_rate_high,number,15,"Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample",reference
 d_plan50,step,number,28,Order of the step in the path to $50M,derived
 d_plan50,action,text,28,Action in the path to $50M,derived
 d_plan50,basis,text,28,How the step's saving is calculated,derived
@@ -258,10 +288,10 @@ f_vendor,agency_code,text,4940,Three-character State budget agency code (for exa
 f_vendor,area,text,4940,One of GMI's six focus areas,derived
 f_vendor,vendor,text,4940,Company name after grouping payee names,derived
 f_vendor,spend,number,4940,Dollars spent (budget actuals or payments),derived
-f_vendor_detail,vendor,text,7260,Company name after grouping payee names,derived
-f_vendor_detail,agency_code,text,7260,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-f_vendor_detail,fiscal_year,number,7260,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-f_vendor_detail,paid,number,7260,Payments in dollars,derived
+f_vendor_detail,vendor,text,6292,Company name after grouping payee names,derived
+f_vendor_detail,agency_code,text,6292,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_vendor_detail,fiscal_year,number,6292,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_vendor_detail,paid,number,6292,Payments in dollars,derived
 f_vendor_pay,vendor,text,30845,Company name after grouping payee names,derived
 f_vendor_pay,agency_code,text,30845,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 f_vendor_pay,fiscal_year,number,30845,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
@@ -290,11 +320,11 @@ pipeline_runs,repairs,number,5,Datasets re-downloaded by self-healing,ops
 pipeline_runs,payment_rows,number,5,Payment rows in the run,ops
 pipeline_runs,budget_rows,number,5,Budget rows in the run,ops
 pipeline_runs,mode,text,5,"Run mode (full, freshness reuse, test fault)",ops
-run_checks,run_id,text,90,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-run_checks,stage,text,90,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-run_checks,check,text,90,Check description,ops
-run_checks,status,text,90,"pass, warn or fail",ops
-run_checks,detail,text,90,Numbers behind the check result,ops
+run_checks,run_id,text,93,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+run_checks,stage,text,93,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+run_checks,check,text,93,Check description,ops
+run_checks,status,text,93,"pass, warn or fail",ops
+run_checks,detail,text,93,Numbers behind the check result,ops
 sources,source,text,6,Short name of the source dataset,derived
 sources,dataset_id,text,6,Portal four-by-four identifier,ops
 sources,title,text,6,Dataset title used on the dashboard,derived

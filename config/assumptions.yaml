@@ -112,3 +112,23 @@ recommendations:
 # Stage evidence (src/pipeline/checks.py): how a budget year's stage was confirmed against DBM's budget books.
 stage_evidence:
   min_exact_share: 0.6         # of the programs compared with DBM's printed actuals, at least this share must match to the dollar
+
+# Duplicate and split payment screen (sql/mart/47-49, docs/models/payment_screen.md). Leads to review, not errors.
+# The payments dataset (7syw-q4cy) is one row per paying agency x payee name x ZIP x fiscal year, and its date column is a
+# record date (Jan 1 of a year), not a payment date: the windows below can only be applied at that grain (see the model notes).
+payment_screen:
+  first_fy: 2022               # screened years (full payment years only; the partial latest year is never screened)
+  last_fy: 2026
+  min_amount: 1000             # duplicates: each line at least this many dollars (and positive)
+  duplicate_window_days: 7     # duplicates: same agency, vendor and exact amount with record dates this close
+  split_window_days: 14        # splits: 2+ payments to one vendor by one agency within this many days ...
+  small_procurement_threshold: 50000   # ... each under this, together above it. ASSUMED, verify against COMAR/Procurement Manual (no statute citation published)
+  transaction_grain_min_dates: 24      # the split rule runs only when a screened year has at least this many distinct dates (payment-level data); otherwise "not measurable"
+  excluded_payee_types: [Government, Health care organization, Financial institution]   # transfers to government, benefits/health plans, debt service (reference/payee_type_rules.csv)
+  exclude_payee_pattern: "CLERK OF|ATTORNEY GENERAL|CIRCUIT COURT|DISTRICT COURT|PAYROLL|RETIREMENT|PENSION|UNEMPLOYMENT|CHILD SUPPORT|INTERNAL REVENUE|\\bIRS\\b|FICA|DEFERRED COMP|BENEFIT"   # payroll-like and benefit payees, matched on the normalized payee name
+  org_name_pattern: "\\b(INC|LLC|L L C|CORP|CORPORATION|CO|COMPANY|LTD|LP|LLP|PC|PA|PLLC|GROUP|ASSOCIATES|SERVICES|SYSTEMS|SOLUTIONS|TECHNOLOGIES|ENTERPRISES|INTERNATIONAL|PARTNERS|HOLDINGS|AUTHORITY|FOUNDATION|ASSOCIATION|JOINT VENTURE|JV|USA|AMERICA|CENTER|INSTITUTE|UNIVERSITY|COLLEGE)\\b"   # a "Business or other" payee is named only if its name looks like an organization; others may be individuals and are never shown by name
+  lever:                       # Calculator lever "Payment recovery review (leads)": flagged review dollars x an assumed confirmation rate
+    fy: 2026                   # flagged dollars of this payments year
+    rate_low: 0.02             # ASSUMED confirmation rates, to be replaced by the result of a reviewed sample
+    rate_likely: 0.05
+    rate_high: 0.10

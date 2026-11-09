@@ -99,6 +99,7 @@ def run(con, run_id, manifest):
     phase5_reference_marts(con, check, one)
     phase5_higher_education(con, check, one, "highered" in loaded)
     phase5_deflator(con, check, one)
+    phase5_payment_screen(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -418,6 +419,40 @@ def phase5_deflator(con, check, one):
     gap = one("""SELECT count(*) FROM (SELECT DISTINCT fiscal_year FROM ref.dim_stage WHERE stage = 'Actual') s
         LEFT JOIN mart.d_deflator d USING (fiscal_year) WHERE d.population IS NULL""")
     check("mart", "Deflator: population for every actual budget year", bad == 0 and gap == 0, f"{gap} actual years without population; {bad} non-positive", "warn")
+
+
+def phase5_payment_screen(con, check, one):
+    """Duplicate and split payment screen (sql/mart/47-49): leads well formed, never double-counted, summary ties, yearly backtest."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_payment_screen'"):
+        return
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[2] / "config" / "assumptions.yaml").read_text())["payment_screen"]
+    rows, keys, small = con.execute("""SELECT count(*), count(DISTINCT record_key),
+        (SELECT count(*) FROM (SELECT group_id FROM mart.v_payment_screen_rows GROUP BY 1 HAVING count(*) < 2 OR count(DISTINCT rule) > 1))
+        FROM mart.v_payment_screen_rows""").fetchone()
+    neg = one("""SELECT count(*) FROM mart.d_payment_screen WHERE n < 2 OR total_amount < 0 OR review_amount < 0 OR review_amount > total_amount + 0.005
+                 OR (rule <> 'Possible split purchase' AND (amount < ? OR abs(amount * n - total_amount) > 0.01))""", cfg["min_amount"])
+    neg += one("SELECT count(*) FROM mart.d_payment_screen_summary WHERE groups < 0 OR records < 0 OR total_amount < 0 OR review_amount < 0")
+    check("mart", "Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",
+          rows == keys and small == 0 and neg == 0,
+          f"{rows:,} records in {one('SELECT count(*) FROM mart.d_payment_screen'):,} groups; {rows - keys} records in two groups; {small} malformed groups; {neg} negative or inconsistent rows")
+    unl = one("""SELECT count(*) FROM mart.d_payment_screen a JOIN mart.d_payment_screen b ON a.agency = b.agency AND a.fiscal_year = b.fiscal_year
+                 AND a.rule <> b.rule AND a.vendor = b.vendor AND a.vendor NOT LIKE 'Payee not named%' WHERE a.also_flagged_under IS NULL""")
+    tie = one("""SELECT count(*) FROM mart.d_payment_screen_summary s LEFT JOIN (SELECT rule, fiscal_year, count(*) g, sum(n) r, sum(total_amount) t, sum(review_amount) v
+                 FROM mart.d_payment_screen GROUP BY ALL) d USING (rule, fiscal_year)
+                 WHERE s.groups <> coalesce(d.g, 0) OR s.records <> coalesce(d.r, 0) OR abs(s.total_amount - coalesce(d.t, 0)) > 0.01 OR abs(s.review_amount - coalesce(d.v, 0)) > 0.01""")
+    orphan = one("SELECT count(*) FROM mart.d_payment_screen d LEFT JOIN mart.d_payment_screen_summary s USING (rule, fiscal_year) WHERE s.rule IS NULL")
+    bad_type = one("SELECT count(*) FROM mart.v_payment_screen_rows WHERE payee_type IN (SELECT unnest(?::VARCHAR[]))", cfg["excluded_payee_types"])
+    check("mart", "Payment screen: summary ties to the groups by rule and year; overlap between rules labeled; excluded payee types absent",
+          tie == 0 and orphan == 0 and unl == 0 and bad_type == 0,
+          f"{tie} summary rows that do not tie; {orphan} groups outside the summary; {unl} overlapping groups without a label; {bad_type} records of an excluded payee type")
+    yrs = con.execute("""SELECT fiscal_year, sum(groups), sum(review_amount) FROM mart.d_payment_screen_summary WHERE status = 'Measured'
+                         GROUP BY 1 ORDER BY 1""").fetchall()
+    st = dict(con.execute("SELECT rule, any_value(status) FROM mart.d_payment_screen_summary GROUP BY 1").fetchall())
+    want = set(range(cfg["first_fy"], cfg["last_fy"] + 1))
+    check("mart", f"Payment screen backtest: every screened year FY{cfg['first_fy']}-FY{cfg['last_fy']} and rule reported (stability)",
+          {r[0] for r in yrs} == want and one("SELECT count(*) FROM mart.d_payment_screen_summary") == 3 * len(want),
+          "groups (review $) by year: " + "; ".join(f"FY{y} {int(g)} (${v / 1e6:,.2f}M)" for y, g, v in yrs)
+          + f"; split rule: {st.get('Possible split purchase', 'missing')}", "warn")
 
 
 # ---- New-payee-name history (ops.payee_name_seen). Only a build whose stop checks all pass writes it (build.py calls

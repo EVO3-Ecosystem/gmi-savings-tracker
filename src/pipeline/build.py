@@ -101,8 +101,9 @@ def build(run_id):
     con.execute("""CREATE TABLE core.fact_payment AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year,
         regexp_replace(trim(agency_name), ':[A-Z][0-9]{2}$', '') AS agency_name_as_paid, trim(vendor_name) AS vendor_name_as_paid,
         trim(vendor_zip) AS vendor_zip, trim(category) AS agency_code_as_paid, CAST(amount AS DOUBLE) AS amount,
-        CAST(fiscal_year AS INTEGER) = (SELECT max(CAST(fiscal_year AS INTEGER)) FROM raw.payments) AS partial_year
-      FROM raw.payments""")
+        CAST(fiscal_year AS INTEGER) = (SELECT max(CAST(fiscal_year AS INTEGER)) FROM raw.payments) AS partial_year,
+        TRY_CAST(substr(trim(date), 1, 10) AS DATE) AS record_date
+      FROM raw.payments""")  # record_date: the portal's date column, a record date (Jan 1 of a year), not the payment date
     con.execute("""CREATE TABLE core.fact_grant AS SELECT CAST(fiscalyear AS INTEGER) AS fiscal_year, trim(grantor) AS grantor, trim(grantee) AS grantee,
         CASE upper(trim(category)) WHEN 'L' THEN 'Loan' WHEN 'LOAN' THEN 'Loan' WHEN 'G' THEN 'Grant' WHEN 'GRANT' THEN 'Grant' ELSE trim(category) END AS category,
         upper(trim(nonprofit)) AS nonprofit, CAST(amount AS DOUBLE) AS amount,

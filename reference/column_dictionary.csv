@@ -368,3 +368,28 @@ cpi_months,"mart.d_deflator,d_deflator",source,Months of CPI in the fiscal-year 
 factor,"mart.d_deflator,d_deflator",derived,Multiplier from nominal dollars of the fiscal year to FY2026 dollars: FY2026 CPI average / that year's CPI average (six-decimal text so the export keeps the precision); real dollars = nominal x factor
 population,"mart.d_deflator,d_deflator",source,Maryland resident population on July 1 at the start of the fiscal year (Census Population Estimates); per-resident dollars = dollars / population
 source,"mart.d_deflator,d_deflator",source,"Where cpi_index and population come from, with the CPI months averaged and the population vintage"
+record_date,"core.fact_payment*,mart.v_payment_screen_rows",portal,"The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows"
+rule,"d_payment_screen*,mart.v_payment_screen_rows",derived,"Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md)"
+vendor,d_payment_screen,derived,"Company name after grouping payee names; 'Payee not named (may be an individual)' when the payee type is Business or other and no payee name looks like an organization"
+group_id,"d_payment_screen,mart.v_payment_screen_rows",derived,Identifier of a flagged group of payment records (hash of the rule and its grouping keys)
+record_key,mart.v_payment_screen_rows,derived,Identifier of one payment record (hash of its published fields plus a counter for identical records)
+agency_key,mart.v_payment_screen_rows,derived,Budget agency code of the payment; the agency name as paid when the payment is not matched to an agency
+vendor_key,mart.v_payment_screen_rows,derived,"Normalized payee name the vendor grouping and the name rules are matched on (ref.map_payee_vendor)"
+date_grain,"d_payment_screen*,mart.v_payment_screen_rows",derived,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)"
+first_date,d_payment_screen,derived,Earliest record date in the group
+last_date,d_payment_screen,derived,Latest record date in the group
+n,d_payment_screen,derived,Number of payment records in the group
+total_amount,d_payment_screen*,derived,Dollars of all records in the group(s)
+review_amount,d_payment_screen*,derived,"Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead)"
+payee_names,d_payment_screen,derived,Distinct payee names (as paid) in the group
+zips,d_payment_screen,derived,Distinct payee ZIP codes in the group
+also_flagged_under,d_payment_screen,derived,"Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap)"
+rule_order,d_payment_screen_summary,derived,Display order of the rule
+groups,d_payment_screen_summary,derived,Number of flagged groups
+records,d_payment_screen_summary,derived,Number of payment records in the flagged groups
+status,d_payment_screen_summary,derived,"Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied"
+amount,d_payment_screen,derived,"Dollars of each record in the group (equal for duplicates and repeated lines); blank for split purchases"
+lever_fy,d_payment_screen_summary,reference,"Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy)"
+lever_rate_low,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample"
+lever_rate_likely,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample"
+lever_rate_high,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample"

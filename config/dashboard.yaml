@@ -45,3 +45,5 @@ f_budget_vs_pay: f_budget_vs_pay
 f_overlap: f_overlap
 d_all_funds: d_all_funds    # all-funds budget including public higher education (4mca-332u), a separate labeled figure
 d_deflator: d_deflator      # CPI factor to FY2026 dollars and Maryland population, for the page's real / per-resident toggle
+d_payment_screen: d_payment_screen    # duplicate and split payment screen: flagged groups (leads to review, not errors)
+d_payment_screen_summary: d_payment_screen_summary    # payment screen by rule and fiscal year (the backtest), with each rule's status at the data's date grain

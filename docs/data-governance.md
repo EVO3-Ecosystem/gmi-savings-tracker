@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-09T15:53Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 09, 2026._
+_Generated 2026-11-09T20:17Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 09, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -33,7 +33,7 @@ Portal datasets (from the Discovery API; owner, licence and dates are the portal
 | fund | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | Maryland Operating Budget - Funding Source | Maryland Department of Budget Management | Maryland Department of Information Technology | Public Domain | Annually | FY2017 - FY2026 | 2026-08-10 | 15 |
 | grants | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | State of Maryland Grant and Loan Data: FY2009 to FY2025 | Maryland Department of Budget and Management | Maryland Department of Information Technology | Public Domain | Annually | July 1, 2009 - June 30, 2024 | 2026-10-09 | 10 |
 | highered | [4mca-332u](https://opendata.maryland.gov/d/4mca-332u) | Maryland Operating Budget: CUR and CR | Maryland Department of Budget Management | Maryland Department of Information Technology | Public Domain | Annually | FY2017-FY2026 | 2026-08-10 | 20 |
-| payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | State of Maryland Payments Data: FY2008 to FY2024 | Department of Budget and Management (DBM) | Maryland Department of Information Technology | Public Domain | Monthly | July 1, 2007 - present | 2026-10-07 | 8 |
+| payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | State of Maryland Payments Data: FY2008 to FY2024 | Department of Budget and Management (DBM) | Maryland Department of Information Technology | Public Domain | Monthly | July 1, 2007 - present | 2026-11-09 | 8 |
 <!-- /gen:registry -->
 
 Context and evidence sources:
@@ -142,6 +142,9 @@ Values that are not published by any source. Each one is labeled as an assumptio
 | Leverage detector | 2–5% of payments to vendors paid by 10 or more agencies (at least $5M) | Opportunities | `opportunities.py` |
 | Delivery range (Monte Carlo) | 50–125% of each savings rate | Calculator | `index.html caSim` |
 | Payment-match tolerance | "Seen" when the payment drop is at least 50% of the reported saving | Savings tracker | `recs.py recurrence` |
+| Small-procurement threshold (split screen) | $50,000; assumed, verify against COMAR/Procurement Manual (no statute citation published) | Payment screen (split rule; not measurable on annual records) | `config/assumptions.yaml payment_screen` |
+| Payment screen windows and floor | duplicates: exact amount, $1,000+, record dates within 7 days; splits: 14 days | Payment screen | `sql/mart/47_v_payment_screen_rows.sql` |
+| Payment recovery confirmation rate | 2% / 5% / 10% of flagged review dollars (low / likely / high), to be replaced by a reviewed sample | Calculator lever "Payment recovery review (leads)" | `config/assumptions.yaml payment_screen.lever` |
 
 Not assumptions, and sourced: the default savings rates (GMI's reported recurring savings ÷ FY2025 spending), and the fee (20% of savings, $15M cap; WYPR).
 
@@ -173,116 +176,116 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
+| description | Description | Text | (none) | Portal description column; not used |
 | comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| object_name | Object Name | Text | (none) | Comptroller object name |
+| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
 | agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
-| agency_subobject_code | Agency Subobject Code | Text | (none) | Agency-specific spending code; not used (Comptroller sub-object is used) |
-| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
-| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
-| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
-| organization_sub_code | Organization Sub Code | Text | (none) | Portal's combined code including subprogram |
-| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
-| type | Type | Text | (none) | Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead |
-| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| type | Type | Text | (none) | Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead |
+| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| organization_sub_code | Organization Sub Code | Text | (none) | Portal's combined code including subprogram |
+| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
 | unit_name | Unit Name | Text | (none) | Budget unit name |
 | program_name | Program Name | Text | (none) | Budget program name |
 | subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
 | subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
 | object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
-| description | Description | Text | (none) | Portal description column; not used |
+| object_name | Object Name | Text | (none) | Comptroller object name |
+| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
+| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
+| agency_subobject_code | Agency Subobject Code | Text | (none) | Agency-specific spending code; not used (Comptroller sub-object is used) |
 
 **fte** (x8qy-486w, 9 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
+| unit_name | Unit Name | Text | (none) | Budget unit name |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
 | unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
 | program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| count | Count | Number | (none) | Budgeted full-time-equivalent positions (renamed fte in core) |
-| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
-| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
 | agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
-| unit_name | Unit Name | Text | (none) | Budget unit name |
+| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | program_name | Program Name | Text | (none) | Budget program name |
+| count | Count | Number | (none) | Budgeted full-time-equivalent positions (renamed fte in core) |
 
 **fund** (gy87-e27x, 15 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| description | Description | Text | (none) | Portal description column; not used |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
 | unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
 | unit_name | Unit Name | Text | (none) | Budget unit name |
-| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
+| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
+| program_name | Program Name | Text | (none) | Budget program name |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| description | Description | Text | (none) | Portal description column; not used |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | category | Category | Number | (none) | Budget function code (renamed function_code in core) |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
-| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
-| fund_source_name | Fund Source Name | Text | (none) | Fund source name |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | fund_source_code | Fund Source Code | Text | (none) | Fund source code within a fund type |
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| program_name | Program Name | Text | (none) | Budget program name |
-| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| fund_source_name | Fund Source Name | Text | (none) | Fund source name |
+| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 
 **grants** (absk-avps, 10 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| category | Category | Text | (none) | Grant or Loan |
 | grantee | Grantee | Text | (none) | Recipient of the grant or loan |
-| grantor | Grantor | Text | (none) | State agency and program awarding the grant or loan |
 | nonprofit | Nonprofit | Text | Whether or not the grantee is a non-profit (503C) entity.  | Y when the portal marks the grantee as a non-profit |
-| date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
-| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
-| fiscalyear | Fiscal Year | Number | (none) | Fiscal year in the grants dataset (renamed fiscal_year in core) |
 | zipcode | Zip Code | Text | (none) | Grantee ZIP code as published |
-| description | Description | Text | (none) | Grant or loan purpose as written by the grantor |
+| grantor | Grantor | Text | (none) | State agency and program awarding the grant or loan |
+| fiscalyear | Fiscal Year | Number | (none) | Fiscal year in the grants dataset (renamed fiscal_year in core) |
+| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
 | fiscalperiod | Fiscal Period | Number | (none) | Accounting period in the grants dataset; not used |
+| date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
+| description | Description | Text | (none) | Grant or loan purpose as written by the grantor |
+| category | Category | Text | (none) | Grant or Loan |
 
 **highered** (4mca-332u, 20 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
+| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
+| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
+| object_name | Object Name | Text | (none) | Comptroller object name |
+| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
+| subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
+| subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
+| program_name | Program Name | Text | (none) | Budget program name |
+| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
+| unit_name | Unit Name | Text | (none) | Budget unit name |
 | agency_subobject_code | Agency Subobject Code | Text | (none) | Agency-specific spending code; not used (Comptroller sub-object is used) |
-| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
-| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
-| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
+| agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 | organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
 | unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
 | agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
-| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
-| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
-| object_name | Object Name | Text | (none) | Comptroller object name |
-| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
-| unit_name | Unit Name | Text | (none) | Budget unit name |
-| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| program_name | Program Name | Text | (none) | Budget program name |
-| subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
-| subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
-| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
+| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
 
 **payments** (7syw-q4cy, 8 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
-| vendor_name | Vendor Name | Text | (none) | Payee name as published; includes businesses and individuals |
-| vendor_zip | Vendor Zip | Text | (none) | Payee ZIP code as published |
 | amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
-| fiscal_period | Fiscal Period | Number | (none) | Accounting period; the portal fills it with a placeholder value so it is not used |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 | date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| fiscal_period | Fiscal Period | Number | (none) | Accounting period; the portal fills it with a placeholder value so it is not used |
+| vendor_zip | Vendor Zip | Text | (none) | Payee ZIP code as published |
 | category | Category | Text | (none) | Payment category as published by the portal |
+| vendor_name | Vendor Name | Text | (none) | Payee name as published; includes businesses and individuals |
 <!-- /gen:sources -->
 
 ### 11.2 Warehouse (DuckDB)
@@ -453,6 +456,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | agency_code_as_paid | VARCHAR | derived | Agency code when the payments dataset carries one in the name; otherwise empty |
 | amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
 | partial_year | BOOLEAN | derived | True for the latest payments year while it is still incomplete |
+| record_date | DATE | portal | The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows |
 
 **core.fact_payment_mapped** (411,231 rows)
 
@@ -465,6 +469,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | agency_code_as_paid | VARCHAR | derived | Agency code when the payments dataset carries one in the name; otherwise empty |
 | amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
 | partial_year | BOOLEAN | derived | True for the latest payments year while it is still incomplete |
+| record_date | DATE | portal | The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows |
 | agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
 | matched_by | VARCHAR | derived | Rule that mapped the payment agency name to a code |
 
@@ -868,6 +873,46 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | evidence | VARCHAR | derived | Plain-language reason the detector flagged the row |
 | likely | DOUBLE | derived | Midpoint of low and high |
 
+**mart.d_payment_screen** (205 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| group_id | VARCHAR | derived | Identifier of a flagged group of payment records (hash of the rule and its grouping keys) |
+| rule | VARCHAR | reference | Name of the mapping or scope rule |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | VARCHAR | derived | Agency name shown on the dashboard |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| payee_type | VARCHAR | derived | Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other |
+| first_date | DATE | derived | Earliest record date in the group |
+| last_date | DATE | derived | Latest record date in the group |
+| n | BIGINT | derived | Number of payment records in the group |
+| amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
+| total_amount | DOUBLE | derived | Dollars of all records in the group(s) |
+| review_amount | DOUBLE | derived | Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead) |
+| payee_names | BIGINT | derived | Distinct payee names (as paid) in the group |
+| zips | BIGINT | derived | Distinct payee ZIP codes in the group |
+| also_flagged_under | VARCHAR | derived | Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap) |
+| date_grain | VARCHAR | derived | Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates) |
+
+**mart.d_payment_screen_summary** (15 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| rule | VARCHAR | reference | Name of the mapping or scope rule |
+| rule_order | INTEGER | derived | Display order of the rule |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| groups | BIGINT | derived | Number of flagged groups |
+| records | HUGEINT | derived | Number of payment records in the flagged groups |
+| total_amount | DOUBLE | derived | Dollars of all records in the group(s) |
+| review_amount | DOUBLE | derived | Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead) |
+| date_grain | VARCHAR | derived | Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates) |
+| status | VARCHAR | derived | Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied |
+| lever_fy | INTEGER | reference | Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy) |
+| lever_rate_low | DECIMAL(3,2) | reference | Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample |
+| lever_rate_likely | DECIMAL(3,2) | reference | Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample |
+| lever_rate_high | DECIMAL(2,1) | reference | Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample |
+
 **mart.d_plan50** (28 rows)
 
 | column | type | origin | definition |
@@ -1240,7 +1285,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (90 rows)
+**mart.run_checks** (93 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1303,6 +1348,26 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | vendors | BIGINT | derived | Distinct payees in the year |
 | total_payments_prior | DOUBLE | derived | All payments in the previous fiscal year |
 | total_payments_yoy | DOUBLE | derived | Change in total payments from the previous fiscal year (share) |
+
+**mart.v_payment_screen_rows** (410 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| group_id | VARCHAR | derived | Identifier of a flagged group of payment records (hash of the rule and its grouping keys) |
+| rule | VARCHAR | derived | Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md) |
+| record_key | VARCHAR | derived | Identifier of one payment record (hash of its published fields plus a counter for identical records) |
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| agency_key | VARCHAR | derived | Budget agency code of the payment; the agency name as paid when the payment is not matched to an agency |
+| agency_code | VARCHAR | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency_name_as_paid | VARCHAR | derived | Agency name exactly as it appears in the payments dataset |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| vendor_key | VARCHAR | derived | Normalized payee name the vendor grouping and the name rules are matched on (ref.map_payee_vendor) |
+| payee_type | VARCHAR | derived | Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other |
+| vendor_name_as_paid | VARCHAR | derived | Payee name exactly as published in payments |
+| vendor_zip | VARCHAR | portal | Payee ZIP code as published |
+| amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
+| record_date | DATE | portal | The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows |
+| date_grain | VARCHAR | derived | Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates) |
 
 **mart.v_purchase** (341,180 rows)
 
@@ -1368,7 +1433,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_result** (90 rows)
+**ops.check_result** (93 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1610,7 +1675,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (369 rows)
+**ref.column_dictionary** (394 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1983,6 +2048,46 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | evidence | text | derived | Plain-language reason the detector flagged the row |
 | likely | number | derived | Midpoint of low and high |
 
+**d_payment_screen** (205 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| group_id | text | derived | Identifier of a flagged group of payment records (hash of the rule and its grouping keys) |
+| rule | text | derived | Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md) |
+| fiscal_year | number | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| agency_code | text | portal | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| agency | text | derived | Agency name shown on the dashboard |
+| vendor | text | derived | Company name after grouping payee names; 'Payee not named (may be an individual)' when the payee type is Business or other and no payee name looks like an organization |
+| payee_type | text | derived | Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other |
+| first_date | text | derived | Earliest record date in the group |
+| last_date | text | derived | Latest record date in the group |
+| n | number | derived | Number of payment records in the group |
+| amount | number | derived | Dollars of each record in the group (equal for duplicates and repeated lines); blank for split purchases |
+| total_amount | number | derived | Dollars of all records in the group(s) |
+| review_amount | number | derived | Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead) |
+| payee_names | number | derived | Distinct payee names (as paid) in the group |
+| zips | number | derived | Distinct payee ZIP codes in the group |
+| also_flagged_under | number | derived | Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap) |
+| date_grain | text | derived | Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates) |
+
+**d_payment_screen_summary** (15 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| rule | text | derived | Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md) |
+| rule_order | number | derived | Display order of the rule |
+| fiscal_year | number | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| groups | number | derived | Number of flagged groups |
+| records | number | derived | Number of payment records in the flagged groups |
+| total_amount | number | derived | Dollars of all records in the group(s) |
+| review_amount | number | derived | Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead) |
+| date_grain | text | derived | Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates) |
+| status | text | derived | Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied |
+| lever_fy | number | reference | Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy) |
+| lever_rate_low | number | reference | Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample |
+| lever_rate_likely | number | reference | Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample |
+| lever_rate_high | number | reference | Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample |
+
 **d_plan50** (28 rows)
 
 | column | type | origin | definition |
@@ -2284,7 +2389,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | vendor | text | derived | Company name after grouping payee names |
 | spend | number | derived | Dollars spent (budget actuals or payments) |
 
-**f_vendor_detail** (7,260 rows)
+**f_vendor_detail** (6,292 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2341,7 +2446,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | number | ops | Budget rows in the run |
 | mode | text | ops | Run mode (full, freshness reuse, test fault) |
 
-**run_checks** (90 rows)
+**run_checks** (93 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2406,7 +2511,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,345 of 1,345 columns documented (85 source, 933 warehouse, 327 dashboard).
+1,422 of 1,422 columns documented (85 source, 980 warehouse, 357 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**
