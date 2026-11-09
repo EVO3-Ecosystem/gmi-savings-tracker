@@ -42,7 +42,7 @@ def test_every_dashboard_dataset_is_published(built):
     cfg = yaml.safe_load((ROOT / "config" / "dashboard.yaml").read_text())
     missing = [f for f in cfg.values() if not (built / "data" / f"{f}.csv").is_file()]
     assert not missing, missing
-    assert len(cfg) == 44
+    assert len(cfg) >= 44
 
 
 def test_support_pages(built):

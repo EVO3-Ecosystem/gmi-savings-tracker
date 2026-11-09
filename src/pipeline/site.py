@@ -17,6 +17,7 @@ import csv
 import html
 import io
 import json
+import yaml
 import os
 import re
 import shutil
@@ -110,6 +111,12 @@ def dashboard_html(src):
     if "var RAW={};" not in page or STUB_START not in page or not BANNER.search(page):
         raise SystemExit("the dashboard harness changed: the site's data loader or banner removal no longer applies")
     return page, pt.DATASETS
+
+
+def published_files(datasets):
+    """Every file the page loads plus every file in config/dashboard.yaml (data the page does not draw yet stays downloadable)."""
+    cfg = yaml.safe_load((ROOT / "config" / "dashboard.yaml").read_text())
+    return sorted(set(datasets.values()) | set(cfg.values())) + ["manifest"]
 
 
 def header(src, sha):
@@ -222,7 +229,7 @@ def build(out=OUT, src=None):
     missing = sorted({f for f in datasets.values() if not (src / f"{f}.csv").exists()})
     if missing:
         raise SystemExit(f"export is missing dashboard files: {', '.join(missing)}")
-    for f in sorted(set(datasets.values())) + ["manifest"]:
+    for f in published_files(datasets):
         if (src / f"{f}.csv").exists():
             shutil.copy(src / f"{f}.csv", out / "data" / f"{f}.csv")
     (out / "index.html").write_text(index)
@@ -248,7 +255,7 @@ def build(out=OUT, src=None):
 def refresh_snapshot():
     if not (EXPORT / "manifest.csv").exists():
         raise SystemExit("no export in data/export/latest: run `python -m src.pipeline.export` first")
-    files = sorted(set(preview._page_test().DATASETS.values())) + ["manifest"]
+    files = published_files(preview._page_test().DATASETS)
     if SNAPSHOT.exists():
         shutil.rmtree(SNAPSHOT)
     SNAPSHOT.mkdir()
