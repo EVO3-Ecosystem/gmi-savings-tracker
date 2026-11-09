@@ -1,0 +1,13 @@
+check_id,item,reported,before,after,status,previous_status,changed
+S01,Review and update agreements with seven vendors (~$81M annual spend),18000000.0,86369144.77,96436490.16,Not seen yet,,False
+S02,Food services contract at one agency,,37954309.65,32490200.15,Payments fell,,False
+S03,Statewide radio system maintenance,,14137655.56,20891408.03,Payments did not fall,,False
+S04,Office supplies (DGS Office of State Procurement contract),,309939.47,161351.37,Payments fell,,False
+S05,Software Enterprise License Agreement (DoIT),,33967240.09,42893530.61,Payments did not fall,,False
+S06,Paused vehicle purchases (196 of 538 appropriated),8000000.0,28873171.59,21249192.86,Seen,,False
+S08,Fuel and maintenance for a smaller fleet,2100000.0,93466517.69,100897444.77,Not seen yet,,False
+S10,End low-use mobile phone lines,2700000.0,3972673.9,3425883.2,Partly seen,,False
+S12,Cancel unused copper landlines,1550000.0,33901182.98,39898335.6,Not seen yet,,False
+S13,Laptop refresh moved from 3 to 5 years (DoIT agencies),4900000.0,61422654.88,54766519.68,Seen,,False
+S16,"Statewide shipping contract, ground by default",800000.0,8341267.44,9848231.38,Not seen yet,,False
+S17,Lease portfolio optimization,,15433437.38,18944954.23,Payments did not fall,,False
