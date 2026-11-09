@@ -351,3 +351,15 @@ public_higher_education,"mart.d_all_funds,d_all_funds",derived,"Operating budget
 all_funds_including_higher_education,"mart.d_all_funds,d_all_funds",derived,"Operating budget plus public higher education: the all-funds total including public higher education, a separate labeled figure that no GMI savings baseline uses"
 label,"mart.d_all_funds,d_all_funds",derived,How the all-funds figure must be labeled wherever it is shown
 source_datasets,"mart.d_all_funds,d_all_funds",derived,Portal datasets summed in the row
+detector,mart.d_detector_backtest,derived,"Opportunity detector rerun as of an earlier year (Peer gap, Growth above trend, Tail spend, Leverage)"
+as_of_fy,mart.d_detector_backtest,derived,"Fiscal year the detector was rerun as of, using only data up to that year"
+next_fy,mart.d_detector_backtest,derived,"The following fiscal year, in which the as-of year's units are followed"
+cohort,mart.d_detector_backtest,derived,Flagged = the detector's own flags in the as-of year; Not flagged = units that passed its size and comparability filters but were not flagged
+units,mart.d_detector_backtest,derived,"Units in the cohort: agency and spending code (Peer gap, Growth), focus area (Tail spend) or private vendor (Leverage)"
+flagged_next,mart.d_detector_backtest,derived,Units of the cohort flagged again by the same detector rerun as of the next year
+flagged_next_share,mart.d_detector_backtest,derived,"flagged_next / units: the persistence rate for the Flagged cohort, the rate of new flags for Not flagged"
+spend_as_of,mart.d_detector_backtest,derived,Cohort spending in the as-of year: controllable actual budget (budget detectors) or private payments (payment detectors; for Tail spend the vendors outside the ten largest); nominal dollars
+spend_next,mart.d_detector_backtest,derived,"The same units' spending in the next year, measured the same way; nominal dollars"
+pooled_change,mart.d_detector_backtest,derived,"spend_next / spend_as_of - 1 over the cohort (blank when spend_as_of is zero); descriptive, not a saving"
+median_change,mart.d_detector_backtest,derived,"Median of the per-unit change from the as-of year to the next, over units with spending in the as-of year"
+units_zero_next,mart.d_detector_backtest,derived,Units with no spending in the next year (dropped or re-coded lines)

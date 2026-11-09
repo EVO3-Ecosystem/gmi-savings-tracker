@@ -12,7 +12,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from ..models import forecast, opportunities, recommendations, savings
+from ..models import backtest, forecast, opportunities, recommendations, savings
 from . import checks, facts, marts, reference
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -143,6 +143,7 @@ def build(run_id):
     marts.build(con)  # Phase 4: sql/mart/*.sql -> mart layer
     forecast.write(con)  # Phase 5: forecasts and their rolling-origin backtest, built on the marts
     opportunities.write(con)  # Phase 5: opportunity detectors and the bid list
+    backtest.write(con)  # Phase 5: the detectors rerun as of FY2022-FY2024, flags followed one year (mart.d_detector_backtest)
     savings.write(con, run_id, DATA)  # Phase 5: GMI's reported savings checked against payments
     recommendations.write(con, run_id, DATA)  # Phase 5: the six recommendations, the path to $50M, vendor drill-downs
     res = checks.run(con, run_id, man)

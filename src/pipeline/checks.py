@@ -280,6 +280,13 @@ def phase5_opportunities(con, check, one):
     check("mart", "Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)", share <= 0.25,
           f"${row[0] / 1e6:,.1f}M of the growth detector's ${row[1] / 1e6:,.1f}M likely saving ({share:.0%}) comes from findings that grew 1,000% or more; "
           "a minimum prior-year base (assumptions.yaml, opportunities.growth.min_base_budget) removes most of them", "warn")
+    if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_detector_backtest'"):
+        n, bad, flagged = con.execute("""SELECT count(*), count(*) FILTER (WHERE flagged_next > units OR units_zero_next > units OR units < 0),
+            count(*) FILTER (WHERE cohort = 'Flagged' AND units > 0) FROM mart.d_detector_backtest""").fetchone()
+        rates = "; ".join(f"{d} {r:.0%}" for d, r in con.execute("""SELECT detector, sum(flagged_next) / nullif(sum(units), 0) FROM mart.d_detector_backtest
+            WHERE cohort = 'Flagged' GROUP BY 1 ORDER BY 1""").fetchall() if r is not None)
+        check("mart", "Detector backtest: every detector, as-of year and cohort present and well formed", n == 24 and bad == 0,
+              f"{n} rows, {bad} malformed, {flagged} flagged cohorts with units; flags recurring next year (pooled FY2022-FY2024): {rates}")
 
 
 def phase5_savings(con, check, one):
