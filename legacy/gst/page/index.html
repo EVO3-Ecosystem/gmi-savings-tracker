@@ -64,6 +64,7 @@
 .gs th[aria-sort=descending]::after{content:" ↓"}
 .gs td{padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);vertical-align:top}
 .gs td.n,.gs th.n{text-align:right;white-space:nowrap}
+.gs td.one{max-width:24rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#grBody td.one{max-width:15rem}
 .gs tr.click{cursor:pointer}
 .gs tr.click:hover td{background:var(--color-bg)}
 .gs tr.sel td{font-weight:var(--cds-font-weight-medium)}
@@ -412,17 +413,18 @@
     <div class="card">
       <div class="hd"><h2 id="ovlH">Budget, payments and grants by year</h2></div>
       <p class="note">How the three sources line up. The budget is all funds at its latest stage; payments are cash paid to payees (no payroll, but capital and pass-through money); grants and loans are the state's award list. Grants are mostly paid out through payments, so the last column shows the share of grant dollars whose grantee is also a payee that year (exact name match, so a minimum). Statewide; the agency filter does not apply.</p>
+      <p class="insight" id="ovlFind"></p>
       <div class="tbl"><table data-source="f_overlap">
         <thead><tr><th>Year</th><th>Budget stage</th><th class="n">Budget</th><th class="n">General funds</th><th class="n">Special funds</th><th class="n">Federal funds</th><th class="n">Payments</th><th class="n">To governments</th><th class="n">To everyone else</th><th class="n">Grants and loans</th><th class="n">Grant $ to payees</th></tr></thead>
         <tbody id="ovlBody"></tbody></table></div>
     </div>
     <div class="grid">
-      <div class="card"><div class="hd"><h2 id="fsH">How it's funded</h2></div><p class="note" id="fsNote">Budget by named fund source. Federal sources carry their federal Assistance Listing number.</p>
+      <div class="card"><div class="hd"><h2 id="fsH">How it's funded</h2></div><p class="note" id="fsNote">Budget by fund type and year (chart), then by named fund source (table). Federal sources carry their federal Assistance Listing number.</p><p class="insight" id="fsFind"></p><div class="legend" id="fsLegend"></div><div class="chart" id="fsChart" data-source="f_fund" style="min-height:0"></div>
         <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><select id="fsType" aria-label="Fund type"><option value="">All fund types</option></select> <input id="fsQ" type="search" placeholder="Search fund sources" aria-label="Search fund sources"></div>
         <div class="tbl"><table data-source="f_fund_source">
           <thead><tr><th>Fund source</th><th>Code</th><th>Type</th><th class="n">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
           <tbody id="fsBody"></tbody></table></div><p class="note" id="fsCount"></p></div>
-      <div class="card"><div class="hd"><h2 id="pgH">Where it's going</h2></div><p class="note" id="pgNote">Budget by agency program.</p>
+      <div class="card"><div class="hd"><h2 id="pgH">Where it's going</h2></div><p class="note" id="pgNote">Budget by agency program.</p><p class="insight" id="pgFind"></p>
         <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><input id="pgQ" type="search" placeholder="Search programs or agencies" aria-label="Search programs"></div>
         <div class="tbl"><table data-source="f_program">
           <thead><tr><th>Program</th><th>Agency</th><th class="n">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
@@ -430,7 +432,7 @@
     </div>
     <div class="card">
       <div class="hd"><h2 id="grH">Grants and loans, as listed</h2></div>
-      <p class="note" id="grNote">Every row as the state publishes it (grants and loans dataset, absk-avps), with no grouping. Grantor names are free text, so one agency can appear under several spellings. FY2009–FY2025; the agency filter does not apply.</p>
+      <p class="note" id="grNote">Every row as the state publishes it (grants and loans dataset, absk-avps), with no grouping. Grantor names are free text, so one agency can appear under several spellings. FY2009–FY2025; the agency filter does not apply. Descriptions are cut to one line; hover for the full text.</p><p class="insight" id="grFind"></p>
       <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><select id="grCat" aria-label="Grant or loan"><option value="">Grants and loans</option><option>Grant</option><option>Loan</option></select> <select id="grPay" aria-label="Also a payee"><option value="">All grantees</option><option value="1">Also a payee that year</option><option value="0">Not found in payments</option></select> <input id="grQ" type="search" placeholder="Search grantor, grantee or description" aria-label="Search grants"></div>
       <div class="tbl"><table data-source="f_grants">
         <thead><tr><th>Year</th><th>Grantor</th><th>Grantee</th><th>Description</th><th>Type</th><th>Non-profit</th><th>ZIP</th><th class="n">Amount</th><th class="n">Paid to grantee that year</th></tr></thead>
@@ -438,15 +440,15 @@
       <p class="note" id="grCount"></p>
     </div>
     <div class="grid">
-      <div class="card"><div class="hd"><h2 id="fnH">By function</h2><button class="xp" data-expand="budget">Expand</button></div><p class="note" id="fnNote">All funds.</p>
+      <div class="card"><div class="hd"><h2 id="fnH">By function</h2><button class="xp" data-expand="budget">Expand</button></div><p class="note" id="fnNote">All funds.</p><p class="insight" id="fnFind"></p>
         <div class="tbl"><table data-source="f_function" data-row-key="category_title">
           <thead><tr><th data-field="category_title">Function</th><th class="n" data-field="budget">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
           <tbody id="fnBody"></tbody></table></div></div>
-      <div class="card"><div class="hd"><h2 id="fundH">By fund type</h2><button class="xp" data-expand="funds">Expand</button></div><p class="note">General, federal and special funds.</p>
+      <div class="card"><div class="hd"><h2 id="fundH">By fund type</h2><button class="xp" data-expand="funds">Expand</button></div><p class="note">General, federal and special funds.</p><p class="insight" id="fundFind"></p>
         <div class="tbl"><table data-source="f_fund" data-row-key="fund_type_name">
           <thead><tr><th data-field="fund_type_name">Fund</th><th class="n" data-field="budget">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
           <tbody id="fundBody"></tbody></table></div></div>
-      <div class="card"><div class="hd"><h2 id="objH">By type of spending</h2><button class="xp" data-expand="controllable">Expand</button></div><p class="note">Comptroller object, with the controllable part.</p>
+      <div class="card"><div class="hd"><h2 id="objH">By type of spending</h2><button class="xp" data-expand="controllable">Expand</button></div><p class="note">Comptroller object, with the controllable part.</p><p class="insight" id="objFind"></p>
         <div class="tbl"><table data-source="f_object" data-row-key="object_name">
           <thead><tr><th data-field="object_name">Object</th><th class="n" data-field="budget">Amount</th><th class="n">Change</th><th class="n" data-field="controllable">Controllable</th></tr></thead>
           <tbody id="objBody"></tbody></table></div></div>
@@ -710,7 +712,7 @@ function drawRows(tb){ const rows = tb._rows, cols = tb._cols, o = tb._o; tb.tex
   rows.forEach(r => { const tr = document.createElement('tr');
     if (o.click) { tr.className = 'click'; tr.tabIndex = 0; tr.addEventListener('click', () => o.click(r)); tr.addEventListener('keydown', e => { if (e.key === 'Enter') o.click(r); }); }
     if (o.sel && o.sel(r)) tr.classList.add('sel');
-    cols.forEach(c => { const td = document.createElement('td'); if (c.n) td.className = 'n';
+    cols.forEach(c => { const td = document.createElement('td'); if (c.n) td.className = 'n'; if (c.cls) td.classList.add(c.cls); if (c.full && r[c.key] != null) td.title = String(r[c.key]);
       if (c.key === o.bar && r[c.key] != null) { const s = document.createElement('span'); s.className = 'bar'; s.style.width = Math.max(3, 56*r[c.key]/mx) + 'px'; td.appendChild(s); }
       if (c.chg) { const s = document.createElement('span'); s.className = 'chg ' + toneOf(r[c.key], c.chg); const sm = r[c.key] == null && r[c.small || '_small']; s.textContent = sm ? SMALL_TXT : ARROW(r[c.key]); if (sm) s.title = 'Prior-year base under ' + M(SMALL_BASE) + ', so no percent change is shown'; else if (r._lab) s.title = r._lab; td.appendChild(s); }
       else if (c.pill) { const s = document.createElement('span'); s.className = 'st ' + c.pill(r[c.key]); s.textContent = c.fmt ? c.fmt(r[c.key]) : r[c.key]; td.appendChild(s); }
@@ -1081,9 +1083,13 @@ function drawBudget(p){
   const fl = fyLabel(m.years); setText('fnH', `By function, ${fl}`); setText('fnNote', `All funds${m.n > 1 ? '; selected years combined' : ''}.`);
   const fcols = k => [{key:k},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}];
   table('fnBody', breakdown(ff, 'category_title', 'budget', p, {ignoreArea:true}), fcols('category_title'));
-  if (fu) { setText('fundH', `By fund type, ${fl}`); table('fundBody', breakdown(fu, 'fund_type_name', 'budget', p, {ignoreArea:true}), fcols('fund_type_name')); }
+  const fnR = breakdown(ff, 'category_title', 'budget', p, {ignoreArea:true}); setText('fnFind', fnR[0] ? `${fnR[0].category_title} is the largest function: ${PCT(fnR[0].share)} of ${M(d3.sum(fnR, r => r.value))}${fnR[1] ? `, then ${fnR[1].category_title.toLowerCase()} at ${PCT(fnR[1].share)}` : ''}.` : '');
+  if (fu) { setText('fundH', `By fund type, ${fl}`); const fuR = breakdown(fu, 'fund_type_name', 'budget', p, {ignoreArea:true}); table('fundBody', fuR, fcols('fund_type_name'));
+    const gfr = fuR.find(r => r.fund_type_name === 'General Funds'); setText('fundFind', gfr ? `General funds pay for ${PCT(gfr.share)} of the selection; the rest is special and federal funds.` : '');
+    drawFundChart(fu, p); }
   if (fo) { setText('objH', `By type of spending, ${fl}`); const ob = breakdown(fo, 'object_name', 'budget', p, {ignoreArea:true}); const cm = new Map(breakdown(fo, 'object_name', 'controllable', p, {ignoreArea:true}).map(r => [r.object_name, r.value])); ob.forEach(r => r.controllable = cm.get(r.object_name) || 0);
-    table('objBody', ob, [{key:'object_name'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'controllable',n:1,fmt:M}]); }
+    table('objBody', ob, [{key:'object_name'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'controllable',n:1,fmt:M}]);
+    const ot = d3.sum(ob, r => r.value), oc = d3.sum(ob, r => r.controllable); setText('objFind', ot ? `${PCT(oc / ot)} of this spending (${M(oc)}) is controllable; ${ob[0].object_name.toLowerCase()} is the largest type at ${PCT(ob[0].value / ot)}.` : ''); }
   setText('budPair', `${fl}${m.n > 1 ? ' combined' : ''}. Change: ${m.label || 'no earlier years to compare'}.` + (m.mixed ? ' This selection mixes actual spending and budgets.' : ''));
 }
 /* ======================= budget, payments, funding and grants (portal views) ======================= */
@@ -1130,9 +1136,21 @@ function drawPortalOver(p){
       {max: Math.max(50e6, v1 + v2) * 1.04, marker:{v:50e6, label:'$50M target'}, aria:'Path to the $50M savings target'});
     const pf = planFacts(); setText('ov50Note', (pf ? pf.text + ' ' : '') + `Solid: GMI's reported rates carried forward (${M(v1)}); dashed: ${rest.length} statewide contracts at the assumed rate (${M(v2)}). ${PLAN_EV}`);
     setText('ov50Detail', 'Largest assumed steps: ' + rest.slice().sort((a,b) => b.saving - a.saving).slice(0, 3).map(r => `${String(r.action).replace('Statewide contract: ', '')} ${M(r.saving)}`).join(', ') + '. The Calculator tab changes the rates; the Opportunities tab shows the evidence for each vendor.'); } }
+const FUND_KEYS = ['General Funds', 'Special Funds', 'Federal Funds', 'Federal relief (COVID, ARRA)'];
+const fundKey = n => FUND_KEYS.includes(n) ? n : 'Federal relief (COVID, ARRA)';
+const fundCol = k => [dash.colors[0], dash.colors[3], dash.colors[5], dash.colors[6]][FUND_KEYS.indexOf(k)]; // same colors as the Overview's funding bar
+function drawFundChart(fu, p){ const box = document.getElementById('fsChart'); if (!box) return; const base = sel(fu, p, {ignoreArea:true}); const years = [...new Set(base.map(r => r.fiscal_year))].sort((a,b) => a-b);
+  const rows = years.map(y => { const o = {year:y, stage:STAGE_OF[y]}; FUND_KEYS.forEach(k => o[k] = 0); base.filter(r => r.fiscal_year === y).forEach(r => { o[fundKey(r.fund_type_name)] += r.budget || 0; }); o.total = d3.sum(FUND_KEYS, k => o[k]); return o; }).filter(r => r.total);
+  const keys = FUND_KEYS.filter(k => rows.some(r => r[k]));
+  const m = measure(fu, 'budget', p, {ignoreArea:true});
+  stacked(box, 'fsLegend', rows, keys, fundCol, {h:240, selYears: hi(p, m), click: yearClick, aria:'Operating budget by fund type and year'});
+  const ys = m.years.length ? m.years : years, a = rows.find(r => r.year === ys[0]), b = rows.find(r => r.year === ys[ys.length - 1]);
+  const rel = rows.filter(r => r['Federal relief (COVID, ARRA)']).sort((x, y) => y['Federal relief (COVID, ARRA)'] - x['Federal relief (COVID, ARRA)'])[0];
+  setText('fsFind', a && b ? `General funds paid for ${PCT(b['General Funds'] / b.total)} in FY${b.year}` + (a !== b ? ` against ${PCT(a['General Funds'] / a.total)} in FY${a.year}` : '') + (rel ? `; federal relief money peaked at ${M(rel['Federal relief (COVID, ARRA)'])} in FY${rel.year}.` : '.') : ''); }
 function drawPortalBudget(p){
   const ov = ok('f_overlap'), fs = ok('f_fund_source'), pg = ok('f_program'), gr = ok('f_grants');
   const sh = v => v == null ? '—' : d3.format('.0%')(v);
+  if (ov) { const g = ov.filter(d => d.grants_and_loans > 0 && d.fiscal_year <= PAY_LAST).pop(); setText('ovlFind', g ? `In FY${g.fiscal_year}, payments were ${PCT(g.payments_to_budget_share)} of the budget, and ${PCT(g.grants_in_payments_share)} of grant and loan dollars went to grantees also paid that year, so grants sit inside payments.` : ''); }
   if (ov) table('ovlBody', ov.filter(r => r.fiscal_year <= 2026).slice().reverse().map(r => ({...r, _yr: 'FY' + r.fiscal_year})), [{key:'_yr', sort:'fiscal_year'},{key:'stage',fmt:stageShort},{key:'budget',n:1,fmt:M},{key:'general_funds',n:1,fmt:M},{key:'special_funds',n:1,fmt:M},{key:'federal_funds',n:1,fmt:M},
     {key:'payments',n:1,fmt:M},{key:'paid_to_government',n:1,fmt:M},{key:'paid_to_others',n:1,fmt:M},{key:'grants_and_loans',n:1,fmt:v => v ? M(v) : 'not published'},{key:'grants_in_payments_share',n:1,fmt:sh}]);
   const ys = fs ? yearsFor(fs, p) : []; const fl = fyLabel(ys);
@@ -1146,13 +1164,15 @@ function drawPortalBudget(p){
     const q = qi.value.trim().toLowerCase(); const rows = pg.map(r => ({...r, key: r.agency_code + '|' + r.program_name}));
     const out = breakdown(rows, 'key', 'budget', p, {ignoreArea:true}).map(r => { const [code, name] = r.key.split('|'); return {...r, code, name, agency: agName(code)}; }).filter(r => !q || (r.name + ' ' + r.agency).toLowerCase().includes(q));
     table('pgBody', out.slice(0, 150), [{key:'name'},{key:'agency'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}], {click: r => setP({agencies:[r.code]})});
+    const pgT = d3.sum(out, r => r.value); setText('pgFind', out[0] ? `The largest program, ${out[0].name} (${out[0].agency}), is ${PCT(out[0].value / pgT)} of the total across ${N(out.length)} programs; the ten largest are ${PCT(d3.sum(out.slice(0, 10), r => r.value) / pgT)}.` : '');
     setText('pgH', `Where it's going, ${fl}`); setText('pgCount', `${N(out.length)} programs${out.length > 150 ? ', largest 150 shown' : ''}. Click a program to filter by its agency.`); }
   if (gr) { ['grCat','grPay','grQ'].forEach(id => { const el = document.getElementById(id); if (!el._w) { el._w = 1; el.addEventListener(id === 'grQ' ? 'input' : 'change', () => drawPortalBudget(prm())); } });
     const c = document.getElementById('grCat').value, pf = document.getElementById('grPay').value, q = document.getElementById('grQ').value.trim().toLowerCase();
     const gy = p.years.length ? p.years : null;
     const rows = gr.filter(r => (!gy || gy.includes(r.fiscal_year)) && (!c || r.category === c) && (!pf || isTrue(r.in_payments) === (pf === '1')) && (!q || `${r.grantor} ${r.grantee} ${r.description}`.toLowerCase().includes(q))).sort((a,b) => b.amount - a.amount);
-    table('grBody', rows.slice(0, 200), [{key:'fiscal_year',fmt:v => 'FY' + v},{key:'grantor'},{key:'grantee'},{key:'description',fmt:v => v == null ? '' : String(v).length > 140 ? String(v).slice(0, 140) + '…' : v},{key:'category'},{key:'nonprofit',fmt:v => v === 'Y' ? 'Yes' : v === 'N' ? 'No' : ''},{key:'zipcode'},{key:'amount',n:1,fmt:M},{key:'paid_same_fy',n:1,fmt:v => v == null || v === '' ? '—' : M(v)}]);
+    table('grBody', rows.slice(0, 200), [{key:'fiscal_year',fmt:v => 'FY' + v},{key:'grantor',cls:'one',full:true},{key:'grantee',cls:'one',full:true},{key:'description',cls:'one',full:true},{key:'category'},{key:'nonprofit',fmt:v => v === 'Y' ? 'Yes' : v === 'N' ? 'No' : ''},{key:'zipcode'},{key:'amount',n:1,fmt:M},{key:'paid_same_fy',n:1,fmt:v => v == null || v === '' ? '—' : M(v)}]);
     const tot = sum(rows, 'amount'), inP = sum(rows.filter(r => isTrue(r.in_payments)), 'amount');
+    const byG = d3.rollups(rows, v => sum(v, 'amount'), r => r.grantor).sort((a, b) => b[1] - a[1]); setText('grFind', byG[0] && tot ? `${byG[0][0]} is the largest grantor listed, ${M(byG[0][1])} (${PCT(byG[0][1] / tot)}) of ${M(tot)}.` : '');
     setText('grH', `Grants and loans, as listed${gy ? ', ' + fyLabel(gy.filter(y => y <= 2025)) : ''}`);
     setText('grCount', `${N(rows.length)} rows, ${M(tot)}${rows.length > 200 ? '; largest 200 shown (search to narrow)' : ''}. ${tot ? d3.format('.0%')(inP / tot) : '—'} of these dollars went to grantees also paid that year.` + (gy && !gy.some(y => y <= 2025) ? ' No grants are published for the selected years yet.' : '')); } }
 function drawData(){

@@ -126,6 +126,9 @@ PROBE = """(tab) => {
     agency: () => [[/ per position: /.test(T('agLede')) || /No agency/.test(T('agLede')), 'Agencies headline missing'],
                    [!!document.querySelector('#agChart svg') || !!document.querySelector('#agChart .empty'), 'Agencies chart not drawn'],
                    [/pass money through/.test(T('agChartNote')), 'pass-through flag not explained']],
+    budget: () => [[!!document.querySelector('#fsChart svg') || !!document.querySelector('#fsChart .empty'), 'funding chart not drawn'],
+                   [['ovlFind', 'fnFind', 'fundFind', 'objFind', 'pgFind'].every(id => T(id).length > 20), 'a Budget card has no finding line'],
+                   [[...document.querySelectorAll('#grBody td:nth-child(4)')].every(td => td.classList.contains('one') || td.colSpan > 1), 'grant descriptions are not one line']],
     areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
   }[tab];
   // small-base rule: a change from a prior-year base under $1M carries no percent
