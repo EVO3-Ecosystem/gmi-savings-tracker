@@ -121,6 +121,8 @@ PROBE = """(tab) => {
                  [!/8 in 10|8-in-10/.test(T('p-calc')) && /indicative/.test(T('p-calc')) && /fell inside such a range/.test(T('p-calc')), 'forecast ranges not labelled indicative with their coverage']],
     opp: () => [[/leads worth up to/.test(T('opLede')) && /not additive/.test(T('opLede')), 'Opportunities headline reads as savings, or omits the overlap'],
                 [!/Likely savings found|would reach GMI/.test(T('p-opp')), 'Opportunities still promise savings']],
+    track: () => [[!document.getElementById('stBody2'), 'status table not merged'],
+                  [/Since last run/.test(T('p-track')) && /at least 50% of the reported saving/.test(T('trTolNote')) && /50%/.test(T('trSeenS')), 'Seen tolerance or status column missing']],
     areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
   }[tab];
   // small-base rule: a change from a prior-year base under $1M carries no percent

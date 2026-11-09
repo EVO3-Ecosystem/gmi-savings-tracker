@@ -215,17 +215,13 @@
       <div class="chart" id="trChart" data-source="d_savings f_savings_check" style="min-height:200px"></div>
     </div>
     <div class="card">
-      <div class="hd"><h2 id="trTblH">Every reported item and its check</h2></div>
+      <div class="hd"><h2 id="trTblH">Every reported item, its check and its status since the last refresh (recommendation 2)</h2></div>
+      <p class="note" id="trTolNote"></p>
       <p class="note">Hover over a check result to see the vendors it covers. A check says whether the change shows up in what the state paid; it is a lead to follow, not proof. Payee names miss spending booked under other names, and contracts change for other reasons.</p>
       <div class="tbl"><table data-source="d_savings f_savings_check" data-row-key="saving_id">
-        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n">Payments FY2025</th><th class="n">Payments FY2026</th><th class="n">Change</th><th>Check result</th></tr></thead>
+        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n">Payments FY2025</th><th class="n">Payments FY2026</th><th class="n">Change</th><th id="trResH">Check result</th><th>Since last run</th></tr></thead>
         <tbody id="trBody"></tbody></table></div>
       <p class="stagenote" id="trStage"></p>
-    </div>
-    <div class="card">
-      <div class="hd"><h2>Status since the last refresh (recommendation 2)</h2></div>
-      <p class="note">Each check is saved on every monthly run, so a saving that starts showing up in payments, or stops, is flagged here.</p>
-      <div class="tbl"><table data-source="d_savings_status"><thead><tr><th>Item</th><th class="n">Reported</th><th class="n">FY2025 paid</th><th class="n">FY2026 paid</th><th>Status</th><th>Last refresh</th></tr></thead><tbody id="stBody2"></tbody></table></div>
     </div>
     <div class="card">
       <div class="hd"><h2>Sources</h2></div>
@@ -845,7 +841,6 @@ function drawRecs(){ // recommendations computed from the tracker's own findings
   const rs = ok('d_rec_status') || []; ol.textContent = ''; recs.forEach(([t, w, go], i) => { const li = document.createElement('li'); const b = go ? document.createElement('button') : document.createElement('b'); b.textContent = t; if (go) { b.className = 'lnk'; b.style.fontWeight = 600; b.style.fontSize = 'var(--cds-font-size-body)'; b.addEventListener('click', go); } const sp = document.createElement('span'); sp.className = 'why'; sp.textContent = w; li.append(b, sp); const r = rs.find(x => x.rec === i + 1); if (r) { const st = document.createElement('span'); st.className = 'why'; const pill = document.createElement('span'); pill.className = 'st ' + (/Ready|In place|reaches|found|Tracking/.test(r.status) ? 'pass' : /Gap|Needs|No fit/.test(r.status) ? 'warn' : ''); pill.textContent = r.status + (/reaches \$50M/.test(r.status) ? ' if the assumptions hold' : ''); st.append(pill, document.createTextNode(' ' + r.progress + (r.previous && r.previous !== r.progress ? ` (last refresh: ${r.previous})` : ''))); li.appendChild(st); } ol.appendChild(li); }); }
 function drawRecTables(){
   const b = ok('d_bid_list'); if (b && document.getElementById('bidBody')) table('bidBody', b, [{key:'rank',n:1},{key:'vendor'},{key:'agencies',n:1},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'low',n:1,fmt:(v, r) => `${M(r.low)}–${M(r.high)}`},{key:'top_agencies'}], {bar:'fy2026', click:r => openDetail('vendor:' + r.vendor)});
-  const st = ok('d_savings_status'); if (st) table('stBody2', st, [{key:'item'},{key:'reported',n:1,fmt:v => v == null ? '—' : M(v)},{key:'before',n:1,fmt:M},{key:'after',n:1,fmt:M},{key:'status',pill:v => v === 'Seen' ? 'pass' : v === 'Partly seen' ? 'warn' : v === 'Not seen yet' ? 'fail' : ''},{key:'previous_status',fmt:(v, r) => v == null ? 'first run recorded' : (String(r.changed) === 'true' ? 'changed from ' + v : 'unchanged')}]);
   const pf = planFacts(); if (pf) setText('planFind', pf.text + ' ' + PLAN_EV);
   const pl = ok('d_plan50'); if (pl) table('planBody', pl, [{key:'step',n:1},{key:'action'},{key:'basis'},{key:'saving',n:1,fmt:M},{key:'cumulative',n:1,fmt:M}], {click:r => showTab(r.tab)});
   const mq = ok('d_master_quality'); if (mq) table('mqBody', mq, [{key:'measure'},{key:'value'},{key:'ok',pill:v => String(v) === 'true' ? 'pass' : 'fail',fmt:v => String(v) === 'true' ? 'OK' : 'Check'}]);
@@ -1147,6 +1142,8 @@ function drawData(){
   const vf = ok('vendor_families'); if (vf) table('vfBody', vf, [{key:'family'},{key:'payee_names',n:1},{key:'agencies',n:1},{key:'spend',n:1,fmt:M}], {bar:'spend'});
 }
 
+const SEEN_SHARE = .5; // tolerance: a reported saving counts as Seen when payments fell by at least half of it
+const seenTxt = () => `Seen = payments fell by at least ${d3.format('.0%')(SEEN_SHARE)} of the reported saving; Partly seen = they fell by less`;
 function drawTrack(p){
   let d = ok('d_savings'); const f = ok('f_savings_check'); if (!d || !f) return;
   const pys = yearsFor(f, p, true); const y1 = pys.length ? pys[pys.length-1] : null, y0 = y1 ? y1 - 1 : null;
@@ -1154,11 +1151,12 @@ function drawTrack(p){
   const rep = r => r.reported_low == null ? null : (r.reported_low + r.reported_high) / 2;
   const groups = d3.group(d.filter(r => r.check_id), r => r.check_id);
   const G = new Map([...groups].map(([cid, rows]) => { const b = y1 ? paid(cid, y0) : 0, a = y1 ? paid(cid, y1) : 0, r = d3.sum(rows, rep);
-    const drop = b - a; const res = !y1 ? 'No payment year selected' : !b ? 'No payments to compare' : r == null || !r ? (drop > 0 ? 'Payments fell' : 'Payments did not fall') : drop >= .5 * r ? 'Seen in payments' : drop > 0 ? 'Partly seen' : 'Not seen yet';
+    const drop = b - a; const res = !y1 ? 'No payment year selected' : !b ? 'No payments to compare' : r == null || !r ? (drop > 0 ? 'Payments fell' : 'Payments did not fall') : drop >= SEEN_SHARE * r ? 'Seen in payments' : drop > 0 ? 'Partly seen' : 'Not seen yet';
     return [cid, {before:b, after:a, drop, reported:r, res, items:rows}]; }));
   const tone = r => r === 'Seen in payments' || r === 'Payments fell' ? 'pass' : r === 'Partly seen' ? 'warn' : r === "Can't be checked" || r === 'Checked with the item above' ? '' : 'fail';
   const rows = d.map(r => { const g = r.check_id ? G.get(r.check_id) : null; const first = g && g.items[0].saving_id === r.saving_id;
-    return {...r, rep: rep(r), before: first ? g.before : null, after: first ? g.after : null, change: first && g.before ? (g.after - g.before)/g.before : null, res: !r.check_id ? "Can't be checked" : first ? g.res : 'Checked with the item above', _lab: r.check_note}; });
+    const ss = first ? (ok('d_savings_status') || []).find(x => x.check_id === r.check_id) : null;
+    return {...r, rep: rep(r), since: !first ? '' : !ss ? 'not recorded' : ss.previous_status == null ? 'first run recorded' : String(ss.changed).toLowerCase() === 'true' ? 'changed from ' + ss.previous_status : 'unchanged since last run', before: first ? g.before : null, after: first ? g.after : null, change: first && g.before ? (g.after - g.before)/g.before : null, res: !r.check_id ? "Can't be checked" : first ? g.res : 'Checked with the item above', _lab: r.check_note}; });
   const ca = d.filter(r => r.type === 'Cost avoidance'); d = d.filter(r => r.type !== 'Cost avoidance'); // capital cost avoidance is shown apart from yearly savings
   const lo = d3.sum(d, r => r.reported_low || 0), hi = d3.sum(d, r => r.reported_high || 0), fm = (a, b) => a === b ? M(a) : `${M(a)}–${M(b)}`;
   const chk = d.filter(r => r.check_id && r.reported_low != null), no = d.filter(r => !r.check_id);
@@ -1166,15 +1164,16 @@ function drawTrack(p){
   setText('trRep', fm(lo, hi)); setText('trRepS', `${d.filter(r => r.reported_low != null).length} items with a dollar figure, ${d.filter(r => r.reported_low == null).length} not quantified · GMI's own total: $29M in FY2026 ($20M General Fund)`);
   setText('trChk', fm(d3.sum(chk, r => r.reported_low), d3.sum(chk, r => r.reported_high))); setText('trChkS', `${chk.length} items in ${G.size} vendor groups`);
   setText('trSeenK', y1 ? `Seen in payments, FY${y0} to FY${y1}` : 'Seen in payments'); setText('trSeen', M(d3.sum(seen, g => Math.min(g.drop, g.reported))));
-  setText('trSeenS', `${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks show payments falling` + (p.agencies.length ? ' · ' + who(p) : ''));
+  setText('trSeenS', `${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks show payments falling · ${seenTxt()}` + (p.agencies.length ? ' · ' + who(p) : ''));
   setText('trNo', fm(d3.sum(no, r => r.reported_low || 0), d3.sum(no, r => r.reported_high || 0))); setText('trNoS', no.map(r => r.item.split(' (')[0].toLowerCase()).join('; ') + (ca.length ? ` · separately, DGS estimates ${M(d3.sum(ca, r => r.reported_low))} in facility cost avoidance (mostly capital, not yearly)` : ''));
   setText('trLede', `GMI's January 26, 2026 report to the legislature lists ${d.length} savings items worth ${fm(lo, hi)} a year against a $50M target (GMI's own total for FY2026: $29M). Payments to the matching vendors can check ${chk.length} of them. ` + (y1 ? `From FY${y0} to FY${y1}${p.agencies.length ? ' at ' + who(p) : ''}, payments fell in ${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks: about ${M(d3.sum(seen, g => Math.min(g.drop, g.reported)))} of the reported savings shows up in what the state paid.` : 'Choose a year with payments (FY2017–FY2026) to run the checks.') + ` The largest item, $18M from renegotiating seven vendors' agreements, names four kinds of contract but no vendors; each kind is checked against the payments that fit it.`);
   const bars = [...G.entries()].filter(([, g]) => g.reported).map(([cid, g]) => ({label: g.items[0].workstream + ': ' + g.items[0].item.split(' (')[0].toLowerCase() + (g.items.length > 1 ? ` (+${g.items.length - 1} related)` : ''), a: g.reported, b: Math.max(0, g.drop), chg: g.before ? (g.after - g.before)/g.before : null, g})).sort((a, b) => b.a - a.a);
   setText('trChartH', y1 ? `Reported saving vs. the drop in payments, FY${y0} to FY${y1}` : 'Reported saving vs. the drop in payments');
   hbars(document.getElementById('trChart'), bars, {good:'lower', aria:'Reported savings compared with the drop in payments', tip: d => [`Reported: ${M(d.a)} a year`, `Payments: ${M(d.g.before)} → ${M(d.g.after)} (${ARROW(d.chg)})`, d.g.res]});
-  table('trBody', rows, [{key:'workstream'},{key:'item'},{key:'rep',n:1,fmt:(v, r) => r.reported_low == null ? 'Not quantified' : r.reported_low === r.reported_high ? M(v) : `${M(r.reported_low)}–${M(r.reported_high)}`},{key:'type'},{key:'status'},{key:'source_page',fmt:(v, r) => (r.source_url.includes('dgs.') ? 'DGS' : 'GMI report') + ', ' + v},{key:'before',n:1,fmt:v => v == null ? '' : M(v)},{key:'after',n:1,fmt:v => v == null ? '' : M(v)},{key:'change',n:1,chg:'lower'},{key:'res',pill:tone}]);
-  [...document.querySelectorAll('#trBody tr')].forEach((tr, i) => { const c = tr.lastChild; if (c && rows[i]) { c.title = rows[i].check_note || ''; tr.children[5].title = '"' + rows[i].source_quote + '"'; } });
-  setText('trStage', `Reported figures: ${d[0].source} (${d[0].source_url}). Payments compare FY${y0 || '—'} with FY${y1 || '—'}, the last selected year with payments and the year before${p.agencies.length ? ', for ' + who(p) : ''}. "Seen" means payments fell by at least half the reported saving; "partly seen" means they fell by less. The focus-area filter does not apply here.`);
+  table('trBody', rows, [{key:'workstream'},{key:'item'},{key:'rep',n:1,fmt:(v, r) => r.reported_low == null ? 'Not quantified' : r.reported_low === r.reported_high ? M(v) : `${M(r.reported_low)}–${M(r.reported_high)}`},{key:'type'},{key:'status'},{key:'source_page',fmt:(v, r) => (r.source_url.includes('dgs.') ? 'DGS' : 'GMI report') + ', ' + v},{key:'before',n:1,fmt:v => v == null ? '' : M(v)},{key:'after',n:1,fmt:v => v == null ? '' : M(v)},{key:'change',n:1,chg:'lower'},{key:'res',pill:tone},{key:'since'}]);
+  setText('trTolNote', seenTxt() + ` (a ${d3.format('.0%')(SEEN_SHARE)} tolerance). The last column says whether each check's result changed since the previous monthly run.`); setText('trResH', `Result (Seen ≥ ${d3.format('.0%')(SEEN_SHARE)})`); document.getElementById('trResH').title = seenTxt();
+  [...document.querySelectorAll('#trBody tr')].forEach((tr, i) => { const c = tr.children[9]; if (c && rows[i]) { c.title = rows[i].check_note || ''; tr.children[5].title = '"' + rows[i].source_quote + '"'; } });
+  setText('trStage', `Reported figures: ${d[0].source} (${d[0].source_url}). Payments compare FY${y0 || '—'} with FY${y1 || '—'}, the last selected year with payments and the year before${p.agencies.length ? ', for ' + who(p) : ''}. ${seenTxt()}. The focus-area filter does not apply here.`);
 }
 
 function drawMoves(){ const m = ok('d_vendor_moves'); if (!m) return;
