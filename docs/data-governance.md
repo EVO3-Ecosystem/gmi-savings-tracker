@@ -151,6 +151,7 @@ Not assumptions, and sourced: the default savings rates (GMI's reported recurrin
 - Raw files: `data/raw/<run_id>/` (Parquet + manifest). Unchanged sources are hard-linked, not copied.
 - Database: the last good `data/md_transparency.duckdb` is kept until a build passes.
 - Run and check history: `data/runs.csv`, `data/check_history.csv` (append-only); uploaded as run evidence by the workflow.
+- Payee-name history: `data/payee_name_seen.csv`, loaded as `ops.payee_name_seen` (one row per payee name: first and last extract run and date seen). Only a build whose stop checks all pass writes it; a rerun of the same extract run moves `last_seen` and adds nothing; a failed build writes nothing. The warn check "New payee names since the last build" lists names no passing build of an earlier extract run has seen (it replaced `data/payee_names.txt`, which every build overwrote, failed or not).
 - Rules, citations and this document: versioned in git.
 - Source schema snapshots: `docs/schemas/catalog_snapshot.json`; changes go to `docs/schemas/drift_history.csv`.
 

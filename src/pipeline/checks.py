@@ -22,6 +22,7 @@ def run(con, run_id, manifest):
         out.append({"run_id": run_id, "layer": layer, "check": name, "severity": severity,
                     "result": "pass" if ok else ("fail" if severity == "stop" else "warn"), "detail": detail})
 
+    check.run_id = run_id
     one = lambda q, *a: con.execute(q, list(a)).fetchone()[0]  # noqa: E731
 
     # raw: what we loaded is what the portal has
@@ -131,12 +132,14 @@ def phase3(con, check, one):
           f"${a25:,.0f} in {codes} spending codes (dashboard ${base['focus_area_fy2025']:,.0f} in {int(base['focus_area_codes'])})")
     miss = one("SELECT count(*) FROM ref.map_focus_area m LEFT JOIN ref.dim_subobject s USING (subobject_code) WHERE s.subobject_code IS NULL")
     check("ref", "Every focus-area code exists in the budget", miss == 0, f"{miss} missing")
-    prev = HIST.parent / "payee_names.txt"
+    # New payee names, against the history kept by passing builds only (data/payee_name_seen.csv; written by record_payees)
+    seen = read_payee_history(HIST.parent)
     now = {r[0] for r in con.execute("SELECT payee FROM ref.map_payee_vendor").fetchall()}
-    old = set(prev.read_text().splitlines()) if prev.exists() else set()
-    new = sorted(now - old) if old else []
-    check("ref", "New payee names since the last build", not new, (f"{len(new)} new: " + "; ".join(new[:8]) + (" ..." if len(new) > 8 else "")) if old else "first build recorded", "warn")
-    prev.write_text("\n".join(sorted(now)))
+    new, baseline = new_payee_names(now, seen, check.run_id)
+    _payee_table(con, seen)
+    check("ref", "New payee names since the last build", not new,
+          "first build recorded" if baseline else (f"{len(new)} new since the last passing build: " + "; ".join(new[:8]) + (" ..." if len(new) > 8 else "")
+                                                     if new else "0 new since the last passing build"), "warn")
     if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'core' AND table_name = 'mfr_measure'"):
         docs, matched = con.execute("SELECT count(*), count(agency_code) FROM ref.map_mfr_agency").fetchone()
         n, ag = con.execute("SELECT count(DISTINCT agency_file || measure), count(DISTINCT agency_file) FROM core.mfr_measure").fetchone()
@@ -350,4 +353,66 @@ def phase5_reference_marts(con, check, one):
         AND p.fiscal_year NOT IN (SELECT fiscal_year FROM mart.stage_evidence)""")
     check("mart", "Every year whose portal stage label differs from the confirmed stage has evidence", unevidenced == 0,
           f"{unevidenced} years where the portal's label and the confirmed stage differ but no evidence is recorded")
+
+
+
+# ---- New-payee-name history (ops.payee_name_seen). Only a build whose stop checks all pass writes it (build.py calls
+# record_payees after checks.run returns True), so a failed build leaves no trace, and a rerun of the same extract run
+# updates last_seen in place: one row per payee name, never a duplicate. "New" = not seen by a passing build of an
+# earlier extract run, so an identical rerun reports the same names as its first passing build did, and none extra.
+PAYEE_HISTORY = "payee_name_seen.csv"
+PAYEE_COLUMNS = ["payee_name", "first_seen_run_id", "first_seen_date", "last_seen_run_id", "last_seen_date"]
+
+
+def _run_date(run_id):
+    try:
+        return dt.datetime.strptime(run_id, "%Y%m%dT%H%M%SZ").date().isoformat()
+    except ValueError:
+        return None
+
+
+def read_payee_history(data):
+    f = Path(data) / PAYEE_HISTORY
+    return pd.read_csv(f, dtype=str, keep_default_na=False) if f.exists() else pd.DataFrame(columns=PAYEE_COLUMNS)
+
+
+def new_payee_names(now, seen, run_id):
+    """(sorted new names, baseline) for this build. baseline is True when no passing build of an earlier extract run is
+    recorded yet: the first build records every name and reports none as new."""
+    earlier = seen[seen.first_seen_run_id != run_id]
+    if earlier.empty:
+        return [], True
+    return sorted(set(now) - set(earlier.payee_name)), False
+
+
+def update_payee_history(seen, now, run_id):
+    """History after a passing build of run_id that saw the names `now` (pure; no file access)."""
+    day = _run_date(run_id)
+    h = seen.copy()
+    hit = h.payee_name.isin(now)
+    h.loc[hit, "last_seen_run_id"] = run_id
+    h.loc[hit, "last_seen_date"] = day
+    add = sorted(set(now) - set(h.payee_name))
+    h = pd.concat([h, pd.DataFrame({"payee_name": add, "first_seen_run_id": run_id, "first_seen_date": day,
+                                    "last_seen_run_id": run_id, "last_seen_date": day}, columns=PAYEE_COLUMNS)], ignore_index=True)
+    return h.sort_values("payee_name", kind="stable").reset_index(drop=True)[PAYEE_COLUMNS]
+
+
+def _payee_table(con, hist):
+    con.execute("CREATE SCHEMA IF NOT EXISTS ops")
+    con.execute("CREATE OR REPLACE TABLE ops.payee_name_seen (" + ", ".join(f"{c} VARCHAR" for c in PAYEE_COLUMNS) + ")")
+    if len(hist):
+        con.register("_ph", hist[PAYEE_COLUMNS].astype(str))
+        con.execute("INSERT INTO ops.payee_name_seen SELECT * FROM _ph")
+        con.unregister("_ph")
+
+
+def record_payees(con, run_id, data):
+    """Call only for a build that passed its stop checks: add new names, move last_seen, write the file and the table."""
+    now = {r[0] for r in con.execute("SELECT payee FROM ref.map_payee_vendor").fetchall()}
+    hist = update_payee_history(read_payee_history(data), now, run_id)
+    Path(data).mkdir(parents=True, exist_ok=True)
+    hist.to_csv(Path(data) / PAYEE_HISTORY, index=False)
+    _payee_table(con, hist)
+    return len(hist)
 

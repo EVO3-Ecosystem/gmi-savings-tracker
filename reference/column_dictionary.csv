@@ -340,3 +340,8 @@ scored,mart.d_forecast_calibration,derived,Rolling-backtest forecasts of actual 
 covered_share,mart.d_forecast_calibration,derived,Share of those forecasts whose actual spending fell inside the published p10 to p90 range
 nominal,mart.d_forecast_calibration,derived,The share the range is meant to cover (0.8 for p10 to p90)
 widen_by,mart.d_forecast_calibration,derived,"Pooled factor by which the ranges would have needed to be wider (around the median, on the log scale) to cover the nominal share in the backtest; 1 is calibrated; measured in-sample on few points, so a size of the problem, not a validated correction"
+payee_name,ops.payee_name_seen,ops,"Payee name exactly as paid (ref.map_payee_vendor.payee), one row per name ever seen by a passing build"
+first_seen_run_id,ops.payee_name_seen,ops,Extract run of the first build that passed its stop checks and saw this payee name
+first_seen_date,ops.payee_name_seen,ops,UTC date of that extract run (YYYY-MM-DD)
+last_seen_run_id,ops.payee_name_seen,ops,Extract run of the latest passing build that saw this payee name
+last_seen_date,ops.payee_name_seen,ops,UTC date of that extract run (YYYY-MM-DD)

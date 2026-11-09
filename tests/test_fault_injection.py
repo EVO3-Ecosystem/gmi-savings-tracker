@@ -51,6 +51,8 @@ def test_damaged_extract_fails_and_keeps_the_last_good_database(faulted, tmp_pat
     assert failed.exists() and not (tmp_path / "md_transparency.building").exists()
     assert not (tmp_path / "savings_status_history.csv").exists()  # a build that fails its checks records no status history
     assert not (tmp_path / "rec_history.csv").exists()
+    assert not (tmp_path / checks.PAYEE_HISTORY).exists()  # nor any payee-name history
+    assert not (tmp_path / "payee_names.txt").exists()
     f = duckdb.connect(str(failed), read_only=True)
     bad = f.execute("""SELECT "check" FROM ops.check_result WHERE result = 'fail'""").fetchall()
     f.close()

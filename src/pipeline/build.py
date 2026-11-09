@@ -126,6 +126,7 @@ def build(run_id):
     if res:
         savings.record(con, run_id, DATA)  # status history only for a build that passed its checks
         recommendations.record(con, run_id, DATA)
+        checks.record_payees(con, run_id, DATA)  # payee-name history (ops.payee_name_seen), likewise
     con.close()
     if res:
         tmp.replace(DB)  # only a database that passes every stop check replaces the last good one
