@@ -1,0 +1,94 @@
+run_id,stage,check,status,detail
+20261102T183034Z,raw,Payments FY2008 match the portal,pass,"19,392 rows, $19,879,214,690"
+20261102T183034Z,raw,Payments FY2009 match the portal,pass,"20,160 rows, $21,332,447,618"
+20261102T183034Z,raw,Payments FY2010 match the portal,pass,"19,841 rows, $21,539,475,153"
+20261102T183034Z,raw,Payments FY2011 match the portal,pass,"20,141 rows, $22,934,297,775"
+20261102T183034Z,raw,Payments FY2012 match the portal,pass,"19,474 rows, $23,161,189,955"
+20261102T183034Z,raw,Payments FY2013 match the portal,pass,"19,732 rows, $23,513,627,924"
+20261102T183034Z,raw,Payments FY2014 match the portal,pass,"19,906 rows, $25,276,062,611"
+20261102T183034Z,raw,Payments FY2015 match the portal,pass,"19,918 rows, $27,191,588,192"
+20261102T183034Z,raw,Payments FY2016 match the portal,pass,"19,537 rows, $27,359,576,439"
+20261102T183034Z,raw,Payments FY2017 match the portal,pass,"19,901 rows, $29,306,316,834"
+20261102T183034Z,raw,Payments FY2018 match the portal,pass,"19,516 rows, $29,596,397,071"
+20261102T183034Z,raw,Payments FY2019 match the portal,pass,"20,067 rows, $30,320,726,618"
+20261102T183034Z,raw,Payments FY2020 match the portal,pass,"21,520 rows, $32,926,283,983"
+20261102T183034Z,raw,Payments FY2021 match the portal,pass,"23,806 rows, $34,670,078,096"
+20261102T183034Z,raw,Payments FY2022 match the portal,pass,"23,979 rows, $36,656,748,838"
+20261102T183034Z,raw,Payments FY2023 match the portal,pass,"22,320 rows, $39,277,722,859"
+20261102T183034Z,raw,Payments FY2024 match the portal,pass,"22,614 rows, $40,390,013,647"
+20261102T183034Z,raw,Payments FY2025 match the portal,pass,"23,221 rows, $43,703,480,470"
+20261102T183034Z,raw,Payments FY2026 match the portal,pass,"23,166 rows, $45,536,152,938"
+20261102T183034Z,raw,Maryland Operating Budget (yu65-jmmv) matches the portal,pass,"741,957 of 741,957 rows across 11 years"
+20261102T183034Z,raw,Maryland Operating Budget - Funding Source (gy87-e27x) matches the portal,pass,"26,178 of 26,178 rows across 11 years"
+20261102T183034Z,raw,State of Maryland Full Time Equivalents (x8qy-486w) matches the portal,pass,"6,026 of 6,026 rows across 11 years"
+20261102T183034Z,raw,State of Maryland Grant and Loan Data (absk-avps) matches the portal,pass,"23,085 of 23,085 rows across 17 years"
+20261102T183034Z,model,Budget stage for every year comes from the Operating Budget site,pass,FY2017 actual; FY2018 actual; FY2019 actual; FY2020 actual; FY2021 actual; FY2022 actual; FY2023 actual; FY2024 actual; FY2025 actual; FY2026 working budget; FY2027 legislative appropriation
+20261102T183034Z,model,Out-of-date stage labels in the budget file corrected,pass,"FY2021: file says working budget, site says actual; FY2022: file says appropriation, site says actual; FY2027: file says governor's allowance, site says legislative appropriation"
+20261102T183034Z,staged,Payments linked to an agency,pass,"99.3% of dollars linked in the weakest year (FY2013), 100.0% in FY2026"
+20261102T183034Z,staged,Agency names mapped across years,pass,"145 payment agency names; 4 unmatched (AID TO UNIVERSITY OF MD MEDICAL SYSTEM, MARYLAND HEALTH INSURANCE PLAN, MARYLAND STATE BOARD OF CONTRACT APPEALS, SECURITY INTEREST FILING FEES)"
+20261102T183034Z,staged,Vendor master list built,pass,"56,585 payee names grouped into 55,943 vendors; 534 company families merged"
+20261102T183034Z,model,Operating budget matches its funding-source totals,pass,largest gap 0.000% across FY2017–FY2027
+20261102T183034Z,model,Controllable spending in a plausible range,pass,FY2025: $4.09B controllable of $60.54B (6.8%)
+20261102T183034Z,model,Staffing joined to agencies,pass,73 of 79 agencies with FY2025 actuals have staffing counts
+20261102T183034Z,cross-check,FY2025 budget matches operatingbudget.maryland.gov,pass,"site $60,541,555,644; gap $0"
+20261102T183034Z,cross-check,FY2026 budget matches operatingbudget.maryland.gov,pass,"site $64,833,251,250; gap $0"
+20261102T183034Z,cross-check,FY2027 budget matches operatingbudget.maryland.gov,pass,"site $65,184,504,124; gap $0"
+20261102T183034Z,cross-check,FY2024 payments match vendorpayments.maryland.gov,pass,"site $40,390,013,647; gap $0"
+20261102T183034Z,cross-check,FY2025 payments match vendorpayments.maryland.gov,pass,"site $43,703,480,470; gap $0"
+20261102T183034Z,cross-check,FY2026 payments match vendorpayments.maryland.gov,pass,"site $45,536,152,938; gap $0"
+20261102T183034Z,model,Focus areas built from spending codes and payee names,pass,FY2025: $1.29B by spending code; $530M found by payee name
+20261102T183034Z,recs,Bid list has shared vendors,pass,30 vendors paid by 10+ agencies
+20261102T183034Z,recs,Every reported savings item has a status,pass,2 of 7 checks seen in payments; 0 changed since last run
+20261102T183034Z,recs,Every reported savings item cites its source and page,pass,"18 items; sources: DBM, Government Modernization Initiative Final Report (Joint Chairmen's Report p. 77), Jan 26, 2026; DGS, Government Modernization: right-sizing State facilities"
+20261102T183034Z,recs,Every vendor on an area page has its own drill-down page,pass,375 vendors
+20261102T183034Z,recs,Named contract types checked against payments,pass,4 contract types named in GMI's report are checked against payments; payments fell for 2 of 4; vendors still unnamed
+20261102T183034Z,recs,Path to $50M adds up,pass,28 steps to $50.2M a year
+20261102T183034Z,recs,Payments match the agency master list,pass,100.00% of FY2026 payments matched
+20261102T183034Z,model,Forecast intervals are ordered and positive,pass,"42 forecast years across 7 spending groups, FY2026-FY2031"
+20261102T183034Z,model,Forecast backtest: Fleet & fuel,pass,"Naive (last actual); FY2023-FY2025 error 22.2% (trend 31.4%, naive 22.2%, drift 23.8%)"
+20261102T183034Z,model,"Forecast backtest: IT hardware, software & services",pass,"Naive (last actual); FY2023-FY2025 error 3.7% (trend 28.9%, naive 3.7%, drift 32.4%)"
+20261102T183034Z,model,Forecast backtest: Other controllable purchases,pass,"Naive (last actual); FY2023-FY2025 error 7.8% (trend 33.1%, naive 7.8%, drift 24.9%)"
+20261102T183034Z,model,"Forecast backtest: Print, copy & mail",pass,"Naive (last actual); FY2023-FY2025 error 8.6% (trend 12.3%, naive 8.6%, drift 12.0%)"
+20261102T183034Z,model,Forecast backtest: Real estate & leases,pass,"Log-linear trend; FY2023-FY2025 error 3.1% (trend 3.1%, naive 4.7%, drift 3.8%)"
+20261102T183034Z,model,Forecast backtest: Telecom,pass,"Naive (last actual); FY2023-FY2025 error 6.7% (trend 13.4%, naive 6.7%, drift 19.1%)"
+20261102T183034Z,model,Forecast backtest: Utilities & facility energy,pass,"Drift (average yearly growth); FY2023-FY2025 error 8.9% (trend 16.5%, naive 11.4%, drift 8.9%)"
+20261102T183034Z,publish,Opportunity detectors produced findings,pass,"453 findings, likely total $258M (range $128M-$388M)"
+20261102T183034Z,publish,Every savings check has FY2025 and FY2026 payments,pass,12 payment checks for 18 reported items
+20261102T183034Z,publish,Functions by agency add up to the statewide budget,pass,largest gap $0 across 11 years
+20261102T183034Z,publish,Funds by agency add up to the funding-source totals,pass,largest gap $0 across 11 years
+20261102T183034Z,publish,Controllable purchases agree across tables,pass,largest gap $0 across 11 years
+20261102T183034Z,publish,Focus areas by agency add up to the statewide areas,pass,largest gap $0 across 20 years
+20261102T183034Z,publish,Spending codes add up to the focus areas,pass,largest gap $0 across 11 years
+20261102T183034Z,publish,Payee-name spending linked to agencies,pass,100.00% of payee-name focus spending has an agency
+20261102T183034Z,cross-check,FY2021 matches DBM's published actuals,pass,"147 of 210 programs match to the dollar; FY2023 Governor's budget, Volume 2 (column ""2021 Actual"")"
+20261102T183034Z,cross-check,FY2022 matches DBM's published actuals,pass,"163 of 203 programs match to the dollar; FY2024 Governor's budget, Volume 2 (column ""2022 Actual"")"
+20261102T183034Z,publish,Year-over-year measures computed,pass,14 measures across 10 tables; agency FY2027 rows: 80
+20261102T183034Z,publish,Published tables have no duplicate rows,pass,"37 tables, 55,062 rows"
+20261102T183034Z,page,Dashboard: default (all actual years),pass,"9 years, total $441.8B"
+20261102T183034Z,page,"Dashboard: opportunities, one agency and area",pass,"9 years, total $155.1B"
+20261102T183034Z,page,"Dashboard: savings check, one agency",pass,0 years
+20261102T183034Z,page,"Dashboard: savings check, budgets only",pass,"2 years, total $130.0B"
+20261102T183034Z,page,Dashboard: one year,pass,"1 years, total $60.5B"
+20261102T183034Z,page,Dashboard: first actual year,pass,"1 years, total $37.7B"
+20261102T183034Z,page,Dashboard: back-to-back years,pass,"3 years, total $178.8B"
+20261102T183034Z,page,Dashboard: scattered years,pass,"3 years, total $147.8B"
+20261102T183034Z,page,Dashboard: budget years,pass,"2 years, total $130.0B"
+20261102T183034Z,page,Dashboard: working budget only,pass,"1 years, total $64.8B"
+20261102T183034Z,page,Dashboard: actual and budgets,pass,"11 years, total $571.8B"
+20261102T183034Z,page,"Dashboard: actual and budgets, mixed pick",pass,"3 years, total $190.6B"
+20261102T183034Z,page,Dashboard: one area,pass,"9 years, total $441.8B"
+20261102T183034Z,page,"Dashboard: two areas, one year",pass,"1 years, total $60.5B"
+20261102T183034Z,page,Dashboard: one agency,pass,"9 years, total $155.1B"
+20261102T183034Z,page,"Dashboard: three agencies, two years",pass,"2 years, total $77.1B"
+20261102T183034Z,page,Dashboard: agency + area + year,pass,"1 years, total $22.4B"
+20261102T183034Z,page,Dashboard: FY2026 payments under actual,pass,0 years
+20261102T183034Z,page,Dashboard: invalid values are dropped,pass,"invalid year, area, agency and spending type removed; notice shown"
+20261102T183034Z,page,Dashboard: old single-value params,pass,single values converted to lists
+20261102T183034Z,page,Dashboard: detail: controllable,pass,"1 years, total $60.5B"
+20261102T183034Z,page,Dashboard: detail: area page,pass,"2 years, total $119.7B"
+20261102T183034Z,page,"Dashboard: detail: all areas, budgets",pass,"2 years, total $130.0B"
+20261102T183034Z,page,Dashboard: detail: agency page,pass,"9 years, total $441.8B"
+20261102T183034Z,page,Dashboard: detail: payments by area,pass,"9 years, total $441.8B"
+20261102T183034Z,page,Dashboard: detail: funds,pass,"2 years, total $92.2B"
+20261102T183034Z,page,Dashboard: opportunity pages,pass,"9 years, total $441.8B"
+20261102T183034Z,page,Dashboard: calculator source pages,pass,"9 years, total $441.8B"

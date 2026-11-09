@@ -1,0 +1,20 @@
+{
+  "description": "GMI's current pace from the forecast, then statewide contracts for the largest shared vendors at 3.5%, added until savings reach $50M a year.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_plan50.csv",
+    "url": "/_blob/41bbd0786c29da95bcb68580e7419026"
+  },
+  "staleAfterHours": 1500,
+  "title": "Path to $50M",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

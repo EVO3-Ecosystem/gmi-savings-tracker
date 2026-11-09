@@ -1,0 +1,87 @@
+agency_code,agency,in_budget,payment_names,how_matched
+A15,Payments to Civil Divisions of the State,True,4,agency code in payments; manual rename
+C80,Office of the Public Defender,True,1,agency code in payments
+C81,Office of the Attorney General,True,1,agency code in payments
+C82,Office of the State Prosecutor,True,1,agency code in payments
+C85,Maryland Tax Court,True,1,agency code in payments
+C90,Public Service Commission,True,1,agency code in payments
+C91,Office of People's Counsel,True,1,agency code in payments
+C94,Subsequent Injury Fund,True,2,agency code in payments; manual rename
+C96,Uninsured Employers' Fund,True,1,agency code in payments
+C98,Workers' Compensation Commission,True,1,agency code in payments
+CAPITAL,"Capital projects (capital budget, not in the operating budget)",False,25,capital budget account
+D05,Board of Public Works,True,1,agency code in payments
+D10,Executive Department - Governor,True,1,agency code in payments
+D11,Office of the Deaf and Hard of Hearing,True,1,agency code in payments
+D12,Department of Disabilities,True,1,agency code in payments
+D13,Maryland Energy Administration,True,2,agency code in payments; manual rename
+D15,"Executive Department-Boards, Commissions and Offices",True,1,agency code in payments
+D16,Secretary of State,True,1,agency code in payments
+D17,Historic St. Mary's City Commission,True,1,agency code in payments
+D18,Governor's Office for Children,True,1,agency code in payments
+D21,Governor's Office of Crime Prevention and Policy,True,2,agency code in payments
+D22,Maryland Commission on African American History and Culture,True,1,agency code in payments
+D23,Maryland Cannabis Administration,True,1,agency code in payments
+D24,Department of Social and Economic Mobility,True,1,agency code in payments
+D25,Interagency Commission On School Construction,True,2,agency code in payments; manual rename
+D26,Department of Aging,True,2,agency code in payments; manual rename
+D27,Maryland Commission On Civil Rights,True,2,agency code in payments; manual rename
+D28,Maryland Stadium Authority,True,1,agency code in payments
+D29,Maryland Thoroughbred Racetrack Operating Authority,True,1,agency code in payments
+D30,MARYLAND FOOD CENTER AUTHORITY,False,1,agency code in payments
+D38,State Board of Elections,True,1,agency code in payments
+D40,Department of Planning,True,2,agency code in payments; manual rename
+D50,Military Department,True,1,agency code in payments
+D52,Maryland Department of Emergency Management,True,1,agency code in payments
+D53,Maryland Institute for Emergency Medical Services Systems,True,1,agency code in payments
+D55,Department of Veterans and Military Families,True,3,agency code in payments; closest name (MARYLAND DEPARTMENT OF VETERANS AFFAIRS)
+D60,State Archives,True,1,agency code in payments
+D73,Office of the Inspector General for Education,True,1,agency code in payments
+D74,Office of the Correctional Ombudsman,True,1,agency code in payments
+D77,Prescription Drug Affordability Board,True,1,agency code in payments
+D78,Maryland Health Benefit Exchange,True,1,agency code in payments
+D80,Maryland Insurance Administration,True,1,agency code in payments
+D90,Canal Place Preservation and Development Authority,True,1,agency code in payments
+D91,West North Avenue Development Authority,True,1,agency code in payments
+D99,Office of Administrative Hearings,True,1,agency code in payments
+E00,Comptroller of Maryland,True,1,agency code in payments
+E17,"Alcohol, Tobacco, and Cannabis Commission",True,2,agency code in payments
+E20,State Treasurer's Office,True,1,agency code in payments
+E50,State Department of Assessments and Taxation,True,1,agency code in payments
+E75,Maryland Lottery and Gaming Control Agency,True,2,agency code in payments
+E80,Property Tax Assessment Appeals Boards,True,1,agency code in payments
+E90,REGISTERS OF WILLS,False,1,agency code in payments
+F10,Department of Budget and Management,True,1,agency code in payments
+F50,Department of Information Technology,True,1,agency code in payments
+G20,Maryland State Retirement and Pension Systems,True,1,agency code in payments
+G50,Maryland State Employees Supplemental Retirement Plans,True,1,agency code in payments
+H00,Department of General Services,True,1,agency code in payments
+I00,Department of Service and Civic Innovation,True,1,agency code in payments
+J00,Department of Transportation,True,6,agency code in payments
+J11,MARYLAND TRANSPORTATION AUTHORITY,False,1,agency code in payments
+K00,Department of Natural Resources,True,1,agency code in payments
+L00,Department of Agriculture,True,2,agency code in payments
+M00,Maryland Department of Health,True,4,agency code in payments; manual rename
+N00,Department of Human Services,True,3,agency code in payments; manual rename
+P00,Maryland Department of Labor,True,3,agency code in payments; manual rename
+Q00,Department of Public Safety and Correctional Services,True,1,agency code in payments
+R00,State Department of Education,True,2,agency code in payments
+R11,Maryland State Library Agency,True,1,agency code in payments
+R12,Accountability and Implementation Board,True,1,agency code in payments
+R15,Maryland Public Broadcasting Commission,True,1,agency code in payments
+R37,UNIVERSITIES AT SHADY GROVE,False,1,agency code in payments
+R60,COLLEGE SAVINGS PLANS OF MARYLAND,False,1,agency code in payments
+R62,Maryland Higher Education Commission,True,1,agency code in payments
+R95,BALTIMORE CITY COMMUNITY COLLEGE,False,1,agency code in payments
+R99,Maryland School for the Deaf,True,1,agency code in payments
+S00,Department of Housing and Community Development,True,1,agency code in payments
+S50,Maryland African American Museum Corporation,True,1,agency code in payments
+T00,Department of Commerce,True,3,agency code in payments; manual rename
+T50,Maryland Technology Development Corporation,True,1,agency code in payments
+U00,Department of the Environment,True,1,agency code in payments
+U10,Maryland Environmental Service,False,2,agency code in payments; manual rename
+V00,Department of Juvenile Services,True,2,agency code in payments
+W00,Department of State Police,True,1,agency code in payments
+X00,Public Debt,True,1,agency code in payments
+Y01,State Reserve Fund,True,1,agency code in payments
+,,False,4,unmatched

@@ -1,0 +1,6 @@
+source,dataset_id,title,use,portal_name,portal_updated,rows_portal,rows_downloaded,years,reconciled
+payments,7syw-q4cy,State of Maryland Payments Data,"All payments by state agencies to businesses, local governments, non-profits and individuals, by agency and payee, per fiscal year (portal description)",State of Maryland Payments Data: FY2008 to FY2024,2026-10-07,398211,398211,FY2008–FY2026,True
+budget,yu65-jmmv,Maryland Operating Budget,"Operating budget and actuals by agency, program and Comptroller spending code",Maryland Operating Budget (current),2026-08-10,741957,741957,FY2017–FY2027,True
+fund,gy87-e27x,Maryland Operating Budget - Funding Source,Operating budget by fund type and fund source,Maryland Operating Budget - Funding Source,2026-08-10,26178,26178,FY2017–FY2027,True
+fte,x8qy-486w,State of Maryland Full Time Equivalents,Budgeted full-time-equivalent positions by agency and program,State of Maryland Full Time Equivalents,2026-08-10,6026,6026,FY2017–FY2027,True
+grants,absk-avps,State of Maryland Grant and Loan Data,"State aid grants (from FY2009) and loans (from FY2010) to for-profit and non-profit entities; the portal says $50,000 or more, but some rows are smaller",State of Maryland Grant and Loan Data: FY2009 to FY2025,2026-10-09,23085,23085,FY2009–FY2025,True

@@ -1,0 +1,20 @@
+{
+  "description": "Payments to each listed vendor by paying agency and fiscal year, FY2022\u2013FY2026. Feeds the vendor pages.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "f_vendor_pay.csv",
+    "url": "/_blob/23de7d2102d9f161215c2d61842f2ef8"
+  },
+  "staleAfterHours": 1500,
+  "title": "Listed vendors by agency and year",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

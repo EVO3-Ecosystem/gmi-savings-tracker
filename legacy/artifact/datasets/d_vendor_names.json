@@ -1,0 +1,20 @@
+{
+  "description": "Payments by agency and fiscal year, FY2022\u2013FY2026, for every bid-list, leverage and focus-area vendor, and the payee names merged into each. Feeds each vendor's page.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_vendor_names.csv",
+    "url": "/_blob/3e9b11828a3207ada79d6a9842381a41"
+  },
+  "staleAfterHours": 1500,
+  "title": "Payee names merged into each shared vendor",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

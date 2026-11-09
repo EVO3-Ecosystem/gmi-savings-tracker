@@ -1,0 +1,20 @@
+{
+  "description": "For each focus area and fiscal year, FY2008\u2013FY2026: private vendors, spend, top-five share and the Herfindahl-Hirschman Index (2023 DOJ/FTC Merger Guidelines threshold 1,800).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "f_concentration.csv",
+    "url": "/_blob/0575104f845fab5429353c80b13ae8f5"
+  },
+  "staleAfterHours": 1500,
+  "title": "Concentration by focus area",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}
