@@ -47,7 +47,7 @@ def sources(con, man):
         d = by[key]
         lo, hi = _row(con, f"SELECT min(CAST({cfg[key]['year_col']} AS INTEGER)), max(CAST({cfg[key]['year_col']} AS INTEGER)) FROM raw.{key}")
         title, use = SOURCES[key]
-        rows.append({"source": key, "dataset_id": d["id"], "title": title, "use": use, "portal_name": title,
+        rows.append({"source": key, "dataset_id": d["id"], "title": title, "use": use, "portal_name": d.get("portal_name") or cfg[key].get("portal_name", ""),
                      "portal_updated": str(d.get("rowsUpdatedAt_utc", ""))[:10], "rows_portal": d["portal_count"], "rows_downloaded": d["rows"],
                      "years": f"FY{lo}-FY{hi}", "reconciled": int(bool(d["match"]))})
     return pd.DataFrame(rows)

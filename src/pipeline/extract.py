@@ -66,7 +66,7 @@ def portal_facts(c, fid, spec):
     y, s = spec["year_col"], spec["sum_col"]
     tot = call(lambda: c.get(fid, select=f"{y} as fiscal_year, sum({s}) as total, count(*) as rows", group=y, order=y, limit=1000), f"{fid} totals")
     totals = [{"fiscal_year": int(float(r["fiscal_year"])), "total": float(r.get("total") or 0), "rows": int(r["rows"])} for r in tot if r.get("fiscal_year") is not None]
-    return meta.get("rowsUpdatedAt"), n, totals
+    return meta.get("rowsUpdatedAt"), n, totals, meta.get("name")
 
 
 def download(c, fid, path):
@@ -113,7 +113,7 @@ def run(force=False):
     entries, t_run = [], time.time()
     for name, spec in CFG["datasets"].items():
         fid, t = spec["id"], time.time()
-        updated, expect, totals = portal_facts(c, fid, spec)
+        updated, expect, totals, pname = portal_facts(c, fid, spec)
         dest = out / f"{name}.parquet"
         p = prev_by.get(name)
         fresh = (not force) and p and p.get("rowsUpdatedAt") == updated and p.get("match") and (RAW / prev_id / f"{name}.parquet").exists()
@@ -136,8 +136,8 @@ def run(force=False):
             download(c, fid, dest)
             n = parquet_rows(dest)
             source = f"re-downloaded ({heals})"
-            updated, expect, totals = portal_facts(c, fid, spec)  # the portal may have updated mid-run
-        e = {"dataset": name, "id": fid, "rows": n, "portal_count": expect, "match": n == expect, "rowsUpdatedAt": updated,
+            updated, expect, totals, pname = portal_facts(c, fid, spec)  # the portal may have updated mid-run
+        e = {"dataset": name, "id": fid, "rows": n, "portal_count": expect, "match": n == expect, "rowsUpdatedAt": updated, "portal_name": pname,
              "rowsUpdatedAt_utc": dt.datetime.fromtimestamp(updated, dt.timezone.utc).isoformat() if updated else None,
              "source": source, "heal_attempts": heals, "secs": round(time.time() - t, 1), "portal_totals": totals}
         entries.append(e)

@@ -1,19 +1,21 @@
 file,status,keys,legacy_rows,export_rows,matched_keys,keys_only_legacy,keys_only_export,duplicate_keys,columns_only_legacy,columns_only_export,cells_compared,cells_differing,columns_differing,max_abs_diff,max_abs_diff_column,aspects,uncovered,covered_by
-agency_master,difference to explain,agency_code,86,86,86,0,0,0,,,344,26,agency (8); payment_names (3); how_matched (15),2.0,payment_names,cells:agency; cells:how_matched; cells:payment_names,cells:agency,
+agency_master,difference explained,agency_code,86,86,86,0,0,0,,,344,19,agency (1); payment_names (3); how_matched (15),2.0,payment_names,cells:agency; cells:how_matched; cells:payment_names,,
 d_agency,equivalent,agency_code,82,82,82,0,0,0,,,82,0,,,,,,
+d_all_funds,no legacy counterpart,,,,,,,,,,,,,,,,,
 d_area_top,no legacy counterpart,,,,,,,,,,,,,,,,,page tests only (Vendors tab table; no total check of its own): gap
-d_bid_list,equivalent,vendor,30,30,30,0,0,0,,,210,0,,,,,,
+d_bid_list,difference explained,vendor,30,30,30,0,0,0,,,210,56,rank (2); fy2025 (10); fy2026 (11); agencies (11); low (11); high (11),667736.38,fy2026,cells:agencies; cells:fy2025; cells:fy2026; cells:high; cells:low; cells:rank,,
+d_deflator,no legacy counterpart,,,,,,,,,,,,,,,,,
 d_families,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Vendors tab: every company listed has two or more payee names'; vendor_families parity (this gate); page tests
 d_forecast_model,difference explained,area,7,7,7,0,0,0,,,77,2,method (1); backtest_mape (1),0.02512,backtest_mape,cells:backtest_mape; cells:method,,
-d_master_quality,difference explained,measure,5,5,5,0,0,0,,,10,3,value (3),,,cells:value,,
+d_master_quality,difference explained,measure,5,5,5,0,0,0,,,10,4,value (4),,,cells:value,,
 d_multi,no legacy counterpart,,,,,,,,,,,,,,,,,build checks 'Vendors tab: every multi-agency vendor is paid by 15+ agencies' and '15+ agency count on both bases (FY2026)'; page tests
 d_multi_basis,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Vendors tab: 15+ agency count on both bases (FY2026)'; page tests
-d_opps,difference explained,detector+agency_code+area+spending_code,453,396,326,127,70,0,,,2282,321,opp_id (321),,,cells:opp_id; rows_only_export; rows_only_legacy,,
-d_plan50,difference explained,step,28,28,28,0,0,0,,"low, high",140,0,,,,column_only_export:high; column_only_export:low,,
-d_rec_status,difference explained,rec,6,6,6,0,0,0,,,30,9,status (1); progress (2); previous (6),,,cells:previous; cells:progress; cells:status,,
+d_opps,difference explained,detector+agency_code+area+spending_code,453,396,325,128,71,0,,,2275,390,opp_id (320); baseline (14); low (14); high (14); evidence (14); likely (14),1082275.0,baseline,cells:baseline; cells:evidence; cells:high; cells:likely; cells:low; cells:opp_id; rows_only_export; rows_only_legacy,,
+d_plan50,difference explained,step,28,28,28,0,0,0,,"low, high",140,51,action (2); basis (11); saving (11); cumulative (27),38323.83,cumulative,cells:action; cells:basis; cells:cumulative; cells:saving; column_only_export:high; column_only_export:low,,
+d_rec_status,difference explained,rec,6,6,6,0,0,0,,,30,6,status (1); progress (3); previous (2),,,cells:previous; cells:progress; cells:status,,
 d_savings,equivalent,saving_id,18,18,18,0,0,0,,,234,0,,,,,,
-d_savings_status,difference explained,check_id,12,12,12,0,0,0,,,84,12,previous_status (12),,,cells:previous_status,,
-d_vendor_moves,equivalent,vendor,40,40,40,0,0,0,,,200,0,,,,,,
+d_savings_status,equivalent,check_id,12,12,12,0,0,0,,,84,0,,,,,,
+d_vendor_moves,difference explained,vendor,40,40,39,1,1,0,,,195,23,fy2024 (5); fy2025 (3); fy2026 (6); change (6); agencies (3),688785.78,fy2024,cells:agencies; cells:change; cells:fy2024; cells:fy2025; cells:fy2026; rows_only_export; rows_only_legacy,,
 d_vendor_names,equivalent,vendor+payee_name,267,267,267,0,0,0,,,267,0,,,,,,
 d_vendors,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Vendors tab: vendor pages add up to the vendor list (FY2026)'; build check 'Every vendor has a payee type'; page tests
 f_agency,difference explained,agency_code+fiscal_year,795,795,795,0,0,0,,,4770,2,payments (2),256759.22,payments,cells:payments,,
@@ -33,13 +35,13 @@ f_program,no legacy counterpart,,,,,,,,,,,,,,,,,"build check 'Where it's going =
 f_savings_check,difference explained,check_id+fiscal_year+agency_code,1400,1625,1400,0,225,0,,,1400,0,,,,rows_only_export,,
 f_scope,equivalent,fiscal_year+agency_code+scope,2484,2484,2484,0,0,0,,,4968,0,,,,,,
 f_vendor,equivalent,fiscal_year+agency_code+area+vendor,4940,4940,4940,0,0,0,,,4940,0,,,,,,
-f_vendor_detail,difference explained,vendor+agency_code+fiscal_year,6292,7260,6292,0,968,0,,,6292,0,,,,rows_only_export,,
+f_vendor_detail,equivalent,vendor+agency_code+fiscal_year,6292,6292,6292,0,0,0,,,6292,0,,,,,,
 f_vendor_pay,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Vendors tab: vendor pages add up to the vendor list (FY2026)'; page tests
 f_vendor_year,no legacy counterpart,,,,,,,,,,,,,,,,,page tests only (loaded by the page; no total check of its own): gap
 measures,equivalent,table+measure,14,14,14,0,0,0,,,42,0,,,,,,
-pipeline_runs,difference explained,run_id,35,4,0,35,4,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
-run_checks,difference explained,run_id+stage+check,93,80,0,93,80,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
-sources,difference to explain,source,5,5,5,0,0,0,,,45,10,portal_name (3); rows_portal (1); rows_downloaded (1); years (5),13020.0,rows_portal,cells:portal_name; cells:rows_downloaded; cells:rows_portal; cells:years,cells:portal_name,
+pipeline_runs,difference explained,run_id,35,5,0,35,5,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
+run_checks,difference explained,run_id+stage+check,93,90,0,93,90,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
+sources,difference explained,source,5,6,5,0,1,0,,,45,7,rows_portal (1); rows_downloaded (1); years (5),13020.0,rows_portal,cells:rows_downloaded; cells:rows_portal; cells:years; rows_only_export,,
 stage_evidence,equivalent,fiscal_year+evidence_url,4,4,4,0,0,0,,,32,0,,,,,,
 totals_by_fy,difference explained,fiscal_year,19,19,19,0,0,0,,,114,5,agencies (2); vendors (3),1.0,agencies,cells:agencies; cells:vendors,,
 vendor_families,difference explained,family,130,130,129,1,1,0,,,387,0,,,,rows_only_export; rows_only_legacy,,

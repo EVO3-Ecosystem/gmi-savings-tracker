@@ -4,16 +4,16 @@ page_size: 20000        # 50,000-row pages drop mid-download without an app toke
 retries: 6              # per page, with exponential backoff
 backoff_seconds: 5
 heal_attempts: 2        # re-download a dataset whose row count does not match the portal
-datasets:
-  budget:   {id: yu65-jmmv, year_col: fiscal_year, sum_col: budget}
-  fund:     {id: gy87-e27x, year_col: fiscal_year, sum_col: budget}
-  fte:      {id: x8qy-486w, year_col: fiscal_year, sum_col: count}
-  payments: {id: 7syw-q4cy, year_col: fiscal_year, sum_col: amount}
-  grants:   {id: absk-avps, year_col: fiscalyear,  sum_col: amount}
+datasets:   # portal_name: the title as published on the portal (checked 2026-11-09); the extract also records the live title
+  budget:   {id: yu65-jmmv, year_col: fiscal_year, sum_col: budget, portal_name: "Maryland Operating Budget (current)"}
+  fund:     {id: gy87-e27x, year_col: fiscal_year, sum_col: budget, portal_name: "Maryland Operating Budget - Funding Source"}
+  fte:      {id: x8qy-486w, year_col: fiscal_year, sum_col: count, portal_name: "State of Maryland Full Time Equivalents"}
+  payments: {id: 7syw-q4cy, year_col: fiscal_year, sum_col: amount, portal_name: "State of Maryland Payments Data: FY2008 to FY2024"}
+  grants:   {id: absk-avps, year_col: fiscalyear,  sum_col: amount, portal_name: "State of Maryland Grant and Loan Data: FY2009 to FY2025"}
   # Public higher education (CUR and CR funds): R13 Morgan State, R14 St. Mary's College, R30 University System of Maryland,
   # R95 Baltimore City Community College. None of these agencies is in yu65-jmmv. Loaded as raw.highered / core.fact_budget_highered,
   # shown only in all-funds totals labeled "including public higher education", never in a GMI savings baseline.
-  highered: {id: 4mca-332u, year_col: fiscal_year, sum_col: budget}
+  highered: {id: 4mca-332u, year_col: fiscal_year, sum_col: budget, portal_name: "Maryland Operating Budget: CUR and CR"}
 
 # Second copy of each dataset: the Maryland Transparency Portal's own downloads (mtp.maryland.gov/#!/view-data,
 # "Data ... as displayed on this website"). reconcile.py compares them with the API extract, year by year.

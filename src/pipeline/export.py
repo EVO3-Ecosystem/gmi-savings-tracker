@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 EXP = ROOT / "data" / "export"
 RATIO = ("_yoy", "_rate", "_mape", "_share", "growth", "share")
 # Payment columns held back for a partial payments year until the page labels partial years (config: hold_partial_payments)
-PARTIAL = {"totals_by_fy": "drop", "f_vendor": "drop", "f_payee_type": "drop", "f_vendor_year": "drop", "f_area": ["payee_spend"], "f_agency": ["payments"]}
+PARTIAL = {"totals_by_fy": "drop", "f_vendor": "drop", "f_payee_type": "drop", "f_vendor_year": "drop", "f_vendor_detail": "drop", "f_area": ["payee_spend"], "f_agency": ["payments"]}
 
 
 def _round(df):
