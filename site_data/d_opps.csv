@@ -20,7 +20,7 @@ O018,Peer gap,M00,Maryland Department of Health,,"Medicine, Drugs and Chemicals 
 O019,Growth above trend,D38,State Board of Elections,,Outside Services-Consulting Services (872),16485606.0,1356570.0,4069709.0,grew +449% over FY2022-FY2025 vs -3% statewide,2713140.0
 O020,Growth above trend,N00,Department of Human Services,"IT hardware, software & services",Software Licenses (858),20306897.0,1202069.0,3606207.0,grew +481% over FY2022-FY2025 vs +137% statewide,2404138.0
 O021,Peer gap,J00,Department of Transportation,,Other Supplies and Materials (999),36100967.0,1083029.0,3610097.0,"$3,309 per position vs $411 at the 75th percentile of 33 agencies (median $166); agencies differ in mission, so only 5-15% of the excess is counted",2346563.0
-O022,Leverage,,Statewide,,Carroll Independent Fuel,65588019.0,1311760.0,3279401.0,paid by 50 agencies separately in FY2026,2295581.0
+O022,Leverage,,Statewide,,Carroll Independent Fuel,65562427.0,1311249.0,3278121.0,paid by 49 agencies separately in FY2026,2294685.0
 O023,Peer gap,J00,Department of Transportation,"IT hardware, software & services",Systems Software (Maintenance) (864),36431462.0,1092944.0,3341139.0,"$3,339 per position vs $1,298 at the 75th percentile of 31 agencies (median $531); agencies differ in mission, so only 5-15% of the excess is counted",2217042.0
 O024,Peer gap,Q00,Department of Public Safety and Correctional Services,,Other Supplies and Materials (999),34013015.0,1020390.0,3401302.0,"$3,690 per position vs $411 at the 75th percentile of 33 agencies (median $166); agencies differ in mission, so only 5-15% of the excess is counted",2210846.0
 O025,Peer gap,J00,Department of Transportation,Utilities & facility energy,Utilities - Electricity (620),37194815.0,1071327.0,3213980.0,"$3,409 per position vs $1,445 at the 75th percentile of 30 agencies (median $702); agencies differ in mission, so only 5-15% of the excess is counted",2142653.0
@@ -28,26 +28,26 @@ O026,Growth above trend,Q00,Department of Public Safety and Correctional Service
 O027,Leverage,,Statewide,,Carahsoft,57400435.0,1148009.0,2870022.0,paid by 38 agencies separately in FY2026,2009015.0
 O028,Leverage,,Statewide,,Motorola Solutions,54549028.0,1090981.0,2727451.0,paid by 10 agencies separately in FY2026,1909216.0
 O029,Peer gap,R00,State Department of Education,,Outside Services-Other (873),28960349.0,868810.0,2896035.0,"$20,776 per position vs $1,878 at the 75th percentile of 28 agencies (median $450); agencies differ in mission, so only 5-15% of the excess is counted",1882423.0
-O030,Leverage,,Statewide,,Wgl Energy Services,52686513.0,1053730.0,2634326.0,paid by 17 agencies separately in FY2026,1844028.0
-O031,Leverage,,Statewide,,Shi International,52558360.0,1051167.0,2627918.0,paid by 40 agencies separately in FY2026,1839543.0
+O030,Leverage,,Statewide,,Shi International,52457136.0,1049143.0,2622857.0,paid by 39 agencies separately in FY2026,1836000.0
+O031,Leverage,,Statewide,,Wgl Energy Services,52018777.0,1040376.0,2600939.0,paid by 16 agencies separately in FY2026,1820657.0
 O032,Peer gap,J00,Department of Transportation,"IT hardware, software & services",Data Proc Other Contractual Services-DP (898),39721509.0,890687.0,2672062.0,"$3,641 per position vs $2,008 at the 75th percentile of 15 agencies (median $490); agencies differ in mission, so only 5-15% of the excess is counted",1781375.0
 O033,Growth above trend,B75,Legislative Branch,,Other Contractual Services-Non DP (899),17239962.0,873284.0,2619852.0,grew +76% over FY2022-FY2025 vs -13% statewide,1746568.0
 O034,Peer gap,M00,Maryland Department of Health,,Other Contractual Services-Non DP (899),186089049.0,865065.0,2595194.0,"$18,485 per position vs $16,767 at the 75th percentile of 40 agencies (median $4,587); agencies differ in mission, so only 5-15% of the excess is counted",1730130.0
-O035,Leverage,,Statewide,,Baltimore Gas & Electric,44175716.0,883514.0,2208786.0,paid by 30 agencies separately in FY2026,1546150.0
-O036,Leverage,,Statewide,,Associated Catholic Charities,43965780.0,879316.0,2198289.0,paid by 11 agencies separately in FY2026,1538802.0
-O037,Leverage,,Statewide,,Applied Technology Services,43245118.0,864902.0,2162256.0,paid by 35 agencies separately in FY2026,1513579.0
+O035,Leverage,,Statewide,,Associated Catholic Charities,43860212.0,877204.0,2193011.0,paid by 10 agencies separately in FY2026,1535107.0
+O036,Leverage,,Statewide,,Applied Technology Services,43161796.0,863236.0,2158090.0,paid by 34 agencies separately in FY2026,1510663.0
+O037,Leverage,,Statewide,,Baltimore Gas & Electric,43093441.0,861869.0,2154672.0,paid by 29 agencies separately in FY2026,1508270.0
 O038,Peer gap,E75,Maryland Lottery and Gaming Control Agency,,Advertising and Legal Publication (801),18716136.0,561484.0,1871614.0,"$51,404 per position vs $403 at the 75th percentile of 35 agencies (median $79); agencies differ in mission, so only 5-15% of the excess is counted",1216549.0
 O039,Peer gap,K00,Department of Natural Resources,,Management Studies and Consultants (821),17597769.0,527933.0,1759777.0,"$11,724 per position vs $2,841 at the 75th percentile of 24 agencies (median $660); agencies differ in mission, so only 5-15% of the excess is counted",1143855.0
-O040,Leverage,,Statewide,,Verizon,32345428.0,646909.0,1617271.0,paid by 57 agencies separately in FY2026,1132090.0
+O040,Leverage,,Statewide,,Verizon,32343979.0,646880.0,1617199.0,paid by 56 agencies separately in FY2026,1132039.0
 O041,Peer gap,N00,Department of Human Services,"IT hardware, software & services",Outside Services Computer Usage (869),16969424.0,509083.0,1696942.0,"$2,838 per position vs $191 at the 75th percentile of 8 agencies (median $18); agencies differ in mission, so only 5-15% of the excess is counted",1103013.0
 O042,Growth above trend,M00,Maryland Department of Health,"IT hardware, software & services",Systems Software (Maintenance) (864),12535353.0,544334.0,1633002.0,grew +192% over FY2022-FY2025 vs +65% statewide,1088668.0
-O043,Tail spend,,Statewide,"IT hardware, software & services",45 smaller vendors,16355692.0,490671.0,1635569.0,$16.4M paid to vendors outside the ten largest in FY2026,1063120.0
+O043,Tail spend,,Statewide,"IT hardware, software & services",44 smaller vendors,16005330.0,480160.0,1600533.0,$16.0M paid to vendors outside the ten largest in FY2026,1040346.0
 O044,Leverage,,Statewide,,Strategic Communications,29322687.0,586454.0,1466134.0,paid by 19 agencies separately in FY2026,1026294.0
 O045,Peer gap,F10,Department of Budget and Management,,Management Studies and Consultants (821),15371875.0,461156.0,1537188.0,"$46,162 per position vs $2,841 at the 75th percentile of 24 agencies (median $660); agencies differ in mission, so only 5-15% of the excess is counted",999172.0
 O046,Leverage,,Statewide,,Skyline Technology Solutions,27744253.0,554885.0,1387213.0,paid by 18 agencies separately in FY2026,971049.0
 O047,Growth above trend,J00,Department of Transportation,,Ground Maintenance (814),12647902.0,474497.0,1423491.0,grew +57% over FY2022-FY2025 vs -2% statewide,948994.0
-O048,Leverage,,Statewide,,Element Fleet,26598318.0,531966.0,1329916.0,paid by 50 agencies separately in FY2026,930941.0
-O049,Growth above trend,R00,State Department of Education,"IT hardware, software & services",Data Proc Other Contractual Services-DP (898),6437341.0,464658.0,1393975.0,grew +283% over FY2022-FY2025 vs +7% statewide,929316.0
+O048,Growth above trend,R00,State Department of Education,"IT hardware, software & services",Data Proc Other Contractual Services-DP (898),6437341.0,464658.0,1393975.0,grew +283% over FY2022-FY2025 vs +7% statewide,929316.0
+O049,Leverage,,Statewide,,Element Fleet,26540002.0,530800.0,1327000.0,paid by 49 agencies separately in FY2026,928900.0
 O050,Peer gap,M00,Maryland Department of Health,,Laboratory (906),13633786.0,409014.0,1363379.0,"$1,354 per position vs $364 at the 75th percentile of 12 agencies (median $77); agencies differ in mission, so only 5-15% of the excess is counted",886196.0
 O051,Peer gap,F50,Department of Information Technology,"IT hardware, software & services",Software Licenses (858),13351234.0,400537.0,1335123.0,"$59,339 per position vs $3,304 at the 75th percentile of 34 agencies (median $756); agencies differ in mission, so only 5-15% of the excess is counted",867830.0
 O052,Leverage,,Statewide,,Gantech,22236428.0,444729.0,1111821.0,paid by 10 agencies separately in FY2026,778275.0
@@ -56,7 +56,7 @@ O054,Leverage,,Statewide,,Securitas Technology,21151090.0,423022.0,1057554.0,pai
 O055,Peer gap,J00,Department of Transportation,,Other (1399),11325896.0,339777.0,1132590.0,"$1,038 per position vs $154 at the 75th percentile of 23 agencies (median $31); agencies differ in mission, so only 5-15% of the excess is counted",736183.0
 O056,Growth above trend,W00,Department of State Police,"IT hardware, software & services",Data Processing Equipment-Microcomputer (1033),5308444.0,353866.0,1061597.0,grew +413% over FY2022-FY2025 vs +71% statewide,707731.0
 O057,Leverage,,Statewide,,Advanced Computer Concepts,19726134.0,394523.0,986307.0,paid by 26 agencies separately in FY2026,690415.0
-O058,Leverage,,Statewide,,Cas Severn,19525023.0,390500.0,976251.0,paid by 14 agencies separately in FY2026,683376.0
+O058,Leverage,,Statewide,,Cas Severn,19446790.0,388936.0,972340.0,paid by 13 agencies separately in FY2026,680638.0
 O059,Peer gap,D52,Maryland Department of Emergency Management,,Outside Services-Consulting Services (872),10369295.0,311079.0,1036930.0,"$96,012 per position vs $5,402 at the 75th percentile of 25 agencies (median $529); agencies differ in mission, so only 5-15% of the excess is counted",674004.0
 O060,Peer gap,C00,Judiciary,"IT hardware, software & services",Data Proc Other Contractual Services-DP (898),14930042.0,328346.0,985038.0,"$3,585 per position vs $2,008 at the 75th percentile of 15 agencies (median $490); agencies differ in mission, so only 5-15% of the excess is counted",656692.0
 O061,Peer gap,N00,Department of Human Services,,Legal Services (817),12810840.0,324684.0,974052.0,"$2,143 per position vs $1,057 at the 75th percentile of 27 agencies (median $140); agencies differ in mission, so only 5-15% of the excess is counted",649368.0
@@ -72,7 +72,7 @@ O070,Growth above trend,J00,Department of Transportation,"IT hardware, software 
 O071,Peer gap,D78,Maryland Health Benefit Exchange,"IT hardware, software & services",Systems Software (Acquisitions) (863),7616124.0,228484.0,761612.0,"$104,330 per position vs $12,296 at the 75th percentile of 16 agencies (median $1,155); agencies differ in mission, so only 5-15% of the excess is counted",495048.0
 O072,Peer gap,E75,Maryland Lottery and Gaming Control Agency,"Print, copy & mail",Printing/Reproduction (804),7575307.0,227259.0,757531.0,"$20,806 per position vs $349 at the 75th percentile of 41 agencies (median $114); agencies differ in mission, so only 5-15% of the excess is counted",492395.0
 O073,Peer gap,P00,Maryland Department of Labor,"IT hardware, software & services",Software Licenses (858),11271850.0,238419.0,715258.0,"$5,726 per position vs $3,304 at the 75th percentile of 34 agencies (median $756); agencies differ in mission, so only 5-15% of the excess is counted",476839.0
-O074,Leverage,,Statewide,,At&T,13123313.0,262466.0,656166.0,paid by 42 agencies separately in FY2026,459316.0
+O074,Leverage,,Statewide,,At&T,13090355.0,261807.0,654518.0,paid by 41 agencies separately in FY2026,458162.0
 O075,Peer gap,J00,Department of Transportation,,Insurance Coverage Paid To STO (1302),9306337.0,225936.0,677807.0,"$853 per position vs $439 at the 75th percentile of 40 agencies (median $151); agencies differ in mission, so only 5-15% of the excess is counted",451872.0
 O076,Peer gap,F50,Department of Information Technology,"IT hardware, software & services",Systems Software (Acquisitions) (863),7093801.0,212814.0,649068.0,"$31,528 per position vs $12,296 at the 75th percentile of 16 agencies (median $1,155); agencies differ in mission, so only 5-15% of the excess is counted",430941.0
 O077,Leverage,,Statewide,,Apple Ford,12136350.0,242727.0,606818.0,paid by 12 agencies separately in FY2026,424772.0
@@ -82,8 +82,8 @@ O080,Peer gap,R62,Maryland Higher Education Commission,"IT hardware, software & 
 O081,Leverage,,Statewide,,League For People With Disabilities,11359946.0,227199.0,567997.0,paid by 13 agencies separately in FY2026,397598.0
 O082,Growth above trend,U00,Department of the Environment,,Other Contractual Services-Non DP (899),6046218.0,195036.0,585107.0,grew +28% over FY2022-FY2025 vs -13% statewide,390071.0
 O083,Peer gap,C00,Judiciary,"IT hardware, software & services",Computer Maintenance Contracts (854),8264612.0,193508.0,580524.0,"$1,984 per position vs $1,055 at the 75th percentile of 25 agencies (median $278); agencies differ in mission, so only 5-15% of the excess is counted",387016.0
-O084,Tail spend,,Statewide,Real estate & leases,54 smaller vendors,5951234.0,178537.0,595123.0,$6.0M paid to vendors outside the ten largest in FY2026,386830.0
-O085,Peer gap,W00,Department of State Police,Fleet & fuel,Gas and Oil (702),5951135.0,178534.0,595114.0,"$2,310 per position vs $260 at the 75th percentile of 41 agencies (median $73); agencies differ in mission, so only 5-15% of the excess is counted",386824.0
+O084,Peer gap,W00,Department of State Police,Fleet & fuel,Gas and Oil (702),5951135.0,178534.0,595114.0,"$2,310 per position vs $260 at the 75th percentile of 41 agencies (median $73); agencies differ in mission, so only 5-15% of the excess is counted",386824.0
+O085,Tail spend,,Statewide,Real estate & leases,54 smaller vendors,5867956.0,176039.0,586796.0,$5.9M paid to vendors outside the ten largest in FY2026,381417.0
 O086,Peer gap,H00,Department of General Services,Utilities & facility energy,Utilities - Electricity (620),5806599.0,174198.0,580660.0,"$7,987 per position vs $1,445 at the 75th percentile of 30 agencies (median $702); agencies differ in mission, so only 5-15% of the excess is counted",377429.0
 O087,Leverage,,Statewide,,Pepco,10505299.0,210106.0,525265.0,paid by 16 agencies separately in FY2026,367685.0
 O088,Peer gap,W00,Department of State Police,Fleet & fuel,Purchase Cost Or Lease Cost (701),6918032.0,182422.0,547265.0,"$2,685 per position vs $1,269 at the 75th percentile of 23 agencies (median $431); agencies differ in mission, so only 5-15% of the excess is counted",364844.0
@@ -103,7 +103,7 @@ O101,Peer gap,C00,Judiciary,"IT hardware, software & services",Software Licenses
 O102,Peer gap,E00,Comptroller of Maryland,"Print, copy & mail",Postage (301),4144954.0,124349.0,414495.0,"$3,337 per position vs $556 at the 75th percentile of 44 agencies (median $152); agencies differ in mission, so only 5-15% of the excess is counted",269422.0
 O103,Peer gap,V00,Department of Juvenile Services,,Food (920),4108451.0,123254.0,410845.0,"$1,906 per position vs $126 at the 75th percentile of 19 agencies (median $22); agencies differ in mission, so only 5-15% of the excess is counted",267049.0
 O104,Peer gap,D78,Maryland Health Benefit Exchange,,Advertising and Legal Publication (801),4096871.0,122906.0,409687.0,"$56,122 per position vs $403 at the 75th percentile of 35 agencies (median $79); agencies differ in mission, so only 5-15% of the excess is counted",266297.0
-O105,Leverage,,Statewide,,Grainger,7574433.0,151489.0,378722.0,paid by 19 agencies separately in FY2026,265105.0
+O105,Leverage,,Statewide,,Grainger,7570412.0,151408.0,378521.0,paid by 18 agencies separately in FY2026,264964.0
 O106,Peer gap,J00,Department of Transportation,Fleet & fuel,Maintenance and Repair (703),5955746.0,132427.0,397280.0,"$546 per position vs $303 at the 75th percentile of 40 agencies (median $90); agencies differ in mission, so only 5-15% of the excess is counted",264853.0
 O107,Peer gap,R15,Maryland Public Broadcasting Commission,,Association Dues (1305),3998643.0,119959.0,399864.0,"$26,481 per position vs $366 at the 75th percentile of 42 agencies (median $115); agencies differ in mission, so only 5-15% of the excess is counted",259912.0
 O108,Leverage,,Statewide,,Sport Chevrolet,7329083.0,146582.0,366454.0,paid by 15 agencies separately in FY2026,256518.0
@@ -131,11 +131,11 @@ O129,Peer gap,R00,State Department of Education,,Administrative Hearings (831),3
 O130,Peer gap,V00,Department of Juvenile Services,,Janitorial Services (813),3231548.0,96946.0,323155.0,"$1,499 per position vs $382 at the 75th percentile of 22 agencies (median $156); agencies differ in mission, so only 5-15% of the excess is counted",210051.0
 O131,Leverage,,Statewide,,Hertrich Fleet Services,5976673.0,119533.0,298834.0,paid by 10 agencies separately in FY2026,209184.0
 O132,Peer gap,C00,Judiciary,,Office Supplies (902),3608299.0,104045.0,312134.0,"$866 per position vs $367 at the 75th percentile of 44 agencies (median $249); agencies differ in mission, so only 5-15% of the excess is counted",208089.0
-O133,Leverage,,Statewide,,Canon,5872348.0,117447.0,293617.0,paid by 41 agencies separately in FY2026,205532.0
-O134,Peer gap,K00,Department of Natural Resources,,Other Supplies and Materials (999),3149329.0,94480.0,314933.0,"$2,098 per position vs $411 at the 75th percentile of 33 agencies (median $166); agencies differ in mission, so only 5-15% of the excess is counted",204706.0
+O133,Peer gap,K00,Department of Natural Resources,,Other Supplies and Materials (999),3149329.0,94480.0,314933.0,"$2,098 per position vs $411 at the 75th percentile of 33 agencies (median $166); agencies differ in mission, so only 5-15% of the excess is counted",204706.0
+O134,Leverage,,Statewide,,Canon,5834948.0,116699.0,291747.0,paid by 40 agencies separately in FY2026,204223.0
 O135,Peer gap,Q00,Department of Public Safety and Correctional Services,,Building/Road Repair and Maintenance (812),11660126.0,101525.0,304575.0,"$1,265 per position vs $1,045 at the 75th percentile of 31 agencies (median $397); agencies differ in mission, so only 5-15% of the excess is counted",203050.0
 O136,Leverage,,Statewide,,Mobile Communications America,5787302.0,115746.0,289365.0,paid by 12 agencies separately in FY2026,202556.0
-O137,Leverage,,Statewide,,Hcgi Hartford,5638678.0,112774.0,281934.0,paid by 13 agencies separately in FY2026,197354.0
+O137,Leverage,,Statewide,,Hcgi Hartford,5633964.0,112679.0,281698.0,paid by 12 agencies separately in FY2026,197189.0
 O138,Peer gap,K00,Department of Natural Resources,Fleet & fuel,Gas and Oil (702),3016420.0,90493.0,301642.0,"$2,010 per position vs $260 at the 75th percentile of 41 agencies (median $73); agencies differ in mission, so only 5-15% of the excess is counted",196067.0
 O139,Peer gap,M00,Maryland Department of Health,,Medical (909),3001692.0,90051.0,300169.0,"$298 per position vs $50 at the 75th percentile of 15 agencies (median $31); agencies differ in mission, so only 5-15% of the excess is counted",195110.0
 O140,Peer gap,K00,Department of Natural Resources,Fleet & fuel,Purchase Cost Or Lease Cost (701),3847247.0,97123.0,291370.0,"$2,563 per position vs $1,269 at the 75th percentile of 23 agencies (median $431); agencies differ in mission, so only 5-15% of the excess is counted",194247.0

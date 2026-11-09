@@ -2,9 +2,9 @@ agency_code,agency,in_budget,payment_names,how_matched
 R12,Accountability and Implementation Board,True,1,agency code in payments
 ,,False,2,decision: excluded: fee pass-through to a government payee; payments FY2008-FY2009 only ($2.9M) predate the budget data; kept in payment totals; decision: excluded: no budget agency; payments FY2008-FY2009 only ($13.1M) predate the budget data (FY2017+); kept in payment totals
 E17,"Alcohol, Tobacco, and Cannabis Commission",True,2,agency code in payments
-R95,,False,1,agency code in payments
+R95,BALTIMORE CITY COMMUNITY COLLEGE,False,1,agency code in payments
 D15,"Executive Department-Boards, Commissions and Offices",True,2,agency code in payments; decision: mapped: budget unit found
-CAPITAL,,False,25,capital budget account
+CAPITAL,"Capital projects (capital budget, not in the operating budget)",False,25,capital budget account
 D21,Governor's Office of Crime Prevention and Policy,True,2,agency code in payments
 T00,Department of Commerce,True,3,agency code in payments; manual rule
 D12,Department of Disabilities,True,1,agency code in payments
@@ -21,14 +21,14 @@ D18,Governor's Office for Children,True,1,agency code in payments
 D17,Historic St. Mary's City Commission,True,1,agency code in payments
 D25,Interagency Commission On School Construction,True,2,agency code in payments; manual rule
 J00,Department of Transportation,True,6,agency code in payments
-U10,,False,2,agency code in payments; manual rule
+U10,MARYLAND ENVIRONMENTAL SERVICE,False,2,agency code in payments; manual rule
 D80,Maryland Insurance Administration,True,1,agency code in payments
 E75,Maryland Lottery and Gaming Control Agency,True,2,agency code in payments
 R99,Maryland School for the Deaf,True,1,agency code in payments
 D60,State Archives,True,1,agency code in payments
 W00,Department of State Police,True,1,agency code in payments
 C85,Maryland Tax Court,True,1,agency code in payments
-J11,,False,1,agency code in payments
+J11,MARYLAND TRANSPORTATION AUTHORITY,False,1,agency code in payments
 D73,Office of the Inspector General for Education,True,1,agency code in payments
 S50,Maryland African American Museum Corporation,True,1,agency code in payments
 D11,Office of the Deaf and Hard of Hearing,True,1,agency code in payments
@@ -42,10 +42,10 @@ D38,State Board of Elections,True,1,agency code in payments
 Y01,State Reserve Fund,True,1,agency code in payments
 E20,State Treasurer's Office,True,1,agency code in payments
 C96,Uninsured Employers' Fund,True,1,agency code in payments
-R37,,False,1,agency code in payments
+R37,UNIVERSITIES AT SHADY GROVE,False,1,agency code in payments
 D05,Board of Public Works,True,1,agency code in payments
 D90,Canal Place Preservation and Development Authority,True,1,agency code in payments
-R60,,False,1,agency code in payments
+R60,COLLEGE SAVINGS PLANS OF MARYLAND,False,1,agency code in payments
 D27,Maryland Commission On Civil Rights,True,2,agency code in payments; manual rule
 E00,Comptroller of Maryland,True,1,agency code in payments
 L00,Department of Agriculture,True,2,agency code in payments
@@ -60,7 +60,7 @@ A15,Payments to Civil Divisions of the State,True,4,agency code in payments; man
 D10,Executive Department - Governor,True,1,agency code in payments
 D23,Maryland Cannabis Administration,True,1,agency code in payments
 D26,Department of Aging,True,2,agency code in payments; manual rule
-D30,,False,1,agency code in payments
+D30,MARYLAND FOOD CENTER AUTHORITY,False,1,agency code in payments
 D78,Maryland Health Benefit Exchange,True,2,agency code in payments; decision: mapped: successor agency (Maryland Health Benefit Exchange)
 R62,Maryland Higher Education Commission,True,1,agency code in payments
 D40,Department of Planning,True,2,agency code in payments; manual rule
@@ -79,7 +79,7 @@ D99,Office of Administrative Hearings,True,1,agency code in payments
 C80,Office of the Public Defender,True,1,agency code in payments
 E80,Property Tax Assessment Appeals Boards,True,1,agency code in payments
 X00,Public Debt,True,1,agency code in payments
-E90,,False,1,agency code in payments
+E90,REGISTERS OF WILLS,False,1,agency code in payments
 D16,Secretary of State,True,1,agency code in payments
 E50,State Department of Assessments and Taxation,True,1,agency code in payments
 C94,Subsequent Injury Fund,True,2,agency code in payments; manual rule

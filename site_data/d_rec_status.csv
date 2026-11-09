@@ -1,7 +1,7 @@
 rec,title,status,progress,tab,previous
-1,Bid statewide contracts for shared vendors,Ready,30 vendors ranked; $12.1M–$30.2M a year,opp,
-2,Confirm which reported savings recur,Tracking,2 of 7 checks seen in payments; 0 changed since last run,track,
-3,Name the seven renegotiated contracts,Categories tracked,4 contract types named in GMI's report are checked against payments; payments fell for 2 of 4; vendors still unnamed,track,
-4,Plan the rest of the path to $50M,Plan reaches $50M,28 steps to $50.2M a year at the assumed rates; $41.4M–$59.0M across the assumed ranges,calc,
-5,Keep one vendor and agency master list,In place,100.0% of FY2026 payments matched to an agency,data,
-6,Tie spending to results,Data in place,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency",data,
+1,Bid statewide contracts for shared vendors,Ready,30 vendors ranked; $12.0M–$30.1M a year,opp,30 vendors ranked; $12.1M–$30.2M a year
+2,Confirm which reported savings recur,Tracking,2 of 7 checks seen in payments; 0 changed since last run,track,2 of 7 checks seen in payments; 0 changed since last run
+3,Name the seven renegotiated contracts,Categories tracked,4 contract types named in GMI's report are checked against payments; payments fell for 2 of 4; vendors still unnamed,track,4 contract types named in GMI's report are checked against payments; payments fell for 2 of 4; vendors still unnamed
+4,Plan the rest of the path to $50M,Plan reaches $50M,28 steps to $50.2M a year at the assumed rates; $41.4M–$58.9M across the assumed ranges,calc,28 steps to $50.2M a year at the assumed rates; $41.4M–$59.0M across the assumed ranges
+5,Keep one vendor and agency master list,In place,100.0% of FY2026 payments matched to an agency,data,100.0% of FY2026 payments matched to an agency
+6,Tie spending to results,Data in place,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency",data,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency"
