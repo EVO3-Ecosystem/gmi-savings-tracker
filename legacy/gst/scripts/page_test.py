@@ -119,8 +119,13 @@ PROBE = """(tab) => {
                  [/^A path to .* if reported savings recur .* across the assumed ranges/.test(T('ov50Note')) && /payment evidence/.test(T('ov50Note')), 'path to $50M not worded as a conditional']],
     calc: () => [[/ if reported savings recur /.test(T('planFind')), 'Calculator plan not worded as a conditional'],
                  [!/8 in 10|8-in-10/.test(T('p-calc')) && /indicative/.test(T('p-calc')) && /fell inside such a range/.test(T('p-calc')), 'forecast ranges not labelled indicative with their coverage']],
+    opp: () => [[/leads worth up to/.test(T('opLede')) && /not additive/.test(T('opLede')), 'Opportunities headline reads as savings, or omits the overlap'],
+                [!/Likely savings found|would reach GMI/.test(T('p-opp')), 'Opportunities still promise savings']],
     areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
   }[tab];
+  // small-base rule: a change from a prior-year base under $1M carries no percent
+  { const P0 = {stage:'all', years:[], areas:[], agencies:[]}; const a = G.measure([{fiscal_year:2024, v:5e5}, {fiscal_year:2025, v:2e6}], 'v', P0, {years:[2025]}), b = G.measure([{fiscal_year:2024, v:5e6}, {fiscal_year:2025, v:6e6}], 'v', P0, {years:[2025]});
+    if (a.change != null || !a.small || b.change == null) out.issues.push('small-base rule not applied in measure()'); }
   if (NEED) NEED().forEach(([ok2, msg]) => { if (!ok2) out.issues.push(msg); });
   out.years = m.years.length; out.total = m.value; return out; }"""
 
