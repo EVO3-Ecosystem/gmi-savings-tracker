@@ -283,13 +283,13 @@
       </div>
       <div class="card">
         <h2 id="caYearH">Savings by year</h2>
-        <p class="note">Bars: likely net savings. Lines: 8 in 10 simulated outcomes. FY2026 is GMI's reported result; FY2027–FY2031 are forecast. Dashed line: the $50M target.</p>
+        <p class="note">Bars: likely net savings. Lines: indicative range of simulated outcomes (10th to 90th percentile, not a calibrated 80% interval).<span class="covn"></span> FY2026 is GMI's reported result; FY2027–FY2031 are forecast. Dashed line: the $50M target.</p>
         <div class="chart" id="caYears" style="min-height:240px"></div>
       </div>
     </div>
     <div class="card">
       <div class="hd"><h2 id="caFcH">Spending forecast, with and without savings</h2></div>
-      <p class="note" id="caFcNote">Actual spending FY2017–FY2025 (solid), the forecast to FY2031 (dashed, shaded band = 8 in 10 outcomes), the state's own FY2026 working budget and FY2027 Legislative Appropriation (dots), and spending after savings at the current levers (green). Follows the focus-area filter.</p>
+      <p class="note" id="caFcNote">Actual spending FY2017–FY2025 (solid), the forecast to FY2031 (dashed, shaded band = indicative range: the 10th to 90th percentile of the bootstrap paths), the state's own FY2026 working budget and FY2027 Legislative Appropriation (dots), and spending after savings at the current levers (green). Follows the focus-area filter.<span class="covn"></span></p>
       <div class="legend" id="caFcLegend"></div>
       <div class="chart" id="caFc" style="min-height:300px"></div>
     </div>
@@ -798,6 +798,11 @@ function payments(p){ // payments to vendors: statewide totals, by agency, or by
   const t = ok('totals'); return t ? {rows: t, key: 'total_payments', label: 'Payments to vendors'} : null; }
 const who = p => !p.agencies.length ? 'Maryland' : p.agencies.length === 1 ? agName(p.agencies[0]) : `${p.agencies.length} selected agencies`;
 
+/* forecast ranges: indicative, with the coverage the pipeline measured on its rolling backtest (a check in the checks dataset) */
+function fcCov(){ const ck = ok('checks'); if (!ck) return null; const r = ck.find(c => /forecast ranges cover/i.test(c.check)); if (!r) return null;
+  const m = String(r.detail).match(/([\d.]+)% of (\d+) forecasts.*nominal (\d+)%/); if (!m) return null;
+  const pct = Math.round(+m[1]) + '%', nominal = m[3] + '%';
+  return {pct, nominal, n: +m[2], text: `Measured on the pipeline's rolling backtest, ${pct} of ${m[2]} past forecasts fell inside such a range, against the nominal ${nominal}; read the ranges as indicative, likely too narrow.`}; }
 /* ======================= path to $50M: conditional wording, from the data ======================= */
 function planFacts(){ const pl = ok('d_plan50'); if (!pl || !pl.length) return null;
   const tot = d3.max(pl, r => r.cumulative), lo = sum(pl, 'low'), hi = sum(pl, 'high');
@@ -1282,13 +1287,14 @@ function drawCalc(p){
         let lo = 0, hi = .2; for (let i = 0; i < 40; i++) { const mid = (lo + hi) / 2; c.forEach(m => CA.rates[m.area] = (m.gmi_rate || 0) + mid); const net = d3.sum(caPath(P).filter(l => l.year === 2027), l => l.saving); if (net < 50e6) lo = mid; else hi = mid; } c.forEach(m => CA.rates[m.area] = (m.gmi_rate || 0) + hi); }
       else fm2.forEach(m => CA.rates[m.area] = (m.gmi_rate || 0) * f); drawCalc(prm()); }); pr.appendChild(b); });
     document.getElementById('caRamp').addEventListener('change', e => { CA.ramp = +e.target.value; drawCalc(prm()); }); document.getElementById('caFee').addEventListener('change', () => drawCalc(prm())); }
+  const cv = fcCov(); document.querySelectorAll('#p-calc .covn').forEach(e => e.textContent = cv ? ' ' + cv.text : ' Coverage of the ranges has not been measured for this build.');
   const L = caPath(p), S = caSim(p); const net = y => d3.sum(L.filter(l => l.year === y), l => l.saving); const i27 = 0;
   const cum = d3.sum(FY, net), cumS = S[0].map((_, i) => d3.sum(S, a => a[i])).sort((a, b) => a - b); const pHit = S[i27].filter(v => v >= 50e6).length / S[i27].length;
   const gf27 = d3.sum(L.filter(l => l.year === 2027 && l.area !== '_fee'), l => l.gf), g27 = d3.sum(L.filter(l => l.year === 2027 && l.area !== '_fee'), l => l.saving);
   const tl = document.getElementById('caTiles'); tl.textContent = ''; const tile = (k, v, d) => { const t = document.createElement('div'); t.className = 'tile'; t.innerHTML = '<span class="k"></span><span class="v"></span><span class="d"></span>'; t.children[0].textContent = k; t.children[1].textContent = v; t.children[2].textContent = d; tl.appendChild(t); };
-  tile('FY2027 net savings, likely', M(net(2027)), `8 in 10 outcomes: ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}`); tile('Chance FY2027 reaches $50M', d3.format('.0%')(pHit), 'share of 2,000 simulated years');
-  tile('Five years, FY2027–FY2031', M(cum), `8 in 10 outcomes: ${M(qt(cumS, .1))}–${M(qt(cumS, .9))}`); tile('General Fund share, FY2027', g27 ? PCT(gf27 / g27) : '—', `${M(gf27)} of gross savings`);
-  setText('caLede', `At these settings, the six focus areas and other controllable purchases would save about ${M(net(2027))} in FY2027 (8 in 10 outcomes between ${M(qt(S[0], .1))} and ${M(qt(S[0], .9))}), net of the fee, and ${M(cum)} over FY2027–FY2031. Spending baselines are forecasts from the state's own FY2017–FY2025 actuals, using whichever model predicted FY2023–FY2025 best; savings rates default to what GMI reported achieving. Use "Reach $50M" to see the extra rate it takes.`);
+  tile('FY2027 net savings, likely', M(net(2027)), `indicative range: ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}`); tile('Chance FY2027 reaches $50M (indicative)', d3.format('.0%')(pHit), 'share of 2,000 simulated years; the ranges run narrow');
+  tile('Five years, FY2027–FY2031', M(cum), `indicative range: ${M(qt(cumS, .1))}–${M(qt(cumS, .9))}`); tile('General Fund share, FY2027', g27 ? PCT(gf27 / g27) : '—', `${M(gf27)} of gross savings`);
+  setText('caLede', `At these settings, the six focus areas and other controllable purchases would save about ${M(net(2027))} in FY2027 (indicative range ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}${fcCov() ? `; such ranges held ${fcCov().pct} of actuals in the backtest, not ${fcCov().nominal}` : ''}), net of the fee, and ${M(cum)} over FY2027–FY2031. Spending baselines are forecasts from the state's own FY2017–FY2025 actuals, using whichever model predicted FY2023–FY2025 best; savings rates default to what GMI reported achieving. Use "Reach $50M" to see the extra rate it takes.`);
   // savings by year
   const yrs = [{year:2026, a:29e6, lo:29e6, hi:29e6, note:'GMI reported'}].concat(FY.map((y, k) => ({year:y, a:net(y), lo:qt(S[k], .1), hi:qt(S[k], .9)})));
   { const box = document.getElementById('caYears'); box.textContent = ''; const W = box.clientWidth || 500, H = 240, m = {l:48, r:10, t:12, b:24}; const x = d3.scaleBand(yrs.map(d => d.year), [m.l, W - m.r]).padding(.3), y = d3.scaleLinear([0, Math.max(60e6, d3.max(yrs, d => d.hi))], [H - m.b, m.t]).nice();
@@ -1314,7 +1320,7 @@ function drawCalc(p){
     const af = FY.map(yy => ({year:yy, v:after.get(yy)})); svg.append('path').datum([{year:2026, v:(fo.find(d => d.year === 2026) || {}).p50}].concat(af)).attr('fill', 'none').attr('stroke', 'var(--color-ok)').attr('stroke-width', 2.2).attr('d', d3.line().x(d => x(d.year)).y(d => y(d.v)));
     svg.append('g').selectAll('circle').data(fo.filter(d => d.plan)).join('circle').attr('cx', d => x(d.year)).attr('cy', d => y(d.plan)).attr('r', 4).attr('fill', 'var(--color-fg)');
     svg.append('g').selectAll('text').data(d3.range(2017, 2032, 2)).join('text').attr('x', d => x(d)).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(d => 'FY' + String(d).slice(2));
-    legend('caFcLegend', [['Actual', dash.colors[0], 1], ['Forecast (likely) and 8-in-10 band', dash.colors[0]], ['State budget plan (FY2026 working, FY2027 appropriation)', 'var(--color-fg)'], ['After savings', 'var(--color-ok)', 1]]);
+    legend('caFcLegend', [['Actual', dash.colors[0], 1], ['Forecast (likely) and indicative range', dash.colors[0]], ['State budget plan (FY2026 working, FY2027 appropriation)', 'var(--color-fg)'], ['After savings', 'var(--color-ok)', 1]]);
     setText('caFcH', `Spending forecast, with and without savings: ${sel.length === 7 ? 'all controllable purchases' : sel.join(', ')}`); }
   // where it comes from, tornado, model table
   const by = calcAreas(p).map(m => ({label:m.area, a:d3.sum(L.filter(l => l.year === 2027 && l.area === m.area), l => l.saving), key:'area:' + m.area})).filter(d => d.a > 0).sort((a, b) => b.a - a.a);
@@ -1336,7 +1342,7 @@ function drawSource(p, src){
     setText('dChartH', 'Forecast spending and savings by year'); setText('dChartNote', 'Bars: likely forecast spending. Line: savings at the current rate (right scale shown in the table).');
     barsLine(box, rows.map(r => ({year:r.year, a:r.base, b:r.saving})), {aLabel:'Forecast spending (likely)', bLabel:'Savings'});
     dIns([`Calculation each year: forecast spending (likely) × rate = savings. FY2027: ${M(rows[0].base)} × ${PCT(rows[0].rate)} = ${M(rows[0].saving)}.`, `The rate moves from GMI's ${PCT(m.gmi_rate || 0)} to the ${PCT(CA.rates[area])} set here over ${CA.ramp} year${CA.ramp > 1 ? 's' : ''}.`, `The state's FY2027 Legislative Appropriation for this area is ${M(rows[0].plan)}, ${rows[0].plan ? d3.format('+.1%')(rows[0].plan / rows[0].base - 1) : '—'} against the forecast.`, `General Fund share ${PCT(m.gf_share)}: each agency's FY2025 General Fund share, weighted by its spending in this area.`]);
-    newTable(tb, 'Every year, line by line', 'Likely forecast with the 8-in-10 range; savings = likely forecast × rate.', [['Year'],['Forecast low',1],['Forecast likely',1],['Forecast high',1],['State plan',1],['Rate',1],['Savings',1],['General Fund',1]],
+    newTable(tb, 'Every year, line by line', 'Likely forecast with its indicative range (10th to 90th percentile; not a calibrated interval); savings = likely forecast × rate.' + (fcCov() ? ' ' + fcCov().text : ''), [['Year'],['Forecast low',1],['Forecast likely',1],['Forecast high',1],['State plan',1],['Rate',1],['Savings',1],['General Fund',1]],
       rows.map(r => ({...r, fy:'FY' + r.year})), [{key:'fy'},{key:'p10',n:1,fmt:M},{key:'base',n:1,fmt:M},{key:'p90',n:1,fmt:M},{key:'plan',n:1,fmt:v => v ? M(v) : '—'},{key:'rate',n:1,fmt:v => PCT(v)},{key:'saving',n:1,fmt:M},{key:'gf',n:1,fmt:M}]);
     addTotals(tb, [['FY2027–FY2031', 0], ['', 1], [M(d3.sum(rows, r => r.base)), 1], ['', 1], ['', 1], ['', 1], [M(d3.sum(rows, r => r.saving)), 1], [M(d3.sum(rows, r => r.gf)), 1]]);
     const fc0 = (ok('f_code') || []).filter(r => r.area === area && r.fiscal_year === 2025); const ag = area === 'Other controllable purchases' ? [] : d3.rollups(fc0, v => d3.sum(v, r => r.spend), r => r.agency_code).map(([c, v]) => ({agency:agName(c), code:c, spend:v, saving:v * rows[0].rate})).sort((a, b) => b.spend - a.spend);

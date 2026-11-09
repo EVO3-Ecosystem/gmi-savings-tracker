@@ -117,7 +117,8 @@ PROBE = """(tab) => {
                  [/, FY\\d{4}$/.test(T('kBud')) && !/combined/.test(T('sBud')), 'Overview tiles are not one year'],
                  [!document.querySelector('#p-over #scopeChart'), 'scope chart still on the Overview'],
                  [/^A path to .* if reported savings recur .* across the assumed ranges/.test(T('ov50Note')) && /payment evidence/.test(T('ov50Note')), 'path to $50M not worded as a conditional']],
-    calc: () => [[/ if reported savings recur /.test(T('planFind')), 'Calculator plan not worded as a conditional']],
+    calc: () => [[/ if reported savings recur /.test(T('planFind')), 'Calculator plan not worded as a conditional'],
+                 [!/8 in 10|8-in-10/.test(T('p-calc')) && /indicative/.test(T('p-calc')) && /fell inside such a range/.test(T('p-calc')), 'forecast ranges not labelled indicative with their coverage']],
     areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
   }[tab];
   if (NEED) NEED().forEach(([ok2, msg]) => { if (!ok2) out.issues.push(msg); });
