@@ -83,3 +83,15 @@ def test_publish_stage_has_card_and_manifest(tmp_path):
     card = (out / "README.md").read_text()
     assert card.startswith("---\nlicense: other") and "Source datasets" in card and "d_payment_screen" in card
     assert (out / "manifest.csv").exists() and len(list((out / "parquet").glob("*.parquet"))) >= 40
+
+
+def test_explorer_pins_duckdb_wasm_and_has_a_fallback(built):
+    from src.pipeline import site_explorer
+    if not (built / "explorer.html").exists():
+        pytest.skip("no Parquet files, so no explorer")
+    page = (built / "explorer.html").read_text()
+    assert re.fullmatch(r"\d+\.\d+\.\d+", site_explorer.DUCKDB_WASM)
+    assert "@duckdb/duckdb-wasm@' + __EX.ver" in page and f'ver: "{site_explorer.DUCKDB_WASM}"' in page
+    assert "getJsDelivrBundles" in page and "createObjectURL(new Blob" in page and "new URL('parquet/'" in page
+    assert "function fallback(" in page and "data/' + t + '.csv'" in page and len(site_explorer.EXAMPLES) == 6
+    assert 'href="explorer.html"' in (built / "index.html").read_text()
