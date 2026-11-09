@@ -15,5 +15,7 @@ restore:  ; $(PY) -m src.pipeline.snapshot restore $(SNAP) $(RESTORE_FLAGS)
 figures:  ; $(PY) -m src.pipeline.figures
 diagrams: ; mmdc -i docs/figures/pipeline.mmd -o docs/figures/pipeline.png -b white -s 2 && mmdc -i docs/figures/data_hierarchy.mmd -o docs/figures/data_hierarchy.png -b white -s 2
 docs:     ; $(PY) -m src.pipeline.governance $(if $(DASH),--dashboard $(DASH))
+site:     ; $(PY) -m src.pipeline.site $(SITE_FLAGS)
+site-snapshot: ; $(PY) -m src.pipeline.site --refresh-snapshot
 docs-strict: ; $(PY) -m src.pipeline.governance --strict $(if $(DASH),--dashboard $(DASH))
-.PHONY: extract extract-full gate1 build gate3 all test test-fault docs docs-strict reconcile figures diagrams parity export snapshot restore
+.PHONY: extract extract-full gate1 build gate3 all test test-fault docs docs-strict reconcile figures diagrams parity export snapshot restore site site-snapshot
