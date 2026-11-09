@@ -157,7 +157,7 @@
         <p class="insight" id="ovGrants"></p>
       </div>
       <div class="card">
-        <div class="hd"><h2 id="ov50H">Path to $50M</h2><button class="xp" data-expand="calc">Expand</button></div>
+        <div class="hd"><h2 id="ov50H">A conditional path to $50M</h2><button class="xp" data-expand="calc">Expand</button></div>
         <p class="note" id="ov50Note">Yearly savings from the steps on the Calculator and Opportunities tabs, against the $50M target.</p>
         <div class="chart" id="ov50" data-source="d_plan50" style="min-height:0"></div>
         <p class="insight" id="ov50Detail"></p>
@@ -306,7 +306,8 @@
       </div>
     </div>
     <div class="card">
-      <div class="hd"><h2>A path to $50M a year (recommendation 4)</h2></div>
+      <div class="hd"><h2>A conditional path to $50M a year (recommendation 4)</h2></div>
+      <p class="insight" id="planFind"></p>
       <p class="note">GMI's current pace from the forecast, then statewide contracts for the largest shared vendors at an assumed 3.5% (the middle of an assumed 2–5% range, not a published rate), added until the total reaches $50M. Click a step for its evidence.</p>
       <div class="tbl"><table data-source="d_plan50"><thead><tr><th class="n">Step</th><th>Action</th><th>Basis</th><th class="n">Savings a year</th><th class="n">Running total</th></tr></thead><tbody id="planBody"></tbody></table></div>
     </div>
@@ -797,6 +798,17 @@ function payments(p){ // payments to vendors: statewide totals, by agency, or by
   const t = ok('totals'); return t ? {rows: t, key: 'total_payments', label: 'Payments to vendors'} : null; }
 const who = p => !p.agencies.length ? 'Maryland' : p.agencies.length === 1 ? agName(p.agencies[0]) : `${p.agencies.length} selected agencies`;
 
+/* ======================= path to $50M: conditional wording, from the data ======================= */
+function planFacts(){ const pl = ok('d_plan50'); if (!pl || !pl.length) return null;
+  const tot = d3.max(pl, r => r.cumulative), lo = sum(pl, 'low'), hi = sum(pl, 'high');
+  const rs = pl.map(r => (String(r.basis).match(/assumed ([\d.]+)%/) || [])[1]).filter(Boolean); const rate = rs.length ? rs[0] + '%' : null;
+  const d = ok('d_savings'), st = ok('d_savings_status'); let ev = null;
+  if (d && st) { const seen = new Set(st.filter(r => r.status === 'Seen').map(r => r.check_id));
+    ev = d3.sum(d.filter(r => r.check_id && seen.has(r.check_id) && /Recurring|Year over year/.test(r.type)), r => ((r.reported_low || 0) + (r.reported_high || 0)) / 2) / tot; }
+  return {tot, lo, hi, rate, ev, steps: pl.length,
+    text: `A path to ${M(tot)} a year if reported savings recur and statewide contracts save an assumed ${rate || 'rate'}; ${M(lo)}–${M(hi)} across the assumed ranges` + (ev != null ? `; about ${d3.format('.0%')(ev)} has payment evidence.` : '.')}; }
+const PLAN_EV = 'Payment evidence: recurring savings whose payment check on the Savings tracker tab is Seen.';
+
 /* ======================= pages ======================= */
 function drawRecs(){ // recommendations computed from the tracker's own findings (statewide)
   const ol = document.getElementById('recs'); if (!ol) return; const o = ok('d_opps'), d = ok('d_savings'), f = ok('f_savings_check'), fm = ok('d_forecast_model'), vf = ok('vendor_families'), fc = ok('f_forecast');
@@ -816,13 +828,14 @@ function drawRecs(){ // recommendations computed from the tracker's own findings
     ['Bid statewide contracts for shared vendors', `Start with ${topLev || 'the vendors many agencies buy from separately'}. ${lev.length} commercial vendors are each paid separately by ten or more agencies (${M(levS)} in FY2026); at an assumed 2–5% from one enterprise agreement, that is ${M(levL)}–${M(levH)} a year.`, () => { showTab('opp'); const s = document.getElementById('opDet'); s.value = 'Leverage'; drawOpp(prm()); }],
     ['Confirm which reported savings recur', `Payments to the matching vendors fell for vehicle purchases and laptops, but rose from FY2025 to FY2026 for: ${up.join('; ') || 'none of the checked items'}. Agency invoices or contract changes would show whether those savings are real but offset, or not yet in place.`, () => showTab('track')],
     ['Name the seven renegotiated contracts', `GMI's largest item, $18M a year, names four kinds of contract (food services at one agency, statewide radio maintenance, office supplies, a software license agreement) but no vendors. Payments that fit each kind are tracked; publishing the vendors and their before-and-after prices would let the $18M be checked exactly.`, () => showTab('track')],
-    ['Plan the rest of the path to $50M', `At GMI's current pace the forecast puts FY2027 savings near ${M(net27)}. Reaching $50M takes about ${(hi * 100).toFixed(1)} more points of savings across ${M(base27)} in forecast controllable purchases, or new areas such as real estate and utilities, where GMI has not reported savings yet.`, () => showTab('calc')],
+    ['Plan the rest of the path to $50M', `${(planFacts() || {text:''}).text} At GMI's current pace the forecast puts FY2027 savings near ${M(net27)}. Reaching $50M takes about ${(hi * 100).toFixed(1)} more points of savings across ${M(base27)} in forecast controllable purchases, or new areas such as real estate and utilities, where GMI has not reported savings yet.`, () => showTab('calc')],
     ['Keep one vendor and agency master list', `The same company appears under several payee names (${fam} company families in FY2026 alone), and agency names change between years. A maintained master list makes savings trackable across years and agencies.`, () => { showTab('data'); document.getElementById('vfH').scrollIntoView({block:'start'}); }],
     ['Tie spending to results', 'Join spending to Managing for Results measures so savings can be checked against service levels, and a cut that lowers service shows up next to the saving.', null]];
-  const rs = ok('d_rec_status') || []; ol.textContent = ''; recs.forEach(([t, w, go], i) => { const li = document.createElement('li'); const b = go ? document.createElement('button') : document.createElement('b'); b.textContent = t; if (go) { b.className = 'lnk'; b.style.fontWeight = 600; b.style.fontSize = 'var(--cds-font-size-body)'; b.addEventListener('click', go); } const sp = document.createElement('span'); sp.className = 'why'; sp.textContent = w; li.append(b, sp); const r = rs.find(x => x.rec === i + 1); if (r) { const st = document.createElement('span'); st.className = 'why'; const pill = document.createElement('span'); pill.className = 'st ' + (/Ready|In place|reaches|found|Tracking/.test(r.status) ? 'pass' : /Gap|Needs|No fit/.test(r.status) ? 'warn' : ''); pill.textContent = r.status; st.append(pill, document.createTextNode(' ' + r.progress + (r.previous && r.previous !== r.progress ? ` (last refresh: ${r.previous})` : ''))); li.appendChild(st); } ol.appendChild(li); }); }
+  const rs = ok('d_rec_status') || []; ol.textContent = ''; recs.forEach(([t, w, go], i) => { const li = document.createElement('li'); const b = go ? document.createElement('button') : document.createElement('b'); b.textContent = t; if (go) { b.className = 'lnk'; b.style.fontWeight = 600; b.style.fontSize = 'var(--cds-font-size-body)'; b.addEventListener('click', go); } const sp = document.createElement('span'); sp.className = 'why'; sp.textContent = w; li.append(b, sp); const r = rs.find(x => x.rec === i + 1); if (r) { const st = document.createElement('span'); st.className = 'why'; const pill = document.createElement('span'); pill.className = 'st ' + (/Ready|In place|reaches|found|Tracking/.test(r.status) ? 'pass' : /Gap|Needs|No fit/.test(r.status) ? 'warn' : ''); pill.textContent = r.status + (/reaches \$50M/.test(r.status) ? ' if the assumptions hold' : ''); st.append(pill, document.createTextNode(' ' + r.progress + (r.previous && r.previous !== r.progress ? ` (last refresh: ${r.previous})` : ''))); li.appendChild(st); } ol.appendChild(li); }); }
 function drawRecTables(){
   const b = ok('d_bid_list'); if (b && document.getElementById('bidBody')) table('bidBody', b, [{key:'rank',n:1},{key:'vendor'},{key:'agencies',n:1},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'low',n:1,fmt:(v, r) => `${M(r.low)}–${M(r.high)}`},{key:'top_agencies'}], {bar:'fy2026', click:r => openDetail('vendor:' + r.vendor)});
   const st = ok('d_savings_status'); if (st) table('stBody2', st, [{key:'item'},{key:'reported',n:1,fmt:v => v == null ? '—' : M(v)},{key:'before',n:1,fmt:M},{key:'after',n:1,fmt:M},{key:'status',pill:v => v === 'Seen' ? 'pass' : v === 'Partly seen' ? 'warn' : v === 'Not seen yet' ? 'fail' : ''},{key:'previous_status',fmt:(v, r) => v == null ? 'first run recorded' : (String(r.changed) === 'true' ? 'changed from ' + v : 'unchanged')}]);
+  const pf = planFacts(); if (pf) setText('planFind', pf.text + ' ' + PLAN_EV);
   const pl = ok('d_plan50'); if (pl) table('planBody', pl, [{key:'step',n:1},{key:'action'},{key:'basis'},{key:'saving',n:1,fmt:M},{key:'cumulative',n:1,fmt:M}], {click:r => showTab(r.tab)});
   const mq = ok('d_master_quality'); if (mq) table('mqBody', mq, [{key:'measure'},{key:'value'},{key:'ok',pill:v => String(v) === 'true' ? 'pass' : 'fail',fmt:v => String(v) === 'true' ? 'OK' : 'Check'}]);
 }
@@ -1084,9 +1097,9 @@ function drawPortalOver(p){
       setText('ovGrants', g ? `Grants and loans: ${M(g.grants_and_loans)} in FY${g.fiscal_year}, the latest year published${y > g.fiscal_year ? ` (FY${y} is not out yet)` : ''}. ${d3.format('.0%')(g.grants_in_payments_share)} of those dollars went to grantees also paid that year, so grants are counted inside payments, not on top. The full list is on the Budget tab.` : ''); } }
   if (pl && pl.length) { const s1 = pl.filter(r => +r.step === 1), rest = pl.filter(r => +r.step > 1); const v1 = sum(s1, 'saving'), v2 = sum(rest, 'saving');
     hstack(document.getElementById('ov50'), [{label:'Yearly savings, by source', total:false, parts:[{label:'Keep GMI\'s current savings going (rates GMI reported)', short:'Current GMI savings', v:v1, color:COL_BUD(), note:(s1[0] || {}).basis},
-      {label:`Statewide contracts with ${rest.length} vendors (assumed 3.5%, range 2–5%)`, short:'Statewide contracts', v:v2, color:COL_BUD(), assumed:true, note:'An assumption, not a reported saving'}]}],
+      {label:`Statewide contracts with ${rest.length} vendors (an assumed rate, not a reported saving)`, short:'Statewide contracts', v:v2, color:COL_BUD(), assumed:true, note:'An assumption, not a reported saving'}]}],
       {max: Math.max(50e6, v1 + v2) * 1.04, marker:{v:50e6, label:'$50M target'}, aria:'Path to the $50M savings target'});
-    setText('ov50Note', `${M(v1 + v2)} a year if current savings continue (${M(v1)}, from GMI's reported rates) and ${rest.length} statewide contracts save an assumed 3.5% (${M(v2)}; dashed). At the 2% low end the contracts give about ${M(v2 * 2 / 3.5)}, short of the target.`);
+    const pf = planFacts(); setText('ov50Note', (pf ? pf.text + ' ' : '') + `Solid: GMI's reported rates carried forward (${M(v1)}); dashed: ${rest.length} statewide contracts at the assumed rate (${M(v2)}). ${PLAN_EV}`);
     setText('ov50Detail', 'Largest assumed steps: ' + rest.slice().sort((a,b) => b.saving - a.saving).slice(0, 3).map(r => `${String(r.action).replace('Statewide contract: ', '')} ${M(r.saving)}`).join(', ') + '. The Calculator tab changes the rates; the Opportunities tab shows the evidence for each vendor.'); } }
 function drawPortalBudget(p){
   const ov = ok('f_overlap'), fs = ok('f_fund_source'), pg = ok('f_program'), gr = ok('f_grants');
