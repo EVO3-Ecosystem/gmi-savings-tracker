@@ -300,8 +300,8 @@ basis,d_multi_basis,derived,Counting basis: company and budget agency (this dash
 area,"mart.v_purchase,d_multi",derived,"Payee-name focus area, or 'Other goods & services'"
 rank,d_area_top,derived,Rank of the vendor within its area and year by spend
 evidence,ref.payment_agency_decisions,reference,Source or reasoning behind the mapping decision
-in_payments,mart.f_grants,derived,"True when the grantee is also a payee in the payments data that fiscal year (names compared without case, spaces or punctuation)"
-paid_same_fy,mart.f_grants,derived,Payments to the grantee that fiscal year (all agencies) when in_payments is true
+in_payments,"mart.f_grants,f_grants",derived,"True when the grantee is also a payee in the payments data that fiscal year (names compared without case, spaces or punctuation)"
+paid_same_fy,"mart.f_grants,f_grants",derived,Payments to the grantee that fiscal year (all agencies) when in_payments is true
 general_funds,,derived,Operating budget paid from the General Fund
 special_funds,,derived,Operating budget paid from special funds (dedicated State revenue)
 federal_funds,,derived,"Operating budget paid from federal funds, including the ARRA and COVID federal fund types"
@@ -314,12 +314,12 @@ grants_in_payments_share,,derived,Share of grant and loan dollars whose grantee 
 grant_rows,,derived,Rows in the grants dataset that year
 grant_rows_in_payments,,derived,Grant rows whose grantee is also a payee that year
 payments_to_budget_share,,derived,Payments divided by the operating budget at its latest stage (a cross-check; the two measure different things)
-description,"core.fact_grant,mart.f_grants",portal,"Grant or loan program description as the grantor published it (free text, as listed)"
-zipcode,"core.fact_grant,mart.f_grants",portal,Grantee ZIP code as published
-category,mart.f_grants,derived,"Grant or Loan, from the dataset's category code (G/L)"
-payments,"mart.f_budget_vs_pay,mart.f_overlap",derived,"Payments to all payees in the year (vendor payments dataset, 7syw-q4cy)"
-partial_year,"mart.f_budget_vs_pay,mart.f_overlap",derived,True for the latest payments year while it is still being updated monthly
-grants,mart.f_overlap,derived,Grants dataset rows with category Grant
+description,"core.fact_grant,mart.f_grants,f_grants",portal,"Grant or loan program description as the grantor published it (free text, as listed)"
+zipcode,"core.fact_grant,mart.f_grants,f_grants",portal,Grantee ZIP code as published
+category,"mart.f_grants,f_grants",derived,"Grant or Loan, from the dataset's category code (G/L)"
+payments,"mart.f_budget_vs_pay,mart.f_overlap,f_budget_vs_pay,f_overlap",derived,"Payments to all payees in the year (vendor payments dataset, 7syw-q4cy)"
+partial_year,"mart.f_budget_vs_pay,mart.f_overlap,f_budget_vs_pay,f_overlap",derived,True for the latest payments year while it is still being updated monthly
+grants,"mart.f_overlap,f_overlap",derived,Grants dataset rows with category Grant
 method,mart.d_forecast_backtest,derived,"Forecast model scored: log-linear trend, naive (last actual), drift (average yearly growth) or the equal-weight combination of those three (scored only, never kept)"
 origin_fy,mart.d_forecast_backtest,derived,Last fiscal year of actual spending the model was allowed to see (the forecast origin)
 horizon,mart.d_forecast_backtest,derived,Years ahead of the origin that the forecast looks (1 to 3)
@@ -363,3 +363,8 @@ spend_next,mart.d_detector_backtest,derived,"The same units' spending in the nex
 pooled_change,mart.d_detector_backtest,derived,"spend_next / spend_as_of - 1 over the cohort (blank when spend_as_of is zero); descriptive, not a saving"
 median_change,mart.d_detector_backtest,derived,"Median of the per-unit change from the as-of year to the next, over units with spending in the as-of year"
 units_zero_next,mart.d_detector_backtest,derived,Units with no spending in the next year (dropped or re-coded lines)
+cpi_index,"mart.d_deflator,d_deflator",source,"Average of the monthly CPI-U (U.S. city average, all items, not seasonally adjusted, BLS CUUR0000SA0) over the Maryland fiscal year (July-June)"
+cpi_months,"mart.d_deflator,d_deflator",source,Months of CPI in the fiscal-year average (12 = complete; fewer = partial year)
+factor,"mart.d_deflator,d_deflator",derived,Multiplier from nominal dollars of the fiscal year to FY2026 dollars: FY2026 CPI average / that year's CPI average (six-decimal text so the export keeps the precision); real dollars = nominal x factor
+population,"mart.d_deflator,d_deflator",source,Maryland resident population on July 1 at the start of the fiscal year (Census Population Estimates); per-resident dollars = dollars / population
+source,"mart.d_deflator,d_deflator",source,"Where cpi_index and population come from, with the CPI months averaged and the population vintage"

@@ -98,6 +98,7 @@ def run(con, run_id, manifest):
     phase5_recommendations(con, check, one)
     phase5_reference_marts(con, check, one)
     phase5_higher_education(con, check, one, "highered" in loaded)
+    phase5_deflator(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -400,6 +401,23 @@ def phase5_higher_education(con, check, one, loaded):
     check("mart", "Public higher education is kept out of every GMI savings baseline", scope == 0 and opps == 0 and set(HIGHER_ED) <= excl and set(HIGHER_ED) <= moves,
           f"{scope} budget-scope rows and {opps} opportunity findings for {', '.join(HIGHER_ED)}; the payment detectors, bid list and vendor moves leave out "
           f"${paid / 1e6:,.1f}M of FY{cfg['opportunities']['payments_fy']} private payments by these agencies")
+
+
+def phase5_deflator(con, check, one):
+    """Real and per-resident dollars: FY2026 is the base year, every actual budget year has a factor; population where published."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_deflator'"):
+        return
+    base = con.execute("SELECT CAST(factor AS DOUBLE) FROM mart.d_deflator WHERE fiscal_year = 2026").fetchone()
+    miss = one("""SELECT count(*) FROM (SELECT DISTINCT fiscal_year FROM ref.dim_stage WHERE fiscal_year <= 2026) s
+        LEFT JOIN mart.d_deflator d USING (fiscal_year) WHERE d.factor IS NULL OR d.cpi_months < 11 OR CAST(d.factor AS DOUBLE) <= 0""")
+    lo, hi = con.execute("SELECT min(fiscal_year), max(fiscal_year) FROM mart.d_deflator WHERE population IS NOT NULL").fetchone()
+    f17 = one("SELECT CAST(factor AS DOUBLE) FROM mart.d_deflator WHERE fiscal_year = 2017")
+    check("mart", "Deflator: FY2026 = 1 and every budget year through FY2026 has a full-year CPI factor", bool(base) and abs(base[0] - 1) < 1e-9 and miss == 0,
+          f"{miss} years missing or partial; FY2017 dollars x {f17:.4f} = FY2026 dollars; population FY{lo}-FY{hi}" if f17 else f"{miss} years missing or partial")
+    bad = one("SELECT count(*) FROM mart.d_deflator WHERE population IS NOT NULL AND population <= 0")
+    gap = one("""SELECT count(*) FROM (SELECT DISTINCT fiscal_year FROM ref.dim_stage WHERE stage = 'Actual') s
+        LEFT JOIN mart.d_deflator d USING (fiscal_year) WHERE d.population IS NULL""")
+    check("mart", "Deflator: population for every actual budget year", bad == 0 and gap == 0, f"{gap} actual years without population; {bad} non-positive", "warn")
 
 
 # ---- New-payee-name history (ops.payee_name_seen). Only a build whose stop checks all pass writes it (build.py calls
