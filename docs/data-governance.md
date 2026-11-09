@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-09T20:39Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 09, 2026._
+_Generated 2026-11-09T20:45Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 09, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.

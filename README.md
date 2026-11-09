@@ -8,6 +8,8 @@ An independent savings tracker for Maryland's Government Modernization Initiativ
 
 **https://evo3-ecosystem.github.io/gmi-savings-tracker/**: the dashboard, built by `make site` from the checked-in export snapshot in `site_data/` and published by `.github/workflows/pages.yml` on every push to `main`. GitHub Pages must be enabled once in Settings > Pages > Source: GitHub Actions. To refresh the published data: `make export && make site-snapshot`, then commit `site_data/`.
 
+The site also has a **data explorer** (`explorer.html`: SQL over the published tables in the browser with DuckDB-WASM, and a plain CSV browser when WebAssembly is blocked) and a **database catalog** (`catalog.html`: every table's layer, rows, columns, checks and lineage). Every exported mart is also written as Parquet (`site_data/parquet/`); `.github/workflows/publish_data.yml` publishes them to the Hugging Face dataset `thedatavigilante/maryland-gmi-spending` (needs the repository secret `HF_TOKEN`) and to a GitHub Release `data-<run_id>`. The duplicate and split payment screen is described in [docs/models/payment_screen.md](docs/models/payment_screen.md).
+
 ![Dashboard overview](docs/figures/dashboard_overview.png)
 
 
