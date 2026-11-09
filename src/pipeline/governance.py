@@ -141,6 +141,10 @@ def main(argv=None):
     wh = con.execute("select table_schema||'.'||table_name t, column_name c, data_type ty, ordinal_position o from information_schema.columns "
                      "where table_schema in ('raw','ref','core','mart','ops') order by 1, 4").df()
     nrows = {t: con.execute(f"select count(*) from {t}").fetchone()[0] for t in wh.t.unique()}
+    # for the site's database catalog: the tables each check reads, and what each table was built from
+    for name, t in (("check_coverage", "ops.check_coverage"), ("lineage", "ops.lineage")):
+        if t in nrows:
+            con.execute(f"select * from {t}").df().to_csv(SCH / f"{name}.csv", index=False)
     con.close()
     wh = pd.DataFrame([{"table": r.t, "column": r.c, "type": r.ty, "table_rows": nrows[r.t], **dict(zip(("definition", "origin"), define(dic, r.t, r.c)))}
                        for r in wh.itertuples()])

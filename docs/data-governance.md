@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-09T20:17Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 09, 2026._
+_Generated 2026-11-09T20:39Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 09, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -1433,6 +1433,14 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
+**ops.check_coverage** (93 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| check | VARCHAR | ops | Check description |
+| layer | VARCHAR | ops | Database layer the check ran on (raw, core, ref, mart) |
+| tables | VARCHAR | derived | Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated |
+
 **ops.check_result** (93 rows)
 
 | column | type | origin | definition |
@@ -1453,6 +1461,13 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | status | VARCHAR | ops | Run or source status |
 | rows | BIGINT | ops | Row count |
 | detail | VARCHAR | ops | Numbers behind the check result |
+
+**ops.lineage** (258 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| table_name | VARCHAR | derived | Warehouse table (schema.name) created by the build |
+| depends_on | VARCHAR | derived | A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it) |
 
 **ops.payee_name_seen** (61,798 rows)
 
@@ -1675,7 +1690,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (394 rows)
+**ref.column_dictionary** (397 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2511,7 +2526,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,422 of 1,422 columns documented (85 source, 980 warehouse, 357 dashboard).
+1,427 of 1,427 columns documented (85 source, 985 warehouse, 357 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

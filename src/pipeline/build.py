@@ -6,6 +6,7 @@ Then src/pipeline/checks.py runs every check, writes ops.check_result and exits 
 Usage: python -m src.pipeline.build [run_id]   (default: the latest passed extract run)
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -30,7 +31,7 @@ def build(run_id):
     man = json.loads((raw / "manifest.json").read_text())
     tmp = DB.with_suffix(".building")
     tmp.unlink(missing_ok=True)
-    con = duckdb.connect(str(tmp))
+    con = _Lineage(duckdb.connect(str(tmp)))
     for s in ("raw", "ref", "core", "mart", "ops"):
         con.execute(f"CREATE SCHEMA {s}")
 
@@ -147,12 +148,13 @@ def build(run_id):
     backtest.write(con)  # Phase 5: the detectors rerun as of FY2022-FY2024, flags followed one year (mart.d_detector_backtest)
     savings.write(con, run_id, DATA)  # Phase 5: GMI's reported savings checked against payments
     recommendations.write(con, run_id, DATA)  # Phase 5: the six recommendations, the path to $50M, vendor drill-downs
-    res = checks.run(con, run_id, man)
+    res = checks.run(con._con, run_id, man)  # the checks record their own reads (ops.check_coverage), outside the lineage
     facts.build(con, run_id, man, DATA, checks.HIST)  # Data & pipeline tab: sources, runs, checks, master-list quality
     if res:
         savings.record(con, run_id, DATA)  # status history only for a build that passed its checks
         recommendations.record(con, run_id, DATA)
         checks.record_payees(con, run_id, DATA)  # payee-name history (ops.payee_name_seen), likewise
+    con.write()
     con.close()
     if res:
         tmp.replace(DB)  # only a database that passes every stop check replaces the last good one
@@ -161,6 +163,49 @@ def build(run_id):
         tmp.replace(failed)
         print(f"FAILED: kept the last good database; this build is in {failed} for inspection")
     return res
+
+
+class _Lineage:
+    """The build's connection, recording which tables each created table was built from (ops.lineage, for the site's catalog).
+
+    A CREATE ... TABLE statement depends on the tables it names; one built from a registered DataFrame (a Python model)
+    depends on the tables read since the last CREATE built from SQL (a reference CSV loaded this way depends on none).
+    """
+    REF = re.compile(r"\b(raw|ref|core|mart|ops)\.([A-Za-z_][A-Za-z0-9_]*)")
+    MAKE = re.compile(r"CREATE\s+(?:OR\s+REPLACE\s+)?TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?(\w+\.\w+)", re.I)
+
+    def __init__(self, con):
+        self._con, self.deps, self._read, self._df = con, {}, set(), False
+
+    def execute(self, q, *a, **k):
+        if isinstance(q, str):
+            refs = {f"{x}.{y}".lower() for x, y in self.REF.findall(q)}
+            m = self.MAKE.search(q)
+            if m:
+                t = m.group(1).lower()
+                own = refs - {t}
+                if not own and len(re.findall(re.escape(t) + r"\b", q, re.I)) > 1:  # a table rewritten from itself keeps what it was built from
+                    own = set(self.deps.get(t, []))
+                elif not own and re.search(r"\bAS\s+SELECT\b", q, re.I):  # built from a DataFrame: what the model read so far
+                    self.deps[t] = sorted(self._read - {t})  # kept for the model's next table; a reference CSV reads nothing
+                    self._df = True
+                    return self._con.execute(q, *a, **k)
+                self.deps[t] = sorted(own)
+                self._read, self._df = set(), False
+            elif refs:
+                if self._df:  # the first read after a model's writes starts the next computation
+                    self._read, self._df = set(), False
+                self._read |= refs
+        return self._con.execute(q, *a, **k)
+
+    def write(self):
+        rows = [(t, d) for t, ds in sorted(self.deps.items()) for d in ds]
+        self._con.execute("CREATE OR REPLACE TABLE ops.lineage (table_name VARCHAR, depends_on VARCHAR)")
+        if rows:
+            self._con.executemany("INSERT INTO ops.lineage VALUES (?, ?)", rows)
+
+    def __getattr__(self, name):
+        return getattr(self._con, name)
 
 
 def _tables(con, schema):

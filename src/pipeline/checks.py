@@ -3,6 +3,7 @@
 Severity: stop = the run fails and nothing is exported; warn = reported, never blocks (context sources, drift).
 """
 import datetime as dt
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -16,12 +17,31 @@ SUM_COL = {"budget": ("core.fact_budget", "budget"), "fund": ("core.fact_fund", 
 HIGHER_ED = ("R13", "R14", "R30", "R95")  # agencies of 4mca-332u: kept out of every GMI savings baseline
 
 
+class _Reads:
+    """The connection as the checks see it: records which warehouse tables each check's queries read (ops.check_coverage)."""
+    REF = re.compile(r"\b(raw|ref|core|mart|ops)\.([A-Za-z_][A-Za-z0-9_]*)")
+
+    def __init__(self, con):
+        self._con, self.seen = con, set()
+
+    def execute(self, q, *a, **k):
+        if isinstance(q, str):
+            self.seen.update(f"{s}.{t}".lower() for s, t in self.REF.findall(q))
+        return self._con.execute(q, *a, **k)
+
+    def __getattr__(self, name):
+        return getattr(self._con, name)
+
+
 def run(con, run_id, manifest):
-    out = []
+    out, cover = [], []
+    real, con = con, _Reads(con)
 
     def check(layer, name, ok, detail, severity="stop"):
         out.append({"run_id": run_id, "layer": layer, "check": name, "severity": severity,
                     "result": "pass" if ok else ("fail" if severity == "stop" else "warn"), "detail": detail})
+        cover.append({"check": name, "layer": layer, "tables": " ".join(sorted(con.seen))})
+        con.seen.clear()
 
     check.run_id = run_id
     one = lambda q, *a: con.execute(q, list(a)).fetchone()[0]  # noqa: E731
@@ -100,8 +120,13 @@ def run(con, run_id, manifest):
     phase5_higher_education(con, check, one, "highered" in loaded)
     phase5_deflator(con, check, one)
     phase5_payment_screen(con, check, one)
+    con = real
     df = pd.DataFrame(out)
+    while hasattr(con, "_con"):  # the DuckDB connection itself (build.py may pass a recording wrapper): replacement scans look in this frame
+        con = con._con
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
+    cov = pd.DataFrame(cover, columns=["check", "layer", "tables"])  # noqa: F841 - read by the next statement
+    con.execute("CREATE TABLE ops.check_coverage AS SELECT * FROM cov")
     fails = int((df.result == "fail").sum())
     con.execute("CREATE TABLE ops.run_log (run_id TEXT, built_utc TEXT, checks INTEGER, passed INTEGER, warnings INTEGER, failed INTEGER)")
     con.execute("INSERT INTO ops.run_log VALUES (?,?,?,?,?,?)", [run_id, dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), len(df),

@@ -28,7 +28,7 @@ from contextlib import redirect_stdout
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.pipeline import preview, site_explorer
+from src.pipeline import preview, site_catalog, site_explorer
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPORT = ROOT / "data" / "export" / "latest"
@@ -126,7 +126,7 @@ def header(src, sha):
     ref = f'commit <a href="{REPO}/commit/{sha}"><code>{sha[:7]}</code></a>' if sha else "commit unknown"
     return ('<div id="site-head" style="border-bottom:1px solid #e4e3de;padding:8px 0;font:13px/1.45 ui-sans-serif,system-ui,sans-serif;color:#52514e">'
             f"<b>{html.escape(DISCLAIMER)}.</b> {when}. Built from {ref} of "
-            f'<a href="{REPO}">EVO3-Ecosystem/gmi-savings-tracker</a> · <a href="about.html">About the pipeline</a> · <a href="explorer.html">Data explorer</a>'
+            f'<a href="{REPO}">EVO3-Ecosystem/gmi-savings-tracker</a> · <a href="about.html">About the pipeline</a> · <a href="explorer.html">Data explorer</a> · <a href="catalog.html">Database catalog</a>'
             '<span id="site-status"> Loading data…</span></div>')
 
 
@@ -212,7 +212,7 @@ def readme_summary(readme):
     return "\n".join(intro).strip(), "\n".join(keep)
 
 
-NAV = '<a href="./">Dashboard</a> · <a href="explorer.html">Data explorer</a> · <a href="about.html">About</a>'
+NAV = '<a href="./">Dashboard</a> · <a href="explorer.html">Data explorer</a> · <a href="catalog.html">Database catalog</a> · <a href="about.html">About</a>'
 
 
 def page(title, body, desc, head="", wide=False):
@@ -254,6 +254,8 @@ def build(out=OUT, src=None):
     if tables:
         (out / "explorer.html").write_text(page("GMI data explorer", site_explorer.body(tables),
                                                 "Query the GMI Savings Tracker's tables with SQL in the browser (DuckDB-WASM).", site_explorer.TOKENS, wide=True))
+    (out / "catalog.html").write_text(page("GMI database catalog", site_catalog.body(src),
+                                           "Every table of the GMI Savings Tracker: layer, rows, columns, checks and lineage.", site_catalog.TOKENS, wide=True))
     (out / "404.html").write_text(page("Page not found", '<h1>Page not found</h1><p>That page is not part of this site. '
                                        'Go to the <a href="/gmi-savings-tracker/">dashboard</a> or the <a href="/gmi-savings-tracker/about.html">pipeline notes</a>.</p>',
                                        "Page not found."))

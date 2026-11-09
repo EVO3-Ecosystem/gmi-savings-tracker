@@ -393,3 +393,6 @@ lever_fy,d_payment_screen_summary,reference,"Payments year whose flagged review 
 lever_rate_low,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample"
 lever_rate_likely,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample"
 lever_rate_high,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample"
+tables,ops.check_coverage,derived,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated"
+table_name,ops.lineage,derived,Warehouse table (schema.name) created by the build
+depends_on,ops.lineage,derived,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)"

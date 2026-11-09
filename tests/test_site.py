@@ -95,3 +95,12 @@ def test_explorer_pins_duckdb_wasm_and_has_a_fallback(built):
     assert "getJsDelivrBundles" in page and "createObjectURL(new Blob" in page and "new URL('parquet/'" in page
     assert "function fallback(" in page and "data/' + t + '.csv'" in page and len(site_explorer.EXAMPLES) == 6
     assert 'href="explorer.html"' in (built / "index.html").read_text()
+
+
+def test_catalog_lists_tables_columns_checks_and_lineage(built):
+    page = (built / "catalog.html").read_text()
+    assert "<svg" in page and "Lineage" in page and 'href="catalog.html"' in (built / "index.html").read_text()
+    n = page.count('<details class="t"')
+    wh = (ROOT / "docs" / "schemas" / "warehouse_columns.csv").read_text().splitlines()[1:]
+    assert n == len({r.split(",", 1)[0] for r in wh}) and n > 50
+    assert "mart.d_payment_screen" in page and "review_amount" in page

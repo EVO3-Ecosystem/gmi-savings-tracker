@@ -721,6 +721,9 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
+ops.check_coverage,check,VARCHAR,93,Check description,ops
+ops.check_coverage,layer,VARCHAR,93,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_coverage,tables,VARCHAR,93,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated",derived
 ops.check_result,run_id,VARCHAR,93,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.check_result,layer,VARCHAR,93,"Database layer the check ran on (raw, core, ref, mart)",ops
 ops.check_result,check,VARCHAR,93,Check description,ops
@@ -732,6 +735,8 @@ ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
 ops.enrichment,rows,BIGINT,4,Row count,ops
 ops.enrichment,detail,VARCHAR,4,Numbers behind the check result,ops
+ops.lineage,table_name,VARCHAR,258,Warehouse table (schema.name) created by the build,derived
+ops.lineage,depends_on,VARCHAR,258,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
 ops.payee_name_seen,payee_name,VARCHAR,61798,"Payee name exactly as paid (ref.map_payee_vendor.payee), one row per name ever seen by a passing build",ops
 ops.payee_name_seen,first_seen_run_id,VARCHAR,61798,Extract run of the first build that passed its stop checks and saw this payee name,ops
 ops.payee_name_seen,first_seen_date,VARCHAR,61798,UTC date of that extract run (YYYY-MM-DD),ops
@@ -873,10 +878,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,394,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,394,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,394,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,394,What the column means,reference
+ref.column_dictionary,column,VARCHAR,397,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,397,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,397,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,397,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference
