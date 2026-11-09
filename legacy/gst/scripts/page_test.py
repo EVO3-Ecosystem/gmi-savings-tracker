@@ -123,6 +123,9 @@ PROBE = """(tab) => {
                 [!/Likely savings found|would reach GMI/.test(T('p-opp')), 'Opportunities still promise savings']],
     track: () => [[!document.getElementById('stBody2'), 'status table not merged'],
                   [/Since last run/.test(T('p-track')) && /at least 50% of the reported saving/.test(T('trTolNote')) && /50%/.test(T('trSeenS')), 'Seen tolerance or status column missing']],
+    agency: () => [[/ per position: /.test(T('agLede')) || /No agency/.test(T('agLede')), 'Agencies headline missing'],
+                   [!!document.querySelector('#agChart svg') || !!document.querySelector('#agChart .empty'), 'Agencies chart not drawn'],
+                   [/pass money through/.test(T('agChartNote')), 'pass-through flag not explained']],
     areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
   }[tab];
   // small-base rule: a change from a prior-year base under $1M carries no percent

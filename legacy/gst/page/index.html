@@ -319,12 +319,19 @@
 
   <!-- AGENCIES -->
   <section class="panel" id="p-agency" role="tabpanel" aria-labelledby="t-agency" hidden>
+    <p class="lede find" id="agLede" data-source="f_agency f_scope f_object">—</p>
+    <div class="card">
+      <div class="hd"><h2 id="agChartH">Highest controllable purchases per position</h2></div>
+      <p class="note" id="agChartNote"></p>
+      <div class="legend" id="agLegend"></div>
+      <div class="chart" id="agChart" data-source="f_agency" style="min-height:0"></div>
+    </div>
     <div class="card">
       <div class="hd"><h2 id="agH">Controllable purchases per position</h2><button class="xp" data-expand="agency">Expand</button></div>
       <p class="note" id="agNote">Selected years combined: each agency's spending divided by its budgeted position-years, so larger agencies weigh more. Agencies averaging fewer than 50 positions are left out, since one contract swings their figure. Click a row for the agency's page.</p>
       <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><span class="lab">Search <input type="search" id="agQ" placeholder="Agency name" aria-label="Search agencies"></span><span id="agCount"></span></div>
       <div class="tbl"><table data-source="f_agency f_area" data-row-key="agency_code">
-        <thead><tr><th data-field="agency">Agency</th><th class="n" id="agColA">Controllable purchases</th><th class="n">Change</th><th class="n" data-field="fte">Positions (avg.)</th><th class="n">Per position</th><th class="n">Change</th><th class="n" data-field="operating_spending">All spending</th></tr></thead>
+        <thead><tr><th data-field="agency">Agency</th><th class="n" id="agColA">Controllable purchases</th><th class="n">Change</th><th class="n" data-field="fte">Positions (avg.)</th><th class="n">Per position</th><th class="n">Change</th><th class="n" data-field="operating_spending">All spending</th><th class="n" title="Largest of grants, subsidies and contributions or client payments and debt service, as a share of all operating spending">Passed through</th></tr></thead>
         <tbody id="agBody"></tbody></table></div>
       <p class="stagenote" id="agStage"></p>
     </div>
@@ -551,6 +558,7 @@ const GMI_TARGET = 50e6; // GMI's yearly savings target (WYPR, Jan 10, 2025; lis
 const PAY_LAST = 2026;
 const SMALL_BASE = 1e6;   // no percent change from a prior-year base under $1M (mirrors the pipeline's growth-detector minimum)
 const SMALL_TXT = 'new or small base';
+const PASS_SHARE = .5;   // an agency 'mostly passes money through' when grants out or client payments are at least half its operating spending
 const pchg = (a, b) => b != null && Math.abs(b) >= SMALL_BASE ? (a - b) / Math.abs(b) : null;
 const isSmall = (a, b) => !!a && (b == null || Math.abs(b) < SMALL_BASE);   // last fiscal year with a full year of payments
 const AREAS = ['IT hardware, software & services','Fleet & fuel','Utilities & facility energy','Real estate & leases','Print, copy & mail','Telecom'];
@@ -913,18 +921,33 @@ function drawAgency(p){
   const areaIdx = d3.rollup(fa.filter(r => p.areas.includes(r.area)), v => sum(v, 'spend'), r => r.agency_code, r => r.fiscal_year);
   const areaBy = (code, yy) => { const m = areaIdx.get(code); return m ? d3.sum(yy, y => m.get(y) || 0) : 0; };
   const byCode = d3.group(fag, r => r.agency_code);
+  // pass-through share: grants out (Comptroller object) or client payments and debt service (scope), whichever is larger, over operating spending
+  const yset = new Set(ys); const gOut = d3.rollup((ok('f_object') || []).filter(r => yset.has(r.fiscal_year) && /^Grants, Subsidies/.test(r.object_name)), v => sum(v, 'budget'), r => r.agency_code);
+  const cOut = d3.rollup((ok('f_scope') || []).filter(r => yset.has(r.fiscal_year) && r.scope === 'Client payments and debt service'), v => sum(v, 'budget'), r => r.agency_code);
   const rows = [...byCode].filter(([c]) => !p.agencies.length || p.agencies.includes(c)).map(([c, R]) => { const pick = yy => R.filter(r => yy.includes(r.fiscal_year)); const cur = pick(ys), pv = pick(prevYs);
     const val = byArea ? areaBy(c, ys) : sum(cur, 'controllable'), pval = byArea ? areaBy(c, prevYs) : sum(pv, 'controllable'); const fte = sum(cur, 'fte'), pfte = sum(pv, 'fte');
-    const per = fte ? val / fte : null; let chg = pval ? (val - pval)/pval : null, pper = pfte ? pval / pfte : null, per2 = per;
+    const per = fte ? val / fte : null; let sm = prevYs.length > 0 && isSmall(val, pval), chg = sm ? null : pchg(val, pval), pper = pfte ? pval / pfte : null, per2 = per;
     if (ends) { const f = [ys[0]], l = [ys[ys.length-1]]; const vf = byArea ? areaBy(c, f) : sum(pick(f), 'controllable'), vl = byArea ? areaBy(c, l) : sum(pick(l), 'controllable'); const ff = sum(pick(f), 'fte'), fl = sum(pick(l), 'fte');
-      chg = vf ? (vl - vf)/vf : null; pper = ff ? vf/ff : null; per2 = fl ? vl/fl : null; }
-    return {agency_code:c, agency: agName(c), val, change: chg, fte: ys.length ? fte / ys.length : null, per, per_change: per2 && pper ? (per2 - pper)/pper : null, operating_spending: sum(cur, 'operating_spending'), _lab: prevYs.length ? 'vs ' + fyLabel(prevYs) : ends ? `FY${ys[0]} to FY${ys[ys.length-1]}` : ''}; })
+      sm = isSmall(vl, vf); chg = sm ? null : pchg(vl, vf); pper = ff ? vf/ff : null; per2 = fl ? vl/fl : null; }
+    const ops = sum(cur, 'operating_spending'), pass = ops > 0 ? Math.max(gOut.get(c) || 0, cOut.get(c) || 0) / ops : null;
+    return {agency_code:c, agency: agName(c), val, change: chg, fte: ys.length ? fte / ys.length : null, per, per_change: !sm && per2 && pper ? (per2 - pper)/pper : null, _small: sm, pass, flag: pass != null && pass >= PASS_SHARE, operating_spending: ops, _lab: prevYs.length ? 'vs ' + fyLabel(prevYs) : ends ? `FY${ys[0]} to FY${ys[ys.length-1]}` : ''}; })
     .filter(r => r.val && r.fte >= 50 && (!q || r.agency.toLowerCase().includes(q))).sort((a,b) => (b.per||0) - (a.per||0));
   const pool = d3.sum(rows, r => r.fte * ys.length); const medTot = pool ? d3.sum(rows, r => r.val) / pool : null;
   setText('agCount', `${rows.length} agencies · ${fyLabel(ys)} · together: ${M(medTot)} per position a year`);
-  table('agBody', rows, [{key:'agency'},{key:'val',n:1,fmt:M},{key:'change',n:1,chg:'lower'},{key:'fte',n:1,fmt:N0},{key:'per',n:1,fmt:M},{key:'per_change',n:1,chg:'lower'},{key:'operating_spending',n:1,fmt:M}],
+  table('agBody', rows, [{key:'agency'},{key:'val',n:1,fmt:M},{key:'change',n:1,chg:'lower'},{key:'fte',n:1,fmt:N0},{key:'per',n:1,fmt:M},{key:'per_change',n:1,chg:'lower'},{key:'operating_spending',n:1,fmt:M},{key:'pass',n:1,fmt:(v, r) => v == null ? '—' : d3.format('.0%')(v) + (r.flag ? ' · pass-through' : '')}],
     {bar:'per', click:r => openDetail('agency:' + r.agency_code), sel:r => p.agencies.includes(r.agency_code)});
-  setText('agStage', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}; per position = spending ÷ position-years, shown per year. Change compares ${prevYs.length ? 'with ' + fyLabel(prevYs) : ends ? `FY${ys[ys.length-1]} with FY${ys[0]}` : 'with nothing: no earlier year in the data'}.` + (ys.some(isBudgetYear) ? ' Includes budget years.' : '') + ' For costs, ▲ red means they rose and ▼ green means they fell.');
+  // headline, ranked chart and the pass-through flag
+  const top = rows.slice(0, 12), nf = top.filter(r => r.flag).length, firstOk = rows.find(r => !r.flag), lead = rows[0];
+  const unit = byArea ? 'area spending' : 'controllable purchases';
+  setText('agLede', !rows.length ? 'No agency with 50 or more positions matches this selection.' :
+    `${lead.agency} has the highest ${unit} per position: ${M(lead.per)} a year in ${fyLabel(ys)}, against ${M(medTot)} for the ${rows.length} agencies together` +
+    (lead.flag && firstOk ? `; it mostly passes money through, so the highest of the rest, ${firstOk.agency} at ${M(firstOk.per)}, is the better lead` : '') + `${nf ? ` (${nf} of the top ${top.length} are flagged as pass-through)` : ''}.`);
+  setText('agChartH', `Highest ${unit} per position, ${fyLabel(ys)}`);
+  setText('agChartNote', `The ${top.length} highest of the table below, per position a year. Grey bars: agencies that mostly pass money through (grants out, or client payments and debt service, ${d3.format('.0%')(PASS_SHARE)} or more of their operating spending); their per-position figures reflect what they administer, not how efficiently they buy. Click a bar, or a table row, for the agency's page.`);
+  legend('agLegend', [['Per position', dash.colors[0]], ['Mostly passes money through', 'var(--cds-chart-muted)']]);
+  hbars(document.getElementById('agChart'), top.map(r => ({label:r.agency, a:r.per, chg:r.per_change, color: r.flag ? 'var(--cds-chart-muted)' : dash.colors[0], sel:p.agencies.includes(r.agency_code), r})),
+    {anySel: p.agencies.length > 0, aria:`Agencies with the highest ${unit} per position`, tip:d => [`${M(d.a)} per position a year`, `${M(d.r.val)} over ${N0(d.r.fte)} positions (avg.)`, d.r.pass != null ? `Passed through: ${d3.format('.0%')(d.r.pass)} of operating spending${d.r.flag ? ' (flagged)' : ''}` : '', 'Click for the agency\'s page'].filter(Boolean), click:d => openDetail('agency:' + d.r.agency_code)});
+  setText('agStage', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}; per position = spending ÷ position-years, shown per year. Change compares ${prevYs.length ? 'with ' + fyLabel(prevYs) : ends ? `FY${ys[ys.length-1]} with FY${ys[0]}` : 'with nothing: no earlier year in the data'}.` + (ys.some(isBudgetYear) ? ' Includes budget years.' : '') + ' For costs, ▲ red means they rose and ▼ green means they fell.' + ` Changes from a prior-year base under ${M(SMALL_BASE)} show "${SMALL_TXT}". Passed through = grants out or client payments and debt service, whichever is larger, as a share of operating spending; ${d3.format('.0%')(PASS_SHARE)} or more is flagged.`);
 }
 const TITLE = s => String(s).toLowerCase().replace(/(^|[^a-z'])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Of|And|For|The|To|On)\b/g, w => w.toLowerCase()).replace(/^./, c => c.toUpperCase()).replace(/\b(Mco|Shi|Cdw|Ibm|Bge|Ups|Dhl|Llc|Wex|Md|Wgl|Dsr|Crc|Wssc|Usa|Sap|Hp|Cgi|Mci)\b/g, w => w.toUpperCase()).replace(/\bAt&T\b/gi, 'AT&T').replace(/\s*&\s*$/, '');
 const VTYPES = ['Business or other', 'Health care organization', 'Financial institution', 'Education institution', 'Utility', 'Non-profit', 'Government'];
