@@ -90,9 +90,11 @@ def build(run_id):
       UNION ALL
       SELECT fiscal_year, agency_code, agency_name, unit_code, unit_name, program_code, program_name, object_code, object_name,
              subobject_code, subobject_name, fund_type, function_code, function_name, budget, source_dataset FROM core.fact_budget_highered""")
-    con.execute("""CREATE TABLE core.fact_fund AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
+    # unit and program kept (roadmap gap 10), normalized like core.fact_budget, so funding can be read at program level
+    con.execute(f"""CREATE TABLE core.fact_fund AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
         trim(fund_type_name) AS fund_type, trim(fund_source_code) AS fund_source_code, trim(fund_source_name) AS fund_source_name,
-        CAST(budget AS DOUBLE) AS budget FROM raw.fund""")
+        CAST(budget AS DOUBLE) AS budget, trim(unit_code) AS unit_code, trim(unit_name) AS unit_name,
+        {pad('program_code', 2)} AS program_code, trim(program_name) AS program_name FROM raw.fund""")
     con.execute(f"""CREATE TABLE core.fact_fte AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
         trim(unit_code) AS unit_code, {pad('program_code', 2)} AS program_code, trim(organization_code) AS organization_code,
         CAST("count" AS DOUBLE) AS fte FROM raw.fte""")

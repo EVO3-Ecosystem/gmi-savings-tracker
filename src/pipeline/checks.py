@@ -49,6 +49,9 @@ def run(con, run_id, manifest):
     check("core", "Budget totals = funding-source totals (within $1)", gap <= 1, f"largest yearly gap ${gap:,.2f}")
     bad = one("SELECT count(*) FROM core.fact_budget WHERE NOT regexp_full_match(object_code, '[0-9]{2}') OR NOT regexp_full_match(program_code, '[0-9]{2}')")
     check("core", "Object and program codes are two digits", bad == 0, f"{bad:,} rows")
+    bad, n, units = con.execute("""SELECT count(*) FILTER (WHERE unit_code IS NULL OR program_code IS NULL OR NOT regexp_full_match(program_code, '[0-9]{2}')),
+        count(*), count(DISTINCT agency_code || '/' || unit_code || '/' || program_code) FROM core.fact_fund""").fetchone()
+    check("core", "Funding-source rows keep their unit and two-digit program", bad == 0, f"{bad:,} of {n:,} rows without both; {units:,} agency-unit-programs")
     spell = one("SELECT count(DISTINCT comptroller_subobject_code) FROM raw.budget")
     codes = one("SELECT count(*) FROM ref.dim_subobject")
     lead = one("SELECT count(*) FROM core.fact_budget WHERE subobject_code LIKE '0%' AND subobject_code <> '0'")
