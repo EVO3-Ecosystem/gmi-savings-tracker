@@ -1,0 +1,20 @@
+{
+  "description": "Findings from four detectors (peer gap per position, growth above the state's trend, tail spend, multi-agency vendor leverage) over every controllable spending code at every agency (FY2025 actual budget, yu65-jmmv) and FY2026 payments to vendors (7syw-q4cy), each with spending, likely saving, low-high range and evidence.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "d_opps.csv",
+    "url": "/_blob/bade311bf2d3960e799c3e6abab6a141"
+  },
+  "staleAfterHours": 1500,
+  "title": "Savings opportunities",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

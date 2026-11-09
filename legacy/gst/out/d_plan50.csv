@@ -1,0 +1,29 @@
+step,action,basis,saving,tab,cumulative
+1,Keep GMI's current savings going,forecast FY2027 spending × the rate GMI reported for each area,29640863.64,calc,29640863.64
+2,Statewide contract: Carroll Independent Fuel,assumed 3.5% of $65.6M paid by 49 agencies (assumed range 2-5%),2295577.78,opp,31936441.41
+3,Statewide contract: Carahsoft,assumed 3.5% of $57.4M paid by 38 agencies (assumed range 2-5%),2009015.21,opp,33945456.62
+4,Statewide contract: Wgl Energy Services,assumed 3.5% of $52.7M paid by 17 agencies (assumed range 2-5%),1844027.95,opp,35789484.57
+5,Statewide contract: Shi International,assumed 3.5% of $52.6M paid by 40 agencies (assumed range 2-5%),1839542.62,opp,37629027.19
+6,Statewide contract: Applied Technology Services,assumed 3.5% of $43.2M paid by 34 agencies (assumed range 2-5%),1513424.41,opp,39142451.59
+7,Statewide contract: Verizon,assumed 3.5% of $32.3M paid by 55 agencies (assumed range 2-5%),1129681.18,opp,40272132.78
+8,Statewide contract: Strategic Communications,assumed 3.5% of $29.3M paid by 18 agencies (assumed range 2-5%),1026177.78,opp,41298310.56
+9,Statewide contract: Element Fleet,assumed 3.5% of $26.6M paid by 49 agencies (assumed range 2-5%),930866.34,opp,42229176.9
+10,Statewide contract: Skyline Technology Solutions,assumed 3.5% of $25.6M paid by 17 agencies (assumed range 2-5%),896501.5,opp,43125678.4
+11,Statewide contract: Gantech,assumed 3.5% of $22.2M paid by 10 agencies (assumed range 2-5%),778274.99,opp,43903953.39
+12,Statewide contract: Securitas Technology,assumed 3.5% of $20.6M paid by 14 agencies (assumed range 2-5%),721940.9,opp,44625894.3
+13,Statewide contract: Advanced Computer Concepts,assumed 3.5% of $19.7M paid by 26 agencies (assumed range 2-5%),690414.68,opp,45316308.98
+14,Statewide contract: Cas Severn,assumed 3.5% of $19.5M paid by 14 agencies (assumed range 2-5%),683375.81,opp,45999684.79
+15,Statewide contract: Humanim,assumed 3.5% of $16.0M paid by 12 agencies (assumed range 2-5%),561446.93,opp,46561131.72
+16,Statewide contract: At&T,assumed 3.5% of $13.1M paid by 42 agencies (assumed range 2-5%),459315.95,opp,47020447.67
+17,Statewide contract: Apple Ford,assumed 3.5% of $12.1M paid by 12 agencies (assumed range 2-5%),424772.26,opp,47445219.93
+18,Statewide contract: League For People With Disabilities,assumed 3.5% of $11.4M paid by 13 agencies (assumed range 2-5%),397598.1,opp,47842818.04
+19,Statewide contract: Washington Gas,assumed 3.5% of $8.0M paid by 11 agencies (assumed range 2-5%),280561.5,opp,48123379.53
+20,Statewide contract: Watkins Security Agency,assumed 3.5% of $7.7M paid by 10 agencies (assumed range 2-5%),270140.24,opp,48393519.77
+21,Statewide contract: Grainger,assumed 3.5% of $7.6M paid by 18 agencies (assumed range 2-5%),264720.29,opp,48658240.07
+22,Statewide contract: Sport Chevrolet,assumed 3.5% of $7.3M paid by 15 agencies (assumed range 2-5%),256517.91,opp,48914757.97
+23,Statewide contract: Comcast,assumed 3.5% of $7.2M paid by 11 agencies (assumed range 2-5%),252232.27,opp,49166990.24
+24,Statewide contract: En Net Services,assumed 3.5% of $6.3M paid by 34 agencies (assumed range 2-5%),220368.11,opp,49387358.35
+25,Statewide contract: Hertrich Fleet Services,assumed 3.5% of $6.0M paid by 10 agencies (assumed range 2-5%),209183.57,opp,49596541.92
+26,Statewide contract: Canon,assumed 3.5% of $5.9M paid by 40 agencies (assumed range 2-5%),205320.21,opp,49801862.13
+27,Statewide contract: Hcgi Hartford,assumed 3.5% of $5.6M paid by 13 agencies (assumed range 2-5%),197353.73,opp,49999215.86
+28,Statewide contract: Mobile Communications America,assumed 3.5% of $5.6M paid by 11 agencies (assumed range 2-5%),195577.74,opp,50194793.6

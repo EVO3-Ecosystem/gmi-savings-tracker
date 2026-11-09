@@ -1,0 +1,20 @@
+{
+  "description": "Total payments, records, agencies and vendors per fiscal year, FY2008\u2013FY2026, with year-over-year change, from State of Maryland Payments Data (7syw-q4cy), each year matched to the portal and to vendorpayments.maryland.gov.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "totals_by_fy.csv",
+    "url": "/_blob/58f4455c2b8593278537e6dc77a1fe5b"
+  },
+  "staleAfterHours": 1500,
+  "title": "Payments to vendors by year",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

@@ -32,6 +32,12 @@ gmi_recurring:
     savings: [S01]
     note: "contract renegotiation $18M year over year"
 
+# Agencies left out of every GMI savings baseline (opportunity detectors, bid list, vendor moves). Public higher education
+# (4mca-332u) buys outside the executive-branch procurement GMI works through; only R95 also appears in the payments data.
+# Its budget is shown only in mart.d_all_funds, labeled "including public higher education". (Statute citations: to verify.)
+gmi_baseline_exclusions:
+  agency_codes: [R13, R14, R30, R95]
+
 # Screening assumptions for the opportunity detectors (src/models/opportunities.py), carried over from the legacy
 # pipeline. The saving rates are screening percentages, not forecasts: see the Assumptions register in
 # docs/data-governance.md. Change a value here, not in code.
@@ -83,7 +89,7 @@ savings:
     min_agencies: 5            # GMI renegotiated statewide procurement contracts: vendors paid by this many agencies
     min_before: 1000000        # and paid at least this in the earlier year
     top: 40                    # the largest decreases shown
-    excluded_agency_codes: [CAPITAL, D06, D25]   # operating spending only
+    excluded_agency_codes: [CAPITAL, D06, D25, R13, R14, R30, R95]   # operating spending only; public higher education out of GMI baselines
     not_procurement: "CONSTRUCT|PAVING|CONTRACTING|MCO|HEALTH PLAN|PARTNERS MCO|TRUST|BANK|SCHOOL|ACADEMY|UNIVERSITY|COLLEGE|HOSPITAL|COUNTY|CITY OF|\\bJV\\b|BUS SALES|NOVA BUS|INSURANCE|MEDICAL CENTER|YESHIVA|TALMUD|BNOS|ROOF|MECHANICAL|CORPS OF ENGINEERS|HEALTH|TITLE|RESCUE|BUILDERS|EXCAVAT|BRIDGE|STEEL|CONCRETE"
 
 # Recommendations (src/models/recommendations.py): the Overview's six recommendations as tracked tables.

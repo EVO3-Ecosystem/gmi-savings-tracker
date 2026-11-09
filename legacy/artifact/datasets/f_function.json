@@ -1,0 +1,20 @@
+{
+  "description": "Budget by function (Comptroller category), agency and fiscal year, FY2017\u2013FY2027, with the confirmed budget stage (actual, working budget, Legislative Appropriation). From the operating budget dataset (yu65-jmmv).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "f_function.csv",
+    "url": "/_blob/5e5f84819e0292912e9f7fd8515d9f3e"
+  },
+  "staleAfterHours": 1500,
+  "title": "Operating budget by function and agency",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

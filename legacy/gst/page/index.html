@@ -32,6 +32,8 @@
 .gs .panel{display:grid;gap:var(--cds-gap-md)}
 .gs .panel[hidden]{display:none}
 .gs .lede{font-size:var(--cds-font-size-body);margin:0;max-width:78ch;line-height:1.5}
+.gs .lede.find{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);text-wrap:pretty}
+.gs .st.stg{color:var(--color-fg-muted)}.gs .st.stg:empty{display:none}
 .gs .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:var(--cds-gap-md)}
 .gs .tile,.gs .card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0}
 .gs .tile{display:grid;gap:var(--cds-gap-xs);align-content:start;position:relative}
@@ -62,6 +64,7 @@
 .gs th[aria-sort=descending]::after{content:" ↓"}
 .gs td{padding:var(--cds-pad-xs) var(--cds-pad-sm);border-bottom:1px solid var(--color-border-line);vertical-align:top}
 .gs td.n,.gs th.n{text-align:right;white-space:nowrap}
+.gs td.one{max-width:24rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#grBody td.one{max-width:15rem}
 .gs tr.click{cursor:pointer}
 .gs tr.click:hover td{background:var(--color-bg)}
 .gs tr.sel td{font-weight:var(--cds-font-weight-medium)}
@@ -134,12 +137,12 @@
 
   <!-- OVERVIEW -->
   <section class="panel" id="p-over" role="tabpanel" aria-labelledby="t-over">
-    <p class="lede" id="overLede" data-source="f_function f_scope f_area">—</p>
+    <p class="lede find" id="overLede" data-source="f_function f_scope f_area">—</p>
     <div class="tiles">
-      <div class="tile"><span class="k" id="kBud">Operating spending</span><button class="xp" data-expand="budget">Expand</button><span class="v" id="vBud" data-source="f_function">—</span><span class="d chg" id="dBud">—</span><span class="d" id="sBud"></span><div class="spark" id="spBud"></div></div>
-      <div class="tile"><span class="k" id="kCtl">Controllable purchases</span><button class="xp" data-expand="controllable">Expand</button><span class="v" id="vCtl" data-source="f_scope">—</span><span class="d chg" id="dCtl">—</span><span class="d" id="sCtl"></span><div class="spark" id="spCtl"></div></div>
-      <div class="tile"><span class="k" id="kArea">Focus areas, by spending code</span><button class="xp" data-expand="areas">Expand</button><span class="v" id="vArea" data-source="f_area">—</span><span class="d chg" id="dArea">—</span><span class="d" id="sArea"></span><div class="spark" id="spArea"></div></div>
-      <div class="tile"><span class="k" id="kPay">Payments to vendors</span><button class="xp" data-expand="payments">Expand</button><span class="v" id="vPay" data-source="f_agency totals f_area">—</span><span class="d chg" id="dPay">—</span><span class="d" id="sPay"></span><div class="spark" id="spPay"></div></div>
+      <div class="tile"><span class="k" id="kBud">Operating spending</span><button class="xp" data-expand="budget">Expand</button><span class="v" id="vBud" data-source="f_function">—</span><span class="d"><span class="st stg" id="gBud"></span></span><span class="d chg" id="dBud">—</span><span class="d" id="sBud"></span><div class="spark" id="spBud"></div></div>
+      <div class="tile"><span class="k" id="kCtl">Controllable purchases</span><button class="xp" data-expand="controllable">Expand</button><span class="v" id="vCtl" data-source="f_scope">—</span><span class="d"><span class="st stg" id="gCtl"></span></span><span class="d chg" id="dCtl">—</span><span class="d" id="sCtl"></span><div class="spark" id="spCtl"></div></div>
+      <div class="tile"><span class="k" id="kArea">Focus areas, by spending code</span><button class="xp" data-expand="areas">Expand</button><span class="v" id="vArea" data-source="f_area">—</span><span class="d"><span class="st stg" id="gArea"></span></span><span class="d chg" id="dArea">—</span><span class="d" id="sArea"></span><div class="spark" id="spArea"></div></div>
+      <div class="tile"><span class="k" id="kPay">Payments to vendors</span><button class="xp" data-expand="payments">Expand</button><span class="v" id="vPay" data-source="f_agency totals f_area">—</span><span class="d"><span class="st stg" id="gPay"></span></span><span class="d chg" id="dPay">—</span><span class="d" id="sPay"></span><div class="spark" id="spPay"></div></div>
     </div>
     <div class="card">
       <div class="hd"><h2 id="ovBPH">Budget and payments, FY2017–FY2026</h2><button class="xp" data-expand="budget">Expand</button></div>
@@ -155,24 +158,16 @@
         <p class="insight" id="ovGrants"></p>
       </div>
       <div class="card">
-        <div class="hd"><h2 id="ov50H">Path to $50M</h2><button class="xp" data-expand="calc">Expand</button></div>
+        <div class="hd"><h2 id="ov50H">A conditional path to $50M</h2><button class="xp" data-expand="calc">Expand</button></div>
         <p class="note" id="ov50Note">Yearly savings from the steps on the Calculator and Opportunities tabs, against the $50M target.</p>
         <div class="chart" id="ov50" data-source="d_plan50" style="min-height:0"></div>
         <p class="insight" id="ov50Detail"></p>
       </div>
     </div>
-    <div class="grid">
-      <div class="card">
-        <div class="hd"><h2 id="scopeH">Where savings can come from</h2><button class="xp" data-expand="scope">Expand</button></div>
-        <p class="note" id="scopeNote">Operating budget by what an agency can change.</p>
-        <div class="legend" id="scopeLegend"></div>
-        <div class="chart" id="scopeChart" data-source="f_scope"></div>
-      </div>
-      <div class="card">
+    <div class="card">
         <div class="hd"><h2 id="overAreasH">Focus areas</h2><button class="xp" data-expand="areas">Expand</button></div>
         <p class="note" id="overAreasNote">Spending by the state's spending codes (solid) and the part payee names alone can find (thin), for the selected years combined. Click a bar to filter by that area.</p>
         <div class="chart" id="overAreas" data-source="f_area"></div>
-      </div>
     </div>
     <div class="card">
       <div class="hd"><h2>Recommended next steps</h2></div>
@@ -199,6 +194,12 @@
         <tbody id="areasBody"></tbody></table></div>
       <p class="stagenote" id="areasStage"></p>
     </div>
+    <div class="card">
+        <div class="hd"><h2 id="scopeH">Where savings can come from</h2><button class="xp" data-expand="scope">Expand</button></div>
+        <p class="note" id="scopeNote">Operating budget by what an agency can change.</p>
+        <div class="legend" id="scopeLegend"></div>
+        <div class="chart" id="scopeChart" data-source="f_scope"></div>
+    </div>
   </section>
 
   <section class="panel" id="p-track" role="tabpanel" aria-labelledby="t-track" hidden>
@@ -215,17 +216,13 @@
       <div class="chart" id="trChart" data-source="d_savings f_savings_check" style="min-height:200px"></div>
     </div>
     <div class="card">
-      <div class="hd"><h2 id="trTblH">Every reported item and its check</h2></div>
+      <div class="hd"><h2 id="trTblH">Every reported item, its check and its status since the last refresh (recommendation 2)</h2></div>
+      <p class="note" id="trTolNote"></p>
       <p class="note">Hover over a check result to see the vendors it covers. A check says whether the change shows up in what the state paid; it is a lead to follow, not proof. Payee names miss spending booked under other names, and contracts change for other reasons.</p>
       <div class="tbl"><table data-source="d_savings f_savings_check" data-row-key="saving_id">
-        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n">Payments FY2025</th><th class="n">Payments FY2026</th><th class="n">Change</th><th>Check result</th></tr></thead>
+        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n">Payments FY2025</th><th class="n">Payments FY2026</th><th class="n">Change</th><th id="trResH">Check result</th><th>Since last run</th></tr></thead>
         <tbody id="trBody"></tbody></table></div>
       <p class="stagenote" id="trStage"></p>
-    </div>
-    <div class="card">
-      <div class="hd"><h2>Status since the last refresh (recommendation 2)</h2></div>
-      <p class="note">Each check is saved on every monthly run, so a saving that starts showing up in payments, or stops, is flagged here.</p>
-      <div class="tbl"><table data-source="d_savings_status"><thead><tr><th>Item</th><th class="n">Reported</th><th class="n">FY2025 paid</th><th class="n">FY2026 paid</th><th>Status</th><th>Last refresh</th></tr></thead><tbody id="stBody2"></tbody></table></div>
     </div>
     <div class="card">
       <div class="hd"><h2>Sources</h2></div>
@@ -254,17 +251,17 @@
       <div class="tbl"><table data-source="d_bid_list"><thead><tr><th class="n">#</th><th>Vendor</th><th class="n">Agencies</th><th class="n">FY2025</th><th class="n">FY2026</th><th class="n">Savings 2–5%</th><th>Largest buyers</th></tr></thead><tbody id="bidBody"></tbody></table></div>
     </div>
     <div class="card">
-      <div class="hd"><h2>Likely savings by detector</h2><button class="xp" data-expand="opps">Expand</button></div>
-      <p class="note">Four automated checks run on every controllable spending code at every agency (FY2025 actual budget) and on FY2026 payments to vendors. Bars show the likely saving; the thin bar shows the high end of the range. Click a bar for that detector's page.</p>
+      <div class="hd"><h2>Leads by detector</h2><button class="xp" data-expand="opps">Expand</button></div>
+      <p class="note">Four automated checks run on every controllable spending code at every agency (FY2025 actual budget) and on FY2026 payments to vendors. Bars show the likely value of each detector's leads; the thin bar shows the high end. Detectors overlap, so the bars are not added. Click a bar for that detector's page.</p>
       <div class="chart" id="opChart" data-source="d_opps" style="min-height:200px"></div>
     </div>
     <div class="card">
       <div class="hd"><h2 id="opTblH">Findings, largest first</h2><button class="xp" data-expand="opps">Expand</button></div>
       <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><span class="lab">Detector <select id="opDet" aria-label="Detector"><option value="">All detectors</option><option>Growth above trend</option><option>Peer gap</option><option>Leverage</option><option>Tail spend</option></select></span><span id="opCount"></span></div>
       <div class="tbl"><table data-source="d_opps" data-row-key="opp_id">
-        <thead><tr><th data-field="detector">Detector</th><th data-field="agency">Agency</th><th data-field="spending_code">Spending code or vendor</th><th data-field="area">Focus area</th><th class="n" data-field="baseline">Spending</th><th class="n" data-field="likely">Likely saving</th><th class="n" data-field="low">Range</th><th data-field="evidence">Why</th></tr></thead>
+        <thead><tr><th data-field="detector">Detector</th><th data-field="agency">Agency</th><th data-field="spending_code">Spending code or vendor</th><th data-field="area">Focus area</th><th class="n" data-field="baseline">Spending</th><th class="n" data-field="likely">Likely value</th><th class="n" data-field="low">Range</th><th data-field="evidence">Why</th></tr></thead>
         <tbody id="opBody"></tbody></table></div>
-      <p class="stagenote">Peer gap: spending per budgeted position above three in four agencies; 5–15% of the excess is counted because agencies differ in mission. Growth above trend: spending that grew 25+ points faster than the state's from FY2022 to FY2025; 10–30% of the extra growth is counted. Tail spend: payments to vendors outside each focus area's ten largest; an assumed 3–10% from consolidation. Leverage: one vendor paid separately by ten or more agencies; an assumed 2–5% from one enterprise agreement. The same agency and code is never counted twice. All of these percentages are screening assumptions, not published rates. Findings are leads to review, not savings already found. The year filter does not apply here.</p>
+      <p class="stagenote">Peer gap: spending per budgeted position above three in four agencies; 5–15% of the excess is counted because agencies differ in mission. Growth above trend: spending that grew 25+ points faster than the state's from FY2022 to FY2025; 10–30% of the extra growth is counted. Tail spend: payments to vendors outside each focus area's ten largest; an assumed 3–10% from consolidation. Leverage: one vendor paid separately by ten or more agencies; an assumed 2–5% from one enterprise agreement. The same agency and code is never counted twice. All of these percentages are screening assumptions, not published rates. Findings are leads to review, not savings already found; they overlap across detectors and between budget and payments, so their values are not additive. The year filter does not apply here.</p>
     </div>
   </section>
   <section class="panel" id="p-calc" role="tabpanel" aria-labelledby="t-calc" hidden>
@@ -283,13 +280,13 @@
       </div>
       <div class="card">
         <h2 id="caYearH">Savings by year</h2>
-        <p class="note">Bars: likely net savings. Lines: 8 in 10 simulated outcomes. FY2026 is GMI's reported result; FY2027–FY2031 are forecast. Dashed line: the $50M target.</p>
+        <p class="note">Bars: likely net savings. Lines: indicative range of simulated outcomes (10th to 90th percentile, not a calibrated 80% interval).<span class="covn"></span> FY2026 is GMI's reported result; FY2027–FY2031 are forecast. Dashed line: the $50M target.</p>
         <div class="chart" id="caYears" style="min-height:240px"></div>
       </div>
     </div>
     <div class="card">
       <div class="hd"><h2 id="caFcH">Spending forecast, with and without savings</h2></div>
-      <p class="note" id="caFcNote">Actual spending FY2017–FY2025 (solid), the forecast to FY2031 (dashed, shaded band = 8 in 10 outcomes), the state's own FY2026 working budget and FY2027 Legislative Appropriation (dots), and spending after savings at the current levers (green). Follows the focus-area filter.</p>
+      <p class="note" id="caFcNote">Actual spending FY2017–FY2025 (solid), the forecast to FY2031 (dashed, shaded band = indicative range: the 10th to 90th percentile of the bootstrap paths), the state's own FY2026 working budget and FY2027 Legislative Appropriation (dots), and spending after savings at the current levers (green). Follows the focus-area filter.<span class="covn"></span></p>
       <div class="legend" id="caFcLegend"></div>
       <div class="chart" id="caFc" style="min-height:300px"></div>
     </div>
@@ -306,7 +303,8 @@
       </div>
     </div>
     <div class="card">
-      <div class="hd"><h2>A path to $50M a year (recommendation 4)</h2></div>
+      <div class="hd"><h2>A conditional path to $50M a year (recommendation 4)</h2></div>
+      <p class="insight" id="planFind"></p>
       <p class="note">GMI's current pace from the forecast, then statewide contracts for the largest shared vendors at an assumed 3.5% (the middle of an assumed 2–5% range, not a published rate), added until the total reaches $50M. Click a step for its evidence.</p>
       <div class="tbl"><table data-source="d_plan50"><thead><tr><th class="n">Step</th><th>Action</th><th>Basis</th><th class="n">Savings a year</th><th class="n">Running total</th></tr></thead><tbody id="planBody"></tbody></table></div>
     </div>
@@ -322,12 +320,19 @@
 
   <!-- AGENCIES -->
   <section class="panel" id="p-agency" role="tabpanel" aria-labelledby="t-agency" hidden>
+    <p class="lede find" id="agLede" data-source="f_agency f_scope f_object">—</p>
+    <div class="card">
+      <div class="hd"><h2 id="agChartH">Highest controllable purchases per position</h2></div>
+      <p class="note" id="agChartNote"></p>
+      <div class="legend" id="agLegend"></div>
+      <div class="chart" id="agChart" data-source="f_agency" style="min-height:0"></div>
+    </div>
     <div class="card">
       <div class="hd"><h2 id="agH">Controllable purchases per position</h2><button class="xp" data-expand="agency">Expand</button></div>
       <p class="note" id="agNote">Selected years combined: each agency's spending divided by its budgeted position-years, so larger agencies weigh more. Agencies averaging fewer than 50 positions are left out, since one contract swings their figure. Click a row for the agency's page.</p>
       <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><span class="lab">Search <input type="search" id="agQ" placeholder="Agency name" aria-label="Search agencies"></span><span id="agCount"></span></div>
       <div class="tbl"><table data-source="f_agency f_area" data-row-key="agency_code">
-        <thead><tr><th data-field="agency">Agency</th><th class="n" id="agColA">Controllable purchases</th><th class="n">Change</th><th class="n" data-field="fte">Positions (avg.)</th><th class="n">Per position</th><th class="n">Change</th><th class="n" data-field="operating_spending">All spending</th></tr></thead>
+        <thead><tr><th data-field="agency">Agency</th><th class="n" id="agColA">Controllable purchases</th><th class="n">Change</th><th class="n" data-field="fte">Positions (avg.)</th><th class="n">Per position</th><th class="n">Change</th><th class="n" data-field="operating_spending">All spending</th><th class="n" title="Largest of grants, subsidies and contributions or client payments and debt service, as a share of all operating spending">Passed through</th></tr></thead>
         <tbody id="agBody"></tbody></table></div>
       <p class="stagenote" id="agStage"></p>
     </div>
@@ -408,17 +413,18 @@
     <div class="card">
       <div class="hd"><h2 id="ovlH">Budget, payments and grants by year</h2></div>
       <p class="note">How the three sources line up. The budget is all funds at its latest stage; payments are cash paid to payees (no payroll, but capital and pass-through money); grants and loans are the state's award list. Grants are mostly paid out through payments, so the last column shows the share of grant dollars whose grantee is also a payee that year (exact name match, so a minimum). Statewide; the agency filter does not apply.</p>
+      <p class="insight" id="ovlFind"></p>
       <div class="tbl"><table data-source="f_overlap">
         <thead><tr><th>Year</th><th>Budget stage</th><th class="n">Budget</th><th class="n">General funds</th><th class="n">Special funds</th><th class="n">Federal funds</th><th class="n">Payments</th><th class="n">To governments</th><th class="n">To everyone else</th><th class="n">Grants and loans</th><th class="n">Grant $ to payees</th></tr></thead>
         <tbody id="ovlBody"></tbody></table></div>
     </div>
     <div class="grid">
-      <div class="card"><div class="hd"><h2 id="fsH">How it's funded</h2></div><p class="note" id="fsNote">Budget by named fund source. Federal sources carry their federal Assistance Listing number.</p>
+      <div class="card"><div class="hd"><h2 id="fsH">How it's funded</h2></div><p class="note" id="fsNote">Budget by fund type and year (chart), then by named fund source (table). Federal sources carry their federal Assistance Listing number.</p><p class="insight" id="fsFind"></p><div class="legend" id="fsLegend"></div><div class="chart" id="fsChart" data-source="f_fund" style="min-height:0"></div>
         <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><select id="fsType" aria-label="Fund type"><option value="">All fund types</option></select> <input id="fsQ" type="search" placeholder="Search fund sources" aria-label="Search fund sources"></div>
         <div class="tbl"><table data-source="f_fund_source">
           <thead><tr><th>Fund source</th><th>Code</th><th>Type</th><th class="n">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
           <tbody id="fsBody"></tbody></table></div><p class="note" id="fsCount"></p></div>
-      <div class="card"><div class="hd"><h2 id="pgH">Where it's going</h2></div><p class="note" id="pgNote">Budget by agency program.</p>
+      <div class="card"><div class="hd"><h2 id="pgH">Where it's going</h2></div><p class="note" id="pgNote">Budget by agency program.</p><p class="insight" id="pgFind"></p>
         <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><input id="pgQ" type="search" placeholder="Search programs or agencies" aria-label="Search programs"></div>
         <div class="tbl"><table data-source="f_program">
           <thead><tr><th>Program</th><th>Agency</th><th class="n">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
@@ -426,7 +432,7 @@
     </div>
     <div class="card">
       <div class="hd"><h2 id="grH">Grants and loans, as listed</h2></div>
-      <p class="note" id="grNote">Every row as the state publishes it (grants and loans dataset, absk-avps), with no grouping. Grantor names are free text, so one agency can appear under several spellings. FY2009–FY2025; the agency filter does not apply.</p>
+      <p class="note" id="grNote">Every row as the state publishes it (grants and loans dataset, absk-avps), with no grouping. Grantor names are free text, so one agency can appear under several spellings. FY2009–FY2025; the agency filter does not apply. Descriptions are cut to one line; hover for the full text.</p><p class="insight" id="grFind"></p>
       <div class="filters" style="padding:0 0 var(--cds-gap-sm)"><select id="grCat" aria-label="Grant or loan"><option value="">Grants and loans</option><option>Grant</option><option>Loan</option></select> <select id="grPay" aria-label="Also a payee"><option value="">All grantees</option><option value="1">Also a payee that year</option><option value="0">Not found in payments</option></select> <input id="grQ" type="search" placeholder="Search grantor, grantee or description" aria-label="Search grants"></div>
       <div class="tbl"><table data-source="f_grants">
         <thead><tr><th>Year</th><th>Grantor</th><th>Grantee</th><th>Description</th><th>Type</th><th>Non-profit</th><th>ZIP</th><th class="n">Amount</th><th class="n">Paid to grantee that year</th></tr></thead>
@@ -434,15 +440,15 @@
       <p class="note" id="grCount"></p>
     </div>
     <div class="grid">
-      <div class="card"><div class="hd"><h2 id="fnH">By function</h2><button class="xp" data-expand="budget">Expand</button></div><p class="note" id="fnNote">All funds.</p>
+      <div class="card"><div class="hd"><h2 id="fnH">By function</h2><button class="xp" data-expand="budget">Expand</button></div><p class="note" id="fnNote">All funds.</p><p class="insight" id="fnFind"></p>
         <div class="tbl"><table data-source="f_function" data-row-key="category_title">
           <thead><tr><th data-field="category_title">Function</th><th class="n" data-field="budget">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
           <tbody id="fnBody"></tbody></table></div></div>
-      <div class="card"><div class="hd"><h2 id="fundH">By fund type</h2><button class="xp" data-expand="funds">Expand</button></div><p class="note">General, federal and special funds.</p>
+      <div class="card"><div class="hd"><h2 id="fundH">By fund type</h2><button class="xp" data-expand="funds">Expand</button></div><p class="note">General, federal and special funds.</p><p class="insight" id="fundFind"></p>
         <div class="tbl"><table data-source="f_fund" data-row-key="fund_type_name">
           <thead><tr><th data-field="fund_type_name">Fund</th><th class="n" data-field="budget">Amount</th><th class="n">Change</th><th class="n">Share</th></tr></thead>
           <tbody id="fundBody"></tbody></table></div></div>
-      <div class="card"><div class="hd"><h2 id="objH">By type of spending</h2><button class="xp" data-expand="controllable">Expand</button></div><p class="note">Comptroller object, with the controllable part.</p>
+      <div class="card"><div class="hd"><h2 id="objH">By type of spending</h2><button class="xp" data-expand="controllable">Expand</button></div><p class="note">Comptroller object, with the controllable part.</p><p class="insight" id="objFind"></p>
         <div class="tbl"><table data-source="f_object" data-row-key="object_name">
           <thead><tr><th data-field="object_name">Object</th><th class="n" data-field="budget">Amount</th><th class="n">Change</th><th class="n" data-field="controllable">Controllable</th></tr></thead>
           <tbody id="objBody"></tbody></table></div></div>
@@ -550,13 +556,20 @@ const num = rows => rows.map(r => Object.fromEntries(Object.entries(r).map(([k,v
 const ARROW = v => v==null||isNaN(v)||!isFinite(v)?'—':Math.abs(v)<=0.0005?'■ flat':(v>0?'▲ ':'▼ ')+d3.format('.1%')(Math.abs(v));
 const toneOf = (v,good) => v==null||isNaN(v)||!isFinite(v)||Math.abs(v)<=0.0005||good==='neutral'?'flat':((v>0)===(good==='higher')?'good':'bad');
 const stageShort = s => ({'Actual':'actual','Working budget':'working budget','Appropriation':'appropriation','Legislative appropriation':'Legislative Appropriation','Legislative Appropriation':'Legislative Appropriation','Payments only':'payments'})[s]||String(s||'').toLowerCase();
+const GMI_TARGET = 50e6; // GMI's yearly savings target (WYPR, Jan 10, 2025; listed under Sources on the Savings tracker tab)
+const PAY_LAST = 2026;
+const SMALL_BASE = 1e6;   // no percent change from a prior-year base under $1M (mirrors the pipeline's growth-detector minimum)
+const SMALL_TXT = 'new or small base';
+const PASS_SHARE = .5;   // an agency 'mostly passes money through' when grants out or client payments are at least half its operating spending
+const pchg = (a, b) => b != null && Math.abs(b) >= SMALL_BASE ? (a - b) / Math.abs(b) : null;
+const isSmall = (a, b) => !!a && (b == null || Math.abs(b) < SMALL_BASE);   // last fiscal year with a full year of payments
 const AREAS = ['IT hardware, software & services','Fleet & fuel','Utilities & facility energy','Real estate & leases','Print, copy & mail','Telecom'];
 const SCOPES = ['Controllable purchases','Charges between agencies','Client payments and debt service','Staff, grants and capital'];
 const areaColor = a => dash.colors[AREAS.indexOf(a) % dash.colors.length];
 const cache = {}; // parsed datasets, re-parsed only when the dataset changes
 const ok = id => { const d = dash.data(id); if (!d || d.status !== 'ok') return null; if (cache[id] && cache[id].src === d.data) return cache[id].rows; const rows = num(d.data); cache[id] = {src: d.data, rows}; return rows; };
 const setText = (id,t) => { const e = document.getElementById(id); if (e) e.textContent = t; };
-const setChg = (id,c,good) => { const e = document.getElementById(id); if (!e) return; e.textContent = c && c.change != null ? ARROW(c.change) + ' ' + c.label : (c && c.n ? 'no earlier years to compare' : ''); e.className = 'd chg ' + toneOf(c ? c.change : null, good); };
+const setChg = (id,c,good) => { const e = document.getElementById(id); if (!e) return; e.textContent = c && c.change != null ? ARROW(c.change) + ' ' + c.label : c && c.small ? SMALL_TXT + ': no percent change' : (c && c.n ? 'no earlier years to compare' : ''); e.className = 'd chg ' + toneOf(c ? c.change : null, good); };
 
 /* ======================= filter state ======================= */
 // Lists: an empty list means All. Spending type keeps actual spending and budgets apart by default.
@@ -582,12 +595,15 @@ function measure(rows, key, p, o = {}){
   res.series = [...byYear].map(([year, v]) => ({year, v})).sort((a,b) => a.year - b.year);
   if (!ys.length) return res;
   if (ys.length === 1) { const y = ys[0], pv = tot(y-1);
-    if (pv) { res.change = (val - pv) / Math.abs(pv); res.label = `vs FY${y-1}` + (!o.payments && STAGE_OF[y] !== STAGE_OF[y-1] && STAGE_OF[y-1] ? ` (${stageShort(STAGE_OF[y-1])})` : ''); } }
+    if (!o.anyBase && pv != null && Math.abs(pv) < SMALL_BASE && val) { res.small = true; res.label = SMALL_TXT; }
+    else if (pv) { res.change = (val - pv) / Math.abs(pv); res.label = `vs FY${y-1}` + (!o.payments && STAGE_OF[y] !== STAGE_OF[y-1] && STAGE_OF[y-1] ? ` (${stageShort(STAGE_OF[y-1])})` : ''); } }
   else { const prev = contiguous(ys) ? ys.map(y => y - ys.length) : null;
-    if (prev && prev.every(y => tot(y))) { const pv = d3.sum(prev, y => tot(y)); res.change = (val - pv)/Math.abs(pv); res.label = `vs ${fyLabel(prev)}`; }
-    else { const f = tot(ys[0]), l = tot(ys[ys.length-1]); if (f) { res.change = (l - f)/Math.abs(f); res.label = `FY${ys[0]} to FY${ys[ys.length-1]}`; } }
+    if (prev && prev.every(y => tot(y) != null) && !o.anyBase && Math.abs(d3.sum(prev, y => tot(y))) < SMALL_BASE && val) { res.small = true; res.label = SMALL_TXT; }
+    else if (prev && prev.every(y => tot(y))) { const pv = d3.sum(prev, y => tot(y)); res.change = (val - pv)/Math.abs(pv); res.label = `vs ${fyLabel(prev)}`; }
+    else { const f = tot(ys[0]), l = tot(ys[ys.length-1]); if (f != null && !o.anyBase && Math.abs(f) < SMALL_BASE && l) { res.small = true; res.label = SMALL_TXT; } else if (f) { res.change = (l - f)/Math.abs(f); res.label = `FY${ys[0]} to FY${ys[ys.length-1]}`; } }
     const f = tot(ys[0]), l = tot(ys[ys.length-1]); if (f > 0 && l > 0) res.cagr = Math.pow(l/f, 1/(ys[ys.length-1] - ys[0])) - 1; }
   return res; }
+const tileYear = p => p.years.length ? d3.max(p.years) : (d3.max(Object.keys(STAGE_OF).map(Number).filter(y => y <= PAY_LAST)) || PAY_LAST);
 const subline = m => !m.n ? '' : (m.n > 1 ? `${fyLabel(m.years)} combined · ${M(m.avg)} a year` : fyLabel(m.years)) + (m.mixed ? ' · mixes actual spending and budgets' : '');
 
 /* ======================= self-healing state + feedback ======================= */
@@ -696,9 +712,9 @@ function drawRows(tb){ const rows = tb._rows, cols = tb._cols, o = tb._o; tb.tex
   rows.forEach(r => { const tr = document.createElement('tr');
     if (o.click) { tr.className = 'click'; tr.tabIndex = 0; tr.addEventListener('click', () => o.click(r)); tr.addEventListener('keydown', e => { if (e.key === 'Enter') o.click(r); }); }
     if (o.sel && o.sel(r)) tr.classList.add('sel');
-    cols.forEach(c => { const td = document.createElement('td'); if (c.n) td.className = 'n';
+    cols.forEach(c => { const td = document.createElement('td'); if (c.n) td.className = 'n'; if (c.cls) td.classList.add(c.cls); if (c.full && r[c.key] != null) td.title = String(r[c.key]);
       if (c.key === o.bar && r[c.key] != null) { const s = document.createElement('span'); s.className = 'bar'; s.style.width = Math.max(3, 56*r[c.key]/mx) + 'px'; td.appendChild(s); }
-      if (c.chg) { const s = document.createElement('span'); s.className = 'chg ' + toneOf(r[c.key], c.chg); s.textContent = ARROW(r[c.key]); if (r._lab) s.title = r._lab; td.appendChild(s); }
+      if (c.chg) { const s = document.createElement('span'); s.className = 'chg ' + toneOf(r[c.key], c.chg); const sm = r[c.key] == null && r[c.small || '_small']; s.textContent = sm ? SMALL_TXT : ARROW(r[c.key]); if (sm) s.title = 'Prior-year base under ' + M(SMALL_BASE) + ', so no percent change is shown'; else if (r._lab) s.title = r._lab; td.appendChild(s); }
       else if (c.pill) { const s = document.createElement('span'); s.className = 'st ' + c.pill(r[c.key]); s.textContent = c.fmt ? c.fmt(r[c.key]) : r[c.key]; td.appendChild(s); }
       else td.appendChild(document.createTextNode(c.fmt ? c.fmt(r[c.key], r) : (r[c.key] ?? '')));
       tr.appendChild(td); }); tb.appendChild(tr); }); }
@@ -710,7 +726,7 @@ function newTable(container, heading, note, headers, rows, cols, o={}){
   th.appendChild(tr); t.appendChild(th); const tb = document.createElement('tbody'); t.appendChild(tb); wrap.appendChild(t); card.appendChild(wrap); container.appendChild(card); table(tb, rows, cols, o); }
 /* breakdown: combined totals by a dimension with change, using the shared measure */
 function breakdown(rows, dim, key, p, o = {}){ const ys = o.years || yearsFor(rows, p, o.payments); const groups = d3.group(rows, r => r[dim]);
-  const out = [...groups].filter(([k]) => k != null).map(([k, g]) => { const m = measure(g, key, p, {...o, years: ys}); return {[dim]: k, value: m.value, change: m.change, _lab: m.label}; }).filter(r => r.value);
+  const out = [...groups].filter(([k]) => k != null).map(([k, g]) => { const m = measure(g, key, p, {...o, years: ys}); return {[dim]: k, value: m.value, change: m.change, _lab: m.label, _small: m.small}; }).filter(r => r.value);
   const t = d3.sum(out, r => r.value); out.forEach(r => r.share = t ? r.value / t : null); return out.sort((a,b) => b.value - a.value); }
 
 /* ======================= charts ======================= */
@@ -794,6 +810,22 @@ function payments(p){ // payments to vendors: statewide totals, by agency, or by
   const t = ok('totals'); return t ? {rows: t, key: 'total_payments', label: 'Payments to vendors'} : null; }
 const who = p => !p.agencies.length ? 'Maryland' : p.agencies.length === 1 ? agName(p.agencies[0]) : `${p.agencies.length} selected agencies`;
 
+/* forecast ranges: indicative, with the coverage the pipeline measured on its rolling backtest (a check in the checks dataset) */
+function fcCov(){ const ck = ok('checks'); if (!ck) return null; const r = ck.find(c => /forecast ranges cover/i.test(c.check)); if (!r) return null;
+  const m = String(r.detail).match(/([\d.]+)% of (\d+) forecasts.*nominal (\d+)%/); if (!m) return null;
+  const pct = Math.round(+m[1]) + '%', nominal = m[3] + '%';
+  return {pct, nominal, n: +m[2], text: `Measured on the pipeline's rolling backtest, ${pct} of ${m[2]} past forecasts fell inside such a range, against the nominal ${nominal}; read the ranges as indicative, likely too narrow.`}; }
+/* ======================= path to $50M: conditional wording, from the data ======================= */
+function planFacts(){ const pl = ok('d_plan50'); if (!pl || !pl.length) return null;
+  const tot = d3.max(pl, r => r.cumulative), lo = sum(pl, 'low'), hi = sum(pl, 'high');
+  const rs = pl.map(r => (String(r.basis).match(/assumed ([\d.]+)%/) || [])[1]).filter(Boolean); const rate = rs.length ? rs[0] + '%' : null;
+  const d = ok('d_savings'), st = ok('d_savings_status'); let ev = null;
+  if (d && st) { const seen = new Set(st.filter(r => r.status === 'Seen').map(r => r.check_id));
+    ev = d3.sum(d.filter(r => r.check_id && seen.has(r.check_id) && /Recurring|Year over year/.test(r.type)), r => ((r.reported_low || 0) + (r.reported_high || 0)) / 2) / tot; }
+  return {tot, lo, hi, rate, ev, steps: pl.length,
+    text: `A path to ${M(tot)} a year if reported savings recur and statewide contracts save an assumed ${rate || 'rate'}; ${M(lo)}–${M(hi)} across the assumed ranges` + (ev != null ? `; about ${d3.format('.0%')(ev)} has payment evidence.` : '.')}; }
+const PLAN_EV = 'Payment evidence: recurring savings whose payment check on the Savings tracker tab is Seen.';
+
 /* ======================= pages ======================= */
 function drawRecs(){ // recommendations computed from the tracker's own findings (statewide)
   const ol = document.getElementById('recs'); if (!ol) return; const o = ok('d_opps'), d = ok('d_savings'), f = ok('f_savings_check'), fm = ok('d_forecast_model'), vf = ok('vendor_families'), fc = ok('f_forecast');
@@ -813,36 +845,46 @@ function drawRecs(){ // recommendations computed from the tracker's own findings
     ['Bid statewide contracts for shared vendors', `Start with ${topLev || 'the vendors many agencies buy from separately'}. ${lev.length} commercial vendors are each paid separately by ten or more agencies (${M(levS)} in FY2026); at an assumed 2–5% from one enterprise agreement, that is ${M(levL)}–${M(levH)} a year.`, () => { showTab('opp'); const s = document.getElementById('opDet'); s.value = 'Leverage'; drawOpp(prm()); }],
     ['Confirm which reported savings recur', `Payments to the matching vendors fell for vehicle purchases and laptops, but rose from FY2025 to FY2026 for: ${up.join('; ') || 'none of the checked items'}. Agency invoices or contract changes would show whether those savings are real but offset, or not yet in place.`, () => showTab('track')],
     ['Name the seven renegotiated contracts', `GMI's largest item, $18M a year, names four kinds of contract (food services at one agency, statewide radio maintenance, office supplies, a software license agreement) but no vendors. Payments that fit each kind are tracked; publishing the vendors and their before-and-after prices would let the $18M be checked exactly.`, () => showTab('track')],
-    ['Plan the rest of the path to $50M', `At GMI's current pace the forecast puts FY2027 savings near ${M(net27)}. Reaching $50M takes about ${(hi * 100).toFixed(1)} more points of savings across ${M(base27)} in forecast controllable purchases, or new areas such as real estate and utilities, where GMI has not reported savings yet.`, () => showTab('calc')],
+    ['Plan the rest of the path to $50M', `${(planFacts() || {text:''}).text} At GMI's current pace the forecast puts FY2027 savings near ${M(net27)}. Reaching $50M takes about ${(hi * 100).toFixed(1)} more points of savings across ${M(base27)} in forecast controllable purchases, or new areas such as real estate and utilities, where GMI has not reported savings yet.`, () => showTab('calc')],
     ['Keep one vendor and agency master list', `The same company appears under several payee names (${fam} company families in FY2026 alone), and agency names change between years. A maintained master list makes savings trackable across years and agencies.`, () => { showTab('data'); document.getElementById('vfH').scrollIntoView({block:'start'}); }],
     ['Tie spending to results', 'Join spending to Managing for Results measures so savings can be checked against service levels, and a cut that lowers service shows up next to the saving.', null]];
-  const rs = ok('d_rec_status') || []; ol.textContent = ''; recs.forEach(([t, w, go], i) => { const li = document.createElement('li'); const b = go ? document.createElement('button') : document.createElement('b'); b.textContent = t; if (go) { b.className = 'lnk'; b.style.fontWeight = 600; b.style.fontSize = 'var(--cds-font-size-body)'; b.addEventListener('click', go); } const sp = document.createElement('span'); sp.className = 'why'; sp.textContent = w; li.append(b, sp); const r = rs.find(x => x.rec === i + 1); if (r) { const st = document.createElement('span'); st.className = 'why'; const pill = document.createElement('span'); pill.className = 'st ' + (/Ready|In place|reaches|found|Tracking/.test(r.status) ? 'pass' : /Gap|Needs|No fit/.test(r.status) ? 'warn' : ''); pill.textContent = r.status; st.append(pill, document.createTextNode(' ' + r.progress + (r.previous && r.previous !== r.progress ? ` (last refresh: ${r.previous})` : ''))); li.appendChild(st); } ol.appendChild(li); }); }
+  const rs = ok('d_rec_status') || []; ol.textContent = ''; recs.forEach(([t, w, go], i) => { const li = document.createElement('li'); const b = go ? document.createElement('button') : document.createElement('b'); b.textContent = t; if (go) { b.className = 'lnk'; b.style.fontWeight = 600; b.style.fontSize = 'var(--cds-font-size-body)'; b.addEventListener('click', go); } const sp = document.createElement('span'); sp.className = 'why'; sp.textContent = w; li.append(b, sp); const r = rs.find(x => x.rec === i + 1); if (r) { const st = document.createElement('span'); st.className = 'why'; const pill = document.createElement('span'); pill.className = 'st ' + (/Ready|In place|reaches|found|Tracking/.test(r.status) ? 'pass' : /Gap|Needs|No fit/.test(r.status) ? 'warn' : ''); pill.textContent = r.status + (/reaches \$50M/.test(r.status) ? ' if the assumptions hold' : ''); st.append(pill, document.createTextNode(' ' + r.progress + (r.previous && r.previous !== r.progress ? ` (last refresh: ${r.previous})` : ''))); li.appendChild(st); } ol.appendChild(li); }); }
 function drawRecTables(){
   const b = ok('d_bid_list'); if (b && document.getElementById('bidBody')) table('bidBody', b, [{key:'rank',n:1},{key:'vendor'},{key:'agencies',n:1},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'low',n:1,fmt:(v, r) => `${M(r.low)}–${M(r.high)}`},{key:'top_agencies'}], {bar:'fy2026', click:r => openDetail('vendor:' + r.vendor)});
-  const st = ok('d_savings_status'); if (st) table('stBody2', st, [{key:'item'},{key:'reported',n:1,fmt:v => v == null ? '—' : M(v)},{key:'before',n:1,fmt:M},{key:'after',n:1,fmt:M},{key:'status',pill:v => v === 'Seen' ? 'pass' : v === 'Partly seen' ? 'warn' : v === 'Not seen yet' ? 'fail' : ''},{key:'previous_status',fmt:(v, r) => v == null ? 'first run recorded' : (String(r.changed) === 'true' ? 'changed from ' + v : 'unchanged')}]);
+  const pf = planFacts(); if (pf) setText('planFind', pf.text + ' ' + PLAN_EV);
   const pl = ok('d_plan50'); if (pl) table('planBody', pl, [{key:'step',n:1},{key:'action'},{key:'basis'},{key:'saving',n:1,fmt:M},{key:'cumulative',n:1,fmt:M}], {click:r => showTab(r.tab)});
   const mq = ok('d_master_quality'); if (mq) table('mqBody', mq, [{key:'measure'},{key:'value'},{key:'ok',pill:v => String(v) === 'true' ? 'pass' : 'fail',fmt:v => String(v) === 'true' ? 'OK' : 'Check'}]);
 }
 function drawOver(p){
   drawRecs(); drawPortalOver(p);
   const ff = ok('f_function'), fs = ok('f_scope'), fa = ok('f_area'); if (!ff || !fs || !fa) return;
-  const bud = measure(ff, 'budget', p, {ignoreArea:true}), ctl = measure(fs.filter(r => r.scope === 'Controllable purchases'), 'budget', p, {ignoreArea:true}), ar = measure(fa.filter(r => r.spend != null), 'spend', p);
-  setText('kBud', 'Operating spending' + (p.stage === 'budget' ? ' (budgets)' : p.stage === 'all' ? ' (actual and budgets)' : ''));
-  setText('vBud', M(bud.value)); setChg('dBud', bud, 'neutral'); setText('sBud', subline(bud));
-  setText('vCtl', M(ctl.value)); setChg('dCtl', ctl, 'lower'); setText('sCtl', (bud.value ? PCT(ctl.value/bud.value) + ' of operating spending · ' : '') + subline(ctl));
-  setText('kArea', p.areas.length === 1 ? p.areas[0] + ', by spending code' : p.areas.length ? `${p.areas.length} focus areas, by spending code` : 'Six focus areas, by spending code');
-  setText('vArea', M(ar.value)); setChg('dArea', ar, 'lower'); setText('sArea', subline(ar));
+  // tiles: one year (the latest selected, or the latest budget year with full payments) against the year before, with its stage
+  const Y = tileYear(p), YP = Math.min(Y, PAY_LAST), one = {years:[Y], ignoreArea:true};
+  const bud = measure(ff, 'budget', p, one), ctl = measure(fs.filter(r => r.scope === 'Controllable purchases'), 'budget', p, one), ar = measure(fa.filter(r => r.spend != null), 'spend', p, {years:[Y]});
+  const arSel = measure(fa.filter(r => r.spend != null), 'spend', p); // the selection, for the focus-area chart below
+  const hasB = !!(bud.value);
+  const chip = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t || ''; };
+  const stg = STAGE_OF[Y] ? stageShort(STAGE_OF[Y]) : '';
+  const many = p.years.length > 1 ? ` · latest of ${p.years.length} selected years` : '';
+  setText('kBud', `Operating spending, FY${Y}`);
+  setText('vBud', hasB ? M(bud.value) : '—'); setChg('dBud', bud, 'neutral'); setText('sBud', hasB ? `one year, not a sum${many}` : `no operating budget for FY${Y}`); chip('gBud', hasB ? stg : '');
+  setText('kCtl', `Controllable purchases, FY${Y}`);
+  setText('vCtl', ctl.value ? M(ctl.value) : '—'); setChg('dCtl', ctl, 'lower'); setText('sCtl', ctl.value && bud.value ? PCT(ctl.value/bud.value) + ' of operating spending' : ''); chip('gCtl', ctl.value ? stg : '');
+  setText('kArea', (p.areas.length === 1 ? p.areas[0] : p.areas.length ? `${p.areas.length} focus areas` : 'Six focus areas') + `, FY${Y}`);
+  setText('vArea', ar.value ? M(ar.value) : '—'); setChg('dArea', ar, 'lower'); setText('sArea', ar.value ? 'by spending code' : ''); chip('gArea', ar.value ? stg : '');
   const sp = (m, id) => spark(document.getElementById(id), (m.series || []).map(d => ({x:d.year, y:d.v})), m.years);
   sp(bud, 'spBud'); sp(ctl, 'spCtl'); sp(ar, 'spArea');
-  const py = payments(p); if (py) { const pm = measure(py.rows, py.key, p, {payments:true, ignoreArea: !py.area});
-    setText('kPay', py.label); setText('vPay', pm.n ? M(pm.value) : '—'); setChg('dPay', pm, 'neutral'); setText('sPay', pm.n ? subline(pm) + ' · payments are actual spending' : 'Payments are actual spending only (FY2017–FY2026); choose those years to see them.');
+  const py = payments(p); if (py) { const pm = measure(py.rows, py.key, p, {payments:true, ignoreArea: !py.area, years:[YP]}); const ovr = (ok('f_overlap') || []).find(r => r.fiscal_year === YP);
+    setText('kPay', py.label + `, FY${YP}`); setText('vPay', pm.value ? M(pm.value) : '—'); setChg('dPay', pm, 'neutral');
+    setText('sPay', pm.value ? 'payments are actual spending' + (YP !== Y ? `; FY${Y} payments are not a full year yet` : '') : `no payments for FY${YP}`); chip('gPay', pm.value ? (ovr && isTrue(ovr.partial_year) ? 'partial year' : 'actual payments') : '');
     spark(document.getElementById('spPay'), (pm.series || []).map(d => ({x:d.year, y:d.v})), pm.years); }
-  setText('overLede', !bud.n ? (p.years.includes(2026) ? 'FY2026 is still a working budget, so only its payments to vendors are actual spending. Choose Budgets to see the FY2026 budget.' : 'No years match this selection. Choose other years or reset the filters.') : `${who(p)} ${p.stage === 'budget' ? 'budgeted' : p.stage === 'all' ? 'spent and budgeted' : 'spent'} ${M(bud.value)} through the operating budget in ${fyLabel(bud.years)}${bud.n > 1 ? ' combined, ' + M(bud.avg) + ' a year' : ''}. ${M(ctl.value)} of it (${bud.value ? PCT(ctl.value/bud.value) : '—'}) went to purchases agencies control${ctl.change != null ? ', ' + ARROW(ctl.change) + ' ' + ctl.label : ''}. ${p.areas.length ? (p.areas.length === 1 ? p.areas[0] : 'The selected focus areas') : 'The six GMI focus areas'} account for ${M(ar.value)}.` + (!p.agencies.length && ctl.n ? ` GMI's $50M yearly target is ${PCT(50e6/(ctl.value/ctl.n))} of controllable purchases in an average selected year.` : ''));
-  stacked(document.getElementById('scopeChart'), 'scopeLegend', scopeRows(fs, p), SCOPES, scopeCol, {labelKey:'Controllable purchases', selYears: hi(p, bud), click: yearClick, aria:'Operating budget by what agencies can change, by year'});
-  setText('scopeNote', `Operating budget by what an agency can change${p.agencies.length ? ', ' + who(p) : ''}. Savings work targets controllable purchases: contracts, supplies, equipment, vehicles, energy, telecom and leases. Selected years are solid; dashed outlines mark budget years. Click a year to add or remove it.` + (p.areas.length ? ' The focus-area filter does not apply to this chart.' : ''));
-  const data = AREAS.map(a => { const sub = fa.filter(r => r.area === a); const m = measure(sub.filter(r => r.spend != null), 'spend', p, {ignoreArea:true, years: ar.years}); const pm = p.stage !== 'budget' ? measure(sub.filter(r => r.payee_spend != null), 'payee_spend', p, {ignoreArea:true, years: ar.years.filter(y => y <= 2026)}) : {value:null};
+  // one-sentence finding, computed from the same figures as the tiles
+  const tgt = !p.agencies.length && ctl.value ? `, so GMI's ${M(GMI_TARGET)} yearly target is ${PCT(GMI_TARGET/ctl.value)} of them` : '';
+  setText('overLede', !hasB ? `No operating budget is published for FY${Y}${p.agencies.length ? ' at ' + who(p) : ''}; choose another year or reset the filters.`
+    : `In the FY${Y} ${stg}, ${who(p)}'s purchases agencies can control are ${M(ctl.value)}${ctl.change != null ? `, ${ctl.change >= 0 ? 'up' : 'down'} ${PCT(Math.abs(ctl.change))} from the FY${Y-1} ${stageShort(STAGE_OF[Y-1])}` : ''}, ${PCT(ctl.value/bud.value)} of ${M(bud.value)} in operating spending${tgt}.`);
+  const data = AREAS.map(a => { const sub = fa.filter(r => r.area === a); const m = measure(sub.filter(r => r.spend != null), 'spend', p, {ignoreArea:true, years: arSel.years}); const pm = p.stage !== 'budget' ? measure(sub.filter(r => r.payee_spend != null), 'payee_spend', p, {ignoreArea:true, years: arSel.years.filter(y => y <= PAY_LAST)}) : {value:null};
     return {label:a, a:m.value || 0, b:pm.value, chg:m.change, lab:m.label, sel:p.areas.includes(a), color: areaColor(a)}; }).sort((x,y) => y.a - x.a);
-  setText('overAreasH', `Focus areas, ${fyLabel(ar.years)}`);
+  setText('overAreasH', `Focus areas, ${fyLabel(arSel.years)}${arSel.n > 1 ? ' combined' : ''}`);
   hbars(document.getElementById('overAreas'), data, {anySel: p.areas.length > 0, aria:'Focus-area spending', tip:d => [`By spending code: ${M(d.a)}  ${ARROW(d.chg)} ${d.lab}`].concat(d.b != null ? [`Found by payee name: ${M(d.b)} (${d.a ? d3.format('.0%')(d.b/d.a) : '—'})`] : []).concat([p.areas.includes(d.label) ? 'Click to remove this area from the filter' : 'Click to filter by this area']), click:d => toggleIn('areas', d.label)});
 }
 function drawAreas(p){
@@ -857,6 +899,9 @@ function drawAreas(p){
     const x = document.createElement('button'); x.type = 'button'; x.className = 'xp'; x.textContent = 'Open page'; x.style.justifySelf = 'start'; x.setAttribute('data-expand', 'area:' + a); b.appendChild(x);
     const go = e => { if (e.target.closest('[data-expand]')) return; toggleIn('areas', a); }; b.addEventListener('click', go); b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(e); } }); box.appendChild(b);
     spark(sp, (m.series || []).map(r => ({x:r.year, y:r.v})), m.years); });
+  const fs = ok('f_scope'); if (fs) { const sm = measure(fs, 'budget', p, {ignoreArea:true});
+    stacked(document.getElementById('scopeChart'), 'scopeLegend', scopeRows(fs, p), SCOPES, scopeCol, {labelKey:'Controllable purchases', selYears: hi(p, sm), click: yearClick, aria:'Operating budget by what agencies can change, by year'});
+    setText('scopeNote', `Operating budget by what an agency can change${p.agencies.length ? ', ' + who(p) : ''}: the six focus areas sit inside controllable purchases. Savings work targets contracts, supplies, equipment, vehicles, energy, telecom and leases. Selected years are solid; dashed outlines mark budget years. Click a year to add or remove it.` + (p.areas.length ? ' The focus-area filter does not apply to this chart.' : '')); }
   const sAll = sel(base, p, {ignoreArea:true}); const years = [...new Set(sAll.map(r => r.fiscal_year))].sort((a,b) => a-b);
   const rows = years.map(y => { const v = sAll.filter(r => r.fiscal_year === y); const o = {year:y, stage:STAGE_OF[y]}; AREAS.forEach(a => o[a] = sum(v.filter(r => r.area === a), 'spend')); o.total = sum(v, 'spend'); return o; });
   stacked(document.getElementById('areasChart'), 'areasLegend', rows, AREAS, areaColor, {selYears: hi(p, {years:ys}), dimKey:k => p.areas.length && !p.areas.includes(k), click: yearClick, aria:'Focus-area spending by year'});
@@ -878,18 +923,33 @@ function drawAgency(p){
   const areaIdx = d3.rollup(fa.filter(r => p.areas.includes(r.area)), v => sum(v, 'spend'), r => r.agency_code, r => r.fiscal_year);
   const areaBy = (code, yy) => { const m = areaIdx.get(code); return m ? d3.sum(yy, y => m.get(y) || 0) : 0; };
   const byCode = d3.group(fag, r => r.agency_code);
+  // pass-through share: grants out (Comptroller object) or client payments and debt service (scope), whichever is larger, over operating spending
+  const yset = new Set(ys); const gOut = d3.rollup((ok('f_object') || []).filter(r => yset.has(r.fiscal_year) && /^Grants, Subsidies/.test(r.object_name)), v => sum(v, 'budget'), r => r.agency_code);
+  const cOut = d3.rollup((ok('f_scope') || []).filter(r => yset.has(r.fiscal_year) && r.scope === 'Client payments and debt service'), v => sum(v, 'budget'), r => r.agency_code);
   const rows = [...byCode].filter(([c]) => !p.agencies.length || p.agencies.includes(c)).map(([c, R]) => { const pick = yy => R.filter(r => yy.includes(r.fiscal_year)); const cur = pick(ys), pv = pick(prevYs);
     const val = byArea ? areaBy(c, ys) : sum(cur, 'controllable'), pval = byArea ? areaBy(c, prevYs) : sum(pv, 'controllable'); const fte = sum(cur, 'fte'), pfte = sum(pv, 'fte');
-    const per = fte ? val / fte : null; let chg = pval ? (val - pval)/pval : null, pper = pfte ? pval / pfte : null, per2 = per;
+    const per = fte ? val / fte : null; let sm = prevYs.length > 0 && isSmall(val, pval), chg = sm ? null : pchg(val, pval), pper = pfte ? pval / pfte : null, per2 = per;
     if (ends) { const f = [ys[0]], l = [ys[ys.length-1]]; const vf = byArea ? areaBy(c, f) : sum(pick(f), 'controllable'), vl = byArea ? areaBy(c, l) : sum(pick(l), 'controllable'); const ff = sum(pick(f), 'fte'), fl = sum(pick(l), 'fte');
-      chg = vf ? (vl - vf)/vf : null; pper = ff ? vf/ff : null; per2 = fl ? vl/fl : null; }
-    return {agency_code:c, agency: agName(c), val, change: chg, fte: ys.length ? fte / ys.length : null, per, per_change: per2 && pper ? (per2 - pper)/pper : null, operating_spending: sum(cur, 'operating_spending'), _lab: prevYs.length ? 'vs ' + fyLabel(prevYs) : ends ? `FY${ys[0]} to FY${ys[ys.length-1]}` : ''}; })
+      sm = isSmall(vl, vf); chg = sm ? null : pchg(vl, vf); pper = ff ? vf/ff : null; per2 = fl ? vl/fl : null; }
+    const ops = sum(cur, 'operating_spending'), pass = ops > 0 ? Math.max(gOut.get(c) || 0, cOut.get(c) || 0) / ops : null;
+    return {agency_code:c, agency: agName(c), val, change: chg, fte: ys.length ? fte / ys.length : null, per, per_change: !sm && per2 && pper ? (per2 - pper)/pper : null, _small: sm, pass, flag: pass != null && pass >= PASS_SHARE, operating_spending: ops, _lab: prevYs.length ? 'vs ' + fyLabel(prevYs) : ends ? `FY${ys[0]} to FY${ys[ys.length-1]}` : ''}; })
     .filter(r => r.val && r.fte >= 50 && (!q || r.agency.toLowerCase().includes(q))).sort((a,b) => (b.per||0) - (a.per||0));
   const pool = d3.sum(rows, r => r.fte * ys.length); const medTot = pool ? d3.sum(rows, r => r.val) / pool : null;
   setText('agCount', `${rows.length} agencies · ${fyLabel(ys)} · together: ${M(medTot)} per position a year`);
-  table('agBody', rows, [{key:'agency'},{key:'val',n:1,fmt:M},{key:'change',n:1,chg:'lower'},{key:'fte',n:1,fmt:N0},{key:'per',n:1,fmt:M},{key:'per_change',n:1,chg:'lower'},{key:'operating_spending',n:1,fmt:M}],
+  table('agBody', rows, [{key:'agency'},{key:'val',n:1,fmt:M},{key:'change',n:1,chg:'lower'},{key:'fte',n:1,fmt:N0},{key:'per',n:1,fmt:M},{key:'per_change',n:1,chg:'lower'},{key:'operating_spending',n:1,fmt:M},{key:'pass',n:1,fmt:(v, r) => v == null ? '—' : d3.format('.0%')(v) + (r.flag ? ' · pass-through' : '')}],
     {bar:'per', click:r => openDetail('agency:' + r.agency_code), sel:r => p.agencies.includes(r.agency_code)});
-  setText('agStage', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}; per position = spending ÷ position-years, shown per year. Change compares ${prevYs.length ? 'with ' + fyLabel(prevYs) : ends ? `FY${ys[ys.length-1]} with FY${ys[0]}` : 'with nothing: no earlier year in the data'}.` + (ys.some(isBudgetYear) ? ' Includes budget years.' : '') + ' For costs, ▲ red means they rose and ▼ green means they fell.');
+  // headline, ranked chart and the pass-through flag
+  const top = rows.slice(0, 12), nf = top.filter(r => r.flag).length, firstOk = rows.find(r => !r.flag), lead = rows[0];
+  const unit = byArea ? 'area spending' : 'controllable purchases';
+  setText('agLede', !rows.length ? 'No agency with 50 or more positions matches this selection.' :
+    `${lead.agency} has the highest ${unit} per position: ${M(lead.per)} a year in ${fyLabel(ys)}, against ${M(medTot)} for the ${rows.length} agencies together` +
+    (lead.flag && firstOk ? `; it mostly passes money through, so the highest of the rest, ${firstOk.agency} at ${M(firstOk.per)}, is the better lead` : '') + `${nf ? ` (${nf} of the top ${top.length} are flagged as pass-through)` : ''}.`);
+  setText('agChartH', `Highest ${unit} per position, ${fyLabel(ys)}`);
+  setText('agChartNote', `The ${top.length} highest of the table below, per position a year. Grey bars: agencies that mostly pass money through (grants out, or client payments and debt service, ${d3.format('.0%')(PASS_SHARE)} or more of their operating spending); their per-position figures reflect what they administer, not how efficiently they buy. Click a bar, or a table row, for the agency's page.`);
+  legend('agLegend', [['Per position', dash.colors[0]], ['Mostly passes money through', 'var(--cds-chart-muted)']]);
+  hbars(document.getElementById('agChart'), top.map(r => ({label:r.agency, a:r.per, chg:r.per_change, color: r.flag ? 'var(--cds-chart-muted)' : dash.colors[0], sel:p.agencies.includes(r.agency_code), r})),
+    {anySel: p.agencies.length > 0, aria:`Agencies with the highest ${unit} per position`, tip:d => [`${M(d.a)} per position a year`, `${M(d.r.val)} over ${N0(d.r.fte)} positions (avg.)`, d.r.pass != null ? `Passed through: ${d3.format('.0%')(d.r.pass)} of operating spending${d.r.flag ? ' (flagged)' : ''}` : '', 'Click for the agency\'s page'].filter(Boolean), click:d => openDetail('agency:' + d.r.agency_code)});
+  setText('agStage', `${fyLabel(ys)}${ys.length > 1 ? ' combined' : ''}; per position = spending ÷ position-years, shown per year. Change compares ${prevYs.length ? 'with ' + fyLabel(prevYs) : ends ? `FY${ys[ys.length-1]} with FY${ys[0]}` : 'with nothing: no earlier year in the data'}.` + (ys.some(isBudgetYear) ? ' Includes budget years.' : '') + ' For costs, ▲ red means they rose and ▼ green means they fell.' + ` Changes from a prior-year base under ${M(SMALL_BASE)} show "${SMALL_TXT}". Passed through = grants out or client payments and debt service, whichever is larger, as a share of operating spending; ${d3.format('.0%')(PASS_SHARE)} or more is flagged.`);
 }
 const TITLE = s => String(s).toLowerCase().replace(/(^|[^a-z'])([a-z])/g, (m, a, b) => a + b.toUpperCase()).replace(/\b(Of|And|For|The|To|On)\b/g, w => w.toLowerCase()).replace(/^./, c => c.toUpperCase()).replace(/\b(Mco|Shi|Cdw|Ibm|Bge|Ups|Dhl|Llc|Wex|Md|Wgl|Dsr|Crc|Wssc|Usa|Sap|Hp|Cgi|Mci)\b/g, w => w.toUpperCase()).replace(/\bAt&T\b/gi, 'AT&T').replace(/\s*&\s*$/, '');
 const VTYPES = ['Business or other', 'Health care organization', 'Financial institution', 'Education institution', 'Utility', 'Non-profit', 'Government'];
@@ -942,9 +1002,9 @@ function drawVendors(p){
   // multi-agency vendors
   const all = dm.filter(r => r.fiscal_year === y); const prev = dm.filter(r => r.fiscal_year === y - 1);
   let rows = all.filter(r => inArea(r.area) && paidBy(r)).map(r => ({...r, name: TITLE(r.vendor), ag_change: r.agencies_prior ? (r.agencies - r.agencies_prior) / r.agencies_prior : null,
-    sp_change: r.spend_prior ? (r.spend - r.spend_prior) / r.spend_prior : null, _lab: `vs FY${y - 1}`})).filter(r => !q || r.name.toLowerCase().includes(q)).sort((a, b) => b.agencies - a.agencies || b.spend - a.spend);
+    sp_change: pchg(r.spend, r.spend_prior), _sps: isSmall(r.spend, r.spend_prior), _lab: `vs FY${y - 1}`})).filter(r => !q || r.name.toLowerCase().includes(q)).sort((a, b) => b.agencies - a.agencies || b.spend - a.spend);
   setText('vmH', `One vendor, dozens of buyers, FY${y}`); setText('vCount', `${rows.length} vendors · ${M(d3.sum(rows, r => r.spend))}`);
-  table('vBody', rows, [{key:'name', sort:'name'},{key:'area'},{key:'agencies',n:1,fmt:N0},{key:'ag_change',n:1,chg:'neutral'},{key:'spend',n:1,fmt:M},{key:'sp_change',n:1,chg:'neutral'},{key:'payee_names',n:1,fmt:N0}],
+  table('vBody', rows, [{key:'name', sort:'name'},{key:'area'},{key:'agencies',n:1,fmt:N0},{key:'ag_change',n:1,chg:'neutral'},{key:'spend',n:1,fmt:M},{key:'sp_change',n:1,chg:'neutral',small:'_sps'},{key:'payee_names',n:1,fmt:N0}],
     {bar:'agencies', click: r => openDetail('vendor:' + r.name)});
   const hot = rows.filter(r => r.agencies >= 40); const byArea = d3.rollups(rows, v => ({n: v.length, s: d3.sum(v, r => r.spend)}), r => r.area).sort((a, b) => b[1].s - a[1].s);
   setText('vmIns', rows.length ? `${rows.length} private vendors were paid separately by 15 or more agencies in FY${y}, ${M(d3.sum(rows, r => r.spend))} in all${hot.length ? `; ${hot.length} by 40 or more (${hot.slice(0, 3).map(r => r.name).join(', ')})` : ''}. ${byArea[0] ? `The most money is in ${byArea[0][0].replace(/^[A-Z][a-z]/, m => m.toLowerCase())} (${byArea[0][1].n} vendors, ${M(byArea[0][1].s)}).` : ''}` : '');
@@ -1023,9 +1083,13 @@ function drawBudget(p){
   const fl = fyLabel(m.years); setText('fnH', `By function, ${fl}`); setText('fnNote', `All funds${m.n > 1 ? '; selected years combined' : ''}.`);
   const fcols = k => [{key:k},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}];
   table('fnBody', breakdown(ff, 'category_title', 'budget', p, {ignoreArea:true}), fcols('category_title'));
-  if (fu) { setText('fundH', `By fund type, ${fl}`); table('fundBody', breakdown(fu, 'fund_type_name', 'budget', p, {ignoreArea:true}), fcols('fund_type_name')); }
+  const fnR = breakdown(ff, 'category_title', 'budget', p, {ignoreArea:true}); setText('fnFind', fnR[0] ? `${fnR[0].category_title} is the largest function: ${PCT(fnR[0].share)} of ${M(d3.sum(fnR, r => r.value))}${fnR[1] ? `, then ${fnR[1].category_title.toLowerCase()} at ${PCT(fnR[1].share)}` : ''}.` : '');
+  if (fu) { setText('fundH', `By fund type, ${fl}`); const fuR = breakdown(fu, 'fund_type_name', 'budget', p, {ignoreArea:true}); table('fundBody', fuR, fcols('fund_type_name'));
+    const gfr = fuR.find(r => r.fund_type_name === 'General Funds'); setText('fundFind', gfr ? `General funds pay for ${PCT(gfr.share)} of the selection; the rest is special and federal funds.` : '');
+    drawFundChart(fu, p); }
   if (fo) { setText('objH', `By type of spending, ${fl}`); const ob = breakdown(fo, 'object_name', 'budget', p, {ignoreArea:true}); const cm = new Map(breakdown(fo, 'object_name', 'controllable', p, {ignoreArea:true}).map(r => [r.object_name, r.value])); ob.forEach(r => r.controllable = cm.get(r.object_name) || 0);
-    table('objBody', ob, [{key:'object_name'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'controllable',n:1,fmt:M}]); }
+    table('objBody', ob, [{key:'object_name'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'controllable',n:1,fmt:M}]);
+    const ot = d3.sum(ob, r => r.value), oc = d3.sum(ob, r => r.controllable); setText('objFind', ot ? `${PCT(oc / ot)} of this spending (${M(oc)}) is controllable; ${ob[0].object_name.toLowerCase()} is the largest type at ${PCT(ob[0].value / ot)}.` : ''); }
   setText('budPair', `${fl}${m.n > 1 ? ' combined' : ''}. Change: ${m.label || 'no earlier years to compare'}.` + (m.mixed ? ' This selection mixes actual spending and budgets.' : ''));
 }
 /* ======================= budget, payments, funding and grants (portal views) ======================= */
@@ -1068,13 +1132,25 @@ function drawPortalOver(p){
       setText('ovGrants', g ? `Grants and loans: ${M(g.grants_and_loans)} in FY${g.fiscal_year}, the latest year published${y > g.fiscal_year ? ` (FY${y} is not out yet)` : ''}. ${d3.format('.0%')(g.grants_in_payments_share)} of those dollars went to grantees also paid that year, so grants are counted inside payments, not on top. The full list is on the Budget tab.` : ''); } }
   if (pl && pl.length) { const s1 = pl.filter(r => +r.step === 1), rest = pl.filter(r => +r.step > 1); const v1 = sum(s1, 'saving'), v2 = sum(rest, 'saving');
     hstack(document.getElementById('ov50'), [{label:'Yearly savings, by source', total:false, parts:[{label:'Keep GMI\'s current savings going (rates GMI reported)', short:'Current GMI savings', v:v1, color:COL_BUD(), note:(s1[0] || {}).basis},
-      {label:`Statewide contracts with ${rest.length} vendors (assumed 3.5%, range 2–5%)`, short:'Statewide contracts', v:v2, color:COL_BUD(), assumed:true, note:'An assumption, not a reported saving'}]}],
+      {label:`Statewide contracts with ${rest.length} vendors (an assumed rate, not a reported saving)`, short:'Statewide contracts', v:v2, color:COL_BUD(), assumed:true, note:'An assumption, not a reported saving'}]}],
       {max: Math.max(50e6, v1 + v2) * 1.04, marker:{v:50e6, label:'$50M target'}, aria:'Path to the $50M savings target'});
-    setText('ov50Note', `${M(v1 + v2)} a year if current savings continue (${M(v1)}, from GMI's reported rates) and ${rest.length} statewide contracts save an assumed 3.5% (${M(v2)}; dashed). At the 2% low end the contracts give about ${M(v2 * 2 / 3.5)}, short of the target.`);
+    const pf = planFacts(); setText('ov50Note', (pf ? pf.text + ' ' : '') + `Solid: GMI's reported rates carried forward (${M(v1)}); dashed: ${rest.length} statewide contracts at the assumed rate (${M(v2)}). ${PLAN_EV}`);
     setText('ov50Detail', 'Largest assumed steps: ' + rest.slice().sort((a,b) => b.saving - a.saving).slice(0, 3).map(r => `${String(r.action).replace('Statewide contract: ', '')} ${M(r.saving)}`).join(', ') + '. The Calculator tab changes the rates; the Opportunities tab shows the evidence for each vendor.'); } }
+const FUND_KEYS = ['General Funds', 'Special Funds', 'Federal Funds', 'Federal relief (COVID, ARRA)'];
+const fundKey = n => FUND_KEYS.includes(n) ? n : 'Federal relief (COVID, ARRA)';
+const fundCol = k => [dash.colors[0], dash.colors[3], dash.colors[5], dash.colors[6]][FUND_KEYS.indexOf(k)]; // same colors as the Overview's funding bar
+function drawFundChart(fu, p){ const box = document.getElementById('fsChart'); if (!box) return; const base = sel(fu, p, {ignoreArea:true}); const years = [...new Set(base.map(r => r.fiscal_year))].sort((a,b) => a-b);
+  const rows = years.map(y => { const o = {year:y, stage:STAGE_OF[y]}; FUND_KEYS.forEach(k => o[k] = 0); base.filter(r => r.fiscal_year === y).forEach(r => { o[fundKey(r.fund_type_name)] += r.budget || 0; }); o.total = d3.sum(FUND_KEYS, k => o[k]); return o; }).filter(r => r.total);
+  const keys = FUND_KEYS.filter(k => rows.some(r => r[k]));
+  const m = measure(fu, 'budget', p, {ignoreArea:true});
+  stacked(box, 'fsLegend', rows, keys, fundCol, {h:240, selYears: hi(p, m), click: yearClick, aria:'Operating budget by fund type and year'});
+  const ys = m.years.length ? m.years : years, a = rows.find(r => r.year === ys[0]), b = rows.find(r => r.year === ys[ys.length - 1]);
+  const rel = rows.filter(r => r['Federal relief (COVID, ARRA)']).sort((x, y) => y['Federal relief (COVID, ARRA)'] - x['Federal relief (COVID, ARRA)'])[0];
+  setText('fsFind', a && b ? `General funds paid for ${PCT(b['General Funds'] / b.total)} in FY${b.year}` + (a !== b ? ` against ${PCT(a['General Funds'] / a.total)} in FY${a.year}` : '') + (rel ? `; federal relief money peaked at ${M(rel['Federal relief (COVID, ARRA)'])} in FY${rel.year}.` : '.') : ''); }
 function drawPortalBudget(p){
   const ov = ok('f_overlap'), fs = ok('f_fund_source'), pg = ok('f_program'), gr = ok('f_grants');
   const sh = v => v == null ? '—' : d3.format('.0%')(v);
+  if (ov) { const g = ov.filter(d => d.grants_and_loans > 0 && d.fiscal_year <= PAY_LAST).pop(); setText('ovlFind', g ? `In FY${g.fiscal_year}, payments were ${PCT(g.payments_to_budget_share)} of the budget, and ${PCT(g.grants_in_payments_share)} of grant and loan dollars went to grantees also paid that year, so grants sit inside payments.` : ''); }
   if (ov) table('ovlBody', ov.filter(r => r.fiscal_year <= 2026).slice().reverse().map(r => ({...r, _yr: 'FY' + r.fiscal_year})), [{key:'_yr', sort:'fiscal_year'},{key:'stage',fmt:stageShort},{key:'budget',n:1,fmt:M},{key:'general_funds',n:1,fmt:M},{key:'special_funds',n:1,fmt:M},{key:'federal_funds',n:1,fmt:M},
     {key:'payments',n:1,fmt:M},{key:'paid_to_government',n:1,fmt:M},{key:'paid_to_others',n:1,fmt:M},{key:'grants_and_loans',n:1,fmt:v => v ? M(v) : 'not published'},{key:'grants_in_payments_share',n:1,fmt:sh}]);
   const ys = fs ? yearsFor(fs, p) : []; const fl = fyLabel(ys);
@@ -1088,13 +1164,15 @@ function drawPortalBudget(p){
     const q = qi.value.trim().toLowerCase(); const rows = pg.map(r => ({...r, key: r.agency_code + '|' + r.program_name}));
     const out = breakdown(rows, 'key', 'budget', p, {ignoreArea:true}).map(r => { const [code, name] = r.key.split('|'); return {...r, code, name, agency: agName(code)}; }).filter(r => !q || (r.name + ' ' + r.agency).toLowerCase().includes(q));
     table('pgBody', out.slice(0, 150), [{key:'name'},{key:'agency'},{key:'value',n:1,fmt:M},{key:'change',n:1,chg:'neutral'},{key:'share',n:1,fmt:PCT}], {click: r => setP({agencies:[r.code]})});
+    const pgT = d3.sum(out, r => r.value); setText('pgFind', out[0] ? `The largest program, ${out[0].name} (${out[0].agency}), is ${PCT(out[0].value / pgT)} of the total across ${N(out.length)} programs; the ten largest are ${PCT(d3.sum(out.slice(0, 10), r => r.value) / pgT)}.` : '');
     setText('pgH', `Where it's going, ${fl}`); setText('pgCount', `${N(out.length)} programs${out.length > 150 ? ', largest 150 shown' : ''}. Click a program to filter by its agency.`); }
   if (gr) { ['grCat','grPay','grQ'].forEach(id => { const el = document.getElementById(id); if (!el._w) { el._w = 1; el.addEventListener(id === 'grQ' ? 'input' : 'change', () => drawPortalBudget(prm())); } });
     const c = document.getElementById('grCat').value, pf = document.getElementById('grPay').value, q = document.getElementById('grQ').value.trim().toLowerCase();
     const gy = p.years.length ? p.years : null;
     const rows = gr.filter(r => (!gy || gy.includes(r.fiscal_year)) && (!c || r.category === c) && (!pf || isTrue(r.in_payments) === (pf === '1')) && (!q || `${r.grantor} ${r.grantee} ${r.description}`.toLowerCase().includes(q))).sort((a,b) => b.amount - a.amount);
-    table('grBody', rows.slice(0, 200), [{key:'fiscal_year',fmt:v => 'FY' + v},{key:'grantor'},{key:'grantee'},{key:'description',fmt:v => v == null ? '' : String(v).length > 140 ? String(v).slice(0, 140) + '…' : v},{key:'category'},{key:'nonprofit',fmt:v => v === 'Y' ? 'Yes' : v === 'N' ? 'No' : ''},{key:'zipcode'},{key:'amount',n:1,fmt:M},{key:'paid_same_fy',n:1,fmt:v => v == null || v === '' ? '—' : M(v)}]);
+    table('grBody', rows.slice(0, 200), [{key:'fiscal_year',fmt:v => 'FY' + v},{key:'grantor',cls:'one',full:true},{key:'grantee',cls:'one',full:true},{key:'description',cls:'one',full:true},{key:'category'},{key:'nonprofit',fmt:v => v === 'Y' ? 'Yes' : v === 'N' ? 'No' : ''},{key:'zipcode'},{key:'amount',n:1,fmt:M},{key:'paid_same_fy',n:1,fmt:v => v == null || v === '' ? '—' : M(v)}]);
     const tot = sum(rows, 'amount'), inP = sum(rows.filter(r => isTrue(r.in_payments)), 'amount');
+    const byG = d3.rollups(rows, v => sum(v, 'amount'), r => r.grantor).sort((a, b) => b[1] - a[1]); setText('grFind', byG[0] && tot ? `${byG[0][0]} is the largest grantor listed, ${M(byG[0][1])} (${PCT(byG[0][1] / tot)}) of ${M(tot)}.` : '');
     setText('grH', `Grants and loans, as listed${gy ? ', ' + fyLabel(gy.filter(y => y <= 2025)) : ''}`);
     setText('grCount', `${N(rows.length)} rows, ${M(tot)}${rows.length > 200 ? '; largest 200 shown (search to narrow)' : ''}. ${tot ? d3.format('.0%')(inP / tot) : '—'} of these dollars went to grantees also paid that year.` + (gy && !gy.some(y => y <= 2025) ? ' No grants are published for the selected years yet.' : '')); } }
 function drawData(){
@@ -1107,6 +1185,8 @@ function drawData(){
   const vf = ok('vendor_families'); if (vf) table('vfBody', vf, [{key:'family'},{key:'payee_names',n:1},{key:'agencies',n:1},{key:'spend',n:1,fmt:M}], {bar:'spend'});
 }
 
+const SEEN_SHARE = .5; // tolerance: a reported saving counts as Seen when payments fell by at least half of it
+const seenTxt = () => `Seen = payments fell by at least ${d3.format('.0%')(SEEN_SHARE)} of the reported saving; Partly seen = they fell by less`;
 function drawTrack(p){
   let d = ok('d_savings'); const f = ok('f_savings_check'); if (!d || !f) return;
   const pys = yearsFor(f, p, true); const y1 = pys.length ? pys[pys.length-1] : null, y0 = y1 ? y1 - 1 : null;
@@ -1114,11 +1194,12 @@ function drawTrack(p){
   const rep = r => r.reported_low == null ? null : (r.reported_low + r.reported_high) / 2;
   const groups = d3.group(d.filter(r => r.check_id), r => r.check_id);
   const G = new Map([...groups].map(([cid, rows]) => { const b = y1 ? paid(cid, y0) : 0, a = y1 ? paid(cid, y1) : 0, r = d3.sum(rows, rep);
-    const drop = b - a; const res = !y1 ? 'No payment year selected' : !b ? 'No payments to compare' : r == null || !r ? (drop > 0 ? 'Payments fell' : 'Payments did not fall') : drop >= .5 * r ? 'Seen in payments' : drop > 0 ? 'Partly seen' : 'Not seen yet';
+    const drop = b - a; const res = !y1 ? 'No payment year selected' : !b ? 'No payments to compare' : r == null || !r ? (drop > 0 ? 'Payments fell' : 'Payments did not fall') : drop >= SEEN_SHARE * r ? 'Seen in payments' : drop > 0 ? 'Partly seen' : 'Not seen yet';
     return [cid, {before:b, after:a, drop, reported:r, res, items:rows}]; }));
   const tone = r => r === 'Seen in payments' || r === 'Payments fell' ? 'pass' : r === 'Partly seen' ? 'warn' : r === "Can't be checked" || r === 'Checked with the item above' ? '' : 'fail';
   const rows = d.map(r => { const g = r.check_id ? G.get(r.check_id) : null; const first = g && g.items[0].saving_id === r.saving_id;
-    return {...r, rep: rep(r), before: first ? g.before : null, after: first ? g.after : null, change: first && g.before ? (g.after - g.before)/g.before : null, res: !r.check_id ? "Can't be checked" : first ? g.res : 'Checked with the item above', _lab: r.check_note}; });
+    const ss = first ? (ok('d_savings_status') || []).find(x => x.check_id === r.check_id) : null;
+    return {...r, rep: rep(r), since: !first ? '' : !ss ? 'not recorded' : ss.previous_status == null ? 'first run recorded' : String(ss.changed).toLowerCase() === 'true' ? 'changed from ' + ss.previous_status : 'unchanged since last run', before: first ? g.before : null, after: first ? g.after : null, change: first && g.before ? (g.after - g.before)/g.before : null, res: !r.check_id ? "Can't be checked" : first ? g.res : 'Checked with the item above', _lab: r.check_note}; });
   const ca = d.filter(r => r.type === 'Cost avoidance'); d = d.filter(r => r.type !== 'Cost avoidance'); // capital cost avoidance is shown apart from yearly savings
   const lo = d3.sum(d, r => r.reported_low || 0), hi = d3.sum(d, r => r.reported_high || 0), fm = (a, b) => a === b ? M(a) : `${M(a)}–${M(b)}`;
   const chk = d.filter(r => r.check_id && r.reported_low != null), no = d.filter(r => !r.check_id);
@@ -1126,19 +1207,20 @@ function drawTrack(p){
   setText('trRep', fm(lo, hi)); setText('trRepS', `${d.filter(r => r.reported_low != null).length} items with a dollar figure, ${d.filter(r => r.reported_low == null).length} not quantified · GMI's own total: $29M in FY2026 ($20M General Fund)`);
   setText('trChk', fm(d3.sum(chk, r => r.reported_low), d3.sum(chk, r => r.reported_high))); setText('trChkS', `${chk.length} items in ${G.size} vendor groups`);
   setText('trSeenK', y1 ? `Seen in payments, FY${y0} to FY${y1}` : 'Seen in payments'); setText('trSeen', M(d3.sum(seen, g => Math.min(g.drop, g.reported))));
-  setText('trSeenS', `${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks show payments falling` + (p.agencies.length ? ' · ' + who(p) : ''));
+  setText('trSeenS', `${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks show payments falling · ${seenTxt()}` + (p.agencies.length ? ' · ' + who(p) : ''));
   setText('trNo', fm(d3.sum(no, r => r.reported_low || 0), d3.sum(no, r => r.reported_high || 0))); setText('trNoS', no.map(r => r.item.split(' (')[0].toLowerCase()).join('; ') + (ca.length ? ` · separately, DGS estimates ${M(d3.sum(ca, r => r.reported_low))} in facility cost avoidance (mostly capital, not yearly)` : ''));
   setText('trLede', `GMI's January 26, 2026 report to the legislature lists ${d.length} savings items worth ${fm(lo, hi)} a year against a $50M target (GMI's own total for FY2026: $29M). Payments to the matching vendors can check ${chk.length} of them. ` + (y1 ? `From FY${y0} to FY${y1}${p.agencies.length ? ' at ' + who(p) : ''}, payments fell in ${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks: about ${M(d3.sum(seen, g => Math.min(g.drop, g.reported)))} of the reported savings shows up in what the state paid.` : 'Choose a year with payments (FY2017–FY2026) to run the checks.') + ` The largest item, $18M from renegotiating seven vendors' agreements, names four kinds of contract but no vendors; each kind is checked against the payments that fit it.`);
   const bars = [...G.entries()].filter(([, g]) => g.reported).map(([cid, g]) => ({label: g.items[0].workstream + ': ' + g.items[0].item.split(' (')[0].toLowerCase() + (g.items.length > 1 ? ` (+${g.items.length - 1} related)` : ''), a: g.reported, b: Math.max(0, g.drop), chg: g.before ? (g.after - g.before)/g.before : null, g})).sort((a, b) => b.a - a.a);
   setText('trChartH', y1 ? `Reported saving vs. the drop in payments, FY${y0} to FY${y1}` : 'Reported saving vs. the drop in payments');
   hbars(document.getElementById('trChart'), bars, {good:'lower', aria:'Reported savings compared with the drop in payments', tip: d => [`Reported: ${M(d.a)} a year`, `Payments: ${M(d.g.before)} → ${M(d.g.after)} (${ARROW(d.chg)})`, d.g.res]});
-  table('trBody', rows, [{key:'workstream'},{key:'item'},{key:'rep',n:1,fmt:(v, r) => r.reported_low == null ? 'Not quantified' : r.reported_low === r.reported_high ? M(v) : `${M(r.reported_low)}–${M(r.reported_high)}`},{key:'type'},{key:'status'},{key:'source_page',fmt:(v, r) => (r.source_url.includes('dgs.') ? 'DGS' : 'GMI report') + ', ' + v},{key:'before',n:1,fmt:v => v == null ? '' : M(v)},{key:'after',n:1,fmt:v => v == null ? '' : M(v)},{key:'change',n:1,chg:'lower'},{key:'res',pill:tone}]);
-  [...document.querySelectorAll('#trBody tr')].forEach((tr, i) => { const c = tr.lastChild; if (c && rows[i]) { c.title = rows[i].check_note || ''; tr.children[5].title = '"' + rows[i].source_quote + '"'; } });
-  setText('trStage', `Reported figures: ${d[0].source} (${d[0].source_url}). Payments compare FY${y0 || '—'} with FY${y1 || '—'}, the last selected year with payments and the year before${p.agencies.length ? ', for ' + who(p) : ''}. "Seen" means payments fell by at least half the reported saving; "partly seen" means they fell by less. The focus-area filter does not apply here.`);
+  table('trBody', rows, [{key:'workstream'},{key:'item'},{key:'rep',n:1,fmt:(v, r) => r.reported_low == null ? 'Not quantified' : r.reported_low === r.reported_high ? M(v) : `${M(r.reported_low)}–${M(r.reported_high)}`},{key:'type'},{key:'status'},{key:'source_page',fmt:(v, r) => (r.source_url.includes('dgs.') ? 'DGS' : 'GMI report') + ', ' + v},{key:'before',n:1,fmt:v => v == null ? '' : M(v)},{key:'after',n:1,fmt:v => v == null ? '' : M(v)},{key:'change',n:1,chg:'lower'},{key:'res',pill:tone},{key:'since'}]);
+  setText('trTolNote', seenTxt() + ` (a ${d3.format('.0%')(SEEN_SHARE)} tolerance). The last column says whether each check's result changed since the previous monthly run.`); setText('trResH', `Result (Seen ≥ ${d3.format('.0%')(SEEN_SHARE)})`); document.getElementById('trResH').title = seenTxt();
+  [...document.querySelectorAll('#trBody tr')].forEach((tr, i) => { const c = tr.children[9]; if (c && rows[i]) { c.title = rows[i].check_note || ''; tr.children[5].title = '"' + rows[i].source_quote + '"'; } });
+  setText('trStage', `Reported figures: ${d[0].source} (${d[0].source_url}). Payments compare FY${y0 || '—'} with FY${y1 || '—'}, the last selected year with payments and the year before${p.agencies.length ? ', for ' + who(p) : ''}. ${seenTxt()}. The focus-area filter does not apply here.`);
 }
 
 function drawMoves(){ const m = ok('d_vendor_moves'); if (!m) return;
-  table('mvBody', m.map(r => ({...r, pct: r.fy2025 ? r.change / r.fy2025 : null})), [{key:'vendor'},{key:'agencies',n:1},{key:'fy2024',n:1,fmt:M},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'change',n:1,fmt:M},{key:'pct',n:1,chg:'lower'}]); }
+  table('mvBody', m.map(r => ({...r, pct: pchg(r.fy2026, r.fy2025), _small: isSmall(r.fy2026, r.fy2025)})), [{key:'vendor'},{key:'agencies',n:1},{key:'fy2024',n:1,fmt:M},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'change',n:1,fmt:M},{key:'pct',n:1,chg:'lower'}]); }
 
 const DETS = ['Growth above trend','Peer gap','Leverage','Tail spend'];
 const oppRows = p => (ok('d_opps') || []).filter(r => (!p.agencies.length ? true : p.agencies.includes(r.agency_code)) && (!p.areas.length ? true : p.areas.includes(r.area)));
@@ -1146,13 +1228,14 @@ function drawOpp(p){
   const all = oppRows(p); if (!ok('d_opps')) return; const det = document.getElementById('opDet').value; const rows = det ? all.filter(r => r.detector === det) : all;
   const T = d3.sum(all, r => r.likely), L = d3.sum(all, r => r.low), H = d3.sum(all, r => r.high);
   const tl = document.getElementById('opTiles'); tl.textContent = ''; const tile = (k, v, d) => { const t = document.createElement('div'); t.className = 'tile'; t.innerHTML = '<span class="k"></span><span class="v"></span><span class="d"></span>'; t.children[0].textContent = k; t.children[1].textContent = v; t.children[2].textContent = d; tl.appendChild(t); };
-  tile('Likely savings found', M(T), `range ${M(L)}–${M(H)} a year`); tile('Findings', N(all.length), `${new Set(all.filter(r => r.agency_code).map(r => r.agency_code)).size} agencies`);
+  tile('Leads worth up to', M(H), `a year at the high end; likely ${M(T)} (low ${M(L)}). Findings overlap, so these are not additive`); tile('Findings', N(all.length), `${new Set(all.filter(r => r.agency_code).map(r => r.agency_code)).size} agencies`);
   const top = all.slice().sort((a, b) => b.likely - a.likely); let c = 0, k = 0; for (const r of top) { if (c >= 50e6) break; c += r.likely; k++; }
-  tile('Findings needed for $50M', c >= 50e6 ? String(k) : 'Not reached', c >= 50e6 ? 'largest first, at their likely value' : `all findings total ${M(T)}`);
-  tile('Share of controllable purchases', M(T) === '—' ? '—' : PCT(T / 4.09e9), 'FY2025 controllable purchases: $4.09B');
-  setText('opLede', `${all.length ? `The detectors find ${N(all.length)} places${p.agencies.length ? ' at ' + who(p) : ''}${p.areas.length ? ' in the selected focus areas' : ''} where spending looks higher than it needs to be, worth about ${M(T)} a year (range ${M(L)}–${M(H)}).` : 'No findings for this selection.'} ` + (c >= 50e6 ? `Acting on the ${k} largest at their likely value would reach GMI's $50M target.` : '') + ' Each is a lead for an agency review, not a saving already made.');
+  tile('Largest lead', top[0] ? M(top[0].likely) : '—', top[0] ? `likely value · ${top[0].detector}: ${top[0].agency || top[0].spending_code}` : '');
+  const fsc = ok('f_scope') || []; const cy = d3.max(fsc.filter(r => r.stage === 'Actual'), r => r.fiscal_year); const ctlY = d3.sum(fsc.filter(r => r.fiscal_year === cy && r.scope === 'Controllable purchases'), r => r.budget);
+  tile('Leads as a share of controllable purchases', ctlY && H ? `up to ${PCT(H / ctlY)}` : '—', ctlY ? `high end against FY${cy} controllable purchases, ${M(ctlY)}` : '');
+  setText('opLede', `${all.length ? `The detectors find ${N(all.length)} places${p.agencies.length ? ' at ' + who(p) : ''}${p.areas.length ? ' in the selected focus areas' : ''} where spending looks higher than it needs to be: leads worth up to ${M(H)} a year (likely ${M(T)}).` : 'No findings for this selection.'} The findings overlap (budget and payment detectors can see the same money, and several detectors can flag one vendor), so they are not additive and are not a forecast of savings: each is a lead for an agency review.`);
   const by = DETS.map(d => ({label:d, a:d3.sum(all.filter(r => r.detector === d), r => r.likely), b:d3.sum(all.filter(r => r.detector === d), r => r.high), sel: d === det, n: all.filter(r => r.detector === d).length})).filter(d => d.a);
-  hbars(document.getElementById('opChart'), by, {anySel: !!det, aria:'Likely savings by detector', tip:d => [`Likely: ${M(d.a)} a year`, `High end: ${M(d.b)}`, `${d.n} findings`, 'Click for this detector\'s page'], click:d => openDetail('det:' + d.label)});
+  hbars(document.getElementById('opChart'), by, {anySel: !!det, aria:'Likely value of leads by detector', tip:d => [`Likely: ${M(d.a)} a year`, `High end: ${M(d.b)}`, `${d.n} findings`, 'Click for this detector\'s page'], click:d => openDetail('det:' + d.label)});
   setText('opCount', `${N(rows.length)} findings`); setText('opTblH', det ? `${det} findings, largest first` : 'Findings, largest first');
   table('opBody', rows.slice(0, 300), [{key:'detector'},{key:'agency'},{key:'spending_code'},{key:'area',fmt:v => v || ''},{key:'baseline',n:1,fmt:M},{key:'likely',n:1,fmt:M},{key:'low',n:1,fmt:(v, r) => `${M(r.low)}–${M(r.high)}`},{key:'evidence'}], {bar:'likely', click:oppClick});
 }
@@ -1184,7 +1267,7 @@ function drawOppDetail(p, key){
   const all = oppRows(p), bid = ok('d_bid_list') || [], vd = ok('f_vendor_detail') || [], vn = ok('d_vendor_names') || [];
   setText('dCrumb', [from === 'vend' ? 'Vendors' : 'Opportunities', who(p), p.areas.length ? (p.areas.length === 1 ? p.areas[0] : p.areas.length + ' areas') : null].filter(Boolean).join(' · '));
   const findTable = (rows, title) => { let c = 0; const R2 = rows.slice().sort((a, b) => b.likely - a.likely).map((r, i) => { c += r.likely; return {...r, i: i + 1, cum: c}; });
-    newTable(tb, title, 'Click a line for the agency, vendor or focus area behind it.', [['#',1],['Detector'],['Agency'],['Spending code or vendor'],['Focus area'],['Spending',1],['Low',1],['High',1],['Likely',1],['Running total',1],['Why']],
+    newTable(tb, title, 'Click a line for the agency, vendor or focus area behind it.', [['#',1],['Detector'],['Agency'],['Spending code or vendor'],['Focus area'],['Spending',1],['Low',1],['High',1],['Likely',1],['Running total (overlaps, not additive)',1],['Why']],
       R2, [{key:'i',n:1},{key:'detector'},{key:'agency'},{key:'spending_code'},{key:'area',fmt:v => v || ''},{key:'baseline',n:1,fmt:M},{key:'low',n:1,fmt:M},{key:'high',n:1,fmt:M},{key:'likely',n:1,fmt:M},{key:'cum',n:1,fmt:M},{key:'evidence',fmt:v => String(v || '').split(';')[0]}], {bar:'likely', click:oppClick});
     addTotals(tb, [['', 0], ['Total', 0], [`${N(R2.length)} findings`, 0], ['', 0], ['', 0], [M(d3.sum(R2, r => r.baseline)), 1], [M(d3.sum(R2, r => r.low)), 1], [M(d3.sum(R2, r => r.high)), 1], [M(d3.sum(R2, r => r.likely)), 1], ['', 1], ['', 0]]); tb.lastChild.querySelector('.tbl').style.maxHeight = '40rem'; };
   if (key.startsWith('vendor:')) {
@@ -1195,7 +1278,7 @@ function drawOppDetail(p, key){
     dTile('Paid in FY2026', M(y26), {change: y25 ? (y26 - y25) / y25 : null, label:'vs FY2025'}, 'lower', ''); dTile('Agencies paying', String(n26), null, null, 'FY2026'); dTile('Savings at 2–5%', `${M(.02 * y26)}–${M(.05 * y26)}`, null, null, 'a year'); dTile('Payee names merged', String(vn.filter(r => String(r.vendor).toUpperCase() === V).length || (dv ? dv.payee_names : 0)), null, null, dv ? dv.payee_type : 'FY2026');
     setText('dChartH', 'Payments by year'); setText('dChartNote', 'Payments to this vendor from all agencies, FY2022–FY2026 (actual payments).');
     barsLine(box, yr.map(r => ({year:r.year, a:r.paid})), {aLabel:'Paid', actual:true});
-    const ag = d3.rollups(rows.filter(r => r.fiscal_year >= 2025), x => ({fy2025:d3.sum(x.filter(r => r.fiscal_year === 2025), r => r.paid), fy2026:d3.sum(x.filter(r => r.fiscal_year === 2026), r => r.paid)}), r => r.agency_code).map(([c, o]) => ({code:c, agency:agName(c), ...o, change: o.fy2025 ? (o.fy2026 - o.fy2025) / o.fy2025 : null})).sort((a, c) => c.fy2026 - a.fy2026);
+    const ag = d3.rollups(rows.filter(r => r.fiscal_year >= 2025), x => ({fy2025:d3.sum(x.filter(r => r.fiscal_year === 2025), r => r.paid), fy2026:d3.sum(x.filter(r => r.fiscal_year === 2026), r => r.paid)}), r => r.agency_code).map(([c, o]) => ({code:c, agency:agName(c), ...o, change: pchg(o.fy2026, o.fy2025), _small: isSmall(o.fy2026, o.fy2025)})).sort((a, c) => c.fy2026 - a.fy2026);
     const T26 = d3.sum(ag, r => r.fy2026); ag.forEach(r => r.share = T26 ? r.fy2026 / T26 : 0);
     ins.push(`Payments ${y25 ? (y26 >= y25 ? 'rose' : 'fell') + ' ' + d3.format('.1%')(Math.abs(y26 / y25 - 1)) + ' from FY2025 to FY2026' : 'started in FY2026'}.`, ag[0] ? `${ag[0].agency} is the largest buyer at ${M(ag[0].fy2026)} (${PCT(ag[0].share)}); the top three buy ${PCT(d3.sum(ag.slice(0, 3), r => r.share))}.` : null,
       `${ag.filter(r => r.fy2026 < 250e3).length} agencies buy less than $250K each, where a shared contract helps most.`, 'Next step: check whether a statewide or cooperative contract already exists, and compare unit prices across agencies.');
@@ -1208,15 +1291,15 @@ function drawOppDetail(p, key){
     setText('dTitle', 'Statewide bid list'); setText('dLede', 'Commercial vendors paid separately by ten or more agencies in FY2026. Each is a candidate for one statewide agreement. Regulated utilities and service providers are left out.');
     dTile('Vendors', String(bid.length), null, null, 'paid by 10+ agencies'); dTile('Paid in FY2026', M(d3.sum(bid, r => r.fy2026)), {change: (d3.sum(bid, r => r.fy2026) - d3.sum(bid, r => r.fy2025)) / d3.sum(bid, r => r.fy2025), label:'vs FY2025'}, 'lower', ''); dTile('Savings at 2–5%', `${M(d3.sum(bid, r => r.low))}–${M(d3.sum(bid, r => r.high))}`, null, null, 'a year'); dTile('Median agencies per vendor', String(d3.median(bid, r => r.agencies)), null, null, 'each buying separately');
     setText('dChartH', 'Largest 15 by FY2026 payments'); setText('dChartNote', 'Bars: FY2026 payments, with the change from FY2025. Click a bar for the vendor\'s page.');
-    hbars(box, bid.slice(0, 15).map(r => ({label:r.vendor, a:r.fy2026, chg: r.fy2025 ? (r.fy2026 - r.fy2025) / r.fy2025 : null})), {aria:'Bid list vendors', tip:d => [`FY2026: ${M(d.a)}`, 'Click for the vendor page'], click:d => openDetail('vendor:' + d.label)});
+    hbars(box, bid.slice(0, 15).map(r => ({label:r.vendor, a:r.fy2026, chg: pchg(r.fy2026, r.fy2025), _small: isSmall(r.fy2026, r.fy2025)})), {aria:'Bid list vendors', tip:d => [`FY2026: ${M(d.a)}`, 'Click for the vendor page'], click:d => openDetail('vendor:' + d.label)});
     dIns([`The ${bid.length} vendors received ${M(d3.sum(bid, r => r.fy2026))} in FY2026 from agencies buying separately.`, `The top five hold ${PCT(d3.sum(bid.slice(0, 5), r => r.fy2026) / d3.sum(bid, r => r.fy2026))} of it; starting with them captures most of the savings.`, 'Savings use the 2–5% range typical of consolidating to one enterprise agreement; actual results depend on current contract terms.']);
-    newTable(tb, 'Every vendor, line by line', 'Click a vendor for its page.', [['#',1],['Vendor'],['Agencies',1],['FY2025',1],['FY2026',1],['Change',1],['Low (2%)',1],['High (5%)',1],['Largest buyers']], bid.map(r => ({...r, change: r.fy2025 ? (r.fy2026 - r.fy2025) / r.fy2025 : null})), [{key:'rank',n:1},{key:'vendor'},{key:'agencies',n:1},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'change',n:1,chg:'lower'},{key:'low',n:1,fmt:M},{key:'high',n:1,fmt:M},{key:'top_agencies'}], {bar:'fy2026', click:r => openDetail('vendor:' + r.vendor)});
+    newTable(tb, 'Every vendor, line by line', 'Click a vendor for its page.', [['#',1],['Vendor'],['Agencies',1],['FY2025',1],['FY2026',1],['Change',1],['Low (2%)',1],['High (5%)',1],['Largest buyers']], bid.map(r => ({...r, change: pchg(r.fy2026, r.fy2025), _small: isSmall(r.fy2026, r.fy2025)})), [{key:'rank',n:1},{key:'vendor'},{key:'agencies',n:1},{key:'fy2025',n:1,fmt:M},{key:'fy2026',n:1,fmt:M},{key:'change',n:1,chg:'lower'},{key:'low',n:1,fmt:M},{key:'high',n:1,fmt:M},{key:'top_agencies'}], {bar:'fy2026', click:r => openDetail('vendor:' + r.vendor)});
     addTotals(tb, [['', 0], ['Total', 0], ['', 1], [M(d3.sum(bid, r => r.fy2025)), 1], [M(d3.sum(bid, r => r.fy2026)), 1], ['', 1], [M(d3.sum(bid, r => r.low)), 1], [M(d3.sum(bid, r => r.high)), 1], ['', 0]]);
   } else if (key.startsWith('det:')) {
     const d = key.slice(4), rows = all.filter(r => r.detector === d);
     setText('dTitle', d); setText('dLede', DET_TXT[d] || '');
-    dTile('Findings', N(rows.length), null, null, `${new Set(rows.filter(r => r.agency_code).map(r => r.agency_code)).size || 'statewide'} agencies`); dTile('Spending reviewed', M(d3.sum(rows, r => r.baseline)), null, null, 'the base the findings apply to'); dTile('Likely savings', M(d3.sum(rows, r => r.likely)), null, null, `range ${M(d3.sum(rows, r => r.low))}–${M(d3.sum(rows, r => r.high))}`); dTile('Ten largest', PCT(d3.sum(rows.slice().sort((a, b) => b.likely - a.likely).slice(0, 10), r => r.likely) / (d3.sum(rows, r => r.likely) || 1)), null, null, 'share of the likely total');
-    setText('dChartH', 'Likely savings by agency, vendor or area'); setText('dChartNote', 'Top 15. Click a bar for its page.');
+    dTile('Findings', N(rows.length), null, null, `${new Set(rows.filter(r => r.agency_code).map(r => r.agency_code)).size || 'statewide'} agencies`); dTile('Spending reviewed', M(d3.sum(rows, r => r.baseline)), null, null, 'the base the findings apply to'); dTile('Leads, likely value', M(d3.sum(rows, r => r.likely)), null, null, `range ${M(d3.sum(rows, r => r.low))}–${M(d3.sum(rows, r => r.high))}`); dTile('Ten largest', PCT(d3.sum(rows.slice().sort((a, b) => b.likely - a.likely).slice(0, 10), r => r.likely) / (d3.sum(rows, r => r.likely) || 1)), null, null, 'share of the likely total');
+    setText('dChartH', 'Leads by agency, vendor or area (likely value)'); setText('dChartNote', 'Top 15. Click a bar for its page.');
     const by = d3.rollups(rows, x => d3.sum(x, r => r.likely), r => r.agency_code ? r.agency : (r.detector === 'Leverage' ? r.spending_code : r.area)).map(([label, a]) => ({label, a, r:rows.find(x => (x.agency_code ? x.agency : (x.detector === 'Leverage' ? x.spending_code : x.area)) === label)})).sort((a, b) => b.a - a.a).slice(0, 15);
     hbars(box, by, {aria:'Likely savings', tip:x => [`Likely: ${M(x.a)}`], click:x => oppClick(x.r)});
     const codes = d3.rollups(rows, x => d3.sum(x, r => r.likely), r => r.spending_code).sort((a, b) => b[1] - a[1]);
@@ -1224,8 +1307,8 @@ function drawOppDetail(p, key){
     findTable(rows, 'Every finding, line by line');
   } else { // opps: whole page
     setText('dTitle', 'All savings opportunities'); setText('dLede', 'Every finding from the four detectors, with summaries by detector and by agency.');
-    dTile('Findings', N(all.length), null, null, ''); dTile('Likely savings', M(d3.sum(all, r => r.likely)), null, null, `range ${M(d3.sum(all, r => r.low))}–${M(d3.sum(all, r => r.high))}`); dTile('Agencies with findings', String(new Set(all.filter(r => r.agency_code).map(r => r.agency_code)).size), null, null, ''); dTile('Share of controllable purchases', PCT(d3.sum(all, r => r.likely) / 4.09e9), null, null, 'FY2025: $4.09B');
-    setText('dChartH', 'Likely savings by agency'); setText('dChartNote', 'Top 15 agencies; statewide findings (leverage, tail spend) are shown on their detector pages. Click a bar for the agency page.');
+    dTile('Findings', N(all.length), null, null, ''); dTile('Leads, likely value', M(d3.sum(all, r => r.likely)), null, null, `range ${M(d3.sum(all, r => r.low))}–${M(d3.sum(all, r => r.high))}`); dTile('Agencies with findings', String(new Set(all.filter(r => r.agency_code).map(r => r.agency_code)).size), null, null, ''); dTile('Share of controllable purchases', PCT(d3.sum(all, r => r.likely) / 4.09e9), null, null, 'FY2025: $4.09B');
+    setText('dChartH', 'Leads by agency (likely value)'); setText('dChartNote', 'Top 15 agencies; statewide findings (leverage, tail spend) are shown on their detector pages. Click a bar for the agency page.');
     const ag = d3.rollups(all.filter(r => r.agency_code), x => ({a:d3.sum(x, r => r.likely), n:x.length}), r => r.agency_code).map(([c, o]) => ({label:agName(c), code:c, ...o})).sort((a, b) => b.a - a.a);
     hbars(box, ag.slice(0, 15), {aria:'Likely savings by agency', tip:x => [`Likely: ${M(x.a)}`, `${x.n} findings`], click:x => openDetail('agency:' + x.code)});
     dIns([`The 15 agencies with the most hold ${PCT(d3.sum(ag.slice(0, 15), r => r.a) / (d3.sum(ag, r => r.a) || 1))} of agency findings.`, 'Click a detector row below for its page.']);
@@ -1253,13 +1336,14 @@ function drawCalc(p){
         let lo = 0, hi = .2; for (let i = 0; i < 40; i++) { const mid = (lo + hi) / 2; c.forEach(m => CA.rates[m.area] = (m.gmi_rate || 0) + mid); const net = d3.sum(caPath(P).filter(l => l.year === 2027), l => l.saving); if (net < 50e6) lo = mid; else hi = mid; } c.forEach(m => CA.rates[m.area] = (m.gmi_rate || 0) + hi); }
       else fm2.forEach(m => CA.rates[m.area] = (m.gmi_rate || 0) * f); drawCalc(prm()); }); pr.appendChild(b); });
     document.getElementById('caRamp').addEventListener('change', e => { CA.ramp = +e.target.value; drawCalc(prm()); }); document.getElementById('caFee').addEventListener('change', () => drawCalc(prm())); }
+  const cv = fcCov(); document.querySelectorAll('#p-calc .covn').forEach(e => e.textContent = cv ? ' ' + cv.text : ' Coverage of the ranges has not been measured for this build.');
   const L = caPath(p), S = caSim(p); const net = y => d3.sum(L.filter(l => l.year === y), l => l.saving); const i27 = 0;
   const cum = d3.sum(FY, net), cumS = S[0].map((_, i) => d3.sum(S, a => a[i])).sort((a, b) => a - b); const pHit = S[i27].filter(v => v >= 50e6).length / S[i27].length;
   const gf27 = d3.sum(L.filter(l => l.year === 2027 && l.area !== '_fee'), l => l.gf), g27 = d3.sum(L.filter(l => l.year === 2027 && l.area !== '_fee'), l => l.saving);
   const tl = document.getElementById('caTiles'); tl.textContent = ''; const tile = (k, v, d) => { const t = document.createElement('div'); t.className = 'tile'; t.innerHTML = '<span class="k"></span><span class="v"></span><span class="d"></span>'; t.children[0].textContent = k; t.children[1].textContent = v; t.children[2].textContent = d; tl.appendChild(t); };
-  tile('FY2027 net savings, likely', M(net(2027)), `8 in 10 outcomes: ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}`); tile('Chance FY2027 reaches $50M', d3.format('.0%')(pHit), 'share of 2,000 simulated years');
-  tile('Five years, FY2027–FY2031', M(cum), `8 in 10 outcomes: ${M(qt(cumS, .1))}–${M(qt(cumS, .9))}`); tile('General Fund share, FY2027', g27 ? PCT(gf27 / g27) : '—', `${M(gf27)} of gross savings`);
-  setText('caLede', `At these settings, the six focus areas and other controllable purchases would save about ${M(net(2027))} in FY2027 (8 in 10 outcomes between ${M(qt(S[0], .1))} and ${M(qt(S[0], .9))}), net of the fee, and ${M(cum)} over FY2027–FY2031. Spending baselines are forecasts from the state's own FY2017–FY2025 actuals, using whichever model predicted FY2023–FY2025 best; savings rates default to what GMI reported achieving. Use "Reach $50M" to see the extra rate it takes.`);
+  tile('FY2027 net savings, likely', M(net(2027)), `indicative range: ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}`); tile('Chance FY2027 reaches $50M (indicative)', d3.format('.0%')(pHit), 'share of 2,000 simulated years; the ranges run narrow');
+  tile('Five years, FY2027–FY2031', M(cum), `indicative range: ${M(qt(cumS, .1))}–${M(qt(cumS, .9))}`); tile('General Fund share, FY2027', g27 ? PCT(gf27 / g27) : '—', `${M(gf27)} of gross savings`);
+  setText('caLede', `At these settings, the six focus areas and other controllable purchases would save about ${M(net(2027))} in FY2027 (indicative range ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}${fcCov() ? `; such ranges held ${fcCov().pct} of actuals in the backtest, not ${fcCov().nominal}` : ''}), net of the fee, and ${M(cum)} over FY2027–FY2031. Spending baselines are forecasts from the state's own FY2017–FY2025 actuals, using whichever model predicted FY2023–FY2025 best; savings rates default to what GMI reported achieving. Use "Reach $50M" to see the extra rate it takes.`);
   // savings by year
   const yrs = [{year:2026, a:29e6, lo:29e6, hi:29e6, note:'GMI reported'}].concat(FY.map((y, k) => ({year:y, a:net(y), lo:qt(S[k], .1), hi:qt(S[k], .9)})));
   { const box = document.getElementById('caYears'); box.textContent = ''; const W = box.clientWidth || 500, H = 240, m = {l:48, r:10, t:12, b:24}; const x = d3.scaleBand(yrs.map(d => d.year), [m.l, W - m.r]).padding(.3), y = d3.scaleLinear([0, Math.max(60e6, d3.max(yrs, d => d.hi))], [H - m.b, m.t]).nice();
@@ -1285,7 +1369,7 @@ function drawCalc(p){
     const af = FY.map(yy => ({year:yy, v:after.get(yy)})); svg.append('path').datum([{year:2026, v:(fo.find(d => d.year === 2026) || {}).p50}].concat(af)).attr('fill', 'none').attr('stroke', 'var(--color-ok)').attr('stroke-width', 2.2).attr('d', d3.line().x(d => x(d.year)).y(d => y(d.v)));
     svg.append('g').selectAll('circle').data(fo.filter(d => d.plan)).join('circle').attr('cx', d => x(d.year)).attr('cy', d => y(d.plan)).attr('r', 4).attr('fill', 'var(--color-fg)');
     svg.append('g').selectAll('text').data(d3.range(2017, 2032, 2)).join('text').attr('x', d => x(d)).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(d => 'FY' + String(d).slice(2));
-    legend('caFcLegend', [['Actual', dash.colors[0], 1], ['Forecast (likely) and 8-in-10 band', dash.colors[0]], ['State budget plan (FY2026 working, FY2027 appropriation)', 'var(--color-fg)'], ['After savings', 'var(--color-ok)', 1]]);
+    legend('caFcLegend', [['Actual', dash.colors[0], 1], ['Forecast (likely) and indicative range', dash.colors[0]], ['State budget plan (FY2026 working, FY2027 appropriation)', 'var(--color-fg)'], ['After savings', 'var(--color-ok)', 1]]);
     setText('caFcH', `Spending forecast, with and without savings: ${sel.length === 7 ? 'all controllable purchases' : sel.join(', ')}`); }
   // where it comes from, tornado, model table
   const by = calcAreas(p).map(m => ({label:m.area, a:d3.sum(L.filter(l => l.year === 2027 && l.area === m.area), l => l.saving), key:'area:' + m.area})).filter(d => d.a > 0).sort((a, b) => b.a - a.a);
@@ -1307,7 +1391,7 @@ function drawSource(p, src){
     setText('dChartH', 'Forecast spending and savings by year'); setText('dChartNote', 'Bars: likely forecast spending. Line: savings at the current rate (right scale shown in the table).');
     barsLine(box, rows.map(r => ({year:r.year, a:r.base, b:r.saving})), {aLabel:'Forecast spending (likely)', bLabel:'Savings'});
     dIns([`Calculation each year: forecast spending (likely) × rate = savings. FY2027: ${M(rows[0].base)} × ${PCT(rows[0].rate)} = ${M(rows[0].saving)}.`, `The rate moves from GMI's ${PCT(m.gmi_rate || 0)} to the ${PCT(CA.rates[area])} set here over ${CA.ramp} year${CA.ramp > 1 ? 's' : ''}.`, `The state's FY2027 Legislative Appropriation for this area is ${M(rows[0].plan)}, ${rows[0].plan ? d3.format('+.1%')(rows[0].plan / rows[0].base - 1) : '—'} against the forecast.`, `General Fund share ${PCT(m.gf_share)}: each agency's FY2025 General Fund share, weighted by its spending in this area.`]);
-    newTable(tb, 'Every year, line by line', 'Likely forecast with the 8-in-10 range; savings = likely forecast × rate.', [['Year'],['Forecast low',1],['Forecast likely',1],['Forecast high',1],['State plan',1],['Rate',1],['Savings',1],['General Fund',1]],
+    newTable(tb, 'Every year, line by line', 'Likely forecast with its indicative range (10th to 90th percentile; not a calibrated interval); savings = likely forecast × rate.' + (fcCov() ? ' ' + fcCov().text : ''), [['Year'],['Forecast low',1],['Forecast likely',1],['Forecast high',1],['State plan',1],['Rate',1],['Savings',1],['General Fund',1]],
       rows.map(r => ({...r, fy:'FY' + r.year})), [{key:'fy'},{key:'p10',n:1,fmt:M},{key:'base',n:1,fmt:M},{key:'p90',n:1,fmt:M},{key:'plan',n:1,fmt:v => v ? M(v) : '—'},{key:'rate',n:1,fmt:v => PCT(v)},{key:'saving',n:1,fmt:M},{key:'gf',n:1,fmt:M}]);
     addTotals(tb, [['FY2027–FY2031', 0], ['', 1], [M(d3.sum(rows, r => r.base)), 1], ['', 1], ['', 1], ['', 1], [M(d3.sum(rows, r => r.saving)), 1], [M(d3.sum(rows, r => r.gf)), 1]]);
     const fc0 = (ok('f_code') || []).filter(r => r.area === area && r.fiscal_year === 2025); const ag = area === 'Other controllable purchases' ? [] : d3.rollups(fc0, v => d3.sum(v, r => r.spend), r => r.agency_code).map(([c, v]) => ({agency:agName(c), code:c, spend:v, saving:v * rows[0].rate})).sort((a, b) => b.spend - a.spend);
@@ -1404,7 +1488,7 @@ function drawDetail(p){
     const code = key.startsWith('agency:') ? key.slice(7) : (p.agencies.length === 1 ? p.agencies[0] : null);
     if (!code) { setText('dTitle', 'Choose an agency'); setText('dCrumb', ''); setText('dLede', 'Choose one agency in the filter above, or click one in the Agencies table, to open its page.'); dIns([]); document.getElementById('dChart').textContent = ''; setText('dChartNote', ''); return; }
     const q = {...p, agencies:[code], areas:[]}; const R = fag.filter(r => r.agency_code === code); const nm = agName(code); setText('dTitle', nm);
-    const c = measure(R, 'controllable', q, {ignoreArea:true}), f = measure(R, 'fte', q, {ignoreArea:true, years:c.years}); setText('dCrumb', nm + ' · ' + fyLabel(c.years));
+    const c = measure(R, 'controllable', q, {ignoreArea:true}), f = measure(R, 'fte', q, {ignoreArea:true, years:c.years, anyBase:true}); setText('dCrumb', nm + ' · ' + fyLabel(c.years));
     setText('dLede', `${nm}: operating spending, controllable purchases and positions every year, and its spending in the six focus areas, for ${fyLabel(c.years)}${c.n > 1 ? ' combined' : ''}.`);
     dTile('Controllable purchases', M(c.value), c, 'lower', c.n > 1 ? `${M(c.avg)} a year` : fyLabel(c.years)); dTile('Positions (average)', f.n && f.value ? N0(f.value / f.n) : '—', null, null, fyLabel(c.years));
     dTile('Per position', f.value ? M(c.value / f.value) : '—', null, null, 'a year, selection combined');

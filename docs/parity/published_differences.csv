@@ -1,0 +1,314 @@
+file,key,aspect,legacy,export,abs_diff
+agency_master,U10,cells:agency,Maryland Environmental Service,MARYLAND ENVIRONMENTAL SERVICE,
+agency_master,,cells:payment_names,4,2,2.0
+agency_master,D15,cells:payment_names,1,2,1.0
+agency_master,D78,cells:payment_names,1,2,1.0
+agency_master,A15,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,C94,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,D13,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,D15,cells:how_matched,agency code in payments,agency code in payments; decision: mapped: budget unit found,
+agency_master,D25,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,D26,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,D27,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,D40,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+agency_master,D78,cells:how_matched,agency code in payments,agency code in payments; decision: mapped: successor agency (Maryland Health Benefit Exchange),
+agency_master,M00,cells:how_matched,agency code in payments; manual rename,agency code in payments; manual rule,
+d_bid_list,WGL ENERGY SERVICES,cells:rank,3,4,1.0
+d_bid_list,SHI INTERNATIONAL,cells:rank,4,3,1.0
+d_bid_list,WGL ENERGY SERVICES,cells:fy2025,41169918.61,40713530.21,456388.3999999985
+d_bid_list,CAS SEVERN,cells:fy2025,14359420.84,14100495.32,258925.51999999955
+d_bid_list,SHI INTERNATIONAL,cells:fy2025,48755551.05,48654637.66,100913.3900000006
+d_bid_list,ELEMENT FLEET,cells:fy2025,21244655.62,21192587.98,52067.640000000596
+d_bid_list,CANON,cells:fy2025,4980851.63,4938562.64,42288.99000000022
+d_bid_list,CARROLL INDEPENDENT FUEL,cells:fy2025,57883804.48,57854370.67,29433.809999994934
+d_bid_list,VERIZON,cells:fy2025,30215038.86,30186430.53,28608.329999998212
+d_bid_list,AT&T,cells:fy2025,12565123.22,12543096.29,22026.930000001565
+d_bid_list,GRAINGER,cells:fy2025,7068386.41,7057629.37,10757.040000000037
+d_bid_list,HCGI HARTFORD,cells:fy2025,6109530.28,6105170.28,4360.0
+d_bid_list,WGL ENERGY SERVICES,cells:fy2026,52686512.91,52018776.53,667736.3799999952
+d_bid_list,SHI INTERNATIONAL,cells:fy2026,52558360.47,52457136.08,101224.3900000006
+d_bid_list,APPLIED TECHNOLOGY SERVICES,cells:fy2026,43240697.3,43157375.3,83322.0
+d_bid_list,CAS SEVERN,cells:fy2026,19525023.09,19446790.09,78233.0
+d_bid_list,ELEMENT FLEET,cells:fy2026,26596181.21,26537865.01,58316.199999999255
+d_bid_list,CANON,cells:fy2026,5866291.7,5828891.47,37400.23000000045
+d_bid_list,AT&T,cells:fy2026,13123312.99,13090354.64,32958.34999999963
+d_bid_list,CARROLL INDEPENDENT FUEL,cells:fy2026,65587936.45,65562344.61,25591.840000003576
+d_bid_list,HCGI HARTFORD,cells:fy2026,5638678.0,5633964.0,4714.0
+d_bid_list,GRAINGER,cells:fy2026,7563436.96,7559415.76,4021.2000000001863
+d_bid_list,CARROLL INDEPENDENT FUEL,cells:agencies,49.0,48.0,1.0
+d_bid_list,WGL ENERGY SERVICES,cells:agencies,17.0,16.0,1.0
+d_bid_list,SHI INTERNATIONAL,cells:agencies,40.0,39.0,1.0
+d_bid_list,APPLIED TECHNOLOGY SERVICES,cells:agencies,34.0,33.0,1.0
+d_bid_list,VERIZON,cells:agencies,55.0,54.0,1.0
+d_bid_list,ELEMENT FLEET,cells:agencies,49.0,48.0,1.0
+d_bid_list,CAS SEVERN,cells:agencies,14.0,13.0,1.0
+d_bid_list,AT&T,cells:agencies,42.0,41.0,1.0
+d_bid_list,GRAINGER,cells:agencies,18.0,17.0,1.0
+d_bid_list,CANON,cells:agencies,40.0,39.0,1.0
+d_bid_list,WGL ENERGY SERVICES,cells:low,1053730.26,1040375.53,13354.729999999981
+d_bid_list,SHI INTERNATIONAL,cells:low,1051167.21,1049142.72,2024.4899999999907
+d_bid_list,APPLIED TECHNOLOGY SERVICES,cells:low,864813.95,863147.51,1666.4399999999441
+d_bid_list,CAS SEVERN,cells:low,390500.46,388935.8,1564.6600000000326
+d_bid_list,ELEMENT FLEET,cells:low,531923.62,530757.3,1166.3199999999488
+d_bid_list,CANON,cells:low,117325.83,116577.83,748.0
+d_bid_list,AT&T,cells:low,262466.26,261807.09,659.1700000000128
+d_bid_list,CARROLL INDEPENDENT FUEL,cells:low,1311758.73,1311246.89,511.8400000000838
+d_bid_list,HCGI HARTFORD,cells:low,112773.56,112679.28,94.27999999999884
+d_bid_list,GRAINGER,cells:low,151268.74,151188.32,80.4199999999837
+d_bid_list,WGL ENERGY SERVICES,cells:high,2634325.65,2600938.83,33386.81999999983
+d_bid_list,SHI INTERNATIONAL,cells:high,2627918.02,2622856.8,5061.220000000205
+d_bid_list,APPLIED TECHNOLOGY SERVICES,cells:high,2162034.87,2157868.76,4166.110000000335
+d_bid_list,CAS SEVERN,cells:high,976251.15,972339.5,3911.6500000000233
+d_bid_list,ELEMENT FLEET,cells:high,1329809.06,1326893.25,2915.810000000056
+d_bid_list,CANON,cells:high,293314.59,291444.57,1870.0200000000186
+d_bid_list,AT&T,cells:high,656165.65,654517.73,1647.920000000042
+d_bid_list,CARROLL INDEPENDENT FUEL,cells:high,3279396.82,3278117.23,1279.589999999851
+d_bid_list,HCGI HARTFORD,cells:high,281933.9,281698.2,235.70000000001164
+d_bid_list,GRAINGER,cells:high,378171.85,377970.79,201.05999999999767
+d_forecast_model,UTILITIES & FACILITY ENERGY,cells:method,Drift (average yearly growth),Naive (last actual),
+d_forecast_model,UTILITIES & FACILITY ENERGY,cells:backtest_mape,0.08894,0.11406,0.02511999999999999
+d_master_quality,PAYMENT AGENCY NAMES MAPPED,cells:value,141 of 145,143 of 145,
+d_master_quality,PAYEE NAMES GROUPED INTO COMPANIES,cells:value,"9,474 names in 4,377 companies","9,686 names in 4,478 companies",
+d_master_quality,NEW PAYEE NAMES SINCE THE LAST RUN,cells:value,0,first run recorded,
+d_master_quality,AGENCY NAMES NOT YET MAPPED,cells:value,"AID TO UNIVERSITY OF MD MEDICAL SYSTEM, MARYLAND HEALTH INSURANCE PLAN, MARYLAND STATE BOARD OF CONTRACT APPEALS, SECURITY INTEREST FILING FEES","AID TO UNIVERSITY OF MD MEDICAL SYSTEM, SECURITY INTEREST FILING FEES",
+d_opps,PEER GAP|J00||MANAGEMENT STUDIES AND CONSULTANTS (821),cells:opp_id,O005,O004,
+d_opps,"PEER GAP|N00|IT HARDWARE, SOFTWARE & SERVICES|OUTSIDE SERVICES PROGRAMMING (866)",cells:opp_id,O006,O005,
+d_opps,PEER GAP|F50||OUTSIDE SERVICES-CONSULTING SERVICES (872),cells:opp_id,O007,O006,
+d_opps,PEER GAP|J00||SECURITY SERVICES (823),cells:opp_id,O008,O007,
+d_opps,GROWTH ABOVE TREND|D78||OTHER CONTRACTUAL SERVICES-NON DP (899),cells:opp_id,O009,O008,
+d_opps,PEER GAP|J00||BUILDING/ROAD REPAIR AND MAINTENANCE (812),cells:opp_id,O010,O009,
+d_opps,PEER GAP|J00||EQUIPMENT REPAIRS AND MAINTENANCE (809),cells:opp_id,O011,O010,
+d_opps,PEER GAP|E75||OTHER CONTRACTUAL SERVICES-NON DP (899),cells:opp_id,O012,O011,
+d_opps,PEER GAP|R00||EDUCATION/TRAINING CONTRACTS (819),cells:opp_id,O013,O012,
+d_opps,"PEER GAP|J00|IT HARDWARE, SOFTWARE & SERVICES|EQUIP RENTAL(OTHER THAN DATA PROCESSING) (808)",cells:opp_id,O014,O013,
+d_opps,LEVERAGE|||BALTIMORE GAS & ELECTRIC,cells:baseline,44175716.0,43093441.0,1082275.0
+d_opps,LEVERAGE|||WGL ENERGY SERVICES,cells:baseline,52686513.0,52018777.0,667736.0
+d_opps,LEVERAGE|||ASSOCIATED CATHOLIC CHARITIES,cells:baseline,43965780.0,43860212.0,105568.0
+d_opps,LEVERAGE|||SHI INTERNATIONAL,cells:baseline,52558360.0,52457136.0,101224.0
+d_opps,LEVERAGE|||APPLIED TECHNOLOGY SERVICES,cells:baseline,43245118.0,43161796.0,83322.0
+d_opps,TAIL SPEND||REAL ESTATE & LEASES|54 SMALLER VENDORS,cells:baseline,5951234.0,5867956.0,83278.0
+d_opps,LEVERAGE|||CAS SEVERN,cells:baseline,19525023.0,19446790.0,78233.0
+d_opps,LEVERAGE|||ELEMENT FLEET,cells:baseline,26598318.0,26540002.0,58316.0
+d_opps,LEVERAGE|||CANON,cells:baseline,5872348.0,5834948.0,37400.0
+d_opps,LEVERAGE|||AT&T,cells:baseline,13123313.0,13090355.0,32958.0
+d_opps,LEVERAGE|||BALTIMORE GAS & ELECTRIC,cells:low,883514.0,861869.0,21645.0
+d_opps,LEVERAGE|||WGL ENERGY SERVICES,cells:low,1053730.0,1040376.0,13354.0
+d_opps,TAIL SPEND||REAL ESTATE & LEASES|54 SMALLER VENDORS,cells:low,178537.0,176039.0,2498.0
+d_opps,LEVERAGE|||ASSOCIATED CATHOLIC CHARITIES,cells:low,879316.0,877204.0,2112.0
+d_opps,LEVERAGE|||SHI INTERNATIONAL,cells:low,1051167.0,1049143.0,2024.0
+d_opps,LEVERAGE|||APPLIED TECHNOLOGY SERVICES,cells:low,864902.0,863236.0,1666.0
+d_opps,LEVERAGE|||CAS SEVERN,cells:low,390500.0,388936.0,1564.0
+d_opps,LEVERAGE|||ELEMENT FLEET,cells:low,531966.0,530800.0,1166.0
+d_opps,LEVERAGE|||CANON,cells:low,117447.0,116699.0,748.0
+d_opps,LEVERAGE|||AT&T,cells:low,262466.0,261807.0,659.0
+d_opps,LEVERAGE|||BALTIMORE GAS & ELECTRIC,cells:high,2208786.0,2154672.0,54114.0
+d_opps,LEVERAGE|||WGL ENERGY SERVICES,cells:high,2634326.0,2600939.0,33387.0
+d_opps,TAIL SPEND||REAL ESTATE & LEASES|54 SMALLER VENDORS,cells:high,595123.0,586796.0,8327.0
+d_opps,LEVERAGE|||ASSOCIATED CATHOLIC CHARITIES,cells:high,2198289.0,2193011.0,5278.0
+d_opps,LEVERAGE|||SHI INTERNATIONAL,cells:high,2627918.0,2622857.0,5061.0
+d_opps,LEVERAGE|||APPLIED TECHNOLOGY SERVICES,cells:high,2162256.0,2158090.0,4166.0
+d_opps,LEVERAGE|||CAS SEVERN,cells:high,976251.0,972340.0,3911.0
+d_opps,LEVERAGE|||ELEMENT FLEET,cells:high,1329916.0,1327000.0,2916.0
+d_opps,LEVERAGE|||CANON,cells:high,293617.0,291747.0,1870.0
+d_opps,LEVERAGE|||AT&T,cells:high,656166.0,654518.0,1648.0
+d_opps,LEVERAGE|||CARROLL INDEPENDENT FUEL,cells:evidence,paid by 50 agencies separately in FY2026,paid by 49 agencies separately in FY2026,
+d_opps,LEVERAGE|||WGL ENERGY SERVICES,cells:evidence,paid by 17 agencies separately in FY2026,paid by 16 agencies separately in FY2026,
+d_opps,LEVERAGE|||SHI INTERNATIONAL,cells:evidence,paid by 40 agencies separately in FY2026,paid by 39 agencies separately in FY2026,
+d_opps,LEVERAGE|||BALTIMORE GAS & ELECTRIC,cells:evidence,paid by 30 agencies separately in FY2026,paid by 29 agencies separately in FY2026,
+d_opps,LEVERAGE|||ASSOCIATED CATHOLIC CHARITIES,cells:evidence,paid by 11 agencies separately in FY2026,paid by 10 agencies separately in FY2026,
+d_opps,LEVERAGE|||APPLIED TECHNOLOGY SERVICES,cells:evidence,paid by 35 agencies separately in FY2026,paid by 34 agencies separately in FY2026,
+d_opps,LEVERAGE|||VERIZON,cells:evidence,paid by 57 agencies separately in FY2026,paid by 56 agencies separately in FY2026,
+d_opps,LEVERAGE|||ELEMENT FLEET,cells:evidence,paid by 50 agencies separately in FY2026,paid by 49 agencies separately in FY2026,
+d_opps,LEVERAGE|||CAS SEVERN,cells:evidence,paid by 14 agencies separately in FY2026,paid by 13 agencies separately in FY2026,
+d_opps,LEVERAGE|||AT&T,cells:evidence,paid by 42 agencies separately in FY2026,paid by 41 agencies separately in FY2026,
+d_opps,LEVERAGE|||BALTIMORE GAS & ELECTRIC,cells:likely,1546150.0,1508270.0,37880.0
+d_opps,LEVERAGE|||WGL ENERGY SERVICES,cells:likely,1844028.0,1820657.0,23371.0
+d_opps,TAIL SPEND||REAL ESTATE & LEASES|54 SMALLER VENDORS,cells:likely,386830.0,381417.0,5413.0
+d_opps,LEVERAGE|||ASSOCIATED CATHOLIC CHARITIES,cells:likely,1538802.0,1535107.0,3695.0
+d_opps,LEVERAGE|||SHI INTERNATIONAL,cells:likely,1839543.0,1836000.0,3543.0
+d_opps,LEVERAGE|||APPLIED TECHNOLOGY SERVICES,cells:likely,1513579.0,1510663.0,2916.0
+d_opps,LEVERAGE|||CAS SEVERN,cells:likely,683376.0,680638.0,2738.0
+d_opps,LEVERAGE|||ELEMENT FLEET,cells:likely,930941.0,928900.0,2041.0
+d_opps,LEVERAGE|||CANON,cells:likely,205532.0,204223.0,1309.0
+d_opps,LEVERAGE|||AT&T,cells:likely,459316.0,458162.0,1154.0
+d_opps,"GROWTH ABOVE TREND|B75|IT HARDWARE, SOFTWARE & SERVICES|DATA PROCESSING EQUIPMENT-MINICOMPUTER (1032)",rows_only_legacy,,,
+d_opps,"GROWTH ABOVE TREND|B75|IT HARDWARE, SOFTWARE & SERVICES|MICROCOMPUTER PACKAGD APPLICATION SWARE (930)",rows_only_legacy,,,
+d_opps,"GROWTH ABOVE TREND|B75|IT HARDWARE, SOFTWARE & SERVICES|SYSTEMS SOFTWARE (MAINTENANCE) (864)",rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|B75|REAL ESTATE & LEASES|RENT (NON-DGS) (1301),rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|B75||INSTRUCTIONAL SUPPLIES (914),rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|B75||SUBSCRIPTIONS (1304),rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|C00||MANAGEMENT STUDIES AND CONSULTANTS (821),rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|C00||OFFICE EQUIPMENT (1015),rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|C00||OUTSIDE SERVICES-CONSULTING SERVICES (872),rows_only_legacy,,,
+d_opps,GROWTH ABOVE TREND|C00||SECURITY SERVICES (823),rows_only_legacy,,,
+d_opps,"PEER GAP|B75|IT HARDWARE, SOFTWARE & SERVICES|DATA PROCESSING EQUIPMENT-MINICOMPUTER (1032)",rows_only_export,,,
+d_opps,"PEER GAP|B75|IT HARDWARE, SOFTWARE & SERVICES|MICROCOMPUTER PACKAGD APPLICATION SWARE (930)",rows_only_export,,,
+d_opps,"PEER GAP|B75|IT HARDWARE, SOFTWARE & SERVICES|SYSTEMS SOFTWARE (MAINTENANCE) (864)",rows_only_export,,,
+d_opps,PEER GAP|B75||INSTRUCTIONAL SUPPLIES (914),rows_only_export,,,
+d_opps,PEER GAP|B75||SUBSCRIPTIONS (1304),rows_only_export,,,
+d_opps,PEER GAP|C00||OFFICE EQUIPMENT (1015),rows_only_export,,,
+d_opps,PEER GAP|C80|TELECOM|TELEPHONE (302),rows_only_export,,,
+d_opps,PEER GAP|C80||LEGAL SERVICES (817),rows_only_export,,,
+d_opps,PEER GAP|C80||OFFICE EQUIPMENT (1115),rows_only_export,,,
+d_opps,PEER GAP|C90||MANAGEMENT STUDIES AND CONSULTANTS (821),rows_only_export,,,
+d_plan50,4,cells:action,Statewide contract: Wgl Energy Services,Statewide contract: Shi International,
+d_plan50,5,cells:action,Statewide contract: Shi International,Statewide contract: Wgl Energy Services,
+d_plan50,2,cells:basis,assumed 3.5% of $65.6M paid by 49 agencies (assumed range 2-5%),assumed 3.5% of $65.6M paid by 48 agencies (assumed range 2-5%),
+d_plan50,4,cells:basis,assumed 3.5% of $52.7M paid by 17 agencies (assumed range 2-5%),assumed 3.5% of $52.5M paid by 39 agencies (assumed range 2-5%),
+d_plan50,5,cells:basis,assumed 3.5% of $52.6M paid by 40 agencies (assumed range 2-5%),assumed 3.5% of $52.0M paid by 16 agencies (assumed range 2-5%),
+d_plan50,6,cells:basis,assumed 3.5% of $43.2M paid by 34 agencies (assumed range 2-5%),assumed 3.5% of $43.2M paid by 33 agencies (assumed range 2-5%),
+d_plan50,7,cells:basis,assumed 3.5% of $32.3M paid by 55 agencies (assumed range 2-5%),assumed 3.5% of $32.3M paid by 54 agencies (assumed range 2-5%),
+d_plan50,9,cells:basis,assumed 3.5% of $26.6M paid by 49 agencies (assumed range 2-5%),assumed 3.5% of $26.5M paid by 48 agencies (assumed range 2-5%),
+d_plan50,14,cells:basis,assumed 3.5% of $19.5M paid by 14 agencies (assumed range 2-5%),assumed 3.5% of $19.4M paid by 13 agencies (assumed range 2-5%),
+d_plan50,16,cells:basis,assumed 3.5% of $13.1M paid by 42 agencies (assumed range 2-5%),assumed 3.5% of $13.1M paid by 41 agencies (assumed range 2-5%),
+d_plan50,21,cells:basis,assumed 3.5% of $7.6M paid by 18 agencies (assumed range 2-5%),assumed 3.5% of $7.6M paid by 17 agencies (assumed range 2-5%),
+d_plan50,26,cells:basis,assumed 3.5% of $5.9M paid by 40 agencies (assumed range 2-5%),assumed 3.5% of $5.8M paid by 39 agencies (assumed range 2-5%),
+d_plan50,5,cells:saving,1839542.62,1820657.18,18885.440000000177
+d_plan50,4,cells:saving,1844027.95,1835999.76,8028.189999999944
+d_plan50,6,cells:saving,1513424.41,1510508.14,2916.2700000000186
+d_plan50,14,cells:saving,683375.81,680637.65,2738.1600000000326
+d_plan50,9,cells:saving,930866.34,928825.28,2041.0599999999395
+d_plan50,26,cells:saving,205320.21,204011.2,1309.0099999999802
+d_plan50,16,cells:saving,459315.95,458162.41,1153.5400000000373
+d_plan50,2,cells:saving,2295577.78,2294682.06,895.7199999997392
+d_plan50,27,cells:saving,197353.73,197188.74,164.9900000000198
+d_plan50,21,cells:saving,264720.29,264579.55,140.7399999999907
+d_plan50,28,cells:cumulative,50194793.6,50156469.77,38323.82999999821
+d_plan50,27,cells:cumulative,49999215.86,49960892.03,38323.82999999821
+d_plan50,26,cells:cumulative,49801862.13,49763703.29,38158.840000003576
+d_plan50,21,cells:cumulative,48658240.07,48621390.23,36849.840000003576
+d_plan50,25,cells:cumulative,49596541.92,49559692.08,36849.840000003576
+d_plan50,23,cells:cumulative,49166990.24,49130140.41,36849.83000000566
+d_plan50,22,cells:cumulative,48914757.97,48877908.14,36849.82999999821
+d_plan50,24,cells:cumulative,49387358.35,49350508.52,36849.82999999821
+d_plan50,18,cells:cumulative,47842818.04,47806108.94,36709.10000000149
+d_plan50,20,cells:cumulative,48393519.77,48356810.68,36709.090000003576
+d_rec_status,6,cells:status,Needs a data feed,Data in place,
+d_rec_status,1,cells:progress,30 vendors ranked; $12.1M–$30.2M a year,30 vendors ranked; $12.0M–$30.1M a year,
+d_rec_status,4,cells:progress,28 steps to $50.2M a year,28 steps to $50.2M a year at the assumed rates; $41.4M–$58.9M across the assumed ranges,
+d_rec_status,6,cells:progress,Current Managing for Results measures are published only in the budget books (PDF); the open data portal has 2016 files only,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency",
+d_rec_status,4,cells:previous,28 steps to $50.2M a year,28 steps to $50.2M a year at the assumed rates; $41.4M–$59.0M across the assumed ranges,
+d_rec_status,6,cells:previous,Current Managing for Results measures are published only in the budget books (PDF); the open data portal has 2016 files only,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency",
+d_vendor_moves,DELL,cells:fy2024,3337110.82,2648325.04,688785.7799999998
+d_vendor_moves,DALY COMPUTERS,cells:fy2024,1460582.29,1247967.29,212615.0
+d_vendor_moves,APPLIED TECHNOLOGY SERVICES,cells:fy2024,37628469.33,37450878.33,177591.0
+d_vendor_moves,APPLE FORD,cells:fy2024,9962050.15,9896767.51,65282.640000000596
+d_vendor_moves,RUDOLPH SUPPLY,cells:fy2024,2835744.09,2815060.17,20683.919999999925
+d_vendor_moves,REPUBLIC SERVICES,cells:fy2025,4321034.9,4292476.92,28557.980000000447
+d_vendor_moves,RUDOLPH SUPPLY,cells:fy2025,2955475.87,2940329.04,15146.830000000075
+d_vendor_moves,HCGI HARTFORD,cells:fy2025,6109530.28,6105170.28,4360.0
+d_vendor_moves,APPLIED TECHNOLOGY SERVICES,cells:fy2026,43240697.3,43157375.3,83322.0
+d_vendor_moves,DELL,cells:fy2026,2019162.36,1944730.36,74432.0
+d_vendor_moves,REPUBLIC SERVICES,cells:fy2026,3042813.72,3018840.5,23973.220000000205
+d_vendor_moves,RUDOLPH SUPPLY,cells:fy2026,2094991.49,2084081.17,10910.320000000065
+d_vendor_moves,HCGI HARTFORD,cells:fy2026,5638678.0,5633964.0,4714.0
+d_vendor_moves,DALY COMPUTERS,cells:fy2026,1399201.55,1395351.55,3850.0
+d_vendor_moves,APPLIED TECHNOLOGY SERVICES,cells:change,-12408069.53,-12491391.53,83322.0
+d_vendor_moves,DELL,cells:change,-1275376.49,-1349808.49,74432.0
+d_vendor_moves,REPUBLIC SERVICES,cells:change,-1278221.18,-1273636.42,4584.760000000009
+d_vendor_moves,RUDOLPH SUPPLY,cells:change,-860484.38,-856247.87,4236.510000000009
+d_vendor_moves,DALY COMPUTERS,cells:change,-1116313.24,-1120163.24,3850.0
+d_vendor_moves,HCGI HARTFORD,cells:change,-470852.28,-471206.28,354.0
+d_vendor_moves,REPUBLIC SERVICES,cells:agencies,13,12,1.0
+d_vendor_moves,RUDOLPH SUPPLY,cells:agencies,21,20,1.0
+d_vendor_moves,HCGI HARTFORD,cells:agencies,18,17,1.0
+d_vendor_moves,CLIFTONLARSONALLEN,rows_only_legacy,,,
+d_vendor_moves,JOHNSON CONTROLS,rows_only_export,,,
+f_agency,D78|2017,cells:payments,107269940.98,107526700.2,256759.2199999988
+f_agency,D15|2017,cells:payments,124992002.4,124992724.14,721.7399999946356
+f_area,"2017|D78|PRINT, COPY & MAIL",cells:payee_spend,,312.51,
+f_area,2013|D78|TELECOM,cells:payee_spend,15329.59,40736.96,25407.37
+f_area,2014|D78|TELECOM,cells:payee_spend,548461.39,571251.35,22789.959999999963
+f_area,2015|D78|TELECOM,cells:payee_spend,565071.09,581336.8,16265.71000000008
+f_area,2016|D78|TELECOM,cells:payee_spend,92539.94,104183.16,11643.220000000001
+f_area,2014|D15|REAL ESTATE & LEASES,cells:payee_spend,191000.56,195680.56,4680.0
+f_area,2016|D15|REAL ESTATE & LEASES,cells:payee_spend,184018.33,188338.33,4320.0
+f_area,"2015|D78|PRINT, COPY & MAIL",cells:payee_spend,787379.31,791511.88,4132.569999999949
+f_area,2013|D15|REAL ESTATE & LEASES,cells:payee_spend,191185.86,195145.86,3960.0
+f_area,2015|D15|REAL ESTATE & LEASES,cells:payee_spend,206218.74,210178.74,3960.0
+f_area,"2010|D78|PRINT, COPY & MAIL",rows_only_export,,,
+f_area,2010|D78|TELECOM,rows_only_export,,,
+f_area,"2011|D78|PRINT, COPY & MAIL",rows_only_export,,,
+f_area,2011|D78|TELECOM,rows_only_export,,,
+f_area,"2012|D78|PRINT, COPY & MAIL",rows_only_export,,,
+f_area,2012|D78|TELECOM,rows_only_export,,,
+f_area,"2013|D78|PRINT, COPY & MAIL",rows_only_export,,,
+f_area,"2014|D78|PRINT, COPY & MAIL",rows_only_export,,,
+f_forecast,UTILITIES & FACILITY ENERGY|2031|FORECAST,cells:p10,150891180.0,128397556.0,22493624.0
+f_forecast,UTILITIES & FACILITY ENERGY|2030|FORECAST,cells:p10,149509205.0,130690900.0,18818305.0
+f_forecast,UTILITIES & FACILITY ENERGY|2029|FORECAST,cells:p10,148084387.0,132975370.0,15109017.0
+f_forecast,UTILITIES & FACILITY ENERGY|2028|FORECAST,cells:p10,147700854.0,136247787.0,11453067.0
+f_forecast,UTILITIES & FACILITY ENERGY|2027|FORECAST,cells:p10,147308827.0,139591745.0,7717082.0
+f_forecast,UTILITIES & FACILITY ENERGY|2026|FORECAST,cells:p10,151957583.0,147923734.0,4033849.0
+f_forecast,UTILITIES & FACILITY ENERGY|2031|FORECAST,cells:p50,189269542.0,161054785.0,28214757.0
+f_forecast,UTILITIES & FACILITY ENERGY|2030|FORECAST,cells:p50,182988407.0,159956170.0,23032237.0
+f_forecast,UTILITIES & FACILITY ENERGY|2029|FORECAST,cells:p50,178906432.0,160652649.0,18253783.0
+f_forecast,UTILITIES & FACILITY ENERGY|2028|FORECAST,cells:p50,175511291.0,161901738.0,13609553.0
+f_forecast,UTILITIES & FACILITY ENERGY|2027|FORECAST,cells:p50,173308086.0,164228979.0,9079107.0
+f_forecast,UTILITIES & FACILITY ENERGY|2026|FORECAST,cells:p50,164888022.0,160510923.0,4377099.0
+f_forecast,UTILITIES & FACILITY ENERGY|2031|FORECAST,cells:p90,240150976.0,204351231.0,35799745.0
+f_forecast,UTILITIES & FACILITY ENERGY|2030|FORECAST,cells:p90,231333549.0,202216244.0,29117305.0
+f_forecast,UTILITIES & FACILITY ENERGY|2029|FORECAST,cells:p90,218540553.0,196242909.0,22297644.0
+f_forecast,UTILITIES & FACILITY ENERGY|2028|FORECAST,cells:p90,211701660.0,195285822.0,16415838.0
+f_forecast,UTILITIES & FACILITY ENERGY|2027|FORECAST,cells:p90,198099578.0,187721717.0,10377861.0
+f_forecast,UTILITIES & FACILITY ENERGY|2026|FORECAST,cells:p90,185853074.0,180919439.0,4933635.0
+f_savings_check,S01|2027|F50,rows_only_export,,,
+f_savings_check,S01|2027|M00,rows_only_export,,,
+f_savings_check,S01|2027|Q00,rows_only_export,,,
+f_savings_check,S01|2027|R00,rows_only_export,,,
+f_savings_check,S02|2027|Q00,rows_only_export,,,
+f_savings_check,S03|2027|F50,rows_only_export,,,
+f_savings_check,S04|2027|M00,rows_only_export,,,
+f_savings_check,S04|2027|R00,rows_only_export,,,
+f_savings_check,S05|2027|F50,rows_only_export,,,
+f_savings_check,S06|2027|C82,rows_only_export,,,
+pipeline_runs,20261027T193245Z,rows_only_legacy,,,
+pipeline_runs,20261027T193413Z,rows_only_legacy,,,
+pipeline_runs,20261027T193506Z,rows_only_legacy,,,
+pipeline_runs,20261027T193615Z,rows_only_legacy,,,
+pipeline_runs,20261027T194018Z,rows_only_legacy,,,
+pipeline_runs,20261027T195003Z,rows_only_legacy,,,
+pipeline_runs,20261027T195151Z,rows_only_legacy,,,
+pipeline_runs,20261027T201258Z,rows_only_legacy,,,
+pipeline_runs,20261027T203112Z,rows_only_legacy,,,
+pipeline_runs,20261027T204347Z,rows_only_legacy,,,
+pipeline_runs,20261028T202434Z,rows_only_export,,,
+pipeline_runs,20261028T202736Z,rows_only_export,,,
+pipeline_runs,20261028T203005Z,rows_only_export,,,
+pipeline_runs,20261029T123247Z,rows_only_export,,,
+pipeline_runs,20261109T154457Z,rows_only_export,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2021 MATCHES DBM'S PUBLISHED ACTUALS,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2022 MATCHES DBM'S PUBLISHED ACTUALS,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2024 PAYMENTS MATCH VENDORPAYMENTS.MARYLAND.GOV,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2025 BUDGET MATCHES OPERATINGBUDGET.MARYLAND.GOV,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2025 PAYMENTS MATCH VENDORPAYMENTS.MARYLAND.GOV,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2026 BUDGET MATCHES OPERATINGBUDGET.MARYLAND.GOV,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2026 PAYMENTS MATCH VENDORPAYMENTS.MARYLAND.GOV,rows_only_legacy,,,
+run_checks,20261102T183034Z|CROSS-CHECK|FY2027 BUDGET MATCHES OPERATINGBUDGET.MARYLAND.GOV,rows_only_legacy,,,
+run_checks,20261102T183034Z|MODEL|BUDGET STAGE FOR EVERY YEAR COMES FROM THE OPERATING BUDGET SITE,rows_only_legacy,,,
+run_checks,20261102T183034Z|MODEL|CONTROLLABLE SPENDING IN A PLAUSIBLE RANGE,rows_only_legacy,,,
+run_checks,20261109T154457Z|CORE|AGENCY NAMES CARRY NO CODE SUFFIX,rows_only_export,,,
+run_checks,20261109T154457Z|CORE|BUDGET TOTALS = FUNDING-SOURCE TOTALS (WITHIN $1),rows_only_export,,,
+run_checks,20261109T154457Z|CORE|CPI COVERS EVERY ACTUAL BUDGET YEAR (REAL DOLLARS),rows_only_export,,,
+run_checks,20261109T154457Z|CORE|FEDERAL AWARDS PRESENT FOR EVERY COMPLETE YEAR,rows_only_export,,,
+run_checks,20261109T154457Z|CORE|FUNDING-SOURCE ROWS KEEP THEIR UNIT AND TWO-DIGIT PROGRAM,rows_only_export,,,
+run_checks,"20261109T154457Z|CORE|HIGHER EDUCATION DATASET HOLDS ONLY ITS FOUR AGENCIES, NONE OF THEM IN THE OPERATING BUDGET DATASET",rows_only_export,,,
+run_checks,20261109T154457Z|CORE|LATEST PAYMENTS YEAR FLAGGED AS PARTIAL,rows_only_export,,,
+run_checks,20261109T154457Z|CORE|MANAGING FOR RESULTS PLANS DOWNLOADED (RECOMMENDATION 6),rows_only_export,,,
+run_checks,20261109T154457Z|CORE|NO MISSING YEAR OR AMOUNT: BUDGET,rows_only_export,,,
+run_checks,20261109T154457Z|CORE|NO MISSING YEAR OR AMOUNT: FTE,rows_only_export,,,
+sources,PAYMENTS,cells:rows_portal,398211,411231,13020.0
+sources,PAYMENTS,cells:rows_downloaded,398211,411231,13020.0
+sources,PAYMENTS,cells:years,FY2008–FY2026,FY2008-FY2027,
+sources,BUDGET,cells:years,FY2017–FY2027,FY2017-FY2027,
+sources,FUND,cells:years,FY2017–FY2027,FY2017-FY2027,
+sources,FTE,cells:years,FY2017–FY2027,FY2017-FY2027,
+sources,GRANTS,cells:years,FY2009–FY2025,FY2009-FY2025,
+sources,HIGHERED,rows_only_export,,,
+totals_by_fy,2010,cells:agencies,66,67,1.0
+totals_by_fy,2011,cells:agencies,66,67,1.0
+totals_by_fy,2009,cells:vendors,8419,8420,1.0
+totals_by_fy,2020,cells:vendors,11705,11706,1.0
+totals_by_fy,2021,cells:vendors,13316,13317,1.0
+vendor_families,R J UNIFORM,rows_only_legacy,,,
+vendor_families,RJ UNIFORM,rows_only_export,,,

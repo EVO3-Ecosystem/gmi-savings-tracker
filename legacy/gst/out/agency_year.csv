@@ -1,0 +1,796 @@
+agency_code,agency,fiscal_year,stage,operating_spending,controllable,fte,payments,controllable_per_fte,controllable_prior,fte_prior,controllable_per_fte_prior,controllable_yoy,fte_yoy,controllable_per_fte_yoy,stage_pair
+A15,Payments to Civil Divisions of the State,2017,Actual,179150027.0,0.0,,181493081.25,,,,,,,,
+A15,Payments to Civil Divisions of the State,2018,Actual,166483732.0,0.0,,186178913.0,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2019,Actual,168462833.0,0.0,,168462833.0,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2020,Actual,174964477.0,0.0,,173831514.0,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2021,Actual,191763604.0,0.0,,191492479.96,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2022,Actual,186927673.0,0.0,,140708838.19,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2023,Actual,191472803.0,0.0,,143847711.14,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2024,Actual,259663180.0,0.0,,197588253.21,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2025,Actual,217614602.0,0.0,,163528247.1,,0.0,,,,,,Actual vs Actual
+A15,Payments to Civil Divisions of the State,2026,Working budget,211304876.0,0.0,,157189397.08,,0.0,,,,,,Working budget vs Actual
+A15,Payments to Civil Divisions of the State,2027,Legislative appropriation,208244472.0,0.0,,,,0.0,,,,,,Legislative appropriation vs Working budget
+B75,Legislative Branch,2017,Actual,89155728.0,14578803.0,749.0,,19464.36,,,,,,,
+B75,Legislative Branch,2018,Actual,89333621.0,16033269.0,749.0,,21406.23,14578803.0,749.0,19464.36,0.09977,0.0,0.09977,Actual vs Actual
+B75,Legislative Branch,2019,Actual,91628875.0,16534726.0,751.0,,22016.95,16033269.0,749.0,21406.23,0.03128,0.00267,0.02853,Actual vs Actual
+B75,Legislative Branch,2020,Actual,97629251.0,19054531.0,760.0,,25071.75,16534726.0,751.0,22016.95,0.15239,0.01198,0.13875,Actual vs Actual
+B75,Legislative Branch,2021,Actual,104831636.0,17888336.0,767.0,,23322.47,19054531.0,760.0,25071.75,-0.0612,0.00921,-0.06977,Actual vs Actual
+B75,Legislative Branch,2022,Actual,108479630.0,19707278.0,772.0,,25527.56,17888336.0,767.0,23322.47,0.10168,0.00652,0.09455,Actual vs Actual
+B75,Legislative Branch,2023,Actual,143283099.0,28145777.0,801.0,,35138.3,19707278.0,772.0,25527.56,0.42819,0.03756,0.37648,Actual vs Actual
+B75,Legislative Branch,2024,Actual,155160017.0,32165436.0,801.0,,40156.6,28145777.0,801.0,35138.3,0.14282,0.0,0.14282,Actual vs Actual
+B75,Legislative Branch,2025,Actual,164982644.0,34410402.0,813.0,,42325.22,32165436.0,801.0,40156.6,0.06979,0.01498,0.054,Actual vs Actual
+B75,Legislative Branch,2026,Working budget,163474929.0,35294671.0,814.0,,43359.55,34410402.0,813.0,42325.22,0.0257,0.00123,0.02444,Working budget vs Actual
+B75,Legislative Branch,2027,Legislative appropriation,164443659.0,35689856.0,827.0,,43155.81,35294671.0,814.0,43359.55,0.0112,0.01597,-0.0047,Legislative appropriation vs Working budget
+C00,Judiciary,2017,Actual,532004381.0,105055084.0,3950.5,,26592.86,,,,,,,
+C00,Judiciary,2018,Actual,542770648.0,113727143.0,3989.1,,28509.47,105055084.0,3950.5,26592.86,0.08255,0.00977,0.07207,Actual vs Actual
+C00,Judiciary,2019,Actual,561584258.0,119518171.0,4028.5,,29668.16,113727143.0,3989.1,28509.47,0.05092,0.00988,0.04064,Actual vs Actual
+C00,Judiciary,2020,Actual,590294422.0,109175656.0,4048.0,,26970.27,119518171.0,4028.5,29668.16,-0.08654,0.00484,-0.09094,Actual vs Actual
+C00,Judiciary,2021,Actual,608286932.0,118195338.0,4068.0,,29054.9,109175656.0,4048.0,26970.27,0.08262,0.00494,0.07729,Actual vs Actual
+C00,Judiciary,2022,Actual,649671681.0,126370597.0,4068.0,,31064.55,118195338.0,4068.0,29054.9,0.06917,0.0,0.06917,Actual vs Actual
+C00,Judiciary,2023,Actual,710246799.0,132185605.0,4143.75,,31900.0,126370597.0,4068.0,31064.55,0.04602,0.01862,0.02689,Actual vs Actual
+C00,Judiciary,2024,Actual,756340535.0,122316086.0,4159.0,,29409.97,132185605.0,4143.75,31900.0,-0.07466,0.00368,-0.07806,Actual vs Actual
+C00,Judiciary,2025,Actual,782725749.0,133148234.0,4165.0,,31968.36,122316086.0,4159.0,29409.97,0.08856,0.00144,0.08699,Actual vs Actual
+C00,Judiciary,2026,Working budget,818022965.0,147424746.0,4173.0,,35328.24,133148234.0,4165.0,31968.36,0.10722,0.00192,0.1051,Working budget vs Actual
+C00,Judiciary,2027,Legislative appropriation,845649493.0,152485938.0,4221.0,,36125.55,147424746.0,4173.0,35328.24,0.03433,0.0115,0.02257,Legislative appropriation vs Working budget
+C80,Office of the Public Defender,2017,Actual,109810843.0,7595388.0,888.5,12922208.7,8548.55,,,,,,,
+C80,Office of the Public Defender,2018,Actual,106597218.0,7543298.0,888.5,14828350.15,8489.92,7595388.0,888.5,8548.55,-0.00686,0.0,-0.00686,Actual vs Actual
+C80,Office of the Public Defender,2019,Actual,106947300.0,7694950.0,888.5,16629347.15,8660.61,7543298.0,888.5,8489.92,0.0201,0.0,0.0201,Actual vs Actual
+C80,Office of the Public Defender,2020,Actual,116842739.0,10376155.0,888.5,16151132.05,11678.28,7694950.0,888.5,8660.61,0.34844,0.0,0.34844,Actual vs Actual
+C80,Office of the Public Defender,2021,Actual,112186901.0,6458922.0,888.5,13019685.52,7269.47,10376155.0,888.5,11678.28,-0.37752,0.0,-0.37752,Actual vs Actual
+C80,Office of the Public Defender,2022,Actual,116952219.0,7015050.0,883.5,15061877.63,7940.07,6458922.0,888.5,7269.47,0.0861,-0.00563,0.09225,Actual vs Actual
+C80,Office of the Public Defender,2023,Actual,128525585.0,8271363.0,883.5,17666974.64,9362.04,7015050.0,883.5,7940.07,0.17909,0.0,0.17909,Actual vs Actual
+C80,Office of the Public Defender,2024,Actual,145414081.0,10221303.0,938.5,19649448.01,10891.11,8271363.0,883.5,9362.04,0.23575,0.06225,0.16333,Actual vs Actual
+C80,Office of the Public Defender,2025,Actual,156679673.0,12343180.0,981.5,22079132.77,12575.83,10221303.0,938.5,10891.11,0.20759,0.04582,0.15469,Actual vs Actual
+C80,Office of the Public Defender,2026,Working budget,177870077.0,13853054.0,1011.5,23808363.94,13695.56,12343180.0,981.5,12575.83,0.12232,0.03057,0.08904,Working budget vs Actual
+C80,Office of the Public Defender,2027,Legislative appropriation,173779642.0,10959695.0,1011.5,,10835.09,13853054.0,1011.5,13695.56,-0.20886,0.0,-0.20886,Legislative appropriation vs Working budget
+C81,Office of the Attorney General,2017,Actual,32516185.0,4620702.0,264.5,9943697.81,17469.57,,,,,,,
+C81,Office of the Attorney General,2018,Actual,29833785.0,5027362.0,264.5,6705445.96,19007.04,4620702.0,264.5,17469.57,0.08801,0.0,0.08801,Actual vs Actual
+C81,Office of the Attorney General,2019,Actual,32263056.0,5578567.0,269.5,8475966.53,20699.69,5027362.0,264.5,19007.04,0.10964,0.0189,0.08905,Actual vs Actual
+C81,Office of the Attorney General,2020,Actual,33297043.0,4988810.0,275.5,5419748.84,18108.2,5578567.0,269.5,20699.69,-0.10572,0.02226,-0.12519,Actual vs Actual
+C81,Office of the Attorney General,2021,Actual,43433498.0,4971038.0,270.5,13776326.32,18377.22,4988810.0,275.5,18108.2,-0.00356,-0.01815,0.01486,Actual vs Actual
+C81,Office of the Attorney General,2022,Actual,36754312.0,5235011.0,285.5,4262255.79,18336.29,4971038.0,270.5,18377.22,0.0531,0.05545,-0.00223,Actual vs Actual
+C81,Office of the Attorney General,2023,Actual,44149737.0,7330527.0,298.5,5508198.34,24557.88,5235011.0,285.5,18336.29,0.40029,0.04553,0.3393,Actual vs Actual
+C81,Office of the Attorney General,2024,Actual,68835652.0,8497821.0,360.5,20389713.13,23572.32,7330527.0,298.5,24557.88,0.15924,0.20771,-0.04013,Actual vs Actual
+C81,Office of the Attorney General,2025,Actual,80260792.0,6891356.0,369.5,20607104.24,18650.49,8497821.0,360.5,23572.32,-0.18904,0.02497,-0.2088,Actual vs Actual
+C81,Office of the Attorney General,2026,Working budget,86778649.0,7557234.0,396.5,25087403.4,19059.86,6891356.0,369.5,18650.49,0.09663,0.07307,0.02195,Working budget vs Actual
+C81,Office of the Attorney General,2027,Legislative appropriation,85280487.0,8390275.0,400.5,,20949.5,7557234.0,396.5,19059.86,0.11023,0.01009,0.09914,Legislative appropriation vs Working budget
+C82,Office of the State Prosecutor,2017,Actual,1480994.0,149394.0,13.0,116640.09,11491.85,,,,,,,
+C82,Office of the State Prosecutor,2018,Actual,1456401.0,155993.0,13.0,122713.88,11999.46,149394.0,13.0,11491.85,0.04417,0.0,0.04417,Actual vs Actual
+C82,Office of the State Prosecutor,2019,Actual,1400508.0,151952.0,13.0,111864.66,11688.62,155993.0,13.0,11999.46,-0.02591,0.0,-0.02591,Actual vs Actual
+C82,Office of the State Prosecutor,2020,Actual,1714611.0,160150.0,13.0,203988.62,12319.23,151952.0,13.0,11688.62,0.05395,0.0,0.05395,Actual vs Actual
+C82,Office of the State Prosecutor,2021,Actual,1717166.0,107423.0,13.0,125930.31,8263.31,160150.0,13.0,12319.23,-0.32924,0.0,-0.32924,Actual vs Actual
+C82,Office of the State Prosecutor,2022,Actual,1829050.0,172255.0,13.0,149466.83,13250.38,107423.0,13.0,8263.31,0.60352,0.0,0.60352,Actual vs Actual
+C82,Office of the State Prosecutor,2023,Actual,2323460.0,266150.0,13.0,142974.43,20473.08,172255.0,13.0,13250.38,0.54509,0.0,0.54509,Actual vs Actual
+C82,Office of the State Prosecutor,2024,Actual,2800378.0,344632.0,16.0,245481.67,21539.5,266150.0,13.0,20473.08,0.29488,0.23077,0.05209,Actual vs Actual
+C82,Office of the State Prosecutor,2025,Actual,3476685.0,591562.0,17.0,359042.75,34797.76,344632.0,16.0,21539.5,0.7165,0.0625,0.61553,Actual vs Actual
+C82,Office of the State Prosecutor,2026,Working budget,3628937.0,336802.0,18.0,344263.5,18711.22,591562.0,17.0,34797.76,-0.43066,0.05882,-0.46229,Working budget vs Actual
+C82,Office of the State Prosecutor,2027,Legislative appropriation,3925069.0,340742.0,18.0,,18930.11,336802.0,18.0,18711.22,0.0117,0.0,0.0117,Legislative appropriation vs Working budget
+C85,Maryland Tax Court,2017,Actual,631993.0,18948.0,8.0,14512.54,2368.5,,,,,,,
+C85,Maryland Tax Court,2018,Actual,614972.0,20944.0,8.0,13341.27,2618.0,18948.0,8.0,2368.5,0.10534,0.0,0.10534,Actual vs Actual
+C85,Maryland Tax Court,2019,Actual,631670.0,19854.0,8.0,15844.7,2481.75,20944.0,8.0,2618.0,-0.05204,0.0,-0.05204,Actual vs Actual
+C85,Maryland Tax Court,2020,Actual,659018.0,19083.0,8.0,13639.52,2385.38,19854.0,8.0,2481.75,-0.03883,0.0,-0.03883,Actual vs Actual
+C85,Maryland Tax Court,2021,Actual,709743.0,24747.0,9.0,10200.63,2749.67,19083.0,8.0,2385.38,0.29681,0.125,0.15272,Actual vs Actual
+C85,Maryland Tax Court,2022,Actual,723062.0,24530.0,9.0,12243.45,2725.56,24747.0,9.0,2749.67,-0.00877,0.0,-0.00877,Actual vs Actual
+C85,Maryland Tax Court,2023,Actual,895503.0,24874.0,9.0,12415.38,2763.78,24530.0,9.0,2725.56,0.01402,0.0,0.01402,Actual vs Actual
+C85,Maryland Tax Court,2024,Actual,930461.0,23059.0,9.0,5819.39,2562.11,24874.0,9.0,2763.78,-0.07297,0.0,-0.07297,Actual vs Actual
+C85,Maryland Tax Court,2025,Actual,907012.0,23618.0,9.0,5757.66,2624.22,23059.0,9.0,2562.11,0.02424,0.0,0.02424,Actual vs Actual
+C85,Maryland Tax Court,2026,Working budget,1031335.0,27999.0,9.0,8810.06,3111.0,23618.0,9.0,2624.22,0.18549,0.0,0.18549,Working budget vs Actual
+C85,Maryland Tax Court,2027,Legislative appropriation,1038914.0,24696.0,9.0,,2744.0,27999.0,9.0,3111.0,-0.11797,0.0,-0.11797,Legislative appropriation vs Working budget
+C90,Public Service Commission,2017,Actual,26689970.0,1511844.0,136.0,10240324.81,11116.5,,,,,,,
+C90,Public Service Commission,2018,Actual,25322326.0,1248509.0,136.0,9048089.42,9180.21,1511844.0,136.0,11116.5,-0.17418,0.0,-0.17418,Actual vs Actual
+C90,Public Service Commission,2019,Actual,17893615.0,1316622.0,137.0,1286160.64,9610.38,1248509.0,136.0,9180.21,0.05456,0.00735,0.04686,Actual vs Actual
+C90,Public Service Commission,2020,Actual,20293850.0,2766101.0,137.0,1317526.92,20190.52,1316622.0,137.0,9610.38,1.10091,0.0,1.10091,Actual vs Actual
+C90,Public Service Commission,2021,Actual,101944496.0,1242045.0,138.0,1936436.42,9000.33,2766101.0,137.0,20190.52,-0.55098,0.0073,-0.55423,Actual vs Actual
+C90,Public Service Commission,2022,Actual,19529136.0,1166053.0,138.0,84647000.76,8449.66,1242045.0,138.0,9000.33,-0.06118,0.0,-0.06118,Actual vs Actual
+C90,Public Service Commission,2023,Actual,22804467.0,2526483.0,141.0,1420490.16,17918.32,1166053.0,138.0,8449.66,1.1667,0.02174,1.1206,Actual vs Actual
+C90,Public Service Commission,2024,Actual,23690317.0,1428903.0,147.0,2323930.74,9720.43,2526483.0,141.0,17918.32,-0.43443,0.04255,-0.45751,Actual vs Actual
+C90,Public Service Commission,2025,Actual,26707136.0,2838763.0,165.0,2019503.65,17204.62,1428903.0,147.0,9720.43,0.98667,0.12245,0.76995,Actual vs Actual
+C90,Public Service Commission,2026,Working budget,229868938.0,4070661.0,175.0,202353206.9,23260.92,2838763.0,165.0,17204.62,0.43396,0.06061,0.35202,Working budget vs Actual
+C90,Public Service Commission,2027,Legislative appropriation,171689922.0,4217464.0,191.0,,22080.96,4070661.0,175.0,23260.92,0.03606,0.09143,-0.05073,Legislative appropriation vs Working budget
+C91,Office of People's Counsel,2017,Actual,4031072.0,161187.0,19.0,1303190.03,8483.53,,,,,,,
+C91,Office of People's Counsel,2018,Actual,3964403.0,152599.0,19.0,1344861.57,8031.53,161187.0,19.0,8483.53,-0.05328,0.0,-0.05328,Actual vs Actual
+C91,Office of People's Counsel,2019,Actual,4103969.0,169101.0,19.0,1456293.82,8900.05,152599.0,19.0,8031.53,0.10814,0.0,0.10814,Actual vs Actual
+C91,Office of People's Counsel,2020,Actual,3995945.0,183094.0,19.0,1314062.08,9636.53,169101.0,19.0,8900.05,0.08275,0.0,0.08275,Actual vs Actual
+C91,Office of People's Counsel,2021,Actual,4260569.0,167203.0,19.0,1448039.11,8800.16,183094.0,19.0,9636.53,-0.08679,0.0,-0.08679,Actual vs Actual
+C91,Office of People's Counsel,2022,Actual,5160526.0,242896.0,19.0,1242877.24,12784.0,167203.0,19.0,8800.16,0.4527,0.0,0.4527,Actual vs Actual
+C91,Office of People's Counsel,2023,Actual,6923929.0,295860.0,19.0,1513176.18,15571.58,242896.0,19.0,12784.0,0.21805,0.0,0.21805,Actual vs Actual
+C91,Office of People's Counsel,2024,Actual,7134246.0,250178.0,22.0,3730700.64,11371.73,295860.0,19.0,15571.58,-0.1544,0.15789,-0.26971,Actual vs Actual
+C91,Office of People's Counsel,2025,Actual,7981421.0,276632.0,27.0,2765892.71,10245.63,250178.0,22.0,11371.73,0.10574,0.22727,-0.09903,Actual vs Actual
+C91,Office of People's Counsel,2026,Working budget,8285741.0,276328.0,28.0,2926493.18,9868.86,276632.0,27.0,10245.63,-0.0011,0.03704,-0.03677,Working budget vs Actual
+C91,Office of People's Counsel,2027,Legislative appropriation,8436033.0,196158.0,28.0,,7005.64,276328.0,28.0,9868.86,-0.29013,0.0,-0.29013,Legislative appropriation vs Working budget
+C94,Subsequent Injury Fund,2017,Actual,2303632.0,197942.0,17.0,179486.88,11643.65,,,,,,,
+C94,Subsequent Injury Fund,2018,Actual,2286283.0,226772.0,17.0,129982.23,13339.53,197942.0,17.0,11643.65,0.14565,0.0,0.14565,Actual vs Actual
+C94,Subsequent Injury Fund,2019,Actual,2324635.0,244009.0,17.0,209825.22,14353.47,226772.0,17.0,13339.53,0.07601,0.0,0.07601,Actual vs Actual
+C94,Subsequent Injury Fund,2020,Actual,2382881.0,218619.0,17.0,164224.14,12859.94,244009.0,17.0,14353.47,-0.10405,0.0,-0.10405,Actual vs Actual
+C94,Subsequent Injury Fund,2021,Actual,2445027.0,205016.0,17.0,133118.45,12059.76,218619.0,17.0,12859.94,-0.06222,0.0,-0.06222,Actual vs Actual
+C94,Subsequent Injury Fund,2022,Actual,2599220.0,278272.0,17.0,183474.29,16368.94,205016.0,17.0,12059.76,0.35732,0.0,0.35732,Actual vs Actual
+C94,Subsequent Injury Fund,2023,Actual,2669078.0,225458.0,17.0,131800.09,13262.24,278272.0,17.0,16368.94,-0.18979,0.0,-0.18979,Actual vs Actual
+C94,Subsequent Injury Fund,2024,Actual,3039740.0,207830.0,17.0,125168.26,12225.29,225458.0,17.0,13262.24,-0.07819,0.0,-0.07819,Actual vs Actual
+C94,Subsequent Injury Fund,2025,Actual,3301583.0,232763.0,17.0,156754.26,13691.94,207830.0,17.0,12225.29,0.11997,0.0,0.11997,Actual vs Actual
+C94,Subsequent Injury Fund,2026,Working budget,3554921.0,333669.0,17.0,256751.23,19627.59,232763.0,17.0,13691.94,0.43351,0.0,0.43351,Working budget vs Actual
+C94,Subsequent Injury Fund,2027,Legislative appropriation,3557450.0,322022.0,17.0,,18942.47,333669.0,17.0,19627.59,-0.03491,0.0,-0.03491,Legislative appropriation vs Working budget
+C96,Uninsured Employers' Fund,2017,Actual,1589940.0,513596.0,14.0,5121345.78,36685.43,,,,,,,
+C96,Uninsured Employers' Fund,2018,Actual,1787862.0,579915.0,13.0,4220287.57,44608.85,513596.0,14.0,36685.43,0.12913,-0.07143,0.21598,Actual vs Actual
+C96,Uninsured Employers' Fund,2019,Actual,2010988.0,590550.0,13.0,9386703.29,45426.92,579915.0,13.0,44608.85,0.01834,0.0,0.01834,Actual vs Actual
+C96,Uninsured Employers' Fund,2020,Actual,2015260.0,490376.0,13.0,9310332.23,37721.23,590550.0,13.0,45426.92,-0.16963,0.0,-0.16963,Actual vs Actual
+C96,Uninsured Employers' Fund,2021,Actual,1940363.0,286683.0,13.0,8420420.59,22052.54,490376.0,13.0,37721.23,-0.41538,0.0,-0.41538,Actual vs Actual
+C96,Uninsured Employers' Fund,2022,Actual,4098804.0,524285.0,13.0,7141653.31,40329.62,286683.0,13.0,22052.54,0.8288,0.0,0.8288,Actual vs Actual
+C96,Uninsured Employers' Fund,2023,Actual,4880612.0,590193.0,13.0,8078953.13,45399.46,524285.0,13.0,40329.62,0.12571,0.0,0.12571,Actual vs Actual
+C96,Uninsured Employers' Fund,2024,Actual,4681767.0,552447.0,13.0,7229066.01,42495.92,590193.0,13.0,45399.46,-0.06396,0.0,-0.06396,Actual vs Actual
+C96,Uninsured Employers' Fund,2025,Actual,4650795.0,628605.0,13.0,7662825.01,48354.23,552447.0,13.0,42495.92,0.13786,0.0,0.13786,Actual vs Actual
+C96,Uninsured Employers' Fund,2026,Working budget,6047988.0,388135.0,13.0,6486556.84,29856.54,628605.0,13.0,48354.23,-0.38255,0.0,-0.38255,Working budget vs Actual
+C96,Uninsured Employers' Fund,2027,Legislative appropriation,6139680.0,385630.0,13.0,,29663.85,388135.0,13.0,29856.54,-0.00645,0.0,-0.00645,Legislative appropriation vs Working budget
+C98,Workers' Compensation Commission,2017,Actual,15050908.0,3032124.0,115.0,2497482.86,26366.3,,,,,,,
+C98,Workers' Compensation Commission,2018,Actual,15056461.0,3266370.0,115.0,2698835.24,28403.22,3032124.0,115.0,26366.3,0.07725,0.0,0.07725,Actual vs Actual
+C98,Workers' Compensation Commission,2019,Actual,16901399.0,4654300.0,115.0,4083657.46,40472.17,3266370.0,115.0,28403.22,0.42492,0.0,0.42492,Actual vs Actual
+C98,Workers' Compensation Commission,2020,Actual,18276791.0,5649102.0,115.0,5768419.99,49122.63,4654300.0,115.0,40472.17,0.21374,0.0,0.21374,Actual vs Actual
+C98,Workers' Compensation Commission,2021,Actual,19130518.0,6154207.0,115.0,5265594.34,53514.84,5649102.0,115.0,49122.63,0.08941,0.0,0.08941,Actual vs Actual
+C98,Workers' Compensation Commission,2022,Actual,18648808.0,5838677.0,115.0,5174834.96,50771.1,6154207.0,115.0,53514.84,-0.05127,0.0,-0.05127,Actual vs Actual
+C98,Workers' Compensation Commission,2023,Actual,20611690.0,7030441.0,115.0,5347306.22,61134.27,5838677.0,115.0,50771.1,0.20412,0.0,0.20412,Actual vs Actual
+C98,Workers' Compensation Commission,2024,Actual,22798479.0,7112543.0,115.0,5918263.78,61848.2,7030441.0,115.0,61134.27,0.01168,0.0,0.01168,Actual vs Actual
+C98,Workers' Compensation Commission,2025,Actual,24280448.0,7373314.0,115.0,6582617.38,64115.77,7112543.0,115.0,61848.2,0.03666,0.0,0.03666,Actual vs Actual
+C98,Workers' Compensation Commission,2026,Working budget,25064636.0,7653014.0,109.0,7137905.46,70211.14,7373314.0,115.0,64115.77,0.03793,-0.05217,0.09507,Working budget vs Actual
+C98,Workers' Compensation Commission,2027,Legislative appropriation,26494194.0,7646587.0,109.0,,70152.17,7653014.0,109.0,70211.14,-0.00084,0.0,-0.00084,Legislative appropriation vs Working budget
+D05,Board of Public Works,2017,Actual,7592008.0,27919.0,9.0,6522596.78,3102.11,,,,,,,
+D05,Board of Public Works,2018,Actual,7062422.0,47931.0,9.0,6041155.23,5325.67,27919.0,9.0,3102.11,0.71679,0.0,0.71679,Actual vs Actual
+D05,Board of Public Works,2019,Actual,7498289.0,28574.0,9.0,6422617.4,3174.89,47931.0,9.0,5325.67,-0.40385,0.0,-0.40385,Actual vs Actual
+D05,Board of Public Works,2020,Actual,9906106.0,34019.0,9.0,8747752.56,3779.89,28574.0,9.0,3174.89,0.19056,0.0,0.19056,Actual vs Actual
+D05,Board of Public Works,2021,Actual,11940494.0,23306.0,9.0,9664062.78,2589.56,34019.0,9.0,3779.89,-0.31491,0.0,-0.31491,Actual vs Actual
+D05,Board of Public Works,2022,Actual,13476416.0,35583.0,9.0,7444215.88,3953.67,23306.0,9.0,2589.56,0.52677,0.0,0.52677,Actual vs Actual
+D05,Board of Public Works,2023,Actual,16760662.0,26009.0,9.0,14498392.3,2889.89,35583.0,9.0,3953.67,-0.26906,0.0,-0.26906,Actual vs Actual
+D05,Board of Public Works,2024,Actual,44664478.0,28620.0,11.0,40771445.17,2601.82,26009.0,9.0,2889.89,0.10039,0.22222,-0.09968,Actual vs Actual
+D05,Board of Public Works,2025,Actual,30763864.0,23517.0,11.0,27450437.93,2137.91,28620.0,11.0,2601.82,-0.1783,0.0,-0.1783,Actual vs Actual
+D05,Board of Public Works,2026,Working budget,33469813.0,81708.0,11.0,28480528.54,7428.0,23517.0,11.0,2137.91,2.47442,0.0,2.47442,Working budget vs Actual
+D05,Board of Public Works,2027,Legislative appropriation,43173577.0,151535.0,11.0,,13775.91,81708.0,11.0,7428.0,0.85459,0.0,0.85459,Legislative appropriation vs Working budget
+D06,Board of Public Works - Capital Appropriation,2019,Actual,31073500.0,0.0,,,,,,,,,,
+D06,Board of Public Works - Capital Appropriation,2022,Actual,153415000.0,0.0,,,,,,,,,,
+D10,Executive Department - Governor,2017,Actual,10980083.0,1169182.0,83.5,797057.57,14002.18,,,,,,,
+D10,Executive Department - Governor,2018,Actual,10578308.0,1188550.0,82.5,649594.98,14406.67,1169182.0,83.5,14002.18,0.01657,-0.01198,0.02889,Actual vs Actual
+D10,Executive Department - Governor,2019,Actual,10559469.0,1210173.0,82.5,922497.66,14668.76,1188550.0,82.5,14406.67,0.01819,0.0,0.01819,Actual vs Actual
+D10,Executive Department - Governor,2020,Actual,11308775.0,1011950.0,82.5,540609.22,12266.06,1210173.0,82.5,14668.76,-0.1638,0.0,-0.1638,Actual vs Actual
+D10,Executive Department - Governor,2021,Actual,11557252.0,1036347.0,81.0,808958.02,12794.41,1011950.0,82.5,12266.06,0.02411,-0.01818,0.04307,Actual vs Actual
+D10,Executive Department - Governor,2022,Actual,12159977.0,1060610.0,79.0,526418.91,13425.44,1036347.0,81.0,12794.41,0.02341,-0.02469,0.04932,Actual vs Actual
+D10,Executive Department - Governor,2023,Actual,13336336.0,1485838.0,98.0,588974.06,15161.61,1060610.0,79.0,13425.44,0.40093,0.24051,0.12932,Actual vs Actual
+D10,Executive Department - Governor,2024,Actual,16565188.0,1334641.0,100.0,712808.05,13346.41,1485838.0,98.0,15161.61,-0.10176,0.02041,-0.11972,Actual vs Actual
+D10,Executive Department - Governor,2025,Actual,19783754.0,1836406.0,121.0,909575.65,15176.91,1334641.0,100.0,13346.41,0.37596,0.21,0.13715,Actual vs Actual
+D10,Executive Department - Governor,2026,Working budget,22778960.0,2789880.0,118.0,1167903.42,23643.05,1836406.0,121.0,15176.91,0.51921,-0.02479,0.55783,Working budget vs Actual
+D10,Executive Department - Governor,2027,Legislative appropriation,25088452.0,2492510.0,127.0,,19626.06,2789880.0,118.0,23643.05,-0.10659,0.07627,-0.1699,Legislative appropriation vs Working budget
+D11,Office of the Deaf and Hard of Hearing,2017,Actual,427188.0,66493.0,3.0,56563.57,22164.33,,,,,,,
+D11,Office of the Deaf and Hard of Hearing,2018,Actual,373983.0,55233.0,3.0,39331.25,18411.0,66493.0,3.0,22164.33,-0.16934,0.0,-0.16934,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2019,Actual,359223.0,56180.0,3.0,43428.69,18726.67,55233.0,3.0,18411.0,0.01715,0.0,0.01715,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2020,Actual,372642.0,42329.0,3.0,18979.31,14109.67,56180.0,3.0,18726.67,-0.24655,0.0,-0.24655,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2021,Actual,413923.0,39942.0,3.0,21283.01,13314.0,42329.0,3.0,14109.67,-0.05639,0.0,-0.05639,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2022,Actual,435503.0,41252.0,3.0,37049.0,13750.67,39942.0,3.0,13314.0,0.0328,0.0,0.0328,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2023,Actual,492931.0,58741.0,3.0,39706.46,19580.33,41252.0,3.0,13750.67,0.42396,0.0,0.42396,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2024,Actual,873295.0,74416.0,5.0,38235.95,14883.2,58741.0,3.0,19580.33,0.26685,0.66667,-0.23989,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2025,Actual,638317.0,215865.0,7.0,536403.6,30837.86,74416.0,5.0,14883.2,1.90079,0.4,1.07199,Actual vs Actual
+D11,Office of the Deaf and Hard of Hearing,2026,Working budget,1132157.0,109345.0,7.0,2854.44,15620.71,215865.0,7.0,30837.86,-0.49346,0.0,-0.49346,Working budget vs Actual
+D11,Office of the Deaf and Hard of Hearing,2027,Legislative appropriation,1201273.0,198575.0,7.0,,28367.86,109345.0,7.0,15620.71,0.81604,0.0,0.81604,Legislative appropriation vs Working budget
+D12,Department of Disabilities,2017,Actual,10634060.0,5839460.0,26.6,7227162.95,219528.57,,,,,,,
+D12,Department of Disabilities,2018,Actual,10795083.0,5609920.0,27.6,6776950.43,203257.97,5839460.0,26.6,219528.57,-0.03931,0.03759,-0.07412,Actual vs Actual
+D12,Department of Disabilities,2019,Actual,8731456.0,2724257.0,27.8,4197532.58,97994.86,5609920.0,27.6,203257.97,-0.51439,0.00725,-0.51788,Actual vs Actual
+D12,Department of Disabilities,2020,Actual,7807179.0,1071211.0,28.8,2683043.56,37194.83,2724257.0,27.8,97994.86,-0.60679,0.03597,-0.62044,Actual vs Actual
+D12,Department of Disabilities,2021,Actual,10011275.0,3731461.0,34.8,4132179.36,107225.89,1071211.0,28.8,37194.83,2.4834,0.20833,1.88282,Actual vs Actual
+D12,Department of Disabilities,2022,Actual,10619406.0,668207.0,34.8,3966881.04,19201.35,3731461.0,34.8,107225.89,-0.82093,0.0,-0.82093,Actual vs Actual
+D12,Department of Disabilities,2023,Actual,11235647.0,812414.0,35.0,4723813.04,23211.83,668207.0,34.8,19201.35,0.21581,0.00575,0.20886,Actual vs Actual
+D12,Department of Disabilities,2024,Actual,11374278.0,943375.0,37.0,5000648.46,25496.62,812414.0,35.0,23211.83,0.1612,0.05714,0.09843,Actual vs Actual
+D12,Department of Disabilities,2025,Actual,13041687.0,934066.0,39.0,4611588.38,23950.41,943375.0,37.0,25496.62,-0.00987,0.05405,-0.06064,Actual vs Actual
+D12,Department of Disabilities,2026,Working budget,14882227.0,3354605.0,40.0,4306572.94,83865.12,934066.0,39.0,23950.41,2.5914,0.02564,2.50162,Working budget vs Actual
+D12,Department of Disabilities,2027,Legislative appropriation,14630660.0,1626438.0,40.0,,40660.95,3354605.0,40.0,83865.12,-0.51516,0.0,-0.51516,Legislative appropriation vs Working budget
+D13,Maryland Energy Administration,2017,Actual,40609834.0,774422.0,28.0,21975004.28,27657.93,,,,,,,
+D13,Maryland Energy Administration,2018,Actual,38309866.0,1018934.0,28.0,19542712.14,36390.5,774422.0,28.0,27657.93,0.31573,0.0,0.31573,Actual vs Actual
+D13,Maryland Energy Administration,2019,Actual,33097353.0,1036485.0,28.0,16763860.83,37017.32,1018934.0,28.0,36390.5,0.01722,0.0,0.01722,Actual vs Actual
+D13,Maryland Energy Administration,2020,Actual,39896277.0,1112101.0,28.0,13105441.32,39717.89,1036485.0,28.0,37017.32,0.07295,0.0,0.07295,Actual vs Actual
+D13,Maryland Energy Administration,2021,Actual,34411654.0,947895.0,30.0,15614711.04,31596.5,1112101.0,28.0,39717.89,-0.14765,0.07143,-0.20448,Actual vs Actual
+D13,Maryland Energy Administration,2022,Actual,70133700.0,1052321.0,30.0,14612220.44,35077.37,947895.0,30.0,31596.5,0.11017,0.0,0.11017,Actual vs Actual
+D13,Maryland Energy Administration,2023,Actual,81793042.0,1157616.0,31.0,17796998.35,37342.45,1052321.0,30.0,35077.37,0.10006,0.03333,0.06457,Actual vs Actual
+D13,Maryland Energy Administration,2024,Actual,143963981.0,1609319.0,44.0,27263496.3,36575.43,1157616.0,31.0,37342.45,0.3902,0.41935,-0.02054,Actual vs Actual
+D13,Maryland Energy Administration,2025,Actual,225474091.0,11156282.0,49.0,33119157.52,227679.22,1609319.0,44.0,36575.43,5.9323,0.11364,5.22492,Actual vs Actual
+D13,Maryland Energy Administration,2026,Working budget,336294130.0,3910766.0,54.0,78450529.71,72421.59,11156282.0,49.0,227679.22,-0.64946,0.10204,-0.68191,Working budget vs Actual
+D13,Maryland Energy Administration,2027,Legislative appropriation,428374671.0,3127616.0,54.0,,57918.81,3910766.0,54.0,72421.59,-0.20025,0.0,-0.20025,Legislative appropriation vs Working budget
+D15,"Executive Department-Boards, Commissions and Offices",2017,Actual,143457256.0,1377953.0,101.1,124992002.4,13629.6,,,,,,,
+D15,"Executive Department-Boards, Commissions and Offices",2018,Actual,159343949.0,1312140.0,103.1,135756328.55,12726.87,1377953.0,101.1,13629.6,-0.04776,0.01978,-0.06623,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2019,Actual,12982627.0,1106524.0,67.1,130544295.69,16490.67,1312140.0,103.1,12726.87,-0.1567,-0.34918,0.29574,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2020,Actual,14005688.0,668676.0,70.6,146207243.13,9471.33,1106524.0,67.1,16490.67,-0.3957,0.05216,-0.42566,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2021,Actual,13340175.0,467707.0,68.6,2705011.45,6817.89,668676.0,70.6,9471.33,-0.30055,-0.02833,-0.28016,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2022,Actual,14901728.0,628301.0,69.6,2555618.85,9027.31,467707.0,68.6,6817.89,0.34336,0.01458,0.32406,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2023,Actual,16431836.0,1342824.0,73.6,4232582.09,18244.89,628301.0,69.6,9027.31,1.13723,0.05747,1.02108,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2024,Actual,9247672.0,432594.0,64.0,430548.65,6759.28,1342824.0,73.6,18244.89,-0.67785,-0.13043,-0.62952,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2025,Actual,11131714.0,445799.0,67.0,246923.77,6653.72,432594.0,64.0,6759.28,0.03053,0.04688,-0.01562,Actual vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2026,Working budget,11529093.0,824815.0,55.0,253121.9,14996.64,445799.0,67.0,6653.72,0.85019,-0.1791,1.25387,Working budget vs Actual
+D15,"Executive Department-Boards, Commissions and Offices",2027,Legislative appropriation,11609152.0,1130056.0,53.0,,21321.81,824815.0,55.0,14996.64,0.37007,-0.03636,0.42177,Legislative appropriation vs Working budget
+D16,Secretary of State,2017,Actual,2999826.0,334191.0,25.0,215170.73,13367.64,,,,,,,
+D16,Secretary of State,2018,Actual,2918766.0,314319.0,25.0,175365.69,12572.76,334191.0,25.0,13367.64,-0.05946,0.0,-0.05946,Actual vs Actual
+D16,Secretary of State,2019,Actual,2927601.0,250094.0,25.0,160753.69,10003.76,314319.0,25.0,12572.76,-0.20433,0.0,-0.20433,Actual vs Actual
+D16,Secretary of State,2020,Actual,3536767.0,257565.0,26.0,193134.43,9906.35,250094.0,25.0,10003.76,0.02987,0.04,-0.00974,Actual vs Actual
+D16,Secretary of State,2021,Actual,3471034.0,207840.0,24.0,87313.91,8660.0,257565.0,26.0,9906.35,-0.19306,-0.07692,-0.12581,Actual vs Actual
+D16,Secretary of State,2022,Actual,4678171.0,330705.0,24.0,154463.84,13779.38,207840.0,24.0,8660.0,0.59115,0.0,0.59115,Actual vs Actual
+D16,Secretary of State,2023,Actual,4327059.0,393251.0,24.0,146896.58,16385.46,330705.0,24.0,13779.38,0.18913,0.0,0.18913,Actual vs Actual
+D16,Secretary of State,2024,Actual,5840816.0,558236.0,29.0,544584.65,19249.52,393251.0,24.0,16385.46,0.41954,0.20833,0.17479,Actual vs Actual
+D16,Secretary of State,2025,Actual,5409260.0,642256.0,29.0,556198.57,22146.76,558236.0,29.0,19249.52,0.15051,0.0,0.15051,Actual vs Actual
+D16,Secretary of State,2026,Working budget,5756158.0,974329.0,29.0,709592.78,33597.55,642256.0,29.0,22146.76,0.51704,0.0,0.51704,Working budget vs Actual
+D16,Secretary of State,2027,Legislative appropriation,6325707.0,862712.0,29.0,,29748.69,974329.0,29.0,33597.55,-0.11456,0.0,-0.11456,Legislative appropriation vs Working budget
+D17,Historic St. Mary's City Commission,2017,Actual,3391066.0,836935.0,29.0,273986.0,28859.83,,,,,,,
+D17,Historic St. Mary's City Commission,2018,Actual,3183856.0,514609.0,29.0,220161.11,17745.14,836935.0,29.0,28859.83,-0.38513,0.0,-0.38513,Actual vs Actual
+D17,Historic St. Mary's City Commission,2019,Actual,3810741.0,664637.0,31.0,217385.27,21439.9,514609.0,29.0,17745.14,0.29154,0.06897,0.20821,Actual vs Actual
+D17,Historic St. Mary's City Commission,2020,Actual,3746367.0,483762.0,31.0,144461.98,15605.23,664637.0,31.0,21439.9,-0.27214,0.0,-0.27214,Actual vs Actual
+D17,Historic St. Mary's City Commission,2021,Actual,4085731.0,430568.0,31.0,82861.8,13889.29,483762.0,31.0,15605.23,-0.10996,0.0,-0.10996,Actual vs Actual
+D17,Historic St. Mary's City Commission,2022,Actual,5650289.0,1402734.0,31.0,231573.75,45249.48,430568.0,31.0,13889.29,2.25787,0.0,2.25787,Actual vs Actual
+D17,Historic St. Mary's City Commission,2023,Actual,5689505.0,946233.0,32.0,490611.1,29569.78,1402734.0,31.0,45249.48,-0.32544,0.03226,-0.34652,Actual vs Actual
+D17,Historic St. Mary's City Commission,2024,Actual,6900483.0,1792505.0,32.0,287732.0,56015.78,946233.0,32.0,29569.78,0.89436,0.0,0.89436,Actual vs Actual
+D17,Historic St. Mary's City Commission,2025,Actual,6665228.0,892456.0,32.0,479024.52,27889.25,1792505.0,32.0,56015.78,-0.50212,0.0,-0.50212,Actual vs Actual
+D17,Historic St. Mary's City Commission,2026,Working budget,6820504.0,850499.0,32.0,933823.37,26578.09,892456.0,32.0,27889.25,-0.04701,0.0,-0.04701,Working budget vs Actual
+D17,Historic St. Mary's City Commission,2027,Legislative appropriation,7111363.0,725542.0,40.0,,18138.55,850499.0,32.0,26578.09,-0.14692,0.25,-0.31754,Legislative appropriation vs Working budget
+D18,Governor's Office for Children,2017,Actual,1814548.0,44261.0,16.0,15769.23,2766.31,,,,,,,
+D18,Governor's Office for Children,2018,Actual,1440529.0,97517.0,16.0,3351.35,6094.81,44261.0,16.0,2766.31,1.20323,0.0,1.20323,Actual vs Actual
+D18,Governor's Office for Children,2024,Actual,615177.0,486208.0,8.0,,60776.0,,,,,,,
+D18,Governor's Office for Children,2025,Actual,68125500.0,5954049.0,16.0,45479743.53,372128.06,486208.0,8.0,60776.0,11.24589,1.0,5.12294,Actual vs Actual
+D18,Governor's Office for Children,2026,Working budget,63567399.0,903431.0,25.0,40929890.32,36137.24,5954049.0,16.0,372128.06,-0.84827,0.5625,-0.90289,Working budget vs Actual
+D18,Governor's Office for Children,2027,Legislative appropriation,95649105.0,635664.0,25.0,,25426.56,903431.0,25.0,36137.24,-0.29639,0.0,-0.29639,Legislative appropriation vs Working budget
+D21,Governor's Office of Crime Prevention and Policy,2019,Actual,174316359.0,1376730.0,63.0,,21852.86,,,,,,,
+D21,Governor's Office of Crime Prevention and Policy,2020,Actual,194212653.0,2228266.0,61.0,22462209.44,36528.95,1376730.0,63.0,21852.86,0.61852,-0.03175,0.67159,Actual vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2021,Actual,196117674.0,1842617.0,56.0,169892939.36,32903.88,2228266.0,61.0,36528.95,-0.17307,-0.08197,-0.09924,Actual vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2022,Actual,202884792.0,21269901.0,56.0,175109696.86,379819.66,1842617.0,56.0,32903.88,10.54331,0.0,10.54331,Actual vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2023,Actual,365865376.0,2408000.0,66.0,256788438.97,36484.85,21269901.0,56.0,379819.66,-0.88679,0.17857,-0.90394,Actual vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2024,Actual,367352548.0,4311553.0,65.0,258377240.54,66331.58,2408000.0,66.0,36484.85,0.79051,-0.01515,0.81806,Actual vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2025,Actual,338932131.0,4407275.0,86.0,233698693.11,51247.38,4311553.0,65.0,66331.58,0.0222,0.32308,-0.22741,Actual vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2026,Working budget,342466479.0,1354582.0,104.0,238651388.79,13024.83,4407275.0,86.0,51247.38,-0.69265,0.2093,-0.74584,Working budget vs Actual
+D21,Governor's Office of Crime Prevention and Policy,2027,Legislative appropriation,352035743.0,1679757.0,104.0,,16151.51,1354582.0,104.0,13024.83,0.24006,0.0,0.24006,Legislative appropriation vs Working budget
+D22,Maryland Commission on African American History and Culture,2023,Actual,834448.0,232668.0,9.0,75035.1,25852.0,,,,,,,
+D22,Maryland Commission on African American History and Culture,2024,Actual,1564391.0,477617.0,9.0,218439.41,53068.56,232668.0,9.0,25852.0,1.05278,0.0,1.05278,Actual vs Actual
+D22,Maryland Commission on African American History and Culture,2025,Actual,1625799.0,387492.0,11.0,258162.04,35226.55,477617.0,9.0,53068.56,-0.1887,0.22222,-0.33621,Actual vs Actual
+D22,Maryland Commission on African American History and Culture,2026,Working budget,1827332.0,224892.0,11.0,299825.26,20444.73,387492.0,11.0,35226.55,-0.41962,0.0,-0.41962,Working budget vs Actual
+D22,Maryland Commission on African American History and Culture,2027,Legislative appropriation,1961037.0,223427.0,11.0,,20311.55,224892.0,11.0,20444.73,-0.00651,0.0,-0.00651,Legislative appropriation vs Working budget
+D23,Maryland Cannabis Administration,2024,Actual,24166366.0,9688676.0,110.0,,88078.87,,,,,,,
+D23,Maryland Cannabis Administration,2025,Actual,30321240.0,8038941.0,110.0,7650483.86,73081.28,9688676.0,110.0,88078.87,-0.17027,0.0,-0.17027,Actual vs Actual
+D23,Maryland Cannabis Administration,2026,Working budget,32766344.0,9954462.0,101.0,5499397.37,98559.03,8038941.0,110.0,73081.28,0.23828,-0.08182,0.34862,Working budget vs Actual
+D23,Maryland Cannabis Administration,2027,Legislative appropriation,31338189.0,9827567.0,101.0,,97302.64,9954462.0,101.0,98559.03,-0.01275,0.0,-0.01275,Legislative appropriation vs Working budget
+D24,Department of Social and Economic Mobility,2026,Working budget,16542100.0,2389875.0,70.0,809306.64,34141.07,,,,,,,
+D24,Department of Social and Economic Mobility,2027,Legislative appropriation,25176145.0,5040732.0,71.0,,70996.23,2389875.0,70.0,34141.07,1.1092,0.01429,1.0795,Legislative appropriation vs Working budget
+D25,Interagency Commission On School Construction,2017,Actual,2000527.0,52590.0,19.0,22116.81,2767.89,,,,,,,
+D25,Interagency Commission On School Construction,2019,Actual,0.0,0.0,0.0,7739.88,,,,,,,,
+D25,Interagency Commission On School Construction,2023,Actual,317948440.0,1968967.0,41.0,,48023.59,,,,,,,
+D25,Interagency Commission On School Construction,2024,Actual,631469009.0,1181718.0,41.0,10757.32,28822.39,1968967.0,41.0,48023.59,-0.39983,0.0,-0.39983,Actual vs Actual
+D25,Interagency Commission On School Construction,2025,Actual,88522793.0,1107068.0,44.0,101597878.54,25160.64,1181718.0,41.0,28822.39,-0.06317,0.07317,-0.12705,Actual vs Actual
+D25,Interagency Commission On School Construction,2026,Working budget,97266118.0,2184644.0,44.0,64063463.43,49651.0,1107068.0,44.0,25160.64,0.97336,0.0,0.97336,Working budget vs Actual
+D25,Interagency Commission On School Construction,2027,Legislative appropriation,106466318.0,1177404.0,44.0,,26759.18,2184644.0,44.0,49651.0,-0.46105,0.0,-0.46105,Legislative appropriation vs Working budget
+D26,Department of Aging,2017,Actual,48358880.0,1405578.0,41.7,47042514.65,33706.91,,,,,,,
+D26,Department of Aging,2018,Actual,54856394.0,659651.0,38.7,45049619.3,17045.25,1405578.0,41.7,33706.91,-0.53069,-0.07194,-0.49431,Actual vs Actual
+D26,Department of Aging,2019,Actual,58612855.0,751593.0,38.7,49917100.72,19421.01,659651.0,38.7,17045.25,0.13938,0.0,0.13938,Actual vs Actual
+D26,Department of Aging,2020,Actual,70598243.0,2150721.0,38.7,56499612.94,55574.19,751593.0,38.7,19421.01,1.86155,0.0,1.86155,Actual vs Actual
+D26,Department of Aging,2021,Actual,79443723.0,3023904.0,39.0,62276589.1,77536.0,2150721.0,38.7,55574.19,0.406,0.00775,0.39518,Actual vs Actual
+D26,Department of Aging,2022,Actual,82952275.0,3414477.0,39.0,60063035.13,87550.69,3023904.0,39.0,77536.0,0.12916,0.0,0.12916,Actual vs Actual
+D26,Department of Aging,2023,Actual,80012120.0,3512551.0,40.0,67980331.12,87813.78,3414477.0,39.0,87550.69,0.02872,0.02564,0.003,Actual vs Actual
+D26,Department of Aging,2024,Actual,81887094.0,2270434.0,40.0,69930895.38,56760.85,3512551.0,40.0,87813.78,-0.35362,0.0,-0.35362,Actual vs Actual
+D26,Department of Aging,2025,Actual,87431932.0,3892997.0,49.0,76036597.27,79448.92,2270434.0,40.0,56760.85,0.71465,0.225,0.39971,Actual vs Actual
+D26,Department of Aging,2026,Working budget,89451855.0,2362990.0,50.0,76278142.96,47259.8,3892997.0,49.0,79448.92,-0.39302,0.02041,-0.40515,Working budget vs Actual
+D26,Department of Aging,2027,Legislative appropriation,83539720.0,2245654.0,50.0,,44913.08,2362990.0,50.0,47259.8,-0.04966,0.0,-0.04966,Legislative appropriation vs Working budget
+D27,Maryland Commission On Civil Rights,2017,Actual,3190111.0,226276.0,31.0,40307.24,7299.23,,,,,,,
+D27,Maryland Commission On Civil Rights,2018,Actual,3104927.0,209373.0,31.0,120769.56,6753.97,226276.0,31.0,7299.23,-0.0747,0.0,-0.0747,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2019,Actual,3241915.0,185020.0,31.0,37076.0,5968.39,209373.0,31.0,6753.97,-0.11631,0.0,-0.11631,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2020,Actual,3269771.0,161511.0,31.0,37759.8,5210.03,185020.0,31.0,5968.39,-0.12706,0.0,-0.12706,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2021,Actual,3607098.0,200507.0,31.0,118755.31,6467.97,161511.0,31.0,5210.03,0.24144,0.0,0.24144,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2022,Actual,3803586.0,344973.0,33.0,40285.83,10453.73,200507.0,31.0,6467.97,0.7205,0.06452,0.61623,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2023,Actual,4459028.0,283740.0,33.0,87971.63,8598.18,344973.0,33.0,10453.73,-0.1775,0.0,-0.1775,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2024,Actual,5139769.0,303357.0,38.0,109301.18,7983.08,283740.0,33.0,8598.18,0.06914,0.15152,-0.07154,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2025,Actual,6125105.0,787312.0,38.0,157460.45,20718.74,303357.0,38.0,7983.08,1.59533,0.0,1.59533,Actual vs Actual
+D27,Maryland Commission On Civil Rights,2026,Working budget,6888902.0,469333.0,50.0,163994.7,9386.66,787312.0,38.0,20718.74,-0.40388,0.31579,-0.54695,Working budget vs Actual
+D27,Maryland Commission On Civil Rights,2027,Legislative appropriation,7406020.0,427662.0,49.0,,8727.8,469333.0,50.0,9386.66,-0.08879,-0.02,-0.07019,Legislative appropriation vs Working budget
+D28,Maryland Stadium Authority,2017,Actual,49224856.0,250000.0,0.0,100470261.84,,,,,,,,
+D28,Maryland Stadium Authority,2018,Actual,50892962.0,1499.0,0.0,126761916.24,,250000.0,0.0,,-0.994,,,Actual vs Actual
+D28,Maryland Stadium Authority,2019,Actual,49816336.0,501500.0,0.0,138346379.8,,1499.0,0.0,,333.55637,,,Actual vs Actual
+D28,Maryland Stadium Authority,2020,Actual,48740436.0,260386.0,123.8,160443839.94,2103.28,501500.0,0.0,,-0.48079,,,Actual vs Actual
+D28,Maryland Stadium Authority,2021,Actual,54305817.0,100000.0,123.8,127467898.39,807.75,260386.0,123.8,2103.28,-0.61595,0.0,-0.61595,Actual vs Actual
+D28,Maryland Stadium Authority,2022,Actual,52779417.0,250000.0,123.8,132350344.98,2019.39,100000.0,123.8,807.75,1.5,0.0,1.5,Actual vs Actual
+D28,Maryland Stadium Authority,2023,Actual,68012723.0,72000.0,125.8,168623686.13,572.34,250000.0,123.8,2019.39,-0.712,0.01616,-0.71658,Actual vs Actual
+D28,Maryland Stadium Authority,2024,Actual,205210593.0,92304482.0,127.8,179764628.83,722257.29,72000.0,125.8,572.34,1281.00669,0.0159,1260.94399,Actual vs Actual
+D28,Maryland Stadium Authority,2025,Actual,253536128.0,10692593.0,149.8,218902737.9,71379.13,92304482.0,127.8,722257.29,-0.88416,0.17214,-0.90117,Actual vs Actual
+D28,Maryland Stadium Authority,2026,Working budget,264957983.0,450000.0,140.8,274429539.02,3196.02,10692593.0,149.8,71379.13,-0.95791,-0.06008,-0.95522,Working budget vs Actual
+D28,Maryland Stadium Authority,2027,Legislative appropriation,312392727.0,300000.0,160.8,,1865.67,450000.0,140.8,3196.02,-0.33333,0.14205,-0.41625,Legislative appropriation vs Working budget
+D29,Maryland Thoroughbred Racetrack Operating Authority,2024,Actual,1623195.0,1435252.0,6.0,902394.82,239208.67,,,,,,,
+D29,Maryland Thoroughbred Racetrack Operating Authority,2025,Actual,13484063.0,12823726.0,6.0,12555746.67,2137287.67,1435252.0,6.0,239208.67,7.93483,0.0,7.93483,Actual vs Actual
+D38,State Board of Elections,2017,Actual,22615616.0,16938784.0,41.8,19320216.69,405234.07,,,,,,,
+D38,State Board of Elections,2018,Actual,19864337.0,15508062.0,41.8,16642261.79,371006.27,16938784.0,41.8,405234.07,-0.08446,0.0,-0.08446,Actual vs Actual
+D38,State Board of Elections,2019,Actual,26245024.0,21257087.0,41.8,23006731.14,508542.75,15508062.0,41.8,371006.27,0.37071,0.0,0.37071,Actual vs Actual
+D38,State Board of Elections,2020,Actual,42494063.0,37303623.0,43.8,27711760.78,851680.89,21257087.0,41.8,508542.75,0.75488,0.04785,0.67475,Actual vs Actual
+D38,State Board of Elections,2021,Actual,44867634.0,39383754.0,43.8,41268125.23,899172.47,37303623.0,43.8,851680.89,0.05576,0.0,0.05576,Actual vs Actual
+D38,State Board of Elections,2022,Actual,47485875.0,41868529.0,46.0,27616690.33,910185.41,39383754.0,43.8,899172.47,0.06309,0.05023,0.01225,Actual vs Actual
+D38,State Board of Elections,2023,Actual,46012886.0,35883095.0,46.0,40463291.19,780067.28,41868529.0,46.0,910185.41,-0.14296,0.0,-0.14296,Actual vs Actual
+D38,State Board of Elections,2024,Actual,47225739.0,39560076.0,51.0,25585445.72,775687.76,35883095.0,46.0,780067.28,0.10247,0.1087,-0.00561,Actual vs Actual
+D38,State Board of Elections,2025,Actual,54366632.0,45866495.0,55.0,29620628.52,833936.27,39560076.0,51.0,775687.76,0.15941,0.07843,0.07509,Actual vs Actual
+D38,State Board of Elections,2026,Working budget,55056933.0,44564847.0,56.0,29132537.22,795800.84,45866495.0,55.0,833936.27,-0.02838,0.01818,-0.04573,Working budget vs Actual
+D38,State Board of Elections,2027,Legislative appropriation,74470407.0,63956357.0,58.0,,1102695.81,44564847.0,56.0,795800.84,0.43513,0.03571,0.38564,Legislative appropriation vs Working budget
+D40,Department of Planning,2017,Actual,26290451.0,1699695.0,130.0,4548134.82,13074.58,,,,,,,
+D40,Department of Planning,2018,Actual,26085496.0,2153143.0,129.0,4320689.81,16691.03,1699695.0,130.0,13074.58,0.26678,-0.00769,0.2766,Actual vs Actual
+D40,Department of Planning,2019,Actual,29151088.0,2064743.0,129.0,5555263.45,16005.76,2153143.0,129.0,16691.03,-0.04106,0.0,-0.04106,Actual vs Actual
+D40,Department of Planning,2020,Actual,37258156.0,3143049.0,130.0,11835799.56,24177.3,2064743.0,129.0,16005.76,0.52225,0.00775,0.51054,Actual vs Actual
+D40,Department of Planning,2021,Actual,25475025.0,1928543.0,129.0,6926860.75,14949.95,3143049.0,130.0,24177.3,-0.38641,-0.00769,-0.38165,Actual vs Actual
+D40,Department of Planning,2022,Actual,28924868.0,1573777.0,127.0,6535347.92,12391.94,1928543.0,129.0,14949.95,-0.18396,-0.0155,-0.1711,Actual vs Actual
+D40,Department of Planning,2023,Actual,46125458.0,2021609.0,127.0,6328299.87,15918.18,1573777.0,127.0,12391.94,0.28456,0.0,0.28456,Actual vs Actual
+D40,Department of Planning,2024,Actual,52193096.0,3562023.0,133.0,8611336.38,26782.13,2021609.0,127.0,15918.18,0.76197,0.04724,0.68249,Actual vs Actual
+D40,Department of Planning,2025,Actual,55068271.0,2602294.0,142.0,12573825.05,18326.01,3562023.0,133.0,26782.13,-0.26943,0.06767,-0.31574,Actual vs Actual
+D40,Department of Planning,2026,Working budget,48513255.0,3408861.0,142.0,10639629.18,24006.06,2602294.0,142.0,18326.01,0.30994,0.0,0.30994,Working budget vs Actual
+D40,Department of Planning,2027,Legislative appropriation,51686825.0,4561422.0,142.0,,32122.69,3408861.0,142.0,24006.06,0.33811,0.0,0.33811,Legislative appropriation vs Working budget
+D50,Military Department,2017,Actual,146403833.0,10343190.0,293.5,95217395.0,35240.85,,,,,,,
+D50,Military Department,2018,Actual,117401896.0,9059837.0,293.5,42679284.19,30868.27,10343190.0,293.5,35240.85,-0.12408,0.0,-0.12408,Actual vs Actual
+D50,Military Department,2019,Actual,88470501.0,12537293.0,297.5,48487052.12,42142.16,9059837.0,293.5,30868.27,0.38383,0.01363,0.36523,Actual vs Actual
+D50,Military Department,2020,Actual,149290812.0,12611115.0,307.5,45827450.26,41011.76,12537293.0,297.5,42142.16,0.00589,0.03361,-0.02682,Actual vs Actual
+D50,Military Department,2021,Actual,961040898.0,28494039.0,293.5,157436974.46,97083.61,12611115.0,307.5,41011.76,1.25944,-0.04553,1.36721,Actual vs Actual
+D50,Military Department,2022,Actual,34935926.0,10997988.0,228.5,108281507.89,48131.24,28494039.0,293.5,97083.61,-0.61402,-0.22147,-0.50423,Actual vs Actual
+D50,Military Department,2023,Actual,46871880.0,12377376.0,227.5,16650768.07,54406.05,10997988.0,228.5,48131.24,0.12542,-0.00438,0.13037,Actual vs Actual
+D50,Military Department,2024,Actual,81638538.0,13003949.0,227.5,10377014.24,57160.22,12377376.0,227.5,54406.05,0.05062,0.0,0.05062,Actual vs Actual
+D50,Military Department,2025,Actual,53167415.0,18932475.0,227.5,9256415.01,83219.67,13003949.0,227.5,57160.22,0.4559,0.0,0.4559,Actual vs Actual
+D50,Military Department,2026,Working budget,46000725.0,12535687.0,214.5,8826284.52,58441.43,18932475.0,227.5,83219.67,-0.33787,-0.05714,-0.29774,Working budget vs Actual
+D50,Military Department,2027,Legislative appropriation,38776091.0,8441710.0,167.5,,50398.27,12535687.0,214.5,58441.43,-0.32659,-0.21911,-0.13763,Legislative appropriation vs Working budget
+D52,Maryland Department of Emergency Management,2022,Actual,517953713.0,40868954.0,72.0,198860001.49,567624.36,,,,,,,
+D52,Maryland Department of Emergency Management,2023,Actual,503260574.0,9281278.0,74.0,423889194.67,125422.68,40868954.0,72.0,567624.36,-0.7729,0.02778,-0.77904,Actual vs Actual
+D52,Maryland Department of Emergency Management,2024,Actual,904427107.0,14575532.0,97.0,388519190.67,150263.22,9281278.0,74.0,125422.68,0.57042,0.31081,0.19805,Actual vs Actual
+D52,Maryland Department of Emergency Management,2025,Actual,460010624.0,13687704.0,108.0,385959326.82,126738.0,14575532.0,97.0,150263.22,-0.06091,0.1134,-0.15656,Actual vs Actual
+D52,Maryland Department of Emergency Management,2026,Working budget,907766748.0,5303577.0,108.0,317440756.62,49107.19,13687704.0,108.0,126738.0,-0.61253,0.0,-0.61253,Working budget vs Actual
+D52,Maryland Department of Emergency Management,2027,Legislative appropriation,943814512.0,4349880.0,108.0,,40276.67,5303577.0,108.0,49107.19,-0.17982,0.0,-0.17982,Legislative appropriation vs Working budget
+D53,Maryland Institute for Emergency Medical Services Systems,2017,Actual,15992075.0,3848031.0,94.0,4444340.93,40936.5,,,,,,,
+D53,Maryland Institute for Emergency Medical Services Systems,2018,Actual,26619052.0,15006211.0,94.0,4051858.23,159640.54,3848031.0,94.0,40936.5,2.89971,0.0,2.89971,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2019,Actual,21512385.0,9265067.0,94.0,6306114.98,98564.54,15006211.0,94.0,159640.54,-0.38258,0.0,-0.38258,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2020,Actual,17477969.0,5003340.0,94.0,8035087.55,53227.02,9265067.0,94.0,98564.54,-0.45998,0.0,-0.45998,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2021,Actual,17089053.0,4531239.0,94.0,5307600.59,48204.67,5003340.0,94.0,53227.02,-0.09436,0.0,-0.09436,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2022,Actual,18151478.0,4998652.0,95.0,4954434.74,52617.39,4531239.0,94.0,48204.67,0.10315,0.01064,0.09154,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2023,Actual,30193957.0,5681596.0,95.0,6154188.09,59806.27,4998652.0,95.0,52617.39,0.13663,0.0,0.13663,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2024,Actual,47326338.0,5566484.0,98.0,4188997.75,56800.86,5681596.0,95.0,59806.27,-0.02026,0.03158,-0.05025,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2025,Actual,22777782.0,5182308.0,100.0,6742775.99,51823.08,5566484.0,98.0,56800.86,-0.06902,0.02041,-0.08764,Actual vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2026,Working budget,24577677.0,6770735.0,101.0,4468401.92,67036.98,5182308.0,100.0,51823.08,0.30651,0.01,0.29357,Working budget vs Actual
+D53,Maryland Institute for Emergency Medical Services Systems,2027,Legislative appropriation,25991716.0,7575019.0,101.0,,75000.19,6770735.0,101.0,67036.98,0.11879,0.0,0.11879,Legislative appropriation vs Working budget
+D55,Department of Veterans and Military Families,2017,Actual,29726769.0,3245776.0,83.0,22845736.92,39105.73,,,,,,,
+D55,Department of Veterans and Military Families,2018,Actual,38046997.0,3172566.0,83.0,23973348.97,38223.69,3245776.0,83.0,39105.73,-0.02256,0.0,-0.02256,Actual vs Actual
+D55,Department of Veterans and Military Families,2019,Actual,36566515.0,4372937.0,93.0,25033351.55,47020.83,3172566.0,83.0,38223.69,0.37836,0.12048,0.23015,Actual vs Actual
+D55,Department of Veterans and Military Families,2020,Actual,46964672.0,3918431.0,111.0,28460461.48,35301.18,4372937.0,93.0,47020.83,-0.10394,0.19355,-0.24924,Actual vs Actual
+D55,Department of Veterans and Military Families,2021,Actual,39302597.0,4395638.0,116.0,25809240.26,37893.43,3918431.0,111.0,35301.18,0.12179,0.04505,0.07343,Actual vs Actual
+D55,Department of Veterans and Military Families,2022,Actual,35584662.0,3342520.0,117.0,22791204.44,28568.55,4395638.0,116.0,37893.43,-0.23958,0.00862,-0.24608,Actual vs Actual
+D55,Department of Veterans and Military Families,2023,Actual,41446090.0,3933432.0,119.0,26823791.9,33054.05,3342520.0,117.0,28568.55,0.17679,0.01709,0.15701,Actual vs Actual
+D55,Department of Veterans and Military Families,2024,Actual,60816950.0,7118378.0,121.0,33510056.47,58829.57,3933432.0,119.0,33054.05,0.80971,0.01681,0.7798,Actual vs Actual
+D55,Department of Veterans and Military Families,2025,Actual,64187441.0,8015458.0,126.0,44921222.83,63614.75,7118378.0,121.0,58829.57,0.12602,0.04132,0.08134,Actual vs Actual
+D55,Department of Veterans and Military Families,2026,Working budget,68451728.0,7237188.0,125.0,46375452.84,57897.5,8015458.0,126.0,63614.75,-0.0971,-0.00794,-0.08987,Working budget vs Actual
+D55,Department of Veterans and Military Families,2027,Legislative appropriation,68679552.0,5561395.0,125.0,,44491.16,7237188.0,125.0,57897.5,-0.23155,0.0,-0.23155,Legislative appropriation vs Working budget
+D60,State Archives,2017,Actual,8782386.0,2366430.0,62.5,4565700.22,37862.88,,,,,,,
+D60,State Archives,2018,Actual,8536600.0,2276080.0,62.5,1858826.21,36417.28,2366430.0,62.5,37862.88,-0.03818,0.0,-0.03818,Actual vs Actual
+D60,State Archives,2019,Actual,8926313.0,2575939.0,63.0,2159678.56,40887.92,2276080.0,62.5,36417.28,0.13174,0.008,0.12276,Actual vs Actual
+D60,State Archives,2020,Actual,8830734.0,2276599.0,63.0,2387770.0,36136.49,2575939.0,63.0,40887.92,-0.11621,0.0,-0.11621,Actual vs Actual
+D60,State Archives,2021,Actual,9063079.0,2562416.0,61.0,1572654.16,42006.82,2276599.0,63.0,36136.49,0.12555,-0.03175,0.16245,Actual vs Actual
+D60,State Archives,2022,Actual,8641937.0,2122774.0,61.0,2496915.13,34799.57,2562416.0,61.0,42006.82,-0.17157,0.0,-0.17157,Actual vs Actual
+D60,State Archives,2023,Actual,9633753.0,2290205.0,61.0,1750459.73,37544.34,2122774.0,61.0,34799.57,0.07887,0.0,0.07887,Actual vs Actual
+D60,State Archives,2024,Actual,10662660.0,2328116.0,62.0,2521012.81,37550.26,2290205.0,61.0,37544.34,0.01655,0.01639,0.00016,Actual vs Actual
+D60,State Archives,2025,Actual,11779157.0,2801145.0,62.0,2469384.81,45179.76,2328116.0,62.0,37550.26,0.20318,0.0,0.20318,Actual vs Actual
+D60,State Archives,2026,Working budget,13689647.0,4544172.0,64.0,2221231.62,71002.69,2801145.0,62.0,45179.76,0.62226,0.03226,0.57156,Working budget vs Actual
+D60,State Archives,2027,Legislative appropriation,15063859.0,5577560.0,64.0,,87149.38,4544172.0,64.0,71002.69,0.22741,0.0,0.22741,Legislative appropriation vs Working budget
+D73,Office of the Inspector General for Education,2024,Actual,1178392.0,187674.0,,,,,,,,,,
+D73,Office of the Inspector General for Education,2025,Actual,2732241.0,148871.0,16.0,7300.71,9304.44,187674.0,,,-0.20676,,,Actual vs Actual
+D73,Office of the Inspector General for Education,2026,Working budget,2608379.0,161055.0,16.0,15166.93,10065.94,148871.0,16.0,9304.44,0.08184,0.0,0.08184,Working budget vs Actual
+D73,Office of the Inspector General for Education,2027,Legislative appropriation,2885210.0,137033.0,16.0,,8564.56,161055.0,16.0,10065.94,-0.14915,0.0,-0.14915,Legislative appropriation vs Working budget
+D74,Office of the Correctional Ombudsman,2025,Actual,977891.0,149210.0,7.0,75973.0,21315.71,,,,,,,
+D74,Office of the Correctional Ombudsman,2026,Working budget,1859194.0,148901.0,13.0,85087.83,11453.92,149210.0,7.0,21315.71,-0.00207,0.85714,-0.46265,Working budget vs Actual
+D74,Office of the Correctional Ombudsman,2027,Legislative appropriation,2162141.0,152643.0,13.0,,11741.77,148901.0,13.0,11453.92,0.02513,0.0,0.02513,Legislative appropriation vs Working budget
+D76,Maryland Office of the Inspector General for Health,2023,Actual,4662339.0,51808.0,43.0,,1204.84,,,,,,,
+D76,Maryland Office of the Inspector General for Health,2024,Actual,4842514.0,56416.0,41.0,,1376.0,51808.0,43.0,1204.84,0.08894,-0.04651,0.14206,Actual vs Actual
+D76,Maryland Office of the Inspector General for Health,2025,Actual,5832314.0,312125.0,41.0,,7612.8,56416.0,41.0,1376.0,4.53256,0.0,4.53256,Actual vs Actual
+D76,Maryland Office of the Inspector General for Health,2026,Working budget,5792335.0,74402.0,39.0,,1907.74,312125.0,41.0,7612.8,-0.76163,-0.04878,-0.7494,Working budget vs Actual
+D76,Maryland Office of the Inspector General for Health,2027,Legislative appropriation,6058789.0,78311.0,42.0,,1864.55,74402.0,39.0,1907.74,0.05254,0.07692,-0.02264,Legislative appropriation vs Working budget
+D77,Prescription Drug Affordability Board,2023,Actual,1118957.0,465599.0,5.0,,93119.8,,,,,,,
+D77,Prescription Drug Affordability Board,2024,Actual,1664834.0,767022.0,5.0,41620.0,153404.4,465599.0,5.0,93119.8,0.64739,0.0,0.64739,Actual vs Actual
+D77,Prescription Drug Affordability Board,2025,Actual,1064447.0,174140.0,5.0,89797.69,34828.0,767022.0,5.0,153404.4,-0.77297,0.0,-0.77297,Actual vs Actual
+D77,Prescription Drug Affordability Board,2026,Working budget,1269283.0,365563.0,5.0,172390.36,73112.6,174140.0,5.0,34828.0,1.09925,0.0,1.09925,Working budget vs Actual
+D77,Prescription Drug Affordability Board,2027,Legislative appropriation,1348049.0,354255.0,5.0,,70851.0,365563.0,5.0,73112.6,-0.03093,0.0,-0.03093,Legislative appropriation vs Working budget
+D78,Maryland Health Benefit Exchange,2017,Actual,116881709.0,60467275.0,67.0,107269940.98,902496.64,,,,,,,
+D78,Maryland Health Benefit Exchange,2018,Actual,92128971.0,54029427.0,67.0,84123969.43,806409.36,60467275.0,67.0,902496.64,-0.10647,0.0,-0.10647,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2019,Actual,70875856.0,53128221.0,67.0,63818381.68,792958.52,54029427.0,67.0,806409.36,-0.01668,0.0,-0.01668,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2020,Actual,76112370.0,57749700.0,67.0,63431382.28,861935.82,53128221.0,67.0,792958.52,0.08699,0.0,0.08699,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2021,Actual,426955881.0,55708723.0,67.0,408453373.25,831473.48,57749700.0,67.0,861935.82,-0.03534,0.0,-0.03534,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2022,Actual,483894239.0,58740466.0,67.0,462609801.13,876723.37,55708723.0,67.0,831473.48,0.05442,0.0,0.05442,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2023,Actual,571527811.0,68026926.0,67.0,544184093.89,1015327.25,58740466.0,67.0,876723.37,0.15809,0.0,0.15809,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2024,Actual,600332612.0,72830970.0,67.0,530023455.71,1087029.4,68026926.0,67.0,1015327.25,0.07062,0.0,0.07062,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2025,Actual,690928647.0,73174222.0,73.0,665480543.59,1002386.6,72830970.0,67.0,1087029.4,0.00471,0.08955,-0.07787,Actual vs Actual
+D78,Maryland Health Benefit Exchange,2026,Working budget,852704121.0,77539806.0,79.0,792980960.45,981516.53,73174222.0,73.0,1002386.6,0.05966,0.08219,-0.02082,Working budget vs Actual
+D78,Maryland Health Benefit Exchange,2027,Legislative appropriation,957350350.0,96016797.0,91.0,,1055129.64,77539806.0,79.0,981516.53,0.23829,0.1519,0.075,Legislative appropriation vs Working budget
+D80,Maryland Insurance Administration,2017,Actual,30830010.0,5181906.0,257.0,3987631.62,20163.06,,,,,,,
+D80,Maryland Insurance Administration,2018,Actual,30237648.0,4413660.0,257.0,3919727.94,17173.77,5181906.0,257.0,20163.06,-0.14826,0.0,-0.14826,Actual vs Actual
+D80,Maryland Insurance Administration,2019,Actual,30943980.0,4896650.0,259.0,3631353.98,18905.98,4413660.0,257.0,17173.77,0.10943,0.00778,0.10086,Actual vs Actual
+D80,Maryland Insurance Administration,2020,Actual,31920274.0,5068336.0,259.0,3741792.62,19568.86,4896650.0,259.0,18905.98,0.03506,0.0,0.03506,Actual vs Actual
+D80,Maryland Insurance Administration,2021,Actual,28540666.0,4728692.0,259.0,4038641.1,18257.5,5068336.0,259.0,19568.86,-0.06701,0.0,-0.06701,Actual vs Actual
+D80,Maryland Insurance Administration,2022,Actual,32610175.0,5029955.0,259.0,3418704.72,19420.68,4728692.0,259.0,18257.5,0.06371,0.0,0.06371,Actual vs Actual
+D80,Maryland Insurance Administration,2023,Actual,36585351.0,4684359.0,259.0,4078673.64,18086.33,5029955.0,259.0,19420.68,-0.06871,0.0,-0.06871,Actual vs Actual
+D80,Maryland Insurance Administration,2024,Actual,43908043.0,9535283.0,259.0,4746652.23,36815.76,4684359.0,259.0,18086.33,1.03556,0.0,1.03556,Actual vs Actual
+D80,Maryland Insurance Administration,2025,Actual,54907185.0,17080816.0,274.0,14592937.98,62338.74,9535283.0,259.0,36815.76,0.79133,0.05792,0.69326,Actual vs Actual
+D80,Maryland Insurance Administration,2026,Working budget,57441809.0,18663460.0,281.0,11744124.41,66418.01,17080816.0,274.0,62338.74,0.09266,0.02555,0.06544,Working budget vs Actual
+D80,Maryland Insurance Administration,2027,Legislative appropriation,59255161.0,16969523.0,281.0,,60389.76,18663460.0,281.0,66418.01,-0.09076,0.0,-0.09076,Legislative appropriation vs Working budget
+D90,Canal Place Preservation and Development Authority,2017,Actual,813329.0,301935.0,3.0,193605.94,100645.0,,,,,,,
+D90,Canal Place Preservation and Development Authority,2018,Actual,662406.0,346919.0,3.0,288743.2,115639.67,301935.0,3.0,100645.0,0.14899,0.0,0.14899,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2019,Actual,628317.0,325236.0,3.0,220732.79,108412.0,346919.0,3.0,115639.67,-0.0625,0.0,-0.0625,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2020,Actual,720592.0,354249.0,3.0,252645.82,118083.0,325236.0,3.0,108412.0,0.08921,0.0,0.08921,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2021,Actual,633182.0,272296.0,3.0,181020.54,90765.33,354249.0,3.0,118083.0,-0.23134,0.0,-0.23134,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2022,Actual,688278.0,365483.0,3.0,225309.05,121827.67,272296.0,3.0,90765.33,0.34223,0.0,0.34223,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2023,Actual,723174.0,369432.0,3.0,232785.2,123144.0,365483.0,3.0,121827.67,0.0108,0.0,0.0108,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2024,Actual,2316898.0,1870883.0,3.0,213884.89,623627.67,369432.0,3.0,123144.0,4.06421,0.0,4.06421,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2025,Actual,873610.0,387063.0,4.0,476026.12,96765.75,1870883.0,3.0,623627.67,-0.79311,0.33333,-0.84483,Actual vs Actual
+D90,Canal Place Preservation and Development Authority,2026,Working budget,2214106.0,1708295.0,4.0,799632.49,427073.75,387063.0,4.0,96765.75,3.41348,0.0,3.41348,Working budget vs Actual
+D90,Canal Place Preservation and Development Authority,2027,Legislative appropriation,915631.0,373330.0,4.0,,93332.5,1708295.0,4.0,427073.75,-0.78146,0.0,-0.78146,Legislative appropriation vs Working budget
+D91,West North Avenue Development Authority,2024,Actual,11311526.0,412989.0,9.0,462553.71,45887.67,,,,,,,
+D91,West North Avenue Development Authority,2025,Actual,15801741.0,1376280.0,14.0,5249447.49,98305.71,412989.0,9.0,45887.67,2.33249,0.55556,1.14231,Actual vs Actual
+D91,West North Avenue Development Authority,2026,Working budget,22565124.0,172388.0,15.0,4438498.79,11492.53,1376280.0,14.0,98305.71,-0.87474,0.07143,-0.88309,Working budget vs Actual
+D91,West North Avenue Development Authority,2027,Legislative appropriation,21588415.0,162780.0,15.0,,10852.0,172388.0,15.0,11492.53,-0.05573,0.0,-0.05573,Legislative appropriation vs Working budget
+D99,Office of Administrative Hearings,2017,Actual,7900.0,7900.0,118.0,1961761.02,66.95,,,,,,,
+D99,Office of Administrative Hearings,2018,Actual,29760.0,29760.0,118.0,1947603.26,252.2,7900.0,118.0,66.95,2.76709,0.0,2.76709,Actual vs Actual
+D99,Office of Administrative Hearings,2019,Actual,16284.0,16284.0,118.0,2131361.86,138.0,29760.0,118.0,252.2,-0.45282,0.0,-0.45282,Actual vs Actual
+D99,Office of Administrative Hearings,2020,Actual,4755.0,4755.0,118.0,2307245.14,40.3,16284.0,118.0,138.0,-0.708,0.0,-0.708,Actual vs Actual
+D99,Office of Administrative Hearings,2021,Actual,13258.0,13258.0,117.0,1880402.48,113.32,4755.0,118.0,40.3,1.78822,-0.00847,1.81205,Actual vs Actual
+D99,Office of Administrative Hearings,2022,Actual,52399.0,52399.0,115.0,1895496.1,455.64,13258.0,117.0,113.32,2.95226,-0.01709,3.02099,Actual vs Actual
+D99,Office of Administrative Hearings,2023,Actual,33959.0,33959.0,117.0,1930299.03,290.25,52399.0,115.0,455.64,-0.35192,0.01739,-0.36299,Actual vs Actual
+D99,Office of Administrative Hearings,2024,Actual,30280.0,30280.0,117.0,2350079.35,258.8,33959.0,117.0,290.25,-0.10834,0.0,-0.10834,Actual vs Actual
+D99,Office of Administrative Hearings,2026,Working budget,51943.0,51943.0,114.0,2182913.78,455.64,,,,,,,
+D99,Office of Administrative Hearings,2027,Legislative appropriation,51943.0,51943.0,114.0,,455.64,51943.0,114.0,455.64,0.0,0.0,0.0,Legislative appropriation vs Working budget
+E00,Comptroller of Maryland,2017,Actual,117054029.0,26329159.0,1114.9,321196396.17,23615.71,,,,,,,
+E00,Comptroller of Maryland,2018,Actual,117844712.0,27558065.0,1114.9,318314781.26,24717.97,26329159.0,1114.9,23615.71,0.04667,0.0,0.04667,Actual vs Actual
+E00,Comptroller of Maryland,2019,Actual,120611999.0,27897757.0,1112.9,339554920.31,25067.62,27558065.0,1114.9,24717.97,0.01233,-0.00179,0.01415,Actual vs Actual
+E00,Comptroller of Maryland,2020,Actual,122568579.0,28569219.0,1112.9,318885586.9,25670.97,27897757.0,1112.9,25067.62,0.02407,0.0,0.02407,Actual vs Actual
+E00,Comptroller of Maryland,2021,Actual,345859627.0,28865510.0,1082.9,274079802.9,26655.75,28569219.0,1112.9,25670.97,0.01037,-0.02696,0.03836,Actual vs Actual
+E00,Comptroller of Maryland,2022,Actual,130251042.0,30071763.0,1082.9,286513325.89,27769.66,28865510.0,1082.9,26655.75,0.04179,0.0,0.04179,Actual vs Actual
+E00,Comptroller of Maryland,2023,Actual,158606086.0,41693501.0,1081.9,323581537.73,38537.3,30071763.0,1082.9,27769.66,0.38647,-0.00092,0.38775,Actual vs Actual
+E00,Comptroller of Maryland,2024,Actual,194538256.0,60202461.0,1132.9,349400250.27,53140.14,41693501.0,1081.9,38537.3,0.44393,0.04714,0.37893,Actual vs Actual
+E00,Comptroller of Maryland,2025,Actual,189702358.0,39484269.0,1242.1,357910166.26,31788.32,60202461.0,1132.9,53140.14,-0.34414,0.09639,-0.4018,Actual vs Actual
+E00,Comptroller of Maryland,2026,Working budget,214805650.0,62654407.0,1350.1,374283336.67,46407.23,39484269.0,1242.1,31788.32,0.58682,0.08695,0.45988,Working budget vs Actual
+E00,Comptroller of Maryland,2027,Legislative appropriation,225312421.0,56342599.0,1403.1,,40155.8,62654407.0,1350.1,46407.23,-0.10074,0.03926,-0.13471,Legislative appropriation vs Working budget
+E17,"Alcohol, Tobacco, and Cannabis Commission",2021,Actual,1475309.0,126226.0,30.0,40950.0,4207.53,,,,,,,
+E17,"Alcohol, Tobacco, and Cannabis Commission",2022,Actual,3713183.0,627457.0,30.0,95970.49,20915.23,126226.0,30.0,4207.53,3.9709,0.0,3.9709,Actual vs Actual
+E17,"Alcohol, Tobacco, and Cannabis Commission",2023,Actual,5997012.0,1738993.0,41.0,593846.83,42414.46,627457.0,30.0,20915.23,1.77149,0.36667,1.02792,Actual vs Actual
+E17,"Alcohol, Tobacco, and Cannabis Commission",2024,Actual,7527228.0,2082006.0,60.0,1970941.72,34700.1,1738993.0,41.0,42414.46,0.19725,0.46341,-0.18188,Actual vs Actual
+E17,"Alcohol, Tobacco, and Cannabis Commission",2025,Actual,8802138.0,2255543.0,60.0,1799580.32,37592.38,2082006.0,60.0,34700.1,0.08335,0.0,0.08335,Actual vs Actual
+E17,"Alcohol, Tobacco, and Cannabis Commission",2026,Working budget,8243045.0,1751759.0,60.0,1285178.58,29195.98,2255543.0,60.0,37592.38,-0.22335,0.0,-0.22335,Working budget vs Actual
+E17,"Alcohol, Tobacco, and Cannabis Commission",2027,Legislative appropriation,8297028.0,1480619.0,60.0,,24676.98,1751759.0,60.0,29195.98,-0.15478,0.0,-0.15478,Legislative appropriation vs Working budget
+E20,State Treasurer's Office,2017,Actual,6080978.0,3022386.0,60.0,49514254.2,50373.1,,,,,,,
+E20,State Treasurer's Office,2018,Actual,6477838.0,3444758.0,60.0,47105887.93,57412.63,3022386.0,60.0,50373.1,0.13975,0.0,0.13975,Actual vs Actual
+E20,State Treasurer's Office,2019,Actual,7422794.0,4199922.0,60.0,51747534.33,69998.7,3444758.0,60.0,57412.63,0.21922,0.0,0.21922,Actual vs Actual
+E20,State Treasurer's Office,2020,Actual,7722227.0,4413213.0,60.0,50732094.23,73553.55,4199922.0,60.0,69998.7,0.05078,0.0,0.05078,Actual vs Actual
+E20,State Treasurer's Office,2021,Actual,7593286.0,4189224.0,60.0,54908672.2,69820.4,4413213.0,60.0,73553.55,-0.05075,0.0,-0.05075,Actual vs Actual
+E20,State Treasurer's Office,2022,Actual,8212969.0,4916705.0,60.0,46158389.48,81945.08,4189224.0,60.0,69820.4,0.17366,0.0,0.17366,Actual vs Actual
+E20,State Treasurer's Office,2023,Actual,9764861.0,5366913.0,78.0,56409498.91,68806.58,4916705.0,60.0,81945.08,0.09157,0.3,-0.16033,Actual vs Actual
+E20,State Treasurer's Office,2024,Actual,22537293.0,14102182.0,96.0,70365609.67,146897.73,5366913.0,78.0,68806.58,1.62762,0.23077,1.13494,Actual vs Actual
+E20,State Treasurer's Office,2025,Actual,28189772.0,9551400.0,96.0,70298175.96,99493.75,14102182.0,96.0,146897.73,-0.3227,0.0,-0.3227,Actual vs Actual
+E20,State Treasurer's Office,2026,Working budget,33070800.0,14229506.0,96.0,60627506.91,148224.02,9551400.0,96.0,99493.75,0.48978,0.0,0.48978,Working budget vs Actual
+E20,State Treasurer's Office,2027,Legislative appropriation,33893905.0,13862259.0,96.0,,144398.53,14229506.0,96.0,148224.02,-0.02581,0.0,-0.02581,Legislative appropriation vs Working budget
+E50,State Department of Assessments and Taxation,2017,Actual,132651357.0,5959920.0,595.3,35243798.17,10011.62,,,,,,,
+E50,State Department of Assessments and Taxation,2018,Actual,142139999.0,7037481.0,592.3,43333054.85,11881.62,5959920.0,595.3,10011.62,0.1808,-0.00504,0.18678,Actual vs Actual
+E50,State Department of Assessments and Taxation,2019,Actual,148962487.0,6412152.0,592.3,52414356.37,10825.85,7037481.0,592.3,11881.62,-0.08886,0.0,-0.08886,Actual vs Actual
+E50,State Department of Assessments and Taxation,2020,Actual,146968560.0,9140643.0,595.3,44334114.6,15354.68,6412152.0,592.3,10825.85,0.42552,0.00507,0.41833,Actual vs Actual
+E50,State Department of Assessments and Taxation,2021,Actual,141963582.0,12253303.0,570.3,91141315.99,21485.71,9140643.0,595.3,15354.68,0.34053,-0.042,0.39929,Actual vs Actual
+E50,State Department of Assessments and Taxation,2022,Actual,139865984.0,6326124.0,570.3,82530706.61,11092.62,12253303.0,570.3,21485.71,-0.48372,0.0,-0.48372,Actual vs Actual
+E50,State Department of Assessments and Taxation,2023,Actual,145064757.0,13549536.0,570.3,89482064.85,23758.61,6326124.0,570.3,11092.62,1.14184,0.0,1.14184,Actual vs Actual
+E50,State Department of Assessments and Taxation,2024,Actual,166936818.0,13368525.0,570.3,100503371.16,23441.22,13549536.0,570.3,23758.61,-0.01336,0.0,-0.01336,Actual vs Actual
+E50,State Department of Assessments and Taxation,2025,Actual,175995077.0,12986614.0,574.3,101554910.05,22612.94,13368525.0,570.3,23441.22,-0.02857,0.00701,-0.03533,Actual vs Actual
+E50,State Department of Assessments and Taxation,2026,Working budget,190022961.0,20479612.0,569.3,95928518.07,35973.32,12986614.0,574.3,22612.94,0.57698,-0.00871,0.59083,Working budget vs Actual
+E50,State Department of Assessments and Taxation,2027,Legislative appropriation,185345743.0,20565923.0,568.3,,36188.5,20479612.0,569.3,35973.32,0.00421,-0.00176,0.00598,Legislative appropriation vs Working budget
+E75,Maryland Lottery and Gaming Control Agency,2017,Actual,97484537.0,70374990.0,324.1,73968631.57,217139.74,,,,,,,
+E75,Maryland Lottery and Gaming Control Agency,2018,Actual,87414167.0,60668350.0,324.1,58026329.98,187190.22,70374990.0,324.1,217139.74,-0.13793,0.0,-0.13793,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2019,Actual,97101767.0,70104915.0,324.1,68811152.63,216306.43,60668350.0,324.1,187190.22,0.15554,0.0,0.15554,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2020,Actual,95076544.0,66592112.0,324.1,62383128.35,205467.79,70104915.0,324.1,216306.43,-0.05011,0.0,-0.05011,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2021,Actual,108767314.0,80931375.0,324.1,60585055.33,249711.12,66592112.0,324.1,205467.79,0.21533,0.0,0.21533,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2022,Actual,115960919.0,84393455.0,364.1,71600048.52,231786.47,80931375.0,324.1,249711.12,0.04278,0.12342,-0.07178,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2023,Actual,122886105.0,89939730.0,364.1,88894562.75,247019.31,84393455.0,364.1,231786.47,0.06572,0.0,0.06572,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2024,Actual,124962679.0,87972658.0,364.1,81383102.56,241616.75,89939730.0,364.1,247019.31,-0.02187,0.0,-0.02187,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2025,Actual,128789532.0,87659445.0,364.1,76593688.97,240756.51,87972658.0,364.1,241616.75,-0.00356,0.0,-0.00356,Actual vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2026,Working budget,133130193.0,91826571.0,354.75,79913481.37,258848.68,87659445.0,364.1,240756.51,0.04754,-0.02568,0.07515,Working budget vs Actual
+E75,Maryland Lottery and Gaming Control Agency,2027,Legislative appropriation,135267654.0,91378491.0,356.75,,256141.53,91826571.0,354.75,258848.68,-0.00488,0.00564,-0.01046,Legislative appropriation vs Working budget
+E80,Property Tax Assessment Appeals Boards,2017,Actual,1037558.0,102299.0,8.0,82581.65,12787.38,,,,,,,
+E80,Property Tax Assessment Appeals Boards,2018,Actual,931717.0,102402.0,8.0,83645.35,12800.25,102299.0,8.0,12787.38,0.00101,0.0,0.00101,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2019,Actual,912738.0,106137.0,8.0,84249.38,13267.12,102402.0,8.0,12800.25,0.03647,0.0,0.03647,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2020,Actual,953522.0,109498.0,8.0,85529.73,13687.25,106137.0,8.0,13267.12,0.03167,0.0,0.03167,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2021,Actual,970981.0,121695.0,8.0,106348.89,15211.88,109498.0,8.0,13687.25,0.11139,0.0,0.11139,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2022,Actual,983482.0,110410.0,8.0,80713.7,13801.25,121695.0,8.0,15211.88,-0.09273,0.0,-0.09273,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2023,Actual,981100.0,108105.0,8.0,82499.32,13513.12,110410.0,8.0,13801.25,-0.02088,0.0,-0.02088,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2024,Actual,1140515.0,156230.0,8.0,81170.31,19528.75,108105.0,8.0,13513.12,0.44517,0.0,0.44517,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2025,Actual,1229848.0,134737.0,8.0,105001.19,16842.12,156230.0,8.0,19528.75,-0.13757,0.0,-0.13757,Actual vs Actual
+E80,Property Tax Assessment Appeals Boards,2026,Working budget,1281803.0,121275.0,8.0,70646.41,15159.38,134737.0,8.0,16842.12,-0.09991,0.0,-0.09991,Working budget vs Actual
+E80,Property Tax Assessment Appeals Boards,2027,Legislative appropriation,1386316.0,120002.0,8.0,,15000.25,121275.0,8.0,15159.38,-0.0105,0.0,-0.0105,Legislative appropriation vs Working budget
+F10,Department of Budget and Management,2017,Actual,34364424.0,5785593.0,332.0,11341418.21,17426.48,,,,,,,
+F10,Department of Budget and Management,2018,Actual,32400040.0,5345640.0,332.0,6632290.33,16101.33,5785593.0,332.0,17426.48,-0.07604,0.0,-0.07604,Actual vs Actual
+F10,Department of Budget and Management,2019,Actual,34747824.0,5600885.0,334.0,69665105.03,16769.12,5345640.0,332.0,16101.33,0.04775,0.00602,0.04147,Actual vs Actual
+F10,Department of Budget and Management,2020,Actual,36221402.0,6960985.0,320.2,14435220.74,21739.49,5600885.0,334.0,16769.12,0.24284,-0.04132,0.2964,Actual vs Actual
+F10,Department of Budget and Management,2021,Actual,33859677.0,3253448.0,317.4,16743991.87,10250.31,6960985.0,320.2,21739.49,-0.53262,-0.00874,-0.52849,Actual vs Actual
+F10,Department of Budget and Management,2022,Actual,123792960.0,9825104.0,320.4,16309585.0,30665.12,3253448.0,317.4,10250.31,2.01991,0.00945,1.99163,Actual vs Actual
+F10,Department of Budget and Management,2023,Actual,136795850.0,9245131.0,323.4,19461193.92,28587.29,9825104.0,320.4,30665.12,-0.05903,0.00936,-0.06776,Actual vs Actual
+F10,Department of Budget and Management,2024,Actual,61161075.0,10489409.0,324.0,17566827.83,32374.72,9245131.0,323.4,28587.29,0.13459,0.00186,0.13249,Actual vs Actual
+F10,Department of Budget and Management,2025,Actual,143992196.0,25448133.0,333.0,25685788.32,76420.82,10489409.0,324.0,32374.72,1.42608,0.02778,1.36051,Actual vs Actual
+F10,Department of Budget and Management,2026,Working budget,190671463.0,12681460.0,344.0,29314383.54,36864.71,25448133.0,333.0,76420.82,-0.50167,0.03303,-0.51761,Working budget vs Actual
+F10,Department of Budget and Management,2027,Legislative appropriation,285077017.0,14621030.0,352.0,,41537.02,12681460.0,344.0,36864.71,0.15295,0.02326,0.12674,Legislative appropriation vs Working budget
+F50,Department of Information Technology,2017,Actual,74380975.0,56292164.0,248.6,83923434.29,226436.7,,,,,,,
+F50,Department of Information Technology,2018,Actual,70590485.0,52501743.0,234.6,88500008.91,223792.6,56292164.0,248.6,226436.7,-0.06733,-0.05632,-0.01168,Actual vs Actual
+F50,Department of Information Technology,2019,Actual,115455510.0,97123108.0,234.6,69504267.99,413994.49,52501743.0,234.6,223792.6,0.8499,0.0,0.8499,Actual vs Actual
+F50,Department of Information Technology,2020,Actual,117233139.0,108261066.0,220.6,88327714.86,490757.33,97123108.0,234.6,413994.49,0.11468,-0.05968,0.18542,Actual vs Actual
+F50,Department of Information Technology,2021,Actual,90958872.0,83585785.0,189.6,106358910.54,440853.3,108261066.0,220.6,490757.33,-0.22792,-0.14053,-0.10169,Actual vs Actual
+F50,Department of Information Technology,2022,Actual,116167288.0,108248062.0,185.0,90801475.67,585124.66,83585785.0,189.6,440853.3,0.29505,-0.02426,0.32725,Actual vs Actual
+F50,Department of Information Technology,2023,Actual,196247263.0,184873036.0,184.0,126803935.0,1004744.76,108248062.0,185.0,585124.66,0.70786,-0.00541,0.71715,Actual vs Actual
+F50,Department of Information Technology,2024,Actual,164163111.0,141344205.0,208.0,130366710.49,679539.45,184873036.0,184.0,1004744.76,-0.23545,0.13043,-0.32367,Actual vs Actual
+F50,Department of Information Technology,2025,Actual,152687908.0,128634858.0,225.0,131344979.92,571710.48,141344205.0,208.0,679539.45,-0.08992,0.08173,-0.15868,Actual vs Actual
+F50,Department of Information Technology,2026,Working budget,284117301.0,254035290.0,262.0,235641575.81,969600.34,128634858.0,225.0,571710.48,0.97486,0.16444,0.69596,Working budget vs Actual
+F50,Department of Information Technology,2027,Legislative appropriation,249240712.0,194017762.0,273.0,,710687.77,254035290.0,262.0,969600.34,-0.23626,0.04198,-0.26703,Legislative appropriation vs Working budget
+G20,Maryland State Retirement and Pension Systems,2017,Actual,20070260.0,6351518.0,197.0,7878193.99,32241.21,,,,,,,
+G20,Maryland State Retirement and Pension Systems,2018,Actual,22409549.0,8649806.0,197.0,10289533.95,43907.64,6351518.0,197.0,32241.21,0.36185,0.0,0.36185,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2019,Actual,20353368.0,9047398.0,171.0,14067296.97,52908.76,8649806.0,197.0,43907.64,0.04597,-0.13198,0.205,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2020,Actual,19977131.0,7997451.0,202.0,15525375.1,39591.34,9047398.0,171.0,52908.76,-0.11605,0.18129,-0.25171,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2021,Actual,19037510.0,6933545.0,216.0,14555049.08,32099.75,7997451.0,202.0,39591.34,-0.13303,0.06931,-0.18922,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2022,Actual,19507571.0,6661807.0,215.0,10825952.27,30985.15,6933545.0,216.0,32099.75,-0.03919,-0.00463,-0.03472,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2023,Actual,20471764.0,6539317.0,214.0,35245913.57,30557.56,6661807.0,215.0,30985.15,-0.01839,-0.00465,-0.0138,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2024,Actual,22373584.0,6967144.0,225.0,40618140.63,30965.08,6539317.0,214.0,30557.56,0.06542,0.0514,0.01334,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2025,Actual,26370875.0,7623946.0,232.0,14102109.03,32861.84,6967144.0,225.0,30965.08,0.09427,0.03111,0.06125,Actual vs Actual
+G20,Maryland State Retirement and Pension Systems,2026,Working budget,24908977.0,5514173.0,237.0,14317840.22,23266.55,7623946.0,232.0,32861.84,-0.27673,0.02155,-0.29199,Working budget vs Actual
+G20,Maryland State Retirement and Pension Systems,2027,Legislative appropriation,40762151.0,12061800.0,259.0,,46570.66,5514173.0,237.0,23266.55,1.18742,0.09283,1.00161,Legislative appropriation vs Working budget
+G50,Maryland State Employees Supplemental Retirement Plans,2017,Actual,1782930.0,343552.0,13.0,241133.98,26427.08,,,,,,,
+G50,Maryland State Employees Supplemental Retirement Plans,2018,Actual,2016003.0,361705.0,13.0,217694.08,27823.46,343552.0,13.0,26427.08,0.05284,0.0,0.05284,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2019,Actual,1835615.0,310214.0,13.0,215000.3,23862.62,361705.0,13.0,27823.46,-0.14236,0.0,-0.14236,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2020,Actual,1833644.0,286386.0,13.0,237965.13,22029.69,310214.0,13.0,23862.62,-0.07681,0.0,-0.07681,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2021,Actual,1935723.0,397414.0,14.0,193096.37,28386.71,286386.0,13.0,22029.69,0.38769,0.07692,0.28857,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2022,Actual,2183891.0,350343.0,14.0,215262.61,25024.5,397414.0,14.0,28386.71,-0.11844,0.0,-0.11844,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2023,Actual,2320912.0,350164.0,14.0,197115.7,25011.71,350343.0,14.0,25024.5,-0.00051,0.0,-0.00051,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2024,Actual,2311169.0,298380.0,14.0,228244.93,21312.86,350164.0,14.0,25011.71,-0.14788,0.0,-0.14788,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2025,Actual,2484397.0,298608.0,14.0,211870.8,21329.14,298380.0,14.0,21312.86,0.00076,0.0,0.00076,Actual vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2026,Working budget,2499730.0,261088.0,14.0,268522.43,18649.14,298608.0,14.0,21329.14,-0.12565,0.0,-0.12565,Working budget vs Actual
+G50,Maryland State Employees Supplemental Retirement Plans,2027,Legislative appropriation,2648232.0,259185.0,14.0,,18513.21,261088.0,14.0,18649.14,-0.00729,0.0,-0.00729,Legislative appropriation vs Working budget
+H00,Department of General Services,2017,Actual,74662980.0,26634603.0,581.0,58722051.31,45842.69,,,,,,,
+H00,Department of General Services,2018,Actual,75409101.0,26292815.0,581.0,63282124.79,45254.41,26634603.0,581.0,45842.69,-0.01283,0.0,-0.01283,Actual vs Actual
+H00,Department of General Services,2019,Actual,76756969.0,26675824.0,582.0,70135894.81,45834.75,26292815.0,581.0,45254.41,0.01457,0.00172,0.01282,Actual vs Actual
+H00,Department of General Services,2020,Actual,78960081.0,25458999.0,641.0,699449967.77,39717.63,26675824.0,582.0,45834.75,-0.04562,0.10137,-0.13346,Actual vs Actual
+H00,Department of General Services,2021,Actual,81214392.0,28185376.0,646.0,303036935.99,43630.61,25458999.0,641.0,39717.63,0.10709,0.0078,0.09852,Actual vs Actual
+H00,Department of General Services,2022,Actual,107270365.0,29771579.0,656.0,109152852.03,45383.5,28185376.0,646.0,43630.61,0.05628,0.01548,0.04018,Actual vs Actual
+H00,Department of General Services,2023,Actual,602163488.0,35853537.0,693.0,162195336.86,51736.71,29771579.0,656.0,45383.5,0.20429,0.0564,0.13999,Actual vs Actual
+H00,Department of General Services,2024,Actual,469118579.0,37995095.0,703.0,382108236.25,54047.08,35853537.0,693.0,51736.71,0.05973,0.01443,0.04466,Actual vs Actual
+H00,Department of General Services,2025,Actual,212327340.0,36740183.0,727.0,212244415.4,50536.7,37995095.0,703.0,54047.08,-0.03303,0.03414,-0.06495,Actual vs Actual
+H00,Department of General Services,2026,Working budget,199702539.0,45358888.0,733.0,250334893.02,61881.16,36740183.0,727.0,50536.7,0.23459,0.00825,0.22448,Working budget vs Actual
+H00,Department of General Services,2027,Legislative appropriation,229479753.0,35418982.0,750.0,,47225.31,45358888.0,733.0,61881.16,-0.21914,0.02319,-0.23684,Legislative appropriation vs Working budget
+I00,Department of Service and Civic Innovation,2023,Actual,338854.0,236066.0,2.0,,118033.0,,,,,,,
+I00,Department of Service and Civic Innovation,2024,Actual,32095333.0,1274433.0,30.8,8523419.12,41377.69,236066.0,2.0,118033.0,4.39863,14.4,-0.64944,Actual vs Actual
+I00,Department of Service and Civic Innovation,2025,Actual,53082415.0,2666124.0,39.0,17654859.35,68362.15,1274433.0,30.8,41377.69,1.09201,0.26623,0.65215,Actual vs Actual
+I00,Department of Service and Civic Innovation,2026,Working budget,54950138.0,5412388.0,56.0,12508184.3,96649.79,2666124.0,39.0,68362.15,1.03006,0.4359,0.41379,Working budget vs Actual
+I00,Department of Service and Civic Innovation,2027,Legislative appropriation,69973018.0,5435444.0,66.0,,82355.21,5412388.0,56.0,96649.79,0.00426,0.17857,-0.1479,Legislative appropriation vs Working budget
+J00,Department of Transportation,2017,Actual,4969537444.0,1323546616.0,9107.5,3997879086.9,145324.91,,,,,,,
+J00,Department of Transportation,2018,Actual,4974101522.0,1315868728.0,9057.5,4161317706.75,145279.46,1323546616.0,9107.5,145324.91,-0.0058,-0.00549,-0.00031,Actual vs Actual
+J00,Department of Transportation,2019,Actual,4961406765.0,1367254005.0,9057.5,4145850990.13,150952.69,1315868728.0,9057.5,145279.46,0.03905,0.0,0.03905,Actual vs Actual
+J00,Department of Transportation,2020,Actual,5372638686.0,1307875727.0,10784.5,4288916257.14,121273.65,1367254005.0,9057.5,150952.69,-0.04343,0.19067,-0.19661,Actual vs Actual
+J00,Department of Transportation,2021,Actual,5057511991.0,1220302987.0,10764.5,4058250846.97,113363.65,1307875727.0,10784.5,121273.65,-0.06696,-0.00185,-0.06522,Actual vs Actual
+J00,Department of Transportation,2022,Actual,5619661509.0,1304624833.0,10754.5,4044677454.14,121309.67,1220302987.0,10764.5,113363.65,0.0691,-0.00093,0.07009,Actual vs Actual
+J00,Department of Transportation,2023,Actual,5228231812.0,1389646455.0,10767.5,3950222832.34,129059.34,1304624833.0,10754.5,121309.67,0.06517,0.00121,0.06388,Actual vs Actual
+J00,Department of Transportation,2024,Actual,5764911522.0,1537591467.0,10767.5,4040534475.47,142799.3,1389646455.0,10767.5,129059.34,0.10646,0.0,0.10646,Actual vs Actual
+J00,Department of Transportation,2025,Actual,6505039391.0,1607501428.0,10910.5,4814777405.6,147335.27,1537591467.0,10767.5,142799.3,0.04547,0.01328,0.03176,Actual vs Actual
+J00,Department of Transportation,2026,Working budget,6739003943.0,1928581734.0,10803.5,4793460733.58,178514.53,1607501428.0,10910.5,147335.27,0.19974,-0.00981,0.21162,Working budget vs Actual
+J00,Department of Transportation,2027,Legislative appropriation,7057146747.0,2239003705.0,11123.5,,201285.9,1928581734.0,10803.5,178514.53,0.16096,0.02962,0.12756,Legislative appropriation vs Working budget
+K00,Department of Natural Resources,2017,Actual,329836283.0,57884924.0,1314.5,70852426.88,44035.7,,,,,,,
+K00,Department of Natural Resources,2018,Actual,367051561.0,60702704.0,1332.5,78483830.96,45555.5,57884924.0,1314.5,44035.7,0.04868,0.01369,0.03451,Actual vs Actual
+K00,Department of Natural Resources,2019,Actual,428652344.0,60646923.0,1340.3,86837690.36,45248.77,60702704.0,1332.5,45555.5,-0.00092,0.00585,-0.00673,Actual vs Actual
+K00,Department of Natural Resources,2020,Actual,392822408.0,41396670.0,1348.8,69428101.34,30691.48,60646923.0,1340.3,45248.77,-0.31742,0.00634,-0.32172,Actual vs Actual
+K00,Department of Natural Resources,2021,Actual,396490580.0,49009558.0,1341.0,82928252.31,36547.02,41396670.0,1348.8,30691.48,0.1839,-0.00578,0.19079,Actual vs Actual
+K00,Department of Natural Resources,2022,Actual,441679955.0,62828351.0,1353.0,72409756.96,46436.33,49009558.0,1341.0,36547.02,0.28196,0.00895,0.27059,Actual vs Actual
+K00,Department of Natural Resources,2023,Actual,641461363.0,71848988.0,1379.5,80512736.76,52083.35,62828351.0,1353.0,46436.33,0.14358,0.01959,0.12161,Actual vs Actual
+K00,Department of Natural Resources,2024,Actual,743367326.0,78226755.0,1469.5,91135679.7,53233.59,71848988.0,1379.5,52083.35,0.08877,0.06524,0.02208,Actual vs Actual
+K00,Department of Natural Resources,2025,Actual,480900717.0,66246316.0,1501.0,93838745.08,44134.79,78226755.0,1469.5,53233.59,-0.15315,0.02144,-0.17092,Actual vs Actual
+K00,Department of Natural Resources,2026,Working budget,523274013.0,91458191.0,1521.0,88498119.91,60130.3,66246316.0,1501.0,44134.79,0.38058,0.01332,0.36242,Working budget vs Actual
+K00,Department of Natural Resources,2027,Legislative appropriation,591332031.0,97712222.0,1533.0,,63739.22,91458191.0,1521.0,60130.3,0.06838,0.00789,0.06002,Legislative appropriation vs Working budget
+L00,Department of Agriculture,2017,Actual,70576650.0,8011391.0,356.1,45510411.37,22497.59,,,,,,,
+L00,Department of Agriculture,2018,Actual,83686606.0,8200656.0,355.1,59751337.17,23093.93,8011391.0,356.1,22497.59,0.02362,-0.00281,0.02651,Actual vs Actual
+L00,Department of Agriculture,2019,Actual,93802525.0,9206602.0,352.1,60873063.29,26147.69,8200656.0,355.1,23093.93,0.12267,-0.00845,0.13223,Actual vs Actual
+L00,Department of Agriculture,2020,Actual,125550671.0,8811353.0,394.1,75023053.72,22358.17,9206602.0,352.1,26147.69,-0.04293,0.11928,-0.14493,Actual vs Actual
+L00,Department of Agriculture,2021,Actual,115817187.0,9136578.0,412.1,82478671.01,22170.78,8811353.0,394.1,22358.17,0.03691,0.04567,-0.00838,Actual vs Actual
+L00,Department of Agriculture,2022,Actual,143440033.0,22803115.0,411.7,79625214.38,55387.7,9136578.0,412.1,22170.78,1.4958,-0.00097,1.49823,Actual vs Actual
+L00,Department of Agriculture,2023,Actual,173643581.0,10310225.0,409.2,72092036.98,25196.05,22803115.0,411.7,55387.7,-0.54786,-0.00607,-0.5451,Actual vs Actual
+L00,Department of Agriculture,2024,Actual,207647043.0,10762503.0,409.2,114412174.5,26301.33,10310225.0,409.2,25196.05,0.04387,0.0,0.04387,Actual vs Actual
+L00,Department of Agriculture,2025,Actual,129981304.0,10482764.0,426.2,116254314.29,24595.88,10762503.0,409.2,26301.33,-0.02599,0.04154,-0.06484,Actual vs Actual
+L00,Department of Agriculture,2026,Working budget,119669815.0,11060270.0,430.5,96834128.83,25691.68,10482764.0,426.2,24595.88,0.05509,0.01009,0.04455,Working budget vs Actual
+L00,Department of Agriculture,2027,Legislative appropriation,141108934.0,12553401.0,438.5,,28628.05,11060270.0,430.5,25691.68,0.135,0.01858,0.11429,Legislative appropriation vs Working budget
+M00,Maryland Department of Health,2017,Actual,13180293534.0,300460822.0,6186.8,11685352969.27,48564.82,,,,,,,
+M00,Maryland Department of Health,2018,Actual,13506027695.0,296899738.0,6217.9,11766109210.16,47749.2,300460822.0,6186.8,48564.82,-0.01185,0.00503,-0.01679,Actual vs Actual
+M00,Maryland Department of Health,2019,Actual,14101384828.0,318815826.0,6277.8,11813594069.8,50784.64,296899738.0,6217.9,47749.2,0.07382,0.00963,0.06357,Actual vs Actual
+M00,Maryland Department of Health,2020,Actual,15349788350.0,526442149.0,9975.5,12923057045.64,52773.51,318815826.0,6277.8,50784.64,0.65124,0.58901,0.03916,Actual vs Actual
+M00,Maryland Department of Health,2021,Actual,17567218882.0,1482001911.0,9902.05,14258248358.33,149666.17,526442149.0,9975.5,52773.51,1.81513,-0.00736,1.83601,Actual vs Actual
+M00,Maryland Department of Health,2022,Actual,18834458264.0,1066065273.0,10090.62,13553446527.27,105649.13,1482001911.0,9902.05,149666.17,-0.28066,0.01904,-0.2941,Actual vs Actual
+M00,Maryland Department of Health,2023,Actual,19889552729.0,623162531.0,10016.21,15054851032.49,62215.4,1066065273.0,10090.62,105649.13,-0.41546,-0.00737,-0.41111,Actual vs Actual
+M00,Maryland Department of Health,2024,Actual,20338923782.0,472966606.0,9126.53,15481972441.2,51823.27,623162531.0,10016.21,62215.4,-0.24102,-0.08882,-0.16703,Actual vs Actual
+M00,Maryland Department of Health,2025,Actual,22372614953.0,481624813.0,10066.88,16592921743.08,47842.51,472966606.0,9126.53,51823.27,0.01831,0.10303,-0.07681,Actual vs Actual
+M00,Maryland Department of Health,2026,Working budget,23872550049.0,617327496.0,9880.61,17468332018.09,62478.68,481624813.0,10066.88,47842.51,0.28176,-0.0185,0.30592,Working budget vs Actual
+M00,Maryland Department of Health,2027,Legislative appropriation,23244967451.0,537082356.0,9963.74,,53903.69,617327496.0,9880.61,62478.68,-0.12999,0.00841,-0.13725,Legislative appropriation vs Working budget
+N00,Department of Human Services,2017,Actual,2418241429.0,241254172.0,6224.1,519862607.65,38761.29,,,,,,,
+N00,Department of Human Services,2018,Actual,2337125720.0,278919891.0,6220.0,517521258.54,44842.43,241254172.0,6224.1,38761.29,0.15612,-0.00066,0.15689,Actual vs Actual
+N00,Department of Human Services,2019,Actual,2335581589.0,291485102.0,6120.0,582079076.37,47628.28,278919891.0,6220.0,44842.43,0.04505,-0.01608,0.06213,Actual vs Actual
+N00,Department of Human Services,2020,Actual,2734552843.0,328410391.0,6119.0,647610392.4,53670.6,291485102.0,6120.0,47628.28,0.12668,-0.00016,0.12686,Actual vs Actual
+N00,Department of Human Services,2021,Actual,4048085401.0,330103953.0,6118.05,620811556.41,53955.75,328410391.0,6119.0,53670.6,0.00516,-0.00016,0.00531,Actual vs Actual
+N00,Department of Human Services,2022,Actual,4560123006.0,342323910.0,5990.68,621555632.76,57142.75,330103953.0,6118.05,53955.75,0.03702,-0.02082,0.05907,Actual vs Actual
+N00,Department of Human Services,2023,Actual,3874067255.0,342652482.0,5970.68,793095562.4,57389.19,342323910.0,5990.68,57142.75,0.00096,-0.00334,0.00431,Actual vs Actual
+N00,Department of Human Services,2024,Actual,3624654647.0,416678942.0,5978.68,713964538.95,69694.14,342652482.0,5970.68,57389.19,0.21604,0.00134,0.21441,Actual vs Actual
+N00,Department of Human Services,2025,Actual,3817237913.0,388775134.0,5978.68,741366663.76,65026.92,416678942.0,5978.68,69694.14,-0.06697,0.0,-0.06697,Actual vs Actual
+N00,Department of Human Services,2026,Working budget,4024136649.0,416405272.0,5870.38,754726058.41,70933.27,388775134.0,5978.68,65026.92,0.07107,-0.01811,0.09083,Working budget vs Actual
+N00,Department of Human Services,2027,Legislative appropriation,3691051478.0,300980585.0,5871.38,,51262.32,416405272.0,5870.38,70933.27,-0.27719,0.00017,-0.27732,Legislative appropriation vs Working budget
+P00,Maryland Department of Labor,2017,Actual,347269548.0,43714628.0,1511.7,195182273.03,28917.53,,,,,,,
+P00,Maryland Department of Labor,2018,Actual,369682425.0,49581440.0,1475.7,224085184.04,33598.59,43714628.0,1511.7,28917.53,0.13421,-0.02381,0.16188,Actual vs Actual
+P00,Maryland Department of Labor,2019,Actual,374240463.0,45484097.0,1451.7,237335470.45,31331.61,49581440.0,1475.7,33598.59,-0.08264,-0.01626,-0.06747,Actual vs Actual
+P00,Maryland Department of Labor,2020,Actual,364880312.0,37522146.0,1397.2,235597287.75,26855.24,45484097.0,1451.7,31331.61,-0.17505,-0.03754,-0.14287,Actual vs Actual
+P00,Maryland Department of Labor,2021,Actual,545419866.0,122309373.0,1378.17,310193225.71,88747.67,37522146.0,1397.2,26855.24,2.25966,-0.01362,2.30467,Actual vs Actual
+P00,Maryland Department of Labor,2022,Actual,1481082992.0,203533948.0,1355.17,422124805.27,150190.71,122309373.0,1378.17,88747.67,0.66409,-0.01669,0.69233,Actual vs Actual
+P00,Maryland Department of Labor,2023,Actual,596118967.0,86018629.0,1356.17,346642941.41,63427.62,203533948.0,1355.17,150190.71,-0.57737,0.00074,-0.57769,Actual vs Actual
+P00,Maryland Department of Labor,2024,Actual,594389169.0,93166155.0,1440.17,342959710.55,64691.08,86018629.0,1356.17,63427.62,0.08309,0.06194,0.01992,Actual vs Actual
+P00,Maryland Department of Labor,2025,Actual,586795569.0,100519773.0,1968.57,330149459.5,51062.33,93166155.0,1440.17,64691.08,0.07893,0.3669,-0.21067,Actual vs Actual
+P00,Maryland Department of Labor,2026,Working budget,708359097.0,150842358.0,1933.87,305635846.81,78000.26,100519773.0,1968.57,51062.33,0.50062,-0.01763,0.52755,Working budget vs Actual
+P00,Maryland Department of Labor,2027,Legislative appropriation,668833734.0,86448526.0,1930.87,,44771.8,150842358.0,1933.87,78000.26,-0.42689,-0.00155,-0.426,Legislative appropriation vs Working budget
+Q00,Department of Public Safety and Correctional Services,2017,Actual,1387472267.0,213468226.0,10954.4,407477566.92,19486.98,,,,,,,
+Q00,Department of Public Safety and Correctional Services,2018,Actual,1348999479.0,209334607.0,10554.4,404951616.79,19833.87,213468226.0,10954.4,19486.98,-0.01936,-0.03652,0.0178,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2019,Actual,1390303967.0,207267345.0,10414.4,430125591.52,19902.0,209334607.0,10554.4,19833.87,-0.00988,-0.01326,0.00343,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2020,Actual,1454305942.0,225782619.0,10139.4,525105697.93,22267.85,207267345.0,10414.4,19902.0,0.08933,-0.02641,0.11888,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2021,Actual,1462276630.0,216964848.0,9613.4,455600920.54,22569.0,225782619.0,10139.4,22267.85,-0.03905,-0.05188,0.01352,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2022,Actual,1434598934.0,219032157.0,9217.4,392676687.06,23762.9,216964848.0,9613.4,22569.0,0.00953,-0.04119,0.0529,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2023,Actual,1540272424.0,268864707.0,9217.4,433367239.35,29169.26,219032157.0,9217.4,23762.9,0.22751,0.0,0.22751,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2024,Actual,1688937761.0,272748946.0,9217.4,475738354.23,29590.66,268864707.0,9217.4,29169.26,0.01445,0.0,0.01445,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2025,Actual,1869043892.0,286953839.0,9217.4,532795223.81,31131.76,272748946.0,9217.4,29590.66,0.05208,0.0,0.05208,Actual vs Actual
+Q00,Department of Public Safety and Correctional Services,2026,Working budget,1929065374.0,282740922.0,9199.4,564429908.48,30734.71,286953839.0,9217.4,31131.76,-0.01468,-0.00195,-0.01275,Working budget vs Actual
+Q00,Department of Public Safety and Correctional Services,2027,Legislative appropriation,1915111703.0,274810525.0,9199.4,,29872.66,282740922.0,9199.4,30734.71,-0.02805,0.0,-0.02805,Legislative appropriation vs Working budget
+R00,State Department of Education,2017,Actual,7660919346.0,81323964.0,1409.9,7399750306.89,57680.66,,,,,,,
+R00,State Department of Education,2018,Actual,7703800825.0,83726458.0,1428.9,7425352825.56,58595.04,81323964.0,1409.9,57680.66,0.02954,0.01348,0.01585,Actual vs Actual
+R00,State Department of Education,2019,Actual,7935732330.0,94257663.0,1412.9,7541797857.13,66712.2,83726458.0,1428.9,58595.04,0.12578,-0.0112,0.13853,Actual vs Actual
+R00,State Department of Education,2020,Actual,8760813341.0,76078497.0,1423.9,8109059339.19,53429.66,94257663.0,1412.9,66712.2,-0.19287,0.00779,-0.1991,Actual vs Actual
+R00,State Department of Education,2021,Actual,9597513559.0,94898170.0,1405.9,8389613887.77,67499.94,76078497.0,1423.9,53429.66,0.24737,-0.01264,0.26334,Actual vs Actual
+R00,State Department of Education,2022,Actual,11906543721.0,108611395.0,1413.9,9238241614.35,76816.89,94898170.0,1405.9,67499.94,0.1445,0.00569,0.13803,Actual vs Actual
+R00,State Department of Education,2023,Actual,9938279166.0,152293821.0,1254.9,10245509953.5,121359.33,108611395.0,1413.9,76816.89,0.40219,-0.11245,0.57985,Actual vs Actual
+R00,State Department of Education,2024,Actual,10758684480.0,135610729.0,1242.9,10582946958.21,109108.32,152293821.0,1254.9,121359.33,-0.10955,-0.00956,-0.10095,Actual vs Actual
+R00,State Department of Education,2025,Actual,11381087683.0,130665513.0,1393.9,11381120168.34,93740.95,135610729.0,1242.9,109108.32,-0.03647,0.12149,-0.14085,Actual vs Actual
+R00,State Department of Education,2026,Working budget,12186700349.0,138664599.0,1390.9,11457418565.11,99694.15,130665513.0,1393.9,93740.95,0.06122,-0.00215,0.06351,Working budget vs Actual
+R00,State Department of Education,2027,Legislative appropriation,12613293481.0,130111081.0,1391.3,,93517.63,138664599.0,1390.9,99694.15,-0.06168,0.00029,-0.06195,Legislative appropriation vs Working budget
+R11,Maryland State Library Agency,2018,Actual,84733642.0,963052.0,28.0,,34394.71,,,,,,,
+R11,Maryland State Library Agency,2019,Actual,85606486.0,1073265.0,28.0,78612687.21,38330.89,963052.0,28.0,34394.71,0.11444,0.0,0.11444,Actual vs Actual
+R11,Maryland State Library Agency,2020,Actual,90175276.0,904666.0,30.0,84396760.65,30155.53,1073265.0,28.0,38330.89,-0.15709,0.07143,-0.21328,Actual vs Actual
+R11,Maryland State Library Agency,2021,Actual,90766876.0,971225.0,31.0,83594343.76,31329.84,904666.0,30.0,30155.53,0.07357,0.03333,0.03894,Actual vs Actual
+R11,Maryland State Library Agency,2022,Actual,97292326.0,1071994.0,31.0,91897094.85,34580.45,971225.0,31.0,31329.84,0.10375,0.0,0.10375,Actual vs Actual
+R11,Maryland State Library Agency,2023,Actual,96009724.0,1218856.0,31.0,92083235.14,39317.94,1071994.0,31.0,34580.45,0.137,0.0,0.137,Actual vs Actual
+R11,Maryland State Library Agency,2024,Actual,98716850.0,1173904.0,32.0,93249701.15,36684.5,1218856.0,31.0,39317.94,-0.03688,0.03226,-0.06698,Actual vs Actual
+R11,Maryland State Library Agency,2025,Actual,104784170.0,1168097.0,33.0,98052239.68,35396.88,1173904.0,32.0,36684.5,-0.00495,0.03125,-0.0351,Actual vs Actual
+R11,Maryland State Library Agency,2026,Working budget,110215763.0,1136743.0,32.0,104413951.52,35523.22,1168097.0,33.0,35396.88,-0.02684,-0.0303,0.00357,Working budget vs Actual
+R11,Maryland State Library Agency,2027,Legislative appropriation,113161080.0,993366.0,34.0,,29216.65,1136743.0,32.0,35523.22,-0.12613,0.0625,-0.17753,Legislative appropriation vs Working budget
+R12,Accountability and Implementation Board,2022,Actual,119675.0,0.0,,,,,,,,,,
+R12,Accountability and Implementation Board,2023,Actual,4383772.0,827179.0,15.0,234426.01,55145.27,0.0,,,,,,Actual vs Actual
+R12,Accountability and Implementation Board,2024,Actual,5675610.0,1333204.0,15.0,1641087.69,88880.27,827179.0,15.0,55145.27,0.61175,0.0,0.61175,Actual vs Actual
+R12,Accountability and Implementation Board,2025,Actual,4400826.0,185688.0,16.0,2667600.36,11605.5,1333204.0,15.0,88880.27,-0.86072,0.06667,-0.86943,Actual vs Actual
+R12,Accountability and Implementation Board,2026,Working budget,3403097.0,337782.0,16.0,2345159.5,21111.38,185688.0,16.0,11605.5,0.81908,0.0,0.81908,Working budget vs Actual
+R12,Accountability and Implementation Board,2027,Legislative appropriation,3481509.0,340255.0,16.0,,21265.94,337782.0,16.0,21111.38,0.00732,0.0,0.00732,Legislative appropriation vs Working budget
+R15,Maryland Public Broadcasting Commission,2017,Actual,26507912.0,12415251.0,145.0,10613252.97,85622.42,,,,,,,
+R15,Maryland Public Broadcasting Commission,2018,Actual,28963478.0,12666635.0,145.0,12850123.79,87356.1,12415251.0,145.0,85622.42,0.02025,0.0,0.02025,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2019,Actual,33112157.0,16370039.0,145.0,11911270.64,112896.82,12666635.0,145.0,87356.1,0.29237,0.0,0.29237,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2020,Actual,31554625.0,13875017.0,145.0,15935850.31,95689.77,16370039.0,145.0,112896.82,-0.15241,0.0,-0.15241,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2021,Actual,27467044.0,12681569.0,145.0,14660251.27,87459.1,13875017.0,145.0,95689.77,-0.08601,0.0,-0.08601,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2022,Actual,29466157.0,14406142.0,145.0,15343204.41,99352.7,12681569.0,145.0,87459.1,0.13599,0.0,0.13599,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2023,Actual,32415727.0,15041126.0,145.0,16223028.4,103731.9,14406142.0,145.0,99352.7,0.04408,0.0,0.04408,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2024,Actual,35656132.0,15264398.0,145.0,14017827.61,105271.71,15041126.0,145.0,103731.9,0.01484,0.0,0.01484,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2025,Actual,37771006.0,15868921.0,151.0,15186347.57,105092.19,15264398.0,145.0,105271.71,0.0396,0.04138,-0.00171,Actual vs Actual
+R15,Maryland Public Broadcasting Commission,2026,Working budget,38291775.0,17257269.0,151.0,16567952.88,114286.55,15868921.0,151.0,105092.19,0.08749,0.0,0.08749,Working budget vs Actual
+R15,Maryland Public Broadcasting Commission,2027,Legislative appropriation,42542218.0,19719508.0,151.0,,130592.77,17257269.0,151.0,114286.55,0.14268,0.0,0.14268,Legislative appropriation vs Working budget
+R62,Maryland Higher Education Commission,2017,Actual,498550987.0,4811486.0,54.6,400519303.02,88122.45,,,,,,,
+R62,Maryland Higher Education Commission,2018,Actual,506596245.0,1066779.0,54.6,415351681.06,19538.08,4811486.0,54.6,88122.45,-0.77828,0.0,-0.77828,Actual vs Actual
+R62,Maryland Higher Education Commission,2019,Actual,523729895.0,1947169.0,57.6,424290311.82,33805.02,1066779.0,54.6,19538.08,0.82528,0.05495,0.73021,Actual vs Actual
+R62,Maryland Higher Education Commission,2020,Actual,551469661.0,1236022.0,58.0,440310352.24,21310.72,1947169.0,57.6,33805.02,-0.36522,0.00694,-0.3696,Actual vs Actual
+R62,Maryland Higher Education Commission,2021,Actual,567075582.0,941824.0,60.0,443447193.52,15697.07,1236022.0,58.0,21310.72,-0.23802,0.03448,-0.26342,Actual vs Actual
+R62,Maryland Higher Education Commission,2022,Actual,642533430.0,914863.0,64.0,484914058.82,14294.73,941824.0,60.0,15697.07,-0.02863,0.06667,-0.08934,Actual vs Actual
+R62,Maryland Higher Education Commission,2023,Actual,804126325.0,22897853.0,69.0,618883384.14,331852.94,914863.0,64.0,14294.73,24.02872,0.07812,22.21505,Actual vs Actual
+R62,Maryland Higher Education Commission,2024,Actual,899578334.0,1683055.0,72.0,686060092.28,23375.76,22897853.0,69.0,331852.94,-0.9265,0.04348,-0.92956,Actual vs Actual
+R62,Maryland Higher Education Commission,2025,Actual,823554697.0,8401413.0,84.0,625161638.65,100016.82,1683055.0,72.0,23375.76,3.99176,0.16667,3.27865,Actual vs Actual
+R62,Maryland Higher Education Commission,2026,Working budget,840426408.0,2054950.0,88.0,631702834.6,23351.7,8401413.0,84.0,100016.82,-0.7554,0.04762,-0.76652,Working budget vs Actual
+R62,Maryland Higher Education Commission,2027,Legislative appropriation,861532613.0,2157128.0,89.0,,24237.39,2054950.0,88.0,23351.7,0.04972,0.01136,0.03793,Legislative appropriation vs Working budget
+R75,Support for State Operated Institutions of Higher Education,2017,Actual,1492382931.0,0.0,,,,,,,,,,
+R75,Support for State Operated Institutions of Higher Education,2018,Actual,1504154338.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2019,Actual,1571097696.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2020,Actual,1672119848.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2021,Actual,1714856968.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2022,Actual,2012885324.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2023,Actual,2590505153.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2024,Actual,2550991334.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2025,Actual,2610665737.0,0.0,,,,0.0,,,,,,Actual vs Actual
+R75,Support for State Operated Institutions of Higher Education,2026,Working budget,2602005808.0,0.0,,,,0.0,,,,,,Working budget vs Actual
+R75,Support for State Operated Institutions of Higher Education,2027,Legislative appropriation,2608018526.0,0.0,,,,0.0,,,,,,Legislative appropriation vs Working budget
+R99,Maryland School for the Deaf,2017,Actual,32158530.0,3182733.0,330.5,2072283.17,9630.05,,,,,,,
+R99,Maryland School for the Deaf,2018,Actual,30965086.0,3681016.0,330.5,2457441.36,11137.72,3182733.0,330.5,9630.05,0.15656,0.0,0.15656,Actual vs Actual
+R99,Maryland School for the Deaf,2019,Actual,32777561.0,3854519.0,330.5,2253300.4,11662.69,3681016.0,330.5,11137.72,0.04713,0.0,0.04713,Actual vs Actual
+R99,Maryland School for the Deaf,2020,Actual,34564407.0,4115708.0,334.5,2694976.47,12304.06,3854519.0,330.5,11662.69,0.06776,0.0121,0.05499,Actual vs Actual
+R99,Maryland School for the Deaf,2021,Actual,34059517.0,4277043.0,334.5,2546622.57,12786.38,4115708.0,334.5,12304.06,0.0392,0.0,0.0392,Actual vs Actual
+R99,Maryland School for the Deaf,2022,Actual,37071160.0,5797983.0,334.5,3400517.14,17333.28,4277043.0,334.5,12786.38,0.35561,0.0,0.35561,Actual vs Actual
+R99,Maryland School for the Deaf,2023,Actual,43855516.0,5808809.0,334.5,3467558.86,17365.65,5797983.0,334.5,17333.28,0.00187,0.0,0.00187,Actual vs Actual
+R99,Maryland School for the Deaf,2024,Actual,46653840.0,6645492.0,340.0,3791314.06,19545.56,5808809.0,334.5,17365.65,0.14404,0.01644,0.12553,Actual vs Actual
+R99,Maryland School for the Deaf,2025,Actual,50690779.0,7650986.0,362.5,3300747.79,21106.17,6645492.0,340.0,19545.56,0.1513,0.06618,0.07984,Actual vs Actual
+R99,Maryland School for the Deaf,2026,Working budget,49243867.0,6312005.0,372.5,3302876.82,16944.98,7650986.0,362.5,21106.17,-0.17501,0.02759,-0.19716,Working budget vs Actual
+R99,Maryland School for the Deaf,2027,Legislative appropriation,51213986.0,6406892.0,372.5,,17199.71,6312005.0,372.5,16944.98,0.01503,0.0,0.01503,Legislative appropriation vs Working budget
+S00,Department of Housing and Community Development,2017,Actual,440785111.0,13643739.0,324.0,345463586.94,42110.31,,,,,,,
+S00,Department of Housing and Community Development,2018,Actual,406038452.0,14749140.0,333.0,376053152.41,44291.71,13643739.0,324.0,42110.31,0.08102,0.02778,0.0518,Actual vs Actual
+S00,Department of Housing and Community Development,2019,Actual,401526704.0,12803015.0,331.0,343762492.98,38679.8,14749140.0,333.0,44291.71,-0.13195,-0.00601,-0.1267,Actual vs Actual
+S00,Department of Housing and Community Development,2020,Actual,471798693.0,12683295.0,331.0,385193627.83,38318.11,12803015.0,331.0,38679.8,-0.00935,0.0,-0.00935,Actual vs Actual
+S00,Department of Housing and Community Development,2021,Actual,1143222737.0,12918725.0,331.0,543333723.22,39029.38,12683295.0,331.0,38318.11,0.01856,0.0,0.01856,Actual vs Actual
+S00,Department of Housing and Community Development,2022,Actual,1284410797.0,22818830.0,333.0,887230859.2,68525.02,12918725.0,331.0,39029.38,0.76634,0.00604,0.75573,Actual vs Actual
+S00,Department of Housing and Community Development,2023,Actual,1144706017.0,16640627.0,353.0,972270555.74,47140.59,22818830.0,333.0,68525.02,-0.27075,0.06006,-0.31207,Actual vs Actual
+S00,Department of Housing and Community Development,2024,Actual,914453485.0,20635851.0,355.0,744419518.15,58129.16,16640627.0,353.0,47140.59,0.24009,0.00567,0.2331,Actual vs Actual
+S00,Department of Housing and Community Development,2025,Actual,923354739.0,15662716.0,446.0,642584070.98,35118.2,20635851.0,355.0,58129.16,-0.24099,0.25634,-0.39586,Actual vs Actual
+S00,Department of Housing and Community Development,2026,Working budget,823118502.0,23551262.0,446.0,685725365.9,52805.52,15662716.0,446.0,35118.2,0.50365,0.0,0.50365,Working budget vs Actual
+S00,Department of Housing and Community Development,2027,Legislative appropriation,902223261.0,22840764.0,447.0,,51097.91,23551262.0,446.0,52805.52,-0.03017,0.00224,-0.03234,Legislative appropriation vs Working budget
+S50,Maryland African American Museum Corporation,2017,Actual,1959000.0,0.0,,1959000.0,,,,,,,,
+S50,Maryland African American Museum Corporation,2018,Actual,1959000.0,0.0,,1959313.23,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2019,Actual,1959000.0,0.0,,1959000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2020,Actual,1959000.0,0.0,,1959000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2021,Actual,1959000.0,0.0,,1959000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2022,Actual,1959000.0,0.0,,1959000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2023,Actual,2000000.0,0.0,,2000000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2024,Actual,2700000.0,0.0,,1350000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2025,Actual,2700000.0,0.0,,2700000.0,,0.0,,,,,,Actual vs Actual
+S50,Maryland African American Museum Corporation,2026,Working budget,2700000.0,0.0,,2700000.0,,0.0,,,,,,Working budget vs Actual
+S50,Maryland African American Museum Corporation,2027,Legislative appropriation,2700000.0,0.0,,,,0.0,,,,,,Legislative appropriation vs Working budget
+T00,Department of Commerce,2017,Actual,152631594.0,14414913.0,193.0,74209649.47,74688.67,,,,,,,
+T00,Department of Commerce,2018,Actual,125607804.0,14604622.0,189.0,61053044.01,77273.13,14414913.0,193.0,74688.67,0.01316,-0.02073,0.0346,Actual vs Actual
+T00,Department of Commerce,2019,Actual,128701095.0,16515371.0,188.0,78853041.91,87847.72,14604622.0,189.0,77273.13,0.13083,-0.00529,0.13685,Actual vs Actual
+T00,Department of Commerce,2020,Actual,210282242.0,16602200.0,188.0,82178490.68,88309.57,16515371.0,188.0,87847.72,0.00526,0.0,0.00526,Actual vs Actual
+T00,Department of Commerce,2021,Actual,485152714.0,19544811.0,188.0,338449942.31,103961.76,16602200.0,188.0,88309.57,0.17724,0.0,0.17724,Actual vs Actual
+T00,Department of Commerce,2022,Actual,154710696.0,18501727.0,188.0,67644367.78,98413.44,19544811.0,188.0,103961.76,-0.05337,0.0,-0.05337,Actual vs Actual
+T00,Department of Commerce,2023,Actual,329199581.0,21135910.0,188.0,179351314.21,112425.05,18501727.0,188.0,98413.44,0.14237,0.0,0.14237,Actual vs Actual
+T00,Department of Commerce,2024,Actual,321985816.0,26803555.0,189.0,142955854.08,141817.75,21135910.0,188.0,112425.05,0.26815,0.00532,0.26144,Actual vs Actual
+T00,Department of Commerce,2025,Actual,182933096.0,24580707.0,208.0,91236677.53,118176.48,26803555.0,189.0,141817.75,-0.08293,0.10053,-0.1667,Actual vs Actual
+T00,Department of Commerce,2026,Working budget,287891006.0,19559318.0,209.0,121750705.33,93585.25,24580707.0,208.0,118176.48,-0.20428,0.00481,-0.20809,Working budget vs Actual
+T00,Department of Commerce,2027,Legislative appropriation,264460105.0,19895679.0,209.0,,95194.64,19559318.0,209.0,93585.25,0.0172,0.0,0.0172,Legislative appropriation vs Working budget
+T50,Maryland Technology Development Corporation,2017,Actual,26812012.0,12093.0,,27720064.42,,,,,,,,
+T50,Maryland Technology Development Corporation,2018,Actual,26822060.0,0.0,,40689487.22,,12093.0,,,-1.0,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2019,Actual,27188639.0,13440.0,,27188639.0,,0.0,,,,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2020,Actual,25985582.0,0.0,,25985582.06,,13440.0,,,-1.0,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2021,Actual,26974480.0,0.0,,26974480.0,,0.0,,,,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2022,Actual,21100021.0,0.0,,21100020.6,,0.0,,,,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2023,Actual,50754979.0,0.0,,38825816.0,,0.0,,,,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2024,Actual,54715816.0,0.0,,59715816.0,,0.0,,,,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2025,Actual,52610816.0,0.0,,52610816.0,,0.0,,,,,,Actual vs Actual
+T50,Maryland Technology Development Corporation,2026,Working budget,53456649.0,0.0,,52726649.0,,0.0,,,,,,Working budget vs Actual
+T50,Maryland Technology Development Corporation,2027,Legislative appropriation,67793984.0,0.0,,,,0.0,,,,,,Legislative appropriation vs Working budget
+U00,Department of the Environment,2017,Actual,396944488.0,14110465.0,894.0,321519868.98,15783.52,,,,,,,
+U00,Department of the Environment,2018,Actual,377226292.0,21170379.0,893.0,280225365.43,23707.03,14110465.0,894.0,15783.52,0.50033,-0.00112,0.50201,Actual vs Actual
+U00,Department of the Environment,2019,Actual,424892775.0,18161381.0,893.0,396504662.16,20337.49,21170379.0,893.0,23707.03,-0.14213,0.0,-0.14213,Actual vs Actual
+U00,Department of the Environment,2020,Actual,448536324.0,16918726.0,893.0,446268963.73,18945.94,18161381.0,893.0,20337.49,-0.06842,0.0,-0.06842,Actual vs Actual
+U00,Department of the Environment,2021,Actual,430986721.0,12273966.0,883.0,311577042.71,13900.3,16918726.0,893.0,18945.94,-0.27453,-0.0112,-0.26632,Actual vs Actual
+U00,Department of the Environment,2022,Actual,482882718.0,16389321.0,880.0,316897006.81,18624.23,12273966.0,883.0,13900.3,0.33529,-0.0034,0.33984,Actual vs Actual
+U00,Department of the Environment,2023,Actual,672195602.0,15766101.0,890.0,264091371.32,17714.72,16389321.0,880.0,18624.23,-0.03803,0.01136,-0.04883,Actual vs Actual
+U00,Department of the Environment,2024,Actual,602842717.0,18318439.0,970.0,173901188.99,18884.99,15766101.0,890.0,17714.72,0.16189,0.08989,0.06606,Actual vs Actual
+U00,Department of the Environment,2025,Actual,598997678.0,19585466.0,981.0,253376916.77,19964.8,18318439.0,970.0,18884.99,0.06917,0.01134,0.05718,Actual vs Actual
+U00,Department of the Environment,2026,Working budget,623165239.0,24464092.0,1004.0,178291857.72,24366.63,19585466.0,981.0,19964.8,0.24909,0.02345,0.22048,Working budget vs Actual
+U00,Department of the Environment,2027,Legislative appropriation,638553583.0,24990367.0,1003.0,,24915.62,24464092.0,1004.0,24366.63,0.02151,-0.001,0.02253,Legislative appropriation vs Working budget
+V00,Department of Juvenile Services,2017,Actual,278763909.0,39555719.0,1998.0,78746801.14,19797.66,,,,,,,
+V00,Department of Juvenile Services,2018,Actual,265862759.0,36463702.0,1987.0,69407226.51,18351.13,39555719.0,1998.0,19797.66,-0.07817,-0.00551,-0.07307,Actual vs Actual
+V00,Department of Juvenile Services,2019,Actual,269051042.0,39706981.0,1987.0,67918075.87,19983.38,36463702.0,1987.0,18351.13,0.08895,0.0,0.08895,Actual vs Actual
+V00,Department of Juvenile Services,2020,Actual,265469759.0,32765597.0,2012.1,62405457.97,16284.28,39706981.0,1987.0,19983.38,-0.17482,0.01263,-0.18511,Actual vs Actual
+V00,Department of Juvenile Services,2021,Actual,253335734.0,28587246.0,1995.55,45260682.42,14325.5,32765597.0,2012.1,16284.28,-0.12752,-0.00823,-0.12029,Actual vs Actual
+V00,Department of Juvenile Services,2022,Actual,254386923.0,32145514.0,1995.55,42324911.32,16108.6,28587246.0,1995.55,14325.5,0.12447,0.0,0.12447,Actual vs Actual
+V00,Department of Juvenile Services,2023,Actual,309914295.0,35995402.0,2162.95,58832934.63,16641.81,32145514.0,1995.55,16108.6,0.11976,0.08389,0.0331,Actual vs Actual
+V00,Department of Juvenile Services,2024,Actual,333348959.0,39656153.0,2158.95,57504720.76,18368.26,35995402.0,2162.95,16641.81,0.1017,-0.00185,0.10374,Actual vs Actual
+V00,Department of Juvenile Services,2025,Actual,353272412.0,41660115.0,2155.95,62047560.78,19323.32,39656153.0,2158.95,18368.26,0.05053,-0.00139,0.052,Actual vs Actual
+V00,Department of Juvenile Services,2026,Working budget,379935739.0,49985181.0,2126.95,75450781.22,23500.87,41660115.0,2155.95,19323.32,0.19983,-0.01345,0.21619,Working budget vs Actual
+V00,Department of Juvenile Services,2027,Legislative appropriation,382611069.0,44180306.0,2134.95,,20693.84,49985181.0,2126.95,23500.87,-0.11613,0.00376,-0.11944,Legislative appropriation vs Working budget
+W00,Department of State Police,2017,Actual,384560139.0,52387783.0,2435.5,53195501.08,21510.07,,,,,,,
+W00,Department of State Police,2018,Actual,381938829.0,54847274.0,2435.5,49301136.16,22519.92,52387783.0,2435.5,21510.07,0.04695,0.0,0.04695,Actual vs Actual
+W00,Department of State Police,2019,Actual,403101165.0,55977849.0,2439.5,50866020.49,22946.44,54847274.0,2435.5,22519.92,0.02061,0.00164,0.01894,Actual vs Actual
+W00,Department of State Police,2020,Actual,356280139.0,57314431.0,2462.5,48900920.07,23274.9,55977849.0,2439.5,22946.44,0.02388,0.00943,0.01431,Actual vs Actual
+W00,Department of State Police,2021,Actual,328686679.0,52718054.0,2462.5,53073007.03,21408.35,57314431.0,2462.5,23274.9,-0.0802,0.0,-0.0802,Actual vs Actual
+W00,Department of State Police,2022,Actual,464416790.0,58591775.0,2504.5,48028858.21,23394.6,52718054.0,2462.5,21408.35,0.11142,0.01706,0.09278,Actual vs Actual
+W00,Department of State Police,2023,Actual,536763548.0,73233204.0,2546.5,66796142.93,28758.38,58591775.0,2504.5,23394.6,0.24989,0.01677,0.22927,Actual vs Actual
+W00,Department of State Police,2024,Actual,586113098.0,94185354.0,2543.5,77276394.65,37029.82,73233204.0,2546.5,28758.38,0.2861,-0.00118,0.28762,Actual vs Actual
+W00,Department of State Police,2025,Actual,614170521.0,79950624.0,2576.5,81430482.74,31030.71,94185354.0,2543.5,37029.82,-0.15114,0.01297,-0.16201,Actual vs Actual
+W00,Department of State Police,2026,Working budget,659172326.0,90489769.0,2574.0,80819034.04,35155.31,79950624.0,2576.5,31030.71,0.13182,-0.00097,0.13292,Working budget vs Actual
+W00,Department of State Police,2027,Legislative appropriation,684813694.0,87760521.0,2574.0,,34095.0,90489769.0,2574.0,35155.31,-0.03016,0.0,-0.03016,Legislative appropriation vs Working budget
+X00,Public Debt,2017,Actual,1190727702.0,0.0,,1187412701.58,,,,,,,,
+X00,Public Debt,2018,Actual,1234920771.0,0.0,,1236582651.02,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2019,Actual,1298317506.0,0.0,,1295010632.18,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2020,Actual,1321826589.0,0.0,,1318511589.02,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2021,Actual,1277616197.0,0.0,,1274301196.68,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2022,Actual,1379062579.0,0.0,,1375738677.44,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2023,Actual,1430892085.0,0.0,,1427571151.69,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2024,Actual,1432654078.0,0.0,,1429336111.27,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2025,Actual,1503737345.0,0.0,,1500422344.23,,0.0,,,,,,Actual vs Actual
+X00,Public Debt,2026,Working budget,1630666629.0,0.0,,1452803615.98,,0.0,,,,,,Working budget vs Actual
+X00,Public Debt,2027,Legislative appropriation,1496361462.0,0.0,,,,0.0,,,,,,Legislative appropriation vs Working budget
+Y01,State Reserve Fund,2017,Actual,160376558.0,0.0,,,,,,,,,,
+Y01,State Reserve Fund,2018,Actual,10000000.0,0.0,,,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2019,Actual,14345241.0,0.0,,,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2020,Actual,405621213.0,0.0,,,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2021,Actual,114000000.0,0.0,,,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2022,Actual,882919432.0,0.0,,,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2023,Actual,4205388848.0,0.0,,25000000.0,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2024,Actual,1393903798.0,0.0,,25000000.0,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2025,Actual,242500000.0,0.0,,,,0.0,,,,,,Actual vs Actual
+Y01,State Reserve Fund,2026,Working budget,95500000.0,0.0,,,,0.0,,,,,,Working budget vs Actual
+Y01,State Reserve Fund,2027,Legislative appropriation,153250000.0,0.0,,,,0.0,,,,,,Legislative appropriation vs Working budget

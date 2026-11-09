@@ -1,0 +1,20 @@
+{
+  "description": "Status and key number for each of the six recommendations, with the value at the previous refresh.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_rec_status.csv",
+    "url": "/_blob/afd30b7606b6434e34d55a9850d64364"
+  },
+  "staleAfterHours": 1500,
+  "title": "Recommendation progress",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

@@ -1,0 +1,45 @@
+fiscal_year,stage,scope,budget,budget_prior,budget_yoy,stage_pair
+2017,Actual,Charges between agencies,442717505.0,,,
+2018,Actual,Charges between agencies,387913225.0,442717505.0,-0.12379,Actual vs Actual
+2019,Actual,Charges between agencies,404049413.0,387913225.0,0.0416,Actual vs Actual
+2020,Actual,Charges between agencies,530493938.0,404049413.0,0.31294,Actual vs Actual
+2021,Actual,Charges between agencies,912415603.0,530493938.0,0.71994,Actual vs Actual
+2022,Actual,Charges between agencies,638595363.0,912415603.0,-0.3001,Actual vs Actual
+2023,Actual,Charges between agencies,660578199.0,638595363.0,0.03442,Actual vs Actual
+2024,Actual,Charges between agencies,588976387.0,660578199.0,-0.10839,Actual vs Actual
+2025,Actual,Charges between agencies,613444082.0,588976387.0,0.04154,Actual vs Actual
+2026,Working budget,Charges between agencies,639412585.0,613444082.0,0.04233,Working budget vs Actual
+2027,Legislative appropriation,Charges between agencies,636258323.0,639412585.0,-0.00493,Legislative appropriation vs Working budget
+2017,Actual,Client payments and debt service,14183803097.0,,,
+2018,Actual,Client payments and debt service,14618600728.0,14183803097.0,0.03065,Actual vs Actual
+2019,Actual,Client payments and debt service,15196806112.0,14618600728.0,0.03955,Actual vs Actual
+2020,Actual,Client payments and debt service,15954597103.0,15196806112.0,0.04987,Actual vs Actual
+2021,Actual,Client payments and debt service,17211095799.0,15954597103.0,0.07875,Actual vs Actual
+2022,Actual,Client payments and debt service,19524852034.0,17211095799.0,0.13443,Actual vs Actual
+2023,Actual,Client payments and debt service,20913216271.0,19524852034.0,0.07111,Actual vs Actual
+2024,Actual,Client payments and debt service,21694375413.0,20913216271.0,0.03735,Actual vs Actual
+2025,Actual,Client payments and debt service,24174309893.0,21694375413.0,0.11431,Actual vs Actual
+2026,Working budget,Client payments and debt service,26101310671.0,24174309893.0,0.07971,Working budget vs Actual
+2027,Legislative appropriation,Client payments and debt service,25468479999.0,26101310671.0,-0.02425,Legislative appropriation vs Working budget
+2017,Actual,Controllable purchases,2879636303.0,,,
+2018,Actual,Controllable purchases,2920417101.0,2879636303.0,0.01416,Actual vs Actual
+2019,Actual,Controllable purchases,3085122930.0,2920417101.0,0.0564,Actual vs Actual
+2020,Actual,Controllable purchases,3256522157.0,3085122930.0,0.05556,Actual vs Actual
+2021,Actual,Controllable purchases,4228256392.0,3256522157.0,0.2984,Actual vs Actual
+2022,Actual,Controllable purchases,4148799405.0,4228256392.0,-0.01879,Actual vs Actual
+2023,Actual,Controllable purchases,3889551191.0,4148799405.0,-0.06249,Actual vs Actual
+2024,Actual,Controllable purchases,4093463552.0,3889551191.0,0.05243,Actual vs Actual
+2025,Actual,Controllable purchases,4093855308.0,4093463552.0,0.0001,Actual vs Actual
+2026,Working budget,Controllable purchases,4820212979.0,4093855308.0,0.17743,Working budget vs Actual
+2027,Legislative appropriation,Controllable purchases,4820403155.0,4820212979.0,4e-05,Legislative appropriation vs Working budget
+2017,Actual,"Staff, grants and capital",20218160491.0,,,
+2018,Actual,"Staff, grants and capital",19994949066.0,20218160491.0,-0.01104,Actual vs Actual
+2019,Actual,"Staff, grants and capital",20491211482.0,19994949066.0,0.02482,Actual vs Actual
+2020,Actual,"Staff, grants and capital",23209739131.0,20491211482.0,0.13267,Actual vs Actual
+2021,Actual,"Staff, grants and capital",26936700400.0,23209739131.0,0.16058,Actual vs Actual
+2022,Actual,"Staff, grants and capital",31610656225.0,26936700400.0,0.17352,Actual vs Actual
+2023,Actual,"Staff, grants and capital",33677212964.0,31610656225.0,0.06538,Actual vs Actual
+2024,Actual,"Staff, grants and capital",32772378598.0,33677212964.0,-0.02687,Actual vs Actual
+2025,Actual,"Staff, grants and capital",31659946361.0,32772378598.0,-0.03394,Actual vs Actual
+2026,Working budget,"Staff, grants and capital",33272315015.0,31659946361.0,0.05093,Working budget vs Actual
+2027,Legislative appropriation,"Staff, grants and capital",34259362647.0,33272315015.0,0.02967,Legislative appropriation vs Working budget

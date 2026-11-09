@@ -1,0 +1,20 @@
+{
+  "description": "The six largest private vendors in each focus area and fiscal year, FY2022\u2013FY2026.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_area_top.csv",
+    "url": "/_blob/54f22b9bcbb564864d86a680477bd942"
+  },
+  "staleAfterHours": 1500,
+  "title": "Largest vendors per area",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Every check from the latest pipeline run, by stage (download, master lists, model, cross-check, publish), with its result and detail.",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, by the pipeline run after the state's portal update",
+  "source": {
+    "kind": "file",
+    "name": "run_checks.csv",
+    "url": "/_blob/cd73cb073d910c54128b5116aedd0111"
+  },
+  "staleAfterHours": 1500,
+  "title": "Checks in the latest run",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

@@ -110,6 +110,31 @@ PROBE = """(tab) => {
   // changes must show when there is an earlier year to compare with
   const chg = [...document.querySelectorAll('.gs .panel:not([hidden]) .chg')]; const blank = chg.filter(e => e.textContent.trim().startsWith('—') || !e.textContent.trim()).length;
   if (p.years.length === 1 && G.STAGE_OF[p.years[0] - 1] && G.STAGE_OF[p.years[0]] && chg.length && blank === chg.length) out.issues.push('no year-over-year changes shown although the prior year exists');
+  // v2 layout probes: new elements exist and say what they should (one entry per tab)
+  const T = id => (document.getElementById(id) || {}).textContent || '';
+  const NEED = {
+    over: () => [[/^In the FY\\d{4} |^No operating budget/.test(T('overLede')), 'Overview finding missing'],
+                 [/, FY\\d{4}$/.test(T('kBud')) && !/combined/.test(T('sBud')), 'Overview tiles are not one year'],
+                 [!document.querySelector('#p-over #scopeChart'), 'scope chart still on the Overview'],
+                 [/^A path to .* if reported savings recur .* across the assumed ranges/.test(T('ov50Note')) && /payment evidence/.test(T('ov50Note')), 'path to $50M not worded as a conditional']],
+    calc: () => [[/ if reported savings recur /.test(T('planFind')), 'Calculator plan not worded as a conditional'],
+                 [!/8 in 10|8-in-10/.test(T('p-calc')) && /indicative/.test(T('p-calc')) && /fell inside such a range/.test(T('p-calc')), 'forecast ranges not labelled indicative with their coverage']],
+    opp: () => [[/leads worth up to/.test(T('opLede')) && /not additive/.test(T('opLede')), 'Opportunities headline reads as savings, or omits the overlap'],
+                [!/Likely savings found|would reach GMI/.test(T('p-opp')), 'Opportunities still promise savings']],
+    track: () => [[!document.getElementById('stBody2'), 'status table not merged'],
+                  [/Since last run/.test(T('p-track')) && /at least 50% of the reported saving/.test(T('trTolNote')) && /50%/.test(T('trSeenS')), 'Seen tolerance or status column missing']],
+    agency: () => [[/ per position: /.test(T('agLede')) || /No agency/.test(T('agLede')), 'Agencies headline missing'],
+                   [!!document.querySelector('#agChart svg') || !!document.querySelector('#agChart .empty'), 'Agencies chart not drawn'],
+                   [/pass money through/.test(T('agChartNote')), 'pass-through flag not explained']],
+    budget: () => [[!!document.querySelector('#fsChart svg') || !!document.querySelector('#fsChart .empty'), 'funding chart not drawn'],
+                   [['ovlFind', 'fnFind', 'fundFind', 'objFind', 'pgFind'].every(id => T(id).length > 20), 'a Budget card has no finding line'],
+                   [[...document.querySelectorAll('#grBody td:nth-child(4)')].every(td => td.classList.contains('one') || td.colSpan > 1), 'grant descriptions are not one line']],
+    areas: () => [[!!document.querySelector('#p-areas #scopeChart svg'), 'scope chart not drawn on Focus areas']],
+  }[tab];
+  // small-base rule: a change from a prior-year base under $1M carries no percent
+  { const P0 = {stage:'all', years:[], areas:[], agencies:[]}; const a = G.measure([{fiscal_year:2024, v:5e5}, {fiscal_year:2025, v:2e6}], 'v', P0, {years:[2025]}), b = G.measure([{fiscal_year:2024, v:5e6}, {fiscal_year:2025, v:6e6}], 'v', P0, {years:[2025]});
+    if (a.change != null || !a.small || b.change == null) out.issues.push('small-base rule not applied in measure()'); }
+  if (NEED) NEED().forEach(([ok2, msg]) => { if (!ok2) out.issues.push(msg); });
   out.years = m.years.length; out.total = m.value; return out; }"""
 
 

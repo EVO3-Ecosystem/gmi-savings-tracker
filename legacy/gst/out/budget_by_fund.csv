@@ -1,0 +1,56 @@
+fiscal_year,fund_type_name,budget,stage,budget_prior,budget_yoy,stage_pair
+2021,American Rescue Plan Act of 21,793358553.0,Actual,,,
+2022,American Rescue Plan Act of 21,5869823869.0,Actual,793358553.0,6.3987,Actual vs Actual
+2023,American Rescue Plan Act of 21,1197991989.0,Actual,5869823869.0,-0.79591,Actual vs Actual
+2024,American Rescue Plan Act of 21,419962573.0,Actual,1197991989.0,-0.64944,Actual vs Actual
+2025,American Rescue Plan Act of 21,230887059.0,Actual,419962573.0,-0.45022,Actual vs Actual
+2026,American Rescue Plan Act of 21,94224174.0,Working budget,230887059.0,-0.5919,Working budget vs Actual
+2027,American Rescue Plan Act of 21,33287371.0,Legislative appropriation,94224174.0,-0.64672,Legislative appropriation vs Working budget
+2021,"Coronavirus Aid, Relief, and Economic Security Act",1447320834.0,Actual,,,
+2022,"Coronavirus Aid, Relief, and Economic Security Act",894889075.0,Actual,1447320834.0,-0.38169,Actual vs Actual
+2023,"Coronavirus Aid, Relief, and Economic Security Act",215240033.0,Actual,894889075.0,-0.75948,Actual vs Actual
+2024,"Coronavirus Aid, Relief, and Economic Security Act",29228091.0,Actual,215240033.0,-0.86421,Actual vs Actual
+2025,"Coronavirus Aid, Relief, and Economic Security Act",10215097.0,Actual,29228091.0,-0.6505,Actual vs Actual
+2026,"Coronavirus Aid, Relief, and Economic Security Act",1483987.0,Working budget,10215097.0,-0.85473,Working budget vs Actual
+2027,"Coronavirus Aid, Relief, and Economic Security Act",2193183.0,Legislative appropriation,1483987.0,0.4779,Legislative appropriation vs Working budget
+2021,Coronavirus Response & Relief Sup Act,1796939882.0,Actual,,,
+2022,Coronavirus Response & Relief Sup Act,424282194.0,Actual,1796939882.0,-0.76389,Actual vs Actual
+2023,Coronavirus Response & Relief Sup Act,146497756.0,Actual,424282194.0,-0.65472,Actual vs Actual
+2024,Coronavirus Response & Relief Sup Act,30718547.0,Actual,146497756.0,-0.79031,Actual vs Actual
+2025,Coronavirus Response & Relief Sup Act,53791902.0,Actual,30718547.0,0.75112,Actual vs Actual
+2026,Coronavirus Response & Relief Sup Act,62438912.0,Working budget,53791902.0,0.16075,Working budget vs Actual
+2017,Federal Funds,12018440047.0,Actual,,,
+2018,Federal Funds,12146644280.0,Actual,12018440047.0,0.01067,Actual vs Actual
+2019,Federal Funds,12397770916.0,Actual,12146644280.0,0.02067,Actual vs Actual
+2020,Federal Funds,13399846455.0,Actual,12397770916.0,0.08083,Actual vs Actual
+2021,Federal Funds,16368938101.0,Actual,13399846455.0,0.22158,Actual vs Actual
+2022,Federal Funds,17914585297.0,Actual,16368938101.0,0.09443,Actual vs Actual
+2023,Federal Funds,18726962842.0,Actual,17914585297.0,0.04535,Actual vs Actual
+2024,Federal Funds,19021564916.0,Actual,18726962842.0,0.01573,Actual vs Actual
+2025,Federal Funds,19691459273.0,Actual,19021564916.0,0.03522,Actual vs Actual
+2026,Federal Funds,21291827305.0,Working budget,19691459273.0,0.08127,Working budget vs Actual
+2027,Federal Funds,21037587156.0,Legislative appropriation,21291827305.0,-0.01194,Legislative appropriation vs Working budget
+2017,Federal Funds (ARRA),2835192.0,Actual,,,
+2020,Federal Funds (COVID),1559704710.0,Actual,,,
+2017,General Funds,17102368918.0,Actual,,,
+2018,General Funds,17169097323.0,Actual,17102368918.0,0.0039,Actual vs Actual
+2019,General Funds,17869338504.0,Actual,17169097323.0,0.04078,Actual vs Actual
+2020,General Funds,18961494402.0,Actual,17869338504.0,0.06112,Actual vs Actual
+2021,General Funds,18795522602.0,Actual,18961494402.0,-0.00875,Actual vs Actual
+2022,General Funds,21033794908.0,Actual,18795522602.0,0.11909,Actual vs Actual
+2023,General Funds,27972131729.0,Actual,21033794908.0,0.32987,Actual vs Actual
+2024,General Funds,27397086567.0,Actual,27972131729.0,-0.02056,Actual vs Actual
+2025,General Funds,27432917842.0,Actual,27397086567.0,0.00131,Actual vs Actual
+2026,General Funds,28048291358.0,Working budget,27432917842.0,0.02243,Working budget vs Actual
+2027,General Funds,27946724016.0,Legislative appropriation,28048291358.0,-0.00362,Legislative appropriation vs Working budget
+2017,Special Funds,8600673239.0,Actual,,,
+2018,Special Funds,8606138517.0,Actual,8600673239.0,0.00064,Actual vs Actual
+2019,Special Funds,8910080517.0,Actual,8606138517.0,0.03532,Actual vs Actual
+2020,Special Funds,9030306762.0,Actual,8910080517.0,0.01349,Actual vs Actual
+2021,Special Funds,10086388222.0,Actual,9030306762.0,0.11695,Actual vs Actual
+2022,Special Funds,9785527684.0,Actual,10086388222.0,-0.02983,Actual vs Actual
+2023,Special Funds,10881734276.0,Actual,9785527684.0,0.11202,Actual vs Actual
+2024,Special Funds,12250633256.0,Actual,10881734276.0,0.1258,Actual vs Actual
+2025,Special Funds,13122284472.0,Actual,12250633256.0,0.07115,Actual vs Actual
+2026,Special Funds,15334985514.0,Working budget,13122284472.0,0.16862,Working budget vs Actual
+2027,Special Funds,16164712398.0,Legislative appropriation,15334985514.0,0.05411,Legislative appropriation vs Working budget

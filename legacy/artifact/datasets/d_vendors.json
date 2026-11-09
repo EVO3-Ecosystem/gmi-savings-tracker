@@ -1,0 +1,20 @@
+{
+  "description": "Every non-government payee paid $1M or more in some year FY2022\u2013FY2026, with payee type, main budget function, payee names and payments per year. From State of Maryland Payments Data (7syw-q4cy).",
+  "edit": {
+    "at": "2026-11-04T15:05:00Z",
+    "via": "claude"
+  },
+  "fixed": true,
+  "schedule": "Monthly, with each pipeline run",
+  "source": {
+    "kind": "file",
+    "name": "d_vendors.csv",
+    "url": "/_blob/8fa592995bcdea464fad3eb6dac394cc"
+  },
+  "staleAfterHours": 1500,
+  "title": "Vendors paid $1M or more",
+  "updated": {
+    "at": "2026-11-04T15:05:00Z",
+    "by": "Sierra Napier (GMI Savings Tracker pipeline, built with Claude)"
+  }
+}

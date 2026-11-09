@@ -12,7 +12,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from ..models import forecast, opportunities, recommendations, savings
+from ..models import backtest, forecast, opportunities, recommendations, savings
 from . import checks, facts, marts, reference
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -68,9 +68,33 @@ def build(run_id):
         CAST(category AS INTEGER) AS function_code, trim(category_title) AS function_name,
         trim(organization_code) AS organization_code, CAST(budget AS DOUBLE) AS budget
       FROM raw.budget""")
-    con.execute("""CREATE TABLE core.fact_fund AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
+    # Public higher education (4mca-332u): the same layout as yu65-jmmv for agencies that dataset leaves out. Kept in its own
+    # table so no existing figure or GMI savings baseline reads it; core.fact_budget_all_funds is the labeled union.
+    if "highered" in _tables(con, "raw"):
+        con.execute(f"""CREATE TABLE core.fact_budget_highered AS SELECT
+            CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
+            regexp_replace(trim(agency_name), ':[A-Z][0-9]{{2}}$', '') AS agency_name,
+            trim(unit_code) AS unit_code, trim(unit_name) AS unit_name, {pad('program_code', 2)} AS program_code, trim(program_name) AS program_name,
+            {pad('object_code', 2)} AS object_code, trim(object_name) AS object_name,
+            coalesce(nullif(ltrim(trim(comptroller_subobject_code), '0'), ''), '0') AS subobject_code, trim(comptroller_subobject_name) AS subobject_name,
+            trim(fund_type_name) AS fund_type, CAST(category AS INTEGER) AS function_code, trim(category_title) AS function_name,
+            CAST(budget AS DOUBLE) AS budget, '4mca-332u' AS source_dataset
+          FROM raw.highered""")
+    else:  # an extract run from before the dataset was added: an empty table of the same shape
+        con.execute("""CREATE TABLE core.fact_budget_highered (fiscal_year INTEGER, agency_code VARCHAR, agency_name VARCHAR, unit_code VARCHAR,
+            unit_name VARCHAR, program_code VARCHAR, program_name VARCHAR, object_code VARCHAR, object_name VARCHAR, subobject_code VARCHAR,
+            subobject_name VARCHAR, fund_type VARCHAR, function_code INTEGER, function_name VARCHAR, budget DOUBLE, source_dataset VARCHAR)""")
+    con.execute("""CREATE TABLE core.fact_budget_all_funds AS
+      SELECT fiscal_year, agency_code, agency_name, unit_code, unit_name, program_code, program_name, object_code, object_name,
+             subobject_code, subobject_name, fund_type, function_code, function_name, budget, 'yu65-jmmv' AS source_dataset FROM core.fact_budget
+      UNION ALL
+      SELECT fiscal_year, agency_code, agency_name, unit_code, unit_name, program_code, program_name, object_code, object_name,
+             subobject_code, subobject_name, fund_type, function_code, function_name, budget, source_dataset FROM core.fact_budget_highered""")
+    # unit and program kept (roadmap gap 10), normalized like core.fact_budget, so funding can be read at program level
+    con.execute(f"""CREATE TABLE core.fact_fund AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
         trim(fund_type_name) AS fund_type, trim(fund_source_code) AS fund_source_code, trim(fund_source_name) AS fund_source_name,
-        CAST(budget AS DOUBLE) AS budget FROM raw.fund""")
+        CAST(budget AS DOUBLE) AS budget, trim(unit_code) AS unit_code, trim(unit_name) AS unit_name,
+        {pad('program_code', 2)} AS program_code, trim(program_name) AS program_name FROM raw.fund""")
     con.execute(f"""CREATE TABLE core.fact_fte AS SELECT CAST(fiscal_year AS INTEGER) AS fiscal_year, trim(agency_code) AS agency_code,
         trim(unit_code) AS unit_code, {pad('program_code', 2)} AS program_code, trim(organization_code) AS organization_code,
         CAST("count" AS DOUBLE) AS fte FROM raw.fte""")
@@ -119,6 +143,7 @@ def build(run_id):
     marts.build(con)  # Phase 4: sql/mart/*.sql -> mart layer
     forecast.write(con)  # Phase 5: forecasts and their rolling-origin backtest, built on the marts
     opportunities.write(con)  # Phase 5: opportunity detectors and the bid list
+    backtest.write(con)  # Phase 5: the detectors rerun as of FY2022-FY2024, flags followed one year (mart.d_detector_backtest)
     savings.write(con, run_id, DATA)  # Phase 5: GMI's reported savings checked against payments
     recommendations.write(con, run_id, DATA)  # Phase 5: the six recommendations, the path to $50M, vendor drill-downs
     res = checks.run(con, run_id, man)
@@ -126,6 +151,7 @@ def build(run_id):
     if res:
         savings.record(con, run_id, DATA)  # status history only for a build that passed its checks
         recommendations.record(con, run_id, DATA)
+        checks.record_payees(con, run_id, DATA)  # payee-name history (ops.payee_name_seen), likewise
     con.close()
     if res:
         tmp.replace(DB)  # only a database that passes every stop check replaces the last good one
