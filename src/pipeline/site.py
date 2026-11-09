@@ -233,6 +233,11 @@ def build(out=OUT, src=None):
         if (src / f"{f}.csv").exists():
             shutil.copy(src / f"{f}.csv", out / "data" / f"{f}.csv")
     (out / "index.html").write_text(index)
+    pq = parquet_files(src)
+    if pq:
+        (out / "parquet").mkdir()
+        for f in pq:
+            shutil.copy(f, out / "parquet" / f.name)
     (out / "figures").mkdir()
     for f in sorted(FIGURES.glob("*.png")):
         shutil.copy(f, out / "figures" / f.name)
@@ -246,10 +251,19 @@ def build(out=OUT, src=None):
                                        "Page not found."))
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\n# {SITE_URL}\n")
     (out / ".nojekyll").write_text("")
-    size = sum(p.stat().st_size for p in out.rglob("*") if p.is_file())
+    files = [p for p in out.rglob("*") if p.is_file()]
+    size = sum(p.stat().st_size for p in files)
+    pqs = sum(p.stat().st_size for p in (out / "parquet").glob("*.parquet")) if (out / "parquet").exists() else 0
     print(f"site: {out} from {src.relative_to(ROOT) if src.is_relative_to(ROOT) else src} "
-          f"({len(list((out / 'data').glob('*.csv')))} data files, {size / 1e6:.1f} MB, index.html {(out / 'index.html').stat().st_size / 1e3:.0f} kB)")
+          f"({len(list((out / 'data').glob('*.csv')))} data files, {len(pq)} Parquet files ({pqs / 1e6:.1f} MB), {len(files)} files, {size / 1e6:.1f} MB, "
+          f"index.html {(out / 'index.html').stat().st_size / 1e3:.0f} kB)")
     return out
+
+
+def parquet_files(src):
+    """The export's Parquet copies of its marts (data/export/<run>/parquet or site_data/parquet), for the explorer."""
+    d = Path(src) / "parquet"
+    return sorted(d.glob("*.parquet")) if d.exists() else []
 
 
 def refresh_snapshot():
@@ -261,10 +275,16 @@ def refresh_snapshot():
     SNAPSHOT.mkdir()
     for f in files:
         shutil.copy(EXPORT / f"{f}.csv", SNAPSHOT / f"{f}.csv")
+    pq = [p for p in parquet_files(EXPORT) if p.stem in files]
+    if pq:
+        (SNAPSHOT / "parquet").mkdir()
+        for p in pq:
+            shutil.copy(p, SNAPSHOT / "parquet" / p.name)
     info = {"export": EXPORT.resolve().name, "refreshed_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "files": len(files)}
     (SNAPSHOT / "snapshot.json").write_text(json.dumps(info, indent=1) + "\n")
-    size = sum(p.stat().st_size for p in SNAPSHOT.iterdir())
-    print(f"snapshot: {SNAPSHOT} ({len(files)} files from export {info['export']}, {size / 1e6:.1f} MB)")
+    size = sum(p.stat().st_size for p in SNAPSHOT.rglob("*") if p.is_file())
+    pqs = sum(p.stat().st_size for p in pq)
+    print(f"snapshot: {SNAPSHOT} ({len(files)} files from export {info['export']}, {len(pq)} Parquet files {pqs / 1e6:.1f} MB, {size / 1e6:.1f} MB in all)")
 
 
 def main(argv=None):

@@ -61,3 +61,25 @@ def test_snapshot_covers_the_dashboard():
         pytest.skip("no site_data/ snapshot")
     cfg = yaml.safe_load((ROOT / "config" / "dashboard.yaml").read_text())
     assert all((snap / f"{f}.csv").is_file() for f in cfg.values())
+
+
+def test_parquet_copied_for_the_explorer(built):
+    pq = sorted((built / "parquet").glob("*.parquet"))
+    if not pq:
+        pytest.skip("export has no Parquet files")
+    cfg = yaml.safe_load((ROOT / "config" / "dashboard.yaml").read_text())
+    assert {f.stem for f in pq} >= set(cfg.values())
+
+
+def test_publish_stage_has_card_and_manifest(tmp_path):
+    from src.pipeline import publish
+    try:
+        src = site.source_dir()
+    except SystemExit:
+        pytest.skip("no export and no site_data/ snapshot")
+    if not site.parquet_files(src):
+        pytest.skip("export has no Parquet files")
+    out = publish.stage(tmp_path / "stage", src)
+    card = (out / "README.md").read_text()
+    assert card.startswith("---\nlicense: other") and "Source datasets" in card and "d_payment_screen" in card
+    assert (out / "manifest.csv").exists() and len(list((out / "parquet").glob("*.parquet"))) >= 40
