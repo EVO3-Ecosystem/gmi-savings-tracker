@@ -11,4 +11,6 @@ def test_no_failed_checks_and_totals_tie():
     import duckdb
     con = duckdb.connect(str(DB), read_only=True)
     assert con.execute("SELECT count(*) FROM ops.check_result WHERE result = 'fail'").fetchone()[0] == 0
-    assert con.execute("""SELECT count(*) FROM ops.check_result WHERE "check" LIKE 'Yearly totals = portal:%' AND result = 'pass'""").fetchone()[0] == 5
+    datasets = con.execute("SELECT count(*) FROM ops.source_snapshot").fetchone()[0]  # 5, or 6 with public higher education (4mca-332u)
+    assert datasets >= 5
+    assert con.execute("""SELECT count(*) FROM ops.check_result WHERE "check" LIKE 'Yearly totals = portal:%' AND result = 'pass'""").fetchone()[0] == datasets

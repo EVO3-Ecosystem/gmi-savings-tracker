@@ -10,6 +10,10 @@ datasets:
   fte:      {id: x8qy-486w, year_col: fiscal_year, sum_col: count}
   payments: {id: 7syw-q4cy, year_col: fiscal_year, sum_col: amount}
   grants:   {id: absk-avps, year_col: fiscalyear,  sum_col: amount}
+  # Public higher education (CUR and CR funds): R13 Morgan State, R14 St. Mary's College, R30 University System of Maryland,
+  # R95 Baltimore City Community College. None of these agencies is in yu65-jmmv. Loaded as raw.highered / core.fact_budget_highered,
+  # shown only in all-funds totals labeled "including public higher education", never in a GMI savings baseline.
+  highered: {id: 4mca-332u, year_col: fiscal_year, sum_col: budget}
 
 # Second copy of each dataset: the Maryland Transparency Portal's own downloads (mtp.maryland.gov/#!/view-data,
 # "Data ... as displayed on this website"). reconcile.py compares them with the API extract, year by year.

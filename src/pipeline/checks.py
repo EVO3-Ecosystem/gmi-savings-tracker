@@ -12,7 +12,8 @@ from ..models import opportunities, recommendations, savings
 
 HIST = Path(__file__).resolve().parents[2] / "data" / "check_history.csv"
 SUM_COL = {"budget": ("core.fact_budget", "budget"), "fund": ("core.fact_fund", "budget"), "fte": ("core.fact_fte", "fte"),
-           "payments": ("core.fact_payment", "amount"), "grants": ("core.fact_grant", "amount")}
+           "payments": ("core.fact_payment", "amount"), "grants": ("core.fact_grant", "amount"), "highered": ("core.fact_budget_highered", "budget")}
+HIGHER_ED = ("R13", "R14", "R30", "R95")  # agencies of 4mca-332u: kept out of every GMI savings baseline
 
 
 def run(con, run_id, manifest):
@@ -22,6 +23,7 @@ def run(con, run_id, manifest):
         out.append({"run_id": run_id, "layer": layer, "check": name, "severity": severity,
                     "result": "pass" if ok else ("fail" if severity == "stop" else "warn"), "detail": detail})
 
+    check.run_id = run_id
     one = lambda q, *a: con.execute(q, list(a)).fetchone()[0]  # noqa: E731
 
     # raw: what we loaded is what the portal has
@@ -30,7 +32,10 @@ def run(con, run_id, manifest):
         check("raw", f"Rows loaded = portal count: {d['dataset']}", n == d["portal_count"], f"{n:,} loaded, {d['portal_count']:,} on the portal")
 
     # core: yearly totals and row counts tie to the portal's own sums; typing lost nothing
+    loaded = {d["dataset"] for d in manifest["datasets"]}
     for ds, (table, col) in SUM_COL.items():
+        if ds not in loaded:  # an extract run from before the dataset was added
+            continue
         g = con.execute(f"""SELECT p.fiscal_year, p.total, p.rows, coalesce(c.t, 0), coalesce(c.n, 0) FROM ops.portal_year_total p
             LEFT JOIN (SELECT fiscal_year, sum({col}) t, count(*) n FROM {table} GROUP BY 1) c USING (fiscal_year) WHERE p.dataset = ?""", [ds]).fetchall()
         gap = max(abs(r[1] - r[3]) for r in g)
@@ -44,6 +49,9 @@ def run(con, run_id, manifest):
     check("core", "Budget totals = funding-source totals (within $1)", gap <= 1, f"largest yearly gap ${gap:,.2f}")
     bad = one("SELECT count(*) FROM core.fact_budget WHERE NOT regexp_full_match(object_code, '[0-9]{2}') OR NOT regexp_full_match(program_code, '[0-9]{2}')")
     check("core", "Object and program codes are two digits", bad == 0, f"{bad:,} rows")
+    bad, n, units = con.execute("""SELECT count(*) FILTER (WHERE unit_code IS NULL OR program_code IS NULL OR NOT regexp_full_match(program_code, '[0-9]{2}')),
+        count(*), count(DISTINCT agency_code || '/' || unit_code || '/' || program_code) FROM core.fact_fund""").fetchone()
+    check("core", "Funding-source rows keep their unit and two-digit program", bad == 0, f"{bad:,} of {n:,} rows without both; {units:,} agency-unit-programs")
     spell = one("SELECT count(DISTINCT comptroller_subobject_code) FROM raw.budget")
     codes = one("SELECT count(*) FROM ref.dim_subobject")
     lead = one("SELECT count(*) FROM core.fact_budget WHERE subobject_code LIKE '0%' AND subobject_code <> '0'")
@@ -89,6 +97,8 @@ def run(con, run_id, manifest):
     phase5_savings(con, check, one)
     phase5_recommendations(con, check, one)
     phase5_reference_marts(con, check, one)
+    phase5_higher_education(con, check, one, "highered" in loaded)
+    phase5_deflator(con, check, one)
     df = pd.DataFrame(out)
     con.execute("CREATE TABLE ops.check_result AS SELECT * FROM df")
     fails = int((df.result == "fail").sum())
@@ -131,12 +141,14 @@ def phase3(con, check, one):
           f"${a25:,.0f} in {codes} spending codes (dashboard ${base['focus_area_fy2025']:,.0f} in {int(base['focus_area_codes'])})")
     miss = one("SELECT count(*) FROM ref.map_focus_area m LEFT JOIN ref.dim_subobject s USING (subobject_code) WHERE s.subobject_code IS NULL")
     check("ref", "Every focus-area code exists in the budget", miss == 0, f"{miss} missing")
-    prev = HIST.parent / "payee_names.txt"
+    # New payee names, against the history kept by passing builds only (data/payee_name_seen.csv; written by record_payees)
+    seen = read_payee_history(HIST.parent)
     now = {r[0] for r in con.execute("SELECT payee FROM ref.map_payee_vendor").fetchall()}
-    old = set(prev.read_text().splitlines()) if prev.exists() else set()
-    new = sorted(now - old) if old else []
-    check("ref", "New payee names since the last build", not new, (f"{len(new)} new: " + "; ".join(new[:8]) + (" ..." if len(new) > 8 else "")) if old else "first build recorded", "warn")
-    prev.write_text("\n".join(sorted(now)))
+    new, baseline = new_payee_names(now, seen, check.run_id)
+    _payee_table(con, seen)
+    check("ref", "New payee names since the last build", not new,
+          "first build recorded" if baseline else (f"{len(new)} new since the last passing build: " + "; ".join(new[:8]) + (" ..." if len(new) > 8 else "")
+                                                     if new else "0 new since the last passing build"), "warn")
     if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'core' AND table_name = 'mfr_measure'"):
         docs, matched = con.execute("SELECT count(*), count(agency_code) FROM ref.map_mfr_agency").fetchone()
         n, ag = con.execute("SELECT count(DISTINCT agency_file || measure), count(DISTINCT agency_file) FROM core.mfr_measure").fetchone()
@@ -269,6 +281,13 @@ def phase5_opportunities(con, check, one):
     check("mart", "Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)", share <= 0.25,
           f"${row[0] / 1e6:,.1f}M of the growth detector's ${row[1] / 1e6:,.1f}M likely saving ({share:.0%}) comes from findings that grew 1,000% or more; "
           "a minimum prior-year base (assumptions.yaml, opportunities.growth.min_base_budget) removes most of them", "warn")
+    if one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_detector_backtest'"):
+        n, bad, flagged = con.execute("""SELECT count(*), count(*) FILTER (WHERE flagged_next > units OR units_zero_next > units OR units < 0),
+            count(*) FILTER (WHERE cohort = 'Flagged' AND units > 0) FROM mart.d_detector_backtest""").fetchone()
+        rates = "; ".join(f"{d} {r:.0%}" for d, r in con.execute("""SELECT detector, sum(flagged_next) / nullif(sum(units), 0) FROM mart.d_detector_backtest
+            WHERE cohort = 'Flagged' GROUP BY 1 ORDER BY 1""").fetchall() if r is not None)
+        check("mart", "Detector backtest: every detector, as-of year and cohort present and well formed", n == 24 and bad == 0,
+              f"{n} rows, {bad} malformed, {flagged} flagged cohorts with units; flags recurring next year (pooled FY2022-FY2024): {rates}")
 
 
 def phase5_savings(con, check, one):
@@ -350,4 +369,114 @@ def phase5_reference_marts(con, check, one):
         AND p.fiscal_year NOT IN (SELECT fiscal_year FROM mart.stage_evidence)""")
     check("mart", "Every year whose portal stage label differs from the confirmed stage has evidence", unevidenced == 0,
           f"{unevidenced} years where the portal's label and the confirmed stage differ but no evidence is recorded")
+
+
+def phase5_higher_education(con, check, one, loaded):
+    """Public higher education (4mca-332u): disjoint from the operating budget dataset, added only in the labeled all-funds
+    figure, and kept out of every GMI savings baseline."""
+    if not loaded or not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_all_funds'"):
+        return
+    codes = ", ".join(f"'{c}'" for c in HIGHER_ED)
+    have = [r[0] for r in con.execute("SELECT DISTINCT agency_code FROM core.fact_budget_highered ORDER BY 1").fetchall()]
+    overlap = one(f"SELECT count(*) FROM core.fact_budget WHERE agency_code IN ({codes})")
+    other = [c for c in have if c not in HIGHER_ED]
+    check("core", "Higher education dataset holds only its four agencies, none of them in the operating budget dataset", overlap == 0 and not other and have,
+          f"agencies {', '.join(have)}; {overlap} operating-budget rows for them; {len(other)} unexpected agencies")
+    bad = one("""SELECT count(*) FROM mart.d_all_funds a
+        FULL JOIN (SELECT fiscal_year, sum(budget) b FROM core.fact_budget GROUP BY 1) o USING (fiscal_year)
+        LEFT JOIN (SELECT fiscal_year, sum(budget) h FROM core.fact_budget_highered GROUP BY 1) h USING (fiscal_year)
+        WHERE abs(coalesce(a.operating_budget, 0) - coalesce(o.b, 0)) > 1 OR abs(coalesce(a.public_higher_education, 0) - coalesce(h.h, 0)) > 1
+           OR abs(a.all_funds_including_higher_education - coalesce(o.b, 0) - coalesce(h.h, 0)) > 1""")
+    fy = one("SELECT max(fiscal_year) FROM ref.dim_stage WHERE stage = 'Working budget'")
+    row = con.execute("SELECT public_higher_education, all_funds_including_higher_education FROM mart.d_all_funds WHERE fiscal_year = ?", [fy]).fetchone()
+    check("mart", "All-funds total including public higher education = operating budget + higher education (every year, to the dollar)", bad == 0,
+          f"{bad} years differ; FY{fy}: ${(row[0] or 0) / 1e9:,.2f}B higher education, ${row[1] / 1e9:,.2f}B all funds including it" if row else f"{bad} years differ")
+    scope = one(f"SELECT count(*) FROM core.fact_budget_scope WHERE agency_code IN ({codes})")
+    opps = one(f"SELECT count(*) FROM mart.d_opps WHERE agency_code IN ({codes})")
+    cfg = yaml.safe_load((Path(__file__).resolve().parents[2] / "config" / "assumptions.yaml").read_text())
+    excl = set(cfg.get("gmi_baseline_exclusions", {}).get("agency_codes", []))
+    moves = set(cfg["savings"]["vendor_moves"]["excluded_agency_codes"])
+    paid = one(f"""SELECT coalesce(sum(amount), 0) FROM mart.payment_area WHERE agency_code IN ({codes})
+        AND fiscal_year = {int(cfg['opportunities']['payments_fy'])} AND NOT is_government AND NOT passthrough""")
+    check("mart", "Public higher education is kept out of every GMI savings baseline", scope == 0 and opps == 0 and set(HIGHER_ED) <= excl and set(HIGHER_ED) <= moves,
+          f"{scope} budget-scope rows and {opps} opportunity findings for {', '.join(HIGHER_ED)}; the payment detectors, bid list and vendor moves leave out "
+          f"${paid / 1e6:,.1f}M of FY{cfg['opportunities']['payments_fy']} private payments by these agencies")
+
+
+def phase5_deflator(con, check, one):
+    """Real and per-resident dollars: FY2026 is the base year, every actual budget year has a factor; population where published."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_deflator'"):
+        return
+    base = con.execute("SELECT CAST(factor AS DOUBLE) FROM mart.d_deflator WHERE fiscal_year = 2026").fetchone()
+    miss = one("""SELECT count(*) FROM (SELECT DISTINCT fiscal_year FROM ref.dim_stage WHERE fiscal_year <= 2026) s
+        LEFT JOIN mart.d_deflator d USING (fiscal_year) WHERE d.factor IS NULL OR d.cpi_months < 11 OR CAST(d.factor AS DOUBLE) <= 0""")
+    lo, hi = con.execute("SELECT min(fiscal_year), max(fiscal_year) FROM mart.d_deflator WHERE population IS NOT NULL").fetchone()
+    f17 = one("SELECT CAST(factor AS DOUBLE) FROM mart.d_deflator WHERE fiscal_year = 2017")
+    check("mart", "Deflator: FY2026 = 1 and every budget year through FY2026 has a full-year CPI factor", bool(base) and abs(base[0] - 1) < 1e-9 and miss == 0,
+          f"{miss} years missing or partial; FY2017 dollars x {f17:.4f} = FY2026 dollars; population FY{lo}-FY{hi}" if f17 else f"{miss} years missing or partial")
+    bad = one("SELECT count(*) FROM mart.d_deflator WHERE population IS NOT NULL AND population <= 0")
+    gap = one("""SELECT count(*) FROM (SELECT DISTINCT fiscal_year FROM ref.dim_stage WHERE stage = 'Actual') s
+        LEFT JOIN mart.d_deflator d USING (fiscal_year) WHERE d.population IS NULL""")
+    check("mart", "Deflator: population for every actual budget year", bad == 0 and gap == 0, f"{gap} actual years without population; {bad} non-positive", "warn")
+
+
+# ---- New-payee-name history (ops.payee_name_seen). Only a build whose stop checks all pass writes it (build.py calls
+# record_payees after checks.run returns True), so a failed build leaves no trace, and a rerun of the same extract run
+# updates last_seen in place: one row per payee name, never a duplicate. "New" = not seen by a passing build of an
+# earlier extract run, so an identical rerun reports the same names as its first passing build did, and none extra.
+PAYEE_HISTORY = "payee_name_seen.csv"
+PAYEE_COLUMNS = ["payee_name", "first_seen_run_id", "first_seen_date", "last_seen_run_id", "last_seen_date"]
+
+
+def _run_date(run_id):
+    try:
+        return dt.datetime.strptime(run_id, "%Y%m%dT%H%M%SZ").date().isoformat()
+    except ValueError:
+        return None
+
+
+def read_payee_history(data):
+    f = Path(data) / PAYEE_HISTORY
+    return pd.read_csv(f, dtype=str, keep_default_na=False) if f.exists() else pd.DataFrame(columns=PAYEE_COLUMNS)
+
+
+def new_payee_names(now, seen, run_id):
+    """(sorted new names, baseline) for this build. baseline is True when no passing build of an earlier extract run is
+    recorded yet: the first build records every name and reports none as new."""
+    earlier = seen[seen.first_seen_run_id != run_id]
+    if earlier.empty:
+        return [], True
+    return sorted(set(now) - set(earlier.payee_name)), False
+
+
+def update_payee_history(seen, now, run_id):
+    """History after a passing build of run_id that saw the names `now` (pure; no file access)."""
+    day = _run_date(run_id)
+    h = seen.copy()
+    hit = h.payee_name.isin(now)
+    h.loc[hit, "last_seen_run_id"] = run_id
+    h.loc[hit, "last_seen_date"] = day
+    add = sorted(set(now) - set(h.payee_name))
+    h = pd.concat([h, pd.DataFrame({"payee_name": add, "first_seen_run_id": run_id, "first_seen_date": day,
+                                    "last_seen_run_id": run_id, "last_seen_date": day}, columns=PAYEE_COLUMNS)], ignore_index=True)
+    return h.sort_values("payee_name", kind="stable").reset_index(drop=True)[PAYEE_COLUMNS]
+
+
+def _payee_table(con, hist):
+    con.execute("CREATE SCHEMA IF NOT EXISTS ops")
+    con.execute("CREATE OR REPLACE TABLE ops.payee_name_seen (" + ", ".join(f"{c} VARCHAR" for c in PAYEE_COLUMNS) + ")")
+    if len(hist):
+        con.register("_ph", hist[PAYEE_COLUMNS].astype(str))
+        con.execute("INSERT INTO ops.payee_name_seen SELECT * FROM _ph")
+        con.unregister("_ph")
+
+
+def record_payees(con, run_id, data):
+    """Call only for a build that passed its stop checks: add new names, move last_seen, write the file and the table."""
+    now = {r[0] for r in con.execute("SELECT payee FROM ref.map_payee_vendor").fetchall()}
+    hist = update_payee_history(read_payee_history(data), now, run_id)
+    Path(data).mkdir(parents=True, exist_ok=True)
+    hist.to_csv(Path(data) / PAYEE_HISTORY, index=False)
+    _payee_table(con, hist)
+    return len(hist)
 

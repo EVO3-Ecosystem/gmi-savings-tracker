@@ -31,7 +31,9 @@ def test_the_four_tables_match_the_legacy_scripts(tmp_path):
     old_d, old_f, old_mv = _legacy("savings").build(pm)
     old_st = _legacy("recs").recurrence(old_d, old_f, "RUN1", tmp_path / "h.csv")
     d, f = V.check_payments(pay)
-    for new, old in ((d, old_d), (f, old_f), (V.vendor_moves(pay), old_mv), (V.status(d, f, "RUN1"), old_st)):
+    legacy = V.assumptions()  # the legacy script leaves out only CAPITAL, D06 and D25; public higher education (Nov 9, 2026) is new
+    legacy["vendor_moves"]["excluded_agency_codes"] = ["CAPITAL", "D06", "D25"]
+    for new, old in ((d, old_d), (f, old_f), (V.vendor_moves(pay, legacy), old_mv), (V.status(d, f, "RUN1"), old_st)):
         pd.testing.assert_frame_equal(new[old.columns].reset_index(drop=True), old.reset_index(drop=True), check_dtype=False)
 
 

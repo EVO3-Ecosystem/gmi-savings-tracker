@@ -25,8 +25,10 @@ SOURCES = {
     "fund": ("Maryland Operating Budget - Funding Source", "Operating budget by fund type and fund source"),
     "fte": ("State of Maryland Full Time Equivalents", "Budgeted full-time-equivalent positions by agency and program"),
     "grants": ("State of Maryland Grant and Loan Data", "State aid grants (from FY2009) and loans (from FY2010) to for-profit and non-profit entities; the portal says $50,000 or more, but some rows are smaller"),
+    "highered": ("Maryland Operating Budget: CUR and CR", "Operating budget of public higher education (Morgan State, St. Mary's College, University System of Maryland, Baltimore City Community College), "
+                 "which the operating budget dataset leaves out; used only in all-funds totals labeled including public higher education, never in a GMI savings baseline"),
 }
-ORDER = ["payments", "budget", "fund", "fte", "grants"]
+ORDER = ["payments", "budget", "fund", "fte", "grants", "highered"]
 RUN_COLUMNS = ["run_id", "started_utc", "seconds", "status", "published", "checks", "passed", "warnings", "failed", "repairs",
                "payment_rows", "budget_rows", "mode"]
 
@@ -73,7 +75,8 @@ def pipeline_runs(data, hist_path):
         c = per.loc[r.run_id] if len(per) and r.run_id in per.index else None
         man = data / "raw" / r.run_id / "manifest.json"
         ds = {d["dataset"]: d["rows"] for d in json.loads(man.read_text())["datasets"]} if man.exists() else {}
-        mode = "fresh download" if (r.forced or r.downloaded == 5) else ("freshness reuse" if r.reused == 5 else "incremental")
+        n = len(ds) or 5  # datasets in that run (5 before the higher-education dataset was added)
+        mode = "fresh download" if (r.forced or r.downloaded == n) else ("freshness reuse" if r.reused == n else "incremental")
         out.append({"run_id": r.run_id, "started_utc": _started(r.run_id), "seconds": r.seconds, "status": r.status,
                     "published": int(c is not None and c.failed == 0 and r.status == "passed"),
                     "checks": None if c is None else int(c.checks), "passed": None if c is None else int(c.passed),
