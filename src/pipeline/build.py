@@ -13,7 +13,7 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-from ..models import backtest, forecast, opportunities, recommendations, savings
+from ..models import backtest, forecast, grant_groups, opportunities, payee_classifier, recommendations, savings
 from . import checks, facts, marts, reference
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -148,6 +148,8 @@ def build(run_id):
     backtest.write(con)  # Phase 5: the detectors rerun as of FY2022-FY2024, flags followed one year (mart.d_detector_backtest)
     savings.write(con, run_id, DATA)  # Phase 5: GMI's reported savings checked against payments
     recommendations.write(con, run_id, DATA)  # Phase 5: the six recommendations, the path to $50M, vendor drill-downs
+    payee_classifier.write(con)  # ML layer: payee type labels vs the name rules (docs/models/payee_classifier.md)
+    grant_groups.write(con)  # ML layer: grant descriptions grouped across grantor agencies, overlap leads (docs/models/grant_groups.md)
     res = checks.run(con._con, run_id, man)  # the checks record their own reads (ops.check_coverage), outside the lineage
     facts.build(con, run_id, man, DATA, checks.HIST)  # Data & pipeline tab: sources, runs, checks, master-list quality
     if res:
