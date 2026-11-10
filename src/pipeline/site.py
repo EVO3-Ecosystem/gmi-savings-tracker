@@ -157,8 +157,10 @@ def _inline(s):
 
     def link(m):
         text, url = m.group(1), m.group(2)
-        if url.startswith("docs/figures/"):
-            url = "figures/" + url[len("docs/figures/"):]
+        if url.startswith("#"):
+            url = f"{REPO}{url}"  # a README section: open it on the repository page
+        elif url.startswith("docs/figures/") and url.endswith(".png"):
+            url = "figures/" + url[len("docs/figures/"):]  # the site copies only the PNG figures
         elif not re.match(r"https?://", url):
             url = f"{REPO}/blob/main/{url}"
         return f'<a href="{url}">{text}</a>'
@@ -216,7 +218,13 @@ def readme_summary(readme):
         s = ln.strip()
         return not (s.startswith("<") or s.startswith("[![") or s.startswith("![") and "shields.io" in s)
 
+    hidden = False
     for ln in readme.splitlines():
+        if ln.strip().startswith("<details"):
+            hidden = True  # collapsed README detail stays on GitHub
+        if hidden:
+            hidden = not ln.strip().startswith("</details>")
+            continue
         if ln.startswith("## ") or ln.startswith("### "):
             sec = ln.lstrip("#").strip()
             if sec in sections:
