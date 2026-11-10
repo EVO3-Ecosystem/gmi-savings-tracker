@@ -88,12 +88,67 @@ def review_sheet(con, path=SHEET):
     return len(d)
 
 
+README = ROOT / "README.md"
+
+
+def readme_badges(con):
+    """Badge line for the README: check results and the data's as-of date, from the last build."""
+    rid = run_id(con)
+    r = con.execute("select count(*), count(*) filter (where result = 'pass'), count(*) filter (where result = 'fail') "
+                    "from ops.check_result where run_id = ?", [rid]).fetchone()
+    asof = f"{rid[:4]}--{rid[4:6]}--{rid[6:8]}"
+    color = "2da44e" if r[2] == 0 else "cf222e"
+    return (f"![Data checks](https://img.shields.io/badge/data%20checks-{r[1]}%20of%20{r[0]}%20pass%2C%20{r[2]}%20fail-{color}) "
+            f"![Data as of](https://img.shields.io/badge/data%20as%20of-{asof}-0969da)")
+
+
+def mm(v):
+    """Compact dollars for prose: $29M, $50.2M, $1.86M."""
+    v = float(v or 0)
+    if abs(v) >= 1e9:
+        return f"${v / 1e9:,.1f}B"
+    if abs(v) >= 1e7:
+        return f"${v / 1e6:,.1f}M".replace(".0M", "M")
+    return f"${v / 1e6:,.2f}M"
+
+
+def readme_facts(con):
+    """The README's "What it found" bullets, computed from the marts."""
+    sv = con.execute("select * from mart.d_savings").df()
+    gmi = sv[sv.source.str.contains("Government Modernization Initiative Final Report", na=False)]
+    saved = gmi[gmi.status == "Saved in FY2026"]
+    st = con.execute("select * from mart.d_savings_status").df()
+    pl = con.execute("select * from mart.d_plan50").df()
+    seen = set(st[st.status == "Seen"].check_id)
+    rec = sv[sv.check_id.isin(seen) & sv.type.str.contains("Recurring|Year over year", na=False)]
+    tot = pl.cumulative.max()
+    ev = ((rec.reported_low.fillna(0) + rec.reported_high.fillna(0)) / 2).sum() / tot
+    rate = pl.basis.str.extract(r"assumed ([\d.]+)%")[0].dropna()
+    op = con.execute("select count(*), sum(high), sum(likely) from mart.d_opps").fetchone()
+    ps = con.execute("select sum(groups), sum(review_amount) from mart.d_payment_screen_summary where rule = 'Possible duplicate'").fetchone()
+    si = con.execute("select sum(amount), max(verified_on), string_agg(agency, ' and ' order by agency) from mart.d_source_issues").fetchone()
+    other = len(sv) - len(gmi)
+    return "\n".join([
+        f"- **Reported savings:** GMI's January 26, 2026 report lists {len(gmi)} items" + ((" (plus a separate DGS facility estimate)" if other == 1 else f" (plus {other} separate DGS estimates)") if other else "")
+        + f". The {len(saved)} it describes as saved in FY2026 add up to {mm(saved.reported_low.sum())}, its own FY2026 total; the rest are yearly savings under way or projected and are not added to it.",
+        f"- **Payment evidence:** about {ev:.0%} of the path to {mm(tot)} has payment evidence; the path is conditional on reported savings recurring"
+        + (f" and an assumed {rate.iloc[0]}% from statewide contracts" if len(rate) else "")
+        + f" ({mm(pl.low.sum())}–{mm(pl.high.sum())} across the assumed ranges).",
+        f"- **Opportunities:** {op[0]} findings worth up to {mm(op[1])} a year ({mm(op[2])} likely). They are leads to review; they overlap and are not additive.",
+        f"- **Payment screen:** {int(ps[0])} possible duplicate payment groups ({mm(ps[1])} to review). None can be confirmed without payment records.",
+        f"- **Source data issue:** the published FY2022 payments data lists a second block of {mm(si[0])} for {si[2].title()}, confirmed on both State sites on "
+        f"{si[1]:%b} {si[1].day}, {si[1].year}. It is reported as a source issue, never as a lead.",
+    ])
+
+
 def main(argv=None, db=DB):
     con = duckdb.connect(str(db), read_only=True)
     try:
         OPPS.write_text(put(OPPS.read_text(), "opportunities", opportunities(con)))
         SCREEN.write_text(put(SCREEN.read_text(), "payment_screen", payment_screen(con)))
         n = review_sheet(con)
+        if README.exists():
+            README.write_text(put(put(README.read_text(), "readme", readme_facts(con)), "badges", readme_badges(con)))
     finally:
         con.close()
     print(f"doc_facts: opportunities and payment screen facts written; review sheet {n} leads ({DECISIONS})")

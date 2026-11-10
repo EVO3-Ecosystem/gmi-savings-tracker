@@ -1,205 +1,193 @@
 # GMI Savings Tracker
 
 [![CI](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/ci.yml)
+[![Pages](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/pages.yml/badge.svg)](https://evo3-ecosystem.github.io/gmi-savings-tracker/)
+<!-- facts:badges -->
+![Data checks](https://img.shields.io/badge/data%20checks-102%20of%20103%20pass%2C%200%20fail-2da44e) ![Data as of](https://img.shields.io/badge/data%20as%20of-2026--11--09-0969da)
+<!-- /facts:badges -->
+![Source](https://img.shields.io/badge/source-SODA%20API%20%C2%B7%206%20datasets-6e7781)
+[![License: MIT](https://img.shields.io/badge/license-MIT-6e7781)](LICENSE)
 
-An independent savings tracker for Maryland's Government Modernization Initiative (GMI): it checks reported savings against the state's own payments, and finds the next $50M. Prototype by Sierra Napier; not an official State of Maryland product.
+An independent check of Maryland's Government Modernization Initiative (GMI). It compares the savings GMI reported with what the State actually paid, and shows conditional paths to $50.2M a year with the evidence behind each. Prototype by Sierra Napier; not an official State of Maryland product.
+
+**All data comes from the State's open data portal through the SODA API** (opendata.maryland.gov). The State's own websites and DBM's budget documents are used only to verify it.
 
 ## Live demo
 
-**https://evo3-ecosystem.github.io/gmi-savings-tracker/**: the dashboard, built by `make site` from the checked-in export snapshot in `site_data/` and published by `.github/workflows/pages.yml` on every push to `main`. GitHub Pages must be enabled once in Settings > Pages > Source: GitHub Actions. To refresh the published data: `make export && make site-snapshot`, then commit `site_data/`.
+**https://evo3-ecosystem.github.io/gmi-savings-tracker/**
 
-The site also has a **data explorer** (`explorer.html`: SQL over the published tables in the browser with DuckDB-WASM, and a plain CSV browser when WebAssembly is blocked) and a **database catalog** (`catalog.html`: every table's layer, rows, columns, checks and lineage). Every exported mart is also written as Parquet (`site_data/parquet/`); `.github/workflows/publish_data.yml` publishes them to the Hugging Face dataset `thedatavigilante/maryland-gmi-spending` (needs the repository secret `HF_TOKEN`) and to a GitHub Release `data-<run_id>`. The duplicate and split payment screen is described in [docs/models/payment_screen.md](docs/models/payment_screen.md).
+| Page | What it shows |
+|---|---|
+| Dashboard | Nine tabs: overview, focus areas, savings tracker, opportunities, calculator, vendors, agencies, budget, data and pipeline |
+| AI layer (`ai.html`) | Payment screen, payee classifier, grant overlap, MCP server and briefs, each with its baseline and limits |
+| Data explorer (`explorer.html`) | SQL in the browser (DuckDB-WASM) over every published table, with a plain table viewer if WebAssembly is blocked |
+| Database catalog (`catalog.html`) | Every table's layer, rows, columns, checks and lineage |
 
-![Dashboard overview](docs/figures/dashboard_overview.png)
+Every number on these pages is computed from the published data files. Click a screenshot to open that page.
 
+<a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/"><img src="docs/figures/readme/overview.png" alt="Dashboard overview: FY2026 against FY2025, with the computed finding at the top"></a>
 
-A free, local pipeline for Maryland's budget, payments, funding, staffing and grants data: SODA pulls → Parquet files → one DuckDB database → dashboard CSVs. It replaces the pipeline that built the **GMI Savings Tracker** and **Maryland Spend Lens** dashboards, whose original code is saved here under `legacy/`.
+<table>
+<tr>
+<td width="50%"><a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/"><img src="docs/figures/readme/savings.png" alt="Savings tracker: reported items grouped as saved, under way and projected"></a><br><b>Savings tracker.</b> GMI's 17 items grouped by how the report words them; the four saved items equal its $29M.</td>
+<td width="50%"><a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/"><img src="docs/figures/readme/payment_screen.png" alt="Payment screen: leads by year and confidence, source issues shown separately"></a><br><b>Payment screen.</b> 8 leads by confidence; the FY2022 double listing is shown as a source issue, never a lead.</td>
+</tr>
+<tr>
+<td><a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/ai.html"><img src="docs/figures/readme/ai_layer.png" alt="AI layer page"></a><br><b>AI layer.</b> Each model with its baseline, result and limits.</td>
+<td><a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/explorer.html"><img src="docs/figures/readme/explorer.png" alt="Data explorer running SQL in the browser"></a><br><b>Data explorer.</b> SQL over every published table, in the browser.</td>
+</tr>
+<tr>
+<td><a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/catalog.html"><img src="docs/figures/readme/catalog.png" alt="Database catalog"></a><br><b>Database catalog.</b> Every table, column, check and lineage.</td>
+<td><a href="https://evo3-ecosystem.github.io/gmi-savings-tracker/"><img src="docs/figures/readme/calculator.png" alt="Calculator with the path to $50.2M"></a><br><b>Calculator.</b> The conditional path to $50.2M, with each assumption adjustable.</td>
+</tr>
+</table>
 
-Data governance (sources, every table's schema, known source issues, assumptions, change control) is in [docs/data-governance.md](docs/data-governance.md), rebuilt with `make docs`. The plan and reference lists are also in the *Maryland Transparency Data — Dev Wiki* (Roadmap & build plan tab).
+## What it found
 
-## How the pipeline works
+<!-- Generated by src/models/doc_facts.py on `make docs`; edit the code, not these lines. -->
+<!-- facts:readme -->
+- **Reported savings:** GMI's January 26, 2026 report lists 17 items (plus a separate DGS facility estimate). The 4 it describes as saved in FY2026 add up to $29M, its own FY2026 total; the rest are yearly savings under way or projected and are not added to it.
+- **Payment evidence:** about 10% of the path to $50.2M has payment evidence; the path is conditional on reported savings recurring and an assumed 3.5% from statewide contracts ($41.4M–$58.9M across the assumed ranges).
+- **Opportunities:** 396 findings worth up to $339.9M a year ($225.7M likely). They are leads to review; they overlap and are not additive.
+- **Payment screen:** 8 possible duplicate payment groups ($1.86M to review). None can be confirmed without payment records.
+- **Source data issue:** the published FY2022 payments data lists a second block of $874.5M for Maryland Environmental Service And Maryland Transportation Authority, confirmed on both State sites on Nov 10, 2026. It is reported as a source issue, never as a lead.
+<!-- /facts:readme -->
 
-```mermaid
-flowchart TB
-  subgraph S[Sources]
-    direction LR
-    A[opendata.maryland.gov<br/>SODA API, 5 datasets]
-    X[BLS · USAspending · Census<br/>DBM Managing for Results PDFs]
-  end
-  A -->|extract.py<br/>paged, retried, self-healing| R[(raw Parquet<br/>per run + manifest)]
-  X -->|enrich.py| R
-  R -->|build.py| D[(DuckDB<br/>raw · ref · core · ops)]
-  F[reference/*.csv<br/>rules and decisions] --> D
-  D -->|checks.py<br/>stop or warn| Q{all stop<br/>checks pass?}
-  Q -->|no| K[keep last good DB]
-  Q -->|yes| M[marts]
-  subgraph O[Publish and verify]
-    direction LR
-    E[data/export<br/>dashboard CSVs + manifest]
-    PA[docs/parity<br/>legacy comparison]
-    PV[page tests<br/>self-contained preview]
-    G[schemas · drift · coverage]
-    P[docs/figures]
-  end
-  M -->|export.py| E
-  M -->|parity.py| PA
-  E -->|preview.py| PV
-  subgraph RC[Independent website reconciliation]
-    direction LR
-    W[mtp.maryland.gov<br/>website downloads, 4 datasets]
-    C[reconciliation<br/>by fiscal year]
-    W -->|reconcile.py| C
-  end
-  D --> C
-  D -->|governance.py| G[schemas · drift · coverage]
-  D -->|figures.py| P[docs/figures]
-```
+## Data
 
-### Datasets
+| Dataset | Portal ID | Rows | Years | Verified against |
+|---|---|---|---|---|
+| Operating budget | [yu65-jmmv](https://opendata.maryland.gov/d/yu65-jmmv) | 741,957 | FY2017–FY2027 | mtp.maryland.gov download; operatingbudget.maryland.gov totals |
+| Funding source | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | 26,178 | FY2017–FY2027 | budgetsource.maryland.gov download |
+| Payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | 411,231 | FY2008–FY2027 (FY2027 partial) | vendorpayments.maryland.gov download and totals |
+| Grants and loans | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | 23,085 | FY2009–FY2025 | grantsandloans.maryland.gov download |
+| Budgeted full-time equivalents (FTEs) | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | FY2017–FY2027 | The portal's own count and yearly totals. Its portal page reads the same table as the API, and no separate State website publishes it (checked Nov 10, 2026); a check against DBM's budget documents is planned |
+| Public higher education budget | [4mca-332u](https://opendata.maryland.gov/d/4mca-332u) | 84,446 | FY2017–FY2027 | The portal's own count and yearly totals. Reported separately and kept out of every savings baseline |
 
-All five datasets are extracted through the API and checked against the portal's own row count and yearly totals. The four datasets with a website download also get an independent, year-by-year website/API comparison (`make reconcile`; results in `docs/reconciliation/`). Positions has no website download to compare.
+![Rows per fiscal year, by dataset](docs/figures/rows_by_year.png)
 
-| Dataset | Portal ID | API rows | Website download | Years | Match |
-|---|---|---|---|---|---|
-| Operating budget | [yu65-jmmv](https://opendata.maryland.gov/d/yu65-jmmv) | 741,957 | mtp.maryland.gov | FY2017–FY2027 | every year |
-| Funding source | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | 26,178 | budgetsource.maryland.gov | FY2017–FY2027 | every year |
-| Payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | 411,231 | vendorpayments.maryland.gov | FY2008–FY2027 (FY2027 partial) | every year |
-| Grants and loans | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | 23,085 | grantsandloans.maryland.gov | FY2009–FY2025 | every year |
-| Budgeted positions | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | not on View Data | FY2017–FY2027 | Matches the portal's own count and yearly totals; no website download to compare |
+Counts are from the Nov 9, 2026 run. Every run checks each dataset's row count and yearly totals against the portal's own figures before anything is built.
 
-Counts from the Nov 2, 2026 run. Not extracted: County Board of Education spending ([t6vk-rvwe](https://opendata.maryland.gov/d/t6vk-rvwe)), linked from the portal's menu; it covers county school boards, not State agencies. Full schemas, owners and known source issues are in [docs/data-governance.md](docs/data-governance.md).
+**Independent checks, Nov 9–10, 2026** (`docs/reconciliation/`):
+- Budget totals FY2025–FY2027 equal operatingbudget.maryland.gov to the dollar.
+- Payment totals FY2024–FY2027 equal vendorpayments.maryland.gov to the cent.
+- DBM Volume 2 budget books: 69% (FY2021) and 80% (FY2022) of programs equal to the dollar, against a 60% threshold.
+- The four website downloads match the API year by year (`make reconcile`).
 
-![Rows per fiscal year](docs/figures/rows_by_year.png)
+![API extract vs website downloads, by fiscal year](docs/figures/reconciliation.png)
 
-![API extract vs website downloads](docs/figures/reconciliation.png)
+**Known source issues** (`docs/data-governance.md`):
+- The payments and grants data hold yearly totals per payee, not individual payments: the date field is always January 1. Timing rules (duplicate windows, split purchases, monthly forecasts) cannot run on this data.
+- The portal's budget and FTE descriptions use out-of-date stage labels, so stages come from `reference/budget_stage.csv`, checked against DBM's budget books.
+- The FY2022 payments double listing described above.
 
-![Operating budget by stage](docs/figures/budget_by_stage.png)
+Context sources (`src/pipeline/enrich.py`; a failure warns, never blocks): CPI-U (BLS, with FRED as fallback), federal awards to Maryland (USAspending), population (Census) and every agency's Managing for Results plan (DBM).
 
-![Vendor concentration](docs/figures/vendor_concentration.png)
+**API version.** The extract uses the SODA 2.1 endpoints (`/resource/<id>.json`) through `sodapy`, which work without a token; Tyler Technologies says SODA 2.1 remains fully supported. The SODA3 endpoint (`/api/v3/views/<id>/query.json`) requires an app token; see [Next steps](#next-steps).
 
-![Concentration by focus area](docs/figures/vendor_concentration_hhi.png)
+## How it works
 
-The dashboard's Vendors tab is built on `sql/mart/34-39`: private vendors paid by 15 or more agencies, concentration (top-five share and HHI) by focus area, the largest vendors per area and companies paid under several names. It is scored against [docs/portfolio-rubric.md](docs/portfolio-rubric.md).
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/readme/pipeline_dark.png">
+  <img src="docs/figures/readme/pipeline_light.png" alt="Pipeline: SODA API to raw Parquet to DuckDB with 103 checks, then 51 marts and models, 53 published files, the Pages site, a data release and a read-only MCP server; State sites and DBM books verify the database">
+</picture>
 
-The website's budget download labels FY2021 "Working", FY2022 "Appropriation" and FY2027 "Governor's Allowance". The budget site's own statement and DBM's budget books say FY2021 and FY2022 are actuals and FY2027 is the Legislative Appropriation, so stages come from `reference/budget_stage.csv` (`docs/reconciliation/budget_stage_labels.csv`).
+<details>
+<summary>Full pipeline diagram (Mermaid source)</summary>
 
-## Status
+See [docs/figures/pipeline.mmd](docs/figures/pipeline.mmd); `make diagrams` renders it.
 
-| Phase | State | Gate |
+</details>
+
+| Step | Module | Result |
 |---|---|---|
-| 1. Extract | **Done** (Oct 28, 2026) | Two runs in a row matched portal row counts for all five datasets ✔ |
-| 2. Database | **Done** (Oct 29, 2026) | 30 of 30 checks pass; all five datasets' yearly totals tie to the portal to the cent ✔ |
-| 3. Reference data | **Done** (Oct 29, 2026) | Match rates equal the dashboard's; controllable purchases and focus areas FY2025 match it to the dollar ✔ |
-| 4. Marts & dashboard | **Base files done** (Nov 2, 2026) | 21 dashboard files: 12 reproduced exactly, 9 differences explained (`docs/parity/`) ✔; vendor, budget and overlap marts added since; analytics files move with Phase 5 |
-| 5. Analytics | **5a in progress** | Outputs match the dashboard; publish gate, fault-injection test, snapshots, the Data & pipeline facts, the forecasts, the opportunity detectors, the savings checks, the recommendations, the measures catalog and the stage evidence done: **all 44 dashboard files now come from the database; none is carried**. The dashboard's 34 page tests pass against that export (`python -m src.pipeline.preview`); not compared file by file with the published legacy CSVs, and cross-checks against the state sites and the detector backtest are open |
-| 6. Automate & document | — | Two clean scheduled runs with no manual steps |
+| Extract | `src/pipeline/extract.py` | One Parquet file per dataset per run, with a manifest; reuses unchanged data, re-downloads on a count mismatch |
+| Build and check | `build.py`, `checks.py` | DuckDB layers; 103 checks; a failed stop check keeps the last good database |
+| Rules | `reference/*.csv` (18 files) | Every mapping and decision in a reviewed file with its reason |
+| Marts | `sql/mart/` (51 files) | The tables the dashboard reads |
+| Models | `src/models/` | Forecasts, opportunity detectors, savings checks, payment screen, payee classifier, grant groups, each with a model card in `docs/models/` |
+| Publish | `export.py`, `site.py`, `publish.py` | Export refused unless every stop check passes; static site; data release |
+| AI access | `src/mcp/`, `src/briefs/` | Read-only MCP server; one-line briefs with a number guardrail |
 
-Next up is Phase 5a: replace the Data & pipeline tab's old-pipeline facts, port the cross-checks, and make `export.py` refuse a failed build. The full gap list is in [docs/roadmap.md](docs/roadmap.md).
+## AI layer
 
-CI (lint, compile check, tests) was red from Nov 2 to Nov 6, 2026: the editable install exposed `pipeline` instead of `src`, so `from src.pipeline import ...` failed at test collection. Fixed by declaring the packages in `pyproject.toml`; `main` is green again.
+| Piece | Result | Limit |
+|---|---|---|
+| Payment screen | 8 leads, $1.86M to review; a confirmation rate is not measurable | Yearly totals, not payments |
+| Payee classifier | Not adopted: macro F1 0.47 against 0.56 for the rules. Kept as a review queue of 2,475 names | Labels from one annotator |
+| Grant overlap | After resolving renamed agencies, 2 of the top 20 groups are real overlaps | Leads only, not additive |
+| MCP server | 6 read-only tools; 30 of 30 test questions answered exactly; 75 security tests | Local use (Claude Desktop or Claude Code) |
+| Briefs | 75 of 75 template briefs pass the number guardrail | Live Gemini needs `GEMINI_API_KEY` |
 
 ## Run it
+
+<details open>
+<summary>Commands</summary>
 
 Python 3.10 or newer.
 
 ```bash
-pip install -e ".[dev]"   # runtime dependencies, pytest and ruff (what CI installs)
-make extract        # download what changed since the last good run
-make extract-full   # download everything
-make gate1          # Phase 1 gate: last two runs matched the portal
-make build          # Phase 2: DuckDB layers + checks (non-zero exit on a failed check)
-make all            # extract then build
-make test           # CI runs the same; data-dependent tests skip when data/ is absent
-make test-fault     # damage a copy of the raw run and check the build fails and keeps the last good database
-make snapshot       # portable Parquet snapshot of the database in data/snapshots/ (manifest with row counts and checksums)
-make restore SNAP=data/snapshots/<folder>   # verify checksums, import, check row counts (RESTORE_FLAGS=--force to replace)
-make export         # dashboard CSVs; refused unless every stop check passed and parity has no unexplained difference
-make parity         # compare the marts with the legacy dashboard files (LEGACY=path to the old out/ folder)
-python -m src.pipeline.export                      # all 44 dashboard CSVs from the marts into data/export/ (no legacy files needed)
-python -m src.pipeline.preview                     # dashboard page tests on the export, then a self-contained preview
-make reconcile      # compare four website downloads with the API (about 750 MB; RECONCILE_FLAGS=--reuse)
-make figures        # rebuild figures; database-backed charts require data/md_transparency.duckdb
-make diagrams       # render pipeline.png and data_hierarchy.png from their Mermaid sources (needs mmdc)
-make docs           # data governance: schemas, coverage, drift
+pip install -e ".[dev]"             # what CI installs; add mcp, ai, ml extras as needed: ".[dev,mcp,ai,ml]"
+make all                            # extract, then build and check
+make test                           # tests; data-dependent ones skip when data/ is absent
+make export                         # dashboard files (refused after a failed build)
+make site                           # static site in site/ from data/export/latest, else site_data/
+make site-artifact ARTIFACT_OUT=... # the same site without Parquet, for a claude.ai artifact
+make reconcile                      # website downloads vs the API (about 750 MB)
+make docs                           # data governance, schemas and generated facts
+python -m src.mcp.server            # MCP server over stdio (docs/mcp.md has the client setup)
+python -m src.briefs.generate       # briefs (template backend without a key)
+python -m src.pipeline.publish --dry-run   # validate a data release without network
 ```
 
-An app token is optional: copy `.env.example` to `.env` and set `MD_SODA_APP_TOKEN`. Without one, a full download takes about 2.5 minutes; a run where nothing changed takes about 4 seconds.
+All `make` targets: extract, extract-full, build, all, test, test-fault, reconcile, parity, export, snapshot, restore, figures, diagrams, docs, docs-strict, site, site-snapshot, site-artifact.
 
-## Phase 1: extract (`src/pipeline/extract.py`)
+Secrets: `MD_SODA_APP_TOKEN` (optional for SODA 2.1, required for SODA3), `HF_TOKEN` (Hugging Face upload), `GEMINI_API_KEY` (live briefs). Copy `.env.example` to `.env` for local use; in CI they are repository secrets. None is ever committed.
 
-For each dataset in `config/datasets.yaml` (budget yu65-jmmv, fund gy87-e27x, fte x8qy-486w, payments 7syw-q4cy, grants absk-avps):
+</details>
 
-1. Reads the portal's `rowsUpdatedAt`, its own `count(*)` and its own per-year totals.
-2. **Freshness check:** if `rowsUpdatedAt` is unchanged since the last good run, reuses that run's Parquet (hard link) instead of downloading.
-3. Otherwise downloads 20,000-row pages ordered by `:id`, retrying each page with exponential backoff (50,000-row pages drop without a token).
-4. **Self-healing:** if the file's row count differs from the portal's, re-downloads it (up to twice), re-reading the portal's count in case it changed mid-run. Tested with `EXTRACT_FAULT=fte`, which drops half the rows: the run repaired it and passed.
-5. Writes `data/raw/<run_id>/<dataset>.parquet` and `manifest.json` (rows, portal count, match, `rowsUpdatedAt`, source, seconds, repairs, per-year portal totals for the Phase 2 totals check).
-6. **Feedback loop:** every run, including failed ones, is appended to `data/runs.csv`. A failed run exits non-zero and is never reused.
+## Repository layout
 
-Gate runs, Oct 28, 2026 (1,208,477 rows each):
-
-| Run | Mode | Time | Result |
-|---|---|---|---|
-| 20261028T202434Z | first download | 168 s | all five match |
-| 20261028T202736Z | forced download, test fault in fte | 148 s | fte repaired by re-download; all five match |
-| 20261028T203005Z | freshness check (portal unchanged) | 3.5 s | all five reused and match |
-
-Budget (11 years) and payments (20 years) per-year sums from the downloaded files equal the portal's own totals to the cent.
-
-## Phase 2: database (`src/pipeline/build.py`, `checks.py`)
-
-Builds `data/md_transparency.duckdb` from a run's files in about 9 seconds: `raw` (as delivered), `ref` (agencies, functions, objects, sub-objects, fund types, budget stages), `core` (typed and normalized facts, plus CPI by fiscal year, federal awards, population, and the Managing for Results document index), `ops` (source snapshot, portal yearly totals, enrichment status, check results, run log). Every check is recorded in `ops.check_result` and `data/check_history.csv`. A failed stop check exits non-zero and **keeps the last good database**; the failed build is saved as `md_transparency.failed.duckdb` for inspection (tested by faking a one-row mismatch).
-
-Context sources pulled with each extract (`src/pipeline/enrich.py`, warnings never block): CPI-U (BLS, falling back to FRED when BLS's shared daily limit is hit), federal grants to Maryland governments (USAspending), Maryland population (Census estimates), and every agency's Managing for Results plan (DBM, 111 PDFs for FY2027). See `docs/recommendations.md`.
-
-## Phase 3: reference data (`reference/*.csv`, `src/pipeline/reference.py`)
-
-Every rule the dashboard pipeline kept in code now lives in a CSV, so each change has an author and a date: payment agency rules and decisions, vendor families and normalization, payee focus areas, controllable-purchase rules, focus-area rules, budget stages, GMI's 14 reported savings items, the Managing for Results plan-to-agency map, and the dashboard's quality baseline. `reference.py` applies them to build `ref.map_payment_agency`, `ref.map_payee_vendor`, `ref.map_focus_area`, `core.fact_payment_mapped`, `core.fact_budget_scope` (controllable flag, scope and focus area per budget line) and `core.mfr_measure` (every performance measure and yearly value read from the plans). Results, Oct 29, 2026:
-
-| Measure | Pipeline | Dashboard |
-|---|---|---|
-| FY2026 payment dollars matched to a budget agency | 100.00% | 100.00% |
-| Payment agency names mapped | 143 of 145 (141 on Oct 29, before the Nov 4 agency decisions) | 141 of 145 |
-| Payee names grouped into multi-name companies | 9,686 in 4,478 (all years) | 9,474 in 4,377 (FY2026 payees) |
-| Controllable purchases, FY2025 | $4,093,855,308 | $4,093,855,308 |
-| Focus areas, FY2025 | $1,287,718,788 in 96 codes | $1,287,718,788 in 96 codes |
-| Managing for Results | 2,957 measures, 106 of 111 plans matched to an agency | — |
-
-## Layout
+<details>
+<summary>Folders</summary>
 
 ```
-.github/                 CI, manual extract smoke test, issue and PR templates
-docs/                    roadmap, checks, data sources, data governance, portfolio rubric and recommendations,
-                         schemas/, reconciliation/, parity/, figures/
-scripts/bootstrap_github.sh  one-time labels, milestones and phase issues
-config/datasets.yaml     dataset IDs, page size, retries, backoff, heal attempts
-config/dashboard.yaml    the dashboard's data files: columns, keys and which mart builds each
-reference/               hand-kept CSVs (16): agency, vendor, payee-type, focus-area and budget-stage rules and decisions, GMI's reported savings, stage evidence
-sql/mart/                one SQL file per mart (43), run in order by marts.py
-src/pipeline/            extract, enrich, build, checks, reference, marts, parity, export, preview,
-                         reconcile, figures, governance
-tests/                   pytest checks (data-dependent ones skip when data/ is absent)
-data/                    git-ignored: raw/<run_id>/, runs.csv, md_transparency.duckdb, export/
-legacy/gst/              the original GMI Savings Tracker pipeline (see below)
+config/        datasets, dashboard files, assumptions
+reference/     reviewed rules and decisions (CSV)
+sql/mart/      one SQL file per mart
+src/pipeline/  extract, enrich, build, checks, marts, export, site, publish, reconcile, parity, governance
+src/models/    forecasts, detectors, savings, payment screen, classifier, grant groups
+src/mcp/       read-only MCP server
+src/briefs/    briefs and their guardrail
+tests/         pytest
+docs/          data governance, model cards, checks, reconciliation, parity, reviews, roadmap
+site_data/     checked-in export snapshot the Pages site is built from
+data/          git-ignored: raw runs, database, exports
+legacy/        the original pandas pipeline and dashboard, kept as the parity baseline
 ```
 
-## Legacy pipeline (`legacy/gst/`) — the spec for phases 2–5
+</details>
 
-The code that built the GMI Savings Tracker (pandas, not DuckDB). Run order, from `scripts/run.py`:
+## Status
 
-| Order | Script | What it does |
-|---|---|---|
-| 1 | `common.py` | Paths, HTTP with retries, SODA paging, the run log and checks |
-| 2 | `sources.py` | Downloads the five datasets per year, reconciles each year to the portal's count and sum, re-downloads mismatches |
-| 3 | `budget_legacy.py`, `payments_legacy.py` | Earlier Spend Lens logic reused: controllable-purchase rules, focus-area tagging by payee name, pass-through exclusions |
-| 4 | `model.py` | Budget model, official stage labels read from operatingbudget.maryland.gov, agency master list (payment names → budget codes), **vendor master list rules** (`FAMILIES` regex and spacing merges), payments model, agency-year table |
-| 5 | `measures.py` | Year-over-year measures (DAX-style), catalog |
-| 6 | `savings.py` | GMI reported savings (Joint Chairmen's Report, Jan 26, 2026) and the payee-name payment check for each item |
-| 7 | `opportunities.py` | Four savings detectors (peer gap, growth above trend, tail spend, leverage) |
-| 8 | `forecast.py` | Backtested forecasts (trend, naive, drift) with bootstrap intervals; GMI-rate defaults; General Fund shares |
-| 9 | `recs.py` | Recommendation outputs: bid list, vendor drill-downs, contract candidate sets, savings status history, path to $50M, master list quality |
-| 10 | `run.py` | Orchestrates 2–9, runs ~90 checks, publishes only if none fail, records run history |
-| 11 | `page_test.py` | Renders the dashboard page in headless Chromium across filter combinations and checks totals reconcile |
-| 12 | `report.py` | Optional PDF report of the dashboard |
+| Phase | State |
+|---|---|
+| 1. Extract | Done, Oct 28, 2026 |
+| 2. Database | Done, Oct 29, 2026 |
+| 3. Reference data | Done, Oct 29, 2026 |
+| 4. Marts and dashboard | Done, Nov 2, 2026 |
+| 5. Analytics and verification | Done, Nov 10, 2026: all published files built from the database; published-file parity, 30 files, 0 unexplained; State-site cross-checks; detector backtest |
+| 6. Automate | Open: two clean scheduled runs with no manual steps |
 
-`page/index.html` is the dashboard page; `deploy/powerbi/measures.dax` holds the same measures for Power BI; `stage_evidence.csv` records how the budget stage of each year was confirmed.
+## Next steps
+
+- Sierra's review of the 8 payment leads (`docs/reviews/payment_screen_review_sheet.csv`) and the 400 payee labels (`reference/payee_labels_sample.csv`).
+- Check FTE totals against DBM's budget documents.
+- Move the extract to SODA3 once `MD_SODA_APP_TOKEN` is a repository secret, keeping SODA 2.1 as a fallback.
+- Ask the Comptroller for payment-level dated records and about the FY2022 double listing.
+
+Full history and the gap list: [docs/roadmap.md](docs/roadmap.md). Data governance: [docs/data-governance.md](docs/data-governance.md). Checks: [docs/checks.md](docs/checks.md).
+
+## License
+
+Code: [MIT](LICENSE). Data: Maryland open data, subject to the portal's terms; DBM and DoIT do not guarantee its accuracy or completeness.

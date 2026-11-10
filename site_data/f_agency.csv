@@ -8,10 +8,6 @@ D90,Canal Place Preservation and Development Authority,2026,Working budget,22141
 D27,Maryland Commission On Civil Rights,2026,Working budget,6888902.0,469333.0,50.0,163994.7
 L00,Department of Agriculture,2026,Working budget,119669815.0,11060270.0,430.5,96834128.83
 F10,Department of Budget and Management,2026,Working budget,190671463.0,12681460.0,344.0,29314383.54
-N00,Department of Human Services,2026,Working budget,4024136649.0,416405272.0,5870.38,754726058.41
-F50,Department of Information Technology,2026,Working budget,284117301.0,254035290.0,262.0,235641575.81
-P00,Maryland Department of Labor,2026,Working budget,708359097.0,150842358.0,1933.87,305635846.81
-D24,Department of Social and Economic Mobility,2026,Working budget,16542100.0,2389875.0,70.0,809306.64
 D80,Maryland Insurance Administration,2026,Working budget,57441809.0,18663460.0,281.0,11744124.41
 E75,Maryland Lottery and Gaming Control Agency,2026,Working budget,133130193.0,91826571.0,354.75,79913481.37
 D40,Department of Planning,2026,Working budget,48513255.0,3408861.0,142.0,10639629.18
@@ -30,10 +26,6 @@ D05,Board of Public Works,2027,Legislative appropriation,43173577.0,151535.0,11.
 E00,Comptroller of Maryland,2027,Legislative appropriation,225312421.0,56342599.0,1403.1,
 T00,Department of Commerce,2027,Legislative appropriation,264460105.0,19895679.0,209.0,
 H00,Department of General Services,2027,Legislative appropriation,229479753.0,35418982.0,750.0,
-V00,Department of Juvenile Services,2027,Legislative appropriation,382611069.0,44180306.0,2134.95,
-K00,Department of Natural Resources,2027,Legislative appropriation,591332031.0,97712222.0,1533.0,
-I00,Department of Service and Civic Innovation,2027,Legislative appropriation,69973018.0,5435444.0,66.0,
-U00,Department of the Environment,2027,Legislative appropriation,638553583.0,24990367.0,1003.0,
 S00,Department of Housing and Community Development,2027,Legislative appropriation,902223261.0,22840764.0,447.0,
 Q00,Department of Public Safety and Correctional Services,2027,Legislative appropriation,1915111703.0,274810525.0,9199.4,
 D55,Department of Veterans and Military Families,2027,Legislative appropriation,68679552.0,5561395.0,125.0,
@@ -45,18 +37,26 @@ J00,Department of Transportation,2027,Legislative appropriation,7057146747.0,223
 D23,Maryland Cannabis Administration,2027,Legislative appropriation,31338189.0,9827567.0,101.0,
 D26,Department of Aging,2027,Legislative appropriation,83539720.0,2245654.0,50.0,
 M00,Maryland Department of Health,2027,Legislative appropriation,23244967451.0,537082356.0,9963.74,
-D53,Maryland Institute for Emergency Medical Services Systems,2027,Legislative appropriation,25991716.0,7575019.0,101.0,
-T50,Maryland Technology Development Corporation,2027,Legislative appropriation,67793984.0,0.0,,
-D50,Military Department,2027,Legislative appropriation,38776091.0,8441710.0,167.5,
-D74,Office of the Correctional Ombudsman,2027,Legislative appropriation,2162141.0,152643.0,13.0,
-C80,Office of the Public Defender,2027,Legislative appropriation,173779642.0,10959695.0,1011.5,
-E80,Property Tax Assessment Appeals Boards,2027,Legislative appropriation,1386316.0,120002.0,8.0,
-D16,Secretary of State,2027,Legislative appropriation,6325707.0,862712.0,29.0,
-D13,Maryland Energy Administration,2017,Actual,40609834.0,774422.0,28.0,21975004.28
-D17,Historic St. Mary's City Commission,2017,Actual,3391066.0,836935.0,29.0,273986.0
+D78,Maryland Health Benefit Exchange,2027,Legislative appropriation,957350350.0,96016797.0,91.0,
+R99,Maryland School for the Deaf,2027,Legislative appropriation,51213986.0,6406892.0,372.5,
+D60,State Archives,2027,Legislative appropriation,15063859.0,5577560.0,64.0,
+W00,Department of State Police,2027,Legislative appropriation,684813694.0,87760521.0,2574.0,
+E50,State Department of Assessments and Taxation,2027,Legislative appropriation,185345743.0,20565923.0,568.3,
+E20,State Treasurer's Office,2027,Legislative appropriation,33893905.0,13862259.0,96.0,
+C94,Subsequent Injury Fund,2027,Legislative appropriation,3557450.0,322022.0,17.0,
+D91,West North Avenue Development Authority,2027,Legislative appropriation,21588415.0,162780.0,15.0,
+D15,"Executive Department-Boards, Commissions and Offices",2017,Actual,143457256.0,1377953.0,101.1,124992724.14
+D90,Canal Place Preservation and Development Authority,2017,Actual,813329.0,301935.0,3.0,193605.94
+D27,Maryland Commission On Civil Rights,2017,Actual,3190111.0,226276.0,31.0,40307.24
+F10,Department of Budget and Management,2017,Actual,34364424.0,5785593.0,332.0,11341418.21
+D12,Department of Disabilities,2017,Actual,10634060.0,5839460.0,26.6,7227162.95
+F50,Department of Information Technology,2017,Actual,74380975.0,56292164.0,248.6,83923434.29
+R62,Maryland Higher Education Commission,2017,Actual,498550987.0,4811486.0,54.6,400519303.02
+D80,Maryland Insurance Administration,2017,Actual,30830010.0,5181906.0,257.0,3987631.62
+D40,Department of Planning,2017,Actual,26290451.0,1699695.0,130.0,4548134.82
+R15,Maryland Public Broadcasting Commission,2017,Actual,26507912.0,12415251.0,145.0,10613252.97
+D28,Maryland Stadium Authority,2017,Actual,49224856.0,250000.0,0.0,100470261.84
 R00,State Department of Education,2017,Actual,7660919346.0,81323964.0,1409.9,7399750306.89
-E75,Maryland Lottery and Gaming Control Agency,2017,Actual,97484537.0,70374990.0,324.1,73968631.57
-G20,Maryland State Retirement and Pension Systems,2017,Actual,20070260.0,6351518.0,197.0,7878193.99
 C96,Uninsured Employers' Fund,2017,Actual,1589940.0,513596.0,14.0,5121345.78
 C98,Workers' Compensation Commission,2017,Actual,15050908.0,3032124.0,115.0,2497482.86
 D15,"Executive Department-Boards, Commissions and Offices",2018,Actual,159343949.0,1312140.0,103.1,135756328.55
@@ -80,12 +80,32 @@ X00,Public Debt,2018,Actual,1234920771.0,0.0,,1236582651.02
 D38,State Board of Elections,2018,Actual,19864337.0,15508062.0,41.8,16642261.79
 D13,Maryland Energy Administration,2019,Actual,33097353.0,1036485.0,28.0,16763860.83
 D17,Historic St. Mary's City Commission,2019,Actual,3810741.0,664637.0,31.0,217385.27
-R62,Maryland Higher Education Commission,2017,Actual,498550987.0,4811486.0,54.6,400519303.02
-D80,Maryland Insurance Administration,2017,Actual,30830010.0,5181906.0,257.0,3987631.62
-D40,Department of Planning,2017,Actual,26290451.0,1699695.0,130.0,4548134.82
-R15,Maryland Public Broadcasting Commission,2017,Actual,26507912.0,12415251.0,145.0,10613252.97
-D28,Maryland Stadium Authority,2017,Actual,49224856.0,250000.0,0.0,100470261.84
-D15,"Executive Department-Boards, Commissions and Offices",2017,Actual,143457256.0,1377953.0,101.1,124992724.14
+R00,State Department of Education,2019,Actual,7935732330.0,94257663.0,1412.9,7541797857.13
+R11,Maryland State Library Agency,2019,Actual,85606486.0,1073265.0,28.0,78612687.21
+E75,Maryland Lottery and Gaming Control Agency,2019,Actual,97101767.0,70104915.0,324.1,68811152.63
+G20,Maryland State Retirement and Pension Systems,2019,Actual,20353368.0,9047398.0,171.0,14067296.97
+G50,Maryland State Employees Supplemental Retirement Plans,2019,Actual,1835615.0,310214.0,13.0,215000.3
+C85,Maryland Tax Court,2019,Actual,631670.0,19854.0,8.0,15844.7
+L00,Department of Agriculture,2019,Actual,93802525.0,9206602.0,352.1,60873063.29
+C82,Office of the State Prosecutor,2019,Actual,1400508.0,151952.0,13.0,111864.66
+A15,Payments to Civil Divisions of the State,2019,Actual,168462833.0,0.0,,168462833.0
+C90,Public Service Commission,2019,Actual,17893615.0,1316622.0,137.0,1286160.64
+X00,Public Debt,2019,Actual,1298317506.0,0.0,,1295010632.18
+D38,State Board of Elections,2019,Actual,26245024.0,21257087.0,41.8,23006731.14
+C96,Uninsured Employers' Fund,2019,Actual,2010988.0,590550.0,13.0,9386703.29
+C98,Workers' Compensation Commission,2019,Actual,16901399.0,4654300.0,115.0,4083657.46
+T00,Department of Commerce,2020,Actual,210282242.0,16602200.0,188.0,82178490.68
+H00,Department of General Services,2020,Actual,78960081.0,25458999.0,641.0,699449967.77
+V00,Department of Juvenile Services,2020,Actual,265469759.0,32765597.0,2012.1,62405457.97
+K00,Department of Natural Resources,2020,Actual,392822408.0,41396670.0,1348.8,69428101.34
+U00,Department of the Environment,2020,Actual,448536324.0,16918726.0,893.0,446268963.73
+M00,Maryland Department of Health,2020,Actual,15349788350.0,526442149.0,9975.5,12923057045.64
+D60,State Archives,2020,Actual,8830734.0,2276599.0,63.0,2387770.0
+P00,Maryland Department of Labor,2017,Actual,347269548.0,43714628.0,1511.7,195182273.03
+D13,Maryland Energy Administration,2017,Actual,40609834.0,774422.0,28.0,21975004.28
+D17,Historic St. Mary's City Commission,2017,Actual,3391066.0,836935.0,29.0,273986.0
+E75,Maryland Lottery and Gaming Control Agency,2017,Actual,97484537.0,70374990.0,324.1,73968631.57
+G20,Maryland State Retirement and Pension Systems,2017,Actual,20070260.0,6351518.0,197.0,7878193.99
 G50,Maryland State Employees Supplemental Retirement Plans,2017,Actual,1782930.0,343552.0,13.0,241133.98
 C85,Maryland Tax Court,2017,Actual,631993.0,18948.0,8.0,14512.54
 L00,Department of Agriculture,2017,Actual,70576650.0,8011391.0,356.1,45510411.37
@@ -126,31 +146,31 @@ D80,Maryland Insurance Administration,2019,Actual,30943980.0,4896650.0,259.0,363
 D40,Department of Planning,2019,Actual,29151088.0,2064743.0,129.0,5555263.45
 R15,Maryland Public Broadcasting Commission,2019,Actual,33112157.0,16370039.0,145.0,11911270.64
 D28,Maryland Stadium Authority,2019,Actual,49816336.0,501500.0,0.0,138346379.8
-R00,State Department of Education,2019,Actual,7935732330.0,94257663.0,1412.9,7541797857.13
-L00,Department of Agriculture,2019,Actual,93802525.0,9206602.0,352.1,60873063.29
 N00,Department of Human Services,2019,Actual,2335581589.0,291485102.0,6120.0,582079076.37
 S50,Maryland African American Museum Corporation,2019,Actual,1959000.0,0.0,,1959000.0
 D99,Office of Administrative Hearings,2019,Actual,16284.0,16284.0,118.0,2131361.86
 D11,Office of the Deaf and Hard of Hearing,2019,Actual,359223.0,56180.0,3.0,43428.69
 C91,Office of People's Counsel,2019,Actual,4103969.0,169101.0,19.0,1456293.82
 C81,Office of the Attorney General,2019,Actual,32263056.0,5578567.0,269.5,8475966.53
-C98,Workers' Compensation Commission,2019,Actual,16901399.0,4654300.0,115.0,4083657.46
 D05,Board of Public Works,2020,Actual,9906106.0,34019.0,9.0,8747752.56
 E00,Comptroller of Maryland,2020,Actual,122568579.0,28569219.0,1112.9,318885586.9
 D21,Governor's Office of Crime Prevention and Policy,2020,Actual,194212653.0,2228266.0,61.0,22462209.44
-T00,Department of Commerce,2020,Actual,210282242.0,16602200.0,188.0,82178490.68
-H00,Department of General Services,2020,Actual,78960081.0,25458999.0,641.0,699449967.77
-V00,Department of Juvenile Services,2020,Actual,265469759.0,32765597.0,2012.1,62405457.97
-K00,Department of Natural Resources,2020,Actual,392822408.0,41396670.0,1348.8,69428101.34
-U00,Department of the Environment,2020,Actual,448536324.0,16918726.0,893.0,446268963.73
+S00,Department of Housing and Community Development,2020,Actual,471798693.0,12683295.0,331.0,385193627.83
+Q00,Department of Public Safety and Correctional Services,2020,Actual,1454305942.0,225782619.0,10139.4,525105697.93
+D10,Executive Department - Governor,2020,Actual,11308775.0,1011950.0,82.5,540609.22
 J00,Department of Transportation,2020,Actual,5372638686.0,1307875727.0,10784.5,4288916257.14
 D26,Department of Aging,2020,Actual,70598243.0,2150721.0,38.7,56499612.94
-M00,Maryland Department of Health,2020,Actual,15349788350.0,526442149.0,9975.5,12923057045.64
 D55,Department of Veterans and Military Families,2020,Actual,46964672.0,3918431.0,111.0,28460461.48
 D78,Maryland Health Benefit Exchange,2020,Actual,76112370.0,57749700.0,67.0,63431382.28
 R99,Maryland School for the Deaf,2020,Actual,34564407.0,4115708.0,334.5,2694976.47
-D60,State Archives,2020,Actual,8830734.0,2276599.0,63.0,2387770.0
 W00,Department of State Police,2020,Actual,356280139.0,57314431.0,2462.5,48900920.07
+D53,Maryland Institute for Emergency Medical Services Systems,2020,Actual,17477969.0,5003340.0,94.0,8035087.55
+T50,Maryland Technology Development Corporation,2020,Actual,25985582.0,0.0,,25985582.06
+D50,Military Department,2020,Actual,149290812.0,12611115.0,307.5,45827450.26
+C80,Office of the Public Defender,2020,Actual,116842739.0,10376155.0,888.5,16151132.05
+E80,Property Tax Assessment Appeals Boards,2020,Actual,953522.0,109498.0,8.0,85529.73
+D16,Secretary of State,2020,Actual,3536767.0,257565.0,26.0,193134.43
+E50,State Department of Assessments and Taxation,2020,Actual,146968560.0,9140643.0,595.3,44334114.6
 E20,State Treasurer's Office,2020,Actual,7722227.0,4413213.0,60.0,50732094.23
 C94,Subsequent Injury Fund,2020,Actual,2382881.0,218619.0,17.0,164224.14
 D05,Board of Public Works,2021,Actual,11940494.0,23306.0,9.0,9664062.78
@@ -160,14 +180,12 @@ T00,Department of Commerce,2021,Actual,485152714.0,19544811.0,188.0,338449942.31
 H00,Department of General Services,2021,Actual,81214392.0,28185376.0,646.0,303036935.99
 V00,Department of Juvenile Services,2021,Actual,253335734.0,28587246.0,1995.55,45260682.42
 K00,Department of Natural Resources,2021,Actual,396490580.0,49009558.0,1341.0,82928252.31
+U00,Department of the Environment,2021,Actual,430986721.0,12273966.0,883.0,311577042.71
 S00,Department of Housing and Community Development,2021,Actual,1143222737.0,12918725.0,331.0,543333723.22
-Q00,Department of Public Safety and Correctional Services,2021,Actual,1462276630.0,216964848.0,9613.4,455600920.54
-D10,Executive Department - Governor,2021,Actual,11557252.0,1036347.0,81.0,808958.02
-J00,Department of Transportation,2021,Actual,5057511991.0,1220302987.0,10764.5,4058250846.97
-D26,Department of Aging,2021,Actual,79443723.0,3023904.0,39.0,62276589.1
 M00,Maryland Department of Health,2021,Actual,17567218882.0,1482001911.0,9902.05,14258248358.33
 D55,Department of Veterans and Military Families,2021,Actual,39302597.0,4395638.0,116.0,25809240.26
 D78,Maryland Health Benefit Exchange,2021,Actual,426955881.0,55708723.0,67.0,408453373.25
+J00,Department of Transportation,2021,Actual,5057511991.0,1220302987.0,10764.5,4058250846.97
 R99,Maryland School for the Deaf,2021,Actual,34059517.0,4277043.0,334.5,2546622.57
 D60,State Archives,2021,Actual,9063079.0,2562416.0,61.0,1572654.16
 W00,Department of State Police,2021,Actual,328686679.0,52718054.0,2462.5,53073007.03
@@ -177,6 +195,7 @@ D16,Secretary of State,2021,Actual,3471034.0,207840.0,24.0,87313.91
 E50,State Department of Assessments and Taxation,2021,Actual,141963582.0,12253303.0,570.3,91141315.99
 D52,Maryland Department of Emergency Management,2022,Actual,517953713.0,40868954.0,72.0,198860001.49
 F50,Department of Information Technology,2022,Actual,116167288.0,108248062.0,185.0,90801475.67
+D17,Historic St. Mary's City Commission,2022,Actual,5650289.0,1402734.0,31.0,231573.75
 R00,State Department of Education,2022,Actual,11906543721.0,108611395.0,1413.9,9238241614.35
 R11,Maryland State Library Agency,2022,Actual,97292326.0,1071994.0,31.0,91897094.85
 E75,Maryland Lottery and Gaming Control Agency,2022,Actual,115960919.0,84393455.0,364.1,71600048.52
@@ -199,13 +218,14 @@ D52,Maryland Department of Emergency Management,2023,Actual,503260574.0,9281278.
 N00,Department of Human Services,2023,Actual,3874067255.0,342652482.0,5970.68,793095562.4
 F50,Department of Information Technology,2023,Actual,196247263.0,184873036.0,184.0,126803935.0
 D17,Historic St. Mary's City Commission,2023,Actual,5689505.0,946233.0,32.0,490611.1
-D13,Maryland Energy Administration,2023,Actual,81793042.0,1157616.0,31.0,17796998.35
-R62,Maryland Higher Education Commission,2023,Actual,804126325.0,22897853.0,69.0,618883384.14
-D80,Maryland Insurance Administration,2023,Actual,36585351.0,4684359.0,259.0,4078673.64
-E75,Maryland Lottery and Gaming Control Agency,2023,Actual,122886105.0,89939730.0,364.1,88894562.75
-D40,Department of Planning,2023,Actual,46125458.0,2021609.0,127.0,6328299.87
-R15,Maryland Public Broadcasting Commission,2023,Actual,32415727.0,15041126.0,145.0,16223028.4
 D28,Maryland Stadium Authority,2023,Actual,68012723.0,72000.0,125.8,168623686.13
+R11,Maryland State Library Agency,2023,Actual,96009724.0,1218856.0,31.0,92083235.14
+G20,Maryland State Retirement and Pension Systems,2023,Actual,20471764.0,6539317.0,214.0,35245913.57
+G50,Maryland State Employees Supplemental Retirement Plans,2023,Actual,2320912.0,350164.0,14.0,197115.7
+C85,Maryland Tax Court,2023,Actual,895503.0,24874.0,9.0,12415.38
+D22,Maryland Commission on African American History and Culture,2023,Actual,834448.0,232668.0,9.0,75035.1
+D40,Department of Planning,2023,Actual,46125458.0,2021609.0,127.0,6328299.87
+S50,Maryland African American Museum Corporation,2023,Actual,2000000.0,0.0,,2000000.0
 D99,Office of Administrative Hearings,2023,Actual,33959.0,33959.0,117.0,1930299.03
 D11,Office of the Deaf and Hard of Hearing,2023,Actual,492931.0,58741.0,3.0,39706.46
 C91,Office of People's Counsel,2023,Actual,6923929.0,295860.0,19.0,1513176.18
@@ -239,10 +259,7 @@ L00,Department of Agriculture,2025,Actual,129981304.0,10482764.0,426.2,116254314
 F10,Department of Budget and Management,2025,Actual,143992196.0,25448133.0,333.0,25685788.32
 D12,Department of Disabilities,2025,Actual,13041687.0,934066.0,39.0,4611588.38
 D52,Maryland Department of Emergency Management,2025,Actual,460010624.0,13687704.0,108.0,385959326.82
-N00,Department of Human Services,2025,Actual,3817237913.0,388775134.0,5978.68,741366663.76
-F50,Department of Information Technology,2025,Actual,152687908.0,128634858.0,225.0,131344979.92
 P00,Maryland Department of Labor,2025,Actual,586795569.0,100519773.0,1968.57,330149459.5
-D17,Historic St. Mary's City Commission,2025,Actual,6665228.0,892456.0,32.0,479024.52
 G20,Maryland State Retirement and Pension Systems,2025,Actual,26370875.0,7623946.0,232.0,14102109.03
 G50,Maryland State Employees Supplemental Retirement Plans,2025,Actual,2484397.0,298608.0,14.0,211870.8
 C85,Maryland Tax Court,2025,Actual,907012.0,23618.0,9.0,5757.66
@@ -251,28 +268,9 @@ D40,Department of Planning,2025,Actual,55068271.0,2602294.0,142.0,12573825.05
 D73,Office of the Inspector General for Education,2025,Actual,2732241.0,148871.0,16.0,7300.71
 D29,Maryland Thoroughbred Racetrack Operating Authority,2025,Actual,13484063.0,12823726.0,6.0,12555746.67
 S50,Maryland African American Museum Corporation,2025,Actual,2700000.0,0.0,,2700000.0
-R11,Maryland State Library Agency,2019,Actual,85606486.0,1073265.0,28.0,78612687.21
-E75,Maryland Lottery and Gaming Control Agency,2019,Actual,97101767.0,70104915.0,324.1,68811152.63
-G20,Maryland State Retirement and Pension Systems,2019,Actual,20353368.0,9047398.0,171.0,14067296.97
-G50,Maryland State Employees Supplemental Retirement Plans,2019,Actual,1835615.0,310214.0,13.0,215000.3
-C85,Maryland Tax Court,2019,Actual,631670.0,19854.0,8.0,15844.7
-C82,Office of the State Prosecutor,2019,Actual,1400508.0,151952.0,13.0,111864.66
-A15,Payments to Civil Divisions of the State,2019,Actual,168462833.0,0.0,,168462833.0
-C90,Public Service Commission,2019,Actual,17893615.0,1316622.0,137.0,1286160.64
-X00,Public Debt,2019,Actual,1298317506.0,0.0,,1295010632.18
-D38,State Board of Elections,2019,Actual,26245024.0,21257087.0,41.8,23006731.14
-C96,Uninsured Employers' Fund,2019,Actual,2010988.0,590550.0,13.0,9386703.29
-S00,Department of Housing and Community Development,2020,Actual,471798693.0,12683295.0,331.0,385193627.83
-Q00,Department of Public Safety and Correctional Services,2020,Actual,1454305942.0,225782619.0,10139.4,525105697.93
-D10,Executive Department - Governor,2020,Actual,11308775.0,1011950.0,82.5,540609.22
-D53,Maryland Institute for Emergency Medical Services Systems,2020,Actual,17477969.0,5003340.0,94.0,8035087.55
-T50,Maryland Technology Development Corporation,2020,Actual,25985582.0,0.0,,25985582.06
-D50,Military Department,2020,Actual,149290812.0,12611115.0,307.5,45827450.26
-C80,Office of the Public Defender,2020,Actual,116842739.0,10376155.0,888.5,16151132.05
-E80,Property Tax Assessment Appeals Boards,2020,Actual,953522.0,109498.0,8.0,85529.73
-D16,Secretary of State,2020,Actual,3536767.0,257565.0,26.0,193134.43
-E50,State Department of Assessments and Taxation,2020,Actual,146968560.0,9140643.0,595.3,44334114.6
-U00,Department of the Environment,2021,Actual,430986721.0,12273966.0,883.0,311577042.71
+Q00,Department of Public Safety and Correctional Services,2021,Actual,1462276630.0,216964848.0,9613.4,455600920.54
+D10,Executive Department - Governor,2021,Actual,11557252.0,1036347.0,81.0,808958.02
+D26,Department of Aging,2021,Actual,79443723.0,3023904.0,39.0,62276589.1
 D53,Maryland Institute for Emergency Medical Services Systems,2021,Actual,17089053.0,4531239.0,94.0,5307600.59
 T50,Maryland Technology Development Corporation,2021,Actual,26974480.0,0.0,,26974480.0
 D50,Military Department,2021,Actual,961040898.0,28494039.0,293.5,157436974.46
@@ -284,7 +282,6 @@ D90,Canal Place Preservation and Development Authority,2022,Actual,688278.0,3654
 D27,Maryland Commission On Civil Rights,2022,Actual,3803586.0,344973.0,33.0,40285.83
 F10,Department of Budget and Management,2022,Actual,123792960.0,9825104.0,320.4,16309585.0
 D12,Department of Disabilities,2022,Actual,10619406.0,668207.0,34.8,3966881.04
-D17,Historic St. Mary's City Commission,2022,Actual,5650289.0,1402734.0,31.0,231573.75
 P00,Maryland Department of Labor,2022,Actual,1481082992.0,203533948.0,1355.17,422124805.27
 D13,Maryland Energy Administration,2022,Actual,70133700.0,1052321.0,30.0,14612220.44
 R62,Maryland Higher Education Commission,2022,Actual,642533430.0,914863.0,64.0,484914058.82
@@ -302,12 +299,11 @@ L00,Department of Agriculture,2023,Actual,173643581.0,10310225.0,409.2,72092036.
 F10,Department of Budget and Management,2023,Actual,136795850.0,9245131.0,323.4,19461193.92
 D12,Department of Disabilities,2023,Actual,11235647.0,812414.0,35.0,4723813.04
 P00,Maryland Department of Labor,2023,Actual,596118967.0,86018629.0,1356.17,346642941.41
-R11,Maryland State Library Agency,2023,Actual,96009724.0,1218856.0,31.0,92083235.14
-G20,Maryland State Retirement and Pension Systems,2023,Actual,20471764.0,6539317.0,214.0,35245913.57
-G50,Maryland State Employees Supplemental Retirement Plans,2023,Actual,2320912.0,350164.0,14.0,197115.7
-C85,Maryland Tax Court,2023,Actual,895503.0,24874.0,9.0,12415.38
-D22,Maryland Commission on African American History and Culture,2023,Actual,834448.0,232668.0,9.0,75035.1
-S50,Maryland African American Museum Corporation,2023,Actual,2000000.0,0.0,,2000000.0
+D13,Maryland Energy Administration,2023,Actual,81793042.0,1157616.0,31.0,17796998.35
+R62,Maryland Higher Education Commission,2023,Actual,804126325.0,22897853.0,69.0,618883384.14
+D80,Maryland Insurance Administration,2023,Actual,36585351.0,4684359.0,259.0,4078673.64
+E75,Maryland Lottery and Gaming Control Agency,2023,Actual,122886105.0,89939730.0,364.1,88894562.75
+R15,Maryland Public Broadcasting Commission,2023,Actual,32415727.0,15041126.0,145.0,16223028.4
 L00,Department of Agriculture,2024,Actual,207647043.0,10762503.0,409.2,114412174.5
 F10,Department of Budget and Management,2024,Actual,61161075.0,10489409.0,324.0,17566827.83
 D12,Department of Disabilities,2024,Actual,11374278.0,943375.0,37.0,5000648.46
@@ -336,6 +332,9 @@ E17,"Alcohol, Tobacco, and Cannabis Commission",2025,Actual,8802138.0,2255543.0,
 D15,"Executive Department-Boards, Commissions and Offices",2025,Actual,11131714.0,445799.0,67.0,246923.77
 D90,Canal Place Preservation and Development Authority,2025,Actual,873610.0,387063.0,4.0,476026.12
 D27,Maryland Commission On Civil Rights,2025,Actual,6125105.0,787312.0,38.0,157460.45
+N00,Department of Human Services,2025,Actual,3817237913.0,388775134.0,5978.68,741366663.76
+F50,Department of Information Technology,2025,Actual,152687908.0,128634858.0,225.0,131344979.92
+D17,Historic St. Mary's City Commission,2025,Actual,6665228.0,892456.0,32.0,479024.52
 D13,Maryland Energy Administration,2025,Actual,225474091.0,11156282.0,49.0,33119157.52
 R62,Maryland Higher Education Commission,2025,Actual,823554697.0,8401413.0,84.0,625161638.65
 D80,Maryland Insurance Administration,2025,Actual,54907185.0,17080816.0,274.0,14592937.98
@@ -354,6 +353,10 @@ X00,Public Debt,2025,Actual,1503737345.0,0.0,,1500422344.23
 D38,State Board of Elections,2025,Actual,54366632.0,45866495.0,55.0,29620628.52
 D12,Department of Disabilities,2026,Working budget,14882227.0,3354605.0,40.0,4306572.94
 D52,Maryland Department of Emergency Management,2026,Working budget,907766748.0,5303577.0,108.0,317440756.62
+N00,Department of Human Services,2026,Working budget,4024136649.0,416405272.0,5870.38,754726058.41
+F50,Department of Information Technology,2026,Working budget,284117301.0,254035290.0,262.0,235641575.81
+P00,Maryland Department of Labor,2026,Working budget,708359097.0,150842358.0,1933.87,305635846.81
+D24,Department of Social and Economic Mobility,2026,Working budget,16542100.0,2389875.0,70.0,809306.64
 D17,Historic St. Mary's City Commission,2026,Working budget,6820504.0,850499.0,32.0,933823.37
 D13,Maryland Energy Administration,2026,Working budget,336294130.0,3910766.0,54.0,78450529.71
 R62,Maryland Higher Education Commission,2026,Working budget,840426408.0,2054950.0,88.0,631702834.6
@@ -369,20 +372,17 @@ D77,Prescription Drug Affordability Board,2026,Working budget,1269283.0,365563.0
 C90,Public Service Commission,2026,Working budget,229868938.0,4070661.0,175.0,202353206.9
 X00,Public Debt,2026,Working budget,1630666629.0,0.0,,1452803615.98
 D38,State Board of Elections,2026,Working budget,55056933.0,44564847.0,56.0,29132537.22
-D78,Maryland Health Benefit Exchange,2027,Legislative appropriation,957350350.0,96016797.0,91.0,
-R99,Maryland School for the Deaf,2027,Legislative appropriation,51213986.0,6406892.0,372.5,
-D60,State Archives,2027,Legislative appropriation,15063859.0,5577560.0,64.0,
-W00,Department of State Police,2027,Legislative appropriation,684813694.0,87760521.0,2574.0,
-E50,State Department of Assessments and Taxation,2027,Legislative appropriation,185345743.0,20565923.0,568.3,
-E20,State Treasurer's Office,2027,Legislative appropriation,33893905.0,13862259.0,96.0,
-C94,Subsequent Injury Fund,2027,Legislative appropriation,3557450.0,322022.0,17.0,
-D91,West North Avenue Development Authority,2027,Legislative appropriation,21588415.0,162780.0,15.0,
-D90,Canal Place Preservation and Development Authority,2017,Actual,813329.0,301935.0,3.0,193605.94
-D27,Maryland Commission On Civil Rights,2017,Actual,3190111.0,226276.0,31.0,40307.24
-F10,Department of Budget and Management,2017,Actual,34364424.0,5785593.0,332.0,11341418.21
-D12,Department of Disabilities,2017,Actual,10634060.0,5839460.0,26.6,7227162.95
-F50,Department of Information Technology,2017,Actual,74380975.0,56292164.0,248.6,83923434.29
-P00,Maryland Department of Labor,2017,Actual,347269548.0,43714628.0,1511.7,195182273.03
+V00,Department of Juvenile Services,2027,Legislative appropriation,382611069.0,44180306.0,2134.95,
+K00,Department of Natural Resources,2027,Legislative appropriation,591332031.0,97712222.0,1533.0,
+I00,Department of Service and Civic Innovation,2027,Legislative appropriation,69973018.0,5435444.0,66.0,
+U00,Department of the Environment,2027,Legislative appropriation,638553583.0,24990367.0,1003.0,
+D53,Maryland Institute for Emergency Medical Services Systems,2027,Legislative appropriation,25991716.0,7575019.0,101.0,
+T50,Maryland Technology Development Corporation,2027,Legislative appropriation,67793984.0,0.0,,
+D50,Military Department,2027,Legislative appropriation,38776091.0,8441710.0,167.5,
+D74,Office of the Correctional Ombudsman,2027,Legislative appropriation,2162141.0,152643.0,13.0,
+C80,Office of the Public Defender,2027,Legislative appropriation,173779642.0,10959695.0,1011.5,
+E80,Property Tax Assessment Appeals Boards,2027,Legislative appropriation,1386316.0,120002.0,8.0,
+D16,Secretary of State,2027,Legislative appropriation,6325707.0,862712.0,29.0,
 E20,State Treasurer's Office,2025,Actual,28189772.0,9551400.0,96.0,70298175.96
 C94,Subsequent Injury Fund,2025,Actual,3301583.0,232763.0,17.0,156754.26
 D91,West North Avenue Development Authority,2025,Actual,15801741.0,1376280.0,14.0,5249447.49
@@ -390,17 +390,16 @@ R12,Accountability and Implementation Board,2026,Working budget,3403097.0,337782
 D05,Board of Public Works,2026,Working budget,33469813.0,81708.0,11.0,28480528.54
 E00,Comptroller of Maryland,2026,Working budget,214805650.0,62654407.0,1350.1,374283336.67
 T00,Department of Commerce,2026,Working budget,287891006.0,19559318.0,209.0,121750705.33
-V00,Department of Juvenile Services,2026,Working budget,379935739.0,49985181.0,2126.95,75450781.22
-K00,Department of Natural Resources,2026,Working budget,523274013.0,91458191.0,1521.0,88498119.91
-I00,Department of Service and Civic Innovation,2026,Working budget,54950138.0,5412388.0,56.0,12508184.3
-U00,Department of the Environment,2026,Working budget,623165239.0,24464092.0,1004.0,178291857.72
 S00,Department of Housing and Community Development,2026,Working budget,823118502.0,23551262.0,446.0,685725365.9
+Q00,Department of Public Safety and Correctional Services,2026,Working budget,1929065374.0,282740922.0,9199.4,564429908.48
+D55,Department of Veterans and Military Families,2026,Working budget,68451728.0,7237188.0,125.0,46375452.84
+D10,Executive Department - Governor,2026,Working budget,22778960.0,2789880.0,118.0,1167903.42
+D21,Governor's Office of Crime Prevention and Policy,2026,Working budget,342466479.0,1354582.0,104.0,238651388.79
 M00,Maryland Department of Health,2026,Working budget,23872550049.0,617327496.0,9880.61,17468332018.09
 J00,Department of Transportation,2026,Working budget,6739003943.0,1928581734.0,10803.5,4793460733.58
 R99,Maryland School for the Deaf,2026,Working budget,49243867.0,6312005.0,372.5,3302876.82
 D60,State Archives,2026,Working budget,13689647.0,4544172.0,64.0,2221231.62
 W00,Department of State Police,2026,Working budget,659172326.0,90489769.0,2574.0,80819034.04
-E50,State Department of Assessments and Taxation,2026,Working budget,190022961.0,20479612.0,569.3,95928518.07
 E20,State Treasurer's Office,2026,Working budget,33070800.0,14229506.0,96.0,60627506.91
 C94,Subsequent Injury Fund,2026,Working budget,3554921.0,333669.0,17.0,256751.23
 D91,West North Avenue Development Authority,2026,Working budget,22565124.0,172388.0,15.0,4438498.79
@@ -412,33 +411,33 @@ L00,Department of Agriculture,2027,Legislative appropriation,141108934.0,1255340
 F10,Department of Budget and Management,2027,Legislative appropriation,285077017.0,14621030.0,352.0,
 D12,Department of Disabilities,2027,Legislative appropriation,14630660.0,1626438.0,40.0,
 D52,Maryland Department of Emergency Management,2027,Legislative appropriation,943814512.0,4349880.0,108.0,
-N00,Department of Human Services,2027,Legislative appropriation,3691051478.0,300980585.0,5871.38,
-F50,Department of Information Technology,2027,Legislative appropriation,249240712.0,194017762.0,273.0,
-P00,Maryland Department of Labor,2027,Legislative appropriation,668833734.0,86448526.0,1930.87,
-D24,Department of Social and Economic Mobility,2027,Legislative appropriation,25176145.0,5040732.0,71.0,
 D17,Historic St. Mary's City Commission,2027,Legislative appropriation,7111363.0,725542.0,40.0,
+D13,Maryland Energy Administration,2027,Legislative appropriation,428374671.0,3127616.0,54.0,
+R62,Maryland Higher Education Commission,2027,Legislative appropriation,861532613.0,2157128.0,89.0,
+D80,Maryland Insurance Administration,2027,Legislative appropriation,59255161.0,16969523.0,281.0,
+E75,Maryland Lottery and Gaming Control Agency,2027,Legislative appropriation,135267654.0,91378491.0,356.75,
 D40,Department of Planning,2027,Legislative appropriation,51686825.0,4561422.0,142.0,
-D73,Office of the Inspector General for Education,2027,Legislative appropriation,2885210.0,137033.0,16.0,
-S50,Maryland African American Museum Corporation,2027,Legislative appropriation,2700000.0,0.0,,
-D99,Office of Administrative Hearings,2027,Legislative appropriation,51943.0,51943.0,114.0,
-D11,Office of the Deaf and Hard of Hearing,2027,Legislative appropriation,1201273.0,198575.0,7.0,
-C91,Office of People's Counsel,2027,Legislative appropriation,8436033.0,196158.0,28.0,
-C81,Office of the Attorney General,2027,Legislative appropriation,85280487.0,8390275.0,400.5,
-C82,Office of the State Prosecutor,2027,Legislative appropriation,3925069.0,340742.0,18.0,
-A15,Payments to Civil Divisions of the State,2027,Legislative appropriation,208244472.0,0.0,,
-D77,Prescription Drug Affordability Board,2027,Legislative appropriation,1348049.0,354255.0,5.0,
-C90,Public Service Commission,2027,Legislative appropriation,171689922.0,4217464.0,191.0,
-X00,Public Debt,2027,Legislative appropriation,1496361462.0,0.0,,
-D38,State Board of Elections,2027,Legislative appropriation,74470407.0,63956357.0,58.0,
+R15,Maryland Public Broadcasting Commission,2027,Legislative appropriation,42542218.0,19719508.0,151.0,
+D28,Maryland Stadium Authority,2027,Legislative appropriation,312392727.0,300000.0,160.8,
+R11,Maryland State Library Agency,2027,Legislative appropriation,113161080.0,993366.0,34.0,
+G20,Maryland State Retirement and Pension Systems,2027,Legislative appropriation,40762151.0,12061800.0,259.0,
+G50,Maryland State Employees Supplemental Retirement Plans,2027,Legislative appropriation,2648232.0,259185.0,14.0,
+C85,Maryland Tax Court,2027,Legislative appropriation,1038914.0,24696.0,9.0,
+D22,Maryland Commission on African American History and Culture,2027,Legislative appropriation,1961037.0,223427.0,11.0,
 R00,State Department of Education,2027,Legislative appropriation,12613293481.0,130111081.0,1391.3,
-S00,Department of Housing and Community Development,2017,Actual,440785111.0,13643739.0,324.0,345463586.94
-Q00,Department of Public Safety and Correctional Services,2017,Actual,1387472267.0,213468226.0,10954.4,407477566.92
-D10,Executive Department - Governor,2017,Actual,10980083.0,1169182.0,83.5,797057.57
-D18,Governor's Office for Children,2017,Actual,1814548.0,44261.0,16.0,15769.23
-J00,Department of Transportation,2017,Actual,4969537444.0,1323546616.0,9107.5,3997879086.9
+C96,Uninsured Employers' Fund,2027,Legislative appropriation,6139680.0,385630.0,13.0,
+C98,Workers' Compensation Commission,2027,Legislative appropriation,26494194.0,7646587.0,109.0,
+D05,Board of Public Works,2017,Actual,7592008.0,27919.0,9.0,6522596.78
+E00,Comptroller of Maryland,2017,Actual,117054029.0,26329159.0,1114.9,321196396.17
+H00,Department of General Services,2017,Actual,74662980.0,26634603.0,581.0,58722051.31
+V00,Department of Juvenile Services,2017,Actual,278763909.0,39555719.0,1998.0,78746801.14
 D26,Department of Aging,2017,Actual,48358880.0,1405578.0,41.7,47042514.65
 M00,Maryland Department of Health,2017,Actual,13180293534.0,300460822.0,6186.8,11685352969.27
-W00,Department of State Police,2017,Actual,384560139.0,52387783.0,2435.5,53195501.08
+D55,Department of Veterans and Military Families,2017,Actual,29726769.0,3245776.0,83.0,22845736.92
+D78,Maryland Health Benefit Exchange,2017,Actual,116881709.0,60467275.0,67.0,107526700.2
+J00,Department of Transportation,2017,Actual,4969537444.0,1323546616.0,9107.5,3997879086.9
+R99,Maryland School for the Deaf,2017,Actual,32158530.0,3182733.0,330.5,2072283.17
+D60,State Archives,2017,Actual,8782386.0,2366430.0,62.5,4565700.22
 E20,State Treasurer's Office,2017,Actual,6080978.0,3022386.0,60.0,49514254.2
 C94,Subsequent Injury Fund,2017,Actual,2303632.0,197942.0,17.0,179486.88
 D05,Board of Public Works,2018,Actual,7062422.0,47931.0,9.0,6041155.23
@@ -462,10 +461,25 @@ Q00,Department of Public Safety and Correctional Services,2019,Actual,1390303967
 D10,Executive Department - Governor,2019,Actual,10559469.0,1210173.0,82.5,922497.66
 J00,Department of Transportation,2019,Actual,4961406765.0,1367254005.0,9057.5,4145850990.13
 M00,Maryland Department of Health,2019,Actual,14101384828.0,318815826.0,6277.8,11813594069.8
-D55,Department of Veterans and Military Families,2017,Actual,29726769.0,3245776.0,83.0,22845736.92
-D78,Maryland Health Benefit Exchange,2017,Actual,116881709.0,60467275.0,67.0,107526700.2
-R99,Maryland School for the Deaf,2017,Actual,32158530.0,3182733.0,330.5,2072283.17
-D60,State Archives,2017,Actual,8782386.0,2366430.0,62.5,4565700.22
+W00,Department of State Police,2019,Actual,403101165.0,55977849.0,2439.5,50866020.49
+C80,Office of the Public Defender,2019,Actual,106947300.0,7694950.0,888.5,16629347.15
+E80,Property Tax Assessment Appeals Boards,2019,Actual,912738.0,106137.0,8.0,84249.38
+D25,Interagency Commission On School Construction,2019,Actual,0.0,0.0,0.0,7739.88
+D16,Secretary of State,2019,Actual,2927601.0,250094.0,25.0,160753.69
+E50,State Department of Assessments and Taxation,2019,Actual,148962487.0,6412152.0,592.3,52414356.37
+E20,State Treasurer's Office,2019,Actual,7422794.0,4199922.0,60.0,51747534.33
+C94,Subsequent Injury Fund,2019,Actual,2324635.0,244009.0,17.0,209825.22
+D12,Department of Disabilities,2020,Actual,7807179.0,1071211.0,28.8,2683043.56
+F50,Department of Information Technology,2020,Actual,117233139.0,108261066.0,220.6,88327714.86
+R00,State Department of Education,2020,Actual,8760813341.0,76078497.0,1423.9,8109059339.19
+K00,Department of Natural Resources,2017,Actual,329836283.0,57884924.0,1314.5,70852426.88
+U00,Department of the Environment,2017,Actual,396944488.0,14110465.0,894.0,321519868.98
+T00,Department of Commerce,2017,Actual,152631594.0,14414913.0,193.0,74209649.47
+S00,Department of Housing and Community Development,2017,Actual,440785111.0,13643739.0,324.0,345463586.94
+Q00,Department of Public Safety and Correctional Services,2017,Actual,1387472267.0,213468226.0,10954.4,407477566.92
+D10,Executive Department - Governor,2017,Actual,10980083.0,1169182.0,83.5,797057.57
+D18,Governor's Office for Children,2017,Actual,1814548.0,44261.0,16.0,15769.23
+W00,Department of State Police,2017,Actual,384560139.0,52387783.0,2435.5,53195501.08
 D53,Maryland Institute for Emergency Medical Services Systems,2017,Actual,15992075.0,3848031.0,94.0,4444340.93
 T50,Maryland Technology Development Corporation,2017,Actual,26812012.0,12093.0,,27720064.42
 D50,Military Department,2017,Actual,146403833.0,10343190.0,293.5,95217395.0
@@ -501,13 +515,11 @@ D60,State Archives,2019,Actual,8926313.0,2575939.0,63.0,2159678.56
 D53,Maryland Institute for Emergency Medical Services Systems,2019,Actual,21512385.0,9265067.0,94.0,6306114.98
 T50,Maryland Technology Development Corporation,2019,Actual,27188639.0,13440.0,,27188639.0
 D50,Military Department,2019,Actual,88470501.0,12537293.0,297.5,48487052.12
-C80,Office of the Public Defender,2019,Actual,106947300.0,7694950.0,888.5,16629347.15
 D15,"Executive Department-Boards, Commissions and Offices",2020,Actual,14005688.0,668676.0,70.6,146207243.13
 D90,Canal Place Preservation and Development Authority,2020,Actual,720592.0,354249.0,3.0,252645.82
 D27,Maryland Commission On Civil Rights,2020,Actual,3269771.0,161511.0,31.0,37759.8
 F10,Department of Budget and Management,2020,Actual,36221402.0,6960985.0,320.2,14435220.74
-D12,Department of Disabilities,2020,Actual,7807179.0,1071211.0,28.8,2683043.56
-F50,Department of Information Technology,2020,Actual,117233139.0,108261066.0,220.6,88327714.86
+D17,Historic St. Mary's City Commission,2020,Actual,3746367.0,483762.0,31.0,144461.98
 P00,Maryland Department of Labor,2020,Actual,364880312.0,37522146.0,1397.2,235597287.75
 D13,Maryland Energy Administration,2020,Actual,39896277.0,1112101.0,28.0,13105441.32
 R62,Maryland Higher Education Commission,2020,Actual,551469661.0,1236022.0,58.0,440310352.24
@@ -515,7 +527,6 @@ D80,Maryland Insurance Administration,2020,Actual,31920274.0,5068336.0,259.0,374
 D40,Department of Planning,2020,Actual,37258156.0,3143049.0,130.0,11835799.56
 R15,Maryland Public Broadcasting Commission,2020,Actual,31554625.0,13875017.0,145.0,15935850.31
 D28,Maryland Stadium Authority,2020,Actual,48740436.0,260386.0,123.8,160443839.94
-R00,State Department of Education,2020,Actual,8760813341.0,76078497.0,1423.9,8109059339.19
 R11,Maryland State Library Agency,2020,Actual,90175276.0,904666.0,30.0,84396760.65
 E75,Maryland Lottery and Gaming Control Agency,2020,Actual,95076544.0,66592112.0,324.1,62383128.35
 G20,Maryland State Retirement and Pension Systems,2020,Actual,19977131.0,7997451.0,202.0,15525375.1
@@ -523,6 +534,16 @@ G50,Maryland State Employees Supplemental Retirement Plans,2020,Actual,1833644.0
 C85,Maryland Tax Court,2020,Actual,659018.0,19083.0,8.0,13639.52
 L00,Department of Agriculture,2020,Actual,125550671.0,8811353.0,394.1,75023053.72
 N00,Department of Human Services,2020,Actual,2734552843.0,328410391.0,6119.0,647610392.4
+S50,Maryland African American Museum Corporation,2020,Actual,1959000.0,0.0,,1959000.0
+D99,Office of Administrative Hearings,2020,Actual,4755.0,4755.0,118.0,2307245.14
+D11,Office of the Deaf and Hard of Hearing,2020,Actual,372642.0,42329.0,3.0,18979.31
+C91,Office of People's Counsel,2020,Actual,3995945.0,183094.0,19.0,1314062.08
+C81,Office of the Attorney General,2020,Actual,33297043.0,4988810.0,275.5,5419748.84
+C82,Office of the State Prosecutor,2020,Actual,1714611.0,160150.0,13.0,203988.62
+A15,Payments to Civil Divisions of the State,2020,Actual,174964477.0,0.0,,173831514.0
+C90,Public Service Commission,2020,Actual,20293850.0,2766101.0,137.0,1317526.92
+X00,Public Debt,2020,Actual,1321826589.0,0.0,,1318511589.02
+D38,State Board of Elections,2020,Actual,42494063.0,37303623.0,43.8,27711760.78
 C96,Uninsured Employers' Fund,2020,Actual,2015260.0,490376.0,13.0,9310332.23
 C98,Workers' Compensation Commission,2020,Actual,18276791.0,5649102.0,115.0,5768419.99
 E17,"Alcohol, Tobacco, and Cannabis Commission",2021,Actual,1475309.0,126226.0,30.0,40950.0
@@ -531,7 +552,6 @@ D90,Canal Place Preservation and Development Authority,2021,Actual,633182.0,2722
 D27,Maryland Commission On Civil Rights,2021,Actual,3607098.0,200507.0,31.0,118755.31
 D12,Department of Disabilities,2021,Actual,10011275.0,3731461.0,34.8,4132179.36
 F50,Department of Information Technology,2021,Actual,90958872.0,83585785.0,189.6,106358910.54
-D17,Historic St. Mary's City Commission,2021,Actual,4085731.0,430568.0,31.0,82861.8
 P00,Maryland Department of Labor,2021,Actual,545419866.0,122309373.0,1378.17,310193225.71
 D13,Maryland Energy Administration,2021,Actual,34411654.0,947895.0,30.0,15614711.04
 R62,Maryland Higher Education Commission,2021,Actual,567075582.0,941824.0,60.0,443447193.52
@@ -560,8 +580,9 @@ V00,Department of Juvenile Services,2022,Actual,254386923.0,32145514.0,1995.55,4
 K00,Department of Natural Resources,2022,Actual,441679955.0,62828351.0,1353.0,72409756.96
 U00,Department of the Environment,2022,Actual,482882718.0,16389321.0,880.0,316897006.81
 S00,Department of Housing and Community Development,2022,Actual,1284410797.0,22818830.0,333.0,887230859.2
+Q00,Department of Public Safety and Correctional Services,2022,Actual,1434598934.0,219032157.0,9217.4,392676687.06
+D10,Executive Department - Governor,2022,Actual,12159977.0,1060610.0,79.0,526418.91
 J00,Department of Transportation,2022,Actual,5619661509.0,1304624833.0,10754.5,4044677454.14
-D26,Department of Aging,2022,Actual,82952275.0,3414477.0,39.0,60063035.13
 M00,Maryland Department of Health,2022,Actual,18834458264.0,1066065273.0,10090.62,13553446527.27
 W00,Department of State Police,2022,Actual,464416790.0,58591775.0,2504.5,48028858.21
 C80,Office of the Public Defender,2022,Actual,116952219.0,7015050.0,883.5,15061877.63
@@ -578,10 +599,12 @@ S00,Department of Housing and Community Development,2023,Actual,1144706017.0,166
 Q00,Department of Public Safety and Correctional Services,2023,Actual,1540272424.0,268864707.0,9217.4,433367239.35
 D10,Executive Department - Governor,2023,Actual,13336336.0,1485838.0,98.0,588974.06
 M00,Maryland Department of Health,2023,Actual,19889552729.0,623162531.0,10016.21,15054851032.49
-D55,Department of Veterans and Military Families,2023,Actual,41446090.0,3933432.0,119.0,26823791.9
-D78,Maryland Health Benefit Exchange,2023,Actual,571527811.0,68026926.0,67.0,544184093.89
+D60,State Archives,2023,Actual,9633753.0,2290205.0,61.0,1750459.73
+W00,Department of State Police,2023,Actual,536763548.0,73233204.0,2546.5,66796142.93
 J00,Department of Transportation,2023,Actual,5228231812.0,1389646455.0,10767.5,3950222832.34
-R99,Maryland School for the Deaf,2023,Actual,43855516.0,5808809.0,334.5,3467558.86
+D53,Maryland Institute for Emergency Medical Services Systems,2023,Actual,30193957.0,5681596.0,95.0,6154188.09
+T50,Maryland Technology Development Corporation,2023,Actual,50754979.0,0.0,,38825816.0
+D50,Military Department,2023,Actual,46871880.0,12377376.0,227.5,16650768.07
 C80,Office of the Public Defender,2023,Actual,128525585.0,8271363.0,883.5,17666974.64
 E80,Property Tax Assessment Appeals Boards,2023,Actual,981100.0,108105.0,8.0,82499.32
 D16,Secretary of State,2023,Actual,4327059.0,393251.0,24.0,146896.58
@@ -599,7 +622,6 @@ D10,Executive Department - Governor,2024,Actual,16565188.0,1334641.0,100.0,71280
 D21,Governor's Office of Crime Prevention and Policy,2024,Actual,367352548.0,4311553.0,65.0,258377240.54
 D25,Interagency Commission On School Construction,2024,Actual,631469009.0,1181718.0,41.0,10757.32
 J00,Department of Transportation,2024,Actual,5764911522.0,1537591467.0,10767.5,4040534475.47
-D26,Department of Aging,2024,Actual,81887094.0,2270434.0,40.0,69930895.38
 M00,Maryland Department of Health,2024,Actual,20338923782.0,472966606.0,9126.53,15481972441.2
 W00,Department of State Police,2024,Actual,586113098.0,94185354.0,2543.5,77276394.65
 D53,Maryland Institute for Emergency Medical Services Systems,2024,Actual,47326338.0,5566484.0,98.0,4188997.75
@@ -608,40 +630,20 @@ D50,Military Department,2024,Actual,81638538.0,13003949.0,227.5,10377014.24
 E00,Comptroller of Maryland,2025,Actual,189702358.0,39484269.0,1242.1,357910166.26
 T00,Department of Commerce,2025,Actual,182933096.0,24580707.0,208.0,91236677.53
 H00,Department of General Services,2025,Actual,212327340.0,36740183.0,727.0,212244415.4
-V00,Department of Juvenile Services,2025,Actual,353272412.0,41660115.0,2155.95,62047560.78
+K00,Department of Natural Resources,2025,Actual,480900717.0,66246316.0,1501.0,93838745.08
+I00,Department of Service and Civic Innovation,2025,Actual,53082415.0,2666124.0,39.0,17654859.35
+U00,Department of the Environment,2025,Actual,598997678.0,19585466.0,981.0,253376916.77
 S00,Department of Housing and Community Development,2025,Actual,923354739.0,15662716.0,446.0,642584070.98
-Q00,Department of Public Safety and Correctional Services,2025,Actual,1869043892.0,286953839.0,9217.4,532795223.81
-D55,Department of Veterans and Military Families,2025,Actual,64187441.0,8015458.0,126.0,44921222.83
-D10,Executive Department - Governor,2025,Actual,19783754.0,1836406.0,121.0,909575.65
-D21,Governor's Office of Crime Prevention and Policy,2025,Actual,338932131.0,4407275.0,86.0,233698693.11
-D18,Governor's Office for Children,2025,Actual,68125500.0,5954049.0,16.0,45479743.53
-D25,Interagency Commission On School Construction,2025,Actual,88522793.0,1107068.0,44.0,101597878.54
-J00,Department of Transportation,2025,Actual,6505039391.0,1607501428.0,10910.5,4814777405.6
 D23,Maryland Cannabis Administration,2025,Actual,30321240.0,8038941.0,110.0,7650483.86
+D26,Department of Aging,2025,Actual,87431932.0,3892997.0,49.0,76036597.27
 M00,Maryland Department of Health,2025,Actual,22372614953.0,481624813.0,10066.88,16592921743.08
 W00,Department of State Police,2025,Actual,614170521.0,79950624.0,2576.5,81430482.74
+J00,Department of Transportation,2025,Actual,6505039391.0,1607501428.0,10910.5,4814777405.6
 D53,Maryland Institute for Emergency Medical Services Systems,2025,Actual,22777782.0,5182308.0,100.0,6742775.99
 T50,Maryland Technology Development Corporation,2025,Actual,52610816.0,0.0,,52610816.0
 D50,Military Department,2025,Actual,53167415.0,18932475.0,227.5,9256415.01
-W00,Department of State Police,2019,Actual,403101165.0,55977849.0,2439.5,50866020.49
-E80,Property Tax Assessment Appeals Boards,2019,Actual,912738.0,106137.0,8.0,84249.38
-D25,Interagency Commission On School Construction,2019,Actual,0.0,0.0,0.0,7739.88
-D16,Secretary of State,2019,Actual,2927601.0,250094.0,25.0,160753.69
-E50,State Department of Assessments and Taxation,2019,Actual,148962487.0,6412152.0,592.3,52414356.37
-E20,State Treasurer's Office,2019,Actual,7422794.0,4199922.0,60.0,51747534.33
-C94,Subsequent Injury Fund,2019,Actual,2324635.0,244009.0,17.0,209825.22
-D17,Historic St. Mary's City Commission,2020,Actual,3746367.0,483762.0,31.0,144461.98
-S50,Maryland African American Museum Corporation,2020,Actual,1959000.0,0.0,,1959000.0
-D99,Office of Administrative Hearings,2020,Actual,4755.0,4755.0,118.0,2307245.14
-D11,Office of the Deaf and Hard of Hearing,2020,Actual,372642.0,42329.0,3.0,18979.31
-C91,Office of People's Counsel,2020,Actual,3995945.0,183094.0,19.0,1314062.08
-C81,Office of the Attorney General,2020,Actual,33297043.0,4988810.0,275.5,5419748.84
-C82,Office of the State Prosecutor,2020,Actual,1714611.0,160150.0,13.0,203988.62
-A15,Payments to Civil Divisions of the State,2020,Actual,174964477.0,0.0,,173831514.0
-C90,Public Service Commission,2020,Actual,20293850.0,2766101.0,137.0,1317526.92
-X00,Public Debt,2020,Actual,1321826589.0,0.0,,1318511589.02
-D38,State Board of Elections,2020,Actual,42494063.0,37303623.0,43.8,27711760.78
 F10,Department of Budget and Management,2021,Actual,33859677.0,3253448.0,317.4,16743991.87
+D17,Historic St. Mary's City Commission,2021,Actual,4085731.0,430568.0,31.0,82861.8
 N00,Department of Human Services,2021,Actual,4048085401.0,330103953.0,6118.05,620811556.41
 S50,Maryland African American Museum Corporation,2021,Actual,1959000.0,0.0,,1959000.0
 C96,Uninsured Employers' Fund,2021,Actual,1940363.0,286683.0,13.0,8420420.59
@@ -650,8 +652,7 @@ D05,Board of Public Works,2022,Actual,13476416.0,35583.0,9.0,7444215.88
 E00,Comptroller of Maryland,2022,Actual,130251042.0,30071763.0,1082.9,286513325.89
 D21,Governor's Office of Crime Prevention and Policy,2022,Actual,202884792.0,21269901.0,56.0,175109696.86
 T00,Department of Commerce,2022,Actual,154710696.0,18501727.0,188.0,67644367.78
-Q00,Department of Public Safety and Correctional Services,2022,Actual,1434598934.0,219032157.0,9217.4,392676687.06
-D10,Executive Department - Governor,2022,Actual,12159977.0,1060610.0,79.0,526418.91
+D26,Department of Aging,2022,Actual,82952275.0,3414477.0,39.0,60063035.13
 D55,Department of Veterans and Military Families,2022,Actual,35584662.0,3342520.0,117.0,22791204.44
 D78,Maryland Health Benefit Exchange,2022,Actual,483894239.0,58740466.0,67.0,462609801.13
 R99,Maryland School for the Deaf,2022,Actual,37071160.0,5797983.0,334.5,3400517.14
@@ -665,15 +666,14 @@ T00,Department of Commerce,2023,Actual,329199581.0,21135910.0,188.0,179351314.21
 K00,Department of Natural Resources,2023,Actual,641461363.0,71848988.0,1379.5,80512736.76
 U00,Department of the Environment,2023,Actual,672195602.0,15766101.0,890.0,264091371.32
 D26,Department of Aging,2023,Actual,80012120.0,3512551.0,40.0,67980331.12
-D60,State Archives,2023,Actual,9633753.0,2290205.0,61.0,1750459.73
-W00,Department of State Police,2023,Actual,536763548.0,73233204.0,2546.5,66796142.93
-D53,Maryland Institute for Emergency Medical Services Systems,2023,Actual,30193957.0,5681596.0,95.0,6154188.09
-T50,Maryland Technology Development Corporation,2023,Actual,50754979.0,0.0,,38825816.0
-D50,Military Department,2023,Actual,46871880.0,12377376.0,227.5,16650768.07
+D55,Department of Veterans and Military Families,2023,Actual,41446090.0,3933432.0,119.0,26823791.9
+D78,Maryland Health Benefit Exchange,2023,Actual,571527811.0,68026926.0,67.0,544184093.89
+R99,Maryland School for the Deaf,2023,Actual,43855516.0,5808809.0,334.5,3467558.86
 T00,Department of Commerce,2024,Actual,321985816.0,26803555.0,189.0,142955854.08
 K00,Department of Natural Resources,2024,Actual,743367326.0,78226755.0,1469.5,91135679.7
 I00,Department of Service and Civic Innovation,2024,Actual,32095333.0,1274433.0,30.8,8523419.12
 U00,Department of the Environment,2024,Actual,602842717.0,18318439.0,970.0,173901188.99
+D26,Department of Aging,2024,Actual,81887094.0,2270434.0,40.0,69930895.38
 D55,Department of Veterans and Military Families,2024,Actual,60816950.0,7118378.0,121.0,33510056.47
 D78,Maryland Health Benefit Exchange,2024,Actual,600332612.0,72830970.0,67.0,530023455.71
 R99,Maryland School for the Deaf,2024,Actual,46653840.0,6645492.0,340.0,3791314.06
@@ -687,10 +687,13 @@ C94,Subsequent Injury Fund,2024,Actual,3039740.0,207830.0,17.0,125168.26
 D91,West North Avenue Development Authority,2024,Actual,11311526.0,412989.0,9.0,462553.71
 R12,Accountability and Implementation Board,2025,Actual,4400826.0,185688.0,16.0,2667600.36
 D05,Board of Public Works,2025,Actual,30763864.0,23517.0,11.0,27450437.93
-K00,Department of Natural Resources,2025,Actual,480900717.0,66246316.0,1501.0,93838745.08
-I00,Department of Service and Civic Innovation,2025,Actual,53082415.0,2666124.0,39.0,17654859.35
-U00,Department of the Environment,2025,Actual,598997678.0,19585466.0,981.0,253376916.77
-D26,Department of Aging,2025,Actual,87431932.0,3892997.0,49.0,76036597.27
+V00,Department of Juvenile Services,2025,Actual,353272412.0,41660115.0,2155.95,62047560.78
+Q00,Department of Public Safety and Correctional Services,2025,Actual,1869043892.0,286953839.0,9217.4,532795223.81
+D55,Department of Veterans and Military Families,2025,Actual,64187441.0,8015458.0,126.0,44921222.83
+D10,Executive Department - Governor,2025,Actual,19783754.0,1836406.0,121.0,909575.65
+D21,Governor's Office of Crime Prevention and Policy,2025,Actual,338932131.0,4407275.0,86.0,233698693.11
+D18,Governor's Office for Children,2025,Actual,68125500.0,5954049.0,16.0,45479743.53
+D25,Interagency Commission On School Construction,2025,Actual,88522793.0,1107068.0,44.0,101597878.54
 D78,Maryland Health Benefit Exchange,2025,Actual,690928647.0,73174222.0,73.0,665480543.59
 R99,Maryland School for the Deaf,2025,Actual,50690779.0,7650986.0,362.5,3300747.79
 D60,State Archives,2025,Actual,11779157.0,2801145.0,62.0,2469384.81
@@ -700,10 +703,10 @@ E80,Property Tax Assessment Appeals Boards,2025,Actual,1229848.0,134737.0,8.0,10
 D16,Secretary of State,2025,Actual,5409260.0,642256.0,29.0,556198.57
 E50,State Department of Assessments and Taxation,2025,Actual,175995077.0,12986614.0,574.3,101554910.05
 H00,Department of General Services,2026,Working budget,199702539.0,45358888.0,733.0,250334893.02
-Q00,Department of Public Safety and Correctional Services,2026,Working budget,1929065374.0,282740922.0,9199.4,564429908.48
-D55,Department of Veterans and Military Families,2026,Working budget,68451728.0,7237188.0,125.0,46375452.84
-D10,Executive Department - Governor,2026,Working budget,22778960.0,2789880.0,118.0,1167903.42
-D21,Governor's Office of Crime Prevention and Policy,2026,Working budget,342466479.0,1354582.0,104.0,238651388.79
+V00,Department of Juvenile Services,2026,Working budget,379935739.0,49985181.0,2126.95,75450781.22
+K00,Department of Natural Resources,2026,Working budget,523274013.0,91458191.0,1521.0,88498119.91
+I00,Department of Service and Civic Innovation,2026,Working budget,54950138.0,5412388.0,56.0,12508184.3
+U00,Department of the Environment,2026,Working budget,623165239.0,24464092.0,1004.0,178291857.72
 D18,Governor's Office for Children,2026,Working budget,63567399.0,903431.0,25.0,40929890.32
 D25,Interagency Commission On School Construction,2026,Working budget,97266118.0,2184644.0,44.0,64063463.43
 D23,Maryland Cannabis Administration,2026,Working budget,32766344.0,9954462.0,101.0,5499397.37
@@ -716,48 +719,45 @@ D74,Office of the Correctional Ombudsman,2026,Working budget,1859194.0,148901.0,
 C80,Office of the Public Defender,2026,Working budget,177870077.0,13853054.0,1011.5,23808363.94
 E80,Property Tax Assessment Appeals Boards,2026,Working budget,1281803.0,121275.0,8.0,70646.41
 D16,Secretary of State,2026,Working budget,5756158.0,974329.0,29.0,709592.78
-D13,Maryland Energy Administration,2027,Legislative appropriation,428374671.0,3127616.0,54.0,
-R62,Maryland Higher Education Commission,2027,Legislative appropriation,861532613.0,2157128.0,89.0,
-D80,Maryland Insurance Administration,2027,Legislative appropriation,59255161.0,16969523.0,281.0,
-E75,Maryland Lottery and Gaming Control Agency,2027,Legislative appropriation,135267654.0,91378491.0,356.75,
-R15,Maryland Public Broadcasting Commission,2027,Legislative appropriation,42542218.0,19719508.0,151.0,
-D28,Maryland Stadium Authority,2027,Legislative appropriation,312392727.0,300000.0,160.8,
-R11,Maryland State Library Agency,2027,Legislative appropriation,113161080.0,993366.0,34.0,
-G20,Maryland State Retirement and Pension Systems,2027,Legislative appropriation,40762151.0,12061800.0,259.0,
-G50,Maryland State Employees Supplemental Retirement Plans,2027,Legislative appropriation,2648232.0,259185.0,14.0,
-C85,Maryland Tax Court,2027,Legislative appropriation,1038914.0,24696.0,9.0,
-D22,Maryland Commission on African American History and Culture,2027,Legislative appropriation,1961037.0,223427.0,11.0,
-C96,Uninsured Employers' Fund,2027,Legislative appropriation,6139680.0,385630.0,13.0,
-C98,Workers' Compensation Commission,2027,Legislative appropriation,26494194.0,7646587.0,109.0,
-D05,Board of Public Works,2017,Actual,7592008.0,27919.0,9.0,6522596.78
-E00,Comptroller of Maryland,2017,Actual,117054029.0,26329159.0,1114.9,321196396.17
-H00,Department of General Services,2017,Actual,74662980.0,26634603.0,581.0,58722051.31
-V00,Department of Juvenile Services,2017,Actual,278763909.0,39555719.0,1998.0,78746801.14
-K00,Department of Natural Resources,2017,Actual,329836283.0,57884924.0,1314.5,70852426.88
-U00,Department of the Environment,2017,Actual,396944488.0,14110465.0,894.0,321519868.98
-T00,Department of Commerce,2017,Actual,152631594.0,14414913.0,193.0,74209649.47
+E50,State Department of Assessments and Taxation,2026,Working budget,190022961.0,20479612.0,569.3,95928518.07
+N00,Department of Human Services,2027,Legislative appropriation,3691051478.0,300980585.0,5871.38,
+F50,Department of Information Technology,2027,Legislative appropriation,249240712.0,194017762.0,273.0,
+P00,Maryland Department of Labor,2027,Legislative appropriation,668833734.0,86448526.0,1930.87,
+D24,Department of Social and Economic Mobility,2027,Legislative appropriation,25176145.0,5040732.0,71.0,
+D73,Office of the Inspector General for Education,2027,Legislative appropriation,2885210.0,137033.0,16.0,
+S50,Maryland African American Museum Corporation,2027,Legislative appropriation,2700000.0,0.0,,
+D99,Office of Administrative Hearings,2027,Legislative appropriation,51943.0,51943.0,114.0,
+D11,Office of the Deaf and Hard of Hearing,2027,Legislative appropriation,1201273.0,198575.0,7.0,
+C91,Office of People's Counsel,2027,Legislative appropriation,8436033.0,196158.0,28.0,
+C81,Office of the Attorney General,2027,Legislative appropriation,85280487.0,8390275.0,400.5,
+C82,Office of the State Prosecutor,2027,Legislative appropriation,3925069.0,340742.0,18.0,
+A15,Payments to Civil Divisions of the State,2027,Legislative appropriation,208244472.0,0.0,,
+D77,Prescription Drug Affordability Board,2027,Legislative appropriation,1348049.0,354255.0,5.0,
+C90,Public Service Commission,2027,Legislative appropriation,171689922.0,4217464.0,191.0,
+X00,Public Debt,2027,Legislative appropriation,1496361462.0,0.0,,
+D38,State Board of Elections,2027,Legislative appropriation,74470407.0,63956357.0,58.0,
 Y01,State Reserve Fund,2017,Actual,160376558.0,0.0,,
-Y01,State Reserve Fund,2022,Actual,882919432.0,0.0,,
 C00,Judiciary,2026,Working budget,818022965.0,147424746.0,4173.0,
+Y01,State Reserve Fund,2022,Actual,882919432.0,0.0,,
 C00,Judiciary,2018,Actual,542770648.0,113727143.0,3989.1,
 B75,Legislative Branch,2027,Legislative appropriation,164443659.0,35689856.0,827.0,
 Y01,State Reserve Fund,2019,Actual,14345241.0,0.0,,
+C00,Judiciary,2025,Actual,782725749.0,133148234.0,4165.0,
 D76,Maryland Office of the Inspector General for Health,2027,Legislative appropriation,6058789.0,78311.0,42.0,
 C00,Judiciary,2023,Actual,710246799.0,132185605.0,4143.75,
-C00,Judiciary,2025,Actual,782725749.0,133148234.0,4165.0,
 R75,Support for State Operated Institutions of Higher Education,2021,Actual,1714856968.0,0.0,,
 D73,Office of the Inspector General for Education,2024,Actual,1178392.0,187674.0,,
-R75,Support for State Operated Institutions of Higher Education,2023,Actual,2590505153.0,0.0,,
 R75,Support for State Operated Institutions of Higher Education,2025,Actual,2610665737.0,0.0,,
+R75,Support for State Operated Institutions of Higher Education,2023,Actual,2590505153.0,0.0,,
 C00,Judiciary,2021,Actual,608286932.0,118195338.0,4068.0,
-B75,Legislative Branch,2020,Actual,97629251.0,19054531.0,760.0,
 R75,Support for State Operated Institutions of Higher Education,2026,Working budget,2602005808.0,0.0,,
+B75,Legislative Branch,2020,Actual,97629251.0,19054531.0,760.0,
 R75,Support for State Operated Institutions of Higher Education,2018,Actual,1504154338.0,0.0,,
 C00,Judiciary,2017,Actual,532004381.0,105055084.0,3950.5,
 Y01,State Reserve Fund,2026,Working budget,95500000.0,0.0,,
 C00,Judiciary,2022,Actual,649671681.0,126370597.0,4068.0,
-Y01,State Reserve Fund,2018,Actual,10000000.0,0.0,,
 R75,Support for State Operated Institutions of Higher Education,2024,Actual,2550991334.0,0.0,,
+Y01,State Reserve Fund,2018,Actual,10000000.0,0.0,,
 C00,Judiciary,2019,Actual,561584258.0,119518171.0,4028.5,
 Y01,State Reserve Fund,2025,Actual,242500000.0,0.0,,
 R75,Support for State Operated Institutions of Higher Education,2019,Actual,1571097696.0,0.0,,
@@ -772,16 +772,16 @@ C00,Judiciary,2024,Actual,756340535.0,122316086.0,4159.0,
 R75,Support for State Operated Institutions of Higher Education,2027,Legislative appropriation,2608018526.0,0.0,,
 C00,Judiciary,2020,Actual,590294422.0,109175656.0,4048.0,
 B75,Legislative Branch,2021,Actual,104831636.0,17888336.0,767.0,
-B75,Legislative Branch,2023,Actual,143283099.0,28145777.0,801.0,
 B75,Legislative Branch,2025,Actual,164982644.0,34410402.0,813.0,
+B75,Legislative Branch,2023,Actual,143283099.0,28145777.0,801.0,
 D76,Maryland Office of the Inspector General for Health,2026,Working budget,5792335.0,74402.0,39.0,
 B75,Legislative Branch,2018,Actual,89333621.0,16033269.0,749.0,
+D76,Maryland Office of the Inspector General for Health,2025,Actual,5832314.0,312125.0,41.0,
 C00,Judiciary,2027,Legislative appropriation,845649493.0,152485938.0,4221.0,
 D76,Maryland Office of the Inspector General for Health,2023,Actual,4662339.0,51808.0,43.0,
 D18,Governor's Office for Children,2024,Actual,615177.0,486208.0,8.0,
-D76,Maryland Office of the Inspector General for Health,2025,Actual,5832314.0,312125.0,41.0,
-I00,Department of Service and Civic Innovation,2023,Actual,338854.0,236066.0,2.0,
 B75,Legislative Branch,2026,Working budget,163474929.0,35294671.0,814.0,
+I00,Department of Service and Civic Innovation,2023,Actual,338854.0,236066.0,2.0,
 R75,Support for State Operated Institutions of Higher Education,2020,Actual,1672119848.0,0.0,,
 B75,Legislative Branch,2024,Actual,155160017.0,32165436.0,801.0,
 Y01,State Reserve Fund,2020,Actual,405621213.0,0.0,,

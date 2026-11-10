@@ -3,8 +3,6 @@ C96,Uninsured Employers' Fund
 E17,"Alcohol, Tobacco, and Cannabis Commission"
 D27,Maryland Commission On Civil Rights
 L00,Department of Agriculture
-N00,Department of Human Services
-P00,Maryland Department of Labor
 D80,Maryland Insurance Administration
 D28,Maryland Stadium Authority
 G50,Maryland State Employees Supplemental Retirement Plans
@@ -13,26 +11,28 @@ D22,Maryland Commission on African American History and Culture
 R12,Accountability and Implementation Board
 D05,Board of Public Works
 H00,Department of General Services
-V00,Department of Juvenile Services
-U00,Department of the Environment
 S00,Department of Housing and Community Development
 D55,Department of Veterans and Military Families
 D25,Interagency Commission On School Construction
-D74,Office of the Correctional Ombudsman
-C80,Office of the Public Defender
+D60,State Archives
+W00,Department of State Police
+C94,Subsequent Injury Fund
+D91,West North Avenue Development Authority
+D12,Department of Disabilities
 R62,Maryland Higher Education Commission
 C91,Office of People's Counsel
 C81,Office of the Attorney General
 A15,Payments to Civil Divisions of the State
 D38,State Board of Elections
-D12,Department of Disabilities
-D60,State Archives
-W00,Department of State Police
-C94,Subsequent Injury Fund
+V00,Department of Juvenile Services
+U00,Department of the Environment
+P00,Maryland Department of Labor
+N00,Department of Human Services
+C80,Office of the Public Defender
 D52,Maryland Department of Emergency Management
 Y01,State Reserve Fund
 D29,Maryland Thoroughbred Racetrack Operating Authority
-D91,West North Avenue Development Authority
+D74,Office of the Correctional Ombudsman
 B75,Legislative Branch
 D06,Board of Public Works - Capital Appropriation
 R00,State Department of Education
@@ -40,8 +40,6 @@ C98,Workers' Compensation Commission
 D15,"Executive Department-Boards, Commissions and Offices"
 D90,Canal Place Preservation and Development Authority
 F10,Department of Budget and Management
-F50,Department of Information Technology
-D24,Department of Social and Economic Mobility
 E75,Maryland Lottery and Gaming Control Agency
 D40,Department of Planning
 R15,Maryland Public Broadcasting Commission
@@ -49,8 +47,6 @@ R11,Maryland State Library Agency
 G20,Maryland State Retirement and Pension Systems
 E00,Comptroller of Maryland
 T00,Department of Commerce
-K00,Department of Natural Resources
-I00,Department of Service and Civic Innovation
 Q00,Department of Public Safety and Correctional Services
 D10,Executive Department - Governor
 D21,Governor's Office of Crime Prevention and Policy
@@ -59,25 +55,29 @@ J00,Department of Transportation
 D23,Maryland Cannabis Administration
 D26,Department of Aging
 M00,Maryland Department of Health
-D53,Maryland Institute for Emergency Medical Services Systems
-T50,Maryland Technology Development Corporation
-D50,Military Department
-E80,Property Tax Assessment Appeals Boards
-D16,Secretary of State
-D13,Maryland Energy Administration
-D17,Historic St. Mary's City Commission
+D78,Maryland Health Benefit Exchange
+R99,Maryland School for the Deaf
+E50,State Department of Assessments and Taxation
+E20,State Treasurer's Office
+F50,Department of Information Technology
 D99,Office of Administrative Hearings
 D11,Office of the Deaf and Hard of Hearing
 C82,Office of the State Prosecutor
 C90,Public Service Commission
 X00,Public Debt
+D13,Maryland Energy Administration
+D17,Historic St. Mary's City Commission
+K00,Department of Natural Resources
 S50,Maryland African American Museum Corporation
-D78,Maryland Health Benefit Exchange
-R99,Maryland School for the Deaf
-E20,State Treasurer's Office
-E50,State Department of Assessments and Taxation
+D53,Maryland Institute for Emergency Medical Services Systems
+T50,Maryland Technology Development Corporation
+D50,Military Department
+E80,Property Tax Assessment Appeals Boards
+D16,Secretary of State
 D73,Office of the Inspector General for Education
 D77,Prescription Drug Affordability Board
+D24,Department of Social and Economic Mobility
+I00,Department of Service and Civic Innovation
 C00,Judiciary
 D76,Maryland Office of the Inspector General for Health
 R75,Support for State Operated Institutions of Higher Education

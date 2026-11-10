@@ -1,5 +1,467 @@
 fiscal_year,stage,agency_code,scope,budget
+2022,Actual,M00,Controllable purchases,1066065273.0
+2022,Actual,M00,Charges between agencies,478264488.0
+2022,Actual,V00,"Staff, grants and capital",186252756.0
+2022,Actual,V00,Client payments and debt service,22897025.0
+2022,Actual,N00,"Staff, grants and capital",3646609761.0
+2022,Actual,N00,Client payments and debt service,558008128.0
+2022,Actual,P00,"Staff, grants and capital",1279602072.0
+2022,Actual,P00,Client payments and debt service,6207.0
+2022,Actual,Q00,Controllable purchases,219032157.0
+2022,Actual,Q00,Charges between agencies,9815202.0
+2022,Actual,R00,Controllable purchases,108611395.0
+2022,Actual,R00,Charges between agencies,18278839.0
+2022,Actual,R11,"Staff, grants and capital",90292772.0
+2022,Actual,R12,"Staff, grants and capital",119675.0
+2022,Actual,R15,Controllable purchases,14406142.0
+2022,Actual,R15,Charges between agencies,153271.0
+2022,Actual,R62,"Staff, grants and capital",641194626.0
+2022,Actual,R99,"Staff, grants and capital",30981577.0
+2022,Actual,R99,Client payments and debt service,110421.0
+2022,Actual,S00,"Staff, grants and capital",1210994638.0
+2022,Actual,S00,Client payments and debt service,49869739.0
+2022,Actual,T00,"Staff, grants and capital",134434787.0
+2022,Actual,U00,Controllable purchases,16389321.0
+2022,Actual,U00,Charges between agencies,7734690.0
+2022,Actual,W00,"Staff, grants and capital",400263975.0
+2022,Actual,W00,Client payments and debt service,156098.0
+2022,Actual,Y01,"Staff, grants and capital",882919432.0
+2023,Actual,B75,Charges between agencies,3624696.0
+2023,Actual,B75,Controllable purchases,28145777.0
+2023,Actual,M00,Controllable purchases,623162531.0
+2023,Actual,C00,"Staff, grants and capital",571776184.0
+2023,Actual,C00,Client payments and debt service,41206.0
+2023,Actual,C80,"Staff, grants and capital",118135026.0
+2023,Actual,C80,Client payments and debt service,54196.0
+2023,Actual,C81,Controllable purchases,7330527.0
+2023,Actual,C81,Charges between agencies,750092.0
+2023,Actual,C82,Controllable purchases,266150.0
+2023,Actual,C82,Charges between agencies,143139.0
+2023,Actual,C85,Controllable purchases,24874.0
+2023,Actual,C85,Charges between agencies,41384.0
+2023,Actual,C90,"Staff, grants and capital",18760003.0
+2023,Actual,C91,"Staff, grants and capital",6360434.0
+2023,Actual,C94,Controllable purchases,225458.0
+2023,Actual,C94,Charges between agencies,67922.0
+2023,Actual,C96,"Staff, grants and capital",4236482.0
+2023,Actual,C98,Controllable purchases,7030441.0
+2023,Actual,C98,Charges between agencies,398867.0
+2023,Actual,D05,Controllable purchases,26009.0
+2023,Actual,D05,Charges between agencies,72350.0
+2023,Actual,D10,Controllable purchases,1485838.0
+2023,Actual,D10,Charges between agencies,901493.0
+2023,Actual,D11,"Staff, grants and capital",393764.0
+2023,Actual,D12,Controllable purchases,812414.0
+2023,Actual,D12,Charges between agencies,903916.0
+2023,Actual,D13,"Staff, grants and capital",29946361.0
+2023,Actual,D13,Client payments and debt service,48655364.0
+2023,Actual,D15,Charges between agencies,305936.0
+2023,Actual,D15,Controllable purchases,1342824.0
+2023,Actual,M00,Charges between agencies,480124623.0
+2023,Actual,D16,Controllable purchases,393251.0
+2023,Actual,D16,Charges between agencies,325456.0
+2023,Actual,D17,Controllable purchases,946233.0
+2023,Actual,D17,Charges between agencies,233812.0
+2023,Actual,D21,"Staff, grants and capital",360929193.0
+2023,Actual,D21,Client payments and debt service,219118.0
+2023,Actual,D22,Controllable purchases,232668.0
+2023,Actual,D22,Charges between agencies,1362.0
+2023,Actual,D25,Controllable purchases,1968967.0
+2023,Actual,D25,Charges between agencies,47158.0
+2023,Actual,D26,Controllable purchases,3512551.0
+2023,Actual,D26,Charges between agencies,865751.0
+2023,Actual,D27,"Staff, grants and capital",3911046.0
+2023,Actual,D28,Controllable purchases,72000.0
+2023,Actual,D38,Controllable purchases,35883095.0
+2023,Actual,D38,Charges between agencies,367190.0
+2023,Actual,D40,Controllable purchases,2021609.0
+2023,Actual,D40,Charges between agencies,969164.0
+2023,Actual,D50,"Staff, grants and capital",33006438.0
+2023,Actual,D50,Client payments and debt service,31658.0
+2023,Actual,D52,"Staff, grants and capital",493605005.0
+2023,Actual,D53,"Staff, grants and capital",23450515.0
+2023,Actual,D55,"Staff, grants and capital",10898103.0
+2023,Actual,D55,Client payments and debt service,26087227.0
+2023,Actual,D60,Controllable purchases,2290205.0
+2023,Actual,D60,Charges between agencies,499560.0
+2023,Actual,D76,"Staff, grants and capital",4565865.0
+2023,Actual,D77,Controllable purchases,465599.0
+2023,Actual,D77,Charges between agencies,14667.0
+2023,Actual,D78,Controllable purchases,68026926.0
+2023,Actual,D78,Charges between agencies,502280.0
+2023,Actual,D80,"Staff, grants and capital",31498857.0
+2023,Actual,D90,"Staff, grants and capital",295141.0
+2023,Actual,D99,Controllable purchases,33959.0
+2023,Actual,E00,Controllable purchases,41693501.0
+2023,Actual,E00,Charges between agencies,12006916.0
+2023,Actual,E17,"Staff, grants and capital",4252022.0
+2023,Actual,E20,Controllable purchases,5366913.0
+2023,Actual,E20,Charges between agencies,76391.0
+2023,Actual,E50,Controllable purchases,13549536.0
+2023,Actual,E50,Charges between agencies,3488225.0
+2023,Actual,E75,"Staff, grants and capital",32704388.0
+2023,Actual,E80,"Staff, grants and capital",822030.0
+2023,Actual,F10,Controllable purchases,9245131.0
+2023,Actual,F10,Charges between agencies,3882857.0
+2023,Actual,F50,Controllable purchases,184873036.0
+2023,Actual,F50,Charges between agencies,6693742.0
+2023,Actual,G20,Controllable purchases,6539317.0
+2023,Actual,G20,Charges between agencies,430226.0
+2023,Actual,G50,Controllable purchases,350164.0
+2023,Actual,G50,Charges between agencies,263748.0
+2023,Actual,H00,"Staff, grants and capital",563322550.0
+2023,Actual,H00,Client payments and debt service,19622.0
+2023,Actual,I00,"Staff, grants and capital",102081.0
+2023,Actual,J00,Controllable purchases,1389646455.0
+2023,Actual,J00,Charges between agencies,13446179.0
+2023,Actual,K00,Controllable purchases,71848988.0
+2023,Actual,K00,Charges between agencies,18687432.0
+2023,Actual,L00,"Staff, grants and capital",158692285.0
+2023,Actual,L00,Client payments and debt service,6134.0
+2023,Actual,W00,Controllable purchases,73233204.0
+2023,Actual,W00,Charges between agencies,5839468.0
+2023,Actual,N00,"Staff, grants and capital",2912075294.0
+2023,Actual,N00,Client payments and debt service,605969941.0
+2023,Actual,P00,Controllable purchases,86018629.0
+2023,Actual,P00,Charges between agencies,12470656.0
+2023,Actual,Q00,Controllable purchases,268864707.0
+2023,Actual,Q00,Charges between agencies,10208835.0
+2023,Actual,R00,"Staff, grants and capital",9775027133.0
+2023,Actual,R00,Client payments and debt service,26258.0
+2023,Actual,R11,"Staff, grants and capital",94180699.0
+2023,Actual,R12,"Staff, grants and capital",3444233.0
+2023,Actual,R15,"Staff, grants and capital",17151489.0
+2023,Actual,R62,Controllable purchases,22897853.0
+2023,Actual,R62,Charges between agencies,708614.0
+2023,Actual,R75,"Staff, grants and capital",2590505153.0
+2023,Actual,R99,"Staff, grants and capital",37882176.0
+2023,Actual,S00,"Staff, grants and capital",1083625724.0
+2023,Actual,S00,Client payments and debt service,43590283.0
+2023,Actual,T00,"Staff, grants and capital",306715302.0
+2023,Actual,U00,"Staff, grants and capital",645086488.0
+2023,Actual,U00,Client payments and debt service,7374.0
+2023,Actual,V00,Controllable purchases,35995402.0
+2023,Actual,V00,Charges between agencies,15645599.0
+2023,Actual,X00,Client payments and debt service,1430892085.0
+2024,Actual,A15,"Staff, grants and capital",259663180.0
+2024,Actual,B75,Charges between agencies,4239222.0
+2024,Actual,B75,Controllable purchases,32165436.0
+2024,Actual,M00,Controllable purchases,472966606.0
+2024,Actual,C00,"Staff, grants and capital",627618293.0
+2024,Actual,M00,Charges between agencies,390641630.0
+2024,Actual,C00,Client payments and debt service,24741.0
+2024,Actual,C80,"Staff, grants and capital",133029368.0
+2024,Actual,C80,Client payments and debt service,77322.0
+2024,Actual,C81,"Staff, grants and capital",59378704.0
+2024,Actual,C82,Controllable purchases,344632.0
+2024,Actual,C82,Charges between agencies,153270.0
+2024,Actual,C85,Controllable purchases,23059.0
+2024,Actual,C85,Charges between agencies,46404.0
+2024,Actual,C90,"Staff, grants and capital",20689617.0
+2024,Actual,C91,"Staff, grants and capital",6627269.0
+2024,Actual,C94,"Staff, grants and capital",2764361.0
+2024,Actual,C96,"Staff, grants and capital",4070790.0
+2024,Actual,C98,Controllable purchases,7112543.0
+2024,Actual,C98,Charges between agencies,354039.0
+2024,Actual,D05,Controllable purchases,28620.0
+2024,Actual,D05,Charges between agencies,74586.0
+2024,Actual,D10,"Staff, grants and capital",14257213.0
+2024,Actual,D11,Controllable purchases,74416.0
+2024,Actual,D11,Charges between agencies,414568.0
+2024,Actual,D12,Controllable purchases,943375.0
+2024,Actual,D12,Charges between agencies,494917.0
+2024,Actual,D13,"Staff, grants and capital",43720468.0
+2024,Actual,D13,Client payments and debt service,98073733.0
+2024,Actual,D15,"Staff, grants and capital",8393427.0
+2024,Actual,D16,"Staff, grants and capital",4992033.0
+2024,Actual,D17,Controllable purchases,1792505.0
+2024,Actual,D17,Charges between agencies,338521.0
+2024,Actual,D18,"Staff, grants and capital",128880.0
+2024,Actual,D21,Controllable purchases,4311553.0
+2024,Actual,D21,Charges between agencies,4033763.0
+2024,Actual,D22,Controllable purchases,477617.0
+2024,Actual,D22,Charges between agencies,78890.0
+2024,Actual,D23,"Staff, grants and capital",13531890.0
+2024,Actual,D25,"Staff, grants and capital",630125660.0
+2024,Actual,D25,Client payments and debt service,2639.0
+2024,Actual,D26,Controllable purchases,2270434.0
+2024,Actual,D26,Charges between agencies,1048048.0
+2024,Actual,D27,Controllable purchases,303357.0
+2024,Actual,D27,Charges between agencies,307711.0
+2024,Actual,D28,"Staff, grants and capital",51062310.0
+2024,Actual,D28,Client payments and debt service,61840648.0
+2024,Actual,D29,"Staff, grants and capital",187943.0
+2024,Actual,D38,Controllable purchases,39560076.0
+2024,Actual,D38,Charges between agencies,504604.0
+2024,Actual,D40,"Staff, grants and capital",47406980.0
+2024,Actual,D40,Client payments and debt service,2935.0
+2024,Actual,D50,"Staff, grants and capital",66785357.0
+2024,Actual,D50,Client payments and debt service,33498.0
+2024,Actual,D52,"Staff, grants and capital",886777267.0
+2024,Actual,D53,"Staff, grants and capital",40445470.0
+2024,Actual,D55,Controllable purchases,7118378.0
+2024,Actual,D55,Charges between agencies,547531.0
+2024,Actual,D60,"Staff, grants and capital",7907532.0
+2024,Actual,D73,"Staff, grants and capital",973062.0
+2024,Actual,D76,"Staff, grants and capital",4742927.0
+2024,Actual,D76,Client payments and debt service,14778.0
+2024,Actual,D77,Controllable purchases,767022.0
+2024,Actual,D77,Charges between agencies,15522.0
+2024,Actual,D78,"Staff, grants and capital",20000256.0
+2024,Actual,D78,Client payments and debt service,506990766.0
+2024,Actual,D80,Controllable purchases,9535283.0
+2024,Actual,D80,Charges between agencies,350616.0
+2024,Actual,D90,Controllable purchases,1870883.0
+2024,Actual,D90,Charges between agencies,69675.0
+2024,Actual,D91,Controllable purchases,412989.0
+2024,Actual,D91,Charges between agencies,12252.0
+2024,Actual,D99,Controllable purchases,30280.0
+2024,Actual,E00,Controllable purchases,60202461.0
+2024,Actual,E00,Charges between agencies,12850874.0
+2024,Actual,E17,"Staff, grants and capital",5139366.0
+2024,Actual,E20,"Staff, grants and capital",8014771.0
+2024,Actual,E50,Controllable purchases,13368525.0
+2024,Actual,E50,Charges between agencies,3674665.0
+2024,Actual,E75,"Staff, grants and capital",36750225.0
+2024,Actual,E80,Controllable purchases,156230.0
+2024,Actual,E80,Charges between agencies,60753.0
+2024,Actual,F10,Controllable purchases,10489409.0
+2024,Actual,F10,Charges between agencies,4241735.0
+2024,Actual,F50,Controllable purchases,141344205.0
+2024,Actual,F50,Charges between agencies,16149566.0
+2024,Actual,G20,Controllable purchases,6967144.0
+2024,Actual,G20,Charges between agencies,513288.0
+2024,Actual,G50,"Staff, grants and capital",1741256.0
+2024,Actual,H00,Controllable purchases,37995095.0
+2024,Actual,H00,Charges between agencies,3388740.0
+2024,Actual,I00,"Staff, grants and capital",30431070.0
+2024,Actual,I00,Client payments and debt service,39366.0
+2024,Actual,J00,"Staff, grants and capital",3785064713.0
+2024,Actual,J00,Client payments and debt service,427176263.0
+2024,Actual,K00,Controllable purchases,78226755.0
+2024,Actual,K00,Charges between agencies,18675381.0
+2018,Actual,N00,Controllable purchases,278919891.0
+2018,Actual,N00,Charges between agencies,13310004.0
+2019,Actual,D55,Controllable purchases,4372937.0
+2019,Actual,D21,Controllable purchases,1376730.0
+2018,Actual,T00,"Staff, grants and capital",110558262.0
+2018,Actual,Q00,Charges between agencies,9313083.0
+2019,Actual,K00,Controllable purchases,60646923.0
+2019,Actual,E50,Controllable purchases,6412152.0
+2018,Actual,Q00,Controllable purchases,209334607.0
+2019,Actual,K00,Charges between agencies,11094550.0
+2018,Actual,R00,"Staff, grants and capital",7613656520.0
+2018,Actual,P00,"Staff, grants and capital",312956977.0
+2018,Actual,P00,Client payments and debt service,24843.0
+2019,Actual,E50,Charges between agencies,2945452.0
+2019,Actual,Q00,"Staff, grants and capital",978466487.0
+2020,Actual,H00,Controllable purchases,25458999.0
+2020,Actual,H00,Charges between agencies,2018932.0
+2020,Actual,J00,Controllable purchases,1307875727.0
+2020,Actual,J00,Charges between agencies,12624776.0
+2019,Actual,P00,"Staff, grants and capital",322886499.0
+2019,Actual,Q00,Client payments and debt service,196770455.0
+2018,Actual,R00,Client payments and debt service,166093.0
+2019,Actual,J00,"Staff, grants and capital",3244232133.0
+2019,Actual,F50,"Staff, grants and capital",15163196.0
+2019,Actual,F10,"Staff, grants and capital",27800311.0
+2019,Actual,D21,Charges between agencies,127822.0
+2019,Actual,H00,Controllable purchases,26675824.0
+2020,Actual,K00,"Staff, grants and capital",335593612.0
+2018,Actual,U00,Controllable purchases,21170379.0
+2018,Actual,S00,Controllable purchases,14749140.0
+2018,Actual,R15,Controllable purchases,12666635.0
+2018,Actual,R62,Controllable purchases,1066779.0
+2018,Actual,R15,Charges between agencies,120208.0
+2018,Actual,R11,Charges between agencies,75493.0
+2018,Actual,R11,Controllable purchases,963052.0
+2019,Actual,E00,Controllable purchases,27897757.0
+2018,Actual,R62,Charges between agencies,286375.0
+2018,Actual,R99,Controllable purchases,3681016.0
+2018,Actual,R99,Charges between agencies,111738.0
+2018,Actual,S00,Charges between agencies,711043.0
+2019,Actual,C90,"Staff, grants and capital",15284111.0
+2018,Actual,T00,Client payments and debt service,570.0
+2019,Actual,H00,Charges between agencies,720118.0
+2018,Actual,T50,"Staff, grants and capital",26822060.0
+2018,Actual,U00,Charges between agencies,2968835.0
+2018,Actual,V00,"Staff, grants and capital",177749134.0
+2019,Actual,C00,Controllable purchases,119518171.0
+2018,Actual,W00,Charges between agencies,4287066.0
+2018,Actual,W00,Controllable purchases,54847274.0
+2019,Actual,M00,"Staff, grants and capital",704445256.0
+2019,Actual,M00,Client payments and debt service,12786587291.0
+2018,Actual,V00,Client payments and debt service,48948702.0
+2019,Actual,B75,Controllable purchases,16534726.0
+2019,Actual,C00,Charges between agencies,3895026.0
+2019,Actual,B75,Charges between agencies,1914559.0
+2019,Actual,D17,Controllable purchases,664637.0
+2019,Actual,C81,"Staff, grants and capital",25789086.0
+2019,Actual,D55,Charges between agencies,169452.0
+2019,Actual,D40,"Staff, grants and capital",26663674.0
+2019,Actual,D38,Controllable purchases,21257087.0
+2019,Actual,E00,Charges between agencies,9803927.0
 2020,Actual,Q00,"Staff, grants and capital",1022791882.0
+2018,Actual,X00,Client payments and debt service,1234920771.0
+2018,Actual,Y01,"Staff, grants and capital",10000000.0
+2019,Actual,A15,"Staff, grants and capital",168462833.0
+2019,Actual,D17,Charges between agencies,102092.0
+2019,Actual,C80,"Staff, grants and capital",98003938.0
+2019,Actual,C82,Controllable purchases,151952.0
+2019,Actual,C82,Charges between agencies,35182.0
+2019,Actual,C85,Controllable purchases,19854.0
+2019,Actual,C85,Charges between agencies,19291.0
+2019,Actual,C91,"Staff, grants and capital",3755751.0
+2019,Actual,C98,"Staff, grants and capital",11938568.0
+2019,Actual,C94,"Staff, grants and capital",2016052.0
+2019,Actual,D05,Controllable purchases,28574.0
+2019,Actual,C96,Controllable purchases,590550.0
+2019,Actual,C96,Charges between agencies,56262.0
+2019,Actual,D05,Charges between agencies,9417.0
+2019,Actual,D10,"Staff, grants and capital",9084237.0
+2019,Actual,D15,Controllable purchases,1106524.0
+2019,Actual,D13,Controllable purchases,1036485.0
+2019,Actual,D13,Charges between agencies,320597.0
+2019,Actual,D11,Controllable purchases,56180.0
+2019,Actual,D11,Charges between agencies,4060.0
+2019,Actual,D12,"Staff, grants and capital",4715464.0
+2019,Actual,D15,Charges between agencies,141616.0
+2019,Actual,N00,"Staff, grants and capital",1594971174.0
+2019,Actual,D16,"Staff, grants and capital",2644834.0
+2019,Actual,D26,Controllable purchases,751593.0
+2019,Actual,D38,Charges between agencies,372661.0
+2019,Actual,D26,Charges between agencies,252746.0
+2019,Actual,D27,Controllable purchases,185020.0
+2019,Actual,D27,Charges between agencies,185418.0
+2019,Actual,D28,Controllable purchases,501500.0
+2019,Actual,D50,"Staff, grants and capital",75012356.0
+2019,Actual,D50,Client payments and debt service,1191.0
+2019,Actual,D53,"Staff, grants and capital",11321040.0
+2019,Actual,D53,Client payments and debt service,2256.0
+2019,Actual,D60,"Staff, grants and capital",6002507.0
+2019,Actual,D78,Controllable purchases,53128221.0
+2019,Actual,D99,Controllable purchases,16284.0
+2019,Actual,D80,"Staff, grants and capital",25826750.0
+2019,Actual,D78,Charges between agencies,577551.0
+2019,Actual,D90,"Staff, grants and capital",258073.0
+2019,Actual,E20,"Staff, grants and capital",3184703.0
+2019,Actual,F10,Client payments and debt service,7395.0
+2019,Actual,E75,Controllable purchases,70104915.0
+2019,Actual,E75,Charges between agencies,152063.0
+2019,Actual,E80,"Staff, grants and capital",765673.0
+2019,Actual,G20,Controllable purchases,9047398.0
+2019,Actual,G20,Charges between agencies,421200.0
+2019,Actual,G50,"Staff, grants and capital",1336868.0
+2019,Actual,J00,Client payments and debt service,338021435.0
+2019,Actual,L00,Controllable purchases,9206602.0
+2019,Actual,L00,Charges between agencies,2792747.0
+2019,Actual,T00,Charges between agencies,458494.0
+2019,Actual,T00,Controllable purchases,16515371.0
+2019,Actual,N00,Client payments and debt service,437123302.0
+2019,Actual,P00,Client payments and debt service,13452.0
+2019,Actual,R00,Controllable purchases,94257663.0
+2019,Actual,R00,Charges between agencies,6036954.0
+2020,Actual,D55,Charges between agencies,355890.0
+2020,Actual,B75,Controllable purchases,19054531.0
+2019,Actual,S00,"Staff, grants and capital",358107996.0
+2019,Actual,R15,Controllable purchases,16370039.0
+2019,Actual,R62,Controllable purchases,1947169.0
+2019,Actual,R15,Charges between agencies,139003.0
+2019,Actual,R11,Charges between agencies,314214.0
+2019,Actual,R11,Controllable purchases,1073265.0
+2020,Actual,C00,"Staff, grants and capital",476161694.0
+2019,Actual,R62,Charges between agencies,150259.0
+2019,Actual,R75,"Staff, grants and capital",1571097696.0
+2019,Actual,R99,"Staff, grants and capital",28653178.0
+2019,Actual,R99,Client payments and debt service,82693.0
+2019,Actual,S00,Client payments and debt service,29915503.0
+2020,Actual,D26,Controllable purchases,2150721.0
+2019,Actual,T50,"Staff, grants and capital",27175199.0
+2019,Actual,U00,Controllable purchases,18161381.0
+2019,Actual,U00,Charges between agencies,10737628.0
+2020,Actual,M00,"Staff, grants and capital",934858865.0
+2020,Actual,M00,Client payments and debt service,13517518894.0
+2020,Actual,D40,Controllable purchases,3143049.0
+2020,Actual,D55,Controllable purchases,3918431.0
+2020,Actual,C81,"Staff, grants and capital",27467118.0
+2019,Actual,V00,Controllable purchases,39706981.0
+2019,Actual,V00,Charges between agencies,2367122.0
+2019,Actual,W00,"Staff, grants and capital",342413562.0
+2020,Actual,E00,"Staff, grants and capital",85840646.0
+2019,Actual,W00,Client payments and debt service,191438.0
+2019,Actual,X00,Client payments and debt service,1298317506.0
+2020,Actual,A15,"Staff, grants and capital",174964477.0
+2020,Actual,B75,Charges between agencies,2787923.0
+2020,Actual,C00,Client payments and debt service,25342.0
+2020,Actual,C80,Controllable purchases,10376155.0
+2020,Actual,C80,Charges between agencies,1475758.0
+2020,Actual,D21,Controllable purchases,2228266.0
+2020,Actual,D21,Charges between agencies,31031.0
+2020,Actual,C82,"Staff, grants and capital",1437632.0
+2020,Actual,C90,Controllable purchases,2766101.0
+2020,Actual,C90,Charges between agencies,1330172.0
+2020,Actual,D05,Charges between agencies,57816.0
+2020,Actual,C85,"Staff, grants and capital",618692.0
+2020,Actual,C85,Client payments and debt service,400.0
+2020,Actual,C98,Controllable purchases,5649102.0
+2020,Actual,C91,"Staff, grants and capital",3625748.0
+2020,Actual,C94,"Staff, grants and capital",2106998.0
+2020,Actual,C96,Controllable purchases,490376.0
+2020,Actual,C96,Charges between agencies,86052.0
+2020,Actual,C98,Charges between agencies,298770.0
+2020,Actual,D05,Controllable purchases,34019.0
+2020,Actual,D10,"Staff, grants and capital",9609392.0
+2020,Actual,D15,Controllable purchases,668676.0
+2020,Actual,D11,"Staff, grants and capital",327616.0
+2020,Actual,D12,Controllable purchases,1071211.0
+2020,Actual,D13,"Staff, grants and capital",18361571.0
+2020,Actual,D12,Charges between agencies,1553365.0
+2020,Actual,D13,Client payments and debt service,19784808.0
+2020,Actual,D15,Charges between agencies,1085781.0
+2020,Actual,D17,"Staff, grants and capital",3146710.0
+2020,Actual,D16,Controllable purchases,257565.0
+2020,Actual,D16,Charges between agencies,412958.0
+2020,Actual,D26,Charges between agencies,427141.0
+2020,Actual,D27,"Staff, grants and capital",2862353.0
+2020,Actual,D38,"Staff, grants and capital",4637231.0
+2020,Actual,D28,Controllable purchases,260386.0
+2020,Actual,D40,Charges between agencies,1162391.0
+2020,Actual,D50,"Staff, grants and capital",131839078.0
+2020,Actual,D53,"Staff, grants and capital",11703230.0
+2020,Actual,D60,Controllable purchases,2276599.0
+2020,Actual,D60,Charges between agencies,351063.0
+2020,Actual,D78,"Staff, grants and capital",17729895.0
+2020,Actual,D80,Controllable purchases,5068336.0
+2020,Actual,D80,Charges between agencies,365558.0
+2020,Actual,D90,Controllable purchases,354249.0
+2020,Actual,D90,Charges between agencies,45867.0
+2020,Actual,D99,Controllable purchases,4755.0
+2020,Actual,E50,"Staff, grants and capital",133057103.0
+2020,Actual,E20,"Staff, grants and capital",3273114.0
+2020,Actual,E75,Controllable purchases,66592112.0
+2020,Actual,F10,"Staff, grants and capital",26388344.0
+2020,Actual,E75,Charges between agencies,208633.0
+2020,Actual,E80,"Staff, grants and capital",802542.0
+2020,Actual,F10,Client payments and debt service,19024.0
+2020,Actual,F50,Controllable purchases,108261066.0
+2020,Actual,F50,Charges between agencies,4871335.0
+2020,Actual,G20,"Staff, grants and capital",11542718.0
+2020,Actual,G50,"Staff, grants and capital",1358074.0
+2020,Actual,G20,Client payments and debt service,85.0
+2020,Actual,K00,Client payments and debt service,321.0
+2020,Actual,N00,Controllable purchases,328410391.0
+2020,Actual,L00,"Staff, grants and capital",112583497.0
+2020,Actual,N00,Charges between agencies,12733467.0
+2020,Actual,L00,Client payments and debt service,6115.0
+2020,Actual,S00,Controllable purchases,12683295.0
+2027,Legislative appropriation,U00,Controllable purchases,24990367.0
+2027,Legislative appropriation,U00,Charges between agencies,29284728.0
+2027,Legislative appropriation,V00,Controllable purchases,44180306.0
+2027,Legislative appropriation,V00,Charges between agencies,10847344.0
+2027,Legislative appropriation,W00,"Staff, grants and capital",589588561.0
+2027,Legislative appropriation,W00,Client payments and debt service,181250.0
+2027,Legislative appropriation,X00,Client payments and debt service,1496361462.0
+2027,Legislative appropriation,Y01,"Staff, grants and capital",153250000.0
 2021,Actual,H00,Controllable purchases,28185376.0
 2021,Actual,H00,Charges between agencies,2416748.0
 2021,Actual,J00,Client payments and debt service,412979895.0
@@ -7,17 +469,7 @@ fiscal_year,stage,agency_code,scope,budget
 2021,Actual,K00,Controllable purchases,49009558.0
 2021,Actual,P00,Controllable purchases,122309373.0
 2021,Actual,Q00,Controllable purchases,216964848.0
-2019,Actual,J00,"Staff, grants and capital",3244232133.0
-2019,Actual,D40,"Staff, grants and capital",26663674.0
-2019,Actual,C00,Controllable purchases,119518171.0
-2019,Actual,D21,Charges between agencies,127822.0
 2017,Actual,M00,Controllable purchases,300460822.0
-2019,Actual,B75,Controllable purchases,16534726.0
-2019,Actual,D21,Controllable purchases,1376730.0
-2018,Actual,R00,"Staff, grants and capital",7613656520.0
-2019,Actual,D55,Controllable purchases,4372937.0
-2018,Actual,Q00,Controllable purchases,209334607.0
-2019,Actual,F50,"Staff, grants and capital",15163196.0
 2017,Actual,M00,Charges between agencies,319958703.0
 2017,Actual,B75,"Staff, grants and capital",72177874.0
 2017,Actual,C00,Controllable purchases,105055084.0
@@ -29,10 +481,6 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,J00,Charges between agencies,11315126.0
 2019,Actual,D40,Client payments and debt service,1764.0
 2017,Actual,C81,"Staff, grants and capital",27265947.0
-2019,Actual,K00,Controllable purchases,60646923.0
-2018,Actual,S00,Controllable purchases,14749140.0
-2018,Actual,S00,Charges between agencies,711043.0
-2018,Actual,Q00,Charges between agencies,9313083.0
 2017,Actual,C80,"Staff, grants and capital",100776849.0
 2017,Actual,C80,Client payments and debt service,1584.0
 2017,Actual,D55,"Staff, grants and capital",8132393.0
@@ -72,7 +520,6 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,D25,Charges between agencies,44847.0
 2017,Actual,D38,Charges between agencies,513286.0
 2017,Actual,D27,"Staff, grants and capital",2805510.0
-2018,Actual,T00,"Staff, grants and capital",110558262.0
 2017,Actual,L00,"Staff, grants and capital",57592627.0
 2017,Actual,D50,Controllable purchases,10343190.0
 2017,Actual,D50,Charges between agencies,378035.0
@@ -89,7 +536,6 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,E50,"Staff, grants and capital",124355142.0
 2017,Actual,E20,Controllable purchases,3022386.0
 2017,Actual,E20,Charges between agencies,54873.0
-2019,Actual,K00,Charges between agencies,11094550.0
 2017,Actual,E75,"Staff, grants and capital",26885357.0
 2017,Actual,E80,"Staff, grants and capital",851380.0
 2017,Actual,F10,Charges between agencies,1601088.0
@@ -99,35 +545,18 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,G50,"Staff, grants and capital",1247588.0
 2017,Actual,H00,"Staff, grants and capital",47388293.0
 2017,Actual,H00,Client payments and debt service,15450.0
-2019,Actual,D38,Controllable purchases,21257087.0
-2019,Actual,D38,Charges between agencies,372661.0
-2018,Actual,U00,Controllable purchases,21170379.0
 2017,Actual,L00,Client payments and debt service,3823586.0
-2019,Actual,H00,Controllable purchases,26675824.0
-2019,Actual,D55,Charges between agencies,169452.0
 2018,Actual,S50,"Staff, grants and capital",1959000.0
-2019,Actual,H00,Charges between agencies,720118.0
-2019,Actual,C81,"Staff, grants and capital",25789086.0
 2017,Actual,U00,Charges between agencies,8156345.0
 2017,Actual,W00,Controllable purchases,52387783.0
-2019,Actual,B75,Charges between agencies,1914559.0
 2017,Actual,V00,Charges between agencies,3429392.0
 2017,Actual,V00,Controllable purchases,39555719.0
 2017,Actual,N00,Controllable purchases,241254172.0
-2019,Actual,E50,Controllable purchases,6412152.0
-2019,Actual,J00,Client payments and debt service,338021435.0
-2019,Actual,E50,Charges between agencies,2945452.0
 2017,Actual,N00,Charges between agencies,16438836.0
-2018,Actual,R15,Controllable purchases,12666635.0
 2017,Actual,P00,Controllable purchases,43714628.0
-2019,Actual,D17,Controllable purchases,664637.0
 2017,Actual,Q00,"Staff, grants and capital",983590306.0
-2019,Actual,D17,Charges between agencies,102092.0
 2017,Actual,Q00,Client payments and debt service,176099010.0
 2017,Actual,P00,Charges between agencies,8205416.0
-2019,Actual,D05,Controllable purchases,28574.0
-2019,Actual,D05,Charges between agencies,9417.0
-2018,Actual,R00,Client payments and debt service,166093.0
 2017,Actual,W00,Charges between agencies,4904266.0
 2017,Actual,R00,"Staff, grants and capital",7574939425.0
 2017,Actual,R00,Client payments and debt service,173218.0
@@ -142,11 +571,8 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,R99,Controllable purchases,3182733.0
 2017,Actual,R99,Charges between agencies,293749.0
 2017,Actual,S50,"Staff, grants and capital",1959000.0
-2019,Actual,C00,Charges between agencies,3895026.0
 2017,Actual,T50,"Staff, grants and capital",26799919.0
-2018,Actual,R15,Charges between agencies,120208.0
 2018,Actual,M00,Controllable purchases,296899738.0
-2018,Actual,R62,Controllable purchases,1066779.0
 2018,Actual,B75,Controllable purchases,16033269.0
 2017,Actual,Y01,"Staff, grants and capital",160376558.0
 2018,Actual,A15,"Staff, grants and capital",166483732.0
@@ -168,7 +594,6 @@ fiscal_year,stage,agency_code,scope,budget
 2018,Actual,C80,"Staff, grants and capital",97578844.0
 2018,Actual,E00,Controllable purchases,27558065.0
 2018,Actual,C81,Charges between agencies,632490.0
-2019,Actual,E00,Controllable purchases,27897757.0
 2018,Actual,C82,"Staff, grants and capital",1266427.0
 2018,Actual,C90,Charges between agencies,1241304.0
 2018,Actual,C85,Charges between agencies,20048.0
@@ -224,20 +649,10 @@ fiscal_year,stage,agency_code,scope,budget
 2018,Actual,G50,Controllable purchases,361705.0
 2018,Actual,G50,Charges between agencies,183989.0
 2018,Actual,H00,"Staff, grants and capital",48255818.0
-2018,Actual,R62,Charges between agencies,286375.0
 2018,Actual,H00,Client payments and debt service,10963.0
 2018,Actual,K00,Charges between agencies,13330846.0
-2019,Actual,E00,Charges between agencies,9803927.0
-2019,Actual,D78,Charges between agencies,577551.0
 2018,Actual,L00,"Staff, grants and capital",74111997.0
 2018,Actual,L00,Client payments and debt service,1455.0
-2018,Actual,N00,Controllable purchases,278919891.0
-2018,Actual,N00,Charges between agencies,13310004.0
-2018,Actual,P00,"Staff, grants and capital",312956977.0
-2024,Actual,K00,Controllable purchases,78226755.0
-2024,Actual,K00,Charges between agencies,18675381.0
-2024,Actual,M00,Controllable purchases,472966606.0
-2024,Actual,M00,Charges between agencies,390641630.0
 2024,Actual,L00,Controllable purchases,10762503.0
 2024,Actual,L00,Charges between agencies,5347691.0
 2024,Actual,V00,"Staff, grants and capital",249704293.0
@@ -424,11 +839,6 @@ fiscal_year,stage,agency_code,scope,budget
 2026,Working budget,D15,Controllable purchases,824815.0
 2026,Working budget,D16,"Staff, grants and capital",4309742.0
 2026,Working budget,D17,"Staff, grants and capital",5603963.0
-2020,Actual,M00,"Staff, grants and capital",934858865.0
-2020,Actual,M00,Client payments and debt service,13517518894.0
-2020,Actual,N00,Controllable purchases,328410391.0
-2020,Actual,N00,Charges between agencies,12733467.0
-2020,Actual,S00,Controllable purchases,12683295.0
 2020,Actual,T00,Controllable purchases,16602200.0
 2020,Actual,T00,Charges between agencies,1624911.0
 2020,Actual,R00,"Staff, grants and capital",8674540722.0
@@ -555,10 +965,8 @@ fiscal_year,stage,agency_code,scope,budget
 2022,Actual,A15,"Staff, grants and capital",186927673.0
 2022,Actual,B75,Charges between agencies,3595126.0
 2022,Actual,B75,Controllable purchases,19707278.0
-2022,Actual,M00,Controllable purchases,1066065273.0
 2022,Actual,C00,"Staff, grants and capital",518200487.0
 2022,Actual,C00,Client payments and debt service,25926.0
-2022,Actual,M00,Charges between agencies,478264488.0
 2022,Actual,C80,Controllable purchases,7015050.0
 2022,Actual,C80,Charges between agencies,1531702.0
 2022,Actual,C81,Controllable purchases,5235011.0
@@ -631,414 +1039,6 @@ fiscal_year,stage,agency_code,scope,budget
 2022,Actual,K00,Charges between agencies,19180039.0
 2022,Actual,L00,Controllable purchases,22803115.0
 2022,Actual,L00,Charges between agencies,4110794.0
-2022,Actual,V00,"Staff, grants and capital",186252756.0
-2022,Actual,V00,Client payments and debt service,22897025.0
-2022,Actual,N00,"Staff, grants and capital",3646609761.0
-2022,Actual,N00,Client payments and debt service,558008128.0
-2022,Actual,P00,"Staff, grants and capital",1279602072.0
-2022,Actual,P00,Client payments and debt service,6207.0
-2022,Actual,Q00,Controllable purchases,219032157.0
-2022,Actual,Q00,Charges between agencies,9815202.0
-2022,Actual,R00,Controllable purchases,108611395.0
-2022,Actual,R00,Charges between agencies,18278839.0
-2022,Actual,R11,"Staff, grants and capital",90292772.0
-2022,Actual,R12,"Staff, grants and capital",119675.0
-2022,Actual,R15,Controllable purchases,14406142.0
-2022,Actual,R15,Charges between agencies,153271.0
-2022,Actual,R62,"Staff, grants and capital",641194626.0
-2022,Actual,R99,"Staff, grants and capital",30981577.0
-2022,Actual,R99,Client payments and debt service,110421.0
-2022,Actual,S00,"Staff, grants and capital",1210994638.0
-2022,Actual,S00,Client payments and debt service,49869739.0
-2022,Actual,T00,"Staff, grants and capital",134434787.0
-2022,Actual,U00,Controllable purchases,16389321.0
-2022,Actual,U00,Charges between agencies,7734690.0
-2022,Actual,W00,"Staff, grants and capital",400263975.0
-2022,Actual,W00,Client payments and debt service,156098.0
-2022,Actual,Y01,"Staff, grants and capital",882919432.0
-2023,Actual,B75,Charges between agencies,3624696.0
-2023,Actual,B75,Controllable purchases,28145777.0
-2023,Actual,M00,Controllable purchases,623162531.0
-2023,Actual,C00,"Staff, grants and capital",571776184.0
-2023,Actual,C00,Client payments and debt service,41206.0
-2023,Actual,C80,"Staff, grants and capital",118135026.0
-2023,Actual,C80,Client payments and debt service,54196.0
-2023,Actual,C81,Controllable purchases,7330527.0
-2023,Actual,C81,Charges between agencies,750092.0
-2023,Actual,C82,Controllable purchases,266150.0
-2023,Actual,C82,Charges between agencies,143139.0
-2023,Actual,C85,Controllable purchases,24874.0
-2023,Actual,C85,Charges between agencies,41384.0
-2023,Actual,C90,"Staff, grants and capital",18760003.0
-2023,Actual,C91,"Staff, grants and capital",6360434.0
-2023,Actual,C94,Controllable purchases,225458.0
-2023,Actual,C94,Charges between agencies,67922.0
-2023,Actual,C96,"Staff, grants and capital",4236482.0
-2023,Actual,C98,Controllable purchases,7030441.0
-2023,Actual,C98,Charges between agencies,398867.0
-2023,Actual,D05,Controllable purchases,26009.0
-2023,Actual,D05,Charges between agencies,72350.0
-2023,Actual,D10,Controllable purchases,1485838.0
-2023,Actual,D10,Charges between agencies,901493.0
-2023,Actual,D11,"Staff, grants and capital",393764.0
-2023,Actual,D12,Controllable purchases,812414.0
-2023,Actual,D12,Charges between agencies,903916.0
-2023,Actual,D13,"Staff, grants and capital",29946361.0
-2023,Actual,D13,Client payments and debt service,48655364.0
-2023,Actual,D15,Charges between agencies,305936.0
-2023,Actual,D15,Controllable purchases,1342824.0
-2023,Actual,M00,Charges between agencies,480124623.0
-2023,Actual,D16,Controllable purchases,393251.0
-2023,Actual,D16,Charges between agencies,325456.0
-2023,Actual,D17,Controllable purchases,946233.0
-2023,Actual,D17,Charges between agencies,233812.0
-2023,Actual,D21,"Staff, grants and capital",360929193.0
-2023,Actual,D21,Client payments and debt service,219118.0
-2023,Actual,D22,Controllable purchases,232668.0
-2023,Actual,D22,Charges between agencies,1362.0
-2023,Actual,D25,Controllable purchases,1968967.0
-2023,Actual,D25,Charges between agencies,47158.0
-2023,Actual,D26,Controllable purchases,3512551.0
-2023,Actual,D26,Charges between agencies,865751.0
-2023,Actual,D27,"Staff, grants and capital",3911046.0
-2023,Actual,D28,Controllable purchases,72000.0
-2023,Actual,D38,Controllable purchases,35883095.0
-2023,Actual,D38,Charges between agencies,367190.0
-2023,Actual,D40,Controllable purchases,2021609.0
-2023,Actual,D40,Charges between agencies,969164.0
-2023,Actual,D50,"Staff, grants and capital",33006438.0
-2023,Actual,D50,Client payments and debt service,31658.0
-2023,Actual,D52,"Staff, grants and capital",493605005.0
-2023,Actual,D53,"Staff, grants and capital",23450515.0
-2023,Actual,D55,"Staff, grants and capital",10898103.0
-2023,Actual,D55,Client payments and debt service,26087227.0
-2023,Actual,D60,Controllable purchases,2290205.0
-2023,Actual,D60,Charges between agencies,499560.0
-2023,Actual,D76,"Staff, grants and capital",4565865.0
-2023,Actual,D77,Controllable purchases,465599.0
-2023,Actual,D77,Charges between agencies,14667.0
-2023,Actual,D78,Controllable purchases,68026926.0
-2023,Actual,D78,Charges between agencies,502280.0
-2023,Actual,D80,"Staff, grants and capital",31498857.0
-2023,Actual,D90,"Staff, grants and capital",295141.0
-2023,Actual,D99,Controllable purchases,33959.0
-2023,Actual,E00,Controllable purchases,41693501.0
-2023,Actual,E00,Charges between agencies,12006916.0
-2023,Actual,E17,"Staff, grants and capital",4252022.0
-2023,Actual,E20,Controllable purchases,5366913.0
-2023,Actual,E20,Charges between agencies,76391.0
-2023,Actual,E50,Controllable purchases,13549536.0
-2023,Actual,E50,Charges between agencies,3488225.0
-2023,Actual,E75,"Staff, grants and capital",32704388.0
-2023,Actual,E80,"Staff, grants and capital",822030.0
-2023,Actual,F10,Controllable purchases,9245131.0
-2023,Actual,F10,Charges between agencies,3882857.0
-2023,Actual,F50,Controllable purchases,184873036.0
-2023,Actual,F50,Charges between agencies,6693742.0
-2023,Actual,G20,Controllable purchases,6539317.0
-2023,Actual,G20,Charges between agencies,430226.0
-2023,Actual,G50,Controllable purchases,350164.0
-2023,Actual,G50,Charges between agencies,263748.0
-2023,Actual,H00,"Staff, grants and capital",563322550.0
-2023,Actual,H00,Client payments and debt service,19622.0
-2023,Actual,I00,"Staff, grants and capital",102081.0
-2023,Actual,J00,Controllable purchases,1389646455.0
-2023,Actual,J00,Charges between agencies,13446179.0
-2023,Actual,K00,Controllable purchases,71848988.0
-2023,Actual,K00,Charges between agencies,18687432.0
-2023,Actual,L00,"Staff, grants and capital",158692285.0
-2023,Actual,L00,Client payments and debt service,6134.0
-2023,Actual,W00,Controllable purchases,73233204.0
-2023,Actual,W00,Charges between agencies,5839468.0
-2023,Actual,N00,"Staff, grants and capital",2912075294.0
-2023,Actual,N00,Client payments and debt service,605969941.0
-2023,Actual,P00,Controllable purchases,86018629.0
-2023,Actual,P00,Charges between agencies,12470656.0
-2023,Actual,Q00,Controllable purchases,268864707.0
-2023,Actual,Q00,Charges between agencies,10208835.0
-2023,Actual,R00,"Staff, grants and capital",9775027133.0
-2023,Actual,R00,Client payments and debt service,26258.0
-2023,Actual,R11,"Staff, grants and capital",94180699.0
-2023,Actual,R12,"Staff, grants and capital",3444233.0
-2023,Actual,R15,"Staff, grants and capital",17151489.0
-2023,Actual,R62,Controllable purchases,22897853.0
-2023,Actual,R62,Charges between agencies,708614.0
-2023,Actual,R75,"Staff, grants and capital",2590505153.0
-2023,Actual,R99,"Staff, grants and capital",37882176.0
-2023,Actual,S00,"Staff, grants and capital",1083625724.0
-2023,Actual,S00,Client payments and debt service,43590283.0
-2023,Actual,T00,"Staff, grants and capital",306715302.0
-2023,Actual,U00,"Staff, grants and capital",645086488.0
-2023,Actual,U00,Client payments and debt service,7374.0
-2023,Actual,V00,Controllable purchases,35995402.0
-2023,Actual,V00,Charges between agencies,15645599.0
-2023,Actual,X00,Client payments and debt service,1430892085.0
-2024,Actual,A15,"Staff, grants and capital",259663180.0
-2024,Actual,B75,Charges between agencies,4239222.0
-2024,Actual,B75,Controllable purchases,32165436.0
-2024,Actual,C00,"Staff, grants and capital",627618293.0
-2024,Actual,C00,Client payments and debt service,24741.0
-2024,Actual,C80,"Staff, grants and capital",133029368.0
-2024,Actual,C80,Client payments and debt service,77322.0
-2024,Actual,C81,"Staff, grants and capital",59378704.0
-2024,Actual,C82,Controllable purchases,344632.0
-2024,Actual,C82,Charges between agencies,153270.0
-2024,Actual,C85,Controllable purchases,23059.0
-2024,Actual,C85,Charges between agencies,46404.0
-2024,Actual,C90,"Staff, grants and capital",20689617.0
-2024,Actual,C91,"Staff, grants and capital",6627269.0
-2024,Actual,C94,"Staff, grants and capital",2764361.0
-2024,Actual,C96,"Staff, grants and capital",4070790.0
-2024,Actual,C98,Controllable purchases,7112543.0
-2024,Actual,C98,Charges between agencies,354039.0
-2024,Actual,D05,Controllable purchases,28620.0
-2024,Actual,D05,Charges between agencies,74586.0
-2024,Actual,D10,"Staff, grants and capital",14257213.0
-2024,Actual,D11,Controllable purchases,74416.0
-2024,Actual,D11,Charges between agencies,414568.0
-2024,Actual,D12,Controllable purchases,943375.0
-2024,Actual,D12,Charges between agencies,494917.0
-2024,Actual,D13,"Staff, grants and capital",43720468.0
-2024,Actual,D13,Client payments and debt service,98073733.0
-2024,Actual,D15,"Staff, grants and capital",8393427.0
-2024,Actual,D16,"Staff, grants and capital",4992033.0
-2024,Actual,D17,Controllable purchases,1792505.0
-2024,Actual,D17,Charges between agencies,338521.0
-2024,Actual,D18,"Staff, grants and capital",128880.0
-2024,Actual,D21,Controllable purchases,4311553.0
-2024,Actual,D21,Charges between agencies,4033763.0
-2024,Actual,D22,Controllable purchases,477617.0
-2024,Actual,D22,Charges between agencies,78890.0
-2024,Actual,D23,"Staff, grants and capital",13531890.0
-2024,Actual,D25,"Staff, grants and capital",630125660.0
-2024,Actual,D25,Client payments and debt service,2639.0
-2024,Actual,D26,Controllable purchases,2270434.0
-2024,Actual,D26,Charges between agencies,1048048.0
-2024,Actual,D27,Controllable purchases,303357.0
-2024,Actual,D27,Charges between agencies,307711.0
-2024,Actual,D28,"Staff, grants and capital",51062310.0
-2024,Actual,D28,Client payments and debt service,61840648.0
-2024,Actual,D29,"Staff, grants and capital",187943.0
-2024,Actual,D38,Controllable purchases,39560076.0
-2024,Actual,D38,Charges between agencies,504604.0
-2024,Actual,D40,"Staff, grants and capital",47406980.0
-2024,Actual,D40,Client payments and debt service,2935.0
-2024,Actual,D50,"Staff, grants and capital",66785357.0
-2024,Actual,D50,Client payments and debt service,33498.0
-2024,Actual,D52,"Staff, grants and capital",886777267.0
-2024,Actual,D53,"Staff, grants and capital",40445470.0
-2024,Actual,D55,Controllable purchases,7118378.0
-2024,Actual,D55,Charges between agencies,547531.0
-2024,Actual,D60,"Staff, grants and capital",7907532.0
-2024,Actual,D73,"Staff, grants and capital",973062.0
-2024,Actual,D76,"Staff, grants and capital",4742927.0
-2024,Actual,D76,Client payments and debt service,14778.0
-2024,Actual,D77,Controllable purchases,767022.0
-2024,Actual,D77,Charges between agencies,15522.0
-2024,Actual,D78,"Staff, grants and capital",20000256.0
-2024,Actual,D78,Client payments and debt service,506990766.0
-2024,Actual,D80,Controllable purchases,9535283.0
-2024,Actual,D80,Charges between agencies,350616.0
-2024,Actual,D90,Controllable purchases,1870883.0
-2024,Actual,D90,Charges between agencies,69675.0
-2024,Actual,D91,Controllable purchases,412989.0
-2024,Actual,D91,Charges between agencies,12252.0
-2024,Actual,D99,Controllable purchases,30280.0
-2024,Actual,E00,Controllable purchases,60202461.0
-2024,Actual,E00,Charges between agencies,12850874.0
-2024,Actual,E17,"Staff, grants and capital",5139366.0
-2024,Actual,E20,"Staff, grants and capital",8014771.0
-2024,Actual,E50,Controllable purchases,13368525.0
-2024,Actual,E50,Charges between agencies,3674665.0
-2024,Actual,E75,"Staff, grants and capital",36750225.0
-2024,Actual,E80,Controllable purchases,156230.0
-2024,Actual,E80,Charges between agencies,60753.0
-2024,Actual,F10,Controllable purchases,10489409.0
-2024,Actual,F10,Charges between agencies,4241735.0
-2024,Actual,F50,Controllable purchases,141344205.0
-2024,Actual,F50,Charges between agencies,16149566.0
-2024,Actual,G20,Controllable purchases,6967144.0
-2024,Actual,G20,Charges between agencies,513288.0
-2024,Actual,G50,"Staff, grants and capital",1741256.0
-2024,Actual,H00,Controllable purchases,37995095.0
-2024,Actual,H00,Charges between agencies,3388740.0
-2024,Actual,I00,"Staff, grants and capital",30431070.0
-2024,Actual,I00,Client payments and debt service,39366.0
-2024,Actual,J00,"Staff, grants and capital",3785064713.0
-2024,Actual,J00,Client payments and debt service,427176263.0
-2027,Legislative appropriation,U00,Controllable purchases,24990367.0
-2027,Legislative appropriation,U00,Charges between agencies,29284728.0
-2027,Legislative appropriation,V00,Controllable purchases,44180306.0
-2027,Legislative appropriation,V00,Charges between agencies,10847344.0
-2027,Legislative appropriation,W00,"Staff, grants and capital",589588561.0
-2027,Legislative appropriation,W00,Client payments and debt service,181250.0
-2027,Legislative appropriation,X00,Client payments and debt service,1496361462.0
-2027,Legislative appropriation,Y01,"Staff, grants and capital",153250000.0
-2018,Actual,P00,Client payments and debt service,24843.0
-2019,Actual,Q00,"Staff, grants and capital",978466487.0
-2020,Actual,H00,Controllable purchases,25458999.0
-2020,Actual,H00,Charges between agencies,2018932.0
-2020,Actual,J00,Controllable purchases,1307875727.0
-2020,Actual,J00,Charges between agencies,12624776.0
-2019,Actual,P00,"Staff, grants and capital",322886499.0
-2019,Actual,Q00,Client payments and debt service,196770455.0
-2019,Actual,F10,"Staff, grants and capital",27800311.0
-2020,Actual,K00,"Staff, grants and capital",335593612.0
-2018,Actual,R11,Charges between agencies,75493.0
-2018,Actual,R11,Controllable purchases,963052.0
-2018,Actual,R99,Controllable purchases,3681016.0
-2018,Actual,R99,Charges between agencies,111738.0
-2019,Actual,C90,"Staff, grants and capital",15284111.0
-2018,Actual,T00,Client payments and debt service,570.0
-2018,Actual,T50,"Staff, grants and capital",26822060.0
-2018,Actual,U00,Charges between agencies,2968835.0
-2018,Actual,V00,"Staff, grants and capital",177749134.0
-2018,Actual,W00,Charges between agencies,4287066.0
-2018,Actual,W00,Controllable purchases,54847274.0
-2019,Actual,M00,"Staff, grants and capital",704445256.0
-2019,Actual,M00,Client payments and debt service,12786587291.0
-2018,Actual,V00,Client payments and debt service,48948702.0
-2018,Actual,X00,Client payments and debt service,1234920771.0
-2018,Actual,Y01,"Staff, grants and capital",10000000.0
-2019,Actual,A15,"Staff, grants and capital",168462833.0
-2019,Actual,C80,"Staff, grants and capital",98003938.0
-2019,Actual,C82,Controllable purchases,151952.0
-2019,Actual,C82,Charges between agencies,35182.0
-2019,Actual,C85,Controllable purchases,19854.0
-2019,Actual,C85,Charges between agencies,19291.0
-2019,Actual,C91,"Staff, grants and capital",3755751.0
-2019,Actual,C98,"Staff, grants and capital",11938568.0
-2019,Actual,C94,"Staff, grants and capital",2016052.0
-2019,Actual,C96,Controllable purchases,590550.0
-2019,Actual,C96,Charges between agencies,56262.0
-2019,Actual,D10,"Staff, grants and capital",9084237.0
-2019,Actual,D15,Controllable purchases,1106524.0
-2019,Actual,D13,Controllable purchases,1036485.0
-2019,Actual,D13,Charges between agencies,320597.0
-2019,Actual,D11,Controllable purchases,56180.0
-2019,Actual,D11,Charges between agencies,4060.0
-2019,Actual,D12,"Staff, grants and capital",4715464.0
-2019,Actual,D15,Charges between agencies,141616.0
-2019,Actual,N00,"Staff, grants and capital",1594971174.0
-2019,Actual,D16,"Staff, grants and capital",2644834.0
-2019,Actual,D26,Controllable purchases,751593.0
-2019,Actual,D26,Charges between agencies,252746.0
-2019,Actual,D27,Controllable purchases,185020.0
-2019,Actual,D27,Charges between agencies,185418.0
-2019,Actual,D28,Controllable purchases,501500.0
-2019,Actual,D50,"Staff, grants and capital",75012356.0
-2019,Actual,D50,Client payments and debt service,1191.0
-2019,Actual,D53,"Staff, grants and capital",11321040.0
-2019,Actual,D53,Client payments and debt service,2256.0
-2019,Actual,D60,"Staff, grants and capital",6002507.0
-2019,Actual,D78,Controllable purchases,53128221.0
-2019,Actual,D99,Controllable purchases,16284.0
-2019,Actual,D80,"Staff, grants and capital",25826750.0
-2019,Actual,D90,"Staff, grants and capital",258073.0
-2019,Actual,E20,"Staff, grants and capital",3184703.0
-2019,Actual,F10,Client payments and debt service,7395.0
-2019,Actual,E75,Controllable purchases,70104915.0
-2019,Actual,E75,Charges between agencies,152063.0
-2019,Actual,E80,"Staff, grants and capital",765673.0
-2019,Actual,G20,Controllable purchases,9047398.0
-2019,Actual,G20,Charges between agencies,421200.0
-2019,Actual,G50,"Staff, grants and capital",1336868.0
-2019,Actual,L00,Controllable purchases,9206602.0
-2019,Actual,L00,Charges between agencies,2792747.0
-2019,Actual,T00,Charges between agencies,458494.0
-2019,Actual,T00,Controllable purchases,16515371.0
-2019,Actual,N00,Client payments and debt service,437123302.0
-2019,Actual,P00,Client payments and debt service,13452.0
-2019,Actual,R00,Controllable purchases,94257663.0
-2019,Actual,R00,Charges between agencies,6036954.0
-2020,Actual,D55,Charges between agencies,355890.0
-2020,Actual,B75,Controllable purchases,19054531.0
-2019,Actual,S00,"Staff, grants and capital",358107996.0
-2019,Actual,R15,Controllable purchases,16370039.0
-2019,Actual,R62,Controllable purchases,1947169.0
-2019,Actual,R15,Charges between agencies,139003.0
-2019,Actual,R11,Charges between agencies,314214.0
-2019,Actual,R11,Controllable purchases,1073265.0
-2020,Actual,C00,"Staff, grants and capital",476161694.0
-2019,Actual,R62,Charges between agencies,150259.0
-2019,Actual,R75,"Staff, grants and capital",1571097696.0
-2019,Actual,R99,"Staff, grants and capital",28653178.0
-2019,Actual,R99,Client payments and debt service,82693.0
-2019,Actual,S00,Client payments and debt service,29915503.0
-2020,Actual,D26,Controllable purchases,2150721.0
-2019,Actual,T50,"Staff, grants and capital",27175199.0
-2019,Actual,U00,Controllable purchases,18161381.0
-2019,Actual,U00,Charges between agencies,10737628.0
-2020,Actual,D40,Controllable purchases,3143049.0
-2020,Actual,D55,Controllable purchases,3918431.0
-2020,Actual,C81,"Staff, grants and capital",27467118.0
-2019,Actual,V00,Controllable purchases,39706981.0
-2019,Actual,V00,Charges between agencies,2367122.0
-2019,Actual,W00,"Staff, grants and capital",342413562.0
-2020,Actual,E00,"Staff, grants and capital",85840646.0
-2019,Actual,W00,Client payments and debt service,191438.0
-2019,Actual,X00,Client payments and debt service,1298317506.0
-2020,Actual,A15,"Staff, grants and capital",174964477.0
-2020,Actual,B75,Charges between agencies,2787923.0
-2020,Actual,C00,Client payments and debt service,25342.0
-2020,Actual,C80,Controllable purchases,10376155.0
-2020,Actual,C80,Charges between agencies,1475758.0
-2020,Actual,D21,Controllable purchases,2228266.0
-2020,Actual,D21,Charges between agencies,31031.0
-2020,Actual,C82,"Staff, grants and capital",1437632.0
-2020,Actual,C90,Controllable purchases,2766101.0
-2020,Actual,C90,Charges between agencies,1330172.0
-2020,Actual,D05,Charges between agencies,57816.0
-2020,Actual,C85,"Staff, grants and capital",618692.0
-2020,Actual,C85,Client payments and debt service,400.0
-2020,Actual,C98,Controllable purchases,5649102.0
-2020,Actual,C91,"Staff, grants and capital",3625748.0
-2020,Actual,C94,"Staff, grants and capital",2106998.0
-2020,Actual,C96,Controllable purchases,490376.0
-2020,Actual,C96,Charges between agencies,86052.0
-2020,Actual,C98,Charges between agencies,298770.0
-2020,Actual,D05,Controllable purchases,34019.0
-2020,Actual,D10,"Staff, grants and capital",9609392.0
-2020,Actual,D15,Controllable purchases,668676.0
-2020,Actual,D11,"Staff, grants and capital",327616.0
-2020,Actual,D12,Controllable purchases,1071211.0
-2020,Actual,D13,"Staff, grants and capital",18361571.0
-2020,Actual,D12,Charges between agencies,1553365.0
-2020,Actual,D13,Client payments and debt service,19784808.0
-2020,Actual,D15,Charges between agencies,1085781.0
-2020,Actual,D17,"Staff, grants and capital",3146710.0
-2020,Actual,D16,Controllable purchases,257565.0
-2020,Actual,D16,Charges between agencies,412958.0
-2020,Actual,D26,Charges between agencies,427141.0
-2020,Actual,D27,"Staff, grants and capital",2862353.0
-2020,Actual,D38,"Staff, grants and capital",4637231.0
-2020,Actual,D28,Controllable purchases,260386.0
-2020,Actual,D40,Charges between agencies,1162391.0
-2020,Actual,D50,"Staff, grants and capital",131839078.0
-2020,Actual,D53,"Staff, grants and capital",11703230.0
-2020,Actual,D60,Controllable purchases,2276599.0
-2020,Actual,D60,Charges between agencies,351063.0
-2020,Actual,D78,"Staff, grants and capital",17729895.0
-2020,Actual,D80,Controllable purchases,5068336.0
-2020,Actual,D80,Charges between agencies,365558.0
-2020,Actual,D90,Controllable purchases,354249.0
-2020,Actual,D90,Charges between agencies,45867.0
-2020,Actual,D99,Controllable purchases,4755.0
-2020,Actual,E50,"Staff, grants and capital",133057103.0
-2020,Actual,E20,"Staff, grants and capital",3273114.0
-2020,Actual,E75,Controllable purchases,66592112.0
-2020,Actual,F10,"Staff, grants and capital",26388344.0
-2020,Actual,E75,Charges between agencies,208633.0
-2020,Actual,E80,"Staff, grants and capital",802542.0
-2020,Actual,F10,Client payments and debt service,19024.0
-2020,Actual,F50,Controllable purchases,108261066.0
-2020,Actual,F50,Charges between agencies,4871335.0
-2020,Actual,G20,"Staff, grants and capital",11542718.0
-2020,Actual,G50,"Staff, grants and capital",1358074.0
-2020,Actual,G20,Client payments and debt service,85.0
-2020,Actual,K00,Client payments and debt service,321.0
-2020,Actual,L00,"Staff, grants and capital",112583497.0
-2020,Actual,L00,Client payments and debt service,6115.0
 2026,Working budget,D18,"Staff, grants and capital",60628109.0
 2026,Working budget,D21,"Staff, grants and capital",338139398.0
 2026,Working budget,D21,Client payments and debt service,2162665.0
@@ -1247,27 +1247,472 @@ fiscal_year,stage,agency_code,scope,budget
 2027,Legislative appropriation,S00,Client payments and debt service,177996030.0
 2027,Legislative appropriation,S50,"Staff, grants and capital",2700000.0
 2027,Legislative appropriation,T00,"Staff, grants and capital",242646531.0
+2022,Actual,M00,Client payments and debt service,16388595214.0
+2022,Actual,M00,"Staff, grants and capital",901533289.0
+2022,Actual,V00,Controllable purchases,32145514.0
+2022,Actual,V00,Charges between agencies,13091628.0
+2022,Actual,N00,Controllable purchases,342323910.0
+2022,Actual,N00,Charges between agencies,13181207.0
+2022,Actual,P00,Controllable purchases,203533948.0
+2022,Actual,P00,Charges between agencies,-2059235.0
+2022,Actual,Q00,"Staff, grants and capital",1005064485.0
+2022,Actual,Q00,Client payments and debt service,200687090.0
+2022,Actual,R00,"Staff, grants and capital",11779602369.0
+2022,Actual,R00,Client payments and debt service,51118.0
+2022,Actual,R11,Controllable purchases,1071994.0
+2022,Actual,R11,Charges between agencies,5927560.0
+2022,Actual,R15,"Staff, grants and capital",14906744.0
+2022,Actual,R62,Controllable purchases,914863.0
+2022,Actual,R62,Charges between agencies,423941.0
+2022,Actual,R75,"Staff, grants and capital",2012885324.0
+2022,Actual,R99,Charges between agencies,181179.0
+2022,Actual,R99,Controllable purchases,5797983.0
+2022,Actual,S00,Controllable purchases,22818830.0
+2022,Actual,S00,Charges between agencies,727590.0
+2022,Actual,S50,"Staff, grants and capital",1959000.0
+2022,Actual,T00,Controllable purchases,18501727.0
+2022,Actual,T00,Charges between agencies,1774182.0
+2022,Actual,T50,"Staff, grants and capital",21100021.0
+2022,Actual,U00,"Staff, grants and capital",458747755.0
+2022,Actual,U00,Client payments and debt service,10952.0
+2022,Actual,W00,Controllable purchases,58591775.0
+2022,Actual,W00,Charges between agencies,5404942.0
+2023,Actual,M00,"Staff, grants and capital",1253954491.0
+2022,Actual,X00,Client payments and debt service,1379062579.0
+2023,Actual,A15,"Staff, grants and capital",191472803.0
+2023,Actual,B75,"Staff, grants and capital",111512626.0
+2023,Actual,C00,Controllable purchases,132185605.0
+2023,Actual,C00,Charges between agencies,6243804.0
+2023,Actual,M00,Client payments and debt service,17532311084.0
+2023,Actual,C80,Controllable purchases,8271363.0
+2023,Actual,C80,Charges between agencies,2065000.0
+2023,Actual,C81,"Staff, grants and capital",36069118.0
+2023,Actual,C82,"Staff, grants and capital",1914171.0
+2023,Actual,C85,"Staff, grants and capital",829245.0
+2023,Actual,C90,Controllable purchases,2526483.0
+2023,Actual,C90,Charges between agencies,1517981.0
+2023,Actual,C91,Controllable purchases,295860.0
+2023,Actual,C91,Charges between agencies,267635.0
+2023,Actual,C94,"Staff, grants and capital",2375698.0
+2023,Actual,C96,Controllable purchases,590193.0
+2023,Actual,C96,Charges between agencies,53937.0
+2023,Actual,C98,"Staff, grants and capital",13182382.0
+2023,Actual,D05,"Staff, grants and capital",16662303.0
+2023,Actual,D10,"Staff, grants and capital",10949005.0
+2023,Actual,D11,Controllable purchases,58741.0
+2023,Actual,D11,Charges between agencies,40426.0
+2023,Actual,D12,"Staff, grants and capital",6086027.0
+2023,Actual,D12,Client payments and debt service,3433290.0
+2023,Actual,D13,Controllable purchases,1157616.0
+2023,Actual,D13,Charges between agencies,2033701.0
+2023,Actual,D15,"Staff, grants and capital",14749156.0
+2023,Actual,D15,Client payments and debt service,33920.0
+2023,Actual,D16,"Staff, grants and capital",3608352.0
+2023,Actual,D17,"Staff, grants and capital",4509460.0
+2023,Actual,D21,Controllable purchases,2408000.0
+2023,Actual,D21,Charges between agencies,2309065.0
+2023,Actual,D22,"Staff, grants and capital",600418.0
+2023,Actual,D25,"Staff, grants and capital",315932315.0
+2023,Actual,D26,"Staff, grants and capital",75633818.0
+2023,Actual,D27,Controllable purchases,283740.0
+2023,Actual,D27,Charges between agencies,264242.0
+2023,Actual,D28,"Staff, grants and capital",34609269.0
+2023,Actual,D28,Client payments and debt service,33331454.0
+2023,Actual,D38,"Staff, grants and capital",9761084.0
+2023,Actual,D38,Client payments and debt service,1517.0
+2023,Actual,D40,"Staff, grants and capital",43133395.0
+2023,Actual,D40,Client payments and debt service,1290.0
+2023,Actual,D50,Controllable purchases,12377376.0
+2023,Actual,D50,Charges between agencies,1456408.0
+2023,Actual,D52,Controllable purchases,9281278.0
+2023,Actual,D52,Charges between agencies,374291.0
+2023,Actual,D53,Controllable purchases,5681596.0
+2023,Actual,D53,Charges between agencies,1061846.0
+2023,Actual,D55,Controllable purchases,3933432.0
+2023,Actual,D55,Charges between agencies,527328.0
+2023,Actual,D60,"Staff, grants and capital",6843988.0
+2023,Actual,D76,Controllable purchases,51808.0
+2023,Actual,D76,Charges between agencies,44666.0
+2023,Actual,D77,"Staff, grants and capital",638691.0
+2023,Actual,D78,"Staff, grants and capital",19238598.0
+2023,Actual,D78,Client payments and debt service,483760007.0
+2023,Actual,D80,Controllable purchases,4684359.0
+2023,Actual,D80,Charges between agencies,402135.0
+2023,Actual,D90,Controllable purchases,369432.0
+2023,Actual,D90,Charges between agencies,58601.0
+2023,Actual,E00,"Staff, grants and capital",104905669.0
+2023,Actual,E17,Controllable purchases,1738993.0
+2023,Actual,E17,Charges between agencies,5997.0
+2023,Actual,E20,"Staff, grants and capital",4321557.0
+2023,Actual,E50,"Staff, grants and capital",128026996.0
+2023,Actual,E75,Controllable purchases,89939730.0
+2023,Actual,E75,Charges between agencies,241987.0
+2023,Actual,E80,Controllable purchases,108105.0
+2023,Actual,E80,Charges between agencies,50965.0
+2023,Actual,F10,"Staff, grants and capital",123629097.0
+2023,Actual,F10,Client payments and debt service,38765.0
+2023,Actual,F50,"Staff, grants and capital",4680485.0
+2023,Actual,G20,"Staff, grants and capital",13502221.0
+2023,Actual,G50,"Staff, grants and capital",1707000.0
+2023,Actual,H00,Controllable purchases,35853537.0
+2023,Actual,H00,Charges between agencies,2967779.0
+2023,Actual,I00,Controllable purchases,236066.0
+2023,Actual,I00,Charges between agencies,707.0
+2023,Actual,J00,"Staff, grants and capital",3344030816.0
+2023,Actual,J00,Client payments and debt service,481108362.0
+2023,Actual,K00,"Staff, grants and capital",550908260.0
+2023,Actual,K00,Client payments and debt service,16683.0
+2023,Actual,L00,Controllable purchases,10310225.0
+2023,Actual,L00,Charges between agencies,4634937.0
+2023,Actual,W00,"Staff, grants and capital",457581575.0
+2023,Actual,N00,Controllable purchases,342652482.0
+2023,Actual,N00,Charges between agencies,13369538.0
+2023,Actual,P00,"Staff, grants and capital",497628456.0
+2023,Actual,P00,Client payments and debt service,1226.0
+2023,Actual,W00,Client payments and debt service,109301.0
+2023,Actual,Q00,"Staff, grants and capital",1065282754.0
+2023,Actual,Q00,Client payments and debt service,195916128.0
+2023,Actual,R00,Controllable purchases,152293821.0
+2023,Actual,R00,Charges between agencies,10931954.0
+2023,Actual,R11,Charges between agencies,610169.0
+2023,Actual,R11,Controllable purchases,1218856.0
+2023,Actual,R12,Controllable purchases,827179.0
+2023,Actual,R12,Charges between agencies,112360.0
+2023,Actual,R15,Controllable purchases,15041126.0
+2023,Actual,R15,Charges between agencies,223112.0
+2023,Actual,R62,"Staff, grants and capital",780519858.0
+2023,Actual,R99,Charges between agencies,164531.0
+2023,Actual,R99,Controllable purchases,5808809.0
+2023,Actual,S00,Controllable purchases,16640627.0
+2023,Actual,S00,Charges between agencies,849383.0
+2023,Actual,S50,"Staff, grants and capital",2000000.0
+2023,Actual,T00,Controllable purchases,21135910.0
+2023,Actual,T00,Charges between agencies,1348369.0
+2023,Actual,T50,"Staff, grants and capital",50754979.0
+2023,Actual,U00,Controllable purchases,15766101.0
+2023,Actual,U00,Charges between agencies,11335639.0
+2023,Actual,V00,"Staff, grants and capital",230720516.0
+2023,Actual,V00,Client payments and debt service,27552778.0
+2024,Actual,M00,"Staff, grants and capital",1231555641.0
+2023,Actual,Y01,"Staff, grants and capital",4205388848.0
+2024,Actual,B75,"Staff, grants and capital",118755359.0
+2024,Actual,C00,Controllable purchases,122316086.0
+2024,Actual,C00,Charges between agencies,6381415.0
+2024,Actual,M00,Client payments and debt service,18243759905.0
+2024,Actual,C80,Controllable purchases,10221303.0
+2024,Actual,C80,Charges between agencies,2086088.0
+2024,Actual,C81,Controllable purchases,8497821.0
+2024,Actual,C81,Charges between agencies,959127.0
+2024,Actual,C82,"Staff, grants and capital",2302476.0
+2024,Actual,C85,"Staff, grants and capital",860998.0
+2024,Actual,C90,Controllable purchases,1428903.0
+2024,Actual,C90,Charges between agencies,1571797.0
+2024,Actual,C91,Controllable purchases,250178.0
+2024,Actual,C91,Charges between agencies,256799.0
+2024,Actual,C94,Controllable purchases,207830.0
+2024,Actual,C94,Charges between agencies,67549.0
+2024,Actual,C96,Controllable purchases,552447.0
+2024,Actual,C96,Charges between agencies,58530.0
+2024,Actual,C98,"Staff, grants and capital",15331897.0
+2024,Actual,D05,"Staff, grants and capital",44561272.0
+2024,Actual,D10,Controllable purchases,1334641.0
+2024,Actual,D10,Charges between agencies,973334.0
+2024,Actual,D11,"Staff, grants and capital",384311.0
+2024,Actual,D12,"Staff, grants and capital",6330005.0
+2024,Actual,D12,Client payments and debt service,3605981.0
+2024,Actual,D13,Controllable purchases,1609319.0
+2024,Actual,D13,Charges between agencies,560461.0
+2024,Actual,D15,Charges between agencies,421651.0
+2024,Actual,D15,Controllable purchases,432594.0
+2024,Actual,D16,Controllable purchases,558236.0
+2024,Actual,D16,Charges between agencies,290547.0
+2024,Actual,D17,"Staff, grants and capital",4769457.0
+2024,Actual,D18,Controllable purchases,486208.0
+2024,Actual,D18,Charges between agencies,89.0
+2024,Actual,D21,"Staff, grants and capital",359007232.0
+2024,Actual,D22,"Staff, grants and capital",1007884.0
+2024,Actual,D23,Controllable purchases,9688676.0
+2024,Actual,D23,Charges between agencies,945800.0
+2024,Actual,D25,Controllable purchases,1181718.0
+2024,Actual,D25,Charges between agencies,158992.0
+2024,Actual,D26,"Staff, grants and capital",78568612.0
+2024,Actual,D27,"Staff, grants and capital",4528701.0
+2024,Actual,D28,Controllable purchases,92304482.0
+2024,Actual,D28,Charges between agencies,3153.0
+2024,Actual,D29,Controllable purchases,1435252.0
+2024,Actual,D38,"Staff, grants and capital",6215420.0
+2024,Actual,D38,Client payments and debt service,945639.0
+2024,Actual,D40,Controllable purchases,3562023.0
+2024,Actual,D40,Charges between agencies,1221158.0
+2024,Actual,D50,Controllable purchases,13003949.0
+2024,Actual,D50,Charges between agencies,1815734.0
+2024,Actual,D52,Controllable purchases,14575532.0
+2024,Actual,D52,Charges between agencies,3074308.0
+2024,Actual,D53,Controllable purchases,5566484.0
+2024,Actual,D53,Charges between agencies,1314384.0
+2024,Actual,D55,"Staff, grants and capital",12322894.0
+2024,Actual,D55,Client payments and debt service,40828147.0
+2024,Actual,D60,Controllable purchases,2328116.0
+2024,Actual,D60,Charges between agencies,427012.0
+2024,Actual,D73,Controllable purchases,187674.0
+2024,Actual,D73,Charges between agencies,17656.0
+2024,Actual,D76,Controllable purchases,56416.0
+2024,Actual,D76,Charges between agencies,28393.0
+2024,Actual,D77,"Staff, grants and capital",882290.0
+2024,Actual,D78,Controllable purchases,72830970.0
+2024,Actual,D78,Charges between agencies,510620.0
+2024,Actual,D80,"Staff, grants and capital",34022144.0
+2024,Actual,D90,"Staff, grants and capital",376340.0
+2024,Actual,D91,"Staff, grants and capital",10886285.0
+2024,Actual,E00,"Staff, grants and capital",121484921.0
+2024,Actual,E17,Controllable purchases,2082006.0
+2024,Actual,E17,Charges between agencies,305856.0
+2024,Actual,E20,Controllable purchases,14102182.0
+2024,Actual,E20,Charges between agencies,420340.0
+2024,Actual,E50,"Staff, grants and capital",149893628.0
+2024,Actual,E75,Controllable purchases,87972658.0
+2024,Actual,E75,Charges between agencies,239796.0
+2024,Actual,E80,"Staff, grants and capital",923532.0
+2024,Actual,F10,"Staff, grants and capital",46367044.0
+2024,Actual,F10,Client payments and debt service,62887.0
+2024,Actual,F50,"Staff, grants and capital",6669340.0
+2024,Actual,G20,"Staff, grants and capital",14892754.0
+2024,Actual,G20,Client payments and debt service,398.0
+2024,Actual,G50,Controllable purchases,298380.0
+2024,Actual,G50,Charges between agencies,271533.0
+2024,Actual,H00,"Staff, grants and capital",427716844.0
+2024,Actual,H00,Client payments and debt service,17900.0
+2024,Actual,I00,Controllable purchases,1274433.0
+2024,Actual,I00,Charges between agencies,350464.0
+2024,Actual,J00,Controllable purchases,1537591467.0
+2024,Actual,J00,Charges between agencies,15079079.0
+2024,Actual,K00,"Staff, grants and capital",646455896.0
+2018,Actual,N00,"Staff, grants and capital",1628974672.0
+2018,Actual,N00,Client payments and debt service,415921153.0
+2018,Actual,Q00,Client payments and debt service,179022354.0
+2018,Actual,R00,Charges between agencies,6251754.0
+2019,Actual,K00,"Staff, grants and capital",356910871.0
+2018,Actual,Q00,"Staff, grants and capital",951329435.0
+2018,Actual,P00,Controllable purchases,49581440.0
+2018,Actual,P00,Charges between agencies,7119165.0
+2018,Actual,R00,Controllable purchases,83726458.0
+2018,Actual,T00,Controllable purchases,14604622.0
+2019,Actual,E50,"Staff, grants and capital",139604883.0
+2019,Actual,D50,Controllable purchases,12537293.0
+2019,Actual,Q00,Controllable purchases,207267345.0
+2020,Actual,H00,"Staff, grants and capital",51469418.0
+2020,Actual,H00,Client payments and debt service,12732.0
+2020,Actual,J00,Client payments and debt service,357334856.0
+2020,Actual,J00,"Staff, grants and capital",3694803327.0
+2019,Actual,P00,Controllable purchases,45484097.0
+2019,Actual,F10,Controllable purchases,5600885.0
+2019,Actual,F10,Charges between agencies,1339233.0
+2019,Actual,D26,"Staff, grants and capital",57606903.0
+2019,Actual,F50,Controllable purchases,97123108.0
+2019,Actual,H00,"Staff, grants and capital",49347389.0
+2019,Actual,F50,Charges between agencies,3169206.0
+2020,Actual,K00,Controllable purchases,41396670.0
+2018,Actual,T00,Charges between agencies,444350.0
+2019,Actual,D21,"Staff, grants and capital",172684231.0
+2018,Actual,S00,"Staff, grants and capital",351834782.0
+2018,Actual,R15,"Staff, grants and capital",16176635.0
+2018,Actual,S00,Client payments and debt service,38743487.0
+2018,Actual,R62,"Staff, grants and capital",505243091.0
 2020,Actual,Q00,Controllable purchases,225782619.0
+2018,Actual,U00,"Staff, grants and capital",353056848.0
+2018,Actual,R11,"Staff, grants and capital",83695097.0
+2019,Actual,E00,"Staff, grants and capital",82910315.0
+2019,Actual,C81,Controllable purchases,5578567.0
+2018,Actual,R75,"Staff, grants and capital",1504154338.0
+2018,Actual,R99,"Staff, grants and capital",27172332.0
+2019,Actual,C98,Controllable purchases,4654300.0
+2018,Actual,W00,"Staff, grants and capital",322618656.0
+2018,Actual,V00,Controllable purchases,36463702.0
+2018,Actual,U00,Client payments and debt service,30230.0
+2019,Actual,M00,Controllable purchases,318815826.0
+2019,Actual,M00,Charges between agencies,291536455.0
+2018,Actual,V00,Charges between agencies,2701221.0
+2019,Actual,C90,Controllable purchases,1316622.0
+2019,Actual,C00,"Staff, grants and capital",438137833.0
+2019,Actual,D40,Controllable purchases,2064743.0
+2019,Actual,D55,Client payments and debt service,22838321.0
+2019,Actual,D17,"Staff, grants and capital",3044012.0
+2019,Actual,B75,"Staff, grants and capital",73179590.0
+2018,Actual,W00,Client payments and debt service,185833.0
+2019,Actual,C00,Client payments and debt service,33228.0
+2019,Actual,C81,Charges between agencies,895403.0
+2019,Actual,C80,Controllable purchases,7694950.0
+2019,Actual,C80,Charges between agencies,1248412.0
+2019,Actual,C82,"Staff, grants and capital",1213374.0
+2019,Actual,C90,Charges between agencies,1292882.0
+2019,Actual,C85,"Staff, grants and capital",592525.0
+2019,Actual,C94,Controllable purchases,244009.0
+2019,Actual,D05,"Staff, grants and capital",7460298.0
+2019,Actual,C91,Controllable purchases,169101.0
+2019,Actual,C91,Charges between agencies,179117.0
+2019,Actual,C94,Charges between agencies,64574.0
+2019,Actual,C96,"Staff, grants and capital",1364176.0
+2019,Actual,C98,Charges between agencies,308531.0
+2019,Actual,D13,"Staff, grants and capital",15353306.0
+2019,Actual,D10,Controllable purchases,1210173.0
+2019,Actual,D10,Charges between agencies,265059.0
+2019,Actual,D11,"Staff, grants and capital",298983.0
+2019,Actual,D12,Controllable purchases,2724257.0
+2019,Actual,D12,Charges between agencies,1291735.0
+2019,Actual,D55,"Staff, grants and capital",9185805.0
+2019,Actual,D40,Charges between agencies,420907.0
+2019,Actual,D13,Client payments and debt service,16386965.0
+2019,Actual,D15,"Staff, grants and capital",11728661.0
+2019,Actual,D15,Client payments and debt service,5826.0
+2019,Actual,D16,Controllable purchases,250094.0
+2019,Actual,D16,Charges between agencies,32673.0
+2019,Actual,D21,Client payments and debt service,127576.0
+2019,Actual,D25,"Staff, grants and capital",0.0
+2019,Actual,D26,Client payments and debt service,1613.0
+2019,Actual,D27,"Staff, grants and capital",2871477.0
+2019,Actual,D38,"Staff, grants and capital",4615276.0
+2019,Actual,D28,"Staff, grants and capital",26368078.0
+2019,Actual,D28,Client payments and debt service,22946758.0
+2019,Actual,D50,Charges between agencies,919661.0
+2019,Actual,D53,Controllable purchases,9265067.0
+2019,Actual,D53,Charges between agencies,924022.0
+2019,Actual,D60,Controllable purchases,2575939.0
+2019,Actual,D60,Charges between agencies,347867.0
+2019,Actual,D78,"Staff, grants and capital",17163980.0
+2019,Actual,D78,Client payments and debt service,6104.0
+2019,Actual,D80,Controllable purchases,4896650.0
+2019,Actual,D80,Charges between agencies,220580.0
+2019,Actual,D90,Controllable purchases,325236.0
+2019,Actual,D90,Charges between agencies,45008.0
+2020,Actual,Q00,Charges between agencies,9802762.0
+2019,Actual,E20,Controllable purchases,4199922.0
+2019,Actual,E20,Charges between agencies,38169.0
+2019,Actual,E75,"Staff, grants and capital",26844789.0
+2019,Actual,E80,Controllable purchases,106137.0
+2019,Actual,E80,Charges between agencies,40928.0
+2019,Actual,G20,"Staff, grants and capital",10884475.0
+2019,Actual,G20,Client payments and debt service,295.0
+2019,Actual,G50,Charges between agencies,188533.0
+2019,Actual,G50,Controllable purchases,310214.0
+2019,Actual,H00,Client payments and debt service,13638.0
+2019,Actual,J00,Controllable purchases,1367254005.0
+2019,Actual,J00,Charges between agencies,11899192.0
+2019,Actual,N00,Controllable purchases,291485102.0
+2019,Actual,N00,Charges between agencies,12002011.0
+2019,Actual,L00,"Staff, grants and capital",81800972.0
+2019,Actual,L00,Client payments and debt service,2204.0
+2019,Actual,T00,"Staff, grants and capital",111711207.0
+2019,Actual,P00,Charges between agencies,5856415.0
+2019,Actual,Q00,Charges between agencies,7799680.0
+2019,Actual,R00,"Staff, grants and capital",7835293529.0
+2019,Actual,S00,Controllable purchases,12803015.0
+2019,Actual,S00,Charges between agencies,700190.0
+2019,Actual,R00,Client payments and debt service,144184.0
+2019,Actual,T00,Client payments and debt service,16023.0
+2019,Actual,R15,"Staff, grants and capital",16603115.0
+2019,Actual,R11,"Staff, grants and capital",84219007.0
+2019,Actual,R62,"Staff, grants and capital",521632467.0
+2019,Actual,R99,Charges between agencies,187171.0
+2019,Actual,R99,Controllable purchases,3854519.0
+2020,Actual,C00,Controllable purchases,109175656.0
+2020,Actual,D26,"Staff, grants and capital",68020381.0
+2019,Actual,S50,"Staff, grants and capital",1959000.0
+2020,Actual,C00,Charges between agencies,4931730.0
+2019,Actual,T50,Controllable purchases,13440.0
+2019,Actual,U00,"Staff, grants and capital",395965626.0
+2019,Actual,V00,"Staff, grants and capital",179757383.0
+2020,Actual,M00,Controllable purchases,526442149.0
+2020,Actual,N00,"Staff, grants and capital",1960319223.0
+2020,Actual,M00,Charges between agencies,370968442.0
+2019,Actual,U00,Client payments and debt service,28140.0
+2020,Actual,D40,"Staff, grants and capital",32951010.0
+2019,Actual,V00,Client payments and debt service,47219556.0
+2019,Actual,W00,Controllable purchases,55977849.0
+2019,Actual,W00,Charges between agencies,4518316.0
+2020,Actual,C81,Controllable purchases,4988810.0
+2020,Actual,E00,Controllable purchases,28569219.0
+2020,Actual,C81,Charges between agencies,841115.0
+2020,Actual,E50,Controllable purchases,9140643.0
+2019,Actual,Y01,"Staff, grants and capital",14345241.0
+2020,Actual,B75,"Staff, grants and capital",75781797.0
+2020,Actual,B75,Client payments and debt service,5000.0
+2020,Actual,D17,Controllable purchases,483762.0
+2020,Actual,D21,"Staff, grants and capital",191722995.0
+2020,Actual,C80,"Staff, grants and capital",104990826.0
+2020,Actual,C90,"Staff, grants and capital",16197577.0
+2020,Actual,C82,Controllable purchases,160150.0
+2020,Actual,C82,Charges between agencies,116829.0
+2020,Actual,D05,"Staff, grants and capital",9814271.0
+2020,Actual,C98,"Staff, grants and capital",12328919.0
+2020,Actual,C85,Controllable purchases,19083.0
+2020,Actual,C85,Charges between agencies,20843.0
+2020,Actual,C94,Controllable purchases,218619.0
+2020,Actual,C91,Controllable purchases,183094.0
+2020,Actual,C91,Charges between agencies,187103.0
+2020,Actual,C94,Charges between agencies,57264.0
+2020,Actual,C96,"Staff, grants and capital",1438832.0
+2020,Actual,D17,Charges between agencies,115895.0
+2020,Actual,D10,Controllable purchases,1011950.0
+2020,Actual,D10,Charges between agencies,687433.0
+2020,Actual,D13,Controllable purchases,1112101.0
+2020,Actual,D11,Controllable purchases,42329.0
+2020,Actual,D11,Charges between agencies,2697.0
+2020,Actual,D12,"Staff, grants and capital",5182603.0
+2020,Actual,D13,Charges between agencies,637797.0
+2020,Actual,D15,"Staff, grants and capital",12242988.0
+2020,Actual,D38,Controllable purchases,37303623.0
+2020,Actual,D38,Charges between agencies,553209.0
+2020,Actual,D15,Client payments and debt service,8243.0
+2020,Actual,D16,"Staff, grants and capital",2866244.0
+2020,Actual,D21,Client payments and debt service,230361.0
+2020,Actual,D27,Controllable purchases,161511.0
+2020,Actual,D27,Charges between agencies,245907.0
+2020,Actual,D28,"Staff, grants and capital",27604180.0
+2020,Actual,D28,Client payments and debt service,20875870.0
+2020,Actual,D40,Client payments and debt service,1706.0
+2020,Actual,D50,Controllable purchases,12611115.0
+2020,Actual,D50,Charges between agencies,4840619.0
+2020,Actual,D55,"Staff, grants and capital",18622362.0
+2020,Actual,D53,Controllable purchases,5003340.0
+2020,Actual,D53,Charges between agencies,771399.0
+2020,Actual,D55,Client payments and debt service,24067989.0
+2020,Actual,D60,"Staff, grants and capital",6203072.0
+2020,Actual,D78,Controllable purchases,57749700.0
+2020,Actual,D78,Charges between agencies,632775.0
+2020,Actual,D80,"Staff, grants and capital",26486380.0
+2020,Actual,D90,"Staff, grants and capital",320476.0
+2020,Actual,E00,Charges between agencies,8158714.0
+2020,Actual,E20,Controllable purchases,4413213.0
+2020,Actual,E50,Charges between agencies,4770814.0
+2020,Actual,E20,Charges between agencies,35900.0
+2020,Actual,F10,Controllable purchases,6960985.0
+2020,Actual,F50,"Staff, grants and capital",4100738.0
+2020,Actual,F10,Charges between agencies,2853049.0
+2020,Actual,E75,"Staff, grants and capital",28275799.0
+2020,Actual,E80,Controllable purchases,109498.0
+2020,Actual,E80,Charges between agencies,41482.0
+2020,Actual,G20,Controllable purchases,7997451.0
+2020,Actual,G20,Charges between agencies,436877.0
+2020,Actual,G50,Controllable purchases,286386.0
+2020,Actual,G50,Charges between agencies,189184.0
+2020,Actual,K00,Charges between agencies,15831805.0
+2020,Actual,L00,Charges between agencies,4149706.0
+2020,Actual,L00,Controllable purchases,8811353.0
+2020,Actual,S00,"Staff, grants and capital",428978308.0
+2027,Legislative appropriation,U00,"Staff, grants and capital",584246318.0
+2027,Legislative appropriation,U00,Client payments and debt service,32170.0
+2027,Legislative appropriation,V00,"Staff, grants and capital",275414190.0
+2027,Legislative appropriation,V00,Client payments and debt service,52169229.0
+2027,Legislative appropriation,W00,Charges between agencies,7283362.0
+2027,Legislative appropriation,W00,Controllable purchases,87760521.0
 2021,Actual,H00,Client payments and debt service,12248.0
 2021,Actual,H00,"Staff, grants and capital",50600020.0
 2021,Actual,J00,Controllable purchases,1220302987.0
 2021,Actual,J00,Charges between agencies,12298681.0
 2021,Actual,K00,"Staff, grants and capital",329175340.0
 2021,Actual,Q00,"Staff, grants and capital",1026079754.0
-2019,Actual,D55,"Staff, grants and capital",9185805.0
-2019,Actual,J00,Controllable purchases,1367254005.0
-2019,Actual,J00,Charges between agencies,11899192.0
 2017,Actual,A15,"Staff, grants and capital",179150027.0
-2019,Actual,C00,"Staff, grants and capital",438137833.0
-2018,Actual,R00,Controllable purchases,83726458.0
-2018,Actual,T00,Controllable purchases,14604622.0
-2018,Actual,T00,Charges between agencies,444350.0
-2018,Actual,Q00,"Staff, grants and capital",951329435.0
-2019,Actual,F50,Controllable purchases,97123108.0
-2019,Actual,F50,Charges between agencies,3169206.0
-2019,Actual,D40,Controllable purchases,2064743.0
 2017,Actual,M00,"Staff, grants and capital",663493057.0
-2019,Actual,D40,Charges between agencies,420907.0
 2017,Actual,B75,Controllable purchases,14578803.0
 2017,Actual,B75,Charges between agencies,2399051.0
 2017,Actual,C00,"Staff, grants and capital",420712605.0
@@ -1280,12 +1725,9 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,H00,Controllable purchases,26634603.0
 2017,Actual,J00,"Staff, grants and capital",3346293003.0
 2017,Actual,C00,Client payments and debt service,21237.0
-2019,Actual,K00,"Staff, grants and capital",356910871.0
 2017,Actual,C81,Charges between agencies,629536.0
 2017,Actual,C80,Controllable purchases,7595388.0
 2017,Actual,C80,Charges between agencies,1437022.0
-2019,Actual,D21,"Staff, grants and capital",172684231.0
-2018,Actual,S00,"Staff, grants and capital",351834782.0
 2017,Actual,C85,"Staff, grants and capital",580654.0
 2017,Actual,C82,Controllable purchases,149394.0
 2017,Actual,C82,Charges between agencies,26889.0
@@ -1311,7 +1753,6 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,D17,Charges between agencies,26147.0
 2017,Actual,D15,Controllable purchases,1377953.0
 2017,Actual,D16,"Staff, grants and capital",2612946.0
-2018,Actual,Q00,Client payments and debt service,179022354.0
 2017,Actual,D18,"Staff, grants and capital",1737266.0
 2017,Actual,D38,"Staff, grants and capital",5163546.0
 2017,Actual,D25,"Staff, grants and capital",1903090.0
@@ -1323,7 +1764,6 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,E50,Controllable purchases,5959920.0
 2017,Actual,L00,Controllable purchases,8011391.0
 2017,Actual,D50,"Staff, grants and capital",135682608.0
-2019,Actual,D38,"Staff, grants and capital",4615276.0
 2017,Actual,D53,Controllable purchases,3848031.0
 2017,Actual,D53,Charges between agencies,853196.0
 2017,Actual,D60,"Staff, grants and capital",6056664.0
@@ -1348,31 +1788,16 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,H00,Charges between agencies,624634.0
 2017,Actual,K00,Charges between agencies,11948960.0
 2017,Actual,J00,Client payments and debt service,288382699.0
-2018,Actual,R00,Charges between agencies,6251754.0
 2017,Actual,L00,Charges between agencies,1149046.0
-2019,Actual,D50,Controllable purchases,12537293.0
-2019,Actual,D50,Charges between agencies,919661.0
-2018,Actual,S00,Client payments and debt service,38743487.0
-2019,Actual,H00,"Staff, grants and capital",49347389.0
-2019,Actual,C81,Controllable purchases,5578567.0
-2019,Actual,C81,Charges between agencies,895403.0
-2019,Actual,B75,"Staff, grants and capital",73179590.0
 2017,Actual,V00,"Staff, grants and capital",183198420.0
 2017,Actual,W00,"Staff, grants and capital",327257270.0
 2017,Actual,V00,Client payments and debt service,52580378.0
 2017,Actual,Q00,Controllable purchases,213468226.0
 2017,Actual,N00,"Staff, grants and capital",1725131040.0
-2019,Actual,D17,"Staff, grants and capital",3044012.0
-2018,Actual,R15,"Staff, grants and capital",16176635.0
 2017,Actual,N00,Client payments and debt service,435417381.0
 2017,Actual,P00,"Staff, grants and capital",295328515.0
-2019,Actual,C90,Charges between agencies,1292882.0
-2019,Actual,C90,Controllable purchases,1316622.0
 2017,Actual,Q00,Charges between agencies,14314725.0
-2019,Actual,E50,"Staff, grants and capital",139604883.0
 2017,Actual,P00,Client payments and debt service,20989.0
-2019,Actual,D05,"Staff, grants and capital",7460298.0
-2019,Actual,D55,Client payments and debt service,22838321.0
 2019,Actual,D06,"Staff, grants and capital",31073500.0
 2017,Actual,R00,Controllable purchases,81323964.0
 2017,Actual,T00,Controllable purchases,14414913.0
@@ -1388,7 +1813,6 @@ fiscal_year,stage,agency_code,scope,budget
 2017,Actual,T50,Controllable purchases,12093.0
 2017,Actual,U00,Client payments and debt service,20845.0
 2018,Actual,M00,"Staff, grants and capital",673422657.0
-2019,Actual,E00,"Staff, grants and capital",82910315.0
 2018,Actual,M00,Client payments and debt service,12255602518.0
 2017,Actual,W00,Client payments and debt service,10820.0
 2018,Actual,B75,"Staff, grants and capital",70684633.0
@@ -1450,7 +1874,6 @@ fiscal_year,stage,agency_code,scope,budget
 2018,Actual,D99,Controllable purchases,29760.0
 2018,Actual,E50,"Staff, grants and capital",133310237.0
 2018,Actual,E20,"Staff, grants and capital",2987072.0
-2018,Actual,R62,"Staff, grants and capital",505243091.0
 2018,Actual,E75,Controllable purchases,60668350.0
 2018,Actual,E75,Charges between agencies,172572.0
 2018,Actual,E80,Controllable purchases,102402.0
@@ -1461,18 +1884,9 @@ fiscal_year,stage,agency_code,scope,budget
 2018,Actual,G50,"Staff, grants and capital",1470309.0
 2018,Actual,H00,Controllable purchases,26292815.0
 2018,Actual,H00,Charges between agencies,849505.0
-2019,Actual,D60,Controllable purchases,2575939.0
 2018,Actual,L00,Controllable purchases,8200656.0
 2018,Actual,L00,Charges between agencies,1372498.0
-2018,Actual,U00,"Staff, grants and capital",353056848.0
-2018,Actual,N00,"Staff, grants and capital",1628974672.0
-2018,Actual,P00,Controllable purchases,49581440.0
-2018,Actual,P00,Charges between agencies,7119165.0
-2018,Actual,N00,Client payments and debt service,415921153.0
-2024,Actual,K00,"Staff, grants and capital",646455896.0
 2024,Actual,K00,Client payments and debt service,9294.0
-2024,Actual,M00,"Staff, grants and capital",1231555641.0
-2024,Actual,M00,Client payments and debt service,18243759905.0
 2024,Actual,L00,"Staff, grants and capital",191535013.0
 2024,Actual,L00,Client payments and debt service,1836.0
 2024,Actual,V00,Controllable purchases,39656153.0
@@ -1659,17 +2073,12 @@ fiscal_year,stage,agency_code,scope,budget
 2026,Working budget,D16,Charges between agencies,472087.0
 2026,Working budget,D17,Controllable purchases,850499.0
 2026,Working budget,D17,Charges between agencies,366042.0
-2020,Actual,M00,Controllable purchases,526442149.0
-2020,Actual,M00,Charges between agencies,370968442.0
-2020,Actual,N00,"Staff, grants and capital",1960319223.0
-2020,Actual,S00,"Staff, grants and capital",428978308.0
 2020,Actual,N00,Client payments and debt service,433089762.0
 2020,Actual,P00,"Staff, grants and capital",317373043.0
 2021,Actual,E17,Controllable purchases,126226.0
 2020,Actual,P00,Client payments and debt service,7637.0
 2020,Actual,T00,"Staff, grants and capital",192055131.0
 2020,Actual,S00,Client payments and debt service,29622845.0
-2020,Actual,Q00,Charges between agencies,9802762.0
 2020,Actual,R00,Controllable purchases,76078497.0
 2020,Actual,R00,Charges between agencies,10135521.0
 2021,Actual,D26,"Staff, grants and capital",75990762.0
@@ -1779,7 +2188,6 @@ fiscal_year,stage,agency_code,scope,budget
 2021,Actual,U00,Controllable purchases,12273966.0
 2021,Actual,U00,Charges between agencies,8870197.0
 2021,Actual,W00,"Staff, grants and capital",270174666.0
-2022,Actual,M00,"Staff, grants and capital",901533289.0
 2021,Actual,W00,Client payments and debt service,146300.0
 2022,Actual,B75,"Staff, grants and capital",85177226.0
 2022,Actual,C00,Controllable purchases,126370597.0
@@ -1809,7 +2217,6 @@ fiscal_year,stage,agency_code,scope,budget
 2022,Actual,D13,Client payments and debt service,39663396.0
 2022,Actual,D15,Controllable purchases,628301.0
 2022,Actual,D15,Charges between agencies,619115.0
-2022,Actual,M00,Client payments and debt service,16388595214.0
 2022,Actual,D16,"Staff, grants and capital",3347572.0
 2022,Actual,D17,Controllable purchases,1402734.0
 2022,Actual,D17,Charges between agencies,301846.0
@@ -1863,413 +2270,6 @@ fiscal_year,stage,agency_code,scope,budget
 2022,Actual,K00,Client payments and debt service,200.0
 2022,Actual,L00,"Staff, grants and capital",116525175.0
 2022,Actual,L00,Client payments and debt service,949.0
-2022,Actual,V00,Controllable purchases,32145514.0
-2022,Actual,V00,Charges between agencies,13091628.0
-2022,Actual,N00,Controllable purchases,342323910.0
-2022,Actual,N00,Charges between agencies,13181207.0
-2022,Actual,P00,Controllable purchases,203533948.0
-2022,Actual,P00,Charges between agencies,-2059235.0
-2022,Actual,Q00,"Staff, grants and capital",1005064485.0
-2022,Actual,Q00,Client payments and debt service,200687090.0
-2022,Actual,R00,"Staff, grants and capital",11779602369.0
-2022,Actual,R00,Client payments and debt service,51118.0
-2022,Actual,R11,Controllable purchases,1071994.0
-2022,Actual,R11,Charges between agencies,5927560.0
-2022,Actual,R15,"Staff, grants and capital",14906744.0
-2022,Actual,R62,Controllable purchases,914863.0
-2022,Actual,R62,Charges between agencies,423941.0
-2022,Actual,R75,"Staff, grants and capital",2012885324.0
-2022,Actual,R99,Charges between agencies,181179.0
-2022,Actual,R99,Controllable purchases,5797983.0
-2022,Actual,S00,Controllable purchases,22818830.0
-2022,Actual,S00,Charges between agencies,727590.0
-2022,Actual,S50,"Staff, grants and capital",1959000.0
-2022,Actual,T00,Controllable purchases,18501727.0
-2022,Actual,T00,Charges between agencies,1774182.0
-2022,Actual,T50,"Staff, grants and capital",21100021.0
-2022,Actual,U00,"Staff, grants and capital",458747755.0
-2022,Actual,U00,Client payments and debt service,10952.0
-2022,Actual,W00,Controllable purchases,58591775.0
-2022,Actual,W00,Charges between agencies,5404942.0
-2023,Actual,M00,"Staff, grants and capital",1253954491.0
-2022,Actual,X00,Client payments and debt service,1379062579.0
-2023,Actual,A15,"Staff, grants and capital",191472803.0
-2023,Actual,B75,"Staff, grants and capital",111512626.0
-2023,Actual,C00,Controllable purchases,132185605.0
-2023,Actual,C00,Charges between agencies,6243804.0
-2023,Actual,M00,Client payments and debt service,17532311084.0
-2023,Actual,C80,Controllable purchases,8271363.0
-2023,Actual,C80,Charges between agencies,2065000.0
-2023,Actual,C81,"Staff, grants and capital",36069118.0
-2023,Actual,C82,"Staff, grants and capital",1914171.0
-2023,Actual,C85,"Staff, grants and capital",829245.0
-2023,Actual,C90,Controllable purchases,2526483.0
-2023,Actual,C90,Charges between agencies,1517981.0
-2023,Actual,C91,Controllable purchases,295860.0
-2023,Actual,C91,Charges between agencies,267635.0
-2023,Actual,C94,"Staff, grants and capital",2375698.0
-2023,Actual,C96,Controllable purchases,590193.0
-2023,Actual,C96,Charges between agencies,53937.0
-2023,Actual,C98,"Staff, grants and capital",13182382.0
-2023,Actual,D05,"Staff, grants and capital",16662303.0
-2023,Actual,D10,"Staff, grants and capital",10949005.0
-2023,Actual,D11,Controllable purchases,58741.0
-2023,Actual,D11,Charges between agencies,40426.0
-2023,Actual,D12,"Staff, grants and capital",6086027.0
-2023,Actual,D12,Client payments and debt service,3433290.0
-2023,Actual,D13,Controllable purchases,1157616.0
-2023,Actual,D13,Charges between agencies,2033701.0
-2023,Actual,D15,"Staff, grants and capital",14749156.0
-2023,Actual,D15,Client payments and debt service,33920.0
-2023,Actual,D16,"Staff, grants and capital",3608352.0
-2023,Actual,D17,"Staff, grants and capital",4509460.0
-2023,Actual,D21,Controllable purchases,2408000.0
-2023,Actual,D21,Charges between agencies,2309065.0
-2023,Actual,D22,"Staff, grants and capital",600418.0
-2023,Actual,D25,"Staff, grants and capital",315932315.0
-2023,Actual,D26,"Staff, grants and capital",75633818.0
-2023,Actual,D27,Controllable purchases,283740.0
-2023,Actual,D27,Charges between agencies,264242.0
-2023,Actual,D28,"Staff, grants and capital",34609269.0
-2023,Actual,D28,Client payments and debt service,33331454.0
-2023,Actual,D38,"Staff, grants and capital",9761084.0
-2023,Actual,D38,Client payments and debt service,1517.0
-2023,Actual,D40,"Staff, grants and capital",43133395.0
-2023,Actual,D40,Client payments and debt service,1290.0
-2023,Actual,D50,Controllable purchases,12377376.0
-2023,Actual,D50,Charges between agencies,1456408.0
-2023,Actual,D52,Controllable purchases,9281278.0
-2023,Actual,D52,Charges between agencies,374291.0
-2023,Actual,D53,Controllable purchases,5681596.0
-2023,Actual,D53,Charges between agencies,1061846.0
-2023,Actual,D55,Controllable purchases,3933432.0
-2023,Actual,D55,Charges between agencies,527328.0
-2023,Actual,D60,"Staff, grants and capital",6843988.0
-2023,Actual,D76,Controllable purchases,51808.0
-2023,Actual,D76,Charges between agencies,44666.0
-2023,Actual,D77,"Staff, grants and capital",638691.0
-2023,Actual,D78,"Staff, grants and capital",19238598.0
-2023,Actual,D78,Client payments and debt service,483760007.0
-2023,Actual,D80,Controllable purchases,4684359.0
-2023,Actual,D80,Charges between agencies,402135.0
-2023,Actual,D90,Controllable purchases,369432.0
-2023,Actual,D90,Charges between agencies,58601.0
-2023,Actual,E00,"Staff, grants and capital",104905669.0
-2023,Actual,E17,Controllable purchases,1738993.0
-2023,Actual,E17,Charges between agencies,5997.0
-2023,Actual,E20,"Staff, grants and capital",4321557.0
-2023,Actual,E50,"Staff, grants and capital",128026996.0
-2023,Actual,E75,Controllable purchases,89939730.0
-2023,Actual,E75,Charges between agencies,241987.0
-2023,Actual,E80,Controllable purchases,108105.0
-2023,Actual,E80,Charges between agencies,50965.0
-2023,Actual,F10,"Staff, grants and capital",123629097.0
-2023,Actual,F10,Client payments and debt service,38765.0
-2023,Actual,F50,"Staff, grants and capital",4680485.0
-2023,Actual,G20,"Staff, grants and capital",13502221.0
-2023,Actual,G50,"Staff, grants and capital",1707000.0
-2023,Actual,H00,Controllable purchases,35853537.0
-2023,Actual,H00,Charges between agencies,2967779.0
-2023,Actual,I00,Controllable purchases,236066.0
-2023,Actual,I00,Charges between agencies,707.0
-2023,Actual,J00,"Staff, grants and capital",3344030816.0
-2023,Actual,J00,Client payments and debt service,481108362.0
-2023,Actual,K00,"Staff, grants and capital",550908260.0
-2023,Actual,K00,Client payments and debt service,16683.0
-2023,Actual,L00,Controllable purchases,10310225.0
-2023,Actual,L00,Charges between agencies,4634937.0
-2023,Actual,W00,"Staff, grants and capital",457581575.0
-2023,Actual,N00,Controllable purchases,342652482.0
-2023,Actual,N00,Charges between agencies,13369538.0
-2023,Actual,P00,"Staff, grants and capital",497628456.0
-2023,Actual,P00,Client payments and debt service,1226.0
-2023,Actual,W00,Client payments and debt service,109301.0
-2023,Actual,Q00,"Staff, grants and capital",1065282754.0
-2023,Actual,Q00,Client payments and debt service,195916128.0
-2023,Actual,R00,Controllable purchases,152293821.0
-2023,Actual,R00,Charges between agencies,10931954.0
-2023,Actual,R11,Charges between agencies,610169.0
-2023,Actual,R11,Controllable purchases,1218856.0
-2023,Actual,R12,Controllable purchases,827179.0
-2023,Actual,R12,Charges between agencies,112360.0
-2023,Actual,R15,Controllable purchases,15041126.0
-2023,Actual,R15,Charges between agencies,223112.0
-2023,Actual,R62,"Staff, grants and capital",780519858.0
-2023,Actual,R99,Charges between agencies,164531.0
-2023,Actual,R99,Controllable purchases,5808809.0
-2023,Actual,S00,Controllable purchases,16640627.0
-2023,Actual,S00,Charges between agencies,849383.0
-2023,Actual,S50,"Staff, grants and capital",2000000.0
-2023,Actual,T00,Controllable purchases,21135910.0
-2023,Actual,T00,Charges between agencies,1348369.0
-2023,Actual,T50,"Staff, grants and capital",50754979.0
-2023,Actual,U00,Controllable purchases,15766101.0
-2023,Actual,U00,Charges between agencies,11335639.0
-2023,Actual,V00,"Staff, grants and capital",230720516.0
-2023,Actual,V00,Client payments and debt service,27552778.0
-2023,Actual,Y01,"Staff, grants and capital",4205388848.0
-2024,Actual,B75,"Staff, grants and capital",118755359.0
-2024,Actual,C00,Controllable purchases,122316086.0
-2024,Actual,C00,Charges between agencies,6381415.0
-2024,Actual,C80,Controllable purchases,10221303.0
-2024,Actual,C80,Charges between agencies,2086088.0
-2024,Actual,C81,Controllable purchases,8497821.0
-2024,Actual,C81,Charges between agencies,959127.0
-2024,Actual,C82,"Staff, grants and capital",2302476.0
-2024,Actual,C85,"Staff, grants and capital",860998.0
-2024,Actual,C90,Controllable purchases,1428903.0
-2024,Actual,C90,Charges between agencies,1571797.0
-2024,Actual,C91,Controllable purchases,250178.0
-2024,Actual,C91,Charges between agencies,256799.0
-2024,Actual,C94,Controllable purchases,207830.0
-2024,Actual,C94,Charges between agencies,67549.0
-2024,Actual,C96,Controllable purchases,552447.0
-2024,Actual,C96,Charges between agencies,58530.0
-2024,Actual,C98,"Staff, grants and capital",15331897.0
-2024,Actual,D05,"Staff, grants and capital",44561272.0
-2024,Actual,D10,Controllable purchases,1334641.0
-2024,Actual,D10,Charges between agencies,973334.0
-2024,Actual,D11,"Staff, grants and capital",384311.0
-2024,Actual,D12,"Staff, grants and capital",6330005.0
-2024,Actual,D12,Client payments and debt service,3605981.0
-2024,Actual,D13,Controllable purchases,1609319.0
-2024,Actual,D13,Charges between agencies,560461.0
-2024,Actual,D15,Charges between agencies,421651.0
-2024,Actual,D15,Controllable purchases,432594.0
-2024,Actual,D16,Controllable purchases,558236.0
-2024,Actual,D16,Charges between agencies,290547.0
-2024,Actual,D17,"Staff, grants and capital",4769457.0
-2024,Actual,D18,Controllable purchases,486208.0
-2024,Actual,D18,Charges between agencies,89.0
-2024,Actual,D21,"Staff, grants and capital",359007232.0
-2024,Actual,D22,"Staff, grants and capital",1007884.0
-2024,Actual,D23,Controllable purchases,9688676.0
-2024,Actual,D23,Charges between agencies,945800.0
-2024,Actual,D25,Controllable purchases,1181718.0
-2024,Actual,D25,Charges between agencies,158992.0
-2024,Actual,D26,"Staff, grants and capital",78568612.0
-2024,Actual,D27,"Staff, grants and capital",4528701.0
-2024,Actual,D28,Controllable purchases,92304482.0
-2024,Actual,D28,Charges between agencies,3153.0
-2024,Actual,D29,Controllable purchases,1435252.0
-2024,Actual,D38,"Staff, grants and capital",6215420.0
-2024,Actual,D38,Client payments and debt service,945639.0
-2024,Actual,D40,Controllable purchases,3562023.0
-2024,Actual,D40,Charges between agencies,1221158.0
-2024,Actual,D50,Controllable purchases,13003949.0
-2024,Actual,D50,Charges between agencies,1815734.0
-2024,Actual,D52,Controllable purchases,14575532.0
-2024,Actual,D52,Charges between agencies,3074308.0
-2024,Actual,D53,Controllable purchases,5566484.0
-2024,Actual,D53,Charges between agencies,1314384.0
-2024,Actual,D55,"Staff, grants and capital",12322894.0
-2024,Actual,D55,Client payments and debt service,40828147.0
-2024,Actual,D60,Controllable purchases,2328116.0
-2024,Actual,D60,Charges between agencies,427012.0
-2024,Actual,D73,Controllable purchases,187674.0
-2024,Actual,D73,Charges between agencies,17656.0
-2024,Actual,D76,Controllable purchases,56416.0
-2024,Actual,D76,Charges between agencies,28393.0
-2024,Actual,D77,"Staff, grants and capital",882290.0
-2024,Actual,D78,Controllable purchases,72830970.0
-2024,Actual,D78,Charges between agencies,510620.0
-2024,Actual,D80,"Staff, grants and capital",34022144.0
-2024,Actual,D90,"Staff, grants and capital",376340.0
-2024,Actual,D91,"Staff, grants and capital",10886285.0
-2024,Actual,E00,"Staff, grants and capital",121484921.0
-2024,Actual,E17,Controllable purchases,2082006.0
-2024,Actual,E17,Charges between agencies,305856.0
-2024,Actual,E20,Controllable purchases,14102182.0
-2024,Actual,E20,Charges between agencies,420340.0
-2024,Actual,E50,"Staff, grants and capital",149893628.0
-2024,Actual,E75,Controllable purchases,87972658.0
-2024,Actual,E75,Charges between agencies,239796.0
-2024,Actual,E80,"Staff, grants and capital",923532.0
-2024,Actual,F10,"Staff, grants and capital",46367044.0
-2024,Actual,F10,Client payments and debt service,62887.0
-2024,Actual,F50,"Staff, grants and capital",6669340.0
-2024,Actual,G20,"Staff, grants and capital",14892754.0
-2024,Actual,G20,Client payments and debt service,398.0
-2024,Actual,G50,Controllable purchases,298380.0
-2024,Actual,G50,Charges between agencies,271533.0
-2024,Actual,H00,"Staff, grants and capital",427716844.0
-2024,Actual,H00,Client payments and debt service,17900.0
-2024,Actual,I00,Controllable purchases,1274433.0
-2024,Actual,I00,Charges between agencies,350464.0
-2024,Actual,J00,Controllable purchases,1537591467.0
-2024,Actual,J00,Charges between agencies,15079079.0
-2027,Legislative appropriation,U00,"Staff, grants and capital",584246318.0
-2027,Legislative appropriation,U00,Client payments and debt service,32170.0
-2027,Legislative appropriation,V00,"Staff, grants and capital",275414190.0
-2027,Legislative appropriation,V00,Client payments and debt service,52169229.0
-2027,Legislative appropriation,W00,Charges between agencies,7283362.0
-2027,Legislative appropriation,W00,Controllable purchases,87760521.0
-2019,Actual,Q00,Controllable purchases,207267345.0
-2020,Actual,H00,"Staff, grants and capital",51469418.0
-2020,Actual,H00,Client payments and debt service,12732.0
-2020,Actual,J00,Client payments and debt service,357334856.0
-2020,Actual,J00,"Staff, grants and capital",3694803327.0
-2019,Actual,P00,Controllable purchases,45484097.0
-2019,Actual,F10,Controllable purchases,5600885.0
-2019,Actual,F10,Charges between agencies,1339233.0
-2019,Actual,D26,"Staff, grants and capital",57606903.0
-2020,Actual,K00,Controllable purchases,41396670.0
-2018,Actual,R11,"Staff, grants and capital",83695097.0
-2018,Actual,R75,"Staff, grants and capital",1504154338.0
-2018,Actual,R99,"Staff, grants and capital",27172332.0
-2019,Actual,C98,Controllable purchases,4654300.0
-2018,Actual,W00,"Staff, grants and capital",322618656.0
-2018,Actual,V00,Controllable purchases,36463702.0
-2018,Actual,U00,Client payments and debt service,30230.0
-2019,Actual,M00,Controllable purchases,318815826.0
-2019,Actual,M00,Charges between agencies,291536455.0
-2018,Actual,V00,Charges between agencies,2701221.0
-2018,Actual,W00,Client payments and debt service,185833.0
-2019,Actual,C00,Client payments and debt service,33228.0
-2019,Actual,C80,Controllable purchases,7694950.0
-2019,Actual,C80,Charges between agencies,1248412.0
-2019,Actual,C82,"Staff, grants and capital",1213374.0
-2019,Actual,C85,"Staff, grants and capital",592525.0
-2019,Actual,C94,Controllable purchases,244009.0
-2019,Actual,C91,Controllable purchases,169101.0
-2019,Actual,C91,Charges between agencies,179117.0
-2019,Actual,C94,Charges between agencies,64574.0
-2019,Actual,C96,"Staff, grants and capital",1364176.0
-2019,Actual,C98,Charges between agencies,308531.0
-2019,Actual,D13,"Staff, grants and capital",15353306.0
-2019,Actual,D10,Controllable purchases,1210173.0
-2019,Actual,D10,Charges between agencies,265059.0
-2019,Actual,D11,"Staff, grants and capital",298983.0
-2019,Actual,D12,Controllable purchases,2724257.0
-2019,Actual,D12,Charges between agencies,1291735.0
-2019,Actual,D13,Client payments and debt service,16386965.0
-2019,Actual,D15,"Staff, grants and capital",11728661.0
-2019,Actual,D15,Client payments and debt service,5826.0
-2019,Actual,D16,Controllable purchases,250094.0
-2019,Actual,D16,Charges between agencies,32673.0
-2019,Actual,D21,Client payments and debt service,127576.0
-2019,Actual,D25,"Staff, grants and capital",0.0
-2019,Actual,D26,Client payments and debt service,1613.0
-2019,Actual,D27,"Staff, grants and capital",2871477.0
-2019,Actual,D28,"Staff, grants and capital",26368078.0
-2019,Actual,D28,Client payments and debt service,22946758.0
-2019,Actual,D53,Controllable purchases,9265067.0
-2019,Actual,D53,Charges between agencies,924022.0
-2019,Actual,D60,Charges between agencies,347867.0
-2019,Actual,D78,"Staff, grants and capital",17163980.0
-2019,Actual,D78,Client payments and debt service,6104.0
-2019,Actual,D80,Controllable purchases,4896650.0
-2019,Actual,D80,Charges between agencies,220580.0
-2019,Actual,D90,Controllable purchases,325236.0
-2019,Actual,D90,Charges between agencies,45008.0
-2019,Actual,E20,Controllable purchases,4199922.0
-2019,Actual,E20,Charges between agencies,38169.0
-2019,Actual,E75,"Staff, grants and capital",26844789.0
-2019,Actual,E80,Controllable purchases,106137.0
-2019,Actual,E80,Charges between agencies,40928.0
-2019,Actual,G20,"Staff, grants and capital",10884475.0
-2019,Actual,G20,Client payments and debt service,295.0
-2019,Actual,G50,Charges between agencies,188533.0
-2019,Actual,G50,Controllable purchases,310214.0
-2019,Actual,H00,Client payments and debt service,13638.0
-2019,Actual,N00,Controllable purchases,291485102.0
-2019,Actual,N00,Charges between agencies,12002011.0
-2019,Actual,L00,"Staff, grants and capital",81800972.0
-2019,Actual,L00,Client payments and debt service,2204.0
-2019,Actual,T00,"Staff, grants and capital",111711207.0
-2019,Actual,P00,Charges between agencies,5856415.0
-2019,Actual,Q00,Charges between agencies,7799680.0
-2019,Actual,R00,"Staff, grants and capital",7835293529.0
-2019,Actual,S00,Controllable purchases,12803015.0
-2019,Actual,S00,Charges between agencies,700190.0
-2019,Actual,R00,Client payments and debt service,144184.0
-2019,Actual,T00,Client payments and debt service,16023.0
-2019,Actual,R15,"Staff, grants and capital",16603115.0
-2019,Actual,R11,"Staff, grants and capital",84219007.0
-2019,Actual,R62,"Staff, grants and capital",521632467.0
-2019,Actual,R99,Charges between agencies,187171.0
-2019,Actual,R99,Controllable purchases,3854519.0
-2020,Actual,C00,Controllable purchases,109175656.0
-2020,Actual,D26,"Staff, grants and capital",68020381.0
-2019,Actual,S50,"Staff, grants and capital",1959000.0
-2020,Actual,C00,Charges between agencies,4931730.0
-2019,Actual,T50,Controllable purchases,13440.0
-2019,Actual,U00,"Staff, grants and capital",395965626.0
-2019,Actual,V00,"Staff, grants and capital",179757383.0
-2019,Actual,U00,Client payments and debt service,28140.0
-2020,Actual,D40,"Staff, grants and capital",32951010.0
-2019,Actual,V00,Client payments and debt service,47219556.0
-2019,Actual,W00,Controllable purchases,55977849.0
-2019,Actual,W00,Charges between agencies,4518316.0
-2020,Actual,C81,Controllable purchases,4988810.0
-2020,Actual,E00,Controllable purchases,28569219.0
-2020,Actual,C81,Charges between agencies,841115.0
-2020,Actual,E50,Controllable purchases,9140643.0
-2019,Actual,Y01,"Staff, grants and capital",14345241.0
-2020,Actual,B75,"Staff, grants and capital",75781797.0
-2020,Actual,B75,Client payments and debt service,5000.0
-2020,Actual,D17,Controllable purchases,483762.0
-2020,Actual,D21,"Staff, grants and capital",191722995.0
-2020,Actual,C80,"Staff, grants and capital",104990826.0
-2020,Actual,C90,"Staff, grants and capital",16197577.0
-2020,Actual,C82,Controllable purchases,160150.0
-2020,Actual,C82,Charges between agencies,116829.0
-2020,Actual,D05,"Staff, grants and capital",9814271.0
-2020,Actual,C98,"Staff, grants and capital",12328919.0
-2020,Actual,C85,Controllable purchases,19083.0
-2020,Actual,C85,Charges between agencies,20843.0
-2020,Actual,C94,Controllable purchases,218619.0
-2020,Actual,C91,Controllable purchases,183094.0
-2020,Actual,C91,Charges between agencies,187103.0
-2020,Actual,C94,Charges between agencies,57264.0
-2020,Actual,C96,"Staff, grants and capital",1438832.0
-2020,Actual,D17,Charges between agencies,115895.0
-2020,Actual,D10,Controllable purchases,1011950.0
-2020,Actual,D10,Charges between agencies,687433.0
-2020,Actual,D13,Controllable purchases,1112101.0
-2020,Actual,D11,Controllable purchases,42329.0
-2020,Actual,D11,Charges between agencies,2697.0
-2020,Actual,D12,"Staff, grants and capital",5182603.0
-2020,Actual,D13,Charges between agencies,637797.0
-2020,Actual,D15,"Staff, grants and capital",12242988.0
-2020,Actual,D38,Controllable purchases,37303623.0
-2020,Actual,D38,Charges between agencies,553209.0
-2020,Actual,D15,Client payments and debt service,8243.0
-2020,Actual,D16,"Staff, grants and capital",2866244.0
-2020,Actual,D21,Client payments and debt service,230361.0
-2020,Actual,D27,Controllable purchases,161511.0
-2020,Actual,D27,Charges between agencies,245907.0
-2020,Actual,D28,"Staff, grants and capital",27604180.0
-2020,Actual,D28,Client payments and debt service,20875870.0
-2020,Actual,D40,Client payments and debt service,1706.0
-2020,Actual,D50,Controllable purchases,12611115.0
-2020,Actual,D50,Charges between agencies,4840619.0
-2020,Actual,D55,"Staff, grants and capital",18622362.0
-2020,Actual,D53,Controllable purchases,5003340.0
-2020,Actual,D53,Charges between agencies,771399.0
-2020,Actual,D55,Client payments and debt service,24067989.0
-2020,Actual,D60,"Staff, grants and capital",6203072.0
-2020,Actual,D78,Controllable purchases,57749700.0
-2020,Actual,D78,Charges between agencies,632775.0
-2020,Actual,D80,"Staff, grants and capital",26486380.0
-2020,Actual,D90,"Staff, grants and capital",320476.0
-2020,Actual,E00,Charges between agencies,8158714.0
-2020,Actual,E20,Controllable purchases,4413213.0
-2020,Actual,E50,Charges between agencies,4770814.0
-2020,Actual,E20,Charges between agencies,35900.0
-2020,Actual,F10,Controllable purchases,6960985.0
-2020,Actual,F50,"Staff, grants and capital",4100738.0
-2020,Actual,F10,Charges between agencies,2853049.0
-2020,Actual,E75,"Staff, grants and capital",28275799.0
-2020,Actual,E80,Controllable purchases,109498.0
-2020,Actual,E80,Charges between agencies,41482.0
-2020,Actual,G20,Controllable purchases,7997451.0
-2020,Actual,G20,Charges between agencies,436877.0
-2020,Actual,G50,Controllable purchases,286386.0
-2020,Actual,G50,Charges between agencies,189184.0
-2020,Actual,K00,Charges between agencies,15831805.0
-2020,Actual,L00,Charges between agencies,4149706.0
-2020,Actual,L00,Controllable purchases,8811353.0
 2026,Working budget,D18,Controllable purchases,903431.0
 2026,Working budget,D18,Charges between agencies,2035859.0
 2026,Working budget,D21,Controllable purchases,1354582.0

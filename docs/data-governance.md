@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-10T12:46Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 10, 2026._
+_Generated 2026-11-10T15:42Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 10, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -189,116 +189,116 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
-| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
-| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
+| agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
 | description | Description | Text | (none) | Portal description column; not used |
 | agency_subobject_code | Agency Subobject Code | Text | (none) | Agency-specific spending code; not used (Comptroller sub-object is used) |
-| agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
-| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
-| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
-| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
-| organization_sub_code | Organization Sub Code | Text | (none) | Portal's combined code including subprogram |
-| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
-| type | Type | Text | (none) | Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead |
-| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
-| object_name | Object Name | Text | (none) | Comptroller object name |
-| subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
-| program_name | Program Name | Text | (none) | Budget program name |
-| unit_name | Unit Name | Text | (none) | Budget unit name |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | program_code | Program Code | Text | (none) | Budget program code, two digits in core |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
 | agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
+| unit_name | Unit Name | Text | (none) | Budget unit name |
+| program_name | Program Name | Text | (none) | Budget program name |
+| subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
+| subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
+| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
+| object_name | Object Name | Text | (none) | Comptroller object name |
+| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
+| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| type | Type | Text | (none) | Budget stage label published by the portal; out of date for recent years so ref.dim_stage is used instead |
+| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| organization_sub_code | Organization Sub Code | Text | (none) | Portal's combined code including subprogram |
+| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
+| category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
 
 **fte** (x8qy-486w, 9 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| unit_name | Unit Name | Text | (none) | Budget unit name |
 | unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
-| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
 | count | Count | Number | (none) | Budgeted full-time-equivalent positions (renamed fte in core) |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| unit_name | Unit Name | Text | (none) | Budget unit name |
+| program_name | Program Name | Text | (none) | Budget program name |
 | organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
 | agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
-| program_name | Program Name | Text | (none) | Budget program name |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
 
 **fund** (gy87-e27x, 15 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| description | Description | Text | (none) | Portal description column; not used |
-| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
-| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
 | agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
-| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
-| unit_name | Unit Name | Text | (none) | Budget unit name |
+| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
 | program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| program_name | Program Name | Text | (none) | Budget program name |
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| fund_source_code | Fund Source Code | Text | (none) | Fund source code within a fund type |
-| fund_source_name | Fund Source Name | Text | (none) | Fund source name |
-| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
-| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| unit_name | Unit Name | Text | (none) | Budget unit name |
+| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
+| description | Description | Text | (none) | Portal description column; not used |
 | category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
+| organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
+| budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
+| fund_source_name | Fund Source Name | Text | (none) | Fund source name |
+| fund_source_code | Fund Source Code | Text | (none) | Fund source code within a fund type |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
+| program_name | Program Name | Text | (none) | Budget program name |
 
 **grants** (absk-avps, 10 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
 | grantee | Grantee | Text | (none) | Recipient of the grant or loan |
-| grantor | Grantor | Text | (none) | State agency and program awarding the grant or loan |
-| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
 | date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
 | fiscalperiod | Fiscal Period | Number | (none) | Accounting period in the grants dataset; not used |
-| nonprofit | Nonprofit | Text | Whether or not the grantee is a non-profit (503C) entity.  | Y when the portal marks the grantee as a non-profit |
 | category | Category | Text | (none) | Grant or Loan |
-| zipcode | Zip Code | Text | (none) | Grantee ZIP code as published |
 | description | Description | Text | (none) | Grant or loan purpose as written by the grantor |
+| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
+| nonprofit | Nonprofit | Text | Whether or not the grantee is a non-profit (503C) entity.  | Y when the portal marks the grantee as a non-profit |
 | fiscalyear | Fiscal Year | Number | (none) | Fiscal year in the grants dataset (renamed fiscal_year in core) |
+| zipcode | Zip Code | Text | (none) | Grantee ZIP code as published |
+| grantor | Grantor | Text | (none) | State agency and program awarding the grant or loan |
 
 **highered** (4mca-332u, 20 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
-| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
-| unit_name | Unit Name | Text | (none) | Budget unit name |
-| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
-| program_name | Program Name | Text | (none) | Budget program name |
-| subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
-| subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
-| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
-| object_name | Object Name | Text | (none) | Comptroller object name |
-| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
-| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
 | agency_subobject_code | Agency Subobject Code | Text | (none) | Agency-specific spending code; not used (Comptroller sub-object is used) |
 | agency_subobject_name | Agency Subobject Name | Text | (none) | Agency-specific spending code name; not used |
+| agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
+| fund_type_name | Fund Type Name | Text | (none) | Fund type name as published |
 | budget | Budget | Number | (none) | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 | organization_code | Organization Code | Text | (none) | Portal's combined agency-unit-program code |
 | category_title | Category Title | Text | (none) | Budget function title (renamed function_name in core) |
-| category | Category | Number | (none) | Budget function code (renamed function_code in core) |
-| fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
-| agency_code | Agency Code | Text | (none) | Three-character State budget agency code (for example D50); the key that joins budget and payments |
+| program_name | Program Name | Text | (none) | Budget program name |
+| subprogram_name | Subprogram Name | Text | (none) | Budget subprogram name |
+| object_code | Object Code | Text | (none) | Comptroller object code, two digits (for example 08 Contractual services) |
+| program_code | Program Code | Text | (none) | Budget program code, two digits in core |
+| object_name | Object Name | Text | (none) | Comptroller object name |
+| subprogram_code | Subprogram Code | Text | (none) | Budget subprogram code |
+| unit_name | Unit Name | Text | (none) | Budget unit name |
+| comptroller_subobject_code | Comptroller Subobject Code | Text | (none) | Comptroller sub-object (detailed spending) code; renamed subobject_code in core |
+| unit_code | Unit Code | Text | (none) | Budget unit code within an agency |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| comptroller_subobject_name | Comptroller Subobject Name | Text | (none) | Comptroller sub-object name; renamed subobject_name in core |
 
 **payments** (7syw-q4cy, 8 columns)
 
 | field_name | display_name | datatype | portal_description | definition |
 |---|---|---|---|---|
-| date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
-| vendor_zip | Vendor Zip | Text | (none) | Payee ZIP code as published |
-| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
-| fiscal_period | Fiscal Period | Number | (none) | Accounting period; the portal fills it with a placeholder value so it is not used |
-| category | Category | Text | (none) | Payment category as published by the portal |
 | fiscal_year | Fiscal Year | Number | (none) | Maryland fiscal year (July 1 to June 30), named for the year it ends |
-| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
+| category | Category | Text | (none) | Payment category as published by the portal |
+| date | Date | Calendar date | (none) | Portal date column; a placeholder (fiscal year end) rather than the payment or award date; not used |
+| fiscal_period | Fiscal Period | Number | (none) | Accounting period; the portal fills it with a placeholder value so it is not used |
+| amount | Amount | Number | (none) | Dollars paid, awarded or reported on the row; nominal dollars |
+| vendor_zip | Vendor Zip | Text | (none) | Payee ZIP code as published |
 | vendor_name | Vendor Name | Text | (none) | Payee name as published; includes businesses and individuals |
+| agency_name | Agency Name | Text | (none) | Agency name as published; in core the code suffix the portal adds in some years is removed |
 <!-- /gen:sources -->
 
 ### 11.2 Warehouse (DuckDB)

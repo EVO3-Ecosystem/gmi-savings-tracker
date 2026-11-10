@@ -204,20 +204,30 @@ def md_to_html(md):
 
 
 def readme_summary(readme):
-    """The README's introduction, pipeline, datasets and status sections (the mermaid chart becomes figures/pipeline.png)."""
+    """The README's introduction and its how-it-works, data and status sections, as plain markdown for about.html.
+
+    The README's diagram is an HTML <picture>; this page shows docs/figures/pipeline.png instead. HTML lines, generated-fact
+    markers and badge images are left out, because the page's small markdown renderer handles markdown only.
+    """
     keep, sec, intro = [], None, []
+    sections = ("How it works", "Data", "Status")
+
+    def plain(ln):
+        s = ln.strip()
+        return not (s.startswith("<") or s.startswith("[![") or s.startswith("![") and "shields.io" in s)
+
     for ln in readme.splitlines():
         if ln.startswith("## ") or ln.startswith("### "):
             sec = ln.lstrip("#").strip()
-            if sec in ("How the pipeline works", "Datasets", "Status"):
+            if sec in sections:
                 keep.append(ln)
-                if sec == "How the pipeline works":
+                if sec == "How it works":
                     keep.append("![How the pipeline works](docs/figures/pipeline.png)")
             continue
         if sec is None:
-            if not ln.startswith("# ") and not ln.startswith("[!["):
+            if not ln.startswith("# ") and plain(ln):
                 intro.append(ln)
-        elif sec in ("How the pipeline works", "Datasets", "Status"):
+        elif sec in sections and plain(ln):
             keep.append(ln)
     return "\n".join(intro).strip(), "\n".join(keep)
 
