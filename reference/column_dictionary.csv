@@ -390,9 +390,34 @@ records,d_payment_screen_summary,derived,Number of payment records in the flagge
 status,d_payment_screen_summary,derived,"Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied"
 amount,d_payment_screen,derived,"Dollars of each record in the group (equal for duplicates and repeated lines); blank for split purchases"
 lever_fy,d_payment_screen_summary,reference,"Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy)"
-lever_rate_low,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample"
-lever_rate_likely,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample"
-lever_rate_high,d_payment_screen_summary,reference,"Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample"
+lever_rate_low,d_payment_screen_summary,derived,"Calculator lever rate, low case: lower Wilson bound of the measured confirmation rate; 0 when not measurable (rate_basis)"
+lever_rate_likely,d_payment_screen_summary,derived,"Calculator lever rate, likely case: the measured confirmation rate; 0 when not measurable (rate_basis)"
+lever_rate_high,d_payment_screen_summary,derived,"Calculator lever rate, high case: upper Wilson bound of the measured confirmation rate; 0 when not measurable (rate_basis)"
 tables,ops.check_coverage,derived,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated"
 table_name,ops.lineage,derived,Warehouse table (schema.name) created by the build
 depends_on,ops.lineage,derived,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)"
+agency_code_as_paid,mart.v_payment_screen_rows,portal,"Paying unit's code as published (the portal's category column, e.g. 602 = DGS capital), used to tell two paying units apart"
+source_issue_id,mart.v_payment_screen_rows,derived,"Source issue the record's group belongs to ('SRC-<fiscal year>-<agency code>'), blank for payment leads; such groups go to d_source_issues, never to d_payment_screen"
+agency_raw,"d_payment_screen,d_source_issues",portal,Paying agency name as published (most common name in the group); agency is the pipeline's cleaned name (agency_master)
+agency,"d_payment_screen,d_source_issues",derived,"Agency's cleaned name from agency_master (budget name, or the payment data's own name for payment-only codes); agency_raw keeps the name as paid"
+confidence_score,d_payment_screen,derived,"Confidence points from rules fixed before measuring (config payment_screen.confidence): +1 not a round amount, -1 a multiple of $1,000, +1 one paying unit, -1 several paying units, -1 same amount in another year, -1 under $5,000, -1 non-profit payee"
+confidence,d_payment_screen,derived,"Confidence that the lead is a real duplicate: high (score >= 1), medium (0) or low (<= -1); low for split purchases"
+review_status,d_payment_screen,derived,"Evidence review from the data alone: unreviewed, confirmed_duplicate_in_source (records identical in every published field), likely_legitimate (a pattern of equal payments from several units) or needs_records; never a confirmed overpayment"
+review_note,d_payment_screen,derived,"One-line evidence note behind review_status (paying units, ZIPs, the vendor's other payments by the agency, equal payments from other units)"
+measured_confirmation_rate,d_payment_screen_summary,derived,Share of reviewed leads confirmed by the evidence review; blank when the review confirms none (not measurable without payment records)
+rate_basis,d_payment_screen_summary,derived,"How the confirmation rate and the lever rates were set: the measured share with its Wilson interval, or 'not measurable without payment records' (lever 0)"
+reviewed_leads,d_payment_screen_summary,derived,Payment leads the evidence review reached a status for (not unreviewed)
+confirmed_leads,d_payment_screen_summary,derived,Payment leads the evidence review marked confirmed_duplicate_in_source
+issue_id,d_source_issues,derived,Source issue identifier: 'SRC-<fiscal year>-<agency code>'
+issue,d_source_issues,derived,Short description of the data-publication issue
+records,d_source_issues,derived,Records in the second (off-year dated) block of the agency's fiscal year
+amount,d_source_issues,derived,"Dollars in the second (off-year dated) block of the agency's fiscal year, as published"
+identical_records,d_source_issues,derived,"Records of the second block equal to a first-block record in payee name, ZIP and amount (matched one to one)"
+identical_amount,d_source_issues,derived,Dollars of the identical records
+screen_groups,d_source_issues,derived,Payment-screen groups moved here from the leads (repeated annual lines inside this issue)
+screen_records,d_source_issues,derived,Payment records in those groups
+screen_review_amount,d_source_issues,derived,Review dollars those groups carried as leads before they were recognised as a publication issue (every copy after the first)
+evidence,d_source_issues,derived,"The numbers behind the issue: both blocks' records and dollars, identical records, screen groups"
+verified_against,d_source_issues,reference,Where the issue was checked at the source (config source_issues); blank when not yet verified
+verified_on,d_source_issues,reference,Date the issue was checked at the source (docs/reconciliation/crosschecks_2026-11-10.csv)
+status,d_source_issues,reference,Whether the issue is confirmed in the published source and what to do next

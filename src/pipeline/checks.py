@@ -120,6 +120,7 @@ def run(con, run_id, manifest):
     phase5_higher_education(con, check, one, "highered" in loaded)
     phase5_deflator(con, check, one)
     phase5_payment_screen(con, check, one)
+    phase5_source_issues(con, check, one)
     con = real
     df = pd.DataFrame(out)
     while hasattr(con, "_con"):  # the DuckDB connection itself (build.py may pass a recording wrapper): replacement scans look in this frame
@@ -459,7 +460,7 @@ def phase5_payment_screen(con, check, one):
     neg += one("SELECT count(*) FROM mart.d_payment_screen_summary WHERE groups < 0 OR records < 0 OR total_amount < 0 OR review_amount < 0")
     check("mart", "Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",
           rows == keys and small == 0 and neg == 0,
-          f"{rows:,} records in {one('SELECT count(*) FROM mart.d_payment_screen'):,} groups; {rows - keys} records in two groups; {small} malformed groups; {neg} negative or inconsistent rows")
+          f"{rows:,} flagged records in {one('SELECT count(DISTINCT group_id) FROM mart.v_payment_screen_rows'):,} groups ({one('SELECT count(*) FROM mart.d_payment_screen'):,} payment leads); {rows - keys} records in two groups; {small} malformed groups; {neg} negative or inconsistent rows")
     unl = one("""SELECT count(*) FROM mart.d_payment_screen a JOIN mart.d_payment_screen b ON a.agency = b.agency AND a.fiscal_year = b.fiscal_year
                  AND a.rule <> b.rule AND a.vendor = b.vendor AND a.vendor NOT LIKE 'Payee not named%' WHERE a.also_flagged_under IS NULL""")
     tie = one("""SELECT count(*) FROM mart.d_payment_screen_summary s LEFT JOIN (SELECT rule, fiscal_year, count(*) g, sum(n) r, sum(total_amount) t, sum(review_amount) v
@@ -478,6 +479,40 @@ def phase5_payment_screen(con, check, one):
           {r[0] for r in yrs} == want and one("SELECT count(*) FROM mart.d_payment_screen_summary") == 3 * len(want),
           "groups (review $) by year: " + "; ".join(f"FY{y} {int(g)} (${v / 1e6:,.2f}M)" for y, g, v in yrs)
           + f"; split rule: {st.get('Possible split purchase', 'missing')}", "warn")
+
+
+def phase5_source_issues(con, check, one):
+    """Source issues vs payment leads (sql/mart/47, 48, 50): disjoint and complete; verified dollars stay true; lead labels valid."""
+    if not one("SELECT count(*) FROM information_schema.tables WHERE table_schema = 'mart' AND table_name = 'd_source_issues'"):
+        return
+    root = Path(__file__).resolve().parents[2]
+    cfg = yaml.safe_load((root / "config" / "assumptions.yaml").read_text())["source_issues"]
+    both = one("""SELECT count(*) FROM mart.v_payment_screen_rows r JOIN mart.d_payment_screen d USING (group_id) WHERE r.source_issue_id IS NOT NULL""")
+    mixed = one("SELECT count(*) FROM (SELECT group_id FROM mart.v_payment_screen_rows GROUP BY 1 HAVING count(DISTINCT coalesce(source_issue_id, '-')) > 1)")
+    lead_rows = one("SELECT coalesce(sum(n), 0) FROM mart.d_payment_screen")
+    issue_rows = one("SELECT coalesce(sum(screen_records), 0) FROM mart.d_source_issues")
+    total = one("SELECT count(*) FROM mart.v_payment_screen_rows")
+    orphan = one("""SELECT count(*) FROM (SELECT DISTINCT source_issue_id FROM mart.v_payment_screen_rows WHERE source_issue_id IS NOT NULL) r
+                    LEFT JOIN mart.d_source_issues i ON i.issue_id = r.source_issue_id WHERE i.issue_id IS NULL""")
+    check("mart", "Payment screen vs source issues: no record is both a lead and a source issue; leads + source issues = every flagged record",
+          both == 0 and mixed == 0 and orphan == 0 and lead_rows + issue_rows == total,
+          f"{both} records in both; {mixed} groups split between them; {orphan} issue ids without a source-issue row; "
+          f"{int(lead_rows):,} lead records + {int(issue_rows):,} source-issue records = {int(lead_rows + issue_rows):,} of {total:,} flagged")
+    ids = cfg["verified_ids"]
+    got = one("SELECT coalesce(sum(amount), 0) FROM mart.d_source_issues WHERE list_contains(?::VARCHAR[], issue_id)", ids)
+    missing = len(ids) - one("SELECT count(*) FROM mart.d_source_issues WHERE list_contains(?::VARCHAR[], issue_id)", ids)
+    unver = one("SELECT count(*) FROM mart.d_source_issues WHERE verified_on IS NULL")
+    check("mart", f"Source issues: verified issues still in the data with the dollars verified at the source on {cfg['verified_on']}",
+          missing == 0 and abs(got - cfg["verified_amount"]) <= 1.0,
+          f"{len(ids) - missing} of {len(ids)} verified issues present; ${got:,.2f} vs ${cfg['verified_amount']:,.2f} at the source; {unver} issues not yet verified")
+    bad = one("""SELECT count(*) FROM mart.d_payment_screen WHERE confidence NOT IN ('high', 'medium', 'low')
+                 OR review_status NOT IN ('unreviewed', 'confirmed_duplicate_in_source', 'likely_legitimate', 'needs_records')
+                 OR review_note IS NULL OR agency IS NULL OR agency_raw IS NULL""")
+    rate = con.execute("""SELECT count(DISTINCT coalesce(measured_confirmation_rate, -1)), any_value(measured_confirmation_rate), any_value(confirmed_leads),
+                          max(lever_rate_high), any_value(rate_basis) FROM mart.d_payment_screen_summary""").fetchone()
+    ok_rate = rate[0] <= 1 and ((rate[1] is None and rate[2] == 0 and rate[3] == 0) or (rate[1] is not None and rate[2] > 0))
+    check("mart", "Payment leads: confidence, review status and note set; measured rate NULL (lever 0) unless the review confirms a lead",
+          bad == 0 and ok_rate, f"{bad} leads with a missing or invalid label; measured rate {rate[1]} ({rate[4]}); lever high rate {rate[3]}")
 
 
 # ---- New-payee-name history (ops.payee_name_seen). Only a build whose stop checks all pass writes it (build.py calls

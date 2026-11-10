@@ -1,16 +1,16 @@
-rule,rule_order,fiscal_year,groups,records,total_amount,review_amount,date_grain,status,lever_fy,lever_rate_low,lever_rate_likely,lever_rate_high
-Possible duplicate,1,2022,5,10.0,1704000.0,852000.0,annual,Measured,2026,0.02,0.05,0.1
-Repeated annual line,2,2022,197,394.0,193450194.5,96725097.25,annual,Measured,2026,0.02,0.05,0.1
-Possible split purchase,3,2022,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.02,0.05,0.1
-Possible duplicate,1,2023,0,0.0,0.0,0.0,annual,Measured,2026,0.02,0.05,0.1
-Repeated annual line,2,2023,0,0.0,0.0,0.0,annual,Measured,2026,0.02,0.05,0.1
-Possible split purchase,3,2023,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.02,0.05,0.1
-Possible duplicate,1,2024,1,2.0,10000.0,5000.0,annual,Measured,2026,0.02,0.05,0.1
-Repeated annual line,2,2024,0,0.0,0.0,0.0,annual,Measured,2026,0.02,0.05,0.1
-Possible split purchase,3,2024,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.02,0.05,0.1
-Possible duplicate,1,2025,2,4.0,2009794.0,1004897.0,annual,Measured,2026,0.02,0.05,0.1
-Repeated annual line,2,2025,0,0.0,0.0,0.0,annual,Measured,2026,0.02,0.05,0.1
-Possible split purchase,3,2025,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.02,0.05,0.1
-Possible duplicate,1,2026,0,0.0,0.0,0.0,annual,Measured,2026,0.02,0.05,0.1
-Repeated annual line,2,2026,0,0.0,0.0,0.0,annual,Measured,2026,0.02,0.05,0.1
-Possible split purchase,3,2026,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.02,0.05,0.1
+rule,rule_order,fiscal_year,groups,records,total_amount,review_amount,date_grain,status,lever_fy,lever_rate_low,lever_rate_likely,lever_rate_high,measured_confirmation_rate,rate_basis,reviewed_leads,confirmed_leads
+Possible duplicate,1,2022,5,10.0,1704000.0,852000.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Repeated annual line,2,2022,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible split purchase,3,2022,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible duplicate,1,2023,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Repeated annual line,2,2023,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible split purchase,3,2023,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible duplicate,1,2024,1,2.0,10000.0,5000.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Repeated annual line,2,2024,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible split purchase,3,2024,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible duplicate,1,2025,2,4.0,2009794.0,1004897.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Repeated annual line,2,2025,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible split purchase,3,2025,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible duplicate,1,2026,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Repeated annual line,2,2026,0,0.0,0.0,0.0,annual,Measured,2026,0.0,0.0,0.0,,not measurable without payment records,8,0
+Possible split purchase,3,2026,0,0.0,0.0,0.0,annual,"Not measurable: payments are annual records, not dated payments",2026,0.0,0.0,0.0,,not measurable without payment records,8,0

@@ -37,6 +37,7 @@ def con():
     c.execute("""CREATE TABLE mart.vendor_type AS SELECT * FROM (VALUES ('Acme', 'Business or other'), ('Beta', 'Business or other'),
                  ('County of X', 'Government')) t(vendor, payee_type)""")
     c.execute("CREATE TABLE ref.payee_area_exclusions (area VARCHAR, agency_name_pattern VARCHAR, payee_pattern VARCHAR)")
+    c.execute("CREATE TABLE mart.agency_master AS SELECT 'D50' AS agency_code, 'Agency Fifty' AS agency")
     cfg = marts.yaml.safe_load(marts.CFG.read_text())
     cfg["payment_screen"].update(first_fy=2025, last_fy=2026)
     for f in SQL:
@@ -46,7 +47,9 @@ def con():
 
 def test_rules(con):
     got = con.execute("SELECT rule, fiscal_year, vendor, n, amount, review_amount, zips FROM mart.d_payment_screen ORDER BY rule").fetchall()
-    assert got == [("Possible duplicate", 2025, "Acme", 2, 5000.0, 5000.0, 2), ("Repeated annual line", 2025, "Beta", 2, 9000.0, 9000.0, 1)]
+    # Beta's repeated line differs only by record date (Jan 1 of consecutive years) in an agency-year with two record dates:
+    # a publication issue (mart.d_source_issues, tests/test_source_issues.py), not a payment lead
+    assert got == [("Possible duplicate", 2025, "Acme", 2, 5000.0, 5000.0, 2)]
 
 
 def test_summary_and_split_status(con):

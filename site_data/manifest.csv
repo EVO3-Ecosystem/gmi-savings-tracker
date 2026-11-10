@@ -11,8 +11,9 @@ d_master_quality,mart,5,3b389e0aca06e174,False
 d_multi,mart,216,56d1833733038260,False
 d_multi_basis,mart,10,49b79eba81b3fe22,False
 d_opps,mart,396,d7c248e0a9acd4d2,False
-d_payment_screen,mart,205,8ce37c0a9431f075,False
-d_payment_screen_summary,mart,15,698ac6ea717e9daa,False
+d_payment_screen,mart,8,a38dffb0cb1afe2c,True
+d_payment_screen_summary,mart,15,0284fc0f734265e4,True
+d_source_issues,mart,2,c93d7968872adef9,True
 d_plan50,mart,28,e4a48b8431d24653,False
 d_rec_status,mart,6,bedae8370b745473,False
 d_savings,mart,18,b4047961412ca853,False

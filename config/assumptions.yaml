@@ -122,13 +122,50 @@ payment_screen:
   min_amount: 1000             # duplicates: each line at least this many dollars (and positive)
   duplicate_window_days: 7     # duplicates: same agency, vendor and exact amount with record dates this close
   split_window_days: 14        # splits: 2+ payments to one vendor by one agency within this many days ...
-  small_procurement_threshold: 50000   # ... each under this, together above it. ASSUMED, verify against COMAR/Procurement Manual (no statute citation published)
+  # ... each under the small-procurement limit in force on the record date, together above it. Primary source: Md. Code, State
+  # Finance and Procurement Art. 13-109(a)(1) ("a unit spends $50,000 or less"), raised to $100,000 by Ch. 161 of the Acts
+  # of 2023 (HB 543), effective Oct 1, 2023: https://mgaleg.maryland.gov/2023RS/chapters_noln/Ch_161_hb0543T.pdf
+  # (accessed 2026-11-10). COMAR 21.05.07 (small procurement procedures) applies the statutory limit; its regs.maryland.gov
+  # page could not be fetched from the build environment. DGS/DOT construction limits ((a)(3), $200,000) are not modeled.
+  small_procurement_threshold: 100000          # SF&P 13-109(a)(1) as amended by Ch. 161 of 2023, from the effective date below
+  small_procurement_threshold_before: 50000    # SF&P 13-109(a)(1) before Oct 1, 2023
+  small_procurement_effective: "2023-10-01"    # Ch. 161 of 2023, section 2
+  small_procurement_source: "Md. Code SF&P 13-109(a)(1); Ch. 161 of 2023 (HB 543), effective 2023-10-01; accessed 2026-11-10"
   transaction_grain_min_dates: 24      # the split rule runs only when a screened year has at least this many distinct dates (payment-level data); otherwise "not measurable"
   excluded_payee_types: [Government, Health care organization, Financial institution]   # transfers to government, benefits/health plans, debt service (reference/payee_type_rules.csv)
   exclude_payee_pattern: "CLERK OF|ATTORNEY GENERAL|CIRCUIT COURT|DISTRICT COURT|PAYROLL|RETIREMENT|PENSION|UNEMPLOYMENT|CHILD SUPPORT|INTERNAL REVENUE|\\bIRS\\b|FICA|DEFERRED COMP|BENEFIT"   # payroll-like and benefit payees, matched on the normalized payee name
   org_name_pattern: "\\b(INC|LLC|L L C|CORP|CORPORATION|CO|COMPANY|LTD|LP|LLP|PC|PA|PLLC|GROUP|ASSOCIATES|SERVICES|SYSTEMS|SOLUTIONS|TECHNOLOGIES|ENTERPRISES|INTERNATIONAL|PARTNERS|HOLDINGS|AUTHORITY|FOUNDATION|ASSOCIATION|JOINT VENTURE|JV|USA|AMERICA|CENTER|INSTITUTE|UNIVERSITY|COLLEGE)\\b"   # a "Business or other" payee is named only if its name looks like an organization; others may be individuals and are never shown by name
-  lever:                       # Calculator lever "Payment recovery review (leads)": flagged review dollars x an assumed confirmation rate
+  # Confidence of each lead (sql/mart/48), rules fixed before the leads were measured (docs/models/payment_screen.md):
+  # score = +1 amount not a multiple of round_cents_low; -1 amount a multiple of round_unit; +1 every record paid by one
+  # paying unit; -1 records paid by different paying units; -1 the same agency, vendor and amount in another screened year
+  # (a recurring contract or grant); -1 amount under small_amount; -1 a Non-profit payee (grants come in equal installments).
+  # high = score >= high_min, low = score <= low_max, else medium.
+  confidence:
+    round_unit: 1000
+    round_cents_low: 100       # an amount with cents or single dollars (not a multiple of $100) is "not round"
+    small_amount: 5000
+    high_min: 1
+    low_max: -1
+  # Evidence-based review (sql/mart/48), from the data only (no invoices are visible, so never "confirmed overpayment"):
+  # confirmed_duplicate_in_source = the records are identical in every published field (same paying unit and its code,
+  # payee name and ZIP); likely_legitimate = different paying units and the payee got this exact amount from at least
+  # pattern_min_units paying units that year (a sponsorship or fee schedule); needs_records otherwise; unreviewed = a rule the
+  # review does not cover (split purchases).
+  review:
+    pattern_min_units: 3
+  lever:                       # Calculator lever "Payment recovery review (leads)": flagged review dollars x the measured confirmation rate
     fy: 2026                   # flagged dollars of this payments year
-    rate_low: 0.02             # ASSUMED confirmation rates, to be replaced by the result of a reviewed sample
-    rate_likely: 0.05
-    rate_high: 0.10
+    # The rates are derived in sql/mart/49 from the review: measured rate = confirmed / reviewed leads, low/high its Wilson
+    # 95% interval (z below). When the review confirms none (it cannot without payment records), the rate is NULL and the
+    # lever is unmeasured_rate with the label below; the old 2%/5%/10% placeholders are retired.
+    z: 1.96
+    unmeasured_rate: 0
+    unmeasured_basis: "not measurable without payment records"
+# Data-publication issues found by the payment screen and verified at the source (sql/mart/50_d_source_issues.sql).
+source_issues:
+  verified_ids: [SRC-2022-J11, SRC-2022-U10]   # issues checked against the published source (docs/reconciliation/crosschecks_2026-11-10.csv)
+  verified_on: "2026-11-10"
+  verified_against: "opendata.maryland.gov 7syw-q4cy (SoQL count and sum by fiscal_year, date, agency_name) and vendorpayments.maryland.gov api/opex/totals.json?year=2022 ($36,656,748,837.50, which includes the second block)"
+  verified_amount: 874477234.00                 # dollars of the FY2022 rows dated Jan 1, 2023 at the source (both agencies)
+  status_verified: "In published source (both State sites); ask the Comptroller's open-data team which FY2022 block is current"
+  status_unverified: "Found in the extract; not yet checked against the source"

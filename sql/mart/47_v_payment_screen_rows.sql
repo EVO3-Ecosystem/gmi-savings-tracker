@@ -13,6 +13,12 @@
 --   Possible split purchase: only at payment-level dates: same agency and vendor, 2+ payments within split_window_days,
 --     each under small_procurement_threshold, together above it. At annual grain it is not measurable and flags nothing.
 -- Precedence: duplicate, then repeated annual line, then split; a record already flagged is not offered to a later rule.
+-- Source issues: a repeated annual line inside an agency-year whose records carry more than one record date (a second
+--   block of the year published with another date; FY2022 MDTA and MES, verified at the source on Nov 10, 2026) and whose
+--   records differ only by record date (Jan 1 of consecutive years) is a publication issue, not a payment lead: it gets a
+--   source_issue_id ('SRC-<fy>-<agency>') and goes to mart.d_source_issues, never to mart.d_payment_screen.
+-- Split threshold: the small-procurement limit in force on the record date (SF&P 13-109(a)(1); $50,000 before Oct 1, 2023,
+--   $100,000 from then, Ch. 161 of 2023), from config payment_screen.small_procurement_*.
 CREATE OR REPLACE TABLE mart.v_payment_screen_rows AS
 WITH grain AS (
   SELECT CASE WHEN max(d) >= {{payment_screen.transaction_grain_min_dates}} THEN 'payment' ELSE 'annual' END AS date_grain
@@ -55,15 +61,31 @@ WITH grain AS (
   SELECT *, sum(brk) OVER (PARTITION BY agency_key, vendor ORDER BY record_date, record_key) AS island
   FROM (SELECT *, CASE WHEN date_diff('day', lag(record_date) OVER (PARTITION BY agency_key, vendor ORDER BY record_date, record_key), record_date)
                             <= {{payment_screen.split_window_days}} THEN 0 ELSE 1 END AS brk
-        FROM c WHERE (SELECT date_grain FROM grain) = 'payment' AND amount < {{payment_screen.small_procurement_threshold}}
+        FROM (SELECT *, CASE WHEN record_date < CAST({{payment_screen.small_procurement_effective}} AS DATE) THEN {{payment_screen.small_procurement_threshold_before}}
+                           ELSE {{payment_screen.small_procurement_threshold}} END AS threshold FROM c) c
+        WHERE (SELECT date_grain FROM grain) = 'payment' AND amount < threshold
           AND record_key NOT IN (SELECT record_key FROM dup UNION ALL SELECT record_key FROM rep))
 ), spl AS (
-  SELECT s0.*, 'Possible split purchase' AS rule, md5(concat_ws('|', 'split', agency_key, vendor, island)) AS group_id
+  SELECT s0.* EXCLUDE (threshold), 'Possible split purchase' AS rule, md5(concat_ws('|', 'split', agency_key, vendor, island)) AS group_id
   FROM s0 WINDOW w AS (PARTITION BY agency_key, vendor, island)
-  QUALIFY count(*) OVER w >= 2 AND sum(amount) OVER w > {{payment_screen.small_procurement_threshold}}
+  QUALIFY count(*) OVER w >= 2 AND sum(amount) OVER w > min(threshold) OVER w
       AND date_diff('day', min(record_date) OVER w, max(record_date) OVER w) <= {{payment_screen.split_window_days}}
+), multi AS (  -- agency-years whose records carry more than one record date (a second block published with another date)
+  SELECT fiscal_year, coalesce(agency_code, agency_name_as_paid) AS agency_key FROM core.fact_payment_mapped
+  WHERE fiscal_year BETWEEN {{payment_screen.first_fy}} AND {{payment_screen.last_fy}} AND NOT partial_year
+  GROUP BY ALL HAVING count(DISTINCT record_date) > 1
+), f AS (
+  SELECT * EXCLUDE (island, brk) FROM dup UNION ALL BY NAME SELECT * EXCLUDE (island, brk) FROM rep
+  UNION ALL BY NAME SELECT * EXCLUDE (island, brk) FROM spl
+), g AS (
+  SELECT f.*, count(DISTINCT record_date) OVER (PARTITION BY group_id) AS g_dates,
+         max(year(record_date)) OVER (PARTITION BY group_id) - min(year(record_date)) OVER (PARTITION BY group_id) AS g_span,
+         bool_and(month(record_date) = 1 AND day(record_date) = 1) OVER (PARTITION BY group_id) AS g_jan1
+  FROM f
 )
-SELECT group_id, rule, record_key, fiscal_year, agency_key, agency_code, agency_name_as_paid, vendor, vendor_key, payee_type,
-       vendor_name_as_paid, vendor_zip, amount, record_date, (SELECT date_grain FROM grain) AS date_grain
-FROM (SELECT * EXCLUDE (island, brk) FROM dup UNION ALL BY NAME SELECT * EXCLUDE (island, brk) FROM rep
-      UNION ALL BY NAME SELECT * EXCLUDE (island, brk) FROM spl);
+SELECT group_id, rule, record_key, fiscal_year, agency_key, agency_code, agency_name_as_paid, agency_code_as_paid, vendor, vendor_key, payee_type,
+       vendor_name_as_paid, vendor_zip, amount, record_date, (SELECT date_grain FROM grain) AS date_grain,
+       CASE WHEN rule = 'Repeated annual line' AND g_dates = 2 AND g_span = 1 AND g_jan1
+                 AND EXISTS (SELECT 1 FROM multi m WHERE m.fiscal_year = g.fiscal_year AND m.agency_key = g.agency_key)
+            THEN 'SRC-' || fiscal_year || '-' || agency_key END AS source_issue_id
+FROM g;
