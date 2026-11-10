@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-10T08:04Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 10, 2026._
+_Generated 2026-11-10T08:22Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 10, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -839,6 +839,58 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | gmi_note | VARCHAR | source | Which reported items make up gmi_recurring |
 | gf_share | DOUBLE | derived | General Fund share of the area's FY2025 spending |
 
+**mart.d_grant_group_members** (5,008 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| description_key | VARCHAR | derived | Description in lower case with spaces collapsed: the unit that is embedded and clustered |
+| description | VARCHAR | portal | Grant description as published |
+| group_id | VARCHAR | derived | Grant group identifier: hash of the group's member description keys (stable while the members are) |
+| rows | BIGINT | ops | Row count |
+| amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
+
+**mart.d_grant_groups** (3,803 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| group_id | VARCHAR | derived | Grant group identifier: hash of the group's member description keys (stable while the members are) |
+| rank_fy | BIGINT | derived | Rank of the group by FY2025 grant dollars |
+| description | VARCHAR | derived | Representative description of the group: the member with the most grant dollars over all years |
+| n_descriptions | BIGINT | derived | Distinct descriptions in the group |
+| example_descriptions | VARCHAR | derived | Up to three other descriptions in the group |
+| grantor_agencies | VARCHAR | derived | Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated |
+| n_agencies | BIGINT | derived | Number of grantor agencies, any year (an agency renamed between years counts twice) |
+| grantees | BIGINT | derived | Distinct grantees, any year |
+| grantor_agencies_fy2025 | VARCHAR | derived | Grantor agencies that funded the group in FY2025 |
+| n_agencies_fy2025 | BIGINT | derived | Number of grantor agencies in FY2025 |
+| grantees_fy2025 | BIGINT | derived | Distinct grantees in FY2025 |
+| rows_fy2025 | BIGINT | derived | Grant rows in FY2025 |
+| amount_fy2025 | DOUBLE | derived | FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups |
+| first_fy | INTEGER | derived | First fiscal year the code appears |
+| last_fy | INTEGER | derived | Last fiscal year the code appears |
+| overlap_lead | BOOLEAN | derived | Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding) |
+| multi_agency_any_year | BOOLEAN | derived | 2+ grantor agencies in any year; mostly renamed agencies (hand check in docs/models/grant_groups.md) |
+| backend | VARCHAR | derived | Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded |
+| cosine_threshold | DOUBLE | derived | Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity) |
+
+**mart.d_grant_groups_sensitivity** (3 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| cosine_threshold | DOUBLE | derived | Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity) |
+| backend | VARCHAR | derived | Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded |
+| main | BOOLEAN | derived | True for the threshold the leads use |
+| descriptions | BIGINT | derived | Distinct descriptions clustered |
+| groups | BIGINT | derived | Groups at this threshold |
+| multi_description_groups | BIGINT | derived | Groups with two or more descriptions |
+| groups_with_fy_amount | BIGINT | derived | Groups with FY2025 grant dollars |
+| overlap_leads | BIGINT | derived | Groups funded by 2+ grantor agencies in FY2025 |
+| lead_amount_fy | DOUBLE | derived | FY2025 grant dollars in the overlap leads (not savings, not additive) |
+| multi_agency_any_year | BIGINT | derived | Groups with 2+ grantor agencies in any year |
+| multi_agency_any_year_amount_fy | DOUBLE | derived | FY2025 grant dollars in those groups (not savings, not additive) |
+| lead_share_of_fy_grants | DOUBLE | derived | lead_amount_fy as a share of all FY2025 grants and loans |
+| fiscal_year | BIGINT | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+
 **mart.d_master_quality** (5 rows)
 
 | column | type | origin | definition |
@@ -885,6 +937,33 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | high | DOUBLE | derived | High end of the estimated saving; uses a screening assumption (see Assumptions register) |
 | evidence | VARCHAR | derived | Plain-language reason the detector flagged the row |
 | likely | DOUBLE | derived | Midpoint of low and high |
+
+**mart.d_payee_class** (61,798 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| payee_key | VARCHAR | derived | md5 of the payee name as paid: links a row to the name in the database without publishing it |
+| payee | VARCHAR | derived | Payee name as paid, or 'Payee not named (may be an individual)' when the final label is business and the name has no organization word (payment_screen.org_name_pattern) or the name was labeled individual/withheld |
+| rule_label | VARCHAR | derived | Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), as the dashboard uses it |
+| type_basis | VARCHAR | derived | How the payee type was assigned: name rule, grants data nonprofit = Y, or default |
+| rule_class | VARCHAR | derived | The rule label mapped to the classifier's five classes (config payee_classifier.rule_to_class) |
+| model_label | VARCHAR | derived | Class predicted by the TF-IDF character n-gram logistic regression trained on the rule labels (docs/models/payee_classifier.md); never individual/withheld |
+| confidence | DOUBLE | derived | The model's probability for model_label (0-1) |
+| final_label | VARCHAR | derived | Payee class used downstream: the combined label (rules first, model where the rules fell to the default) if it beat the rules on macro F1 on the hand-labeled sample, otherwise the rule class |
+| review_flag | BOOLEAN | derived | True when the name belongs in the review queue (see review_reason) |
+| review_reason | VARCHAR | derived | Why the name is in the review queue: default label and the model suggests another type (probability >= review_threshold), default label and low model confidence, or the model disagrees with a name rule |
+| in_eval_sample | BOOLEAN | derived | True for the 400 names of the hand-labeled evaluation sample (reference/payee_labels_sample.csv); they and their vendors' other names are never trained on |
+| paid_all_years | DOUBLE | derived | Payments to this payee name, all fiscal years (dollars) |
+
+**mart.d_payee_class_eval** (67 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| method | VARCHAR | derived | rules, model or combined (or sample / decision / model bookkeeping rows) |
+| metric | VARCHAR | derived | accuracy, macro_f1, precision, recall, f1, dollars_classified_share, dollars_relabeled_share, accuracy_on_default_names, or a count (labeled, excluded_unsure, not_found, reviewed_by_sierra, training_names, review_queue, combined_promoted) |
+| class | VARCHAR | derived | Payee class a per-class metric is for; 'all' for overall metrics |
+| value | DOUBLE | derived | Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes) |
+| n | BIGINT | derived | Names the metric is computed on (support for per-class metrics) |
 
 **mart.d_payment_screen** (8 rows)
 
@@ -1329,7 +1408,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | BIGINT | ops | Budget rows in the run |
 | mode | VARCHAR | ops | Run mode (full, freshness reuse, test fault) |
 
-**mart.run_checks** (96 rows)
+**mart.run_checks** (103 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1392,6 +1471,32 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | vendors | BIGINT | derived | Distinct payees in the year |
 | total_payments_prior | DOUBLE | derived | All payments in the previous fiscal year |
 | total_payments_yoy | DOUBLE | derived | Change in total payments from the previous fiscal year (share) |
+
+**mart.v_grant_rows** (23,084 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| fiscal_year | INTEGER | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+| grantor_agency | VARCHAR | derived | Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed |
+| grantor_program | VARCHAR | derived | Grantor after the first '/' (the program or unit the portal joins to the agency); blank when none |
+| grantee | VARCHAR | portal | Recipient of the grant or loan |
+| category | VARCHAR | derived | Grant or Loan (core.fact_grant) |
+| description | VARCHAR | portal | Grant description as published |
+| description_key | VARCHAR | derived | Description in lower case with spaces collapsed: the unit that is embedded and clustered |
+| amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
+
+**mart.v_payee_class_input** (61,798 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| payee_key | VARCHAR | derived | md5 of the payee name as paid: links a row to the name in the database without publishing it |
+| payee | VARCHAR | portal | Payee name as paid (payments vendor_name, trimmed) |
+| vendor_key | VARCHAR | derived | Normalized payee name (ref.map_payee_vendor), what the payee type rules match |
+| vendor | VARCHAR | derived | Company name after grouping payee names |
+| rule_type | VARCHAR | derived | Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), the classifier's baseline |
+| type_basis | VARCHAR | derived | How the payee type was assigned: name rule, grants data nonprofit = Y, or default |
+| paid_all_years | DOUBLE | derived | Payments to this payee name, all fiscal years (dollars) |
+| paid_fy2025 | DOUBLE | derived | Payments to this payee name in FY2025 (dollars) |
 
 **mart.v_payment_screen_rows** (410 rows)
 
@@ -1479,7 +1584,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payee_names | BIGINT | derived | Distinct payee names grouped into the vendor |
 | focus_area | VARCHAR | derived | One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none |
 
-**ops.check_coverage** (96 rows)
+**ops.check_coverage** (103 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1487,7 +1592,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | layer | VARCHAR | ops | Database layer the check ran on (raw, core, ref, mart) |
 | tables | VARCHAR | derived | Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated |
 
-**ops.check_result** (96 rows)
+**ops.check_result** (103 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1508,7 +1613,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | rows | BIGINT | ops | Row count |
 | detail | VARCHAR | ops | Numbers behind the check result |
 
-**ops.lineage** (268 rows)
+**ops.lineage** (277 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1736,7 +1841,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (422 rows)
+**ref.column_dictionary** (480 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1907,6 +2012,20 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 |---|---|---|---|
 | area | VARCHAR | derived | One of GMI's six focus areas |
 | payee_pattern | VARCHAR | reference | Regular expression matching payee names |
+
+**ref.payee_labels_sample** (400 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| payee_key | VARCHAR | derived | md5 of the payee name as paid: links a row to the name in the database without publishing it |
+| payee | VARCHAR | derived | Payee name as paid; '[individual: name withheld, see payee_key]' for names labeled individual/withheld |
+| rule_type | VARCHAR | derived | Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), the classifier's baseline |
+| type_basis | VARCHAR | derived | How the payee type was assigned: name rule, grants data nonprofit = Y, or default |
+| spend_bucket | VARCHAR | derived | All-years spend bucket the sample was stratified by (config payee_classifier.spend_buckets) |
+| paid_all_years | VARCHAR | derived | Payments to this payee name, all fiscal years (dollars) |
+| my_label | VARCHAR | derived | Single annotator's label from the name text (Claude, Nov 10, 2026) under the criteria in docs/models/payee_classifier.md; unsure = excluded |
+| her_label | VARCHAR | derived | Sierra's review label; when filled it replaces my_label in the evaluation |
+| note | VARCHAR | reference | Explanation of the rule or row |
 
 **ref.payee_type_rule** (7 rows)
 
@@ -2603,7 +2722,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,481 of 1,481 columns documented (85 source, 1013 warehouse, 383 dashboard).
+1,560 of 1,560 columns documented (85 source, 1092 warehouse, 383 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**

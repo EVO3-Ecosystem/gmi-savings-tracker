@@ -77,6 +77,9 @@ mart.d_forecast_calibration,mart.f_scope
 mart.d_forecast_model,mart.f_code
 mart.d_forecast_model,mart.f_fund
 mart.d_forecast_model,mart.f_scope
+mart.d_grant_group_members,mart.v_grant_rows
+mart.d_grant_groups,mart.v_grant_rows
+mart.d_grant_groups_sensitivity,mart.v_grant_rows
 mart.d_master_quality,core.fact_payment
 mart.d_master_quality,core.fact_payment_mapped
 mart.d_master_quality,ops.check_result
@@ -98,6 +101,8 @@ mart.d_opps,core.fact_budget_scope
 mart.d_opps,mart.agency_year
 mart.d_opps,mart.payment_area
 mart.d_opps,ref.dim_stage
+mart.d_payee_class,mart.v_payee_class_input
+mart.d_payee_class_eval,mart.v_payee_class_input
 mart.d_payment_screen,core.fact_payment_mapped
 mart.d_payment_screen,mart.agency_master
 mart.d_payment_screen,mart.d_source_issues
@@ -231,6 +236,10 @@ mart.sources,ref.map_payment_agency
 mart.spending_scope,core.fact_budget_scope
 mart.spending_scope,ref.dim_stage
 mart.totals_by_fy,mart.payment_area
+mart.v_grant_rows,core.fact_grant
+mart.v_payee_class_input,core.fact_payment
+mart.v_payee_class_input,mart.vendor_type
+mart.v_payee_class_input,ref.map_payee_vendor
 mart.v_payment_screen_rows,core.fact_payment
 mart.v_payment_screen_rows,core.fact_payment_mapped
 mart.v_payment_screen_rows,mart.d_payment_screen

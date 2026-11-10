@@ -86,7 +86,7 @@ def main(argv=None):
             rows.append({"file": name, "source": "missing", "rows": 0, "changed": None})
             continue
         h = hashlib.sha256((out / f"{name}.csv").read_bytes()).hexdigest()[:16]
-        rows.append({"file": name, "source": src, "rows": sum(1 for _ in open(out / f"{name}.csv")) - 1, "sha": h,
+        rows.append({"file": name, "source": src, "rows": len(pd.read_csv(out / f"{name}.csv", low_memory=False)),  # parsed rows: line breaks inside text fields are not rows "sha": h,
                      "changed": (h != prev.get(name)) if prev else None})
     con.close()
     man = pd.DataFrame(rows)

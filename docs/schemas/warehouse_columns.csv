@@ -349,6 +349,43 @@ mart.d_forecast_model,gmi_recurring,DOUBLE,7,Recurring savings GMI reported for 
 mart.d_forecast_model,gmi_rate,DOUBLE,7,gmi_recurring divided by baseline_fy2025,derived
 mart.d_forecast_model,gmi_note,VARCHAR,7,Which reported items make up gmi_recurring,source
 mart.d_forecast_model,gf_share,DOUBLE,7,General Fund share of the area's FY2025 spending,derived
+mart.d_grant_group_members,description_key,VARCHAR,5008,Description in lower case with spaces collapsed: the unit that is embedded and clustered,derived
+mart.d_grant_group_members,description,VARCHAR,5008,Grant description as published,portal
+mart.d_grant_group_members,group_id,VARCHAR,5008,Grant group identifier: hash of the group's member description keys (stable while the members are),derived
+mart.d_grant_group_members,rows,BIGINT,5008,Row count,ops
+mart.d_grant_group_members,amount,DOUBLE,5008,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+mart.d_grant_groups,group_id,VARCHAR,3803,Grant group identifier: hash of the group's member description keys (stable while the members are),derived
+mart.d_grant_groups,rank_fy,BIGINT,3803,Rank of the group by FY2025 grant dollars,derived
+mart.d_grant_groups,description,VARCHAR,3803,Representative description of the group: the member with the most grant dollars over all years,derived
+mart.d_grant_groups,n_descriptions,BIGINT,3803,Distinct descriptions in the group,derived
+mart.d_grant_groups,example_descriptions,VARCHAR,3803,Up to three other descriptions in the group,derived
+mart.d_grant_groups,grantor_agencies,VARCHAR,3803,"Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated",derived
+mart.d_grant_groups,n_agencies,BIGINT,3803,"Number of grantor agencies, any year (an agency renamed between years counts twice)",derived
+mart.d_grant_groups,grantees,BIGINT,3803,"Distinct grantees, any year",derived
+mart.d_grant_groups,grantor_agencies_fy2025,VARCHAR,3803,Grantor agencies that funded the group in FY2025,derived
+mart.d_grant_groups,n_agencies_fy2025,BIGINT,3803,Number of grantor agencies in FY2025,derived
+mart.d_grant_groups,grantees_fy2025,BIGINT,3803,Distinct grantees in FY2025,derived
+mart.d_grant_groups,rows_fy2025,BIGINT,3803,Grant rows in FY2025,derived
+mart.d_grant_groups,amount_fy2025,DOUBLE,3803,"FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups",derived
+mart.d_grant_groups,first_fy,INTEGER,3803,First fiscal year the code appears,derived
+mart.d_grant_groups,last_fy,INTEGER,3803,Last fiscal year the code appears,derived
+mart.d_grant_groups,overlap_lead,BOOLEAN,3803,"Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding)",derived
+mart.d_grant_groups,multi_agency_any_year,BOOLEAN,3803,2+ grantor agencies in any year; mostly renamed agencies (hand check in docs/models/grant_groups.md),derived
+mart.d_grant_groups,backend,VARCHAR,3803,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded",derived
+mart.d_grant_groups,cosine_threshold,DOUBLE,3803,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity),derived
+mart.d_grant_groups_sensitivity,cosine_threshold,DOUBLE,3,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity),derived
+mart.d_grant_groups_sensitivity,backend,VARCHAR,3,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded",derived
+mart.d_grant_groups_sensitivity,main,BOOLEAN,3,True for the threshold the leads use,derived
+mart.d_grant_groups_sensitivity,descriptions,BIGINT,3,Distinct descriptions clustered,derived
+mart.d_grant_groups_sensitivity,groups,BIGINT,3,Groups at this threshold,derived
+mart.d_grant_groups_sensitivity,multi_description_groups,BIGINT,3,Groups with two or more descriptions,derived
+mart.d_grant_groups_sensitivity,groups_with_fy_amount,BIGINT,3,Groups with FY2025 grant dollars,derived
+mart.d_grant_groups_sensitivity,overlap_leads,BIGINT,3,Groups funded by 2+ grantor agencies in FY2025,derived
+mart.d_grant_groups_sensitivity,lead_amount_fy,DOUBLE,3,"FY2025 grant dollars in the overlap leads (not savings, not additive)",derived
+mart.d_grant_groups_sensitivity,multi_agency_any_year,BIGINT,3,Groups with 2+ grantor agencies in any year,derived
+mart.d_grant_groups_sensitivity,multi_agency_any_year_amount_fy,DOUBLE,3,"FY2025 grant dollars in those groups (not savings, not additive)",derived
+mart.d_grant_groups_sensitivity,lead_share_of_fy_grants,DOUBLE,3,lead_amount_fy as a share of all FY2025 grants and loans,derived
+mart.d_grant_groups_sensitivity,fiscal_year,BIGINT,3,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.d_master_quality,measure,VARCHAR,5,Name of the quality measure,reference
 mart.d_master_quality,value,VARCHAR,5,Measured value,derived
 mart.d_master_quality,ok,BIGINT,5,True when the measure meets its target,derived
@@ -376,6 +413,23 @@ mart.d_opps,low,DOUBLE,396,Low end of the estimated saving; uses a screening ass
 mart.d_opps,high,DOUBLE,396,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 mart.d_opps,evidence,VARCHAR,396,Plain-language reason the detector flagged the row,derived
 mart.d_opps,likely,DOUBLE,396,Midpoint of low and high,derived
+mart.d_payee_class,payee_key,VARCHAR,61798,md5 of the payee name as paid: links a row to the name in the database without publishing it,derived
+mart.d_payee_class,payee,VARCHAR,61798,"Payee name as paid, or 'Payee not named (may be an individual)' when the final label is business and the name has no organization word (payment_screen.org_name_pattern) or the name was labeled individual/withheld",derived
+mart.d_payee_class,rule_label,VARCHAR,61798,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), as the dashboard uses it",derived
+mart.d_payee_class,type_basis,VARCHAR,61798,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
+mart.d_payee_class,rule_class,VARCHAR,61798,The rule label mapped to the classifier's five classes (config payee_classifier.rule_to_class),derived
+mart.d_payee_class,model_label,VARCHAR,61798,Class predicted by the TF-IDF character n-gram logistic regression trained on the rule labels (docs/models/payee_classifier.md); never individual/withheld,derived
+mart.d_payee_class,confidence,DOUBLE,61798,The model's probability for model_label (0-1),derived
+mart.d_payee_class,final_label,VARCHAR,61798,"Payee class used downstream: the combined label (rules first, model where the rules fell to the default) if it beat the rules on macro F1 on the hand-labeled sample, otherwise the rule class",derived
+mart.d_payee_class,review_flag,BOOLEAN,61798,True when the name belongs in the review queue (see review_reason),derived
+mart.d_payee_class,review_reason,VARCHAR,61798,"Why the name is in the review queue: default label and the model suggests another type (probability >= review_threshold), default label and low model confidence, or the model disagrees with a name rule",derived
+mart.d_payee_class,in_eval_sample,BOOLEAN,61798,True for the 400 names of the hand-labeled evaluation sample (reference/payee_labels_sample.csv); they and their vendors' other names are never trained on,derived
+mart.d_payee_class,paid_all_years,DOUBLE,61798,"Payments to this payee name, all fiscal years (dollars)",derived
+mart.d_payee_class_eval,method,VARCHAR,67,"rules, model or combined (or sample / decision / model bookkeeping rows)",derived
+mart.d_payee_class_eval,metric,VARCHAR,67,"accuracy, macro_f1, precision, recall, f1, dollars_classified_share, dollars_relabeled_share, accuracy_on_default_names, or a count (labeled, excluded_unsure, not_found, reviewed_by_sierra, training_names, review_queue, combined_promoted)",derived
+mart.d_payee_class_eval,class,VARCHAR,67,Payee class a per-class metric is for; 'all' for overall metrics,derived
+mart.d_payee_class_eval,value,DOUBLE,67,Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes),derived
+mart.d_payee_class_eval,n,BIGINT,67,Names the metric is computed on (support for per-class metrics),derived
 mart.d_payment_screen,group_id,VARCHAR,8,Identifier of a flagged group of payment records (hash of the rule and its grouping keys),derived
 mart.d_payment_screen,rule,VARCHAR,8,Name of the mapping or scope rule,reference
 mart.d_payment_screen,fiscal_year,INTEGER,8,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
@@ -654,11 +708,11 @@ mart.pipeline_runs,repairs,BIGINT,5,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,5,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,5,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,5,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,96,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,96,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,96,Check description,ops
-mart.run_checks,status,VARCHAR,96,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,96,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,103,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,103,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,103,Check description,ops
+mart.run_checks,status,VARCHAR,103,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,103,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,6,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,6,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,6,Dataset title used on the dashboard,derived
@@ -693,6 +747,22 @@ mart.totals_by_fy,agencies,BIGINT,20,Agencies paying the vendor (or with payment
 mart.totals_by_fy,vendors,BIGINT,20,Distinct payees in the year,derived
 mart.totals_by_fy,total_payments_prior,DOUBLE,20,All payments in the previous fiscal year,derived
 mart.totals_by_fy,total_payments_yoy,DOUBLE,20,Change in total payments from the previous fiscal year (share),derived
+mart.v_grant_rows,fiscal_year,INTEGER,23084,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.v_grant_rows,grantor_agency,VARCHAR,23084,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed",derived
+mart.v_grant_rows,grantor_program,VARCHAR,23084,Grantor after the first '/' (the program or unit the portal joins to the agency); blank when none,derived
+mart.v_grant_rows,grantee,VARCHAR,23084,Recipient of the grant or loan,portal
+mart.v_grant_rows,category,VARCHAR,23084,Grant or Loan (core.fact_grant),derived
+mart.v_grant_rows,description,VARCHAR,23084,Grant description as published,portal
+mart.v_grant_rows,description_key,VARCHAR,23084,Description in lower case with spaces collapsed: the unit that is embedded and clustered,derived
+mart.v_grant_rows,amount,DOUBLE,23084,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+mart.v_payee_class_input,payee_key,VARCHAR,61798,md5 of the payee name as paid: links a row to the name in the database without publishing it,derived
+mart.v_payee_class_input,payee,VARCHAR,61798,"Payee name as paid (payments vendor_name, trimmed)",portal
+mart.v_payee_class_input,vendor_key,VARCHAR,61798,"Normalized payee name (ref.map_payee_vendor), what the payee type rules match",derived
+mart.v_payee_class_input,vendor,VARCHAR,61798,Company name after grouping payee names,derived
+mart.v_payee_class_input,rule_type,VARCHAR,61798,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), the classifier's baseline",derived
+mart.v_payee_class_input,type_basis,VARCHAR,61798,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
+mart.v_payee_class_input,paid_all_years,DOUBLE,61798,"Payments to this payee name, all fiscal years (dollars)",derived
+mart.v_payee_class_input,paid_fy2025,DOUBLE,61798,Payments to this payee name in FY2025 (dollars),derived
 mart.v_payment_screen_rows,group_id,VARCHAR,410,Identifier of a flagged group of payment records (hash of the rule and its grouping keys),derived
 mart.v_payment_screen_rows,rule,VARCHAR,410,"Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md)",derived
 mart.v_payment_screen_rows,record_key,VARCHAR,410,Identifier of one payment record (hash of its published fields plus a counter for identical records),derived
@@ -749,22 +819,22 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_coverage,check,VARCHAR,96,Check description,ops
-ops.check_coverage,layer,VARCHAR,96,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_coverage,tables,VARCHAR,96,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated",derived
-ops.check_result,run_id,VARCHAR,96,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,96,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,96,Check description,ops
-ops.check_result,severity,VARCHAR,96,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,96,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,96,Numbers behind the check result,ops
+ops.check_coverage,check,VARCHAR,103,Check description,ops
+ops.check_coverage,layer,VARCHAR,103,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_coverage,tables,VARCHAR,103,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated",derived
+ops.check_result,run_id,VARCHAR,103,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,103,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,103,Check description,ops
+ops.check_result,severity,VARCHAR,103,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,103,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,103,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
 ops.enrichment,rows,BIGINT,4,Row count,ops
 ops.enrichment,detail,VARCHAR,4,Numbers behind the check result,ops
-ops.lineage,table_name,VARCHAR,268,Warehouse table (schema.name) created by the build,derived
-ops.lineage,depends_on,VARCHAR,268,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
+ops.lineage,table_name,VARCHAR,277,Warehouse table (schema.name) created by the build,derived
+ops.lineage,depends_on,VARCHAR,277,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
 ops.payee_name_seen,payee_name,VARCHAR,61798,"Payee name exactly as paid (ref.map_payee_vendor.payee), one row per name ever seen by a passing build",ops
 ops.payee_name_seen,first_seen_run_id,VARCHAR,61798,Extract run of the first build that passed its stop checks and saw this payee name,ops
 ops.payee_name_seen,first_seen_date,VARCHAR,61798,UTC date of that extract run (YYYY-MM-DD),ops
@@ -906,10 +976,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,422,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,422,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,422,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,422,What the column means,reference
+ref.column_dictionary,column,VARCHAR,480,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,480,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,480,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,480,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference
@@ -983,6 +1053,15 @@ ref.payee_area_exclusions,payee_pattern,VARCHAR,3,Regular expression matching pa
 ref.payee_area_exclusions,note,VARCHAR,3,Explanation of the rule or row,reference
 ref.payee_focus_area,area,VARCHAR,6,One of GMI's six focus areas,derived
 ref.payee_focus_area,payee_pattern,VARCHAR,6,Regular expression matching payee names,reference
+ref.payee_labels_sample,payee_key,VARCHAR,400,md5 of the payee name as paid: links a row to the name in the database without publishing it,derived
+ref.payee_labels_sample,payee,VARCHAR,400,"Payee name as paid; '[individual: name withheld, see payee_key]' for names labeled individual/withheld",derived
+ref.payee_labels_sample,rule_type,VARCHAR,400,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), the classifier's baseline",derived
+ref.payee_labels_sample,type_basis,VARCHAR,400,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
+ref.payee_labels_sample,spend_bucket,VARCHAR,400,All-years spend bucket the sample was stratified by (config payee_classifier.spend_buckets),derived
+ref.payee_labels_sample,paid_all_years,VARCHAR,400,"Payments to this payee name, all fiscal years (dollars)",derived
+ref.payee_labels_sample,my_label,VARCHAR,400,"Single annotator's label from the name text (Claude, Nov 10, 2026) under the criteria in docs/models/payee_classifier.md; unsure = excluded",derived
+ref.payee_labels_sample,her_label,VARCHAR,400,Sierra's review label; when filled it replaces my_label in the evaluation,derived
+ref.payee_labels_sample,note,VARCHAR,400,Explanation of the rule or row,reference
 ref.payee_type_rule,priority,VARCHAR,7,Order the payee type rules apply in; the lowest matching priority wins across a vendor's names,reference
 ref.payee_type_rule,payee_type,VARCHAR,7,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
 ref.payee_type_rule,pattern,VARCHAR,7,Regular expression the rule applies,reference
