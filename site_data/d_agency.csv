@@ -1,83 +1,83 @@
 agency_code,agency
+D55,Department of Veterans and Military Families
+C94,Subsequent Injury Fund
+D05,Board of Public Works
+S00,Department of Housing and Community Development
+C80,Office of the Public Defender
+D25,Interagency Commission On School Construction
 D12,Department of Disabilities
-D52,Maryland Department of Emergency Management
-N00,Department of Human Services
+P00,Maryland Department of Labor
+R62,Maryland Higher Education Commission
 D80,Maryland Insurance Administration
 D28,Maryland Stadium Authority
 G50,Maryland State Employees Supplemental Retirement Plans
 C85,Maryland Tax Court
-D22,Maryland Commission on African American History and Culture
-C96,Uninsured Employers' Fund
-R12,Accountability and Implementation Board
-D05,Board of Public Works
-H00,Department of General Services
-S00,Department of Housing and Community Development
-D55,Department of Veterans and Military Families
-D25,Interagency Commission On School Construction
-D60,State Archives
-W00,Department of State Police
-D27,Maryland Commission On Civil Rights
-P00,Maryland Department of Labor
-R62,Maryland Higher Education Commission
 L00,Department of Agriculture
-C91,Office of People's Counsel
-C81,Office of the Attorney General
-D38,State Board of Elections
-A15,Payments to Civil Divisions of the State
+N00,Department of Human Services
+C96,Uninsured Employers' Fund
 E17,"Alcohol, Tobacco, and Cannabis Commission"
+D27,Maryland Commission On Civil Rights
+D60,State Archives
+R12,Accountability and Implementation Board
 V00,Department of Juvenile Services
 U00,Department of the Environment
-D74,Office of the Correctional Ombudsman
-C80,Office of the Public Defender
-C94,Subsequent Injury Fund
+H00,Department of General Services
+W00,Department of State Police
+C91,Office of People's Counsel
+C81,Office of the Attorney General
+A15,Payments to Civil Divisions of the State
+D38,State Board of Elections
 D91,West North Avenue Development Authority
+D74,Office of the Correctional Ombudsman
+D52,Maryland Department of Emergency Management
+D22,Maryland Commission on African American History and Culture
 Y01,State Reserve Fund
 D29,Maryland Thoroughbred Racetrack Operating Authority
 B75,Legislative Branch
 D06,Board of Public Works - Capital Appropriation
-R00,State Department of Education
-E75,Maryland Lottery and Gaming Control Agency
-D40,Department of Planning
-R15,Maryland Public Broadcasting Commission
-R11,Maryland State Library Agency
-G20,Maryland State Retirement and Pension Systems
-C98,Workers' Compensation Commission
+M00,Maryland Department of Health
+D78,Maryland Health Benefit Exchange
+J00,Department of Transportation
+D53,Maryland Institute for Emergency Medical Services Systems
+T50,Maryland Technology Development Corporation
+D50,Military Department
+E20,State Treasurer's Office
 E00,Comptroller of Maryland
 T00,Department of Commerce
 Q00,Department of Public Safety and Correctional Services
 D10,Executive Department - Governor
-D21,Governor's Office of Crime Prevention and Policy
-D18,Governor's Office for Children
-J00,Department of Transportation
-D23,Maryland Cannabis Administration
-D26,Department of Aging
-M00,Maryland Department of Health
-D78,Maryland Health Benefit Exchange
-R99,Maryland School for the Deaf
-F10,Department of Budget and Management
-F50,Department of Information Technology
-D13,Maryland Energy Administration
-D17,Historic St. Mary's City Commission
-D15,"Executive Department-Boards, Commissions and Offices"
-D90,Canal Place Preservation and Development Authority
-S50,Maryland African American Museum Corporation
-D99,Office of Administrative Hearings
-D11,Office of the Deaf and Hard of Hearing
-C82,Office of the State Prosecutor
-D77,Prescription Drug Affordability Board
-C90,Public Service Commission
-X00,Public Debt
-D24,Department of Social and Economic Mobility
-D73,Office of the Inspector General for Education
-K00,Department of Natural Resources
-I00,Department of Service and Civic Innovation
-D53,Maryland Institute for Emergency Medical Services Systems
-T50,Maryland Technology Development Corporation
-D50,Military Department
 E80,Property Tax Assessment Appeals Boards
 D16,Secretary of State
 E50,State Department of Assessments and Taxation
-E20,State Treasurer's Office
+F50,Department of Information Technology
+D13,Maryland Energy Administration
+D40,Department of Planning
+R15,Maryland Public Broadcasting Commission
+G20,Maryland State Retirement and Pension Systems
+C98,Workers' Compensation Commission
+D15,"Executive Department-Boards, Commissions and Offices"
+D90,Canal Place Preservation and Development Authority
+F10,Department of Budget and Management
+D17,Historic St. Mary's City Commission
+R00,State Department of Education
+S50,Maryland African American Museum Corporation
+D21,Governor's Office of Crime Prevention and Policy
+D26,Department of Aging
+R99,Maryland School for the Deaf
+K00,Department of Natural Resources
+I00,Department of Service and Civic Innovation
+D23,Maryland Cannabis Administration
+R11,Maryland State Library Agency
+E75,Maryland Lottery and Gaming Control Agency
+D99,Office of Administrative Hearings
+D11,Office of the Deaf and Hard of Hearing
+C82,Office of the State Prosecutor
+C90,Public Service Commission
+X00,Public Debt
+D18,Governor's Office for Children
+D73,Office of the Inspector General for Education
+D77,Prescription Drug Affordability Board
+D24,Department of Social and Economic Mobility
 C00,Judiciary
 R75,Support for State Operated Institutions of Higher Education
 D76,Maryland Office of the Inspector General for Health

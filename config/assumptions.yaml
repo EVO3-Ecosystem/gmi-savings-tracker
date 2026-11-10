@@ -196,6 +196,6 @@ grant_groups:
   cosine_threshold: 0.85        # agglomerative clustering (average linkage): descriptions closer than this join a group; set before looking
   sensitivity: [0.80, 0.90]     # thresholds reported alongside, never used for the leads
   lead_fy: 2025                 # overlap leads: groups funded by 2+ grantor agencies in this same fiscal year (the grants data ends FY2025);
-                                # the looser any-year reading is reported as multi_agency_any_year (renamed agencies count twice there)
+                                # the looser any-year reading is reported as multi_agency_any_year (grantor names resolved through reference/grantor_agency_aliases.csv)
   min_agencies: 2
   top_n_check: 20               # groups hand-checked in docs/models/grant_groups.md (by lead_fy dollars)
