@@ -29,7 +29,8 @@
 .gs select,.gs input[type=search]{font:inherit;font-size:var(--cds-font-size-caption);padding:var(--cds-pad-xs) var(--cds-pad-sm);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);background:var(--color-panel);color:var(--color-fg);max-width:100%}
 .gs button.lnk{font:inherit;font-size:var(--cds-font-size-caption);background:none;border:0;padding:0;color:var(--color-fg);text-decoration:underline;cursor:pointer}
 .gs button:focus-visible,.gs th:focus-visible,.gs tr.click:focus-visible,.gs .acard:focus-visible,.gs input:focus-visible{outline:2px solid var(--color-fg);outline-offset:2px}
-.gs .panel{display:grid;gap:var(--cds-gap-md)}
+.gs .panel{display:grid;gap:var(--cds-gap-md);position:relative;z-index:0}
+.gs .panel .card,.gs .panel h2,.gs .panel .lede{scroll-margin-top:calc(var(--gs-bar-h,8rem) + 8px)}
 .gs .panel[hidden]{display:none}
 .gs .lede{font-size:var(--cds-font-size-body);margin:0;max-width:78ch;line-height:1.5}
 .gs .lede.find{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);text-wrap:pretty}
@@ -96,6 +97,14 @@
 .gs .soon p{margin:0;line-height:1.5}
 .gs .method{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);display:grid;gap:var(--cds-gap-xs);max-width:92ch}
 .gs .method b{color:var(--color-fg);font-weight:var(--cds-font-weight-medium)}
+.gs .st.cf-high{color:var(--color-fg);font-weight:var(--cds-font-weight-medium)}
+.gs .st.cf-medium{color:var(--color-warn)}
+.gs .st.cf-low,.gs .st.cf-none{color:var(--color-fg-muted)}
+.gs .st.rv{color:var(--color-fg-muted);border-style:dashed}
+.gs table.no-conf .c-conf{display:none}
+.gs .card.issues{border-left:4px solid var(--color-warn)}
+.gs .card.issues .tag2{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-weight:400}
+.gs #psIssBody td:nth-child(6){min-width:16rem}
 [data-dash-source-state=refreshing]{opacity:.5}
 [data-dash-source-state=empty]{color:transparent}
 </style>
@@ -266,14 +275,22 @@
     <div class="card" id="psCard">
       <div class="hd"><h2>Payment screen: possible duplicates and split purchases (leads)</h2></div>
       <p class="insight" id="psFind" data-source="d_payment_screen_summary">—</p>
-      <p class="note">Review dollars by year and rule, FY2022–FY2026: for a possible duplicate or a line repeated in one year, every copy after the first. A flag is a lead to review, not an error. Click a year to filter the list.</p>
+      <p class="note" id="psChartNote">Review dollars by year, FY2022–FY2026: for a possible duplicate or a line repeated in one year, every copy after the first. A flag is a lead to review, not an error. Click a year to filter the list.</p>
       <div class="legend" id="psLegend"></div>
-      <div class="chart" id="psChart" data-source="d_payment_screen_summary" style="min-height:200px"></div>
+      <div class="chart" id="psChart" data-source="d_payment_screen" style="min-height:220px"></div>
+      <p class="stagenote" id="psScale"></p>
       <div class="filters" style="padding:var(--cds-gap-sm) 0"><span class="lab">Rule <select id="psRule" aria-label="Screen rule"><option value="">All rules</option><option>Possible duplicate</option><option>Repeated annual line</option><option>Possible split purchase</option></select></span><span class="lab">Year <select id="psYear" aria-label="Screen year"><option value="">All years</option></select></span><span class="lab"><input type="search" id="psQ" placeholder="Agency or vendor" aria-label="Filter flagged groups by agency or vendor"></span><span id="psCount"></span></div>
       <div class="tbl"><table data-source="d_payment_screen" data-row-key="group_id">
-        <thead><tr><th data-field="rule">Rule</th><th class="n" data-field="fiscal_year">Year</th><th data-field="agency">Agency</th><th data-field="vendor">Vendor</th><th class="n" data-field="n">Records</th><th class="n" data-field="amount">Each</th><th class="n" data-field="review_amount">To review</th><th data-field="first_date">Record dates</th><th data-field="also_flagged_under">Also flagged</th></tr></thead>
+        <thead><tr><th data-field="rule">Rule</th><th class="n" data-field="fiscal_year">Year</th><th data-field="agency">Agency</th><th data-field="vendor">Vendor</th><th class="n" data-field="n">Records</th><th class="n" data-field="amount">Each</th><th class="n" data-field="review_amount">To review</th><th data-field="first_date">Record dates</th><th data-field="also_flagged_under">Also flagged</th><th class="c-conf" data-field="confidence">Confidence</th><th class="c-conf" data-field="review_status">Review</th></tr></thead>
         <tbody id="psBody"></tbody></table></div>
       <p class="stagenote" id="psStatus">—</p>
+    </div>
+    <div class="card issues" id="psIssues">
+      <div class="hd"><h2>Data-quality issues in the source <span class="tag2">(not leads, never counted)</span></h2></div>
+      <p class="note" id="psIssNote" data-source="d_source_issues">—</p>
+      <div class="tbl"><table data-source="d_source_issues" data-row-key="issue_id">
+        <thead><tr><th data-field="issue">Issue</th><th class="n" data-field="fiscal_year">Year</th><th data-field="agency">Agency</th><th class="n" data-field="records">Records</th><th class="n" data-field="amount">Amount</th><th data-field="evidence">Evidence</th><th data-field="verified_against">Verified against</th><th data-field="status">Status</th></tr></thead>
+        <tbody id="psIssBody"></tbody></table></div>
     </div>
   </section>
   <section class="panel" id="p-calc" role="tabpanel" aria-labelledby="t-calc" hidden>
@@ -733,10 +750,10 @@ function drawRows(tb){ const rows = tb._rows, cols = tb._cols, o = tb._o; tb.tex
   rows.forEach(r => { const tr = document.createElement('tr');
     if (o.click) { tr.className = 'click'; tr.tabIndex = 0; tr.addEventListener('click', () => o.click(r)); tr.addEventListener('keydown', e => { if (e.key === 'Enter') o.click(r); }); }
     if (o.sel && o.sel(r)) tr.classList.add('sel');
-    cols.forEach(c => { const td = document.createElement('td'); if (c.n) td.className = 'n'; if (c.cls) td.classList.add(c.cls); if (c.full && r[c.key] != null) td.title = String(r[c.key]);
+    cols.forEach(c => { const td = document.createElement('td'); if (c.n) td.className = 'n'; if (c.cls) td.classList.add(c.cls); if (c.full && r[c.key] != null) td.title = String(r[c.key]); if (c.title) { const t = c.title(r); if (t) td.title = t; }
       if (c.key === o.bar && r[c.key] != null) { const s = document.createElement('span'); s.className = 'bar'; s.style.width = Math.max(3, 56*r[c.key]/mx) + 'px'; td.appendChild(s); }
       if (c.chg) { const s = document.createElement('span'); s.className = 'chg ' + toneOf(r[c.key], c.chg); const sm = r[c.key] == null && r[c.small || '_small']; s.textContent = sm ? SMALL_TXT : ARROW(r[c.key]); if (sm) s.title = 'Prior-year base under ' + M(SMALL_BASE) + ', so no percent change is shown'; else if (r._lab) s.title = r._lab; td.appendChild(s); }
-      else if (c.pill) { const s = document.createElement('span'); s.className = 'st ' + c.pill(r[c.key]); s.textContent = c.fmt ? c.fmt(r[c.key]) : r[c.key]; td.appendChild(s); }
+      else if (c.pill) { const s = document.createElement('span'); s.className = 'st ' + c.pill(r[c.key], r); s.textContent = c.fmt ? c.fmt(r[c.key], r) : r[c.key]; td.appendChild(s); }
       else td.appendChild(document.createTextNode(c.fmt ? c.fmt(r[c.key], r) : (r[c.key] ?? '')));
       tr.appendChild(td); }); tb.appendChild(tr); }); }
 function newTable(container, heading, note, headers, rows, cols, o={}){
@@ -1263,26 +1280,78 @@ function drawOpp(p){
 }
 const PS_RULES = ['Possible duplicate', 'Repeated annual line', 'Possible split purchase'];
 const psCol = k => dash.colors[[0, 1, 3][PS_RULES.indexOf(k)]];
+const PS_CONF = ['high', 'medium', 'low'], PS_CONF_L = {high:'High confidence', medium:'Medium confidence', low:'Low confidence'};
+const psConfCol = k => ({high: dash.colors[0], medium: dash.colors[3], low: 'var(--cds-chart-muted)'})[k];
 const psDates = r => r.first_date === r.last_date ? String(r.first_date || '') : `${r.first_date} and ${r.last_date}`;
+const hasCol = (rows, k) => !!(rows && rows.length && Object.prototype.hasOwnProperty.call(rows[0], k));
 function psLever(basis){ const s = ok('d_payment_screen_summary'); if (!s || !s.length) return null; const r0 = s[0]; const years = [...new Set(s.map(r => r.fiscal_year))].sort((a, b) => a - b);
   const meas = s.filter(r => r.status === 'Measured'); const fyV = d3.sum(meas.filter(r => r.fiscal_year === r0.lever_fy), r => r.review_amount);
   const avgV = d3.sum(meas, r => r.review_amount) / years.length; const base = basis === 'avg' ? avgV : fyV;
-  return {fy:r0.lever_fy, years, base, fyV, avgV, low:base * r0.lever_rate_low, likely:base * r0.lever_rate_likely, high:base * r0.lever_rate_high, rates:[r0.lever_rate_low, r0.lever_rate_likely, r0.lever_rate_high]}; }
+  const mr = s.map(r => r.measured_confirmation_rate).find(v => v != null && v !== '' && !isNaN(v)); const measured = mr != null ? +mr : null;
+  const rb = s.map(r => r.rate_basis).find(v => v); const likelyRate = measured != null ? measured : r0.lever_rate_likely;
+  return {fy:r0.lever_fy, years, base, fyV, avgV, measured, basisNote: rb || '', low:base * r0.lever_rate_low, likely:base * likelyRate, high:base * r0.lever_rate_high, rates:[r0.lever_rate_low, likelyRate, r0.lever_rate_high]}; }
+// bars by year, stacked by confidence (or by rule when the screen has no confidence column); when one year dwarfs the rest,
+// the axis is capped so the other years stay readable and the cut bar carries its full value and a break mark
+function psBars(box, legendId, rows, keys, col, label, o={}){
+  const lg = document.getElementById(legendId); lg.textContent = ''; keys.forEach(k => { const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = col(k); s.appendChild(i); s.appendChild(document.createTextNode(label(k))); lg.appendChild(s); });
+  box.textContent = ''; if (!rows.length || !d3.max(rows, d => d.total)) { emptyMsg(box, 'No flagged payment groups for this selection.'); return {cut:null}; }
+  const W = box.clientWidth || 700, H = o.h || 230, m = {l:56, r:8, t:28, b:24};
+  const tots = rows.map(d => d.total).filter(v => v > 0).sort((a, b) => b - a); const top = tots[0], second = tots[1] || 0;
+  const capped = second > 0 && top > 6 * second; const ymax = capped ? second * 1.6 : top;
+  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W - m.r]).padding(.28), y = d3.scaleLinear([0, ymax], [H - m.b, m.t]).nice();
+  const yv = v => y(Math.min(v, y.domain()[1])); const on = yr => !o.selYears || o.selYears.includes(yr);
+  const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', o.aria || 'Bar chart by year');
+  const ticks = y.ticks(4);
+  svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', d => y(d)).attr('y2', d => y(d)).attr('stroke', 'var(--color-border-line)');
+  svg.append('g').selectAll('text').data(ticks).join('text').attr('x', m.l - 6).attr('y', d => y(d)).attr('dy', '.32em').attr('text-anchor', 'end').attr('font-size', 11).attr('fill', 'var(--color-fg-muted)').text(M);
+  const st = d3.stack().keys(keys)(rows);
+  svg.append('g').selectAll('g').data(st).join('g').attr('fill', d => col(d.key)).selectAll('rect').data(d => d.filter(v => v[1] > v[0])).join('rect')
+    .attr('x', d => x(d.data.year)).attr('width', x.bandwidth()).attr('y', d => yv(d[1])).attr('height', d => Math.max(0, yv(d[0]) - yv(d[1]) - 2)).attr('rx', 2).attr('fill-opacity', d => on(d.data.year) ? 1 : .25);
+  const cut = rows.filter(d => d.total > y.domain()[1]);
+  cut.forEach(d => { const bx = x(d.data ? d.data.year : d.year), bw = x.bandwidth(), yy = m.t + 10; // zig-zag break across the cut bar
+    svg.append('path').attr('d', `M${bx - 3},${yy + 4} L${bx + bw / 3},${yy - 3} L${bx + 2 * bw / 3},${yy + 4} L${bx + bw + 3},${yy - 3}`).attr('fill', 'none').attr('stroke', 'var(--color-panel)').attr('stroke-width', 5);
+    svg.append('path').attr('d', `M${bx - 3},${yy + 4} L${bx + bw / 3},${yy - 3} L${bx + 2 * bw / 3},${yy + 4} L${bx + bw + 3},${yy - 3}`).attr('fill', 'none').attr('stroke', 'var(--color-fg-muted)').attr('stroke-width', 1); });
+  svg.append('g').selectAll('text').data(rows).join('text').attr('x', d => x(d.year) + x.bandwidth() / 2).attr('y', H - 7).attr('text-anchor', 'middle').attr('font-size', 11)
+    .attr('fill', d => on(d.year) ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', d => on(d.year) && o.selYears ? 600 : null).text(d => (x.bandwidth() > 34 ? 'FY' : "'") + String(d.year).slice(2));
+  svg.append('g').selectAll('text').data(rows).join('text').attr('x', d => x(d.year) + x.bandwidth() / 2).attr('y', d => d.total > y.domain()[1] ? m.t - 8 : yv(d.total) - 5).attr('text-anchor', 'middle').attr('font-size', 11)
+    .attr('fill', d => on(d.year) ? 'var(--color-fg)' : 'var(--color-fg-muted)').attr('font-weight', d => d.total > y.domain()[1] ? 600 : null).text(d => M(d.total) + (d.total > y.domain()[1] ? ' ↑' : ''));
+  const tip = d3.select(box).append('div').attr('class', 'tip').style('opacity', 0);
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', d => x(d.year)).attr('width', x.bandwidth()).attr('y', 0).attr('height', H - m.b).attr('fill', 'transparent').style('cursor', o.click ? 'pointer' : null)
+    .on('mousemove', (e, d) => { const [mx, my] = d3.pointer(e, box); tip.style('opacity', 1).style('left', Math.max(0, Math.min(mx + 12, W - 280)) + 'px').style('top', (my + 12) + 'px'); tip.html('');
+      tip.append('div').attr('class', 't').text(`FY${d.year}: ${M(d.total)} to review` + (d.total > y.domain()[1] ? ' (bar cut)' : '')); keys.slice().reverse().forEach(k => { if (d[k]) tip.append('div').text(`${label(k)}: ${M(d[k])}`); });
+      (d._rules || []).forEach(([k, v]) => tip.append('div').attr('class', 't').text(`${k}: ${M(v)}`)); if (o.click) tip.append('div').attr('class', 't').text('Click to filter the list to this year'); })
+    .on('mouseleave', () => tip.style('opacity', 0)).on('click', (e, d) => o.click && o.click(d.year));
+  return {cut: cut.length ? cut : null, axisTop: y.domain()[1]}; }
 function drawPayScreen(p){ const g = ok('d_payment_screen'), s = ok('d_payment_screen_summary'); if (!g || !s) return;
   const years = [...new Set(s.map(r => r.fiscal_year))].sort((a, b) => a - b); const ys = document.getElementById('psYear');
   if (!ys._f) { ys._f = 1; years.forEach(y => { const o = document.createElement('option'); o.value = y; o.textContent = 'FY' + y; ys.appendChild(o); }); }
   const inAg = r => !p.agencies.length || p.agencies.includes(r.agency_code);
   const all = g.filter(inAg), rule = document.getElementById('psRule').value, yr = ys.value, q = document.getElementById('psQ').value.trim().toLowerCase();
-  const rows = all.filter(r => (!rule || r.rule === rule) && (!yr || r.fiscal_year === +yr) && (!q || `${r.agency} ${r.vendor}`.toLowerCase().includes(q)));
-  const byY = years.map(y => { const o = {year:y, stage:'Payments only'}; PS_RULES.forEach(k => o[k] = d3.sum(all.filter(r => r.fiscal_year === y && r.rule === k), r => r.review_amount)); o.total = d3.sum(PS_RULES, k => o[k]); return o; });
-  stacked(document.getElementById('psChart'), 'psLegend', byY, PS_RULES, psCol, {h:220, actual:true, aria:'Payment screen review dollars by year and rule', selYears: yr ? [+yr] : null, click:y => { ys.value = ys.value === String(y) ? '' : String(y); drawPayScreen(prm()); }});
+  const rows = all.filter(r => (!rule || r.rule === rule) && (!yr || r.fiscal_year === +yr) && (!q || `${r.agency} ${r.agency_raw || ''} ${r.vendor}`.toLowerCase().includes(q)));
+  const conf = hasCol(g, 'confidence'); const keys = conf ? PS_CONF : PS_RULES, kOf = r => conf ? (PS_CONF.includes(String(r.confidence).toLowerCase()) ? String(r.confidence).toLowerCase() : 'low') : r.rule;
+  const byY = years.map(y => { const v = all.filter(r => r.fiscal_year === y); const o = {year:y}; keys.forEach(k => o[k] = d3.sum(v.filter(r => kOf(r) === k), r => r.review_amount)); o.total = d3.sum(keys, k => o[k]);
+    if (conf) o._rules = PS_RULES.map(k => [k, d3.sum(v.filter(r => r.rule === k), r => r.review_amount)]).filter(a => a[1]); return o; });
+  const res = psBars(document.getElementById('psChart'), 'psLegend', byY, keys, conf ? psConfCol : psCol, k => conf ? PS_CONF_L[k] : k, {aria: 'Payment screen review dollars by year and ' + (conf ? 'confidence' : 'rule'), selYears: yr ? [+yr] : null, click: y => { ys.value = ys.value === String(y) ? '' : String(y); drawPayScreen(prm()); }});
+  setText('psChartNote', `Review dollars by year and ${conf ? 'confidence' : 'rule'}, ${fyLabel(years)}: for a possible duplicate or a line repeated in one year, every copy after the first. A flag is a lead to review, not an error. Click a year to filter the list.`);
+  setText('psScale', res.cut ? `${res.cut.map(d => `FY${d.year} (${M(d.total)})`).join(' and ')} is far larger than the other years, so the axis stops at ${M(res.axisTop)} and that bar is cut (break mark, ↑); its full value is printed above it.` : '');
   const tot = d3.sum(all, r => r.review_amount);
   const peak = byY.slice().sort((a, b) => b.total - a.total)[0]; const peakAg = peak && peak.total ? d3.rollups(all.filter(r => r.fiscal_year === peak.year), v => d3.sum(v, r => r.review_amount), r => r.agency).sort((a, b) => b[1] - a[1]) : [];
   const split = s.find(r => r.rule === 'Possible split purchase'); const grain = (s[0] || {}).date_grain;
-  setText('psFind', all.length ? `The screen flags ${N(all.length)} groups of payments${p.agencies.length ? ' at ' + who(p) : ''} with ${M(tot)} to review across ${fyLabel(years)}${peak && peak.total ? `; FY${peak.year} holds ${M(peak.total)} of it${peakAg.length ? `, mostly ${peakAg.slice(0, 2).map(a => TITLE(a[0])).join(' and ')}` : ''}` : ''}. These are leads to review, not errors: an exact amount repeated for one agency and vendor may be a line published twice, not a payment made twice.` : `No flagged payment groups${p.agencies.length ? ' at ' + who(p) : ''} in ${fyLabel(years)}. These would be leads to review, not errors.`);
+  const hiV = conf ? d3.sum(all.filter(r => kOf(r) === 'high'), r => r.review_amount) : null;
+  setText('psFind', all.length ? `The screen flags ${N(all.length)} groups of payments${p.agencies.length ? ' at ' + who(p) : ''} with ${M(tot)} to review across ${fyLabel(years)}${conf ? ` (${M(hiV)} of it high confidence)` : ''}${peak && peak.total ? `; FY${peak.year} holds ${M(peak.total)} of it${peakAg.length ? `, mostly ${peakAg.slice(0, 2).map(a => TITLE(a[0])).join(' and ')}` : ''}` : ''}. These are leads to review, not errors: an exact amount repeated for one agency and vendor may be a line published twice, not a payment made twice.` : `No flagged payment groups${p.agencies.length ? ' at ' + who(p) : ''} in ${fyLabel(years)}. These would be leads to review, not errors.`);
   setText('psCount', `${N(rows.length)} of ${N(all.length)} groups`);
-  table('psBody', rows.slice(0, 300), [{key:'rule'},{key:'fiscal_year',n:1,fmt:v => 'FY' + v},{key:'agency',fmt:v => TITLE(v || '')},{key:'vendor',fmt:v => /^Payee not named/.test(v) ? v : TITLE(v || '')},{key:'n',n:1},{key:'amount',n:1,fmt:M},{key:'review_amount',n:1,fmt:M},{key:'first_date',fmt:(v, r) => psDates(r)},{key:'also_flagged_under',fmt:v => v || ''}], {bar:'review_amount', click:r => r.agency_code && openDetail('agency:' + r.agency_code)});
-  setText('psStatus', `Rules (config/assumptions.yaml, payment_screen): possible duplicate = same agency, vendor and exact amount ($1,000 or more) with record dates within 7 days; repeated annual line = the same in one fiscal year with record dates further apart; possible split purchase = 2+ payments within 14 days, each under an assumed $50,000 small-procurement threshold (verify against COMAR and the Procurement Manual), together above it. ${split ? 'Split purchases: ' + split.status.toLowerCase() + '.' : ''} The payments data are ${grain === 'annual' ? 'one row per agency, payee and year with a record date, not dated payments, so the screen cannot see duplicates inside an annual total' : 'dated payments'}. Government, health-plan, debt-service, payroll-like and pass-through payees are left out; payees that may be individuals are not named. The year and area filters do not apply here; the agency filter does.`); }
+  document.getElementById('psBody').closest('table').classList.toggle('no-conf', !conf);
+  table('psBody', rows.slice(0, 300), [{key:'rule'},{key:'fiscal_year',n:1,fmt:v => 'FY' + v},{key:'agency',fmt:v => TITLE(v || ''),title:r => r.agency_raw ? 'As published: ' + r.agency_raw : ''},{key:'vendor',fmt:v => /^Payee not named/.test(v) ? v : TITLE(v || '')},{key:'n',n:1},{key:'amount',n:1,fmt:M},{key:'review_amount',n:1,fmt:M},{key:'first_date',fmt:(v, r) => psDates(r)},{key:'also_flagged_under',fmt:v => v || ''},
+    {key:'confidence',cls:'c-conf',pill:v => 'cf-' + (PS_CONF.includes(String(v).toLowerCase()) ? String(v).toLowerCase() : 'none'),fmt:v => v ? String(v).toLowerCase() : 'not rated'},
+    {key:'review_status',cls:'c-conf',pill:() => 'rv',fmt:v => v || 'not reviewed',title:r => r.review_note || ''}], {bar:'review_amount', click:r => r.agency_code && openDetail('agency:' + r.agency_code)});
+  setText('psStatus', `Rules (config/assumptions.yaml, payment_screen): possible duplicate = same agency, vendor and exact amount ($1,000 or more) with record dates within 7 days; repeated annual line = the same in one fiscal year with record dates further apart; possible split purchase = 2+ payments within 14 days, each under an assumed $50,000 small-procurement threshold (verify against COMAR and the Procurement Manual), together above it. ${split ? 'Split purchases: ' + split.status.toLowerCase() + '.' : ''} The payments data are ${grain === 'annual' ? 'one row per agency, payee and year with a record date, not dated payments, so the screen cannot see duplicates inside an annual total' : 'dated payments'}. Government, health-plan, debt-service, payroll-like and pass-through payees are left out; payees that may be individuals are not named. ${conf ? 'Confidence and review status come with each group; hover a review chip for its note. ' : ''}The year and area filters do not apply here; the agency filter does.`);
+  drawSourceIssues(); }
+function drawSourceIssues(){ const card = document.getElementById('psIssues'); if (!card) return; const iss = ok('d_source_issues');
+  if (!iss) { setText('psIssNote', 'No data-quality issues in the source have been published for this build.'); document.getElementById('psIssBody').textContent = ''; return; }
+  const tot = d3.sum(iss, r => r.amount);
+  setText('psIssNote', `${N(iss.length)} problem${iss.length === 1 ? '' : 's'} in the published payments data itself (${M(tot)}), such as a year of records listed twice. They are not payment leads: they are kept out of the screen's groups, its chart and totals, and the calculator's payment recovery lever. Each was checked against the source named in the table, on the date shown.`);
+  table('psIssBody', iss.slice().sort((a, b) => (b.amount || 0) - (a.amount || 0)), [{key:'issue'},{key:'fiscal_year',n:1,fmt:v => v == null ? '' : 'FY' + v},{key:'agency',fmt:v => v ? TITLE(v) : ''},{key:'records',n:1,fmt:v => v == null ? '' : N(v)},{key:'amount',n:1,fmt:M},{key:'evidence'},
+    {key:'verified_against',fmt:(v, r) => [v, r.verified_on ? 'checked ' + r.verified_on : ''].filter(Boolean).join(', ')},{key:'status',pill:() => 'rv',fmt:v => v || ''}]); }
 function addTotals(container, cells){ const t = container.lastChild.querySelector('table'); const tf = document.createElement('tfoot'); const tr = document.createElement('tr');
   cells.forEach(([v, n]) => { const td = document.createElement('td'); td.textContent = v; td.style.fontWeight = 600; td.style.borderTop = '2px solid var(--color-fg)'; if (n) td.className = 'n'; tr.appendChild(td); }); tf.appendChild(tr); t.appendChild(tf); }
 const FY = d3.range(2027, 2032), Z90 = 1.2816;
@@ -1368,8 +1437,9 @@ function drawPayLever(PR, prIn){ const tl = document.getElementById('caPRTiles')
   if (!PR) { setText('caPRNote', 'The payment screen has not been published for this build.'); return; }
   const tile = (k, v, d) => { const t = document.createElement('div'); t.className = 'tile'; t.innerHTML = '<span class="k"></span><span class="v"></span><span class="d"></span>'; t.children[0].textContent = k; t.children[1].textContent = v; t.children[2].textContent = d; tl.appendChild(t); };
   const basis = document.getElementById('caPRBasis').value === 'avg' ? `the yearly average of ${fyLabel(PR.years)}` : `FY${PR.fy}`;
-  [['Low', PR.low, PR.rates[0]], ['Likely', PR.likely, PR.rates[1]], ['High', PR.high, PR.rates[2]]].forEach(([k, v, r]) => tile(`${k}, at an assumed ${d3.format('.0%')(r)} confirmed`, M(v), `of ${M(PR.base)} flagged for review (${basis})`));
-  setText('caPRNote', `Flagged review dollars from the payment screen (Opportunities tab) × an assumed share that a review confirms and recovers: ${PR.rates.map(r => d3.format('.0%')(r)).join(' / ')} (low / likely / high). The rates are assumptions, to be replaced by the share confirmed in a reviewed sample. FY${PR.fy} flags ${M(PR.fyV)} to review; the ${fyLabel(PR.years)} yearly average is ${M(PR.avgV)}. A recovery of past payments is one-time and may overlap the other findings, so it is shown separately and is ${prIn ? 'now counted in the FY2027 tile above, as you chose' : 'not added to the savings above unless you tick the box'}.`); }
+  [['Low', PR.low, PR.rates[0], 0], ['Likely', PR.likely, PR.rates[1], PR.measured != null], ['High', PR.high, PR.rates[2], 0]].forEach(([k, v, r, ms]) => tile(`${k}, at ${ms ? 'the measured' : 'an assumed'} ${d3.format('.0%')(r)} confirmed`, M(v), `of ${M(PR.base)} flagged for review (${basis})`));
+  const rateTxt = PR.measured != null ? `The likely rate is the measured confirmation rate, ${d3.format('.0%')(PR.measured)}${PR.basisNote ? ' (' + PR.basisNote + ')' : ''}; low and high are assumptions.` : `The rates are assumptions, to be replaced by the share confirmed in a reviewed sample: a measured confirmation rate is not measurable without payment records${PR.basisNote ? ' (' + PR.basisNote + ')' : ''}.`;
+  setText('caPRNote', `Flagged review dollars from the payment screen (Opportunities tab; data-quality issues in the source are not counted) × ${PR.measured != null ? 'a' : 'an assumed'} share that a review confirms and recovers: ${PR.rates.map(r => d3.format('.0%')(r)).join(' / ')} (low / likely / high). ${rateTxt} FY${PR.fy} flags ${M(PR.fyV)} to review; the ${fyLabel(PR.years)} yearly average is ${M(PR.avgV)}. A recovery of past payments is one-time and may overlap the other findings, so it is shown separately and is ${prIn ? 'now counted in the FY2027 tile above, as you chose' : 'not added to the savings above unless you tick the box'}.`); }
 function drawCalc(p){
   const fm = ok('d_forecast_model'), fc = ok('f_forecast'); if (!fm || !fc) return;
   if (!CA.rates) CA.rates = Object.fromEntries(fm.map(m => [m.area, m.gmi_rate || 0]));
