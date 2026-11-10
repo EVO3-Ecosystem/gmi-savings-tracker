@@ -479,3 +479,7 @@ multi_agency_any_year_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant
 lead_share_of_fy_grants,d_grant_groups_sensitivity,derived,lead_amount_fy as a share of all FY2025 grants and loans
 rows,d_grant_group_members,derived,"Grant rows with this description, all years"
 amount,d_grant_group_members,derived,"Grant dollars with this description, all years"
+grantor_raw,ref.grantor_agency_aliases,reference,"Grantor exactly as published in the grants dataset (every distinct string in raw.grants, matched after trimming)"
+grantor_agency,ref.grantor_agency_aliases,reference,"Agency the grantor resolves to: the current name of a renamed department, or the agency that runs a fund, program or unit named in the grantor field (names from mart.agency_name / agency_master); for reason 'unknown', the listed name itself"
+reason,ref.grantor_agency_aliases,reference,"Why the grantor maps there: current name, spelling, rename (with year), fund of agency, program of agency, unit of agency, or unknown"
+evidence,ref.grantor_agency_aliases,reference,"Rows and fiscal years the grantor string appears in, and the agency and program parts it was read as"
