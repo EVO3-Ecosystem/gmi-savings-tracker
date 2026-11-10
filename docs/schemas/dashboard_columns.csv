@@ -50,6 +50,47 @@ d_forecast_model,gmi_recurring,number,7,Recurring savings GMI reported for the a
 d_forecast_model,gmi_rate,number,7,gmi_recurring divided by baseline_fy2025,derived
 d_forecast_model,gmi_note,text,7,Which reported items make up gmi_recurring,source
 d_forecast_model,gf_share,number,7,General Fund share of the area's FY2025 spending,derived
+d_grant_groups,group_id,text,3803,Grant group identifier: hash of the group's member description keys (stable while the members are),derived
+d_grant_groups,rank_fy,number,3803,Rank of the group by FY2025 grant dollars,derived
+d_grant_groups,description,text,3803,Representative description of the group: the member with the most grant dollars over all years,derived
+d_grant_groups,n_descriptions,number,3803,Distinct descriptions in the group,derived
+d_grant_groups,example_descriptions,text,3803,Up to three other descriptions in the group,derived
+d_grant_groups,grantor_agencies,text,3803,"Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated",derived
+d_grant_groups,n_agencies,number,3803,"Number of resolved grantor agencies, any year (renames and fund names counted once, through reference/grantor_agency_aliases.csv)",derived
+d_grant_groups,grantees,number,3803,"Distinct grantees, any year",derived
+d_grant_groups,grantors_listed,text,3803,"Grantor names as listed (before the alias map) that funded the group in any year, '; '-separated",derived
+d_grant_groups,n_grantors_listed,number,3803,"Number of grantor names as listed, any year (a renamed agency counts twice)",derived
+d_grant_groups,grantor_agencies_fy2025,text,3803,Grantor agencies that funded the group in FY2025,derived
+d_grant_groups,n_agencies_fy2025,number,3803,Number of grantor agencies in FY2025,derived
+d_grant_groups,grantees_fy2025,number,3803,Distinct grantees in FY2025,derived
+d_grant_groups,rows_fy2025,number,3803,Grant rows in FY2025,derived
+d_grant_groups,amount_fy2025,number,3803,"FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups",derived
+d_grant_groups,amount_all_years,number,3803,"Grant dollars in the group, FY2009-FY2025 (what was granted; not a saving, not additive); breaks rank_fy ties",derived
+d_grant_groups,first_fy,number,3803,First fiscal year the code appears,derived
+d_grant_groups,last_fy,number,3803,Last fiscal year the code appears,derived
+d_grant_groups,overlap_lead,number,3803,"Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding)",derived
+d_grant_groups,multi_agency_any_year,number,3803,2+ resolved grantor agencies in any year (hand check in docs/models/grant_groups.md),derived
+d_grant_groups,multi_listed_any_year,number,3803,2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table),derived
+d_grant_groups,collapsed_by_aliases,number,3803,2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table),derived
+d_grant_groups,backend,text,3803,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded",derived
+d_grant_groups,cosine_threshold,number,3803,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity),derived
+d_grant_groups_sensitivity,cosine_threshold,number,3,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity),derived
+d_grant_groups_sensitivity,backend,text,3,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded",derived
+d_grant_groups_sensitivity,main,number,3,True for the threshold the leads use,derived
+d_grant_groups_sensitivity,descriptions,number,3,Distinct descriptions clustered,derived
+d_grant_groups_sensitivity,groups,number,3,Groups at this threshold,derived
+d_grant_groups_sensitivity,multi_description_groups,number,3,Groups with two or more descriptions,derived
+d_grant_groups_sensitivity,groups_with_fy_amount,number,3,Groups with FY2025 grant dollars,derived
+d_grant_groups_sensitivity,overlap_leads,number,3,Groups funded by 2+ grantor agencies in FY2025,derived
+d_grant_groups_sensitivity,lead_amount_fy,number,3,"FY2025 grant dollars in the overlap leads (not savings, not additive)",derived
+d_grant_groups_sensitivity,multi_agency_any_year,number,3,Groups with 2+ resolved grantor agencies in any year,derived
+d_grant_groups_sensitivity,multi_agency_any_year_amount_fy,number,3,"FY2025 grant dollars in those groups (not savings, not additive)",derived
+d_grant_groups_sensitivity,multi_listed_any_year,number,3,2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table),derived
+d_grant_groups_sensitivity,collapsed_by_aliases,number,3,2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table),derived
+d_grant_groups_sensitivity,rows_alias_not_in_map,number,3,Grant rows whose grantor has no row in reference/grantor_agency_aliases.csv (expected 0),derived
+d_grant_groups_sensitivity,rows_alias_unknown,number,3,Grant rows whose grantor is mapped with reason 'unknown' (kept under the listed name),derived
+d_grant_groups_sensitivity,lead_share_of_fy_grants,number,3,lead_amount_fy as a share of all FY2025 grants and loans,derived
+d_grant_groups_sensitivity,fiscal_year,number,3,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 d_master_quality,measure,text,5,Name of the quality measure,reference
 d_master_quality,value,text,5,Measured value,derived
 d_master_quality,ok,number,5,True when the measure meets its target,derived
@@ -77,6 +118,23 @@ d_opps,low,number,396,Low end of the estimated saving; uses a screening assumpti
 d_opps,high,number,396,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 d_opps,evidence,text,396,Plain-language reason the detector flagged the row,derived
 d_opps,likely,number,396,Midpoint of low and high,derived
+d_payee_class,payee_key,text,62022,md5 of the payee name as paid: links a row to the name in the database without publishing it,derived
+d_payee_class,payee,text,62022,"Payee name as paid, or 'Payee not named (may be an individual)' when the final label is business and the name has no organization word (payment_screen.org_name_pattern) or the name was labeled individual/withheld",derived
+d_payee_class,rule_label,text,62022,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), as the dashboard uses it",derived
+d_payee_class,type_basis,text,62022,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
+d_payee_class,rule_class,text,62022,The rule label mapped to the classifier's five classes (config payee_classifier.rule_to_class),derived
+d_payee_class,model_label,text,62022,Class predicted by the TF-IDF character n-gram logistic regression trained on the rule labels (docs/models/payee_classifier.md); never individual/withheld,derived
+d_payee_class,confidence,number,62022,The model's probability for model_label (0-1),derived
+d_payee_class,final_label,text,62022,"Payee class used downstream: the combined label (rules first, model where the rules fell to the default) if it beat the rules on macro F1 on the hand-labeled sample, otherwise the rule class",derived
+d_payee_class,review_flag,number,62022,True when the name belongs in the review queue (see review_reason),derived
+d_payee_class,review_reason,text,62022,"Why the name is in the review queue: default label and the model suggests another type (probability >= review_threshold), default label and low model confidence, or the model disagrees with a name rule",derived
+d_payee_class,in_eval_sample,number,62022,True for the 400 names of the hand-labeled evaluation sample (reference/payee_labels_sample.csv); they and their vendors' other names are never trained on,derived
+d_payee_class,paid_all_years,number,62022,"Payments to this payee name, all fiscal years (dollars)",derived
+d_payee_class_eval,method,text,67,"rules, model or combined (or sample / decision / model bookkeeping rows)",derived
+d_payee_class_eval,metric,text,67,"accuracy, macro_f1, precision, recall, f1, dollars_classified_share, dollars_relabeled_share, accuracy_on_default_names, or a count (labeled, excluded_unsure, not_found, reviewed_by_sierra, training_names, review_queue, combined_promoted)",derived
+d_payee_class_eval,class,text,67,Payee class a per-class metric is for; 'all' for overall metrics,derived
+d_payee_class_eval,value,number,67,Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes),derived
+d_payee_class_eval,n,number,67,Names the metric is computed on (support for per-class metrics),derived
 d_payment_screen,group_id,text,8,Identifier of a flagged group of payment records (hash of the rule and its grouping keys),derived
 d_payment_screen,rule,text,8,"Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md)",derived
 d_payment_screen,fiscal_year,number,8,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
@@ -300,10 +358,10 @@ f_program,unit_name,text,6648,Budget unit name,portal
 f_program,program_code,number,6648,"Budget program code, two digits in core",portal
 f_program,program_name,text,6648,Budget program name,portal
 f_program,budget,number,6648,Dollars budgeted or spent (actual years) on the row; nominal dollars,portal
-f_savings_check,check_id,text,1625,Reported saving whose payments are checked,derived
-f_savings_check,fiscal_year,number,1625,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-f_savings_check,agency_code,text,1625,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-f_savings_check,paid,number,1625,Payments in dollars,derived
+f_savings_check,check_id,text,1618,Reported saving whose payments are checked,derived
+f_savings_check,fiscal_year,number,1618,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+f_savings_check,agency_code,text,1618,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+f_savings_check,paid,number,1618,Payments in dollars,derived
 f_scope,fiscal_year,number,2484,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 f_scope,stage,text,2484,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 f_scope,agency_code,text,2484,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
@@ -333,24 +391,24 @@ measures,measure,text,14,Column name of the dashboard measure,derived
 measures,definition,text,14,What the dashboard measure means,derived
 measures,grouped_by,text,14,Grain the measure is grouped by,derived
 measures,higher_is,text,14,"Whether a higher value is better, worse or neutral",derived
-pipeline_runs,run_id,text,5,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-pipeline_runs,started_utc,text,5,When the run started (UTC),ops
-pipeline_runs,seconds,number,5,Run duration in seconds,ops
-pipeline_runs,status,text,5,Run or source status,ops
-pipeline_runs,published,number,5,True when the run's outputs were published,ops
-pipeline_runs,checks,number,5,Number of checks run,ops
-pipeline_runs,passed,number,5,Checks passed,ops
-pipeline_runs,warnings,number,5,Checks that warned,ops
-pipeline_runs,failed,number,5,Checks that failed,ops
-pipeline_runs,repairs,number,5,Datasets re-downloaded by self-healing,ops
-pipeline_runs,payment_rows,number,5,Payment rows in the run,ops
-pipeline_runs,budget_rows,number,5,Budget rows in the run,ops
-pipeline_runs,mode,text,5,"Run mode (full, freshness reuse, test fault)",ops
-run_checks,run_id,text,96,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-run_checks,stage,text,96,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-run_checks,check,text,96,Check description,ops
-run_checks,status,text,96,"pass, warn or fail",ops
-run_checks,detail,text,96,Numbers behind the check result,ops
+pipeline_runs,run_id,text,6,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+pipeline_runs,started_utc,text,6,When the run started (UTC),ops
+pipeline_runs,seconds,number,6,Run duration in seconds,ops
+pipeline_runs,status,text,6,Run or source status,ops
+pipeline_runs,published,number,6,True when the run's outputs were published,ops
+pipeline_runs,checks,number,6,Number of checks run,ops
+pipeline_runs,passed,number,6,Checks passed,ops
+pipeline_runs,warnings,number,6,Checks that warned,ops
+pipeline_runs,failed,number,6,Checks that failed,ops
+pipeline_runs,repairs,number,6,Datasets re-downloaded by self-healing,ops
+pipeline_runs,payment_rows,number,6,Payment rows in the run,ops
+pipeline_runs,budget_rows,number,6,Budget rows in the run,ops
+pipeline_runs,mode,text,6,"Run mode (full, freshness reuse, test fault)",ops
+run_checks,run_id,text,103,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+run_checks,stage,text,103,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+run_checks,check,text,103,Check description,ops
+run_checks,status,text,103,"pass, warn or fail",ops
+run_checks,detail,text,103,Numbers behind the check result,ops
 sources,source,text,6,Short name of the source dataset,derived
 sources,dataset_id,text,6,Portal four-by-four identifier,ops
 sources,title,text,6,Dataset title used on the dashboard,derived
@@ -361,6 +419,7 @@ sources,rows_portal,number,6,Rows the portal reported,ops
 sources,rows_downloaded,number,6,Rows in the downloaded file,ops
 sources,years,text,6,Fiscal years used,derived
 sources,reconciled,number,6,True when downloaded rows equal the portal's count,ops
+sources,mismatch_notes,text,6,"Differences from the portal found by this build, then reviewed notes about the source (reference/source_notes.csv) and, for payments, how completely payments map to agencies and payee types",derived
 stage_evidence,fiscal_year,number,4,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 stage_evidence,file_label,text,4,Stage label the portal file assigned to the year,portal
 stage_evidence,official_stage,text,4,Stage DBM's budget books assign to the year,reference

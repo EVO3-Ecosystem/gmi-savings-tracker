@@ -18,7 +18,7 @@ d_payee_class_eval,no legacy counterpart,,,,,,,,,,,,,,,,,
 d_payment_screen,no legacy counterpart,,,,,,,,,,,,,,,,,
 d_payment_screen_summary,no legacy counterpart,,,,,,,,,,,,,,,,,
 d_plan50,difference explained,step,28,28,28,0,0,0,,"low, high",140,51,action (2); basis (11); saving (11); cumulative (27),38323.83,cumulative,cells:action; cells:basis; cells:cumulative; cells:saving; column_only_export:high; column_only_export:low,,
-d_rec_status,difference explained,rec,6,6,6,0,0,0,,,30,6,status (1); progress (3); previous (2),,,cells:previous; cells:progress; cells:status,,
+d_rec_status,difference explained,rec,6,6,6,0,0,0,,,30,7,status (1); progress (3); previous (3),,,cells:previous; cells:progress; cells:status,,
 d_savings,difference explained,saving_id,18,18,18,0,0,0,,,234,9,status (9),,,cells:status,,
 d_savings_status,equivalent,check_id,12,12,12,0,0,0,,,84,0,,,,,,
 d_source_issues,no legacy counterpart,,,,,,,,,,,,,,,,,
@@ -39,16 +39,16 @@ f_object,equivalent,fiscal_year+agency_code+object_name,7817,7817,7817,0,0,0,,,2
 f_overlap,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Grants whose grantee is also a payee that year (name match)'; page tests
 f_payee_type,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Vendors tab: payments by payee type = core payments (every year)'; page tests
 f_program,no legacy counterpart,,,,,,,,,,,,,,,,,"build check 'Where it's going = how it's funded (budget by program = budget by fund source, every year)'; DBM Volume 2 cross-check; page tests"
-f_savings_check,difference explained,check_id+fiscal_year+agency_code,1400,1625,1400,0,225,0,,,1400,0,,,,rows_only_export,,
+f_savings_check,difference explained,check_id+fiscal_year+agency_code,1400,1618,1400,0,218,0,,,1400,0,,,,rows_only_export,,
 f_scope,equivalent,fiscal_year+agency_code+scope,2484,2484,2484,0,0,0,,,4968,0,,,,,,
 f_vendor,equivalent,fiscal_year+agency_code+area+vendor,4940,4940,4940,0,0,0,,,4940,0,,,,,,
 f_vendor_detail,equivalent,vendor+agency_code+fiscal_year,6292,6292,6292,0,0,0,,,6292,0,,,,,,
 f_vendor_pay,no legacy counterpart,,,,,,,,,,,,,,,,,build check 'Vendors tab: vendor pages add up to the vendor list (FY2026)'; page tests
 f_vendor_year,no legacy counterpart,,,,,,,,,,,,,,,,,page tests only (loaded by the page; no total check of its own): gap
 measures,equivalent,table+measure,14,14,14,0,0,0,,,42,0,,,,,,
-pipeline_runs,difference explained,run_id,35,5,0,35,5,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
+pipeline_runs,difference explained,run_id,35,6,0,35,6,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
 run_checks,difference explained,run_id+stage+check,93,103,0,93,103,0,,,0,0,,,,rows_only_export; rows_only_legacy,,
-sources,difference explained,source,5,6,5,0,1,0,,,45,7,rows_portal (1); rows_downloaded (1); years (5),13020.0,rows_portal,cells:rows_downloaded; cells:rows_portal; cells:years; rows_only_export,,
+sources,difference explained,source,5,6,5,0,1,0,,mismatch_notes,45,8,portal_updated (1); rows_portal (1); rows_downloaded (1); years (5),14669.0,rows_portal,cells:portal_updated; cells:rows_downloaded; cells:rows_portal; cells:years; column_only_export:mismatch_notes; rows_only_export,,
 stage_evidence,equivalent,fiscal_year+evidence_url,4,4,4,0,0,0,,,32,0,,,,,,
 totals_by_fy,difference explained,fiscal_year,19,19,19,0,0,0,,,114,5,agencies (2); vendors (3),1.0,agencies,cells:agencies; cells:vendors,,
 vendor_families,difference explained,family,130,130,129,1,1,0,,,387,0,,,,rows_only_export; rows_only_legacy,,

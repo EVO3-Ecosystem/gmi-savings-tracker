@@ -18,4 +18,4 @@ fiscal_year,cpi_index,cpi_months,factor,population,source
 2024,309.57,12,1.058461,6204927,"CPI-U CUUR0000SA0 (BLS; FRED CPIAUCNS as fallback), fiscal-year average of 12 months; population: Census Population Estimates, July 1, 2023 (vintage 2025)"
 2025,317.73,12,1.031274,6245314,"CPI-U CUUR0000SA0 (BLS; FRED CPIAUCNS as fallback), fiscal-year average of 12 months; population: Census Population Estimates, July 1, 2024 (vintage 2025)"
 2026,327.67,11,1.000000,6265347,"CPI-U CUUR0000SA0 (BLS; FRED CPIAUCNS as fallback), fiscal-year average of 11 months; population: Census Population Estimates, July 1, 2025 (vintage 2025)"
-2027,335.28,3,0.977298,,"CPI-U CUUR0000SA0 (BLS; FRED CPIAUCNS as fallback), fiscal-year average of 3 months (partial year); population: not yet published"
+2027,335.84,4,0.975674,,"CPI-U CUUR0000SA0 (BLS; FRED CPIAUCNS as fallback), fiscal-year average of 4 months (partial year); population: not yet published"

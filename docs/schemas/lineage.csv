@@ -82,6 +82,7 @@ mart.d_grant_groups,mart.v_grant_rows
 mart.d_grant_groups_sensitivity,mart.v_grant_rows
 mart.d_master_quality,core.fact_payment
 mart.d_master_quality,core.fact_payment_mapped
+mart.d_master_quality,mart.f_payee_type
 mart.d_master_quality,ops.check_result
 mart.d_master_quality,raw.budget
 mart.d_master_quality,raw.fte
@@ -202,6 +203,7 @@ mart.payment_area,ref.map_payee_vendor
 mart.payment_area,ref.payee_area_exclusions
 mart.pipeline_runs,core.fact_payment
 mart.pipeline_runs,core.fact_payment_mapped
+mart.pipeline_runs,mart.f_payee_type
 mart.pipeline_runs,ops.check_result
 mart.pipeline_runs,raw.budget
 mart.pipeline_runs,raw.fte
@@ -213,6 +215,7 @@ mart.pipeline_runs,ref.map_payee_vendor
 mart.pipeline_runs,ref.map_payment_agency
 mart.run_checks,core.fact_payment
 mart.run_checks,core.fact_payment_mapped
+mart.run_checks,mart.f_payee_type
 mart.run_checks,ops.check_result
 mart.run_checks,raw.budget
 mart.run_checks,raw.fte
@@ -224,6 +227,7 @@ mart.run_checks,ref.map_payee_vendor
 mart.run_checks,ref.map_payment_agency
 mart.sources,core.fact_payment
 mart.sources,core.fact_payment_mapped
+mart.sources,mart.f_payee_type
 mart.sources,ops.check_result
 mart.sources,raw.budget
 mart.sources,raw.fte

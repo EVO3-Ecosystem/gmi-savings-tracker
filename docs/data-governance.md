@@ -1,7 +1,7 @@
 # Data governance — GMI Savings Tracker
 
 <!-- gen:stamp -->
-_Generated 2026-11-10T15:42Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 10, 2026._
+_Generated 2026-11-10T17:19Z by `python -m src.pipeline.governance`. Source schemas from the Discovery API, read Nov 10, 2026._
 <!-- /gen:stamp -->
 
 The rules for where the tracker's data comes from, what every column means, who can change what, and how every figure is backed by a source. The schema sections are rebuilt from the sources on every run (`python -m src.pipeline.governance`), so they can't fall out of date. The policy sections are written by hand.
@@ -458,7 +458,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | description | VARCHAR | portal | Grant or loan program description as the grantor published it (free text, as listed) |
 | zipcode | VARCHAR | portal | Grantee ZIP code as published |
 
-**core.fact_payment** (411,231 rows)
+**core.fact_payment** (412,880 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -471,7 +471,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | partial_year | BOOLEAN | derived | True for the latest payments year while it is still incomplete |
 | record_date | DATE | portal | The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows |
 
-**core.fact_payment_mapped** (411,231 rows)
+**core.fact_payment_mapped** (412,880 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -640,7 +640,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | spend_yoy | DOUBLE | derived | Change in spend from the previous fiscal year, as a share of the previous year (blank when that year is missing or zero) |
 | stage_pair | VARCHAR | derived | Stages compared by the change, e.g. 'Actual vs Actual' or 'Working budget vs Actual' |
 
-**mart.area_vendor_year** (440 rows)
+**mart.area_vendor_year** (442 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -947,7 +947,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | evidence | VARCHAR | derived | Plain-language reason the detector flagged the row |
 | likely | DOUBLE | derived | Midpoint of low and high |
 
-**mart.d_payee_class** (61,798 rows)
+**mart.d_payee_class** (62,022 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1150,7 +1150,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | fte | DOUBLE | derived | Budgeted full-time-equivalent positions |
 | payments | DOUBLE | derived | Payments made by the agency in the year |
 
-**mart.f_area** (6,433 rows)
+**mart.f_area** (6,435 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1294,7 +1294,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | grant_rows_in_payments | BIGINT | derived | Grant rows whose grantee is also a payee that year |
 | payments_to_budget_share | DOUBLE | derived | Payments divided by the operating budget at its latest stage (a cross-check; the two measure different things) |
 
-**mart.f_payee_type** (5,913 rows)
+**mart.f_payee_type** (5,927 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1317,7 +1317,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | program_name | VARCHAR | portal | Budget program name |
 | budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 
-**mart.f_savings_check** (1,625 rows)
+**mart.f_savings_check** (1,618 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1336,7 +1336,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | scope | VARCHAR | derived | Spending scope bucket on the dashboard (controllable purchases or staff/grants/capital and so on) |
 | budget | DOUBLE | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 
-**mart.f_vendor** (5,706 rows)
+**mart.f_vendor** (5,751 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1346,7 +1346,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | vendor | VARCHAR | derived | Company name after grouping payee names |
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 
-**mart.f_vendor_detail** (7,260 rows)
+**mart.f_vendor_detail** (7,322 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1385,7 +1385,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | grouped_by | VARCHAR | derived | Grain the measure is grouped by |
 | higher_is | VARCHAR | derived | Whether a higher value is better, worse or neutral |
 
-**mart.payment_area** (411,231 rows)
+**mart.payment_area** (412,880 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1399,7 +1399,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | area | VARCHAR | derived | One of GMI's six focus areas |
 | passthrough | BOOLEAN | derived | True when the payment matches reference/payee_area_exclusions.csv (nursing facilities, bill assistance, outsourced benefits processing); its focus area is removed |
 
-**mart.pipeline_runs** (5 rows)
+**mart.pipeline_runs** (6 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1441,6 +1441,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | rows_downloaded | BIGINT | ops | Rows in the downloaded file |
 | years | VARCHAR | derived | Fiscal years used |
 | reconciled | BIGINT | ops | True when downloaded rows equal the portal's count |
+| mismatch_notes | VARCHAR | derived | Differences from the portal found by this build, then reviewed notes about the source (reference/source_notes.csv) and, for payments, how completely payments map to agencies and payee types |
 
 **mart.spending_scope** (44 rows)
 
@@ -1496,7 +1497,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | description_key | VARCHAR | derived | Description in lower case with spaces collapsed: the unit that is embedded and clustered |
 | amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
 
-**mart.v_payee_class_input** (61,798 rows)
+**mart.v_payee_class_input** (62,022 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1542,7 +1543,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | area | VARCHAR | derived | Payee-name focus area, or 'Other goods & services' |
 | amount | DOUBLE | portal | Dollars paid, awarded or reported on the row; nominal dollars |
 
-**mart.vendor_agency_year** (387,339 rows)
+**mart.vendor_agency_year** (388,942 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1565,7 +1566,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | spend | DOUBLE | derived | Dollars spent (budget actuals or payments) |
 | agencies | BIGINT | derived | Agencies paying the vendor (or with payments in the year) |
 
-**mart.vendor_master** (56,590 rows)
+**mart.vendor_master** (56,789 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1585,7 +1586,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | paid_prior_year | DOUBLE | derived | Payments to the vendor in the year before last_full_year |
 | paid_all_years | DOUBLE | derived | Payments to the vendor, all years |
 
-**mart.vendor_type** (56,590 rows)
+**mart.vendor_type** (56,789 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1624,14 +1625,14 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | rows | BIGINT | ops | Row count |
 | detail | VARCHAR | ops | Numbers behind the check result |
 
-**ops.lineage** (278 rows)
+**ops.lineage** (282 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
 | table_name | VARCHAR | derived | Warehouse table (schema.name) created by the build |
 | depends_on | VARCHAR | derived | A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it) |
 
-**ops.payee_name_seen** (61,798 rows)
+**ops.payee_name_seen** (62,025 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1704,7 +1705,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | category_title | VARCHAR | portal | Budget function title (renamed function_name in core) |
 | _run_id | VARCHAR | ops | Extract run that produced the row |
 
-**raw.cpi** (236 rows)
+**raw.cpi** (237 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1813,7 +1814,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | is_pdf | BOOLEAN | derived | True when the downloaded file is a PDF |
 | _run_id | VARCHAR | ops | Extract run that produced the row |
 
-**raw.payments** (411,231 rows)
+**raw.payments** (412,880 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1852,7 +1853,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | stage | VARCHAR | reference | Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks |
 | source | VARCHAR | reference | Where the reference value is documented |
 
-**ref.column_dictionary** (493 rows)
+**ref.column_dictionary** (498 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -1990,7 +1991,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | nonprofit_share | DOUBLE | derived | flagged divided by grants; 0.5 or more makes the payee a Non-profit |
 | granted | DOUBLE | derived | Dollars granted or lent to the grantee, all years |
 
-**ref.map_payee_vendor** (61,798 rows)
+**ref.map_payee_vendor** (62,022 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2076,6 +2077,15 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | payment_name_pattern | VARCHAR | reference | Regular expression matching payment agency names |
 | target | VARCHAR | reference | Agency code the rule maps to |
 | note | VARCHAR | reference | Explanation of the rule or row |
+
+**ref.source_notes** (8 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| dataset | VARCHAR | reference | Short dataset key, as in config/datasets.yaml |
+| note | VARCHAR | reference | A reviewed note about where the source differs from what its portal page says |
+| checked_on | VARCHAR | reference | Date the note was checked |
+| checked_by | VARCHAR | reference | Who checked the note |
 
 **ref.stage_evidence** (4 rows)
 
@@ -2202,6 +2212,57 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | gmi_note | text | source | Which reported items make up gmi_recurring |
 | gf_share | number | derived | General Fund share of the area's FY2025 spending |
 
+**d_grant_groups** (3,803 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| group_id | text | derived | Grant group identifier: hash of the group's member description keys (stable while the members are) |
+| rank_fy | number | derived | Rank of the group by FY2025 grant dollars |
+| description | text | derived | Representative description of the group: the member with the most grant dollars over all years |
+| n_descriptions | number | derived | Distinct descriptions in the group |
+| example_descriptions | text | derived | Up to three other descriptions in the group |
+| grantor_agencies | text | derived | Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated |
+| n_agencies | number | derived | Number of resolved grantor agencies, any year (renames and fund names counted once, through reference/grantor_agency_aliases.csv) |
+| grantees | number | derived | Distinct grantees, any year |
+| grantors_listed | text | derived | Grantor names as listed (before the alias map) that funded the group in any year, '; '-separated |
+| n_grantors_listed | number | derived | Number of grantor names as listed, any year (a renamed agency counts twice) |
+| grantor_agencies_fy2025 | text | derived | Grantor agencies that funded the group in FY2025 |
+| n_agencies_fy2025 | number | derived | Number of grantor agencies in FY2025 |
+| grantees_fy2025 | number | derived | Distinct grantees in FY2025 |
+| rows_fy2025 | number | derived | Grant rows in FY2025 |
+| amount_fy2025 | number | derived | FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups |
+| amount_all_years | number | derived | Grant dollars in the group, FY2009-FY2025 (what was granted; not a saving, not additive); breaks rank_fy ties |
+| first_fy | number | derived | First fiscal year the code appears |
+| last_fy | number | derived | Last fiscal year the code appears |
+| overlap_lead | number | derived | Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding) |
+| multi_agency_any_year | number | derived | 2+ resolved grantor agencies in any year (hand check in docs/models/grant_groups.md) |
+| multi_listed_any_year | number | derived | 2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table) |
+| collapsed_by_aliases | number | derived | 2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table) |
+| backend | text | derived | Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded |
+| cosine_threshold | number | derived | Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity) |
+
+**d_grant_groups_sensitivity** (3 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| cosine_threshold | number | derived | Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity) |
+| backend | text | derived | Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded |
+| main | number | derived | True for the threshold the leads use |
+| descriptions | number | derived | Distinct descriptions clustered |
+| groups | number | derived | Groups at this threshold |
+| multi_description_groups | number | derived | Groups with two or more descriptions |
+| groups_with_fy_amount | number | derived | Groups with FY2025 grant dollars |
+| overlap_leads | number | derived | Groups funded by 2+ grantor agencies in FY2025 |
+| lead_amount_fy | number | derived | FY2025 grant dollars in the overlap leads (not savings, not additive) |
+| multi_agency_any_year | number | derived | Groups with 2+ resolved grantor agencies in any year |
+| multi_agency_any_year_amount_fy | number | derived | FY2025 grant dollars in those groups (not savings, not additive) |
+| multi_listed_any_year | number | derived | 2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table) |
+| collapsed_by_aliases | number | derived | 2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table) |
+| rows_alias_not_in_map | number | derived | Grant rows whose grantor has no row in reference/grantor_agency_aliases.csv (expected 0) |
+| rows_alias_unknown | number | derived | Grant rows whose grantor is mapped with reason 'unknown' (kept under the listed name) |
+| lead_share_of_fy_grants | number | derived | lead_amount_fy as a share of all FY2025 grants and loans |
+| fiscal_year | number | portal | Maryland fiscal year (July 1 to June 30), named for the year it ends |
+
 **d_master_quality** (5 rows)
 
 | column | type | origin | definition |
@@ -2248,6 +2309,33 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | high | number | derived | High end of the estimated saving; uses a screening assumption (see Assumptions register) |
 | evidence | text | derived | Plain-language reason the detector flagged the row |
 | likely | number | derived | Midpoint of low and high |
+
+**d_payee_class** (62,022 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| payee_key | text | derived | md5 of the payee name as paid: links a row to the name in the database without publishing it |
+| payee | text | derived | Payee name as paid, or 'Payee not named (may be an individual)' when the final label is business and the name has no organization word (payment_screen.org_name_pattern) or the name was labeled individual/withheld |
+| rule_label | text | derived | Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), as the dashboard uses it |
+| type_basis | text | derived | How the payee type was assigned: name rule, grants data nonprofit = Y, or default |
+| rule_class | text | derived | The rule label mapped to the classifier's five classes (config payee_classifier.rule_to_class) |
+| model_label | text | derived | Class predicted by the TF-IDF character n-gram logistic regression trained on the rule labels (docs/models/payee_classifier.md); never individual/withheld |
+| confidence | number | derived | The model's probability for model_label (0-1) |
+| final_label | text | derived | Payee class used downstream: the combined label (rules first, model where the rules fell to the default) if it beat the rules on macro F1 on the hand-labeled sample, otherwise the rule class |
+| review_flag | number | derived | True when the name belongs in the review queue (see review_reason) |
+| review_reason | text | derived | Why the name is in the review queue: default label and the model suggests another type (probability >= review_threshold), default label and low model confidence, or the model disagrees with a name rule |
+| in_eval_sample | number | derived | True for the 400 names of the hand-labeled evaluation sample (reference/payee_labels_sample.csv); they and their vendors' other names are never trained on |
+| paid_all_years | number | derived | Payments to this payee name, all fiscal years (dollars) |
+
+**d_payee_class_eval** (67 rows)
+
+| column | type | origin | definition |
+|---|---|---|---|
+| method | text | derived | rules, model or combined (or sample / decision / model bookkeeping rows) |
+| metric | text | derived | accuracy, macro_f1, precision, recall, f1, dollars_classified_share, dollars_relabeled_share, accuracy_on_default_names, or a count (labeled, excluded_unsure, not_found, reviewed_by_sierra, training_names, review_queue, combined_promoted) |
+| class | text | derived | Payee class a per-class metric is for; 'all' for overall metrics |
+| value | number | derived | Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes) |
+| n | number | derived | Names the metric is computed on (support for per-class metrics) |
 
 **d_payment_screen** (8 rows)
 
@@ -2592,7 +2680,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | program_name | text | portal | Budget program name |
 | budget | number | portal | Dollars budgeted or spent (actual years) on the row; nominal dollars |
 
-**f_savings_check** (1,625 rows)
+**f_savings_check** (1,618 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2660,7 +2748,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | grouped_by | text | derived | Grain the measure is grouped by |
 | higher_is | text | derived | Whether a higher value is better, worse or neutral |
 
-**pipeline_runs** (5 rows)
+**pipeline_runs** (6 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2678,7 +2766,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | budget_rows | number | ops | Budget rows in the run |
 | mode | text | ops | Run mode (full, freshness reuse, test fault) |
 
-**run_checks** (96 rows)
+**run_checks** (103 rows)
 
 | column | type | origin | definition |
 |---|---|---|---|
@@ -2702,6 +2790,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 | rows_downloaded | number | ops | Rows in the downloaded file |
 | years | text | derived | Fiscal years used |
 | reconciled | number | ops | True when downloaded rows equal the portal's count |
+| mismatch_notes | text | derived | Differences from the portal found by this build, then reviewed notes about the source (reference/source_notes.csv) and, for payments, how completely payments map to agencies and payee types |
 
 **stage_evidence** (4 rows)
 
@@ -2743,7 +2832,7 @@ Also saved as CSV in `docs/schemas/` (`source_columns.csv`, `warehouse_columns.c
 ## 12. Coverage and drift
 
 <!-- gen:coverage -->
-1,576 of 1,576 columns documented (85 source, 1108 warehouse, 383 dashboard).
+1,640 of 1,640 columns documented (85 source, 1113 warehouse, 442 dashboard).
 <!-- /gen:coverage -->
 
 **Source schema changes since the last snapshot:**
