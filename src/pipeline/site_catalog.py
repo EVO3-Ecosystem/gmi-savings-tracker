@@ -68,7 +68,7 @@ details.t{border:1px solid var(--s-line);border-radius:8px;margin:6px 0;backgrou
 details.t>summary{cursor:pointer;padding:8px 12px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
 details.t>summary b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;word-break:break-all}
 details.t .in{padding:0 12px 12px}
-.pill{display:inline-block;border-radius:999px;padding:0 8px;font-size:12px;color:#fff}
+.pill{display:inline-block;border-radius:999px;padding:0 8px;font-size:12px;color:#fff}.pill.ref,.pill.core,.pill.raw{color:#0b0b0b}
 .k{color:var(--s-muted);font-size:13px}
 .ck{font-size:13px;margin:4px 0 8px;padding-left:18px}.ck li{margin:2px 0}
 .ok{color:#1a7f37}.warn{color:#9a6700}.fail{color:#b42318}
@@ -205,7 +205,7 @@ def body(src):
         n_rows = int(float(rows[t])) if rows[t] not in ("", None) else 0
         search = " ".join([t] + [c["column"] for c in tables[t]]).lower()
         parts.append(f'<details class="t" data-l="{layer}" data-p="{1 if is_pub else 0}" data-s="{html.escape(search)}"><summary>'
-                     f'<span class="pill" style="background:var(--c-{layer})">{layer}</span><b>{html.escape(t)}</b>'
+                     f'<span class="pill {layer}" style="background:var(--c-{layer})">{layer}</span><b>{html.escape(t)}</b>'
                      f'<span class="k">{n_rows:,} rows · {len(tables[t])} columns{" · published" + (f" ({int(man[name]):,} rows exported)" if man.get(name) else "") if is_pub else ""} · {len(ck)} checks</span></summary>'
                      f'<div class="in"><p>{html.escape(d)}</p><p class="k"><b>Lineage:</b> {lin_txt}</p><p class="k"><b>Checks that read it</b> (latest run):</p>{ck_html}'
                      f'<div class="tbl"><table><thead><tr><th>Column</th><th>Type</th><th>Definition</th></tr></thead><tbody>{cols}</tbody></table></div></div></details>')

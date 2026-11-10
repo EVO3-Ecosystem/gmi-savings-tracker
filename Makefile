@@ -17,5 +17,6 @@ diagrams: ; mmdc -i docs/figures/pipeline.mmd -o docs/figures/pipeline.png -b wh
 docs:     ; $(PY) -m src.pipeline.governance $(if $(DASH),--dashboard $(DASH))
 site:     ; $(PY) -m src.pipeline.site $(SITE_FLAGS)
 site-snapshot: ; $(PY) -m src.pipeline.site --refresh-snapshot
+site-artifact: ; $(PY) -m src.pipeline.site --artifact $(or $(ARTIFACT_OUT),$${TMPDIR:-/tmp}/gmi-site-artifact)
 docs-strict: ; $(PY) -m src.pipeline.governance --strict $(if $(DASH),--dashboard $(DASH))
-.PHONY: extract extract-full gate1 build gate3 all test test-fault docs docs-strict reconcile figures diagrams parity export snapshot restore site site-snapshot
+.PHONY: extract extract-full gate1 build gate3 all test test-fault docs docs-strict reconcile figures diagrams parity export snapshot restore site site-snapshot site-artifact
