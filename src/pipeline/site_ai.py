@@ -590,7 +590,7 @@ def _sec_grants(d):
         f"See the {link('docs/models/grant_groups.md', 'model card')} <span class='k'>({esc(p.get('reason', ''))})</span>"
     leads = "; ".join(f"“{esc(a)}” ({esc(b)})" for a, b in zip(d["lead_descriptions"], d["lead_agencies"])) or "none"
     return ("<h2>3. Grant overlap</h2>"
-            f'<p class="ai-q"><b>Question.</b> Do different grantor agencies fund grants with the same purpose (possible overlap to ask about)?</p>'
+            '<p class="ai-q"><b>Question.</b> Do different grantor agencies fund grants with the same purpose (possible overlap to ask about)?</p>'
             + _dl([("Method", f"{num(d['descriptions'])} distinct grant descriptions embedded with <code>{esc(d['backend'])}</code> and clustered (agglomerative, cosine, "
                               f"threshold {esc(d['threshold'])} set before looking). A lead = a group funded by 2+ grantor agencies in the same year, FY{fy}."),
                    ("Result vs baseline", f"<b>{num(d['groups'])}</b> groups ({num(d['multi_description_groups'])} with 2+ descriptions; {num(d['groups_with_fy_amount'])} with FY{fy} dollars, "
@@ -620,6 +620,8 @@ def _sec_mcp(d):
     return ("<h2>4. MCP server</h2>"
             '<p class="ai-q"><b>Question.</b> Can an AI agent such as Claude query the tracker\'s data directly, safely, and get answers it can cite?</p>'
             + _dl([("What it is", esc(d["what"])),
+                   ("Method", "The official Python MCP SDK over stdio; each tool is a plain function over a read-only DuckDB store, and every answer carries a "
+                              "provenance block (tables, run, as-of date). Tested with a fixed golden set of questions whose expected answers come from independent SQL."),
                    (f"Tools ({len(d['tools'])}, from {d['tools_via']})", tools_t),
                    ("Guardrails", guard),
                    ("Result vs baseline", gold + f" Security: <b>{d['security_tests']}</b> tests ({esc(d['security_via'])}) run refused statements through the check, the tool and the bare connection."),
@@ -648,6 +650,8 @@ def _sec_briefs(d):
                               "a guardrail checks every figure and agency name against the facts, and any sentence that fails is replaced by the template sentence."),
                    ("Backend used", f"<b>{esc(', '.join(d['backends']))}</b> for all {d['rows']} sample briefs. Live Gemini needs <code>GEMINI_API_KEY</code> in the environment "
                     f"(the key is never stored in the repository); without it the template is used. Key present during this build: {'yes' if d['key_set_at_build'] else 'no'}."),
+                   ("Result vs baseline", f"Baseline: the deterministic template sentence, which must itself pass. Result: {d['passed']} of {d['rows']} sample briefs pass "
+                    f"the guardrail; {d['rows'] - d['passed']} were replaced. A generated sentence is kept only when it passes, so the output is never worse than the template."),
                    (f"{len(d['samples'])} sample briefs (of {d['rows']}; {d['passed']} pass)", samples),
                    ("How the guardrail works", steps + demo),
                    ("Limits", "The sentence can only restate the facts it is given; it explains nothing. The samples come from the template, so they show the guardrail's input "
