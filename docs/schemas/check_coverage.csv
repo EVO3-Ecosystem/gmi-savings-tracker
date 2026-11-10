@@ -92,3 +92,10 @@ Deflator: population for every actual budget year,mart,mart.d_deflator ref.dim_s
 "Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",mart,mart.d_payment_screen mart.d_payment_screen_summary mart.v_payment_screen_rows
 Payment screen: summary ties to the groups by rule and year; overlap between rules labeled; excluded payee types absent,mart,mart.d_payment_screen mart.d_payment_screen_summary mart.v_payment_screen_rows
 Payment screen backtest: every screened year FY2022-FY2026 and rule reported (stability),mart,mart.d_payment_screen_summary
+"Payee classifier: one row per payee name, no missing or unknown label, confidence in [0, 1]",mart,mart.d_payee_class mart.v_payee_class_input
+"Payee classifier: evaluation metrics present for rules, model and combined; sample labeled",mart,mart.d_payee_class_eval
+"Payee classifier: a name is shown as paid or withheld, never altered",mart,mart.d_payee_class mart.v_payee_class_input
+Payee classifier: macro F1 on the hand-labeled sample (rules / model / combined),mart,
+Grant groups: every distinct description in exactly one group; group ids unique; no missing fields,mart,mart.d_grant_group_members mart.d_grant_groups mart.v_grant_rows
+Grant groups: FY2025 dollars tie to the grants rows; leads are exactly the groups with 2+ grantor agencies in FY2025,mart,mart.d_grant_groups mart.v_grant_rows
+Grant groups: sensitivity reported at every threshold (leads are not savings),mart,mart.d_grant_groups_sensitivity
