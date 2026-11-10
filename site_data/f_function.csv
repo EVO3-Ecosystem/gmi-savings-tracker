@@ -1,76 +1,80 @@
 fiscal_year,stage,agency_code,category_title,budget
-2022,Actual,N00,Human Services,4560123006.0
-2022,Actual,Q00,Public Safety,1434598934.0
-2022,Actual,R12,Elementary and Secondary Education,119675.0
-2022,Actual,R62,Higher Education,642533430.0
-2022,Actual,R99,Elementary and Secondary Education,37071160.0
-2022,Actual,S00,Human Services,1284410797.0
-2022,Actual,S50,Other,1959000.0
-2022,Actual,T50,Other,21100021.0
-2022,Actual,X00,Public Debt,1379062579.0
-2023,Actual,A15,Other,191472803.0
-2023,Actual,B75,"Legislative, Judicial, Legal",143283099.0
-2023,Actual,C81,"Legislative, Judicial, Legal",44149737.0
-2023,Actual,C82,"Legislative, Judicial, Legal",2323460.0
-2023,Actual,C85,"Legislative, Judicial, Legal",895503.0
-2023,Actual,C90,Natural Resources and Environment,22804467.0
-2023,Actual,C94,"Legislative, Judicial, Legal",2669078.0
-2023,Actual,C98,"Legislative, Judicial, Legal",20611690.0
-2023,Actual,D11,Health,492931.0
-2023,Actual,D13,Natural Resources and Environment,81793042.0
-2023,Actual,D16,Other,4327059.0
-2023,Actual,D17,Other,5689505.0
-2023,Actual,D22,Other,834448.0
-2023,Actual,D27,Human Services,4459028.0
-2023,Actual,D28,Other,68012723.0
-2023,Actual,D38,Other,46012886.0
-2023,Actual,D76,Health,4662339.0
-2023,Actual,D80,Health,36585351.0
-2023,Actual,D99,Other,33959.0
-2023,Actual,H00,Government Services,602163488.0
-2023,Actual,J00,Transportation,5228231812.0
-2023,Actual,L00,Natural Resources and Environment,173643581.0
-2023,Actual,W00,Public Safety,536763548.0
-2023,Actual,N00,Human Services,3874067255.0
-2023,Actual,P00,Other,596118967.0
-2023,Actual,Q00,Public Safety,1540272424.0
-2023,Actual,R00,Elementary and Secondary Education,9938279166.0
-2023,Actual,R12,Elementary and Secondary Education,4383772.0
-2023,Actual,R15,Higher Education,32415727.0
-2023,Actual,R75,Higher Education,2590505153.0
-2023,Actual,R99,Elementary and Secondary Education,43855516.0
-2023,Actual,S00,Human Services,1144706017.0
-2023,Actual,S50,Other,2000000.0
-2023,Actual,T50,Other,50754979.0
-2023,Actual,U00,Natural Resources and Environment,672195602.0
-2023,Actual,V00,Public Safety,309914295.0
-2023,Actual,Y01,Reserve Fund,4205388848.0
-2024,Actual,B75,"Legislative, Judicial, Legal",155160017.0
-2024,Actual,C82,"Legislative, Judicial, Legal",2800378.0
-2024,Actual,C85,"Legislative, Judicial, Legal",930461.0
-2024,Actual,C90,Natural Resources and Environment,23690317.0
-2024,Actual,C98,"Legislative, Judicial, Legal",22798479.0
-2024,Actual,D10,Government Services,16565188.0
-2024,Actual,D13,Natural Resources and Environment,143963981.0
-2024,Actual,D15,Government Services,9247672.0
-2024,Actual,D17,Other,6900483.0
-2024,Actual,D18,Human Services,615177.0
-2024,Actual,D21,Other,367352548.0
-2024,Actual,D22,Other,1564391.0
-2024,Actual,D25,Elementary and Secondary Education,631469009.0
-2024,Actual,D38,Other,47225739.0
-2024,Actual,D40,Natural Resources and Environment,52193096.0
-2024,Actual,D55,Other,60816950.0
-2024,Actual,D60,Government Services,10662660.0
-2024,Actual,D73,Elementary and Secondary Education,1178392.0
-2024,Actual,D76,Health,4842514.0
-2024,Actual,D78,Health,600332612.0
-2024,Actual,D90,Other,2316898.0
-2024,Actual,D91,Other,11311526.0
-2024,Actual,D99,Other,30280.0
-2024,Actual,E20,Government Services,22537293.0
-2024,Actual,E80,Other,1140515.0
-2024,Actual,G50,Government Services,2311169.0
+2021,Actual,H00,Other,81214392.0
+2021,Actual,P00,Other,545419866.0
+2021,Actual,Q00,Public Safety,1462276630.0
+2019,Actual,D55,Other,36566515.0
+2019,Actual,D40,Natural Resources and Environment,29151088.0
+2017,Actual,A15,Other,179150027.0
+2019,Actual,C00,"Legislative, Judicial, Legal",561584258.0
+2019,Actual,D21,Other,174316359.0
+2019,Actual,B75,"Legislative, Judicial, Legal",91628875.0
+2018,Actual,R00,Elementary and Secondary Education,7703800825.0
+2018,Actual,Q00,Public Safety,1348999479.0
+2017,Actual,C00,"Legislative, Judicial, Legal",532004381.0
+2017,Actual,K00,Natural Resources and Environment,329836283.0
+2017,Actual,F10,Other,34364424.0
+2017,Actual,J00,Transportation,4969537444.0
+2017,Actual,C85,"Legislative, Judicial, Legal",631993.0
+2017,Actual,D05,Other,7592008.0
+2017,Actual,C91,"Legislative, Judicial, Legal",4031072.0
+2017,Actual,C94,"Legislative, Judicial, Legal",2303632.0
+2017,Actual,C98,"Legislative, Judicial, Legal",15050908.0
+2017,Actual,D26,Health,48358880.0
+2017,Actual,D12,Health,10634060.0
+2017,Actual,D16,Other,2999826.0
+2017,Actual,D38,Other,22615616.0
+2017,Actual,D27,Human Services,3190111.0
+2017,Actual,L00,Natural Resources and Environment,70576650.0
+2017,Actual,D50,Public Safety,146403833.0
+2019,Actual,D38,Other,26245024.0
+2017,Actual,D60,Other,8782386.0
+2017,Actual,D80,Health,30830010.0
+2017,Actual,D90,Other,813329.0
+2017,Actual,D99,Other,7900.0
+2017,Actual,E20,Other,6080978.0
+2017,Actual,F50,Other,74380975.0
+2019,Actual,H00,Other,76756969.0
+2017,Actual,W00,Public Safety,384560139.0
+2017,Actual,V00,Public Safety,278763909.0
+2019,Actual,E50,Other,148962487.0
+2019,Actual,D17,Other,3810741.0
+2017,Actual,P00,Other,347269548.0
+2019,Actual,D05,Other,7498289.0
+2019,Actual,D06,Other,31073500.0
+2017,Actual,R00,Elementary and Secondary Education,7660919346.0
+2017,Actual,S00,Human Services,440785111.0
+2019,Actual,E00,Other,120611999.0
+2018,Actual,B75,"Legislative, Judicial, Legal",89333621.0
+2017,Actual,X00,Public Debt,1190727702.0
+2018,Actual,J00,Transportation,4974101522.0
+2018,Actual,C81,"Legislative, Judicial, Legal",29833785.0
+2018,Actual,E00,Other,117844712.0
+2018,Actual,D17,Other,3183856.0
+2018,Actual,D15,Other,159343949.0
+2018,Actual,D53,Public Safety,26619052.0
+2018,Actual,C90,Other,25322326.0
+2018,Actual,C85,"Legislative, Judicial, Legal",614972.0
+2018,Actual,F50,Other,70590485.0
+2018,Actual,C98,"Legislative, Judicial, Legal",15056461.0
+2018,Actual,C91,"Legislative, Judicial, Legal",3964403.0
+2018,Actual,C96,"Legislative, Judicial, Legal",1787862.0
+2018,Actual,D10,Other,10578308.0
+2018,Actual,D13,Natural Resources and Environment,38309866.0
+2018,Actual,D11,Health,373983.0
+2018,Actual,D12,Health,10795083.0
+2018,Actual,D16,Other,2918766.0
+2018,Actual,D18,Human Services,1440529.0
+2018,Actual,D27,Human Services,3104927.0
+2018,Actual,D28,Other,50892962.0
+2018,Actual,D50,Public Safety,117401896.0
+2018,Actual,D60,Other,8536600.0
+2018,Actual,E50,Other,142139999.0
+2018,Actual,D80,Health,30237648.0
+2018,Actual,D90,Other,662406.0
+2018,Actual,E20,Other,6477838.0
+2018,Actual,G20,Other,22409549.0
+2018,Actual,G50,Other,2016003.0
+2018,Actual,L00,Natural Resources and Environment,83686606.0
 2024,Actual,R00,Elementary and Secondary Education,10758684480.0
 2024,Actual,R11,Other,98716850.0
 2024,Actual,S50,Other,2700000.0
@@ -154,14 +158,11 @@ fiscal_year,stage,agency_code,category_title,budget
 2021,Actual,D28,Other,54305817.0
 2021,Actual,D78,Health,426955881.0
 2021,Actual,D80,Health,28540666.0
-2021,Actual,H00,Other,81214392.0
 2021,Actual,F10,Other,33859677.0
 2021,Actual,E75,Other,108767314.0
 2021,Actual,E80,Other,970981.0
 2021,Actual,G50,Other,1935723.0
 2021,Actual,L00,Natural Resources and Environment,115817187.0
-2021,Actual,P00,Other,545419866.0
-2021,Actual,Q00,Public Safety,1462276630.0
 2021,Actual,R00,Elementary and Secondary Education,9597513559.0
 2021,Actual,R11,Other,90766876.0
 2021,Actual,R15,Higher Education,27467044.0
@@ -190,80 +191,79 @@ fiscal_year,stage,agency_code,category_title,budget
 2022,Actual,E50,Other,139865984.0
 2022,Actual,F10,Other,123792960.0
 2022,Actual,H00,Other,107270365.0
+2022,Actual,N00,Human Services,4560123006.0
+2022,Actual,Q00,Public Safety,1434598934.0
+2022,Actual,R12,Elementary and Secondary Education,119675.0
+2022,Actual,R62,Higher Education,642533430.0
+2022,Actual,R99,Elementary and Secondary Education,37071160.0
+2022,Actual,S00,Human Services,1284410797.0
+2022,Actual,S50,Other,1959000.0
+2022,Actual,T50,Other,21100021.0
+2022,Actual,X00,Public Debt,1379062579.0
+2023,Actual,A15,Other,191472803.0
+2023,Actual,B75,"Legislative, Judicial, Legal",143283099.0
+2023,Actual,C81,"Legislative, Judicial, Legal",44149737.0
+2023,Actual,C82,"Legislative, Judicial, Legal",2323460.0
+2023,Actual,C85,"Legislative, Judicial, Legal",895503.0
+2023,Actual,C90,Natural Resources and Environment,22804467.0
+2023,Actual,C94,"Legislative, Judicial, Legal",2669078.0
+2023,Actual,C98,"Legislative, Judicial, Legal",20611690.0
+2023,Actual,D11,Health,492931.0
+2023,Actual,D13,Natural Resources and Environment,81793042.0
+2023,Actual,D16,Other,4327059.0
+2023,Actual,D17,Other,5689505.0
+2023,Actual,D22,Other,834448.0
+2023,Actual,D27,Human Services,4459028.0
+2023,Actual,D28,Other,68012723.0
+2023,Actual,D38,Other,46012886.0
+2023,Actual,D76,Health,4662339.0
+2023,Actual,D80,Health,36585351.0
+2023,Actual,D99,Other,33959.0
+2023,Actual,H00,Government Services,602163488.0
+2023,Actual,J00,Transportation,5228231812.0
+2023,Actual,L00,Natural Resources and Environment,173643581.0
+2023,Actual,W00,Public Safety,536763548.0
+2023,Actual,N00,Human Services,3874067255.0
+2023,Actual,P00,Other,596118967.0
+2023,Actual,Q00,Public Safety,1540272424.0
+2023,Actual,R00,Elementary and Secondary Education,9938279166.0
+2023,Actual,R12,Elementary and Secondary Education,4383772.0
+2023,Actual,R15,Higher Education,32415727.0
+2023,Actual,R75,Higher Education,2590505153.0
+2023,Actual,R99,Elementary and Secondary Education,43855516.0
+2023,Actual,S00,Human Services,1144706017.0
+2023,Actual,S50,Other,2000000.0
+2023,Actual,T50,Other,50754979.0
+2023,Actual,U00,Natural Resources and Environment,672195602.0
+2023,Actual,V00,Public Safety,309914295.0
+2023,Actual,Y01,Reserve Fund,4205388848.0
+2024,Actual,B75,"Legislative, Judicial, Legal",155160017.0
+2024,Actual,C82,"Legislative, Judicial, Legal",2800378.0
+2024,Actual,C85,"Legislative, Judicial, Legal",930461.0
+2024,Actual,C90,Natural Resources and Environment,23690317.0
+2024,Actual,C98,"Legislative, Judicial, Legal",22798479.0
+2024,Actual,D10,Government Services,16565188.0
+2024,Actual,D13,Natural Resources and Environment,143963981.0
+2024,Actual,D15,Government Services,9247672.0
+2024,Actual,D17,Other,6900483.0
+2024,Actual,D18,Human Services,615177.0
+2024,Actual,D21,Other,367352548.0
+2024,Actual,D22,Other,1564391.0
+2024,Actual,D25,Elementary and Secondary Education,631469009.0
+2024,Actual,D38,Other,47225739.0
+2024,Actual,D40,Natural Resources and Environment,52193096.0
+2024,Actual,D55,Other,60816950.0
+2024,Actual,D60,Government Services,10662660.0
+2024,Actual,D73,Elementary and Secondary Education,1178392.0
+2024,Actual,D76,Health,4842514.0
+2024,Actual,D78,Health,600332612.0
+2024,Actual,D90,Other,2316898.0
+2024,Actual,D91,Other,11311526.0
+2024,Actual,D99,Other,30280.0
+2024,Actual,E20,Government Services,22537293.0
+2024,Actual,E80,Other,1140515.0
+2024,Actual,G50,Government Services,2311169.0
 2027,Legislative appropriation,V00,Public Safety,382611069.0
-2019,Actual,D55,Other,36566515.0
-2019,Actual,D40,Natural Resources and Environment,29151088.0
-2017,Actual,A15,Other,179150027.0
-2019,Actual,C00,"Legislative, Judicial, Legal",561584258.0
-2019,Actual,D21,Other,174316359.0
-2019,Actual,B75,"Legislative, Judicial, Legal",91628875.0
-2018,Actual,R00,Elementary and Secondary Education,7703800825.0
-2018,Actual,Q00,Public Safety,1348999479.0
-2017,Actual,C00,"Legislative, Judicial, Legal",532004381.0
-2017,Actual,K00,Natural Resources and Environment,329836283.0
-2017,Actual,F10,Other,34364424.0
-2017,Actual,J00,Transportation,4969537444.0
-2017,Actual,C85,"Legislative, Judicial, Legal",631993.0
-2017,Actual,D05,Other,7592008.0
-2017,Actual,C91,"Legislative, Judicial, Legal",4031072.0
-2017,Actual,C94,"Legislative, Judicial, Legal",2303632.0
-2017,Actual,C98,"Legislative, Judicial, Legal",15050908.0
-2017,Actual,D26,Health,48358880.0
-2017,Actual,D12,Health,10634060.0
-2017,Actual,D16,Other,2999826.0
-2017,Actual,D38,Other,22615616.0
-2017,Actual,D27,Human Services,3190111.0
-2017,Actual,L00,Natural Resources and Environment,70576650.0
-2017,Actual,D50,Public Safety,146403833.0
-2019,Actual,D38,Other,26245024.0
-2017,Actual,D60,Other,8782386.0
-2017,Actual,D80,Health,30830010.0
-2017,Actual,D90,Other,813329.0
-2017,Actual,D99,Other,7900.0
-2017,Actual,E20,Other,6080978.0
-2017,Actual,F50,Other,74380975.0
-2019,Actual,H00,Other,76756969.0
-2017,Actual,W00,Public Safety,384560139.0
-2017,Actual,V00,Public Safety,278763909.0
-2019,Actual,E50,Other,148962487.0
-2019,Actual,D17,Other,3810741.0
-2017,Actual,P00,Other,347269548.0
-2019,Actual,D05,Other,7498289.0
-2019,Actual,D06,Other,31073500.0
-2017,Actual,R00,Elementary and Secondary Education,7660919346.0
-2017,Actual,S00,Human Services,440785111.0
-2019,Actual,E00,Other,120611999.0
-2018,Actual,B75,"Legislative, Judicial, Legal",89333621.0
-2017,Actual,X00,Public Debt,1190727702.0
-2018,Actual,J00,Transportation,4974101522.0
-2018,Actual,C81,"Legislative, Judicial, Legal",29833785.0
-2018,Actual,E00,Other,117844712.0
-2018,Actual,D17,Other,3183856.0
-2018,Actual,D15,Other,159343949.0
-2018,Actual,D53,Public Safety,26619052.0
-2018,Actual,C90,Other,25322326.0
-2018,Actual,C85,"Legislative, Judicial, Legal",614972.0
-2018,Actual,F50,Other,70590485.0
-2018,Actual,C98,"Legislative, Judicial, Legal",15056461.0
-2018,Actual,C91,"Legislative, Judicial, Legal",3964403.0
-2018,Actual,C96,"Legislative, Judicial, Legal",1787862.0
-2018,Actual,D10,Other,10578308.0
-2018,Actual,D13,Natural Resources and Environment,38309866.0
-2018,Actual,D11,Health,373983.0
-2018,Actual,D12,Health,10795083.0
-2018,Actual,D16,Other,2918766.0
-2018,Actual,D18,Human Services,1440529.0
-2018,Actual,D27,Human Services,3104927.0
-2018,Actual,D28,Other,50892962.0
-2018,Actual,D50,Public Safety,117401896.0
-2018,Actual,D60,Other,8536600.0
-2018,Actual,E50,Other,142139999.0
-2018,Actual,D80,Health,30237648.0
-2018,Actual,D90,Other,662406.0
-2018,Actual,E20,Other,6477838.0
-2018,Actual,G20,Other,22409549.0
-2018,Actual,G50,Other,2016003.0
-2018,Actual,L00,Natural Resources and Environment,83686606.0
 2020,Actual,H00,Other,78960081.0
 2020,Actual,J00,Transportation,5372638686.0
 2020,Actual,K00,Natural Resources and Environment,392822408.0
@@ -382,227 +382,9 @@ fiscal_year,stage,agency_code,category_title,budget
 2027,Legislative appropriation,R99,Elementary and Secondary Education,51213986.0
 2027,Legislative appropriation,S00,Human Services,902223261.0
 2027,Legislative appropriation,T50,Other,67793984.0
-2022,Actual,M00,Health,18834458264.0
-2022,Actual,V00,Public Safety,254386923.0
-2022,Actual,P00,Other,1481082992.0
-2022,Actual,R00,Elementary and Secondary Education,11906543721.0
-2022,Actual,R11,Other,97292326.0
-2022,Actual,R15,Higher Education,29466157.0
-2022,Actual,R75,Higher Education,2012885324.0
-2022,Actual,T00,Other,154710696.0
-2022,Actual,U00,Natural Resources and Environment,482882718.0
-2022,Actual,W00,Public Safety,464416790.0
-2023,Actual,M00,Health,19889552729.0
-2022,Actual,Y01,Reserve Fund,882919432.0
-2023,Actual,C00,"Legislative, Judicial, Legal",710246799.0
-2023,Actual,C80,"Legislative, Judicial, Legal",128525585.0
-2023,Actual,C91,"Legislative, Judicial, Legal",6923929.0
-2023,Actual,C96,"Legislative, Judicial, Legal",4880612.0
-2023,Actual,D05,Government Services,16760662.0
-2023,Actual,D10,Government Services,13336336.0
-2023,Actual,D12,Health,11235647.0
-2023,Actual,D15,Government Services,16431836.0
-2023,Actual,D21,Other,365865376.0
-2023,Actual,D25,Elementary and Secondary Education,317948440.0
-2023,Actual,D26,Health,80012120.0
-2023,Actual,D40,Natural Resources and Environment,46125458.0
-2023,Actual,D50,Public Safety,46871880.0
-2023,Actual,D52,Public Safety,503260574.0
-2023,Actual,D53,Public Safety,30193957.0
-2023,Actual,D55,Other,41446090.0
-2023,Actual,D60,Government Services,9633753.0
-2023,Actual,D77,Health,1118957.0
-2023,Actual,D78,Health,571527811.0
-2023,Actual,D90,Other,723174.0
-2023,Actual,E00,Government Services,158606086.0
-2023,Actual,E17,Other,5997012.0
-2023,Actual,E20,Government Services,9764861.0
-2023,Actual,E50,Government Services,145064757.0
-2023,Actual,E75,Other,122886105.0
-2023,Actual,E80,Other,981100.0
-2023,Actual,F10,Government Services,136795850.0
-2023,Actual,F50,Government Services,196247263.0
-2023,Actual,G20,Government Services,20471764.0
-2023,Actual,G50,Government Services,2320912.0
-2023,Actual,I00,Other,338854.0
-2023,Actual,K00,Natural Resources and Environment,641461363.0
-2023,Actual,R11,Other,96009724.0
-2023,Actual,R62,Higher Education,804126325.0
-2023,Actual,T00,Other,329199581.0
-2023,Actual,X00,Public Debt,1430892085.0
-2024,Actual,M00,Health,20338923782.0
-2024,Actual,A15,Other,259663180.0
-2024,Actual,C00,"Legislative, Judicial, Legal",756340535.0
-2024,Actual,C80,"Legislative, Judicial, Legal",145414081.0
-2024,Actual,C81,"Legislative, Judicial, Legal",68835652.0
-2024,Actual,C91,"Legislative, Judicial, Legal",7134246.0
-2024,Actual,C94,"Legislative, Judicial, Legal",3039740.0
-2024,Actual,C96,"Legislative, Judicial, Legal",4681767.0
-2024,Actual,D05,Government Services,44664478.0
-2024,Actual,D11,Health,873295.0
-2024,Actual,D12,Health,11374278.0
-2024,Actual,D16,Other,5840816.0
-2024,Actual,D23,Other,24166366.0
-2024,Actual,D26,Health,81887094.0
-2024,Actual,D27,Human Services,5139769.0
-2024,Actual,D28,Other,205210593.0
-2024,Actual,D29,Other,1623195.0
-2024,Actual,D50,Public Safety,81638538.0
-2024,Actual,D52,Public Safety,904427107.0
-2024,Actual,D53,Public Safety,47326338.0
-2024,Actual,D77,Health,1664834.0
-2024,Actual,D80,Health,43908043.0
-2024,Actual,E00,Government Services,194538256.0
-2024,Actual,E17,Other,7527228.0
-2024,Actual,E50,Government Services,166936818.0
-2024,Actual,E75,Other,124962679.0
-2024,Actual,F10,Government Services,61161075.0
-2024,Actual,F50,Government Services,164163111.0
-2024,Actual,G20,Government Services,22373584.0
-2024,Actual,H00,Government Services,469118579.0
-2024,Actual,I00,Other,32095333.0
-2024,Actual,J00,Transportation,5764911522.0
-2024,Actual,K00,Natural Resources and Environment,743367326.0
-2024,Actual,L00,Natural Resources and Environment,207647043.0
-2024,Actual,V00,Public Safety,333348959.0
-2024,Actual,N00,Human Services,3624654647.0
-2024,Actual,P00,Other,594389169.0
-2024,Actual,Q00,Public Safety,1688937761.0
-2024,Actual,R12,Elementary and Secondary Education,5675610.0
-2024,Actual,R15,Higher Education,35656132.0
-2024,Actual,R62,Higher Education,899578334.0
-2024,Actual,R75,Higher Education,2550991334.0
-2024,Actual,R99,Elementary and Secondary Education,46653840.0
-2024,Actual,S00,Human Services,914453485.0
-2024,Actual,T00,Other,321985816.0
-2024,Actual,T50,Other,54715816.0
-2024,Actual,W00,Public Safety,586113098.0
-2024,Actual,Y01,Reserve Fund,1393903798.0
-2025,Actual,A15,Other,217614602.0
-2025,Actual,C80,"Legislative, Judicial, Legal",156679673.0
-2025,Actual,C82,"Legislative, Judicial, Legal",3476685.0
-2025,Actual,C94,"Legislative, Judicial, Legal",3301583.0
-2025,Actual,C98,"Legislative, Judicial, Legal",24280448.0
-2025,Actual,D15,Government Services,11131714.0
-2025,Actual,D17,Other,6665228.0
-2025,Actual,D18,Human Services,68125500.0
-2025,Actual,D21,Other,338932131.0
-2025,Actual,D23,Other,30321240.0
-2025,Actual,D25,Elementary and Secondary Education,88522793.0
-2025,Actual,D26,Health,87431932.0
-2025,Actual,D27,Human Services,6125105.0
-2025,Actual,D29,Other,13484063.0
-2025,Actual,D38,Other,54366632.0
-2025,Actual,D50,Public Safety,53167415.0
-2025,Actual,D52,Public Safety,460010624.0
-2025,Actual,D53,Public Safety,22777782.0
-2025,Actual,D60,Government Services,11779157.0
-2025,Actual,D77,Health,1064447.0
-2025,Actual,E75,Other,128789532.0
-2025,Actual,E80,Other,1229848.0
-2025,Actual,F10,Government Services,143992196.0
-2025,Actual,F50,Government Services,152687908.0
-2025,Actual,G20,Government Services,26370875.0
-2025,Actual,G50,Government Services,2484397.0
-2025,Actual,H00,Government Services,212327340.0
-2025,Actual,I00,Other,53082415.0
-2025,Actual,K00,Natural Resources and Environment,480900717.0
-2025,Actual,P00,Other,586795569.0
-2025,Actual,R12,Elementary and Secondary Education,4400826.0
-2025,Actual,R15,Higher Education,37771006.0
-2025,Actual,R62,Higher Education,823554697.0
-2025,Actual,R75,Higher Education,2610665737.0
-2025,Actual,R99,Elementary and Secondary Education,50690779.0
-2025,Actual,S00,Human Services,923354739.0
-2025,Actual,U00,Natural Resources and Environment,598997678.0
-2025,Actual,V00,Public Safety,353272412.0
-2025,Actual,X00,Public Debt,1503737345.0
-2025,Actual,Y01,Reserve Fund,242500000.0
-2026,Working budget,A15,Other,211304876.0
-2026,Working budget,C00,"Legislative, Judicial, Legal",818022965.0
-2026,Working budget,C81,"Legislative, Judicial, Legal",86778649.0
-2026,Working budget,C82,"Legislative, Judicial, Legal",3628937.0
-2026,Working budget,C85,"Legislative, Judicial, Legal",1031335.0
-2026,Working budget,C94,"Legislative, Judicial, Legal",3554921.0
-2026,Working budget,C96,"Legislative, Judicial, Legal",6047988.0
-2026,Working budget,D11,Health,1132157.0
-2026,Working budget,D15,Government Services,11529093.0
-2026,Working budget,D16,Other,5756158.0
-2026,Working budget,D17,Other,6820504.0
-2020,Actual,N00,Human Services,2734552843.0
-2020,Actual,S00,Human Services,471798693.0
 2020,Actual,Q00,Public Safety,1454305942.0
-2021,Actual,E17,Other,1475309.0
-2021,Actual,D26,Health,79443723.0
-2020,Actual,R11,Other,90175276.0
-2020,Actual,R62,Higher Education,551469661.0
-2020,Actual,R75,Higher Education,1672119848.0
-2021,Actual,M00,Health,17567218882.0
-2020,Actual,S50,Other,1959000.0
-2020,Actual,U00,Natural Resources and Environment,448536324.0
-2020,Actual,T50,Other,25985582.0
-2021,Actual,N00,Human Services,4048085401.0
-2020,Actual,W00,Public Safety,356280139.0
-2021,Actual,E00,Other,345859627.0
-2021,Actual,D40,Natural Resources and Environment,25475025.0
-2020,Actual,X00,Public Debt,1321826589.0
-2021,Actual,D05,Other,11940494.0
-2021,Actual,C91,"Legislative, Judicial, Legal",4260569.0
-2021,Actual,D10,Other,11557252.0
-2021,Actual,D11,Health,413923.0
-2021,Actual,D15,Other,13340175.0
-2021,Actual,D27,Human Services,3607098.0
-2021,Actual,D50,Public Safety,961040898.0
-2021,Actual,D53,Public Safety,17089053.0
-2021,Actual,D60,Other,9063079.0
-2021,Actual,D90,Other,633182.0
-2021,Actual,D99,Other,13258.0
-2021,Actual,E50,Other,141963582.0
-2021,Actual,F50,Other,90958872.0
 2021,Actual,J00,Transportation,5057511991.0
 2021,Actual,K00,Natural Resources and Environment,396490580.0
-2021,Actual,G20,Other,19037510.0
-2021,Actual,V00,Public Safety,253335734.0
-2021,Actual,S00,Human Services,1143222737.0
-2021,Actual,R62,Higher Education,567075582.0
-2021,Actual,R99,Elementary and Secondary Education,34059517.0
-2021,Actual,R75,Higher Education,1714856968.0
-2021,Actual,T50,Other,26974480.0
-2021,Actual,X00,Public Debt,1277616197.0
-2021,Actual,Y01,Reserve Fund,114000000.0
-2022,Actual,A15,Other,186927673.0
-2022,Actual,C00,"Legislative, Judicial, Legal",649671681.0
-2022,Actual,C82,"Legislative, Judicial, Legal",1829050.0
-2022,Actual,C91,"Legislative, Judicial, Legal",5160526.0
-2022,Actual,C94,"Legislative, Judicial, Legal",2599220.0
-2022,Actual,C96,"Legislative, Judicial, Legal",4098804.0
-2022,Actual,D05,Other,13476416.0
-2022,Actual,D06,Other,153415000.0
-2022,Actual,D10,Other,12159977.0
-2022,Actual,D13,Natural Resources and Environment,70133700.0
-2022,Actual,D15,Other,14901728.0
-2022,Actual,D17,Other,5650289.0
-2022,Actual,D21,Other,202884792.0
-2022,Actual,D26,Health,82952275.0
-2022,Actual,D27,Human Services,3803586.0
-2022,Actual,D53,Public Safety,18151478.0
-2022,Actual,D55,Other,35584662.0
-2022,Actual,D90,Other,688278.0
-2022,Actual,D99,Other,52399.0
-2022,Actual,E00,Other,130251042.0
-2022,Actual,E17,Other,3713183.0
-2022,Actual,E75,Other,115960919.0
-2022,Actual,E80,Other,983482.0
-2022,Actual,F50,Other,116167288.0
-2022,Actual,G20,Other,19507571.0
-2022,Actual,G50,Other,2183891.0
-2022,Actual,J00,Transportation,5619661509.0
-2022,Actual,K00,Natural Resources and Environment,441679955.0
-2022,Actual,L00,Natural Resources and Environment,143440033.0
-2027,Legislative appropriation,U00,Natural Resources and Environment,638553583.0
-2027,Legislative appropriation,W00,Public Safety,684813694.0
-2027,Legislative appropriation,X00,Public Debt,1496361462.0
-2027,Legislative appropriation,Y01,Reserve Fund,153250000.0
 2019,Actual,J00,Transportation,4961406765.0
 2017,Actual,M00,Health,13180293534.0
 2018,Actual,T00,Other,125607804.0
@@ -674,6 +456,224 @@ fiscal_year,stage,agency_code,category_title,budget
 2019,Actual,D78,Health,70875856.0
 2018,Actual,N00,Human Services,2337125720.0
 2018,Actual,P00,Other,369682425.0
+2024,Actual,K00,Natural Resources and Environment,743367326.0
+2024,Actual,M00,Health,20338923782.0
+2024,Actual,L00,Natural Resources and Environment,207647043.0
+2024,Actual,V00,Public Safety,333348959.0
+2024,Actual,N00,Human Services,3624654647.0
+2024,Actual,P00,Other,594389169.0
+2024,Actual,Q00,Public Safety,1688937761.0
+2024,Actual,R12,Elementary and Secondary Education,5675610.0
+2024,Actual,R15,Higher Education,35656132.0
+2024,Actual,R62,Higher Education,899578334.0
+2024,Actual,R75,Higher Education,2550991334.0
+2024,Actual,R99,Elementary and Secondary Education,46653840.0
+2024,Actual,S00,Human Services,914453485.0
+2024,Actual,T00,Other,321985816.0
+2024,Actual,T50,Other,54715816.0
+2024,Actual,W00,Public Safety,586113098.0
+2024,Actual,Y01,Reserve Fund,1393903798.0
+2025,Actual,A15,Other,217614602.0
+2025,Actual,C80,"Legislative, Judicial, Legal",156679673.0
+2025,Actual,C82,"Legislative, Judicial, Legal",3476685.0
+2025,Actual,C94,"Legislative, Judicial, Legal",3301583.0
+2025,Actual,C98,"Legislative, Judicial, Legal",24280448.0
+2025,Actual,D15,Government Services,11131714.0
+2025,Actual,D17,Other,6665228.0
+2025,Actual,D18,Human Services,68125500.0
+2025,Actual,D21,Other,338932131.0
+2025,Actual,D23,Other,30321240.0
+2025,Actual,D25,Elementary and Secondary Education,88522793.0
+2025,Actual,D26,Health,87431932.0
+2025,Actual,D27,Human Services,6125105.0
+2025,Actual,D29,Other,13484063.0
+2025,Actual,D38,Other,54366632.0
+2025,Actual,D50,Public Safety,53167415.0
+2025,Actual,D52,Public Safety,460010624.0
+2025,Actual,D53,Public Safety,22777782.0
+2025,Actual,D60,Government Services,11779157.0
+2025,Actual,D77,Health,1064447.0
+2025,Actual,E75,Other,128789532.0
+2025,Actual,E80,Other,1229848.0
+2025,Actual,F10,Government Services,143992196.0
+2025,Actual,F50,Government Services,152687908.0
+2025,Actual,G20,Government Services,26370875.0
+2025,Actual,G50,Government Services,2484397.0
+2025,Actual,H00,Government Services,212327340.0
+2025,Actual,I00,Other,53082415.0
+2025,Actual,K00,Natural Resources and Environment,480900717.0
+2025,Actual,P00,Other,586795569.0
+2025,Actual,R12,Elementary and Secondary Education,4400826.0
+2025,Actual,R15,Higher Education,37771006.0
+2025,Actual,R62,Higher Education,823554697.0
+2025,Actual,R75,Higher Education,2610665737.0
+2025,Actual,R99,Elementary and Secondary Education,50690779.0
+2025,Actual,S00,Human Services,923354739.0
+2025,Actual,U00,Natural Resources and Environment,598997678.0
+2025,Actual,V00,Public Safety,353272412.0
+2025,Actual,X00,Public Debt,1503737345.0
+2025,Actual,Y01,Reserve Fund,242500000.0
+2026,Working budget,A15,Other,211304876.0
+2026,Working budget,C00,"Legislative, Judicial, Legal",818022965.0
+2026,Working budget,C81,"Legislative, Judicial, Legal",86778649.0
+2026,Working budget,C82,"Legislative, Judicial, Legal",3628937.0
+2026,Working budget,C85,"Legislative, Judicial, Legal",1031335.0
+2026,Working budget,C94,"Legislative, Judicial, Legal",3554921.0
+2026,Working budget,C96,"Legislative, Judicial, Legal",6047988.0
+2026,Working budget,D11,Health,1132157.0
+2026,Working budget,D15,Government Services,11529093.0
+2026,Working budget,D16,Other,5756158.0
+2026,Working budget,D17,Other,6820504.0
+2020,Actual,N00,Human Services,2734552843.0
+2020,Actual,S00,Human Services,471798693.0
+2021,Actual,E17,Other,1475309.0
+2021,Actual,D26,Health,79443723.0
+2020,Actual,R11,Other,90175276.0
+2020,Actual,R62,Higher Education,551469661.0
+2020,Actual,R75,Higher Education,1672119848.0
+2021,Actual,M00,Health,17567218882.0
+2020,Actual,S50,Other,1959000.0
+2020,Actual,U00,Natural Resources and Environment,448536324.0
+2020,Actual,T50,Other,25985582.0
+2021,Actual,N00,Human Services,4048085401.0
+2020,Actual,W00,Public Safety,356280139.0
+2021,Actual,E00,Other,345859627.0
+2021,Actual,D40,Natural Resources and Environment,25475025.0
+2020,Actual,X00,Public Debt,1321826589.0
+2021,Actual,D05,Other,11940494.0
+2021,Actual,C91,"Legislative, Judicial, Legal",4260569.0
+2021,Actual,D10,Other,11557252.0
+2021,Actual,D11,Health,413923.0
+2021,Actual,D15,Other,13340175.0
+2021,Actual,D27,Human Services,3607098.0
+2021,Actual,D50,Public Safety,961040898.0
+2021,Actual,D53,Public Safety,17089053.0
+2021,Actual,D60,Other,9063079.0
+2021,Actual,D90,Other,633182.0
+2021,Actual,D99,Other,13258.0
+2021,Actual,E50,Other,141963582.0
+2021,Actual,F50,Other,90958872.0
+2021,Actual,G20,Other,19037510.0
+2021,Actual,V00,Public Safety,253335734.0
+2021,Actual,S00,Human Services,1143222737.0
+2021,Actual,R62,Higher Education,567075582.0
+2021,Actual,R99,Elementary and Secondary Education,34059517.0
+2021,Actual,R75,Higher Education,1714856968.0
+2021,Actual,T50,Other,26974480.0
+2022,Actual,M00,Health,18834458264.0
+2021,Actual,X00,Public Debt,1277616197.0
+2021,Actual,Y01,Reserve Fund,114000000.0
+2022,Actual,A15,Other,186927673.0
+2022,Actual,C00,"Legislative, Judicial, Legal",649671681.0
+2022,Actual,C82,"Legislative, Judicial, Legal",1829050.0
+2022,Actual,C91,"Legislative, Judicial, Legal",5160526.0
+2022,Actual,C94,"Legislative, Judicial, Legal",2599220.0
+2022,Actual,C96,"Legislative, Judicial, Legal",4098804.0
+2022,Actual,D05,Other,13476416.0
+2022,Actual,D06,Other,153415000.0
+2022,Actual,D10,Other,12159977.0
+2022,Actual,D13,Natural Resources and Environment,70133700.0
+2022,Actual,D15,Other,14901728.0
+2022,Actual,D17,Other,5650289.0
+2022,Actual,D21,Other,202884792.0
+2022,Actual,D26,Health,82952275.0
+2022,Actual,D27,Human Services,3803586.0
+2022,Actual,D53,Public Safety,18151478.0
+2022,Actual,D55,Other,35584662.0
+2022,Actual,D90,Other,688278.0
+2022,Actual,D99,Other,52399.0
+2022,Actual,E00,Other,130251042.0
+2022,Actual,E17,Other,3713183.0
+2022,Actual,E75,Other,115960919.0
+2022,Actual,E80,Other,983482.0
+2022,Actual,F50,Other,116167288.0
+2022,Actual,G20,Other,19507571.0
+2022,Actual,G50,Other,2183891.0
+2022,Actual,J00,Transportation,5619661509.0
+2022,Actual,K00,Natural Resources and Environment,441679955.0
+2022,Actual,L00,Natural Resources and Environment,143440033.0
+2022,Actual,V00,Public Safety,254386923.0
+2022,Actual,P00,Other,1481082992.0
+2022,Actual,R00,Elementary and Secondary Education,11906543721.0
+2022,Actual,R11,Other,97292326.0
+2022,Actual,R15,Higher Education,29466157.0
+2022,Actual,R75,Higher Education,2012885324.0
+2022,Actual,T00,Other,154710696.0
+2022,Actual,U00,Natural Resources and Environment,482882718.0
+2022,Actual,W00,Public Safety,464416790.0
+2023,Actual,M00,Health,19889552729.0
+2022,Actual,Y01,Reserve Fund,882919432.0
+2023,Actual,C00,"Legislative, Judicial, Legal",710246799.0
+2023,Actual,C80,"Legislative, Judicial, Legal",128525585.0
+2023,Actual,C91,"Legislative, Judicial, Legal",6923929.0
+2023,Actual,C96,"Legislative, Judicial, Legal",4880612.0
+2023,Actual,D05,Government Services,16760662.0
+2023,Actual,D10,Government Services,13336336.0
+2023,Actual,D12,Health,11235647.0
+2023,Actual,D15,Government Services,16431836.0
+2023,Actual,D21,Other,365865376.0
+2023,Actual,D25,Elementary and Secondary Education,317948440.0
+2023,Actual,D26,Health,80012120.0
+2023,Actual,D40,Natural Resources and Environment,46125458.0
+2023,Actual,D50,Public Safety,46871880.0
+2023,Actual,D52,Public Safety,503260574.0
+2023,Actual,D53,Public Safety,30193957.0
+2023,Actual,D55,Other,41446090.0
+2023,Actual,D60,Government Services,9633753.0
+2023,Actual,D77,Health,1118957.0
+2023,Actual,D78,Health,571527811.0
+2023,Actual,D90,Other,723174.0
+2023,Actual,E00,Government Services,158606086.0
+2023,Actual,E17,Other,5997012.0
+2023,Actual,E20,Government Services,9764861.0
+2023,Actual,E50,Government Services,145064757.0
+2023,Actual,E75,Other,122886105.0
+2023,Actual,E80,Other,981100.0
+2023,Actual,F10,Government Services,136795850.0
+2023,Actual,F50,Government Services,196247263.0
+2023,Actual,G20,Government Services,20471764.0
+2023,Actual,G50,Government Services,2320912.0
+2023,Actual,I00,Other,338854.0
+2023,Actual,K00,Natural Resources and Environment,641461363.0
+2023,Actual,R11,Other,96009724.0
+2023,Actual,R62,Higher Education,804126325.0
+2023,Actual,T00,Other,329199581.0
+2023,Actual,X00,Public Debt,1430892085.0
+2024,Actual,A15,Other,259663180.0
+2024,Actual,C00,"Legislative, Judicial, Legal",756340535.0
+2024,Actual,C80,"Legislative, Judicial, Legal",145414081.0
+2024,Actual,C81,"Legislative, Judicial, Legal",68835652.0
+2024,Actual,C91,"Legislative, Judicial, Legal",7134246.0
+2024,Actual,C94,"Legislative, Judicial, Legal",3039740.0
+2024,Actual,C96,"Legislative, Judicial, Legal",4681767.0
+2024,Actual,D05,Government Services,44664478.0
+2024,Actual,D11,Health,873295.0
+2024,Actual,D12,Health,11374278.0
+2024,Actual,D16,Other,5840816.0
+2024,Actual,D23,Other,24166366.0
+2024,Actual,D26,Health,81887094.0
+2024,Actual,D27,Human Services,5139769.0
+2024,Actual,D28,Other,205210593.0
+2024,Actual,D29,Other,1623195.0
+2024,Actual,D50,Public Safety,81638538.0
+2024,Actual,D52,Public Safety,904427107.0
+2024,Actual,D53,Public Safety,47326338.0
+2024,Actual,D77,Health,1664834.0
+2024,Actual,D80,Health,43908043.0
+2024,Actual,E00,Government Services,194538256.0
+2024,Actual,E17,Other,7527228.0
+2024,Actual,E50,Government Services,166936818.0
+2024,Actual,E75,Other,124962679.0
+2024,Actual,F10,Government Services,61161075.0
+2024,Actual,F50,Government Services,164163111.0
+2024,Actual,G20,Government Services,22373584.0
+2024,Actual,H00,Government Services,469118579.0
+2024,Actual,I00,Other,32095333.0
+2024,Actual,J00,Transportation,5764911522.0
+2027,Legislative appropriation,U00,Natural Resources and Environment,638553583.0
+2027,Legislative appropriation,W00,Public Safety,684813694.0
+2027,Legislative appropriation,X00,Public Debt,1496361462.0
+2027,Legislative appropriation,Y01,Reserve Fund,153250000.0
 2019,Actual,Q00,Public Safety,1390303967.0
 2019,Actual,P00,Other,374240463.0
 2019,Actual,F10,Other,34747824.0

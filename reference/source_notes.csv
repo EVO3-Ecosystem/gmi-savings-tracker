@@ -1,0 +1,9 @@
+dataset,note,checked_on,checked_by
+payments,"The portal title says FY2008 to FY2024, but the data runs to FY2027 (FY2027 is partial). Each row is a yearly total per agency and payee; the date field is January 1 of the year, so timing rules cannot run.",2026-11-10,Claude
+payments,"FY2022 lists a second block of $874.5M for MDTA and Maryland Environmental Service, confirmed on opendata.maryland.gov and vendorpayments.maryland.gov; reported as a source issue, never a lead.",2026-11-10,Claude
+payments,"The portal refreshed this dataset on Nov 9, 2026 at 16:00 UTC, 16 minutes after that day's extract, adding 1,649 FY2027 rows; re-extracted Nov 10, 2026 and matched again.",2026-11-10,Claude
+budget,"The portal's Type column labels FY2021 Working, FY2022 Appropriation and FY2027 Governor's Allowance; stages come from reference/budget_stage.csv, checked against DBM's budget books.",2026-11-10,Claude
+fund,"Same stage labels as the operating budget; stages come from reference/budget_stage.csv.",2026-11-10,Claude
+fte,"Values are full-time equivalents (1,578 of 6,026 rows are fractional), not position counts. The portal description still names FY2025 Working and FY2026 Governor's Allowance; the data runs to FY2027. The portal page reads the same table as the API, and no separate State website publishes it.",2026-11-10,Claude
+grants,"The portal says grants of $50,000 or more, but some rows are smaller. The data ends at FY2025, as the title says.",2026-11-10,Claude
+highered,"Public higher education budget; reported separately and kept out of every GMI savings baseline.",2026-11-10,Claude

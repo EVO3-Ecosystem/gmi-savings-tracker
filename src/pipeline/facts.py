@@ -13,6 +13,7 @@ import datetime as dt
 import json
 from pathlib import Path
 
+import duckdb
 import pandas as pd
 import yaml
 
@@ -39,8 +40,38 @@ def _row(con, sql, *a):
     return rows[0] if rows else None
 
 
+def payment_mapping_note(con):
+    """How completely payments map: agency share of dollars and the default payee-type share, latest full year.
+
+    Each part is left out when its table is not built (small test databases build only some layers).
+    """
+    def has(t):
+        sch, name = t.split(".")
+        return bool(_row(con, "SELECT count(*) FROM information_schema.tables WHERE table_schema = ? AND table_name = ?", sch, name)[0])
+    if not has("core.fact_payment_mapped"):
+        return ""
+    fy = _row(con, "SELECT max(fiscal_year) FROM core.fact_payment WHERE NOT partial_year")[0]
+    agency = _row(con, "SELECT sum(amount) FILTER (WHERE agency_code IS NOT NULL) / sum(amount) FROM core.fact_payment_mapped WHERE fiscal_year = ?", fy)[0]
+    parts = [f"Mapping, FY{fy}: {agency or 0:.1%} of dollars map to a budget agency"]
+    if has("mart.f_payee_type"):
+        default, nonprofit = _row(con, """SELECT sum(paid) FILTER (WHERE payee_type = 'Business or other') / sum(paid),
+            sum(paid) FILTER (WHERE payee_type = 'Non-profit') / sum(paid) FROM mart.f_payee_type WHERE fiscal_year = ?""", fy)
+        if default is not None:
+            parts.append(f"{default:.1%} of dollars are in the default payee type 'Business or other' and non-profits are {nonprofit or 0:.1%}, "
+                         "likely under-identified (see the payee classifier's review queue)")
+    if has("ref.map_payee_vendor"):
+        try:
+            tagged, payees = _row(con, "SELECT count(*) FILTER (WHERE payee_area IS NOT NULL), count(*) FROM ref.map_payee_vendor")
+            parts.append(f"{tagged:,} of {payees:,} payee names carry a focus area, by design only the six GMI areas")
+        except duckdb.Error:  # an older or partial mapping table without focus areas
+            pass
+    return "; ".join(parts) + "."
+
+
 def sources(con, man):
     cfg = yaml.safe_load((ROOT / "config" / "datasets.yaml").read_text())["datasets"]
+    notes_file = ROOT / "reference" / "source_notes.csv"
+    notes = pd.read_csv(notes_file) if notes_file.exists() else pd.DataFrame(columns=["dataset", "note"])
     by = {d["dataset"]: d for d in man["datasets"]}
     rows = []
     for key in [k for k in ORDER if k in by]:
@@ -49,8 +80,22 @@ def sources(con, man):
         title, use = SOURCES[key]
         rows.append({"source": key, "dataset_id": d["id"], "title": title, "use": use, "portal_name": d.get("portal_name") or cfg[key].get("portal_name", ""),
                      "portal_updated": str(d.get("rowsUpdatedAt_utc", ""))[:10], "rows_portal": d["portal_count"], "rows_downloaded": d["rows"],
-                     "years": f"FY{lo}-FY{hi}", "reconciled": int(bool(d["match"]))})
+                     "years": f"FY{lo}-FY{hi}", "reconciled": int(bool(d["match"])),
+                     "mismatch_notes": " ".join(_notes(con, key, d, notes))})
     return pd.DataFrame(rows)
+
+
+def _notes(con, key, d, notes):
+    """Differences from the portal found by this build, then the reviewed notes about the source (reference/source_notes.csv)."""
+    out = []
+    if d["rows"] != d["portal_count"]:
+        out.append(f"Row count differs from the portal: {d['rows']:,} downloaded, {d['portal_count']:,} on the portal.")
+    elif d["match"]:
+        out.append("Row count and yearly totals match the portal.")
+    out += list(notes[notes.dataset == key].note)
+    if key == "payments":
+        out.append(payment_mapping_note(con))
+    return [n for n in out if n]
 
 
 def run_checks(con, run_id):

@@ -508,14 +508,14 @@
     <div class="tiles">
       <div class="tile"><span class="k">Latest run</span><span class="v" data-source="c_run" data-field="status">—</span><span class="d" data-source="c_run" data-field="when">—</span></div>
       <div class="tile"><span class="k">Checks passed</span><span class="v" data-source="c_run" data-field="checks">—</span><span class="d" data-source="c_run" data-field="warn">—</span></div>
-      <div class="tile"><span class="k">Rows checked against the portal</span><span class="v" data-source="c_run" data-field="rows">—</span><span class="d">Payments and operating budget</span></div>
+      <div class="tile"><span class="k">Rows checked against the portal</span><span class="v" data-source="c_run" data-field="rows">—</span><span class="d">All six datasets, count and yearly totals</span></div>
       <div class="tile"><span class="k">Runs recorded</span><span class="v" data-source="c_run" data-field="runs">—</span><span class="d" data-source="c_run" data-field="repairs">—</span></div>
     </div>
     <div class="card">
       <h2 id="srcH">Data sources</h2>
-      <p class="note">Five state datasets on opendata.maryland.gov, each downloaded in full and matched year by year to the portal's own row counts and totals. Payments are matched again to vendorpayments.maryland.gov and the budget to operatingbudget.maryland.gov.</p>
+      <p class="note">Six state datasets on opendata.maryland.gov, each downloaded in full through the SODA API and matched year by year to the portal's own row counts and totals. Payments are matched again to vendorpayments.maryland.gov and the budget to operatingbudget.maryland.gov.</p>
       <div class="tbl"><table data-source="sources" data-row-key="dataset_id">
-        <thead><tr><th data-field="title">Dataset</th><th data-field="dataset_id">ID</th><th data-field="use">What it holds</th><th data-field="years">Years</th><th class="n" data-field="rows_downloaded">Rows</th><th data-field="reconciled">Matches portal</th><th data-field="portal_updated">Portal updated</th></tr></thead>
+        <thead><tr><th data-field="title">Dataset</th><th data-field="dataset_id">ID</th><th data-field="use">What it holds</th><th data-field="years">Years</th><th class="n" data-field="rows_downloaded">Rows</th><th data-field="reconciled">Matches portal</th><th data-field="portal_updated">Portal updated</th><th data-field="mismatch_notes">Notes on the source</th></tr></thead>
         <tbody id="srcBody"></tbody></table></div>
     </div>
     <div class="grid">
@@ -597,7 +597,7 @@
 /* ======================= formatting ======================= */
 const M = v => v==null||isNaN(v)?'—':(v < 0 ? '−$' : '$') + new Intl.NumberFormat('en',{notation:'compact',maximumFractionDigits:1}).format(Math.abs(v));
 const PCT = d3.format('.1%'), N = d3.format(','), N0 = d3.format(',.0f');
-const TEXT = new Set(['agency_code','agency','stage','category_title','fund_type_name','object_name','scope','title','dataset_id','use','portal_name','portal_updated','years','reconciled','stage_pair','measure','definition','grouped_by','higher_is','table','run_id','started_utc','status','mode','check','detail','family','how_matched','source','published','in_budget','area','spending_code','vendor','url','run_date','file_label','official_stage','evidence','evidence_url','note','code','opp_id','payee_name','label','detector','method','kind','vendor','top_agencies','action','basis','tab','status','previous_status','progress','previous','title','spending_code','saving_id','workstream','item','type','count','check_id','check_note','source_url']);
+const TEXT = new Set(['agency_code','agency','stage','category_title','fund_type_name','object_name','scope','title','dataset_id','use','portal_name','portal_updated','years','reconciled','mismatch_notes','stage_pair','measure','definition','grouped_by','higher_is','table','run_id','started_utc','status','mode','check','detail','family','how_matched','source','published','in_budget','area','spending_code','vendor','url','run_date','file_label','official_stage','evidence','evidence_url','note','code','opp_id','payee_name','label','detector','method','kind','vendor','top_agencies','action','basis','tab','status','previous_status','progress','previous','title','spending_code','saving_id','workstream','item','type','count','check_id','check_note','source_url']);
 const num = rows => rows.map(r => Object.fromEntries(Object.entries(r).map(([k,v]) => [k, (v!==''&&v!=null&&!isNaN(v)&&!TEXT.has(k)) ? Number(v) : (v===''?null:v)])));
 const ARROW = v => v==null||isNaN(v)||!isFinite(v)?'—':Math.abs(v)<=0.0005?'■ flat':(v>0?'▲ ':'▼ ')+d3.format('.1%')(Math.abs(v));
 const toneOf = (v,good) => v==null||isNaN(v)||!isFinite(v)||Math.abs(v)<=0.0005||good==='neutral'?'flat':((v>0)===(good==='higher')?'good':'bad');
@@ -1222,7 +1222,7 @@ function drawPortalBudget(p){
     setText('grH', `Grants and loans, as listed${gy ? ', ' + fyLabel(gy.filter(y => y <= 2025)) : ''}`);
     setText('grCount', `${N(rows.length)} rows, ${M(tot)}${rows.length > 200 ? '; largest 200 shown (search to narrow)' : ''}. ${tot ? d3.format('.0%')(inP / tot) : '—'} of these dollars went to grantees also paid that year.` + (gy && !gy.some(y => y <= 2025) ? ' No grants are published for the selected years yet.' : '')); } }
 function drawData(){
-  const so = ok('sources'); if (so) table('srcBody', so, [{key:'title'},{key:'dataset_id'},{key:'use'},{key:'years'},{key:'rows_downloaded',n:1,fmt:N},{key:'reconciled',pill:v => String(v).toLowerCase() === 'true' ? 'pass' : 'fail',fmt:v => String(v).toLowerCase() === 'true' ? 'Yes' : 'No'},{key:'portal_updated'}]);
+  const so = ok('sources'); if (so) table('srcBody', so, [{key:'title'},{key:'dataset_id'},{key:'use'},{key:'years'},{key:'rows_downloaded',n:1,fmt:N},{key:'reconciled',pill:v => /^(true|1)$/i.test(String(v)) ? 'pass' : 'fail',fmt:v => /^(true|1)$/i.test(String(v)) ? 'Yes' : 'No'},{key:'portal_updated'},{key:'mismatch_notes'}]);
   const ru = ok('runs'); if (ru) table('runsBody', ru.slice().sort((a,b) => d3.descending(a.started_utc, b.started_utc)), [{key:'started_utc',fmt:v => String(v).replace('T',' ').slice(0,16)},{key:'status',pill:v => v === 'passed' ? 'pass' : 'fail'},{key:'passed',n:1},{key:'warnings',n:1},{key:'repairs',n:1},{key:'mode'}]);
   const ck = ok('checks'); if (ck) { const s = document.getElementById('ckStage').value, f = document.getElementById('ckStatus').value; table('ckBody', ck.filter(r => (!s || r.stage === s) && (!f || r.status === f)), [{key:'status',pill:v => v},{key:'check'},{key:'detail'}]); }
   const se = ok('stage_evidence'); if (se) table('stBody', se, [{key:'fiscal_year',fmt:v => 'FY' + v},{key:'file_label'},{key:'official_stage',fmt:stageShort},{key:'evidence'},{key:'programs_compared',n:1,fmt:v => v == null ? '—' : N(v)},{key:'programs_exact',n:1,fmt:v => v == null ? '—' : N(v)}]);
@@ -1662,7 +1662,7 @@ function drawDetail(p){
 dash.calc('c_run',{inputs:['runs','checks'],title:'Pipeline status',description:'Result, time and check counts of the latest pipeline run, and the number of runs recorded.',
   fn:(runs,checks)=>{const r=num(runs).sort((a,b)=>d3.ascending(a.started_utc,b.started_utc));const l=r[r.length-1]||{};const n=s=>checks.filter(c=>c.status===s).length;
     return [{status:l.status==='passed'?'Passed':'Failed',when:String(l.started_utc||'').replace('T',' ').slice(0,16)+' UTC',checks:`${n('pass')} of ${checks.length}`,warn:`${n('warn')} warnings, ${n('fail')} failed`,
-      rows:N((l.payment_rows||0)+(l.budget_rows||0)),runs:String(r.length),repairs:`${d3.sum(r,x=>x.repairs)} automatic repairs so far`,
+      rows:N((ok('sources')||[]).reduce((a,x)=>a+(+x.rows_downloaded||0),0)||((l.payment_rows||0)+(l.budget_rows||0))),runs:String(r.length),repairs:`${d3.sum(r,x=>x.repairs)} automatic repairs so far`,
       pill:n('fail')?`Data checks: ${n('fail')} failed`:`Data checks passed: ${n('pass')} of ${checks.length}`,state:n('fail')?'fail':(n('warn')?'warn':'pass')}];}});
 function drawReport(){ const r = ok('reports'), a = document.getElementById('repLink'); if (!r || !r.length) { a.hidden = true; return; } const l = r.slice().sort((x,y) => d3.descending(x.run_date, y.run_date))[0]; a.href = l.url; a.textContent = 'Download PDF report (' + l.run_date + ')'; a.hidden = false; }
 function fillMarks(){ const d = dash.data('c_run'); document.querySelectorAll('[data-source="c_run"][data-field]').forEach(el => { el.textContent = (d.status === 'ok' && d.data[0]) ? d.data[0][el.dataset.field] : '—'; }); document.getElementById('runPill').className = 'st ' + (d.status === 'ok' && d.data[0] ? d.data[0].state : ''); }

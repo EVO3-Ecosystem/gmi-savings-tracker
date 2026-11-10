@@ -3,7 +3,7 @@
 [![CI](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/ci.yml)
 [![Pages](https://github.com/EVO3-Ecosystem/gmi-savings-tracker/actions/workflows/pages.yml/badge.svg)](https://evo3-ecosystem.github.io/gmi-savings-tracker/)
 <!-- facts:badges -->
-![Data checks](https://img.shields.io/badge/data%20checks-102%20of%20103%20pass%2C%200%20fail-2da44e) ![Data as of](https://img.shields.io/badge/data%20as%20of-2026--11--09-0969da)
+![Data checks](https://img.shields.io/badge/data%20checks-101%20of%20103%20pass%2C%200%20fail-2da44e) ![Data as of](https://img.shields.io/badge/data%20as%20of-2026--11--10-0969da)
 <!-- /facts:badges -->
 ![Source](https://img.shields.io/badge/source-SODA%20API%20%C2%B7%206%20datasets-6e7781)
 [![License: MIT](https://img.shields.io/badge/license-MIT-6e7781)](LICENSE)
@@ -55,18 +55,18 @@ Every number on these pages is computed from the published data files. Click a s
 
 ## Data
 
-| Dataset | Portal ID | Rows | Years | Verified against |
-|---|---|---|---|---|
-| Operating budget | [yu65-jmmv](https://opendata.maryland.gov/d/yu65-jmmv) | 741,957 | FY2017–FY2027 | mtp.maryland.gov download; operatingbudget.maryland.gov totals |
-| Funding source | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | 26,178 | FY2017–FY2027 | budgetsource.maryland.gov download |
-| Payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | 411,231 | FY2008–FY2027 (FY2027 partial) | vendorpayments.maryland.gov download and totals |
-| Grants and loans | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | 23,085 | FY2009–FY2025 | grantsandloans.maryland.gov download |
-| Budgeted full-time equivalents (FTEs) | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | FY2017–FY2027 | The portal's own count and yearly totals. Its portal page reads the same table as the API, and no separate State website publishes it (checked Nov 10, 2026); a check against DBM's budget documents is planned |
-| Public higher education budget | [4mca-332u](https://opendata.maryland.gov/d/4mca-332u) | 84,446 | FY2017–FY2027 | The portal's own count and yearly totals. Reported separately and kept out of every savings baseline |
+| Dataset | Portal ID | Rows | Years | Matches portal | Verified against | Notes on the source |
+|---|---|---|---|---|---|---|
+| Operating budget | [yu65-jmmv](https://opendata.maryland.gov/d/yu65-jmmv) | 741,957 | FY2017–FY2027 | Yes, every year | mtp.maryland.gov download; operatingbudget.maryland.gov totals | The portal's stage labels are out of date (FY2021 "Working", FY2022 "Appropriation", FY2027 "Governor's Allowance"); stages come from DBM's budget books |
+| Funding source | [gy87-e27x](https://opendata.maryland.gov/d/gy87-e27x) | 26,178 | FY2017–FY2027 | Yes, every year | budgetsource.maryland.gov download | Same stage labels as the budget |
+| Payments | [7syw-q4cy](https://opendata.maryland.gov/d/7syw-q4cy) | 412,880 | FY2008–FY2027 (FY2027 partial) | Yes, every year | vendorpayments.maryland.gov download and totals | Title says FY2008–FY2024 but the data runs to FY2027. Yearly totals per payee, not payments (the date is always Jan 1). FY2022 lists a second $874.5M block. Refreshed on the portal after the Nov 9 extract; re-extracted Nov 10 |
+| Grants and loans | [absk-avps](https://opendata.maryland.gov/d/absk-avps) | 23,085 | FY2009–FY2025 | Yes, every year | grantsandloans.maryland.gov download | The portal says grants of $50,000 or more, but some rows are smaller |
+| Budgeted full-time equivalents (FTEs) | [x8qy-486w](https://opendata.maryland.gov/d/x8qy-486w) | 6,026 | FY2017–FY2027 | Yes, every year | The portal's own count and totals only | Values are FTEs (1,578 rows are fractional), not position counts. The portal page reads the same table as the API, and no separate State website publishes it (checked Nov 10, 2026); a check against DBM's budget documents is planned |
+| Public higher education budget | [4mca-332u](https://opendata.maryland.gov/d/4mca-332u) | 84,446 | FY2017–FY2027 | Yes, every year | The portal's own count and totals only | Reported separately and kept out of every savings baseline |
 
 ![Rows per fiscal year, by dataset](docs/figures/rows_by_year.png)
 
-Counts are from the Nov 9, 2026 run. Every run checks each dataset's row count and yearly totals against the portal's own figures before anything is built.
+Counts are from the Nov 10, 2026 run; the same notes appear on the dashboard's Data & pipeline tab (`reference/source_notes.csv`). Every run checks each dataset's row count and yearly totals against the portal's own figures before anything is built.
 
 **Independent checks, Nov 9–10, 2026** (`docs/reconciliation/`):
 - Budget totals FY2025–FY2027 equal operatingbudget.maryland.gov to the dollar.
@@ -80,6 +80,7 @@ Counts are from the Nov 9, 2026 run. Every run checks each dataset's row count a
 - The payments and grants data hold yearly totals per payee, not individual payments: the date field is always January 1. Timing rules (duplicate windows, split purchases, monthly forecasts) cannot run on this data.
 - The portal's budget and FTE descriptions use out-of-date stage labels, so stages come from `reference/budget_stage.csv`, checked against DBM's budget books.
 - The FY2022 payments double listing described above.
+- Payee mapping is incomplete: every payment dollar since FY2010 maps to a budget agency, but 38.6% of FY2026 payment dollars sit in the default payee type "Business or other", and non-profits (0.2%) are under-identified. The payee classifier's review queue lists the likely misses.
 
 Context sources (`src/pipeline/enrich.py`; a failure warns, never blocks): CPI-U (BLS, with FRED as fallback), federal awards to Maryland (USAspending), population (Census) and every agency's Managing for Results plan (DBM).
 

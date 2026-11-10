@@ -1,104 +1,104 @@
 run_id,stage,check,status,detail
-20261109T154457Z,raw,Rows loaded = portal count: budget,pass,"741,957 loaded, 741,957 on the portal"
-20261109T154457Z,raw,Rows loaded = portal count: fund,pass,"26,178 loaded, 26,178 on the portal"
-20261109T154457Z,raw,Rows loaded = portal count: fte,pass,"6,026 loaded, 6,026 on the portal"
-20261109T154457Z,raw,Rows loaded = portal count: payments,pass,"411,231 loaded, 411,231 on the portal"
-20261109T154457Z,raw,Rows loaded = portal count: grants,pass,"23,085 loaded, 23,085 on the portal"
-20261109T154457Z,raw,Rows loaded = portal count: highered,pass,"84,446 loaded, 84,446 on the portal"
-20261109T154457Z,raw,Context source pulled: cpi,pass,"FRED CPIAUCNS (BLS unavailable: BLS: ['Request could not be serviced, as the daily threshold for total number of): 2007-01 to 2026-09, 1 missing months"
-20261109T154457Z,raw,Context source pulled: federal_awards,pass,FY2008-FY2027; latest full year $18.1B
-20261109T154457Z,raw,Context source pulled: population,pass,"2010-2025, vintage 2025"
-20261109T154457Z,raw,Context source pulled: mfr,pass,"FY2027: 111 agency PDFs (111 unchanged and reused), 14 MB"
-20261109T154457Z,core,Yearly totals = portal: budget,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
-20261109T154457Z,core,No missing year or amount: budget,pass,0 rows
-20261109T154457Z,core,Yearly totals = portal: fund,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
-20261109T154457Z,core,No missing year or amount: fund,pass,0 rows
-20261109T154457Z,core,Yearly totals = portal: fte,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
-20261109T154457Z,core,No missing year or amount: fte,pass,0 rows
-20261109T154457Z,core,Yearly totals = portal: payments,pass,20 years (2008-2027); largest gap $0.00; 0 years with a row-count difference
-20261109T154457Z,core,No missing year or amount: payments,pass,0 rows
-20261109T154457Z,core,Yearly totals = portal: grants,pass,17 years (2009-2025); largest gap $0.00; 0 years with a row-count difference
-20261109T154457Z,core,No missing year or amount: grants,pass,0 rows
-20261109T154457Z,core,Yearly totals = portal: highered,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
-20261109T154457Z,core,No missing year or amount: highered,pass,0 rows
-20261109T154457Z,core,Budget totals = funding-source totals (within $1),pass,largest yearly gap $1.00
-20261109T154457Z,core,Object and program codes are two digits,pass,0 rows
-20261109T154457Z,core,Funding-source rows keep their unit and two-digit program,pass,"0 of 26,178 rows without both; 785 agency-unit-programs"
-20261109T154457Z,core,Sub-object codes normalized (no leading zeros),pass,599 spellings on the portal -> 377 codes
-20261109T154457Z,core,Agency names carry no code suffix,pass,0 rows; 6 agencies renamed over time
-20261109T154457Z,core,Latest payments year flagged as partial,pass,"FY2027: 13,020 rows, $14.9B so far"
-20261109T154457Z,core,CPI covers every actual budget year (real dollars),pass,full fiscal years FY2008-FY2026; dollars of FY2026
-20261109T154457Z,core,Federal awards present for every complete year,pass,"still being reported: FY2026, FY2027"
-20261109T154457Z,core,Population covers every actual budget year,pass,through FY2026 (July 1 estimates)
-20261109T154457Z,core,Managing for Results plans downloaded (recommendation 6),pass,"111 agency PDFs, FY2027"
-20261109T154457Z,core,"Higher education dataset holds only its four agencies, none of them in the operating budget dataset",pass,"agencies R13, R14, R30, R95; 0 operating-budget rows for them; 0 unexpected agencies"
-20261109T154457Z,ref,Functions keyed by title,pass,12 functions; 2 titles span more than one code
-20261109T154457Z,ref,Every budget year has a confirmed stage,pass,"FY2025 Actual, FY2026 Working budget, FY2027 Legislative appropriation"
-20261109T154457Z,ref,FY2026 payment dollars matched to a budget agency,pass,100.0000% (dashboard: 100.00%)
-20261109T154457Z,ref,FY2027 (partial year) payment dollars matched,pass,100.0000%
-20261109T154457Z,ref,Payment agency names mapped,pass,"143 of 145 (dashboard: 141 of 145); unmapped: AID TO UNIVERSITY OF MD MEDICAL SYSTEM, SECURITY INTEREST FILING FEES"
-20261109T154457Z,ref,Payee names grouped into companies,pass,"9,686 names in 4,478 companies (dashboard, FY2026 payees only: 9,474 in 4,377)"
-20261109T154457Z,ref,Controllable purchases FY2025 = dashboard,pass,"$4,093,855,308 (dashboard $4,093,855,308)"
-20261109T154457Z,ref,Focus areas FY2025 = dashboard,pass,"$1,287,718,788 in 96 spending codes (dashboard $1,287,718,788 in 96)"
-20261109T154457Z,ref,Every focus-area code exists in the budget,pass,0 missing
-20261109T154457Z,ref,New payee names since the last build,pass,first build recorded
-20261109T154457Z,ref,Managing for Results measures read from the plans (recommendation 6),pass,"2,957 measures from 108 of 111 plans; 106 plans matched to a budget agency"
-20261109T154457Z,mart,"Vendor payments by year = core payments (every year, to the dollar)",pass,0 years differ
-20261109T154457Z,mart,"Agency roll-up budget by year = core budget (every year, to the dollar)",pass,0 years differ
-20261109T154457Z,mart,One vendor master row per vendor paid,pass,"56,590 vendors, 0 duplicates, 56,590 in payments"
-20261109T154457Z,mart,Each agency's budget sits in one function (no allocation needed),pass,0 agency-years below 99%
-20261109T154457Z,mart,Every mapped payment rolls up to a function or a named exception,pass,$0 without a function
-20261109T154457Z,mart,Function exceptions are not in the operating budget,pass,none are
-20261109T154457Z,mart,Payments outside the operating budget data (latest full year),pass,Capital budget accounts: $1.57B; Not in the operating budget data: $1.40B
-20261109T154457Z,mart,Every vendor has a payee type,pass,Business or other 35.9%; Education institution 1.7%; Financial institution 5.9%; Government 35.1%; Health care organization 20.5%; Non-profit 0.2%; Utility 0.7% of all payment dollars
-20261109T154457Z,mart,Vendors tab: vendor pages add up to the vendor list (FY2026),pass,"0 vendors differ; 3,640 vendors listed"
-20261109T154457Z,mart,Vendors tab: payments by payee type = core payments (every year),pass,0 years differ
-20261109T154457Z,mart,Vendors tab: every multi-agency vendor is paid by 15+ agencies,pass,0 below 15; 42 in FY2026
-20261109T154457Z,mart,Vendors tab: concentration shares and HHI within bounds,pass,0 area-years out of bounds
-20261109T154457Z,mart,Vendors tab: concentration spend = private focus-area payments (every area and year),pass,0 differ
-20261109T154457Z,mart,Vendors tab: every company listed has two or more payee names,pass,0 with one name
-20261109T154457Z,mart,Vendors tab: 15+ agency count on both bases (FY2026),pass,company and budget agency: 42; payee name and payment account: 54 (the Maryland Spend Lens showed 54 on the payee-name basis)
-20261109T154457Z,mart,"Grants as listed = core grants (rows and dollars, every year)",pass,0 years differ
-20261109T154457Z,mart,Budget vs payments: budget and payments = core totals (every year),pass,0 years differ
-20261109T154457Z,mart,"Where it's going = how it's funded (budget by program = budget by fund source, every year)",pass,0 years differ
-20261109T154457Z,mart,Grants whose grantee is also a payee that year (name match),pass,"lowest year 13% of grant dollars; grants are shown as part of payments, never added"
-20261109T154457Z,mart,Agency results rows = matched Managing for Results rows,pass,"21,835 of 21,835"
-20261109T154457Z,mart,Forecast ranges are ordered (p10 <= p50 <= p90),pass,0 forecast rows out of order
-20261109T154457Z,mart,Forecast actuals add up to controllable purchases (every actual year),pass,largest yearly gap $0 (rows are rounded to the dollar); FY2025 baseline gap $0
-20261109T154457Z,mart,Every forecast area has nine actual years and six forecast years,pass,7 areas; 0 short
-20261109T154457Z,mart,Backtest ranges are ordered (p10 <= p50 <= p90),pass,0 backtest rows out of order
-20261109T154457Z,mart,Every forecast area is also scored against the State's plan for FY2026 and FY2027,pass,0 areas without both plan years
-20261109T154457Z,mart,Published forecast ranges cover about their nominal share on the rolling backtest,warn,"63.5% of 63 forecasts of actual spending fell inside the p10-p90 range (nominal 80%); about 1.63x wider ranges would have been needed (in-sample, a handful of points)"
-20261109T154457Z,mart,Chosen forecast model is no worse than the naive baseline in the rolling-origin backtest,pass,"every area's chosen model matches or beats naive (mean MASE over FY2021-FY2024 origins, scored against actuals)"
-20261109T154457Z,mart,"Opportunity findings are well formed (low <= high, no duplicate id, one finding per agency and spending code)",pass,"0 malformed, 0 duplicate ids, 0 repeated agency and code"
-20261109T154457Z,mart,Bid list vendors meet the agency and spend thresholds and are ranked by FY2026 payments,pass,"0 vendors below the thresholds, 0 ranks out of order"
-20261109T154457Z,mart,"Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)",pass,"$20.8M of the growth detector's $93.8M likely saving (22%) comes from findings that grew 1,000% or more; a minimum prior-year base (assumptions.yaml, opportunities.growth.min_base_budget) removes most of them"
-20261109T154457Z,mart,"Detector backtest: every detector, as-of year and cohort present and well formed",pass,"24 rows, 0 malformed, 12 flagged cohorts with units; flags recurring next year (pooled FY2022-FY2024): Growth above trend 38%; Leverage 91%; Peer gap 77%; Tail spend 100%"
-20261109T154457Z,mart,"Every reported savings item is unique, cites a page and a quote, and has low <= high",pass,"18 items, 18 distinct, 18 with a page and quote, 0 with low above high"
-20261109T154457Z,mart,"Every payment check matches payments, and the four named contract types are checked",pass,0 checks with no matching payments; 4 of 4 named contract types in the status table
-20261109T154457Z,mart,Every payment check has a status,pass,"2 Seen, 1 Partly seen, 4 Not seen yet among 7 checks with a reported saving (payments fell by half the reported saving or more = Seen); the rest show only whether payments fell"
-20261109T154457Z,mart,"Vendor moves are decreases by vendors paid by enough agencies, largest first",pass,0 rows that are not decreases or fall below the thresholds
-20261109T154457Z,mart,All six recommendations have a status and a key number,pass,"6 rows, 6 distinct, 0 blank"
-20261109T154457Z,mart,"The path to $50M is numbered, adds up, and agrees with recommendation 4's status",pass,"28 steps to $50.2M a year; running total off in 0 steps; status says reaches, total reaches"
-20261109T154457Z,mart,"Vendor drill-downs tie to their payee names, and every bid-list vendor has one",pass,0 vendors whose payee names do not add up to their payments; 0 bid-list vendors without a drill-down
-20261109T154457Z,mart,Most of the path to $50M does not rest on assumed saving rates,pass,41% of the path ($20.5M) is assumed savings on statewide contracts and fallback areas; the rest carries forward savings GMI reported
-20261109T154457Z,mart,The measures catalog describes exactly the year-over-year columns of the marts,pass,"14 measures; 0 described but absent, 0 year-over-year columns undescribed, 0 with an unknown higher_is"
-20261109T154457Z,mart,"Stage evidence agrees with the confirmed stages, with the database's whole-year totals, and with DBM's printed actuals",pass,0 rows whose official stage differs from ref.budget_stage; 0 whole-file totals that differ from the database; 0 program comparisons with 60% or fewer matching exactly
-20261109T154457Z,mart,Every year whose portal stage label differs from the confirmed stage has evidence,pass,0 years where the portal's label and the confirmed stage differ but no evidence is recorded
-20261109T154457Z,mart,"All-funds total including public higher education = operating budget + higher education (every year, to the dollar)",pass,"0 years differ; FY2026: $8.61B higher education, $73.45B all funds including it"
-20261109T154457Z,mart,Public higher education is kept out of every GMI savings baseline,pass,"0 budget-scope rows and 0 opportunity findings for R13, R14, R30, R95; the payment detectors, bid list and vendor moves leave out $15.9M of FY2026 private payments by these agencies"
-20261109T154457Z,mart,Deflator: FY2026 = 1 and every budget year through FY2026 has a full-year CPI factor,pass,0 years missing or partial; FY2017 dollars x 1.3503 = FY2026 dollars; population FY2011-FY2026
-20261109T154457Z,mart,Deflator: population for every actual budget year,pass,0 actual years without population; 0 non-positive
-20261109T154457Z,mart,"Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",pass,410 flagged records in 205 groups (8 payment leads); 0 records in two groups; 0 malformed groups; 0 negative or inconsistent rows
-20261109T154457Z,mart,Payment screen: summary ties to the groups by rule and year; overlap between rules labeled; excluded payee types absent,pass,0 summary rows that do not tie; 0 groups outside the summary; 0 overlapping groups without a label; 0 records of an excluded payee type
-20261109T154457Z,mart,Payment screen backtest: every screened year FY2022-FY2026 and rule reported (stability),pass,"groups (review $) by year: FY2022 5 ($0.85M); FY2023 0 ($0.00M); FY2024 1 ($0.01M); FY2025 2 ($1.00M); FY2026 0 ($0.00M); split rule: Not measurable: payments are annual records, not dated payments"
-20261109T154457Z,mart,"Payee classifier: one row per payee name, no missing or unknown label, confidence in [0, 1]",pass,"61,798 rows for 61,798 payee names; 0 missing; 0 unknown labels"
-20261109T154457Z,mart,"Payee classifier: evaluation metrics present for rules, model and combined; sample labeled",pass,"9 of 9 metrics; 400 labeled names, 36 unsure (excluded), 0 not found"
-20261109T154457Z,mart,"Payee classifier: a name is shown as paid or withheld, never altered",pass,0 rows
-20261109T154457Z,mart,Payee classifier: macro F1 on the hand-labeled sample (rules / model / combined),pass,"rules 0.560, model 0.468, combined 0.560; accuracy 0.714 / 0.668 / 0.714; combined not promoted: final_label = rule label; review queue 2,475"
-20261109T154457Z,mart,Grant groups: every distinct description in exactly one group; group ids unique; no missing fields,pass,"5,008 descriptions, 5,008 members, 3,803 groups; 0 orphans; 0 duplicate ids; 0 missing"
-20261109T154457Z,mart,Grant groups: FY2025 dollars tie to the grants rows; leads are exactly the groups with 2+ grantor agencies in FY2025,pass,gap $0.00; 0 mislabeled leads
-20261109T154457Z,mart,Grant groups: sensitivity reported at every threshold (leads are not savings),pass,"backend sentence-transformers/all-MiniLM-L6-v2; 0.80: 3,452 groups, 1 leads ($17.18M FY2025 grants); 0.85: 3,803 groups, 1 leads ($17.18M FY2025 grants); 0.90: 4,161 groups, 1 leads ($17.18M FY2025 grants)"
-20261109T154457Z,mart,Payment screen vs source issues: no record is both a lead and a source issue; leads + source issues = every flagged record,pass,0 records in both; 0 groups split between them; 0 issue ids without a source-issue row; 16 lead records + 394 source-issue records = 410 of 410 flagged
-20261109T154457Z,mart,Source issues: verified issues still in the data with the dollars verified at the source on 2026-11-10,pass,"2 of 2 verified issues present; $874,477,234.00 vs $874,477,234.00 at the source; 0 issues not yet verified"
-20261109T154457Z,mart,"Payment leads: confidence, review status and note set; measured rate NULL (lever 0) unless the review confirms a lead",pass,0 leads with a missing or invalid label; measured rate None (not measurable without payment records); lever high rate 0.0
+20261110T165637Z,raw,Rows loaded = portal count: budget,pass,"741,957 loaded, 741,957 on the portal"
+20261110T165637Z,raw,Rows loaded = portal count: fund,pass,"26,178 loaded, 26,178 on the portal"
+20261110T165637Z,raw,Rows loaded = portal count: fte,pass,"6,026 loaded, 6,026 on the portal"
+20261110T165637Z,raw,Rows loaded = portal count: payments,pass,"412,880 loaded, 412,880 on the portal"
+20261110T165637Z,raw,Rows loaded = portal count: grants,pass,"23,085 loaded, 23,085 on the portal"
+20261110T165637Z,raw,Rows loaded = portal count: highered,pass,"84,446 loaded, 84,446 on the portal"
+20261110T165637Z,raw,Context source pulled: cpi,pass,"FRED CPIAUCNS (BLS unavailable: BLS: ['Request could not be serviced, as the daily threshold for total number of): 2007-01 to 2026-10, 1 missing months"
+20261110T165637Z,raw,Context source pulled: federal_awards,pass,FY2008-FY2027; latest full year $18.1B
+20261110T165637Z,raw,Context source pulled: population,pass,"2010-2025, vintage 2025"
+20261110T165637Z,raw,Context source pulled: mfr,pass,"FY2027: 111 agency PDFs (111 unchanged and reused), 14 MB"
+20261110T165637Z,core,Yearly totals = portal: budget,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
+20261110T165637Z,core,No missing year or amount: budget,pass,0 rows
+20261110T165637Z,core,Yearly totals = portal: fund,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
+20261110T165637Z,core,No missing year or amount: fund,pass,0 rows
+20261110T165637Z,core,Yearly totals = portal: fte,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
+20261110T165637Z,core,No missing year or amount: fte,pass,0 rows
+20261110T165637Z,core,Yearly totals = portal: payments,pass,20 years (2008-2027); largest gap $0.00; 0 years with a row-count difference
+20261110T165637Z,core,No missing year or amount: payments,pass,0 rows
+20261110T165637Z,core,Yearly totals = portal: grants,pass,17 years (2009-2025); largest gap $0.00; 0 years with a row-count difference
+20261110T165637Z,core,No missing year or amount: grants,pass,0 rows
+20261110T165637Z,core,Yearly totals = portal: highered,pass,11 years (2017-2027); largest gap $0.00; 0 years with a row-count difference
+20261110T165637Z,core,No missing year or amount: highered,pass,0 rows
+20261110T165637Z,core,Budget totals = funding-source totals (within $1),pass,largest yearly gap $1.00
+20261110T165637Z,core,Object and program codes are two digits,pass,0 rows
+20261110T165637Z,core,Funding-source rows keep their unit and two-digit program,pass,"0 of 26,178 rows without both; 785 agency-unit-programs"
+20261110T165637Z,core,Sub-object codes normalized (no leading zeros),pass,599 spellings on the portal -> 377 codes
+20261110T165637Z,core,Agency names carry no code suffix,pass,0 rows; 6 agencies renamed over time
+20261110T165637Z,core,Latest payments year flagged as partial,pass,"FY2027: 14,669 rows, $18.1B so far"
+20261110T165637Z,core,CPI covers every actual budget year (real dollars),pass,full fiscal years FY2008-FY2026; dollars of FY2026
+20261110T165637Z,core,Federal awards present for every complete year,pass,"still being reported: FY2026, FY2027"
+20261110T165637Z,core,Population covers every actual budget year,pass,through FY2026 (July 1 estimates)
+20261110T165637Z,core,Managing for Results plans downloaded (recommendation 6),pass,"111 agency PDFs, FY2027"
+20261110T165637Z,core,"Higher education dataset holds only its four agencies, none of them in the operating budget dataset",pass,"agencies R13, R14, R30, R95; 0 operating-budget rows for them; 0 unexpected agencies"
+20261110T165637Z,ref,Functions keyed by title,pass,12 functions; 2 titles span more than one code
+20261110T165637Z,ref,Every budget year has a confirmed stage,pass,"FY2025 Actual, FY2026 Working budget, FY2027 Legislative appropriation"
+20261110T165637Z,ref,FY2026 payment dollars matched to a budget agency,pass,100.0000% (dashboard: 100.00%)
+20261110T165637Z,ref,FY2027 (partial year) payment dollars matched,pass,100.0000%
+20261110T165637Z,ref,Payment agency names mapped,pass,"143 of 145 (dashboard: 141 of 145); unmapped: AID TO UNIVERSITY OF MD MEDICAL SYSTEM, SECURITY INTEREST FILING FEES"
+20261110T165637Z,ref,Payee names grouped into companies,pass,"9,729 names in 4,496 companies (dashboard, FY2026 payees only: 9,474 in 4,377)"
+20261110T165637Z,ref,Controllable purchases FY2025 = dashboard,pass,"$4,093,855,308 (dashboard $4,093,855,308)"
+20261110T165637Z,ref,Focus areas FY2025 = dashboard,pass,"$1,287,718,788 in 96 spending codes (dashboard $1,287,718,788 in 96)"
+20261110T165637Z,ref,Every focus-area code exists in the budget,pass,0 missing
+20261110T165637Z,ref,New payee names since the last build,warn,227 new since the last passing build: 11TH HOUSE INITIATIVES; 5 RIVERS FOOD & GAS LLC; 6502 MCCLEAN LLC; ACRES4CHANGE INC; ADORABLE OPTIONS INC; ADVENTIST HEALTHCARE SHADY GROVE MEDICAL CENTER; AIR COMBAT EFFECTIVENESS CONSULTING GRP; ALL QUALITY HVAC SERVICES LLC ...
+20261110T165637Z,ref,Managing for Results measures read from the plans (recommendation 6),pass,"2,957 measures from 108 of 111 plans; 106 plans matched to a budget agency"
+20261110T165637Z,mart,"Vendor payments by year = core payments (every year, to the dollar)",pass,0 years differ
+20261110T165637Z,mart,"Agency roll-up budget by year = core budget (every year, to the dollar)",pass,0 years differ
+20261110T165637Z,mart,One vendor master row per vendor paid,pass,"56,789 vendors, 0 duplicates, 56,789 in payments"
+20261110T165637Z,mart,Each agency's budget sits in one function (no allocation needed),pass,0 agency-years below 99%
+20261110T165637Z,mart,Every mapped payment rolls up to a function or a named exception,pass,$0 without a function
+20261110T165637Z,mart,Function exceptions are not in the operating budget,pass,none are
+20261110T165637Z,mart,Payments outside the operating budget data (latest full year),pass,Capital budget accounts: $1.57B; Not in the operating budget data: $1.40B
+20261110T165637Z,mart,Every vendor has a payee type,pass,Business or other 36.0%; Education institution 1.7%; Financial institution 5.9%; Government 35.0%; Health care organization 20.5%; Non-profit 0.2%; Utility 0.7% of all payment dollars
+20261110T165637Z,mart,Vendors tab: vendor pages add up to the vendor list (FY2026),pass,"0 vendors differ; 3,640 vendors listed"
+20261110T165637Z,mart,Vendors tab: payments by payee type = core payments (every year),pass,0 years differ
+20261110T165637Z,mart,Vendors tab: every multi-agency vendor is paid by 15+ agencies,pass,0 below 15; 42 in FY2026
+20261110T165637Z,mart,Vendors tab: concentration shares and HHI within bounds,pass,0 area-years out of bounds
+20261110T165637Z,mart,Vendors tab: concentration spend = private focus-area payments (every area and year),pass,0 differ
+20261110T165637Z,mart,Vendors tab: every company listed has two or more payee names,pass,0 with one name
+20261110T165637Z,mart,Vendors tab: 15+ agency count on both bases (FY2026),pass,company and budget agency: 42; payee name and payment account: 54 (the Maryland Spend Lens showed 54 on the payee-name basis)
+20261110T165637Z,mart,"Grants as listed = core grants (rows and dollars, every year)",pass,0 years differ
+20261110T165637Z,mart,Budget vs payments: budget and payments = core totals (every year),pass,0 years differ
+20261110T165637Z,mart,"Where it's going = how it's funded (budget by program = budget by fund source, every year)",pass,0 years differ
+20261110T165637Z,mart,Grants whose grantee is also a payee that year (name match),pass,"lowest year 13% of grant dollars; grants are shown as part of payments, never added"
+20261110T165637Z,mart,Agency results rows = matched Managing for Results rows,pass,"21,835 of 21,835"
+20261110T165637Z,mart,Forecast ranges are ordered (p10 <= p50 <= p90),pass,0 forecast rows out of order
+20261110T165637Z,mart,Forecast actuals add up to controllable purchases (every actual year),pass,largest yearly gap $0 (rows are rounded to the dollar); FY2025 baseline gap $0
+20261110T165637Z,mart,Every forecast area has nine actual years and six forecast years,pass,7 areas; 0 short
+20261110T165637Z,mart,Backtest ranges are ordered (p10 <= p50 <= p90),pass,0 backtest rows out of order
+20261110T165637Z,mart,Every forecast area is also scored against the State's plan for FY2026 and FY2027,pass,0 areas without both plan years
+20261110T165637Z,mart,Published forecast ranges cover about their nominal share on the rolling backtest,warn,"63.5% of 63 forecasts of actual spending fell inside the p10-p90 range (nominal 80%); about 1.63x wider ranges would have been needed (in-sample, a handful of points)"
+20261110T165637Z,mart,Chosen forecast model is no worse than the naive baseline in the rolling-origin backtest,pass,"every area's chosen model matches or beats naive (mean MASE over FY2021-FY2024 origins, scored against actuals)"
+20261110T165637Z,mart,"Opportunity findings are well formed (low <= high, no duplicate id, one finding per agency and spending code)",pass,"0 malformed, 0 duplicate ids, 0 repeated agency and code"
+20261110T165637Z,mart,Bid list vendors meet the agency and spend thresholds and are ranked by FY2026 payments,pass,"0 vendors below the thresholds, 0 ranks out of order"
+20261110T165637Z,mart,"Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)",pass,"$20.8M of the growth detector's $93.8M likely saving (22%) comes from findings that grew 1,000% or more; a minimum prior-year base (assumptions.yaml, opportunities.growth.min_base_budget) removes most of them"
+20261110T165637Z,mart,"Detector backtest: every detector, as-of year and cohort present and well formed",pass,"24 rows, 0 malformed, 12 flagged cohorts with units; flags recurring next year (pooled FY2022-FY2024): Growth above trend 38%; Leverage 91%; Peer gap 77%; Tail spend 100%"
+20261110T165637Z,mart,"Every reported savings item is unique, cites a page and a quote, and has low <= high",pass,"18 items, 18 distinct, 18 with a page and quote, 0 with low above high"
+20261110T165637Z,mart,"Every payment check matches payments, and the four named contract types are checked",pass,0 checks with no matching payments; 4 of 4 named contract types in the status table
+20261110T165637Z,mart,Every payment check has a status,pass,"2 Seen, 1 Partly seen, 4 Not seen yet among 7 checks with a reported saving (payments fell by half the reported saving or more = Seen); the rest show only whether payments fell"
+20261110T165637Z,mart,"Vendor moves are decreases by vendors paid by enough agencies, largest first",pass,0 rows that are not decreases or fall below the thresholds
+20261110T165637Z,mart,All six recommendations have a status and a key number,pass,"6 rows, 6 distinct, 0 blank"
+20261110T165637Z,mart,"The path to $50M is numbered, adds up, and agrees with recommendation 4's status",pass,"28 steps to $50.2M a year; running total off in 0 steps; status says reaches, total reaches"
+20261110T165637Z,mart,"Vendor drill-downs tie to their payee names, and every bid-list vendor has one",pass,0 vendors whose payee names do not add up to their payments; 0 bid-list vendors without a drill-down
+20261110T165637Z,mart,Most of the path to $50M does not rest on assumed saving rates,pass,41% of the path ($20.5M) is assumed savings on statewide contracts and fallback areas; the rest carries forward savings GMI reported
+20261110T165637Z,mart,The measures catalog describes exactly the year-over-year columns of the marts,pass,"14 measures; 0 described but absent, 0 year-over-year columns undescribed, 0 with an unknown higher_is"
+20261110T165637Z,mart,"Stage evidence agrees with the confirmed stages, with the database's whole-year totals, and with DBM's printed actuals",pass,0 rows whose official stage differs from ref.budget_stage; 0 whole-file totals that differ from the database; 0 program comparisons with 60% or fewer matching exactly
+20261110T165637Z,mart,Every year whose portal stage label differs from the confirmed stage has evidence,pass,0 years where the portal's label and the confirmed stage differ but no evidence is recorded
+20261110T165637Z,mart,"All-funds total including public higher education = operating budget + higher education (every year, to the dollar)",pass,"0 years differ; FY2026: $8.61B higher education, $73.45B all funds including it"
+20261110T165637Z,mart,Public higher education is kept out of every GMI savings baseline,pass,"0 budget-scope rows and 0 opportunity findings for R13, R14, R30, R95; the payment detectors, bid list and vendor moves leave out $15.9M of FY2026 private payments by these agencies"
+20261110T165637Z,mart,Deflator: FY2026 = 1 and every budget year through FY2026 has a full-year CPI factor,pass,0 years missing or partial; FY2017 dollars x 1.3503 = FY2026 dollars; population FY2011-FY2026
+20261110T165637Z,mart,Deflator: population for every actual budget year,pass,0 actual years without population; 0 non-positive
+20261110T165637Z,mart,"Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",pass,410 flagged records in 205 groups (8 payment leads); 0 records in two groups; 0 malformed groups; 0 negative or inconsistent rows
+20261110T165637Z,mart,Payment screen: summary ties to the groups by rule and year; overlap between rules labeled; excluded payee types absent,pass,0 summary rows that do not tie; 0 groups outside the summary; 0 overlapping groups without a label; 0 records of an excluded payee type
+20261110T165637Z,mart,Payment screen backtest: every screened year FY2022-FY2026 and rule reported (stability),pass,"groups (review $) by year: FY2022 5 ($0.85M); FY2023 0 ($0.00M); FY2024 1 ($0.01M); FY2025 2 ($1.00M); FY2026 0 ($0.00M); split rule: Not measurable: payments are annual records, not dated payments"
+20261110T165637Z,mart,"Payee classifier: one row per payee name, no missing or unknown label, confidence in [0, 1]",pass,"62,022 rows for 62,022 payee names; 0 missing; 0 unknown labels"
+20261110T165637Z,mart,"Payee classifier: evaluation metrics present for rules, model and combined; sample labeled",pass,"9 of 9 metrics; 400 labeled names, 36 unsure (excluded), 0 not found"
+20261110T165637Z,mart,"Payee classifier: a name is shown as paid or withheld, never altered",pass,0 rows
+20261110T165637Z,mart,Payee classifier: macro F1 on the hand-labeled sample (rules / model / combined),pass,"rules 0.560, model 0.459, combined 0.560; accuracy 0.714 / 0.665 / 0.714; combined not promoted: final_label = rule label; review queue 1,880"
+20261110T165637Z,mart,Grant groups: every distinct description in exactly one group; group ids unique; no missing fields,pass,"5,008 descriptions, 5,008 members, 3,803 groups; 0 orphans; 0 duplicate ids; 0 missing"
+20261110T165637Z,mart,Grant groups: FY2025 dollars tie to the grants rows; leads are exactly the groups with 2+ grantor agencies in FY2025,pass,gap $0.00; 0 mislabeled leads
+20261110T165637Z,mart,Grant groups: sensitivity reported at every threshold (leads are not savings),pass,"backend sentence-transformers/all-MiniLM-L6-v2; 0.80: 3,452 groups, 1 leads ($17.18M FY2025 grants); 0.85: 3,803 groups, 1 leads ($17.18M FY2025 grants); 0.90: 4,161 groups, 1 leads ($17.18M FY2025 grants)"
+20261110T165637Z,mart,Payment screen vs source issues: no record is both a lead and a source issue; leads + source issues = every flagged record,pass,0 records in both; 0 groups split between them; 0 issue ids without a source-issue row; 16 lead records + 394 source-issue records = 410 of 410 flagged
+20261110T165637Z,mart,Source issues: verified issues still in the data with the dollars verified at the source on 2026-11-10,pass,"2 of 2 verified issues present; $874,477,234.00 vs $874,477,234.00 at the source; 0 issues not yet verified"
+20261110T165637Z,mart,"Payment leads: confidence, review status and note set; measured rate NULL (lever 0) unless the review confirms a lead",pass,0 leads with a missing or invalid label; measured rate None (not measurable without payment records); lever high rate 0.0
