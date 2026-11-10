@@ -50,7 +50,7 @@ Every number on these pages is computed from the published data files. Click a s
 - **Payment evidence:** about 10% of the path to $50.2M has payment evidence; the path is conditional on reported savings recurring and an assumed 3.5% from statewide contracts ($41.4M–$58.9M across the assumed ranges).
 - **Opportunities:** 396 findings worth up to $339.9M a year ($225.7M likely). They are leads to review; they overlap and are not additive.
 - **Payment screen:** 8 possible duplicate payment groups ($1.86M to review). None can be confirmed without payment records.
-- **Source data issue:** the published FY2022 payments data lists a second block of $874.5M for Maryland Environmental Service And Maryland Transportation Authority, confirmed on both State sites on Nov 10, 2026. It is reported as a source issue, never as a lead.
+- **Source data issue:** the published FY2022 payments data lists a second block of $874.5M for Maryland Environmental Service and Maryland Transportation Authority, confirmed on both State sites on Nov 10, 2026. It is reported as a source issue, never as a lead.
 <!-- /facts:readme -->
 
 ## Data

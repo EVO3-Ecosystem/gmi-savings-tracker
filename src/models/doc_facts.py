@@ -136,7 +136,7 @@ def readme_facts(con):
         + f" ({mm(pl.low.sum())}–{mm(pl.high.sum())} across the assumed ranges).",
         f"- **Opportunities:** {op[0]} findings worth up to {mm(op[1])} a year ({mm(op[2])} likely). They are leads to review; they overlap and are not additive.",
         f"- **Payment screen:** {int(ps[0])} possible duplicate payment groups ({mm(ps[1])} to review). None can be confirmed without payment records.",
-        f"- **Source data issue:** the published FY2022 payments data lists a second block of {mm(si[0])} for {si[2].title()}, confirmed on both State sites on "
+        f"- **Source data issue:** the published FY2022 payments data lists a second block of {mm(si[0])} for {" and ".join(n.strip().title() for n in si[2].split(" and "))}, confirmed on both State sites on "
         f"{si[1]:%b} {si[1].day}, {si[1].year}. It is reported as a source issue, never as a lead.",
     ])
 
