@@ -376,23 +376,28 @@ mart.d_opps,low,DOUBLE,396,Low end of the estimated saving; uses a screening ass
 mart.d_opps,high,DOUBLE,396,High end of the estimated saving; uses a screening assumption (see Assumptions register),derived
 mart.d_opps,evidence,VARCHAR,396,Plain-language reason the detector flagged the row,derived
 mart.d_opps,likely,DOUBLE,396,Midpoint of low and high,derived
-mart.d_payment_screen,group_id,VARCHAR,205,Identifier of a flagged group of payment records (hash of the rule and its grouping keys),derived
-mart.d_payment_screen,rule,VARCHAR,205,Name of the mapping or scope rule,reference
-mart.d_payment_screen,fiscal_year,INTEGER,205,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-mart.d_payment_screen,agency_code,VARCHAR,205,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
-mart.d_payment_screen,agency,VARCHAR,205,Agency name shown on the dashboard,derived
-mart.d_payment_screen,vendor,VARCHAR,205,Company name after grouping payee names,derived
-mart.d_payment_screen,payee_type,VARCHAR,205,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
-mart.d_payment_screen,first_date,DATE,205,Earliest record date in the group,derived
-mart.d_payment_screen,last_date,DATE,205,Latest record date in the group,derived
-mart.d_payment_screen,n,BIGINT,205,Number of payment records in the group,derived
-mart.d_payment_screen,amount,DOUBLE,205,"Dollars paid, awarded or reported on the row; nominal dollars",portal
-mart.d_payment_screen,total_amount,DOUBLE,205,Dollars of all records in the group(s),derived
-mart.d_payment_screen,review_amount,DOUBLE,205,Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead),derived
-mart.d_payment_screen,payee_names,BIGINT,205,Distinct payee names (as paid) in the group,derived
-mart.d_payment_screen,zips,BIGINT,205,Distinct payee ZIP codes in the group,derived
-mart.d_payment_screen,also_flagged_under,VARCHAR,205,"Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap)",derived
-mart.d_payment_screen,date_grain,VARCHAR,205,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)",derived
+mart.d_payment_screen,group_id,VARCHAR,8,Identifier of a flagged group of payment records (hash of the rule and its grouping keys),derived
+mart.d_payment_screen,rule,VARCHAR,8,Name of the mapping or scope rule,reference
+mart.d_payment_screen,fiscal_year,INTEGER,8,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.d_payment_screen,agency_code,VARCHAR,8,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.d_payment_screen,agency,VARCHAR,8,Agency name shown on the dashboard,derived
+mart.d_payment_screen,agency_raw,VARCHAR,8,Paying agency name as published (most common name in the group); agency is the pipeline's cleaned name (agency_master),portal
+mart.d_payment_screen,vendor,VARCHAR,8,Company name after grouping payee names,derived
+mart.d_payment_screen,payee_type,VARCHAR,8,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
+mart.d_payment_screen,first_date,DATE,8,Earliest record date in the group,derived
+mart.d_payment_screen,last_date,DATE,8,Latest record date in the group,derived
+mart.d_payment_screen,n,BIGINT,8,Number of payment records in the group,derived
+mart.d_payment_screen,amount,DOUBLE,8,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+mart.d_payment_screen,total_amount,DOUBLE,8,Dollars of all records in the group(s),derived
+mart.d_payment_screen,review_amount,DOUBLE,8,Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead),derived
+mart.d_payment_screen,payee_names,BIGINT,8,Distinct payee names (as paid) in the group,derived
+mart.d_payment_screen,zips,BIGINT,8,Distinct payee ZIP codes in the group,derived
+mart.d_payment_screen,also_flagged_under,VARCHAR,8,"Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap)",derived
+mart.d_payment_screen,date_grain,VARCHAR,8,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)",derived
+mart.d_payment_screen,confidence_score,INTEGER,8,"Confidence points from rules fixed before measuring (config payment_screen.confidence): +1 not a round amount, -1 a multiple of $1,000, +1 one paying unit, -1 several paying units, -1 same amount in another year, -1 under $5,000, -1 non-profit payee",derived
+mart.d_payment_screen,confidence,VARCHAR,8,"Confidence that the lead is a real duplicate: high (score >= 1), medium (0) or low (<= -1); low for split purchases",derived
+mart.d_payment_screen,review_status,VARCHAR,8,"Evidence review from the data alone: unreviewed, confirmed_duplicate_in_source (records identical in every published field), likely_legitimate (a pattern of equal payments from several units) or needs_records; never a confirmed overpayment",derived
+mart.d_payment_screen,review_note,VARCHAR,8,"One-line evidence note behind review_status (paying units, ZIPs, the vendor's other payments by the agency, equal payments from other units)",derived
 mart.d_payment_screen_summary,rule,VARCHAR,15,Name of the mapping or scope rule,reference
 mart.d_payment_screen_summary,rule_order,INTEGER,15,Display order of the rule,derived
 mart.d_payment_screen_summary,fiscal_year,INTEGER,15,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
@@ -403,9 +408,13 @@ mart.d_payment_screen_summary,review_amount,DOUBLE,15,Dollars a review could rec
 mart.d_payment_screen_summary,date_grain,VARCHAR,15,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)",derived
 mart.d_payment_screen_summary,status,VARCHAR,15,"Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied",derived
 mart.d_payment_screen_summary,lever_fy,INTEGER,15,Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy),reference
-mart.d_payment_screen_summary,lever_rate_low,"DECIMAL(3,2)",15,"Assumed share of flagged review dollars confirmed and recovered, low case (2%); an assumption to be replaced by a reviewed sample",reference
-mart.d_payment_screen_summary,lever_rate_likely,"DECIMAL(3,2)",15,"Assumed share of flagged review dollars confirmed and recovered, likely case (5%); an assumption to be replaced by a reviewed sample",reference
-mart.d_payment_screen_summary,lever_rate_high,"DECIMAL(2,1)",15,"Assumed share of flagged review dollars confirmed and recovered, high case (10%); an assumption to be replaced by a reviewed sample",reference
+mart.d_payment_screen_summary,lever_rate_low,DOUBLE,15,"Calculator lever rate, low case: lower Wilson bound of the measured confirmation rate; 0 when not measurable (rate_basis)",derived
+mart.d_payment_screen_summary,lever_rate_likely,DOUBLE,15,"Calculator lever rate, likely case: the measured confirmation rate; 0 when not measurable (rate_basis)",derived
+mart.d_payment_screen_summary,lever_rate_high,DOUBLE,15,"Calculator lever rate, high case: upper Wilson bound of the measured confirmation rate; 0 when not measurable (rate_basis)",derived
+mart.d_payment_screen_summary,measured_confirmation_rate,DOUBLE,15,Share of reviewed leads confirmed by the evidence review; blank when the review confirms none (not measurable without payment records),derived
+mart.d_payment_screen_summary,rate_basis,VARCHAR,15,"How the confirmation rate and the lever rates were set: the measured share with its Wilson interval, or 'not measurable without payment records' (lever 0)",derived
+mart.d_payment_screen_summary,reviewed_leads,BIGINT,15,Payment leads the evidence review reached a status for (not unreviewed),derived
+mart.d_payment_screen_summary,confirmed_leads,BIGINT,15,Payment leads the evidence review marked confirmed_duplicate_in_source,derived
 mart.d_plan50,step,BIGINT,28,Order of the step in the path to $50M,derived
 mart.d_plan50,action,VARCHAR,28,Action in the path to $50M,derived
 mart.d_plan50,basis,VARCHAR,28,How the step's saving is calculated,derived
@@ -442,6 +451,23 @@ mart.d_savings_status,after,DOUBLE,12,Matching payments in FY2026,derived
 mart.d_savings_status,status,VARCHAR,12,"Whether the reported saving is seen in payments (Seen, Partly seen, Not seen yet, Payments fell, Payments did not fall)",derived
 mart.d_savings_status,previous_status,VARCHAR,12,Status in the previous run,ops
 mart.d_savings_status,changed,BOOLEAN,12,True when the status changed since the previous run,ops
+mart.d_source_issues,issue_id,VARCHAR,2,Source issue identifier: 'SRC-<fiscal year>-<agency code>',derived
+mart.d_source_issues,issue,VARCHAR,2,Short description of the data-publication issue,derived
+mart.d_source_issues,fiscal_year,INTEGER,2,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
+mart.d_source_issues,agency_code,VARCHAR,2,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+mart.d_source_issues,agency,VARCHAR,2,Agency name shown on the dashboard,derived
+mart.d_source_issues,agency_raw,VARCHAR,2,Paying agency name as published (most common name in the group); agency is the pipeline's cleaned name (agency_master),portal
+mart.d_source_issues,records,BIGINT,2,Records in the second (off-year dated) block of the agency's fiscal year,derived
+mart.d_source_issues,amount,DOUBLE,2,"Dollars paid, awarded or reported on the row; nominal dollars",portal
+mart.d_source_issues,identical_records,HUGEINT,2,"Records of the second block equal to a first-block record in payee name, ZIP and amount (matched one to one)",derived
+mart.d_source_issues,identical_amount,DOUBLE,2,Dollars of the identical records,derived
+mart.d_source_issues,screen_groups,BIGINT,2,Payment-screen groups moved here from the leads (repeated annual lines inside this issue),derived
+mart.d_source_issues,screen_records,HUGEINT,2,Payment records in those groups,derived
+mart.d_source_issues,screen_review_amount,DOUBLE,2,Review dollars those groups carried as leads before they were recognised as a publication issue (every copy after the first),derived
+mart.d_source_issues,evidence,VARCHAR,2,"The numbers behind the issue: both blocks' records and dollars, identical records, screen groups",derived
+mart.d_source_issues,verified_against,VARCHAR,2,Where the issue was checked at the source (config source_issues); blank when not yet verified,reference
+mart.d_source_issues,verified_on,DATE,2,Date the issue was checked at the source (docs/reconciliation/crosschecks_2026-11-10.csv),reference
+mart.d_source_issues,status,VARCHAR,2,Whether the issue is confirmed in the published source and what to do next,reference
 mart.d_vendor_moves,vendor,VARCHAR,40,Company name after grouping payee names,derived
 mart.d_vendor_moves,fy2024,DOUBLE,40,Payments in FY2024,derived
 mart.d_vendor_moves,fy2025,DOUBLE,40,Payments in FY2025,derived
@@ -628,11 +654,11 @@ mart.pipeline_runs,repairs,BIGINT,5,Datasets re-downloaded by self-healing,ops
 mart.pipeline_runs,payment_rows,BIGINT,5,Payment rows in the run,ops
 mart.pipeline_runs,budget_rows,BIGINT,5,Budget rows in the run,ops
 mart.pipeline_runs,mode,VARCHAR,5,"Run mode (full, freshness reuse, test fault)",ops
-mart.run_checks,run_id,VARCHAR,93,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-mart.run_checks,stage,VARCHAR,93,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
-mart.run_checks,check,VARCHAR,93,Check description,ops
-mart.run_checks,status,VARCHAR,93,"pass, warn or fail",ops
-mart.run_checks,detail,VARCHAR,93,Numbers behind the check result,ops
+mart.run_checks,run_id,VARCHAR,96,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+mart.run_checks,stage,VARCHAR,96,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
+mart.run_checks,check,VARCHAR,96,Check description,ops
+mart.run_checks,status,VARCHAR,96,"pass, warn or fail",ops
+mart.run_checks,detail,VARCHAR,96,Numbers behind the check result,ops
 mart.sources,source,VARCHAR,6,Short name of the source dataset,derived
 mart.sources,dataset_id,VARCHAR,6,Portal four-by-four identifier,ops
 mart.sources,title,VARCHAR,6,Dataset title used on the dashboard,derived
@@ -674,6 +700,7 @@ mart.v_payment_screen_rows,fiscal_year,INTEGER,410,"Maryland fiscal year (July 1
 mart.v_payment_screen_rows,agency_key,VARCHAR,410,Budget agency code of the payment; the agency name as paid when the payment is not matched to an agency,derived
 mart.v_payment_screen_rows,agency_code,VARCHAR,410,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 mart.v_payment_screen_rows,agency_name_as_paid,VARCHAR,410,Agency name exactly as it appears in the payments dataset,derived
+mart.v_payment_screen_rows,agency_code_as_paid,VARCHAR,410,"Paying unit's code as published (the portal's category column, e.g. 602 = DGS capital), used to tell two paying units apart",portal
 mart.v_payment_screen_rows,vendor,VARCHAR,410,Company name after grouping payee names,derived
 mart.v_payment_screen_rows,vendor_key,VARCHAR,410,Normalized payee name the vendor grouping and the name rules are matched on (ref.map_payee_vendor),derived
 mart.v_payment_screen_rows,payee_type,VARCHAR,410,"Payee type from reference/payee_type_rules.csv: Government, Health care organization, Education institution, Financial institution, Utility, Non-profit (grants data) or Business or other",derived
@@ -682,6 +709,7 @@ mart.v_payment_screen_rows,vendor_zip,VARCHAR,410,Payee ZIP code as published,po
 mart.v_payment_screen_rows,amount,DOUBLE,410,"Dollars paid, awarded or reported on the row; nominal dollars",portal
 mart.v_payment_screen_rows,record_date,DATE,410,"The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows",portal
 mart.v_payment_screen_rows,date_grain,VARCHAR,410,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)",derived
+mart.v_payment_screen_rows,source_issue_id,VARCHAR,410,"Source issue the record's group belongs to ('SRC-<fiscal year>-<agency code>'), blank for payment leads; such groups go to d_source_issues, never to d_payment_screen",derived
 mart.v_purchase,fiscal_year,INTEGER,341180,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.v_purchase,agency_code,VARCHAR,341180,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
 mart.v_purchase,vendor,VARCHAR,341180,Company name after grouping payee names,derived
@@ -721,22 +749,22 @@ mart.vendor_type,payee_type,VARCHAR,56590,"Payee type from reference/payee_type_
 mart.vendor_type,type_basis,VARCHAR,56590,"How the payee type was assigned: name rule, grants data nonprofit = Y, or default",derived
 mart.vendor_type,payee_names,BIGINT,56590,Distinct payee names grouped into the vendor,derived
 mart.vendor_type,focus_area,VARCHAR,56590,One of GMI's six focus areas assigned by reference/focus_area_rules.csv; empty when none,derived
-ops.check_coverage,check,VARCHAR,93,Check description,ops
-ops.check_coverage,layer,VARCHAR,93,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_coverage,tables,VARCHAR,93,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated",derived
-ops.check_result,run_id,VARCHAR,93,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
-ops.check_result,layer,VARCHAR,93,"Database layer the check ran on (raw, core, ref, mart)",ops
-ops.check_result,check,VARCHAR,93,Check description,ops
-ops.check_result,severity,VARCHAR,93,Stop (blocks the run) or Warn,ops
-ops.check_result,result,VARCHAR,93,"pass, warn or fail",ops
-ops.check_result,detail,VARCHAR,93,Numbers behind the check result,ops
+ops.check_coverage,check,VARCHAR,96,Check description,ops
+ops.check_coverage,layer,VARCHAR,96,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_coverage,tables,VARCHAR,96,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated",derived
+ops.check_result,run_id,VARCHAR,96,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
+ops.check_result,layer,VARCHAR,96,"Database layer the check ran on (raw, core, ref, mart)",ops
+ops.check_result,check,VARCHAR,96,Check description,ops
+ops.check_result,severity,VARCHAR,96,Stop (blocks the run) or Warn,ops
+ops.check_result,result,VARCHAR,96,"pass, warn or fail",ops
+ops.check_result,detail,VARCHAR,96,Numbers behind the check result,ops
 ops.enrichment,run_id,VARCHAR,4,"Pipeline run identifier, UTC timestamp YYYYMMDDTHHMMSSZ",ops
 ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
 ops.enrichment,rows,BIGINT,4,Row count,ops
 ops.enrichment,detail,VARCHAR,4,Numbers behind the check result,ops
-ops.lineage,table_name,VARCHAR,258,Warehouse table (schema.name) created by the build,derived
-ops.lineage,depends_on,VARCHAR,258,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
+ops.lineage,table_name,VARCHAR,268,Warehouse table (schema.name) created by the build,derived
+ops.lineage,depends_on,VARCHAR,268,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
 ops.payee_name_seen,payee_name,VARCHAR,61798,"Payee name exactly as paid (ref.map_payee_vendor.payee), one row per name ever seen by a passing build",ops
 ops.payee_name_seen,first_seen_run_id,VARCHAR,61798,Extract run of the first build that passed its stop checks and saw this payee name,ops
 ops.payee_name_seen,first_seen_date,VARCHAR,61798,UTC date of that extract run (YYYY-MM-DD),ops
@@ -878,10 +906,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,397,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,397,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,397,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,397,What the column means,reference
+ref.column_dictionary,column,VARCHAR,422,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,422,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,422,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,422,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference

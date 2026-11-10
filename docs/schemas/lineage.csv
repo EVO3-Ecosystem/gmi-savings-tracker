@@ -98,7 +98,11 @@ mart.d_opps,core.fact_budget_scope
 mart.d_opps,mart.agency_year
 mart.d_opps,mart.payment_area
 mart.d_opps,ref.dim_stage
+mart.d_payment_screen,core.fact_payment_mapped
+mart.d_payment_screen,mart.agency_master
+mart.d_payment_screen,mart.d_source_issues
 mart.d_payment_screen,mart.v_payment_screen_rows
+mart.d_payment_screen,ref.map_payee_vendor
 mart.d_payment_screen_summary,core.fact_payment
 mart.d_payment_screen_summary,mart.d_payment_screen
 mart.d_plan50,core.fact_payment_mapped
@@ -123,6 +127,10 @@ mart.d_rec_status,mart.payment_area
 mart.d_rec_status,ref.map_mfr_agency
 mart.d_savings,mart.payment_area
 mart.d_savings_status,mart.payment_area
+mart.d_source_issues,core.fact_payment_mapped
+mart.d_source_issues,mart.agency_master
+mart.d_source_issues,mart.d_payment_screen
+mart.d_source_issues,mart.v_payment_screen_rows
 mart.d_vendor_moves,mart.payment_area
 mart.d_vendor_names,core.fact_payment_mapped
 mart.d_vendor_names,core.mfr_measure
@@ -225,6 +233,8 @@ mart.spending_scope,ref.dim_stage
 mart.totals_by_fy,mart.payment_area
 mart.v_payment_screen_rows,core.fact_payment
 mart.v_payment_screen_rows,core.fact_payment_mapped
+mart.v_payment_screen_rows,mart.d_payment_screen
+mart.v_payment_screen_rows,mart.d_source_issues
 mart.v_payment_screen_rows,mart.payment_area
 mart.v_payment_screen_rows,mart.vendor_type
 mart.v_payment_screen_rows,ref.map_payee_vendor

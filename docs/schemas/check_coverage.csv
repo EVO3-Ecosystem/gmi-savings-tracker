@@ -92,3 +92,6 @@ Deflator: population for every actual budget year,mart,mart.d_deflator ref.dim_s
 "Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",mart,mart.d_payment_screen mart.d_payment_screen_summary mart.v_payment_screen_rows
 Payment screen: summary ties to the groups by rule and year; overlap between rules labeled; excluded payee types absent,mart,mart.d_payment_screen mart.d_payment_screen_summary mart.v_payment_screen_rows
 Payment screen backtest: every screened year FY2022-FY2026 and rule reported (stability),mart,mart.d_payment_screen_summary
+Payment screen vs source issues: no record is both a lead and a source issue; leads + source issues = every flagged record,mart,mart.d_payment_screen mart.d_source_issues mart.v_payment_screen_rows
+Source issues: verified issues still in the data with the dollars verified at the source on 2026-11-10,mart,mart.d_source_issues
+"Payment leads: confidence, review status and note set; measured rate NULL (lever 0) unless the review confirms a lead",mart,mart.d_payment_screen mart.d_payment_screen_summary

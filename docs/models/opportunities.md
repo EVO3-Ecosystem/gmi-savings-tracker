@@ -19,19 +19,25 @@ Findings at the same agency and spending code are listed once (the larger kept).
 
 On this pipeline's marts the port gives **exactly the legacy scripts' output**: 453 findings and a 30-vendor bid list (`tests/test_opportunities_parity.py` runs both on the same inputs). One deliberate difference: an agency's name is its latest one; the legacy script took whichever row came first, which depends on row order. Eleven tests on constructed cases (`tests/test_opportunities.py`) pin each rule, including the percentile, the cap, the tie-break between detectors and the exclusions, and run in CI.
 
-## What the numbers show (FY2025 and FY2026 data, Nov 7, 2026 build)
+## What the numbers show (FY2025 and FY2026 data; current build)
+
+<!-- facts:opportunities -->
+_Generated from `mart.d_opps` and `mart.d_bid_list`, extract run 20261109T154457Z, by `python -m src.models.doc_facts`._
 
 | Detector | Findings | Likely saving | Range |
 |---|---|---|---|
-| Peer gap | 246 | $93.4M | $43.8M-$143.1M |
-| Growth above trend | 166 | $135.7M | $67.9M-$203.6M |
-| Leverage | 38 | $27.5M | $15.7M-$39.3M |
-| Tail spend | 3 | $1.6M | $0.8M-$2.5M |
-| **All** | **453** | **$258.3M** | **$128.1M-$388.4M** |
+| Peer gap | 316 | $102.96M | $48.25M-$157.68M |
+| Growth above trend | 39 | $93.77M | $46.89M-$140.66M |
+| Leverage | 38 | $27.40M | $15.66M-$39.14M |
+| Tail spend | 3 | $1.60M | $739,265-$2.46M |
+| **All** | **396** | **$225.74M** | **$111.53M-$339.94M** |
 
-Bid list: 30 vendors, $21.1M likely.
+Bid list: 30 vendors, $12.04M-$30.10M.
+<!-- /facts:opportunities -->
 
-**Do not read $258M as the size of the opportunity.** Three reasons, all measured:
+(The counts above are written from the data on every `make docs`. The Nov 7, 2026 build's table read 246 peer-gap and 166 growth findings, 453 in all; the $1M growth base and the higher-education exclusion since then changed them. The parity sentence above refers to the legacy setting, which the parity test sets explicitly.)
+
+**Do not read the total as the size of the opportunity.** Three reasons, all measured (the figures below are from the Nov 7, 2026 build at the legacy setting, $258.3M in all):
 
 1. **The findings are not additive.** The budget detectors flag $3.08B of baseline spending and the payment detectors $0.81B of the same money seen from the payments side; only the two budget detectors are de-duplicated against each other.
 2. **Some growth findings look like re-coding, not growth.** 38 of the growth detector's 166 findings grew 1,000% or more (for example Food Services at Public Safety and Correctional Services, +42,462%; Food at the Health department, +2,090%) and carry **$52.0M, 38% of that detector's $135.7M**. A line that jumps from a few thousand dollars to millions is more likely a budget line that was renamed or moved than a saving to chase. The build warns when this share exceeds 25% (it did at the legacy setting: 38%; with the $1M minimum it is 22%).
