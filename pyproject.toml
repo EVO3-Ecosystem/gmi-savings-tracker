@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "GMI Savings Tracker: local SODA -> Parquet -> DuckDB pipeline that checks reported savings against Maryland's own payments and finds the next $50M"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0", "pdfplumber>=0.11", "matplotlib>=3.8", "scikit-learn>=1.3"]
+dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0", "pdfplumber>=0.11", "matplotlib>=3.8", "scikit-learn>=1.3", "pytz>=2023.3"]  # pytz: DuckDB needs it to return time-zone timestamps (MCP and site provenance)
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
