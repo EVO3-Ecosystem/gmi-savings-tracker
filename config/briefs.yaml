@@ -1,0 +1,6 @@
+# One-line agency briefs (src/briefs/generate.py; docs/briefs.md). The API key is never stored here: set GEMINI_API_KEY in the
+# environment (or a repository secret). Without it the gemini backend is skipped and the deterministic template is used.
+gemini:
+  model: gemini-2.5-flash      # any Gemini text model the key can call
+  temperature: 0.0
+  max_output_tokens: 120
