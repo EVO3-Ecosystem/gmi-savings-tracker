@@ -24,6 +24,14 @@ BACKENDS = ["export"] + (["duckdb"] if DB.exists() else [])
 _stores = {}
 
 
+@pytest.fixture(scope="module", autouse=True)
+def _close_stores():
+    yield
+    for st in _stores.values():
+        st.close()
+    _stores.clear()
+
+
 def store(backend):
     if backend not in _stores:
         _stores[backend] = Store(export_dir=SNAP, prefer="export") if backend == "export" else Store(db=DB, prefer="duckdb")

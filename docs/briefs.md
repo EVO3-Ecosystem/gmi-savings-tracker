@@ -30,7 +30,7 @@ Options: `--source export|duckdb` (the checked-in `site_data/` export, the defau
 Backends:
 
 - **template**: deterministic, no network. "Maryland Department of Health paid $17.47 billion to payees in FY2026, up 5.3%
-  from FY2025; its FY2026 operating budget (working) was $23.87 billion, and its largest private vendor was PRIORITY
+  from FY2025; its FY2026 operating budget (working budget) was $23.87 billion, and its largest private vendor was PRIORITY
   PARTNERS MCO at $1.53 billion."
 - **gemini**: the google-genai SDK (`client.models.generate_content`, temperature 0), given the facts with their display
   strings and told to use only them. Skipped with a notice, and the template used, when `GEMINI_API_KEY` is unset or the

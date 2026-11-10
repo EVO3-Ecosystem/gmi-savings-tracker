@@ -330,4 +330,71 @@ calls the tools over MCP (lists cut to three items, `definitions` and `disclaime
 ## Appendix: publish dry run
 
 <!-- publish-dry-run -->
+Recorded Nov 10, 2026 with `python -m src.pipeline.publish --dry-run --src site_data` (no network; exit=0). The same command runs in `.github/workflows/publish_data.yml` before any upload, and staging validates again.
+
+```text
+warning: manifest.csv says 23133 rows for f_grants, the Parquet file has 23085 (the export counts CSV lines; a quoted text field contains line breaks); the card uses the file's count
+staged 48 Parquet files (2.2 MB), manifest and dataset card in <temporary folder>/hf_stage; validated
+run_id=20261109T154457Z
+dry run (no network): the publish would do this
+
+Hugging Face dataset: thedatavigilante/maryland-gmi-spending (upload_folder of hf_stage/, replaces parquet/*.parquet)
+GitHub Release: tag data-20261109T154457Z, title 'Data export 20261109T154457Z', assets: 48 Parquet files + manifest.csv
+```
+
+| file | bytes |
+|---|---|
+| README.md | 8,815 |
+| manifest.csv | 2,140 |
+| parquet/agency_master.parquet | 6,286 |
+| parquet/d_agency.parquet | 3,522 |
+| parquet/d_all_funds.parquet | 5,729 |
+| parquet/d_area_top.parquet | 6,657 |
+| parquet/d_bid_list.parquet | 7,661 |
+| parquet/d_deflator.parquet | 5,280 |
+| parquet/d_families.parquet | 23,535 |
+| parquet/d_forecast_model.parquet | 8,624 |
+| parquet/d_master_quality.parquet | 2,593 |
+| parquet/d_multi.parquet | 16,102 |
+| parquet/d_multi_basis.parquet | 3,131 |
+| parquet/d_opps.parquet | 23,210 |
+| parquet/d_payment_screen.parquet | 20,943 |
+| parquet/d_payment_screen_summary.parquet | 8,616 |
+| parquet/d_plan50.parquet | 7,079 |
+| parquet/d_rec_status.parquet | 5,415 |
+| parquet/d_savings.parquet | 13,157 |
+| parquet/d_savings_status.parquet | 5,871 |
+| parquet/d_vendor_moves.parquet | 6,082 |
+| parquet/d_vendor_names.parquet | 10,616 |
+| parquet/d_vendors.parquet | 173,966 |
+| parquet/f_agency.parquet | 24,983 |
+| parquet/f_area.parquet | 71,885 |
+| parquet/f_budget_vs_pay.parquet | 42,215 |
+| parquet/f_code.parquet | 107,641 |
+| parquet/f_concentration.parquet | 6,769 |
+| parquet/f_forecast.parquet | 6,793 |
+| parquet/f_function.parquet | 9,988 |
+| parquet/f_fund.parquet | 17,636 |
+| parquet/f_fund_source.parquet | 128,510 |
+| parquet/f_grants.parquet | 667,211 |
+| parquet/f_object.parquet | 89,296 |
+| parquet/f_overlap.parquet | 12,945 |
+| parquet/f_payee_type.parquet | 64,032 |
+| parquet/f_program.parquet | 77,706 |
+| parquet/f_savings_check.parquet | 14,623 |
+| parquet/f_scope.parquet | 22,042 |
+| parquet/f_vendor.parquet | 52,213 |
+| parquet/f_vendor_detail.parquet | 58,983 |
+| parquet/f_vendor_pay.parquet | 319,253 |
+| parquet/f_vendor_year.parquet | 4,986 |
+| parquet/measures.parquet | 4,146 |
+| parquet/pipeline_runs.parquet | 8,332 |
+| parquet/run_checks.parquet | 8,810 |
+| parquet/sources.parquet | 8,045 |
+| parquet/stage_evidence.parquet | 8,118 |
+| parquet/totals_by_fy.parquet | 5,719 |
+| parquet/vendor_families.parquet | 5,743 |
+| total | 2,223,653 |
+
+The warning is a real finding: `src/pipeline/export.py` writes each file's `rows` in `manifest.csv` as its CSV line count, and line breaks inside `f_grants` text values add 48 lines, so the manifest says 23,133 where the file has 23,085 records. The dataset card now takes row counts from the Parquet files; the export's count is for its owner to fix.
 <!-- /publish-dry-run -->

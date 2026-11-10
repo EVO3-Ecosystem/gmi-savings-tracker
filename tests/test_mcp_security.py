@@ -73,7 +73,9 @@ def test_the_sql_check_allows_plain_selects(sql):
 
 @pytest.fixture(scope="module", params=BACKENDS)
 def st(request):
-    return Store(export_dir=ROOT / "site_data", prefer="export") if request.param == "export" else Store(db=DB, prefer="duckdb")
+    s = Store(export_dir=ROOT / "site_data", prefer="export") if request.param == "export" else Store(db=DB, prefer="duckdb")
+    yield s
+    s.close()
 
 
 @pytest.mark.parametrize("sql", [REJECT[k] for k in ("drop", "drop after select", "attach", "copy out", "read_csv", "install")])
@@ -96,8 +98,7 @@ def test_the_connection_itself_refuses_files_settings_and_extensions_when_the_ch
 def test_the_database_file_is_opened_read_only():
     if not DB.exists():
         pytest.skip("data/md_transparency.duckdb not present")
-    st = Store(db=DB, prefer="duckdb")
-    with pytest.raises(ToolInputError, match="read-only|read only"):
+    with Store(db=DB, prefer="duckdb") as st, pytest.raises(ToolInputError, match="read-only|read only"):
         st._exec("CREATE TABLE mart.should_not_exist AS SELECT 1")
 
 

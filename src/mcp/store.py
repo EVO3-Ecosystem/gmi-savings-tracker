@@ -164,6 +164,19 @@ class Store:
         return p
 
     # ---------------------------------------------------------------- public
+    def close(self):
+        """Release the database file (DuckDB allows one configuration per file per process)."""
+        try:
+            self.con.close()
+        except duckdb.Error:
+            pass
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        self.close()
+
     def sql(self, sql, params=None):
         """Trusted internal query (the convenience tools' own fixed SQL, parameters bound): returns rows as dicts."""
         return self._exec(sql, params)[1]
