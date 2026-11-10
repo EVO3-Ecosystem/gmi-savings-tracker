@@ -1,0 +1,194 @@
+# Golden questions for the MCP server (tests/test_mcp.py). Each question is answered by calling a tool through the MCP
+# protocol in-process; the expected answer comes from expected_sql, run by the test on its own DuckDB connection straight
+# against the same data (Parquet files or the database file), not through the server.
+#   answer: path into the tool's structured result: a.b.0.c, a.*.c (map over a list), a[k=v].c (first item with k == v),
+#           len:a (length of a list)
+#   expected_sql: {name} is replaced by the table's source (read_parquet('<export>/parquet/name.parquet') or md.mart.name).
+#           It returns one row (a scalar, first column), or with expect: list the first column of every row.
+#   tol: absolute tolerance for numbers (default 0.005: money to the cent)
+- id: q01
+  question: What did the State Department of Education (R00) pay out in FY2025?
+  tool: agency_spending
+  args: {agency: R00, fiscal_year: 2025}
+  answer: rows.0.payments
+  expected_sql: SELECT payments FROM {f_agency} WHERE agency_code = 'R00' AND fiscal_year = 2025
+- id: q02
+  question: What was R00's FY2025 operating spending?
+  tool: agency_spending
+  args: {agency: R00, fiscal_year: 2025}
+  answer: rows.0.operating_spending
+  expected_sql: SELECT operating_spending FROM {f_agency} WHERE agency_code = 'R00' AND fiscal_year = 2025
+- id: q03
+  question: How much of the Maryland Department of Health's FY2025 spending was controllable purchases?
+  tool: agency_spending
+  args: {agency: Maryland Department of Health, fiscal_year: 2025}
+  answer: rows.0.controllable
+  expected_sql: SELECT controllable FROM {f_agency} WHERE agency = 'Maryland Department of Health' AND fiscal_year = 2025
+- id: q04
+  question: How many budgeted positions did the Department of Transportation have in FY2024?
+  tool: agency_spending
+  args: {agency: J00, fiscal_year: 2024}
+  answer: rows.0.fte
+  expected_sql: SELECT fte FROM {f_agency} WHERE agency_code = 'J00' AND fiscal_year = 2024
+  tol: 0.05
+- id: q05
+  question: What is the Department of Transportation's FY2026 operating spending (looked up by name)?
+  tool: agency_spending
+  args: {agency: Department of Transportation, fiscal_year: 2026}
+  answer: rows.0.operating_spending
+  expected_sql: SELECT operating_spending FROM {f_agency} WHERE agency_code = 'J00' AND fiscal_year = 2026
+- id: q06
+  question: How many fiscal years of data are there for the Department of Human Services (N00)?
+  tool: agency_spending
+  args: {agency: N00}
+  answer: len:rows
+  expected_sql: SELECT count(*) FROM {f_agency} WHERE agency_code = 'N00'
+- id: q07
+  question: What were Public Debt (X00) payments in FY2023?
+  tool: agency_spending
+  args: {agency: X00, fiscal_year: 2023}
+  answer: rows.0.payments
+  expected_sql: SELECT payments FROM {f_agency} WHERE agency_code = 'X00' AND fiscal_year = 2023
+- id: q08
+  question: Which agency is D78?
+  tool: agency_spending
+  args: {agency: D78}
+  answer: agency
+  expected_sql: SELECT agency FROM {f_agency} WHERE agency_code = 'D78' ORDER BY fiscal_year DESC LIMIT 1
+- id: q09
+  question: What budget stage is the Maryland Higher Education Commission's FY2025 figure?
+  tool: agency_spending
+  args: {agency: R62, fiscal_year: 2025}
+  answer: rows.0.stage
+  expected_sql: SELECT stage FROM {f_agency} WHERE agency_code = 'R62' AND fiscal_year = 2025
+- id: q10
+  question: List Public Safety and Correctional Services (Q00) payments by year.
+  tool: agency_spending
+  args: {agency: Q00}
+  answer: rows.*.payments
+  expect: list
+  expected_sql: SELECT payments FROM {f_agency} WHERE agency_code = 'Q00' ORDER BY fiscal_year
+- id: q11
+  question: How much did agencies pay Grainger in FY2025?
+  tool: vendor_payments
+  args: {vendor: GRAINGER, fiscal_year: 2025}
+  answer: total_paid
+  expected_sql: SELECT round(sum(paid), 2) FROM {f_vendor_pay} WHERE vendor = 'GRAINGER' AND fiscal_year = 2025
+- id: q12
+  question: How many agencies paid Grainger in FY2025?
+  tool: vendor_payments
+  args: {vendor: grainger, fiscal_year: 2025}
+  answer: by_year.0.agencies
+  expected_sql: SELECT count(DISTINCT agency_code) FROM {f_vendor_pay} WHERE vendor = 'GRAINGER' AND fiscal_year = 2025
+- id: q13
+  question: Which agency paid Grainger the most in FY2025?
+  tool: vendor_payments
+  args: {vendor: GRAINGER, fiscal_year: 2025}
+  answer: top_agencies.0.agency_code
+  expected_sql: SELECT agency_code FROM {f_vendor_pay} WHERE vendor = 'GRAINGER' AND fiscal_year = 2025 GROUP BY 1 ORDER BY sum(paid) DESC LIMIT 1
+- id: q14
+  question: How much was paid to Depository Trust across all years in the vendor table?
+  tool: vendor_payments
+  args: {vendor: DEPOSITORY TRUST}
+  answer: total_paid
+  expected_sql: SELECT round(sum(paid), 2) FROM {f_vendor_pay} WHERE vendor = 'DEPOSITORY TRUST'
+  tol: 0.05
+- id: q15
+  question: Which vendor does "priority partners" refer to?
+  tool: vendor_payments
+  args: {vendor: priority partners}
+  answer: vendor
+  expected_sql: SELECT DISTINCT vendor FROM {f_vendor_pay} WHERE vendor ILIKE '%priority partners%'
+- id: q16
+  question: What did Kaiser Foundation Health Plan of Mid Atlantic receive in FY2024?
+  tool: vendor_payments
+  args: {vendor: kaiser foundation health plan of mid atlantic, fiscal_year: 2024}
+  answer: total_paid
+  expected_sql: SELECT round(sum(paid), 2) FROM {f_vendor_pay} WHERE vendor = 'KAISER FOUNDATION HEALTH PLAN OF MID ATLANTIC' AND fiscal_year = 2024
+- id: q17
+  question: In which fiscal years was Grainger paid?
+  tool: vendor_payments
+  args: {vendor: GRAINGER}
+  answer: by_year.*.fiscal_year
+  expect: list
+  expected_sql: SELECT DISTINCT fiscal_year FROM {f_vendor_pay} WHERE vendor = 'GRAINGER' ORDER BY 1
+- id: q18
+  question: Which three agencies paid Wellpoint Maryland the most in FY2026?
+  tool: vendor_payments
+  args: {vendor: WELLPOINT MARYLAND, fiscal_year: 2026, top_agencies: 3}
+  answer: top_agencies.*.agency_code
+  expect: list
+  expected_sql: SELECT agency_code FROM {f_vendor_pay} WHERE vendor = 'WELLPOINT MARYLAND' AND fiscal_year = 2026 GROUP BY 1 ORDER BY sum(paid) DESC, 1 LIMIT 3
+- id: q19
+  question: What were total State payments in FY2025?
+  tool: query
+  args: {sql: "SELECT total_payments FROM totals_by_fy WHERE fiscal_year = 2025"}
+  answer: rows.0.total_payments
+  expected_sql: SELECT total_payments FROM {totals_by_fy} WHERE fiscal_year = 2025
+- id: q20
+  question: How many agencies are on the dashboard's agency list?
+  tool: query
+  args: {sql: "SELECT count(*) AS n FROM mart.d_agency"}
+  answer: rows.0.n
+  expected_sql: SELECT count(*) FROM {d_agency}
+- id: q21
+  question: Which vendor received the most in FY2025?
+  tool: query
+  args: {sql: "SELECT vendor, sum(paid) AS paid FROM f_vendor_pay WHERE fiscal_year = 2025 GROUP BY vendor ORDER BY paid DESC LIMIT 1"}
+  answer: rows.0.vendor
+  expected_sql: SELECT vendor FROM {f_vendor_pay} WHERE fiscal_year = 2025 GROUP BY 1 ORDER BY sum(paid) DESC LIMIT 1
+- id: q22
+  question: How many agencies paid out more than $1 billion in FY2025?
+  tool: query
+  args: {sql: "WITH big AS (SELECT agency_code FROM f_agency WHERE fiscal_year = 2025 AND payments > 1e9) SELECT count(*) AS n FROM big"}
+  answer: rows.0.n
+  expected_sql: SELECT count(*) FROM {f_agency} WHERE fiscal_year = 2025 AND payments > 1000000000
+- id: q23
+  question: Does the row limit hold (five rows of vendor payments)?
+  tool: query
+  args: {sql: "SELECT * FROM f_vendor_pay", limit: 5}
+  answer: row_count
+  expected_sql: SELECT least(count(*), 5) FROM {f_vendor_pay}
+- id: q24
+  question: What were controllable purchases across all agencies in FY2025?
+  tool: query
+  args: {sql: "SELECT round(sum(controllable), 2) AS c FROM f_agency WHERE fiscal_year = 2025"}
+  answer: rows.0.c
+  expected_sql: SELECT round(sum(controllable), 2) FROM {f_agency} WHERE fiscal_year = 2025
+- id: q25
+  question: How many rows does mart.f_agency have?
+  tool: list_tables
+  args: {}
+  answer: tables[name=mart.f_agency].rows
+  expected_sql: SELECT count(*) FROM {f_agency}
+- id: q26
+  question: What columns does f_vendor_pay have?
+  tool: describe_table
+  args: {name: f_vendor_pay}
+  answer: columns.*.name
+  expect: list
+  expected_sql: SELECT column_name FROM (DESCRIBE SELECT * FROM {f_vendor_pay})
+- id: q27
+  question: What is the portal id of the payments dataset?
+  tool: get_sources
+  args: {}
+  answer: datasets[source=payments].dataset_id
+  expected_sql: SELECT dataset_id FROM {sources} WHERE source = 'payments'
+- id: q28
+  question: When did the portal last update the operating budget dataset?
+  tool: get_sources
+  args: {}
+  answer: datasets[source=budget].portal_updated
+  expected_sql: SELECT portal_updated FROM {sources} WHERE source = 'budget'
+- id: q29
+  question: How many rows does the portal report for grants and loans?
+  tool: get_sources
+  args: {}
+  answer: datasets[source=grants].rows_portal
+  expected_sql: SELECT rows_portal FROM {sources} WHERE source = 'grants'
+- id: q30
+  question: Which pipeline run is the data from?
+  tool: agency_spending
+  args: {agency: R00, fiscal_year: 2025}
+  answer: provenance.run_id
+  expected_sql: SELECT run_id FROM {pipeline_runs} WHERE status = 'passed' ORDER BY started_utc DESC LIMIT 1

@@ -92,11 +92,11 @@ def vendor_payments(store, vendor, fiscal_year=None, top_agencies=10):
             raise ToolInputError(f"{vendor!r} matches {len(like) if len(like) <= 10 else 'more than 10'} vendors; "
                                  "use one of: " + "; ".join(r["vendor"] for r in like[:10]))
         name = like[0]["vendor"]
-    by_year = store.sql("SELECT fiscal_year, sum(paid) AS paid, count(DISTINCT agency_code) AS agencies FROM mart.f_vendor_pay "
+    by_year = store.sql("SELECT fiscal_year, round(sum(paid), 2) AS paid, count(DISTINCT agency_code) AS agencies FROM mart.f_vendor_pay "
                         "WHERE vendor = ? AND (? IS NULL OR fiscal_year = ?) GROUP BY 1 ORDER BY 1", [name, y, y])
     if not by_year:
         raise ToolInputError(f"no payments to {name} in FY{y}")
-    agencies = store.sql("SELECT p.agency_code, any_value(a.agency) AS agency, sum(p.paid) AS paid FROM mart.f_vendor_pay p "
+    agencies = store.sql("SELECT p.agency_code, any_value(a.agency) AS agency, round(sum(p.paid), 2) AS paid FROM mart.f_vendor_pay p "
                          "LEFT JOIN (SELECT DISTINCT agency_code, agency FROM mart.d_agency) a USING (agency_code) "
                          "WHERE p.vendor = ? AND (? IS NULL OR p.fiscal_year = ?) GROUP BY 1 ORDER BY 3 DESC, 1 LIMIT ?", [name, y, y, top])
     return {"vendor": name, "fiscal_year": y, "total_paid": round(sum(r["paid"] or 0 for r in by_year), 2), "by_year": by_year,
