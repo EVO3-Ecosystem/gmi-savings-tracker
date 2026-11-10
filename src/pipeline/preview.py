@@ -28,11 +28,11 @@ SERIES_JS = "colors:[" + ",".join(f"'var(--series-{i + 1})'" for i in range(8)) 
 _LIGHT = {"color-bg": "#f6f6f4", "color-panel": "#fff", "color-border-line": "#e4e3de", "color-fg": "#0b0b0b", "color-fg-muted": "#52514e",
           "color-ok": "#1a7f37", "color-warn": "#9a6700", "color-bad": "#b42318", "cds-chart-muted": "#c9c8c2", "cds-surface-popover": "#fff",
           "cds-border": "#ddd", "cds-shadow-popover": "0 4px 16px rgba(0,0,0,.12)", "cds-text-secondary": "#52514e", "color-link": "#1f5fbf",
-          "color-focus": "#1f5fbf", **{f"series-{i + 1}": c for i, c in enumerate(SERIES_LIGHT)}}
+          "color-focus": "#1f5fbf", "conf-low": "#8a8983", **{f"series-{i + 1}": c for i, c in enumerate(SERIES_LIGHT)}}
 _DARK = {"color-bg": "#111110", "color-panel": "#1a1a19", "color-border-line": "#34332f", "color-fg": "#f0efec", "color-fg-muted": "#b5b3ad",
          "color-ok": "#7ee2a8", "color-warn": "#f2cc60", "color-bad": "#ff8a80", "cds-chart-muted": "#5b5a55", "cds-surface-popover": "#242422",
          "cds-border": "#3a3936", "cds-shadow-popover": "0 4px 16px rgba(0,0,0,.5)", "cds-text-secondary": "#c3c2b7", "color-link": "#7fb0ff",
-         "color-focus": "#7fb0ff", **{f"series-{i + 1}": c for i, c in enumerate(SERIES_DARK)}}
+         "color-focus": "#7fb0ff", "conf-low": "#8a8983", **{f"series-{i + 1}": c for i, c in enumerate(SERIES_DARK)}}
 
 
 def _vars(d):

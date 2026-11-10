@@ -111,7 +111,8 @@ def test_catalog_lists_tables_columns_checks_and_lineage(built):
 def interface_fixture(src, dst):
     """Copy an export's CSVs to dst and reshape the payment screen the way the analysis stage will publish it:
     d_payment_screen gains confidence/review_status/review_note/agency_raw and loses the FY2022 MDTA/MES double listing,
-    which moves to a new d_source_issues.csv; d_payment_screen_summary gains measured_confirmation_rate and rate_basis."""
+    which moves to a new d_source_issues.csv; d_payment_screen_summary gains measured_confirmation_rate, rate_basis and the
+    review counts, with every lever rate 0 (as the analysis stage publishes it while no rate can be measured)."""
     import shutil
     import pandas as pd
     src, dst = Path(src), Path(dst)
@@ -126,12 +127,15 @@ def interface_fixture(src, dst):
         "issue_id": [f"SI-2022-{c}" for c in issues.agency_code],
         "issue": "FY2022 payments listed twice (record dates 2022-01-01 and 2023-01-01)",
         "fiscal_year": 2022, "agency": issues.agency, "records": issues.records, "amount": issues.amount,
+        "agency_code": issues.agency_code, "agency_raw": issues.agency, "identical_records": issues.records // 2, "identical_amount": issues.amount,
+        "screen_groups": issues.records // 2, "screen_records": issues.records, "screen_review_amount": issues.amount,
         "evidence": "Every FY2022 payee line for the agency appears twice with identical amounts, one copy dated in the next calendar year",
         "verified_against": "vendorpayments.maryland.gov FY2022 totals", "verified_on": "2026-11-09", "status": "Confirmed in source"})
     g = g[~dbl].copy()
     g["confidence"] = ["high" if (r.rule == "Possible duplicate" and r.amount >= 100_000) else "medium" if r.rule == "Possible duplicate" else "low"
                        for r in g.itertuples()]
-    g["review_status"] = "Not reviewed"
+    g["confidence_score"] = g.confidence.map({"high": 1, "medium": 0, "low": -2})
+    g["review_status"] = "needs_records"
     g["review_note"] = "Awaiting agency payment records"
     g["agency_raw"] = g.agency
     g.to_csv(dst / "d_payment_screen.csv", index=False)
@@ -142,7 +146,9 @@ def interface_fixture(src, dst):
     for col in ["groups", "records", "total_amount", "review_amount"]:
         s[col] = [agg[col].get((r.rule, r.fiscal_year), 0) for r in s.itertuples()]
     s["measured_confirmation_rate"] = None
-    s["rate_basis"] = "the portal publishes annual payee totals, not payment records"
+    s["rate_basis"] = "not measurable without payment records"
+    s["lever_rate_low"] = s["lever_rate_likely"] = s["lever_rate_high"] = 0.0
+    s["reviewed_leads"], s["confirmed_leads"] = len(g), 0
     s.to_csv(dst / "d_payment_screen_summary.csv", index=False)
     return dst
 

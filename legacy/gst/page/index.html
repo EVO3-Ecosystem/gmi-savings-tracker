@@ -104,7 +104,7 @@
 .gs table.no-conf .c-conf{display:none}
 .gs .card.issues{border-left:4px solid var(--color-warn)}
 .gs .card.issues .tag2{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-weight:400}
-.gs #psIssBody td:nth-child(6){min-width:16rem}
+.gs #psIssBody td:nth-child(6){min-width:16rem}.gs #psIssBody td:nth-child(4),.gs #psIssBody td:nth-child(5){white-space:normal;min-width:9rem}.gs #psIssBody td .st{white-space:normal}
 [data-dash-source-state=refreshing]{opacity:.5}
 [data-dash-source-state=empty]{color:transparent}
 </style>
@@ -1281,15 +1281,18 @@ function drawOpp(p){
 const PS_RULES = ['Possible duplicate', 'Repeated annual line', 'Possible split purchase'];
 const psCol = k => dash.colors[[0, 1, 3][PS_RULES.indexOf(k)]];
 const PS_CONF = ['high', 'medium', 'low'], PS_CONF_L = {high:'High confidence', medium:'Medium confidence', low:'Low confidence'};
-const psConfCol = k => ({high: dash.colors[0], medium: dash.colors[3], low: 'var(--cds-chart-muted)'})[k];
+const psConfCol = k => ({high: dash.colors[0], medium: dash.colors[3], low: 'var(--conf-low, #8a8983)'})[k];
 const psDates = r => r.first_date === r.last_date ? String(r.first_date || '') : `${r.first_date} and ${r.last_date}`;
 const hasCol = (rows, k) => !!(rows && rows.length && Object.prototype.hasOwnProperty.call(rows[0], k));
 function psLever(basis){ const s = ok('d_payment_screen_summary'); if (!s || !s.length) return null; const r0 = s[0]; const years = [...new Set(s.map(r => r.fiscal_year))].sort((a, b) => a - b);
   const meas = s.filter(r => r.status === 'Measured'); const fyV = d3.sum(meas.filter(r => r.fiscal_year === r0.lever_fy), r => r.review_amount);
   const avgV = d3.sum(meas, r => r.review_amount) / years.length; const base = basis === 'avg' ? avgV : fyV;
   const mr = s.map(r => r.measured_confirmation_rate).find(v => v != null && v !== '' && !isNaN(v)); const measured = mr != null ? +mr : null;
-  const rb = s.map(r => r.rate_basis).find(v => v); const likelyRate = measured != null ? measured : r0.lever_rate_likely;
-  return {fy:r0.lever_fy, years, base, fyV, avgV, measured, basisNote: rb || '', low:base * r0.lever_rate_low, likely:base * likelyRate, high:base * r0.lever_rate_high, rates:[r0.lever_rate_low, likelyRate, r0.lever_rate_high]}; }
+  const rb = s.map(r => r.rate_basis).find(v => v) || ''; const rates = [r0.lever_rate_low, r0.lever_rate_likely, r0.lever_rate_high].map(v => v == null || isNaN(v) ? 0 : +v);
+  if (measured != null) rates[1] = measured;
+  const unmeasurable = measured == null && rates.every(v => !v); // no confirmation rate can be measured: the lever has no value, only its review dollars
+  const rv = s.map(r => r.reviewed_leads).find(v => v != null), cf = s.map(r => r.confirmed_leads).find(v => v != null);
+  return {fy:r0.lever_fy, years, base, fyV, avgV, measured, unmeasurable, basisNote: rb, reviewed: rv, confirmed: cf, low:base * rates[0], likely:base * rates[1], high:base * rates[2], rates}; }
 // bars by year, stacked by confidence (or by rule when the screen has no confidence column); when one year dwarfs the rest,
 // the axis is capped so the other years stay readable and the cut bar carries its full value and a break mark
 function psBars(box, legendId, rows, keys, col, label, o={}){
@@ -1342,16 +1345,19 @@ function drawPayScreen(p){ const g = ok('d_payment_screen'), s = ok('d_payment_s
   setText('psCount', `${N(rows.length)} of ${N(all.length)} groups`);
   document.getElementById('psBody').closest('table').classList.toggle('no-conf', !conf);
   table('psBody', rows.slice(0, 300), [{key:'rule'},{key:'fiscal_year',n:1,fmt:v => 'FY' + v},{key:'agency',fmt:v => TITLE(v || ''),title:r => r.agency_raw ? 'As published: ' + r.agency_raw : ''},{key:'vendor',fmt:v => /^Payee not named/.test(v) ? v : TITLE(v || '')},{key:'n',n:1},{key:'amount',n:1,fmt:M},{key:'review_amount',n:1,fmt:M},{key:'first_date',fmt:(v, r) => psDates(r)},{key:'also_flagged_under',fmt:v => v || ''},
-    {key:'confidence',cls:'c-conf',pill:v => 'cf-' + (PS_CONF.includes(String(v).toLowerCase()) ? String(v).toLowerCase() : 'none'),fmt:v => v ? String(v).toLowerCase() : 'not rated'},
-    {key:'review_status',cls:'c-conf',pill:() => 'rv',fmt:v => v || 'not reviewed',title:r => r.review_note || ''}], {bar:'review_amount', click:r => r.agency_code && openDetail('agency:' + r.agency_code)});
-  setText('psStatus', `Rules (config/assumptions.yaml, payment_screen): possible duplicate = same agency, vendor and exact amount ($1,000 or more) with record dates within 7 days; repeated annual line = the same in one fiscal year with record dates further apart; possible split purchase = 2+ payments within 14 days, each under an assumed $50,000 small-procurement threshold (verify against COMAR and the Procurement Manual), together above it. ${split ? 'Split purchases: ' + split.status.toLowerCase() + '.' : ''} The payments data are ${grain === 'annual' ? 'one row per agency, payee and year with a record date, not dated payments, so the screen cannot see duplicates inside an annual total' : 'dated payments'}. Government, health-plan, debt-service, payroll-like and pass-through payees are left out; payees that may be individuals are not named. ${conf ? 'Confidence and review status come with each group; hover a review chip for its note. ' : ''}The year and area filters do not apply here; the agency filter does.`);
+    {key:'confidence',cls:'c-conf',pill:v => 'cf-' + (PS_CONF.includes(String(v).toLowerCase()) ? String(v).toLowerCase() : 'none'),fmt:v => v ? String(v).toLowerCase() : 'not rated',title:r => r.confidence_score != null ? 'Confidence score ' + r.confidence_score : ''},
+    {key:'review_status',cls:'c-conf',pill:() => 'rv',fmt:v => v ? String(v).replace(/_/g, ' ') : 'not reviewed',title:r => r.review_note || ''}], {bar:'review_amount', click:r => r.agency_code && openDetail('agency:' + r.agency_code)});
+  setText('psStatus', `Rules (config/assumptions.yaml, payment_screen): possible duplicate = same agency, vendor and exact amount ($1,000 or more) with record dates within 7 days; repeated annual line = the same in one fiscal year with record dates further apart; possible split purchase = 2+ payments within 14 days, each under the small-procurement limit in force on its record date ($50,000, then $100,000 from Oct 1, 2023, Ch. 161 of 2023), together above it. ${split ? 'Split purchases: ' + split.status.toLowerCase() + '.' : ''} The payments data are ${grain === 'annual' ? 'one row per agency, payee and year with a record date, not dated payments, so the screen cannot see duplicates inside an annual total' : 'dated payments'}. Government, health-plan, debt-service, payroll-like and pass-through payees are left out; payees that may be individuals are not named. ${conf ? 'Confidence and review status come with each group; hover a review chip for its note. ' : ''}The year and area filters do not apply here; the agency filter does.`);
   drawSourceIssues(); }
 function drawSourceIssues(){ const card = document.getElementById('psIssues'); if (!card) return; const iss = ok('d_source_issues');
   if (!iss) { setText('psIssNote', 'No data-quality issues in the source have been published for this build.'); document.getElementById('psIssBody').textContent = ''; return; }
-  const tot = d3.sum(iss, r => r.amount);
-  setText('psIssNote', `${N(iss.length)} problem${iss.length === 1 ? '' : 's'} in the published payments data itself (${M(tot)}), such as a year of records listed twice. They are not payment leads: they are kept out of the screen's groups, its chart and totals, and the calculator's payment recovery lever. Each was checked against the source named in the table, on the date shown.`);
-  table('psIssBody', iss.slice().sort((a, b) => (b.amount || 0) - (a.amount || 0)), [{key:'issue'},{key:'fiscal_year',n:1,fmt:v => v == null ? '' : 'FY' + v},{key:'agency',fmt:v => v ? TITLE(v) : ''},{key:'records',n:1,fmt:v => v == null ? '' : N(v)},{key:'amount',n:1,fmt:M},{key:'evidence'},
-    {key:'verified_against',fmt:(v, r) => [v, r.verified_on ? 'checked ' + r.verified_on : ''].filter(Boolean).join(', ')},{key:'status',pill:() => 'rv',fmt:v => v || ''}]); }
+  const scr = hasCol(iss, 'screen_review_amount'), moved = scr ? d3.sum(iss, r => r.screen_review_amount) : null, pairs = scr ? d3.sum(iss, r => r.screen_groups) : null;
+  setText('psIssNote', `${N(iss.length)} problem${iss.length === 1 ? '' : 's'} in the published payments data itself, such as a year of records published twice.${scr ? ` The payment screen had paired ${N(pairs)} of these records (${M(moved)} to review); they are moved out of the leads.` : ''} They are not payment leads: they are kept out of the screen's groups, its chart and totals, and the calculator's payment recovery lever. Each was checked against the sources named in the table, on the date shown.`);
+  const ag = r => r.agency_raw && r.agency && r.agency_raw.toLowerCase() !== String(r.agency).toLowerCase() ? `${TITLE(r.agency)} (as published: ${r.agency_raw})` : TITLE(r.agency || r.agency_raw || '');
+  table('psIssBody', iss.slice().sort((a, b) => ((b.screen_review_amount ?? b.amount) || 0) - ((a.screen_review_amount ?? a.amount) || 0)), [{key:'issue'},{key:'fiscal_year',n:1,fmt:v => v == null ? '' : 'FY' + v},{key:'agency',fmt:(v, r) => ag(r)},
+    {key:'records',n:1,fmt:(v, r) => [v == null ? '' : N(v) + ' in the block', r.identical_records != null ? N(r.identical_records) + ' identical' : '', r.screen_groups != null ? N(r.screen_groups) + ' paired by the screen' : ''].filter(Boolean).join('; ')},
+    {key:'amount',n:1,fmt:(v, r) => [M(v), r.identical_amount != null ? M(r.identical_amount) + ' identical' : '', r.screen_review_amount != null ? M(r.screen_review_amount) + ' was in the screen' : ''].filter(Boolean).join('; ')},{key:'evidence'},
+    {key:'verified_against',fmt:(v, r) => [v, r.verified_on ? 'checked ' + r.verified_on : ''].filter(Boolean).join(', ')},{key:'status',fmt:v => v || ''}]); }
 function addTotals(container, cells){ const t = container.lastChild.querySelector('table'); const tf = document.createElement('tfoot'); const tr = document.createElement('tr');
   cells.forEach(([v, n]) => { const td = document.createElement('td'); td.textContent = v; td.style.fontWeight = 600; td.style.borderTop = '2px solid var(--color-fg)'; if (n) td.className = 'n'; tr.appendChild(td); }); tf.appendChild(tr); t.appendChild(tf); }
 const FY = d3.range(2027, 2032), Z90 = 1.2816;
@@ -1434,12 +1440,19 @@ function drawOppDetail(p, key){
   }
 }
 function drawPayLever(PR, prIn){ const tl = document.getElementById('caPRTiles'); if (!tl) return; tl.textContent = '';
+  const cb = document.getElementById('caPRIn'); if (cb) cb.disabled = !PR || PR.unmeasurable;
   if (!PR) { setText('caPRNote', 'The payment screen has not been published for this build.'); return; }
   const tile = (k, v, d) => { const t = document.createElement('div'); t.className = 'tile'; t.innerHTML = '<span class="k"></span><span class="v"></span><span class="d"></span>'; t.children[0].textContent = k; t.children[1].textContent = v; t.children[2].textContent = d; tl.appendChild(t); };
   const basis = document.getElementById('caPRBasis').value === 'avg' ? `the yearly average of ${fyLabel(PR.years)}` : `FY${PR.fy}`;
+  const rev = PR.reviewed != null ? ` ${N(PR.reviewed)} lead${PR.reviewed === 1 ? '' : 's'} reviewed, ${N(PR.confirmed || 0)} confirmed.` : '';
+  if (PR.unmeasurable) {
+    tile('Flagged for review', M(PR.base), `possible duplicates, ${basis}; leads, not losses`);
+    tile('Share a review confirms', 'Not measurable', PR.basisNote || 'not measurable without payment records');
+    tile('Recoverable value', '—', 'not estimated: no confirmation rate can be measured');
+    setText('caPRNote', `Flagged review dollars from the payment screen (Opportunities tab; data-quality issues in the source are not counted). The share a review would confirm and recover is ${PR.basisNote || 'not measurable without payment records'}, so no recovery value is estimated, and it is not added to the savings above.${rev} FY${PR.fy} flags ${M(PR.fyV)} to review; the ${fyLabel(PR.years)} yearly average is ${M(PR.avgV)}.`); return; }
   [['Low', PR.low, PR.rates[0], 0], ['Likely', PR.likely, PR.rates[1], PR.measured != null], ['High', PR.high, PR.rates[2], 0]].forEach(([k, v, r, ms]) => tile(`${k}, at ${ms ? 'the measured' : 'an assumed'} ${d3.format('.0%')(r)} confirmed`, M(v), `of ${M(PR.base)} flagged for review (${basis})`));
-  const rateTxt = PR.measured != null ? `The likely rate is the measured confirmation rate, ${d3.format('.0%')(PR.measured)}${PR.basisNote ? ' (' + PR.basisNote + ')' : ''}; low and high are assumptions.` : `The rates are assumptions, to be replaced by the share confirmed in a reviewed sample: a measured confirmation rate is not measurable without payment records${PR.basisNote ? ' (' + PR.basisNote + ')' : ''}.`;
-  setText('caPRNote', `Flagged review dollars from the payment screen (Opportunities tab; data-quality issues in the source are not counted) × ${PR.measured != null ? 'a' : 'an assumed'} share that a review confirms and recovers: ${PR.rates.map(r => d3.format('.0%')(r)).join(' / ')} (low / likely / high). ${rateTxt} FY${PR.fy} flags ${M(PR.fyV)} to review; the ${fyLabel(PR.years)} yearly average is ${M(PR.avgV)}. A recovery of past payments is one-time and may overlap the other findings, so it is shown separately and is ${prIn ? 'now counted in the FY2027 tile above, as you chose' : 'not added to the savings above unless you tick the box'}.`); }
+  const rateTxt = PR.measured != null ? `The likely rate is the measured confirmation rate, ${d3.format('.0%')(PR.measured)}${PR.basisNote ? ' (' + PR.basisNote + ')' : ''}; low and high are assumptions.` : `The rates are assumptions, to be replaced by the share confirmed in a reviewed sample${PR.basisNote ? ' (' + PR.basisNote + ')' : ''}.`;
+  setText('caPRNote', `Flagged review dollars from the payment screen (Opportunities tab; data-quality issues in the source are not counted) × ${PR.measured != null ? 'a' : 'an assumed'} share that a review confirms and recovers: ${PR.rates.map(r => d3.format('.0%')(r)).join(' / ')} (low / likely / high). ${rateTxt}${rev} FY${PR.fy} flags ${M(PR.fyV)} to review; the ${fyLabel(PR.years)} yearly average is ${M(PR.avgV)}. A recovery of past payments is one-time and may overlap the other findings, so it is shown separately and is ${prIn ? 'now counted in the FY2027 tile above, as you chose' : 'not added to the savings above unless you tick the box'}.`); }
 function drawCalc(p){
   const fm = ok('d_forecast_model'), fc = ok('f_forecast'); if (!fm || !fc) return;
   if (!CA.rates) CA.rates = Object.fromEntries(fm.map(m => [m.area, m.gmi_rate || 0]));
@@ -1461,7 +1474,7 @@ function drawCalc(p){
   const cum = d3.sum(FY, net), cumS = S[0].map((_, i) => d3.sum(S, a => a[i])).sort((a, b) => a - b); const pHit = S[i27].filter(v => v >= 50e6).length / S[i27].length;
   const gf27 = d3.sum(L.filter(l => l.year === 2027 && l.area !== '_fee'), l => l.gf), g27 = d3.sum(L.filter(l => l.year === 2027 && l.area !== '_fee'), l => l.saving);
   const tl = document.getElementById('caTiles'); tl.textContent = ''; const tile = (k, v, d) => { const t = document.createElement('div'); t.className = 'tile'; t.innerHTML = '<span class="k"></span><span class="v"></span><span class="d"></span>'; t.children[0].textContent = k; t.children[1].textContent = v; t.children[2].textContent = d; tl.appendChild(t); };
-  const PR = psLever(document.getElementById('caPRBasis').value), prIn = !!(PR && document.getElementById('caPRIn').checked);
+  const PR = psLever(document.getElementById('caPRBasis').value), prIn = !!(PR && !PR.unmeasurable && document.getElementById('caPRIn').checked);
   tile('FY2027 net savings, likely', M(net(2027) + (prIn ? PR.likely : 0)), prIn ? `includes ${M(PR.likely)} of payment recovery leads (one-time, not additive with other findings); savings alone ${M(net(2027))}` : `indicative range: ${M(qt(S[0], .1))}–${M(qt(S[0], .9))}`);
   drawPayLever(PR, prIn); tile('Chance FY2027 reaches $50M (indicative)', d3.format('.0%')(pHit), 'share of 2,000 simulated years; the ranges run narrow');
   tile('Five years, FY2027–FY2031', M(cum), `indicative range: ${M(qt(cumS, .1))}–${M(qt(cumS, .9))}`); tile('General Fund share, FY2027', g27 ? PCT(gf27 / g27) : '—', `${M(gf27)} of gross savings`);
