@@ -421,3 +421,61 @@ evidence,d_source_issues,derived,"The numbers behind the issue: both blocks' rec
 verified_against,d_source_issues,reference,Where the issue was checked at the source (config source_issues); blank when not yet verified
 verified_on,d_source_issues,reference,Date the issue was checked at the source (docs/reconciliation/crosschecks_2026-11-10.csv)
 status,d_source_issues,reference,Whether the issue is confirmed in the published source and what to do next
+payee_key,"d_payee_class,mart.v_payee_class_input,ref.payee_labels_sample",derived,md5 of the payee name as paid: links a row to the name in the database without publishing it
+payee,d_payee_class,derived,"Payee name as paid, or 'Payee not named (may be an individual)' when the final label is business and the name has no organization word (payment_screen.org_name_pattern) or the name was labeled individual/withheld"
+payee,mart.v_payee_class_input,portal,"Payee name as paid (payments vendor_name, trimmed)"
+payee,ref.payee_labels_sample,derived,"Payee name as paid; '[individual: name withheld, see payee_key]' for names labeled individual/withheld"
+vendor_key,mart.v_payee_class_input,derived,"Normalized payee name (ref.map_payee_vendor), what the payee type rules match"
+rule_type,"mart.v_payee_class_input,ref.payee_labels_sample",derived,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), the classifier's baseline"
+rule_label,d_payee_class,derived,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), as the dashboard uses it"
+rule_class,d_payee_class,derived,The rule label mapped to the classifier's five classes (config payee_classifier.rule_to_class)
+model_label,d_payee_class,derived,Class predicted by the TF-IDF character n-gram logistic regression trained on the rule labels (docs/models/payee_classifier.md); never individual/withheld
+confidence,d_payee_class,derived,The model's probability for model_label (0-1)
+final_label,d_payee_class,derived,"Payee class used downstream: the combined label (rules first, model where the rules fell to the default) if it beat the rules on macro F1 on the hand-labeled sample, otherwise the rule class"
+review_flag,d_payee_class,derived,True when the name belongs in the review queue (see review_reason)
+review_reason,d_payee_class,derived,"Why the name is in the review queue: default label and the model suggests another type (probability >= review_threshold), default label and low model confidence, or the model disagrees with a name rule"
+in_eval_sample,d_payee_class,derived,True for the 400 names of the hand-labeled evaluation sample (reference/payee_labels_sample.csv); they and their vendors' other names are never trained on
+paid_all_years,"d_payee_class,mart.v_payee_class_input,ref.payee_labels_sample",derived,"Payments to this payee name, all fiscal years (dollars)"
+paid_fy2025,mart.v_payee_class_input,derived,Payments to this payee name in FY2025 (dollars)
+spend_bucket,ref.payee_labels_sample,derived,All-years spend bucket the sample was stratified by (config payee_classifier.spend_buckets)
+my_label,ref.payee_labels_sample,derived,"Single annotator's label from the name text (Claude, Nov 10, 2026) under the criteria in docs/models/payee_classifier.md; unsure = excluded"
+her_label,ref.payee_labels_sample,derived,Sierra's review label; when filled it replaces my_label in the evaluation
+method,d_payee_class_eval,derived,"rules, model or combined (or sample / decision / model bookkeeping rows)"
+metric,d_payee_class_eval,derived,"accuracy, macro_f1, precision, recall, f1, dollars_classified_share, dollars_relabeled_share, accuracy_on_default_names, or a count (labeled, excluded_unsure, not_found, reviewed_by_sierra, training_names, review_queue, combined_promoted)"
+class,d_payee_class_eval,derived,Payee class a per-class metric is for; 'all' for overall metrics
+value,d_payee_class_eval,derived,Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes)
+n,d_payee_class_eval,derived,Names the metric is computed on (support for per-class metrics)
+grantor_agency,mart.v_grant_rows,derived,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed"
+grantor_program,mart.v_grant_rows,derived,Grantor after the first '/' (the program or unit the portal joins to the agency); blank when none
+category,mart.v_grant_rows,derived,Grant or Loan (core.fact_grant)
+description,"mart.v_grant_rows,d_grant_group_members",portal,Grant description as published
+description,d_grant_groups,derived,Representative description of the group: the member with the most grant dollars over all years
+description_key,"mart.v_grant_rows,d_grant_group_members",derived,Description in lower case with spaces collapsed: the unit that is embedded and clustered
+group_id,"d_grant_groups,d_grant_group_members",derived,Grant group identifier: hash of the group's member description keys (stable while the members are)
+rank_fy,d_grant_groups,derived,Rank of the group by FY2025 grant dollars
+n_descriptions,d_grant_groups,derived,Distinct descriptions in the group
+example_descriptions,d_grant_groups,derived,Up to three other descriptions in the group
+grantor_agencies,d_grant_groups,derived,"Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated"
+n_agencies,d_grant_groups,derived,"Number of grantor agencies, any year (an agency renamed between years counts twice)"
+grantees,d_grant_groups,derived,"Distinct grantees, any year"
+grantor_agencies_fy2025,d_grant_groups,derived,Grantor agencies that funded the group in FY2025
+n_agencies_fy2025,d_grant_groups,derived,Number of grantor agencies in FY2025
+grantees_fy2025,d_grant_groups,derived,Distinct grantees in FY2025
+rows_fy2025,d_grant_groups,derived,Grant rows in FY2025
+amount_fy2025,d_grant_groups,derived,"FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups"
+overlap_lead,d_grant_groups,derived,"Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding)"
+multi_agency_any_year,d_grant_groups,derived,2+ grantor agencies in any year; mostly renamed agencies (hand check in docs/models/grant_groups.md)
+backend,"d_grant_groups,d_grant_groups_sensitivity",derived,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded"
+cosine_threshold,"d_grant_groups,d_grant_groups_sensitivity",derived,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity)
+main,d_grant_groups_sensitivity,derived,True for the threshold the leads use
+descriptions,d_grant_groups_sensitivity,derived,Distinct descriptions clustered
+groups,d_grant_groups_sensitivity,derived,Groups at this threshold
+multi_description_groups,d_grant_groups_sensitivity,derived,Groups with two or more descriptions
+groups_with_fy_amount,d_grant_groups_sensitivity,derived,Groups with FY2025 grant dollars
+overlap_leads,d_grant_groups_sensitivity,derived,Groups funded by 2+ grantor agencies in FY2025
+lead_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant dollars in the overlap leads (not savings, not additive)"
+multi_agency_any_year,d_grant_groups_sensitivity,derived,Groups with 2+ grantor agencies in any year
+multi_agency_any_year_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant dollars in those groups (not savings, not additive)"
+lead_share_of_fy_grants,d_grant_groups_sensitivity,derived,lead_amount_fy as a share of all FY2025 grants and loans
+rows,d_grant_group_members,derived,"Grant rows with this description, all years"
+amount,d_grant_group_members,derived,"Grant dollars with this description, all years"

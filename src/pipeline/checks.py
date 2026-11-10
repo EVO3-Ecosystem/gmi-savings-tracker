@@ -575,3 +575,4 @@ def record_payees(con, run_id, data):
     _payee_table(con, hist)
     return len(hist)
 
+from . import checks_ml  # noqa: E402,F401 - ML layer checks (sizes, labels, evaluation metrics); registers itself

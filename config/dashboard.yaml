@@ -48,3 +48,8 @@ d_deflator: d_deflator      # CPI factor to FY2026 dollars and Maryland populati
 d_payment_screen: d_payment_screen    # duplicate and split payment screen: flagged groups (leads to review, not errors)
 d_payment_screen_summary: d_payment_screen_summary    # payment screen by rule and fiscal year (the backtest), with each rule's status at the data's date grain
 d_source_issues: d_source_issues    # data-publication issues the payment screen found (e.g. FY2022 MDTA/MES published twice), verified at the source; not payment leads
+# ---- ML layer (src/models/payee_classifier.py, grant_groups.py): better labels and leads to review, never savings
+d_payee_class: d_payee_class    # payee type per payee name: rule label, model label, final label, confidence, review queue (names that may be a person's withheld)
+d_payee_class_eval: d_payee_class_eval    # rules vs model vs combined on the hand-labeled sample (reference/payee_labels_sample.csv)
+d_grant_groups: d_grant_groups    # grant descriptions grouped by meaning; groups funded by 2+ grantor agencies are possible overlap leads (not savings, not additive)
+d_grant_groups_sensitivity: d_grant_groups_sensitivity    # grant groups and leads at cosine thresholds 0.80 / 0.85 / 0.90
