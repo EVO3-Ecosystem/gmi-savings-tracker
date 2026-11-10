@@ -38,6 +38,17 @@ A record is in at most one group (precedence: duplicate, repeated line, split). 
 
 The screen is **not stable across years, and that is the finding**: 197 of the 205 groups are FY2022 lines of two agencies, Maryland Transportation Authority (81 groups, $62.56M) and Maryland Environmental Service (116 groups, $34.17M), published once with a Jan 1, 2022 record date and again with Jan 1, 2023 under fiscal year 2022 (MDTA's FY2022 payments total $1.50B against $0.80B in FY2023 and $0.84B in FY2024). That looks like a publication duplicate in the dataset rather than double payments: the first thing to ask is the Comptroller's open-data team, not the vendors. Outside FY2022 the screen finds three small groups in four years. With no payment-level dates, the screen cannot see real duplicate payments inside an annual total.
 
+## Source verification: the FY2022 double listing is in the published source (checked Nov 10, 2026)
+
+Queried directly, not through the pipeline (`docs/reconciliation/crosschecks_2026-11-10.csv`):
+
+* **opendata.maryland.gov, dataset 7syw-q4cy** (SoQL `$group=fiscal_year,date`; rows updated 2026-11-09): FY2022 holds 23,440 rows dated Jan 1, 2022 ($35,782,271,603.50) **and 539 rows dated Jan 1, 2023 ($874,477,234.00)**. FY2021 and FY2023 each carry a single date. All 539 second-block rows belong to two agencies: Maryland Transportation Authority (category J11; 218 rows, $781,246,241.38) and Maryland Environmental Service (category U10; 321 rows, $93,230,992.62).
+* MDTA's FY2022 therefore totals $1,497,976,993.74 (212 rows, $716.73M, dated 2022 + 218 rows, $781.25M, dated 2023) against $799.12M in FY2023. MES: $95.81M + $93.23M against $109.99M in FY2023.
+* The second block is **not FY2023 mislabeled**: only 1 of its 539 rows equals a FY2023 row. 212 of its rows (MDTA 91, $75.11M; MES 121, $34.69M) equal a first-block row in payee, ZIP and amount; the others differ, which looks like two versions of the same year's file loaded together.
+* **vendorpayments.maryland.gov** `api/opex/totals.json?year=2022` returns $36,656,748,837.50 = $35,782,271,603.50 + $874,477,234.00: the State's own payments site counts the second block too. FY2023 ($39,277,722,859.48) matches the pipeline to the cent. The pipeline's FY2022 total equals the site's.
+
+**Conclusion: the duplicate is in the published source**, on both State sites, not introduced by this pipeline. The pairs the screen found there are a data-publication issue, so they are reported in `mart.d_source_issues`, not as payment leads (below). The question goes to the Comptroller's open-data team; nothing about it is a vendor overpayment.
+
 ## Calculator lever
 
 "Payment recovery review (leads)" = review dollars of `payment_screen.lever.fy` (FY2026) x an assumed confirmation rate: low 2%, likely 5%, high 10%. The rates are **assumptions, to be replaced by the share confirmed in a reviewed sample**. FY2026 has no flagged groups, so the lever is $0 at every rate on this data; the page also offers the FY2022-FY2026 yearly average (review dollars $19.72M a year, which is almost all the FY2022 publication duplicate). The lever is shown separately and is not added to the plan's savings unless the user turns it on: it is a recovery of past payments, not a recurring saving, and it may overlap other findings.
