@@ -20,6 +20,14 @@ def _pay(rows):
     return pd.DataFrame(out)
 
 
+# Reviewed 2026-11-10: GMI's report groups these as saved in FY2026 (adding up to its own $29M), savings worded as future
+# yearly ("will save ... annually"), or projected; "Reported" lumped them together. Source quotes are in the reference file.
+STATUS_DECISION_2026_11_10 = {
+    "S01": "Saved in FY2026", "S06": "Saved in FY2026", "S07": "Saved in FY2026", "S08": "Saved in FY2026",
+    "S10": "Under way", "S13": "Under way", "S14": "Under way", "S12": "Projected (on completion)", "S16": "Projected",
+}
+
+
 def test_the_reference_file_still_equals_the_legacy_items():
     spec = importlib.util.spec_from_file_location("legacy_savings", ROOT / "legacy" / "gst" / "scripts" / "savings.py")
     legacy = importlib.util.module_from_spec(spec)
@@ -27,8 +35,11 @@ def test_the_reference_file_still_equals_the_legacy_items():
     new = V.items()
     assert [i["id"] for i in new] == [f"S{n:02d}" for n in range(1, 19)]
     for old, cur in zip(legacy.ITEMS, new):
-        assert (old["id"], old["ws"], old["item"], old["type"], old["status"], old["check"], old["page"], old["quote"]) == \
-               (cur["id"], cur["ws"], cur["item"], cur["type"], cur["status"], cur["check"], cur["page"], cur["quote"])
+        # status is the one field that deliberately differs: on 2026-11-10 the "Reported" items were relabelled by how the
+        # report words them (see STATUS_DECISION_2026_11_10); every other field still equals the legacy item.
+        assert cur["status"] == STATUS_DECISION_2026_11_10.get(cur["id"], old["status"]), cur["id"]
+        assert (old["id"], old["ws"], old["item"], old["type"], old["check"], old["page"], old["quote"]) == \
+               (cur["id"], cur["ws"], cur["item"], cur["type"], cur["check"], cur["page"], cur["quote"])
         assert (old["lo"], old["hi"]) == (cur["lo"], cur["hi"])
 
 

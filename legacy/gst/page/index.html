@@ -214,10 +214,16 @@
   <section class="panel" id="p-track" role="tabpanel" aria-labelledby="t-track" hidden>
     <p class="lede" id="trLede" data-source="d_savings f_savings_check">—</p>
     <div class="tiles">
-      <div class="tile"><span class="k">Savings GMI reported, by item</span><span class="v" id="trRep" data-source="d_savings">—</span><span class="d" id="trRepS"></span></div>
+      <div class="tile"><span class="k">Saved in FY2026, by GMI's report</span><span class="v" id="trRep" data-source="d_savings">—</span><span class="d" id="trRepS"></span></div>
       <div class="tile"><span class="k">Items payments can check</span><span class="v" id="trChk" data-source="d_savings">—</span><span class="d" id="trChkS"></span></div>
       <div class="tile"><span class="k" id="trSeenK">Seen in payments</span><span class="v" id="trSeen" data-source="f_savings_check">—</span><span class="d" id="trSeenS"></span></div>
       <div class="tile"><span class="k">No single payment line to match</span><span class="v" id="trNo" data-source="d_savings">—</span><span class="d" id="trNoS"></span></div>
+    </div>
+    <div class="card">
+      <div class="hd"><h2>How the reported figures fit together</h2></div>
+      <p class="note">The report gives each item its own figure, but the figures are not all the same kind: some money is already saved, some is a yearly saving still building up, and some is only expected. They are grouped here by how the report words each one and are not added into a single total.</p>
+      <div class="tbl"><table data-source="d_savings"><thead><tr><th>Group</th><th class="n">Amount</th><th>Items</th><th>What it means</th></tr></thead><tbody id="trGrpBody"></tbody></table></div>
+      <p class="note" id="trGrpNote"></p>
     </div>
     <div class="card">
       <div class="hd"><h2 id="trChartH">Reported saving vs. the change in payments</h2></div>
@@ -229,15 +235,17 @@
       <p class="note" id="trTolNote"></p>
       <p class="note">Hover over a check result to see the vendors it covers. A check says whether the change shows up in what the state paid; it is a lead to follow, not proof. Payee names miss spending booked under other names, and contracts change for other reasons.</p>
       <div class="tbl"><table data-source="d_savings f_savings_check" data-row-key="saving_id">
-        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported a year</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n">Payments FY2025</th><th class="n">Payments FY2026</th><th class="n">Change</th><th id="trResH">Check result</th><th>Since last run</th></tr></thead>
+        <thead><tr><th data-field="workstream">Workstream</th><th data-field="item">Item</th><th class="n" data-field="reported_high">Reported amount</th><th data-field="type">Type</th><th data-field="status">Status</th><th data-field="source_page">Source</th><th class="n" id="trBefH">Payments FY2025</th><th class="n" id="trAftH">Payments FY2026</th><th class="n">Change</th><th id="trResH">Check result</th><th>Since last run</th></tr></thead>
         <tbody id="trBody"></tbody></table></div>
       <p class="stagenote" id="trStage"></p>
     </div>
     <div class="card">
       <div class="hd"><h2>Sources</h2></div>
-      <p class="note">Every reported figure on this tab is quoted from one of these documents; hover over a Source cell for the exact words. Payment figures are computed from the state's payments data. Checked Oct 29, 2026.</p>
+      <p class="note">Every reported figure on this tab is quoted from one of these documents; hover over a Source cell for the exact words. Payment figures are computed from the state's payments data. Checked Oct 29, 2026; the $29M total and the grouping above re-checked Nov 10, 2026.</p>
       <ul class="ins" style="font-size:var(--cds-font-size-caption)">
-        <li>Maryland Department of Budget and Management, <a href="https://governor.maryland.gov/media/893" target="_blank" rel="noopener">Government Modernization Initiative Final Report</a> (Joint Chairmen's Report, p. 77), January 26, 2026: all GMI items, page numbers as shown.</li>
+        <li>Maryland Department of Budget and Management, <a href="https://governor.maryland.gov/media/893" target="_blank" rel="noopener">Government Modernization Initiative Final Report</a> (Joint Chairmen's Report, p. 77), January 26, 2026: all GMI items, page numbers as shown, and GMI's own FY2026 total: "$29 million in FY2026 in-year savings, $20 million of which are General Fund savings."</li>
+        <li>Maryland Department of Budget and Management, <a href="https://dbm.maryland.gov/budget/FY2027Testimony/D10A01.pdf" target="_blank" rel="noopener">FY2027 budget testimony</a>, February–March 2026: repeats about $29 million in identified savings.</li>
+        <li>The Daily Record, <a href="https://thedailyrecord.com/2026/02/02/wes-moore-maryland-government-modernization-saves-29-million/" target="_blank" rel="noopener">Moore's government modernization saves $29 million</a>, February 2, 2026: same $29M and $20M General Fund figures.</li>
         <li>Maryland Department of General Services, <a href="https://dgs.maryland.gov/Pages/Announcements/GovernmentModernization.aspx" target="_blank" rel="noopener">Government Modernization announcement</a>: $326,341,056 estimated facility savings across seven Baltimore facilities (no date or fiscal years given).</li>
         <li>State of Maryland, <a href="https://opendata.maryland.gov/d/7syw-q4cy" target="_blank" rel="noopener">Payments Data (7syw-q4cy)</a>, FY2022–FY2026: every payment check, matched by payee name.</li>
         <li>WYPR, <a href="https://www.wypr.org/wypr-news/2025-01-10/gov-moore-announces-plan-to-save-50m-by-modernizing-maryland-government" target="_blank" rel="noopener">Gov. Moore announces plan to save $50M</a>, January 10, 2025: the $50M target and the consultant fee (20% of savings, up to $15M).</li>
@@ -1242,12 +1250,21 @@ function drawTrack(p){
   const lo = d3.sum(d, r => r.reported_low || 0), hi = d3.sum(d, r => r.reported_high || 0), fm = (a, b) => a === b ? M(a) : `${M(a)}–${M(b)}`;
   const chk = d.filter(r => r.check_id && r.reported_low != null), no = d.filter(r => !r.check_id);
   const seen = [...G.values()].filter(g => g.reported && (g.res === 'Seen in payments' || g.res === 'Partly seen'));
-  setText('trRep', fm(lo, hi)); setText('trRepS', `${d.filter(r => r.reported_low != null).length} items with a dollar figure, ${d.filter(r => r.reported_low == null).length} not quantified · GMI's own total: $29M in FY2026 ($20M General Fund)`);
-  setText('trChk', fm(d3.sum(chk, r => r.reported_low), d3.sum(chk, r => r.reported_high))); setText('trChkS', `${chk.length} items in ${G.size} vendor groups`);
+  const GRP = [['Saved in FY2026', 'Money the report says was saved: renegotiated vendor agreements, paused and sold vehicles, a smaller fleet. These add up to GMI\'s own FY2026 total.'],
+    ['Under way', 'Listed under "achieved savings" but worded as future yearly savings ("will save about ... annually"): fewer phone lines, laptop refresh and specs.'],
+    ['Projected', 'Expected yearly savings from changes still being rolled out.'],
+    ['Projected (on completion)', 'Expected once the copper-landline review is finished.']];
+  const gsum = s => { const g = d.filter(r => r.status === s && r.reported_low != null); return {n: g.length, lo: d3.sum(g, r => r.reported_low), hi: d3.sum(g, r => r.reported_high), names: g.map(r => r.item.split(' (')[0].toLowerCase())}; };
+  const GS = GRP.map(([s, w]) => ({s, w, ...gsum(s)})), sv = GS[0], rest = GS.slice(1);
+  setText('trRep', fm(sv.lo, sv.hi)); setText('trRepS', `${sv.n} items · ${Math.abs(sv.lo - 29e6) < 5e5 ? 'they add up to' : 'compare with'} GMI's own FY2026 total of $29M ($20M General Fund) · not counted here: ${rest.map(g => fm(g.lo, g.hi) + ' ' + g.s.toLowerCase()).join(', ')}`);
+  const gb = document.getElementById('trGrpBody'); if (gb) { gb.textContent = ''; GS.forEach(g => { const tr = document.createElement('tr'); [g.s, fm(g.lo, g.hi) + (g.s === 'Saved in FY2026' || /completion/.test(g.s) ? '' : ' a year'), g.names.join('; '), g.w].forEach((v, i) => { const td = document.createElement('td'); if (i === 1) td.className = 'n'; td.textContent = v; tr.appendChild(td); }); gb.appendChild(tr); }); }
+  setText('trGrpNote', `Adding every item gives ${fm(lo, hi)}, but that mixes money already saved with money only expected, and one-time with yearly savings, so it is not a total. The report does not say which items make up its $29M; the four "saved" items matching it exactly is this tracker's reading, not the State's statement. The report gives a General Fund split only for the $29M total, not for single items. Items named without a dollar figure (${d.filter(r => r.reported_low == null).length}) are in the table below.`);
+  setText('trChk', fm(d3.sum(chk, r => r.reported_low), d3.sum(chk, r => r.reported_high))); setText('trChkS', `${chk.length} items with a dollar figure, checked in ${G.size} vendor groups · mixes saved, under-way and projected amounts`);
   setText('trSeenK', y1 ? `Seen in payments, FY${y0} to FY${y1}` : 'Seen in payments'); setText('trSeen', M(d3.sum(seen, g => Math.min(g.drop, g.reported))));
   setText('trSeenS', `${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks show payments falling · ${seenTxt()}` + (p.agencies.length ? ' · ' + who(p) : ''));
   setText('trNo', fm(d3.sum(no, r => r.reported_low || 0), d3.sum(no, r => r.reported_high || 0))); setText('trNoS', no.map(r => r.item.split(' (')[0].toLowerCase()).join('; ') + (ca.length ? ` · separately, DGS estimates ${M(d3.sum(ca, r => r.reported_low))} in facility cost avoidance (mostly capital, not yearly)` : ''));
-  setText('trLede', `GMI's January 26, 2026 report to the legislature lists ${d.length} savings items worth ${fm(lo, hi)} a year against a $50M target (GMI's own total for FY2026: $29M). Payments to the matching vendors can check ${chk.length} of them. ` + (y1 ? `From FY${y0} to FY${y1}${p.agencies.length ? ' at ' + who(p) : ''}, payments fell in ${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks: about ${M(d3.sum(seen, g => Math.min(g.drop, g.reported)))} of the reported savings shows up in what the state paid.` : 'Choose a year with payments (FY2017–FY2026) to run the checks.') + ` The largest item, $18M from renegotiating seven vendors' agreements, names four kinds of contract but no vendors; each kind is checked against the payments that fit it.`);
+  setText('trLede', `GMI's January 26, 2026 report to the legislature says GMI saved $29M in FY2026 ($20M of it General Fund) against a $50M target. It lists ${d.length} items: ${sv.n} saved in FY2026 that add up to ${fm(sv.lo, sv.hi)}, plus yearly savings under way or projected that are not part of that total. Payments to the matching vendors can check ${chk.length} items. ` + (y1 ? `From FY${y0} to FY${y1}${p.agencies.length ? ' at ' + who(p) : ''}, payments fell in ${seen.length} of ${[...G.values()].filter(g => g.reported).length} checks: about ${M(d3.sum(seen, g => Math.min(g.drop, g.reported)))} of the reported savings shows up in what the state paid.` : 'Choose a year with payments (FY2017–FY2026) to run the checks.') + ` The largest item, $18M from renegotiating seven vendors' agreements, names four kinds of contract but no vendors; each kind is checked against the payments that fit it.`);
+  setText('trBefH', y0 ? `Payments FY${y0}` : 'Payments, year before'); setText('trAftH', y1 ? `Payments FY${y1}` : 'Payments, last year');
   const bars = [...G.entries()].filter(([, g]) => g.reported).map(([cid, g]) => ({label: g.items[0].workstream + ': ' + g.items[0].item.split(' (')[0].toLowerCase() + (g.items.length > 1 ? ` (+${g.items.length - 1} related)` : ''), a: g.reported, b: Math.max(0, g.drop), chg: g.before ? (g.after - g.before)/g.before : null, g})).sort((a, b) => b.a - a.a);
   setText('trChartH', y1 ? `Reported saving vs. the drop in payments, FY${y0} to FY${y1}` : 'Reported saving vs. the drop in payments');
   hbars(document.getElementById('trChart'), bars, {good:'lower', aria:'Reported savings compared with the drop in payments', tip: d => [`Reported: ${M(d.a)} a year`, `Payments: ${M(d.g.before)} → ${M(d.g.after)} (${ARROW(d.chg)})`, d.g.res]});
