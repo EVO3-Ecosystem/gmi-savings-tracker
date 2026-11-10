@@ -10,15 +10,18 @@ Input: mart.v_grant_rows (the grants dataset, absk-avps, one row per published g
    the results were looked at: descriptions whose average cosine similarity is at least grant_groups.cosine_threshold
    (0.85) join one group. The same clustering at the sensitivity thresholds (0.80, 0.90) is summarized alongside
    (mart.d_grant_groups_sensitivity); only the main threshold sets the leads.
-3. A group is a possible overlap lead when grantor agencies (the part of the grantor before "/") numbering at least
-   grant_groups.min_agencies (2) funded it in grant_groups.lead_fy (FY2025, the last year in the grants data): the same
-   year, so an agency renamed between years is not counted twice. multi_agency_any_year is the looser reading (2+
-   agencies in any year, FY2009-FY2025), reported alongside; its hand check shows it is mostly renamed agencies.
+3. Grantor agencies are resolved through reference/grantor_agency_aliases.csv (mart.v_grant_rows.grantor_agency): a
+   renamed department counts as the current agency (Health and Mental Hygiene -> Maryland Department of Health) and a
+   fund, program or unit name in the grantor field counts as the agency that runs it (MD Stem Cell Research Fund ->
+   TEDCO). A group is a possible overlap lead when resolved agencies numbering at least grant_groups.min_agencies (2)
+   funded it in grant_groups.lead_fy (FY2025, the last year in the grants data). multi_agency_any_year is the looser
+   reading (2+ resolved agencies in any year, FY2009-FY2025), reported alongside. The grantor names as listed are kept
+   (grantors_listed, multi_listed_any_year) so the groups the alias map collapses can be counted (collapsed_by_aliases).
 
 A lead says only that two or more agencies fund grants described alike. It is not a duplicate, not waste and not a
 saving: the grant dollars in a group are what was granted, are not additive with payments (grants are largely paid out
 through the payments data, mart.f_overlap) and are not additive across groups or thresholds. The top groups were
-checked by hand (docs/models/grant_groups.md): many are generic text ("operating grant") rather than one purpose.
+checked by hand (docs/models/grant_groups.md), before and after the alias map.
 """
 import hashlib
 from pathlib import Path
@@ -103,6 +106,8 @@ def groups(rows, desc, labels, cfg, backend, threshold):
     gid = d.groupby("cluster").description_key.agg(lambda s: "G" + _key("|".join(sorted(s)))[:10])
     d["group_id"] = d.cluster.map(gid)
     r = rows.merge(d[["description_key", "group_id"]], on="description_key")
+    if "grantor_listed" not in r:  # rows without the alias step: the listed name is the agency
+        r["grantor_listed"] = r.grantor_agency
     fy = cfg["lead_fy"]
     cur = r[r.fiscal_year == fy]
     rep = d.sort_values(["group_id", "amount", "description"], ascending=[True, False, True]).groupby("group_id")
@@ -114,22 +119,33 @@ def groups(rows, desc, labels, cfg, backend, threshold):
     g["grantor_agencies"] = r.groupby("group_id").grantor_agency.agg(lambda s: "; ".join(sorted(set(s))))
     g["n_agencies"] = r.groupby("group_id").grantor_agency.nunique()
     g["grantees"] = r.groupby("group_id").grantee.nunique()
+    g["grantors_listed"] = r.groupby("group_id").grantor_listed.agg(lambda s: "; ".join(sorted(set(s))))
+    g["n_grantors_listed"] = r.groupby("group_id").grantor_listed.nunique()
     g[f"grantor_agencies_fy{fy}"] = cur.groupby("group_id").grantor_agency.agg(lambda s: "; ".join(sorted(set(s))))
     g[f"n_agencies_fy{fy}"] = cur.groupby("group_id").grantor_agency.nunique()
     g[f"grantees_fy{fy}"] = cur.groupby("group_id").grantee.nunique()
     g[f"rows_fy{fy}"] = cur.groupby("group_id").size()
     g[f"amount_fy{fy}"] = cur.groupby("group_id").amount.sum()
+    g["amount_all_years"] = r.groupby("group_id").amount.sum()
     g["first_fy"] = r.groupby("group_id").fiscal_year.min()
     g["last_fy"] = r.groupby("group_id").fiscal_year.max()
     for c in (f"n_agencies_fy{fy}", f"grantees_fy{fy}", f"rows_fy{fy}"):
         g[c] = g[c].fillna(0).astype(int)
     g[f"amount_fy{fy}"] = g[f"amount_fy{fy}"].fillna(0.0)
     g["overlap_lead"] = g[f"n_agencies_fy{fy}"] >= cfg["min_agencies"]
-    g["multi_agency_any_year"] = g.n_agencies >= cfg["min_agencies"]  # secondary: agencies in any year (renamed agencies count twice)
+    g["multi_agency_any_year"] = g.n_agencies >= cfg["min_agencies"]  # secondary: resolved agencies in any year
+    g["multi_listed_any_year"] = g.n_grantors_listed >= cfg["min_agencies"]  # the round-1 reading: grantor names as listed
+    g["collapsed_by_aliases"] = g.multi_listed_any_year & ~g.multi_agency_any_year  # 2+ names, but one agency after the map
     g["backend"], g["cosine_threshold"] = backend, threshold
-    g = g.reset_index().sort_values([f"amount_fy{fy}", "group_id"], ascending=[False, True])
+    g = g.reset_index().sort_values([f"amount_fy{fy}", "amount_all_years", "group_id"], ascending=[False, False, True])
     g.insert(1, "rank_fy", np.arange(1, len(g) + 1))
     return g.reset_index(drop=True), d[["description_key", "description", "group_id", "rows", "amount"]]
+
+
+def alias_counts(rows):
+    """Grant rows whose grantor is not in reference/grantor_agency_aliases.csv, and those mapped with reason 'unknown'."""
+    reason = rows["alias_reason"] if "alias_reason" in rows else pd.Series("not in map", index=rows.index)
+    return {"rows_alias_not_in_map": int((reason == "not in map").sum()), "rows_alias_unknown": int((reason == "unknown").sum())}
 
 
 def build(rows, cfg, cache_dir=CACHE):
@@ -146,6 +162,8 @@ def build(rows, cfg, cache_dir=CACHE):
                      "overlap_leads": len(lead), "lead_amount_fy": float(lead[f"amount_fy{fy}"].sum()),
                      "multi_agency_any_year": int(g.multi_agency_any_year.sum()),
                      "multi_agency_any_year_amount_fy": float(g.loc[g.multi_agency_any_year, f"amount_fy{fy}"].sum()),
+                     "multi_listed_any_year": int(g.multi_listed_any_year.sum()), "collapsed_by_aliases": int(g.collapsed_by_aliases.sum()),
+                     **alias_counts(rows),
                      "lead_share_of_fy_grants": float(lead[f"amount_fy{fy}"].sum() / total) if total else None, "fiscal_year": fy})
         if t == cfg["cosine_threshold"]:
             out, members = g, m

@@ -445,7 +445,9 @@ metric,d_payee_class_eval,derived,"accuracy, macro_f1, precision, recall, f1, do
 class,d_payee_class_eval,derived,Payee class a per-class metric is for; 'all' for overall metrics
 value,d_payee_class_eval,derived,Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes)
 n,d_payee_class_eval,derived,Names the metric is computed on (support for per-class metrics)
-grantor_agency,mart.v_grant_rows,derived,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed"
+grantor_agency,mart.v_grant_rows,derived,"Grantor agency resolved through reference/grantor_agency_aliases.csv (renames -> current agency; fund, program or unit -> the agency that runs it); the listed name when the map has no row or says unknown"
+grantor_listed,mart.v_grant_rows,derived,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed (the agency name as listed, before the alias map)"
+alias_reason,mart.v_grant_rows,derived,"Reason from reference/grantor_agency_aliases.csv for the grantor's agency, or 'not in map'"
 grantor_program,mart.v_grant_rows,derived,Grantor after the first '/' (the program or unit the portal joins to the agency); blank when none
 category,mart.v_grant_rows,derived,Grant or Loan (core.fact_grant)
 description,"mart.v_grant_rows,d_grant_group_members",portal,Grant description as published
@@ -456,7 +458,10 @@ rank_fy,d_grant_groups,derived,Rank of the group by FY2025 grant dollars
 n_descriptions,d_grant_groups,derived,Distinct descriptions in the group
 example_descriptions,d_grant_groups,derived,Up to three other descriptions in the group
 grantor_agencies,d_grant_groups,derived,"Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated"
-n_agencies,d_grant_groups,derived,"Number of grantor agencies, any year (an agency renamed between years counts twice)"
+n_agencies,d_grant_groups,derived,"Number of resolved grantor agencies, any year (renames and fund names counted once, through reference/grantor_agency_aliases.csv)"
+grantors_listed,d_grant_groups,derived,"Grantor names as listed (before the alias map) that funded the group in any year, '; '-separated"
+n_grantors_listed,d_grant_groups,derived,"Number of grantor names as listed, any year (a renamed agency counts twice)"
+amount_all_years,d_grant_groups,derived,"Grant dollars in the group, FY2009-FY2025 (what was granted; not a saving, not additive); breaks rank_fy ties"
 grantees,d_grant_groups,derived,"Distinct grantees, any year"
 grantor_agencies_fy2025,d_grant_groups,derived,Grantor agencies that funded the group in FY2025
 n_agencies_fy2025,d_grant_groups,derived,Number of grantor agencies in FY2025
@@ -464,7 +469,9 @@ grantees_fy2025,d_grant_groups,derived,Distinct grantees in FY2025
 rows_fy2025,d_grant_groups,derived,Grant rows in FY2025
 amount_fy2025,d_grant_groups,derived,"FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups"
 overlap_lead,d_grant_groups,derived,"Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding)"
-multi_agency_any_year,d_grant_groups,derived,2+ grantor agencies in any year; mostly renamed agencies (hand check in docs/models/grant_groups.md)
+multi_agency_any_year,d_grant_groups,derived,2+ resolved grantor agencies in any year (hand check in docs/models/grant_groups.md)
+multi_listed_any_year,"d_grant_groups,d_grant_groups_sensitivity",derived,2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table)
+collapsed_by_aliases,"d_grant_groups,d_grant_groups_sensitivity",derived,"2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table)"
 backend,"d_grant_groups,d_grant_groups_sensitivity",derived,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded"
 cosine_threshold,"d_grant_groups,d_grant_groups_sensitivity",derived,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity)
 main,d_grant_groups_sensitivity,derived,True for the threshold the leads use
@@ -474,8 +481,14 @@ multi_description_groups,d_grant_groups_sensitivity,derived,Groups with two or m
 groups_with_fy_amount,d_grant_groups_sensitivity,derived,Groups with FY2025 grant dollars
 overlap_leads,d_grant_groups_sensitivity,derived,Groups funded by 2+ grantor agencies in FY2025
 lead_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant dollars in the overlap leads (not savings, not additive)"
-multi_agency_any_year,d_grant_groups_sensitivity,derived,Groups with 2+ grantor agencies in any year
+multi_agency_any_year,d_grant_groups_sensitivity,derived,Groups with 2+ resolved grantor agencies in any year
+rows_alias_not_in_map,d_grant_groups_sensitivity,derived,Grant rows whose grantor has no row in reference/grantor_agency_aliases.csv (expected 0)
+rows_alias_unknown,d_grant_groups_sensitivity,derived,Grant rows whose grantor is mapped with reason 'unknown' (kept under the listed name)
 multi_agency_any_year_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant dollars in those groups (not savings, not additive)"
 lead_share_of_fy_grants,d_grant_groups_sensitivity,derived,lead_amount_fy as a share of all FY2025 grants and loans
 rows,d_grant_group_members,derived,"Grant rows with this description, all years"
 amount,d_grant_group_members,derived,"Grant dollars with this description, all years"
+grantor_raw,ref.grantor_agency_aliases,reference,"Grantor exactly as published in the grants dataset (every distinct string in raw.grants, matched after trimming)"
+grantor_agency,ref.grantor_agency_aliases,reference,"Agency the grantor resolves to: the current name of a renamed department, or the agency that runs a fund, program or unit named in the grantor field (names from mart.agency_name / agency_master); for reason 'unknown', the listed name itself"
+reason,ref.grantor_agency_aliases,reference,"Why the grantor maps there: current name, spelling, rename (with year), fund of agency, program of agency, unit of agency, or unknown"
+evidence,ref.grantor_agency_aliases,reference,"Rows and fiscal years the grantor string appears in, and the agency and program parts it was read as"
