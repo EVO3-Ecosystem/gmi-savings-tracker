@@ -368,3 +368,127 @@ cpi_months,"mart.d_deflator,d_deflator",source,Months of CPI in the fiscal-year 
 factor,"mart.d_deflator,d_deflator",derived,Multiplier from nominal dollars of the fiscal year to FY2026 dollars: FY2026 CPI average / that year's CPI average (six-decimal text so the export keeps the precision); real dollars = nominal x factor
 population,"mart.d_deflator,d_deflator",source,Maryland resident population on July 1 at the start of the fiscal year (Census Population Estimates); per-resident dollars = dollars / population
 source,"mart.d_deflator,d_deflator",source,"Where cpi_index and population come from, with the CPI months averaged and the population vintage"
+record_date,"core.fact_payment*,mart.v_payment_screen_rows",portal,"The portal's date column as a date: a record date (Jan 1 of a year, sometimes of the next year), not the payment date; used only by the payment screen's windows"
+rule,"d_payment_screen*,mart.v_payment_screen_rows",derived,"Payment screen rule: Possible duplicate, Repeated annual line or Possible split purchase (docs/models/payment_screen.md)"
+vendor,d_payment_screen,derived,"Company name after grouping payee names; 'Payee not named (may be an individual)' when the payee type is Business or other and no payee name looks like an organization"
+group_id,"d_payment_screen,mart.v_payment_screen_rows",derived,Identifier of a flagged group of payment records (hash of the rule and its grouping keys)
+record_key,mart.v_payment_screen_rows,derived,Identifier of one payment record (hash of its published fields plus a counter for identical records)
+agency_key,mart.v_payment_screen_rows,derived,Budget agency code of the payment; the agency name as paid when the payment is not matched to an agency
+vendor_key,mart.v_payment_screen_rows,derived,"Normalized payee name the vendor grouping and the name rules are matched on (ref.map_payee_vendor)"
+date_grain,"d_payment_screen*,mart.v_payment_screen_rows",derived,"Grain of the payments' dates in the screened years: annual (record dates, one row per agency, payee and year) or payment (payment-level dates)"
+first_date,d_payment_screen,derived,Earliest record date in the group
+last_date,d_payment_screen,derived,Latest record date in the group
+n,d_payment_screen,derived,Number of payment records in the group
+total_amount,d_payment_screen*,derived,Dollars of all records in the group(s)
+review_amount,d_payment_screen*,derived,"Dollars a review could recover if confirmed: every copy after the first for duplicates and repeated lines; 0 for split purchases (a compliance lead)"
+payee_names,d_payment_screen,derived,Distinct payee names (as paid) in the group
+zips,d_payment_screen,derived,Distinct payee ZIP codes in the group
+also_flagged_under,d_payment_screen,derived,"Other screen rules that flag the same agency, vendor and year (records are never in two groups; this labels the overlap)"
+rule_order,d_payment_screen_summary,derived,Display order of the rule
+groups,d_payment_screen_summary,derived,Number of flagged groups
+records,d_payment_screen_summary,derived,Number of payment records in the flagged groups
+status,d_payment_screen_summary,derived,"Whether the rule can be measured at the data's date grain: Measured, Not measurable (split rule on annual records) or Not applied"
+amount,d_payment_screen,derived,"Dollars of each record in the group (equal for duplicates and repeated lines); blank for split purchases"
+lever_fy,d_payment_screen_summary,reference,"Payments year whose flagged review dollars the Calculator lever uses (config/assumptions.yaml payment_screen.lever.fy)"
+lever_rate_low,d_payment_screen_summary,derived,"Calculator lever rate, low case: lower Wilson bound of the measured confirmation rate; 0 when not measurable (rate_basis)"
+lever_rate_likely,d_payment_screen_summary,derived,"Calculator lever rate, likely case: the measured confirmation rate; 0 when not measurable (rate_basis)"
+lever_rate_high,d_payment_screen_summary,derived,"Calculator lever rate, high case: upper Wilson bound of the measured confirmation rate; 0 when not measurable (rate_basis)"
+tables,ops.check_coverage,derived,"Warehouse tables the check's queries read (recorded by src/pipeline/checks.py), space-separated"
+table_name,ops.lineage,derived,Warehouse table (schema.name) created by the build
+depends_on,ops.lineage,derived,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)"
+agency_code_as_paid,mart.v_payment_screen_rows,portal,"Paying unit's code as published (the portal's category column, e.g. 602 = DGS capital), used to tell two paying units apart"
+source_issue_id,mart.v_payment_screen_rows,derived,"Source issue the record's group belongs to ('SRC-<fiscal year>-<agency code>'), blank for payment leads; such groups go to d_source_issues, never to d_payment_screen"
+agency_raw,"d_payment_screen,d_source_issues",portal,Paying agency name as published (most common name in the group); agency is the pipeline's cleaned name (agency_master)
+agency,"d_payment_screen,d_source_issues",derived,"Agency's cleaned name from agency_master (budget name, or the payment data's own name for payment-only codes); agency_raw keeps the name as paid"
+confidence_score,d_payment_screen,derived,"Confidence points from rules fixed before measuring (config payment_screen.confidence): +1 not a round amount, -1 a multiple of $1,000, +1 one paying unit, -1 several paying units, -1 same amount in another year, -1 under $5,000, -1 non-profit payee"
+confidence,d_payment_screen,derived,"Confidence that the lead is a real duplicate: high (score >= 1), medium (0) or low (<= -1); low for split purchases"
+review_status,d_payment_screen,derived,"Evidence review from the data alone: unreviewed, confirmed_duplicate_in_source (records identical in every published field), likely_legitimate (a pattern of equal payments from several units) or needs_records; never a confirmed overpayment"
+review_note,d_payment_screen,derived,"One-line evidence note behind review_status (paying units, ZIPs, the vendor's other payments by the agency, equal payments from other units)"
+measured_confirmation_rate,d_payment_screen_summary,derived,Share of reviewed leads confirmed by the evidence review; blank when the review confirms none (not measurable without payment records)
+rate_basis,d_payment_screen_summary,derived,"How the confirmation rate and the lever rates were set: the measured share with its Wilson interval, or 'not measurable without payment records' (lever 0)"
+reviewed_leads,d_payment_screen_summary,derived,Payment leads the evidence review reached a status for (not unreviewed)
+confirmed_leads,d_payment_screen_summary,derived,Payment leads the evidence review marked confirmed_duplicate_in_source
+issue_id,d_source_issues,derived,Source issue identifier: 'SRC-<fiscal year>-<agency code>'
+issue,d_source_issues,derived,Short description of the data-publication issue
+records,d_source_issues,derived,Records in the second (off-year dated) block of the agency's fiscal year
+amount,d_source_issues,derived,"Dollars in the second (off-year dated) block of the agency's fiscal year, as published"
+identical_records,d_source_issues,derived,"Records of the second block equal to a first-block record in payee name, ZIP and amount (matched one to one)"
+identical_amount,d_source_issues,derived,Dollars of the identical records
+screen_groups,d_source_issues,derived,Payment-screen groups moved here from the leads (repeated annual lines inside this issue)
+screen_records,d_source_issues,derived,Payment records in those groups
+screen_review_amount,d_source_issues,derived,Review dollars those groups carried as leads before they were recognised as a publication issue (every copy after the first)
+evidence,d_source_issues,derived,"The numbers behind the issue: both blocks' records and dollars, identical records, screen groups"
+verified_against,d_source_issues,reference,Where the issue was checked at the source (config source_issues); blank when not yet verified
+verified_on,d_source_issues,reference,Date the issue was checked at the source (docs/reconciliation/crosschecks_2026-11-10.csv)
+status,d_source_issues,reference,Whether the issue is confirmed in the published source and what to do next
+payee_key,"d_payee_class,mart.v_payee_class_input,ref.payee_labels_sample",derived,md5 of the payee name as paid: links a row to the name in the database without publishing it
+payee,d_payee_class,derived,"Payee name as paid, or 'Payee not named (may be an individual)' when the final label is business and the name has no organization word (payment_screen.org_name_pattern) or the name was labeled individual/withheld"
+payee,mart.v_payee_class_input,portal,"Payee name as paid (payments vendor_name, trimmed)"
+payee,ref.payee_labels_sample,derived,"Payee name as paid; '[individual: name withheld, see payee_key]' for names labeled individual/withheld"
+vendor_key,mart.v_payee_class_input,derived,"Normalized payee name (ref.map_payee_vendor), what the payee type rules match"
+rule_type,"mart.v_payee_class_input,ref.payee_labels_sample",derived,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), the classifier's baseline"
+rule_label,d_payee_class,derived,"Payee type from the name rules (mart.vendor_type, reference/payee_type_rules.csv), as the dashboard uses it"
+rule_class,d_payee_class,derived,The rule label mapped to the classifier's five classes (config payee_classifier.rule_to_class)
+model_label,d_payee_class,derived,Class predicted by the TF-IDF character n-gram logistic regression trained on the rule labels (docs/models/payee_classifier.md); never individual/withheld
+confidence,d_payee_class,derived,The model's probability for model_label (0-1)
+final_label,d_payee_class,derived,"Payee class used downstream: the combined label (rules first, model where the rules fell to the default) if it beat the rules on macro F1 on the hand-labeled sample, otherwise the rule class"
+review_flag,d_payee_class,derived,True when the name belongs in the review queue (see review_reason)
+review_reason,d_payee_class,derived,"Why the name is in the review queue: default label and the model suggests another type (probability >= review_threshold), default label and low model confidence, or the model disagrees with a name rule"
+in_eval_sample,d_payee_class,derived,True for the 400 names of the hand-labeled evaluation sample (reference/payee_labels_sample.csv); they and their vendors' other names are never trained on
+paid_all_years,"d_payee_class,mart.v_payee_class_input,ref.payee_labels_sample",derived,"Payments to this payee name, all fiscal years (dollars)"
+paid_fy2025,mart.v_payee_class_input,derived,Payments to this payee name in FY2025 (dollars)
+spend_bucket,ref.payee_labels_sample,derived,All-years spend bucket the sample was stratified by (config payee_classifier.spend_buckets)
+my_label,ref.payee_labels_sample,derived,"Single annotator's label from the name text (Claude, Nov 10, 2026) under the criteria in docs/models/payee_classifier.md; unsure = excluded"
+her_label,ref.payee_labels_sample,derived,Sierra's review label; when filled it replaces my_label in the evaluation
+method,d_payee_class_eval,derived,"rules, model or combined (or sample / decision / model bookkeeping rows)"
+metric,d_payee_class_eval,derived,"accuracy, macro_f1, precision, recall, f1, dollars_classified_share, dollars_relabeled_share, accuracy_on_default_names, or a count (labeled, excluded_unsure, not_found, reviewed_by_sierra, training_names, review_queue, combined_promoted)"
+class,d_payee_class_eval,derived,Payee class a per-class metric is for; 'all' for overall metrics
+value,d_payee_class_eval,derived,Metric value (shares and scores 0-1; counts as numbers; combined_promoted 1 = yes)
+n,d_payee_class_eval,derived,Names the metric is computed on (support for per-class metrics)
+grantor_agency,mart.v_grant_rows,derived,"Grantor agency resolved through reference/grantor_agency_aliases.csv (renames -> current agency; fund, program or unit -> the agency that runs it); the listed name when the map has no row or says unknown"
+grantor_listed,mart.v_grant_rows,derived,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed (the agency name as listed, before the alias map)"
+alias_reason,mart.v_grant_rows,derived,"Reason from reference/grantor_agency_aliases.csv for the grantor's agency, or 'not in map'"
+grantor_program,mart.v_grant_rows,derived,Grantor after the first '/' (the program or unit the portal joins to the agency); blank when none
+category,mart.v_grant_rows,derived,Grant or Loan (core.fact_grant)
+description,"mart.v_grant_rows,d_grant_group_members",portal,Grant description as published
+description,d_grant_groups,derived,Representative description of the group: the member with the most grant dollars over all years
+description_key,"mart.v_grant_rows,d_grant_group_members",derived,Description in lower case with spaces collapsed: the unit that is embedded and clustered
+group_id,"d_grant_groups,d_grant_group_members",derived,Grant group identifier: hash of the group's member description keys (stable while the members are)
+rank_fy,d_grant_groups,derived,Rank of the group by FY2025 grant dollars
+n_descriptions,d_grant_groups,derived,Distinct descriptions in the group
+example_descriptions,d_grant_groups,derived,Up to three other descriptions in the group
+grantor_agencies,d_grant_groups,derived,"Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated"
+n_agencies,d_grant_groups,derived,"Number of resolved grantor agencies, any year (renames and fund names counted once, through reference/grantor_agency_aliases.csv)"
+grantors_listed,d_grant_groups,derived,"Grantor names as listed (before the alias map) that funded the group in any year, '; '-separated"
+n_grantors_listed,d_grant_groups,derived,"Number of grantor names as listed, any year (a renamed agency counts twice)"
+amount_all_years,d_grant_groups,derived,"Grant dollars in the group, FY2009-FY2025 (what was granted; not a saving, not additive); breaks rank_fy ties"
+grantees,d_grant_groups,derived,"Distinct grantees, any year"
+grantor_agencies_fy2025,d_grant_groups,derived,Grantor agencies that funded the group in FY2025
+n_agencies_fy2025,d_grant_groups,derived,Number of grantor agencies in FY2025
+grantees_fy2025,d_grant_groups,derived,Distinct grantees in FY2025
+rows_fy2025,d_grant_groups,derived,Grant rows in FY2025
+amount_fy2025,d_grant_groups,derived,"FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups"
+overlap_lead,d_grant_groups,derived,"Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding)"
+multi_agency_any_year,d_grant_groups,derived,2+ resolved grantor agencies in any year (hand check in docs/models/grant_groups.md)
+multi_listed_any_year,"d_grant_groups,d_grant_groups_sensitivity",derived,2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table)
+collapsed_by_aliases,"d_grant_groups,d_grant_groups_sensitivity",derived,"2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table)"
+backend,"d_grant_groups,d_grant_groups_sensitivity",derived,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded"
+cosine_threshold,"d_grant_groups,d_grant_groups_sensitivity",derived,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity)
+main,d_grant_groups_sensitivity,derived,True for the threshold the leads use
+descriptions,d_grant_groups_sensitivity,derived,Distinct descriptions clustered
+groups,d_grant_groups_sensitivity,derived,Groups at this threshold
+multi_description_groups,d_grant_groups_sensitivity,derived,Groups with two or more descriptions
+groups_with_fy_amount,d_grant_groups_sensitivity,derived,Groups with FY2025 grant dollars
+overlap_leads,d_grant_groups_sensitivity,derived,Groups funded by 2+ grantor agencies in FY2025
+lead_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant dollars in the overlap leads (not savings, not additive)"
+multi_agency_any_year,d_grant_groups_sensitivity,derived,Groups with 2+ resolved grantor agencies in any year
+rows_alias_not_in_map,d_grant_groups_sensitivity,derived,Grant rows whose grantor has no row in reference/grantor_agency_aliases.csv (expected 0)
+rows_alias_unknown,d_grant_groups_sensitivity,derived,Grant rows whose grantor is mapped with reason 'unknown' (kept under the listed name)
+multi_agency_any_year_amount_fy,d_grant_groups_sensitivity,derived,"FY2025 grant dollars in those groups (not savings, not additive)"
+lead_share_of_fy_grants,d_grant_groups_sensitivity,derived,lead_amount_fy as a share of all FY2025 grants and loans
+rows,d_grant_group_members,derived,"Grant rows with this description, all years"
+amount,d_grant_group_members,derived,"Grant dollars with this description, all years"
+grantor_raw,ref.grantor_agency_aliases,reference,"Grantor exactly as published in the grants dataset (every distinct string in raw.grants, matched after trimming)"
+grantor_agency,ref.grantor_agency_aliases,reference,"Agency the grantor resolves to: the current name of a renamed department, or the agency that runs a fund, program or unit named in the grantor field (names from mart.agency_name / agency_master); for reason 'unknown', the listed name itself"
+reason,ref.grantor_agency_aliases,reference,"Why the grantor maps there: current name, spelling, rename (with year), fund of agency, program of agency, unit of agency, or unknown"
+evidence,ref.grantor_agency_aliases,reference,"Rows and fiscal years the grantor string appears in, and the agency and program parts it was read as"

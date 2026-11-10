@@ -8,6 +8,8 @@ cent, shares and changes to 5 decimals). Every dashboard file now has a mart (si
 --carry remains for a dataset added to config/dashboard.yaml before its mart exists: such a file is copied from that folder
 and marked "carried" in manifest.csv. Feedback loop: manifest.csv also records, per file, rows and whether it changed since the last
 export (the roadmap's "exported files differ from last run" report).
+Each exported mart is also written as Parquet (zstd) to data/export/<run_id>/parquet/<name>.parquet, from the same rows
+as its CSV, for the site's data explorer and the published dataset (.github/workflows/publish_data.yml).
 """
 import argparse
 import hashlib
@@ -55,6 +57,7 @@ def main(argv=None):
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
+    (out / "parquet").mkdir()
     prev = json.loads((EXP / "latest.json").read_text()) if (EXP / "latest.json").exists() else {}
     rows = []
     for name in files:
@@ -72,7 +75,9 @@ def main(argv=None):
             if carry and carry.exists():  # keep the dashboard's column order
                 cols = list(pd.read_csv(carry, nrows=0).columns)
                 df = df[[c for c in cols if c in df.columns] + [c for c in df.columns if c not in cols]]
-            _round(df).to_csv(out / f"{name}.csv", index=False)
+            df = _round(df)
+            df.to_csv(out / f"{name}.csv", index=False)
+            df.to_parquet(out / "parquet" / f"{name}.parquet", compression="zstd", index=False)
             src = "mart"
         elif carry and carry.exists():
             shutil.copy(carry, out / f"{name}.csv")
@@ -81,7 +86,7 @@ def main(argv=None):
             rows.append({"file": name, "source": "missing", "rows": 0, "changed": None})
             continue
         h = hashlib.sha256((out / f"{name}.csv").read_bytes()).hexdigest()[:16]
-        rows.append({"file": name, "source": src, "rows": sum(1 for _ in open(out / f"{name}.csv")) - 1, "sha": h,
+        rows.append({"file": name, "source": src, "rows": len(pd.read_csv(out / f"{name}.csv", low_memory=False)),  # parsed rows: line breaks inside text fields are not rows "sha": h,
                      "changed": (h != prev.get(name)) if prev else None})
     con.close()
     man = pd.DataFrame(rows)
@@ -93,7 +98,9 @@ def main(argv=None):
     latest.symlink_to(out.name)
     print(man.groupby("source").file.count().to_string())
     miss = man[man.source == "missing"].file.tolist()
-    print(f"export: {len(man) - len(miss)} files to {out}" + (f"; missing: {miss}" if miss else ""))
+    pq = sorted((out / "parquet").glob("*.parquet"))
+    print(f"export: {len(man) - len(miss)} files to {out}" + (f"; missing: {miss}" if miss else "")
+          + f"; {len(pq)} Parquet files, {sum(f.stat().st_size for f in pq) / 1e6:.1f} MB (their CSVs {sum((out / f'{f.stem}.csv').stat().st_size for f in pq) / 1e6:.1f} MB)")
     return 1 if miss else 0
 
 

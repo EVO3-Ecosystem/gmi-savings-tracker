@@ -16,9 +16,40 @@ import re
 from pathlib import Path
 
 import pandas as pd
+import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 SQL = ROOT / "sql" / "mart"
+CFG = ROOT / "config" / "assumptions.yaml"
+PARAM = re.compile(r"\{\{\s*([\w.]+)\s*\}\}")
+
+
+def fill(text, cfg=None):
+    """Replace {{section.key}} in a mart file with the value from config/assumptions.yaml, as an SQL literal
+    (number as is, text quoted, list as a comma-separated list of literals), so thresholds live in config, not SQL."""
+    if "{{" not in text:
+        return text
+    cfg = cfg if cfg is not None else yaml.safe_load(CFG.read_text())
+
+    def lit(v):
+        if isinstance(v, bool):
+            return "true" if v else "false"
+        if isinstance(v, (int, float)):
+            return repr(v)
+        if isinstance(v, list):
+            return ", ".join(lit(x) for x in v)
+        return "'" + str(v).replace("'", "''") + "'"
+
+    def get(m):
+        v = cfg
+        for k in m.group(1).split("."):
+            if not isinstance(v, dict) or k not in v:
+                raise KeyError(f"config/assumptions.yaml has no {m.group(1)}")
+            v = v[k]
+        return lit(v)
+    return PARAM.sub(get, text)
+
+
 HEAD = re.compile(r"--\s*yoy:\s*keys=(\S+)\s+values=(\S+)(\s+stage)?(?:\s+good=(\w+))?")
 
 
@@ -59,7 +90,7 @@ def build(con):
     con.execute("CREATE SCHEMA IF NOT EXISTS mart")
     done = []
     for f in sorted(SQL.glob("*.sql")):
-        text = f.read_text()
+        text = fill(f.read_text())
         try:
             m = HEAD.match(text.lstrip())
             if m:

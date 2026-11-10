@@ -27,7 +27,10 @@ DATASETS = {  # dataset id on the dashboard -> published table
     "d_vendors": "d_vendors", "f_vendor_pay": "f_vendor_pay", "f_payee_type": "f_payee_type", "f_vendor_year": "f_vendor_year",
     "d_multi": "d_multi", "f_concentration": "f_concentration", "d_area_top": "d_area_top", "d_families": "d_families", "d_multi_basis": "d_multi_basis",
     "f_grants": "f_grants", "f_fund_source": "f_fund_source", "f_program": "f_program", "f_budget_vs_pay": "f_budget_vs_pay", "f_overlap": "f_overlap",
+    "d_payment_screen": "d_payment_screen", "d_payment_screen_summary": "d_payment_screen_summary",
+    "d_source_issues": "d_source_issues",
 }
+OPTIONAL = {"d_source_issues"}  # drawn when published; the page says so when they are not (the site's loader skips them if missing)
 AREAS = ['IT hardware, software & services', 'Fleet & fuel', 'Utilities & facility energy', 'Real estate & leases', 'Print, copy & mail', 'Telecom']
 
 CSS = (":root{--color-bg:#fafafa;--color-panel:#fff;--color-border-line:#ddd;--color-fg:#111;--color-fg-muted:#666;--color-ok:#2a7;--color-warn:#c80;"
@@ -82,6 +85,7 @@ def combos(latest=2025):
         ("detail: funds", {"years": [2020, 2021]}, ["detail:funds"]),
         ("opportunity pages", {}, ["opp", "detail:bid", "detail:opps", "detail:det:Peer gap", "detail:det:Leverage", "detail:vendor:Carahsoft", "detail:vendor:Verizon", "detail:vendor:Apple Ford", "detail:area:Telecom"]),
         ("calculator source pages", {}, ["calc", "detail:src:area:Telecom", "detail:src:area:Other controllable purchases", "detail:src:fee"]),
+        ("payment screen, one agency", {"agencies": ["__TOP1__"]}, ["opp", "calc"]),
     ]
 
 
@@ -118,9 +122,18 @@ PROBE = """(tab) => {
                  [!document.querySelector('#p-over #scopeChart'), 'scope chart still on the Overview'],
                  [/^A path to .* if reported savings recur .* across the assumed ranges/.test(T('ov50Note')) && /payment evidence/.test(T('ov50Note')), 'path to $50M not worded as a conditional']],
     calc: () => [[/ if reported savings recur /.test(T('planFind')), 'Calculator plan not worded as a conditional'],
-                 [!/8 in 10|8-in-10/.test(T('p-calc')) && /indicative/.test(T('p-calc')) && /fell inside such a range/.test(T('p-calc')), 'forecast ranges not labelled indicative with their coverage']],
+                 [!/8 in 10|8-in-10/.test(T('p-calc')) && /indicative/.test(T('p-calc')) && /fell inside such a range/.test(T('p-calc')), 'forecast ranges not labelled indicative with their coverage'],
+                 [document.querySelectorAll('#caPRTiles .tile').length === 3 && (/assumed|measured/.test(T('caPRTiles')) || (/Not measurable/.test(T('caPRTiles')) && document.getElementById('caPRIn').disabled)), 'payment recovery lever tiles missing, or a rate shown that was neither assumed, measured nor marked not measurable'],
+                 [(/assumptions, to be replaced by the share confirmed in a reviewed sample/.test(T('caPRNote')) || /measured confirmation rate, \\d+%/.test(T('caPRNote')) || /not measurable without payment records, so no recovery value is estimated/.test(T('caPRNote'))) && (document.getElementById('caPRIn').checked || /not added to the savings above/.test(T('caPRNote'))), 'payment recovery lever not marked as an assumption or as not additive']],
     opp: () => [[/leads worth up to/.test(T('opLede')) && /not additive/.test(T('opLede')), 'Opportunities headline reads as savings, or omits the overlap'],
-                [!/Likely savings found|would reach GMI/.test(T('p-opp')), 'Opportunities still promise savings']],
+                [!/Likely savings found|would reach GMI/.test(T('p-opp')), 'Opportunities still promise savings'],
+                [/leads to review, not errors/.test(T('psFind')), 'payment screen finding missing or reads as errors'],
+                [!!document.querySelector('#psChart svg') || !!document.querySelector('#psChart .empty'), 'payment screen chart not drawn'],
+                [document.querySelectorAll('#psBody tr').length > 0 && /groups/.test(T('psCount')), 'payment screen list not drawn'],
+                [/split purchase/i.test(T('psStatus')) && /limit in force on its record date \\(\\$50,000, then \\$100,000 from Oct 1, 2023/.test(T('psStatus')), 'payment screen rules or split status not stated'],
+                [!!document.querySelector('#p-opp #psIssues') && (/not payment leads/.test(T('psIssNote')) || /No data-quality issues/.test(T('psIssNote'))), 'source data-quality panel missing or not separated from leads'],
+                [!document.querySelector('#psBody tr td.c-conf') || document.querySelector('#psBody').closest('table').classList.contains('no-conf') || document.querySelectorAll('#psBody td.c-conf .st').length > 0, 'confidence and review chips not drawn'],
+                [(() => { const h = document.querySelector('#psCard h2'), b = document.querySelector('.gs .bar-top'); return h && b && h.closest('.panel') && !b.contains(h); })(), 'payment screen heading not inside its tab panel']],
     track: () => [[!document.getElementById('stBody2'), 'status table not merged'],
                   [/Since last run/.test(T('p-track')) && /at least 50% of the reported saving/.test(T('trTolNote')) && /50%/.test(T('trSeenS')), 'Seen tolerance or status column missing']],
     agency: () => [[/ per position: /.test(T('agLede')) || /No agency/.test(T('agLede')), 'Agencies headline missing'],

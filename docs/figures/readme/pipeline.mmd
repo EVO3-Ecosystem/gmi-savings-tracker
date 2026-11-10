@@ -1,0 +1,11 @@
+flowchart LR
+  A["opendata.maryland.gov<br/>SODA API · 6 datasets"] --> R[("Raw Parquet<br/>per run")]
+  X["BLS · USAspending<br/>Census · DBM"] --> R
+  R --> D[("DuckDB<br/>103 checks")]
+  F["reference/*.csv<br/>reviewed rules"] --> D
+  D --> M["51 SQL marts<br/>+ models"]
+  M --> E["53 files<br/>CSV + Parquet"]
+  E --> W["GitHub Pages<br/>dashboard · explorer · catalog · AI layer"]
+  E --> H["Hugging Face dataset<br/>GitHub Release"]
+  D --> P["MCP server<br/>read-only"]
+  V["State sites + DBM books<br/>independent checks"] -.verify.-> D

@@ -1,19 +1,25 @@
 fiscal_year,area,vendors,spend,top5_share,hhi
+2012,Fleet & fuel,43,50460885.61,0.87689,4507.0
+2012,"Print, copy & mail",14,12484393.01,0.9369,3020.0
+2010,Utilities & facility energy,6,64106432.58,0.99908,4208.0
+2012,Real estate & leases,72,30308389.43,0.50679,698.0
+2013,Utilities & facility energy,7,98357367.39,0.96168,3253.0
+2016,"IT hardware, software & services",34,96123880.83,0.68229,1155.0
+2021,Telecom,5,35064800.0,1.0,8845.0
+2025,"IT hardware, software & services",56,243106107.32,0.80706,1609.0
+2008,Telecom,4,54243953.09,1.0,9091.0
+2009,Telecom,4,56780326.36,1.0,9526.0
+2011,Real estate & leases,70,27776586.87,0.52016,750.0
+2015,Fleet & fuel,38,25288980.04,0.84224,2354.0
+2015,"Print, copy & mail",13,13516317.45,0.91575,2258.0
+2018,Telecom,5,24748223.47,1.0,9174.0
+2026,"IT hardware, software & services",55,245463472.37,0.81753,1540.0
 2019,Real estate & leases,65,19093911.8,0.53669,896.0
 2022,Utilities & facility energy,9,54286372.44,0.90923,3393.0
 2024,"IT hardware, software & services",57,201019152.75,0.76202,1364.0
-2014,Utilities & facility energy,8,117783323.5,0.94547,3627.0
-2024,Fleet & fuel,51,125985058.56,0.91812,3180.0
-2024,"Print, copy & mail",20,12289513.69,0.89045,2280.0
-2020,Real estate & leases,68,21672235.51,0.55443,898.0
-2023,Utilities & facility energy,9,57333500.17,0.91744,3043.0
 2019,Fleet & fuel,38,43084516.61,0.8767,2534.0
 2019,"Print, copy & mail",14,12283111.35,0.96719,2784.0
 2023,Telecom,5,37299539.38,1.0,6733.0
-2019,"IT hardware, software & services",43,118076410.54,0.70385,1318.0
-2024,Real estate & leases,59,13500551.54,0.44603,542.0
-2012,Fleet & fuel,43,50460885.61,0.87689,4507.0
-2012,"Print, copy & mail",14,12484393.01,0.9369,3020.0
 2012,"IT hardware, software & services",32,62332557.81,0.81883,2192.0
 2016,Real estate & leases,75,21818340.53,0.44583,747.0
 2017,Utilities & facility energy,8,61422539.59,0.95341,3331.0
@@ -24,12 +30,6 @@ fiscal_year,area,vendors,spend,top5_share,hhi
 2017,Telecom,4,27906739.19,1.0,7566.0
 2011,"IT hardware, software & services",36,62150996.06,0.76094,1455.0
 2026,Real estate & leases,64,18944954.23,0.43121,562.0
-2010,Utilities & facility energy,6,64106432.58,0.99908,4208.0
-2012,Real estate & leases,72,30308389.43,0.50679,698.0
-2013,Utilities & facility energy,7,98357367.39,0.96168,3253.0
-2016,"IT hardware, software & services",34,96123880.83,0.68229,1155.0
-2021,Telecom,5,35064800.0,1.0,8845.0
-2025,"IT hardware, software & services",56,243106107.32,0.80706,1609.0
 2008,Utilities & facility energy,4,76146971.07,1.0,6193.0
 2009,Utilities & facility energy,5,86416635.86,1.0,5886.0
 2016,Fleet & fuel,29,27896048.16,0.8969,2831.0
@@ -37,13 +37,6 @@ fiscal_year,area,vendors,spend,top5_share,hhi
 2018,Utilities & facility energy,8,57275045.99,0.91743,2969.0
 2025,Fleet & fuel,48,123086047.25,0.93172,2867.0
 2025,"Print, copy & mail",19,14370579.34,0.86466,2016.0
-2008,Telecom,4,54243953.09,1.0,9091.0
-2009,Telecom,4,56780326.36,1.0,9526.0
-2011,Real estate & leases,70,27776586.87,0.52016,750.0
-2015,Fleet & fuel,38,25288980.04,0.84224,2354.0
-2015,"Print, copy & mail",13,13516317.45,0.91575,2258.0
-2018,Telecom,5,24748223.47,1.0,9174.0
-2026,"IT hardware, software & services",55,245463472.37,0.81753,1540.0
 2010,Telecom,4,55725581.63,1.0,8829.0
 2013,Telecom,4,38847409.78,1.0,8359.0
 2015,"IT hardware, software & services",42,104706489.33,0.76236,1401.0
@@ -55,40 +48,38 @@ fiscal_year,area,vendors,spend,top5_share,hhi
 2020,Fleet & fuel,42,27660502.99,0.87647,2862.0
 2020,"Print, copy & mail",13,16118373.34,0.93537,2134.0
 2022,Telecom,5,37809976.99,1.0,8258.0
+2014,Utilities & facility energy,8,117783323.5,0.94547,3627.0
+2024,Fleet & fuel,51,125985058.56,0.91812,3180.0
+2024,"Print, copy & mail",20,12289513.69,0.89045,2280.0
+2020,Real estate & leases,68,21672235.51,0.55443,898.0
+2023,Utilities & facility energy,9,57333500.17,0.91744,3043.0
+2019,"IT hardware, software & services",43,118076410.54,0.70385,1318.0
+2024,Real estate & leases,59,13500551.54,0.44603,542.0
+2019,Telecom,6,28034230.48,0.99865,9073.0
+2023,Fleet & fuel,50,113818414.86,0.94439,3851.0
+2023,"Print, copy & mail",18,14737052.76,0.89246,1877.0
+2020,Utilities & facility energy,8,52355513.7,0.89182,3220.0
+2023,Real estate & leases,59,15452538.26,0.45719,578.0
+2014,Fleet & fuel,38,19087421.83,0.75382,1454.0
+2014,"Print, copy & mail",15,13393697.36,0.93383,2399.0
+2022,"IT hardware, software & services",49,130440056.5,0.67407,1116.0
+2024,Utilities & facility energy,9,59178980.67,0.95201,3402.0
 2021,Fleet & fuel,39,30260483.11,0.89489,2640.0
 2021,"Print, copy & mail",19,20047929.57,0.89972,2394.0
 2026,Utilities & facility energy,10,80721532.5,0.89176,2983.0
-2015,Utilities & facility energy,8,57538140.64,0.9489,3488.0
-2016,Telecom,5,43923682.67,1.0,8310.0
-2021,"IT hardware, software & services",43,119036489.39,0.77014,1360.0
-2025,Telecom,5,43639162.83,1.0,5271.0
 2008,Real estate & leases,59,21939923.78,0.42651,535.0
 2009,Real estate & leases,55,22010289.5,0.45152,590.0
 2011,Telecom,4,52686554.14,1.0,9513.0
 2017,Fleet & fuel,33,30829285.16,0.89189,2276.0
 2017,"Print, copy & mail",14,13066223.56,0.93964,2446.0
 2018,Real estate & leases,72,20480909.07,0.47817,809.0
-2010,Real estate & leases,60,23780222.7,0.42299,548.0
-2012,Utilities & facility energy,7,103065308.59,0.98932,3022.0
-2013,Real estate & leases,75,30495268.49,0.45998,638.0
-2017,"IT hardware, software & services",36,84979685.02,0.72819,1409.0
 2012,Telecom,4,38881851.38,1.0,9171.0
 2021,Real estate & leases,72,15425984.04,0.50418,637.0
-2011,Utilities & facility energy,6,71508556.23,0.99965,4628.0
-2019,Telecom,6,28034230.48,0.99865,9073.0
-2023,Fleet & fuel,50,113818414.86,0.94439,3851.0
-2023,"Print, copy & mail",18,14737052.76,0.89246,1877.0
 2023,"IT hardware, software & services",51,160782805.89,0.7317,1287.0
 2014,Real estate & leases,71,25311652.41,0.42211,591.0
 2019,Utilities & facility energy,8,52116436.92,0.92246,3806.0
 2022,Real estate & leases,83,17380430.54,0.52307,826.0
-2020,Utilities & facility energy,8,52355513.7,0.89182,3220.0
-2023,Real estate & leases,59,15452538.26,0.45719,578.0
 2024,Telecom,5,40130639.11,1.0,7556.0
-2014,Fleet & fuel,38,19087421.83,0.75382,1454.0
-2014,"Print, copy & mail",15,13393697.36,0.93383,2399.0
-2022,"IT hardware, software & services",49,130440056.5,0.67407,1116.0
-2024,Utilities & facility energy,9,59178980.67,0.95201,3402.0
 2014,"IT hardware, software & services",35,77567478.97,0.75685,1436.0
 2020,Telecom,5,37105993.22,1.0,8760.0
 2022,Fleet & fuel,54,62770959.8,0.88472,2642.0
@@ -113,3 +104,12 @@ fiscal_year,area,vendors,spend,top5_share,hhi
 2013,"Print, copy & mail",14,11701001.77,0.92758,2716.0
 2018,"IT hardware, software & services",36,100937213.42,0.67848,1252.0
 2026,Telecom,5,48016424.53,1.0,4648.0
+2015,Utilities & facility energy,8,57538140.64,0.9489,3488.0
+2016,Telecom,5,43923682.67,1.0,8310.0
+2021,"IT hardware, software & services",43,119036489.39,0.77014,1360.0
+2025,Telecom,5,43639162.83,1.0,5271.0
+2010,Real estate & leases,60,23780222.7,0.42299,548.0
+2012,Utilities & facility energy,7,103065308.59,0.98932,3022.0
+2013,Real estate & leases,75,30495268.49,0.45998,638.0
+2017,"IT hardware, software & services",36,84979685.02,0.72819,1409.0
+2011,Utilities & facility energy,6,71508556.23,0.99965,4628.0

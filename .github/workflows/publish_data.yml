@@ -1,0 +1,60 @@
+# Publish the dashboard's marts as an open dataset: Parquet + manifest + dataset card to the Hugging Face dataset
+# thedatavigilante/maryland-gmi-spending (needs the repository secret HF_TOKEN, a write token; skipped with a notice when it
+# is missing), and a GitHub Release data-<run_id> with the Parquet files attached (skipped when that release exists).
+# Built from the checked-in snapshot in site_data/ (refresh it locally with `make export && make site-snapshot`).
+# The dry-run step (python -m src.pipeline.publish --dry-run) validates everything before any upload; staging validates again.
+name: Publish data
+on:
+  push: {branches: [main]}
+  workflow_dispatch:
+permissions:
+  contents: write   # gh release create
+concurrency:
+  group: publish-data
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with: {python-version: "3.12", cache: pip}
+      - run: pip install -e . "huggingface_hub==0.26.2"
+      - name: Validate the dataset card, files, sizes and release tag (dry run, no network)
+        run: python -m src.pipeline.publish --src site_data --dry-run
+      - id: stage
+        run: |
+          python -m src.pipeline.publish --src site_data --out hf_stage | tee stage.log
+          echo "run_id=$(sed -n 's/^run_id=//p' stage.log)" >> "$GITHUB_OUTPUT"
+      - name: Upload to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::notice title=Hugging Face upload skipped::Add a write token as the repository secret HF_TOKEN to publish thedatavigilante/maryland-gmi-spending."
+            exit 0
+          fi
+          python - <<'PY'
+          import os
+          from huggingface_hub import HfApi
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          repo = "thedatavigilante/maryland-gmi-spending"
+          api.create_repo(repo, repo_type="dataset", exist_ok=True)
+          api.upload_folder(repo_id=repo, repo_type="dataset", folder_path="hf_stage",
+                            commit_message="Data export ${{ steps.stage.outputs.run_id }} (${{ github.sha }})", delete_patterns=["parquet/*.parquet"])
+          print("uploaded to https://huggingface.co/datasets/" + repo)
+          PY
+      - name: GitHub Release with the Parquet files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: data-${{ steps.stage.outputs.run_id }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "::notice title=Release exists::$TAG is already published; nothing to do."
+            exit 0
+          fi
+          awk 'n>=2{print} /^---$/{n++}' hf_stage/README.md > release_notes.md   # the dataset card without its YAML header
+          gh release create "$TAG" hf_stage/parquet/*.parquet hf_stage/manifest.csv --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "Data export ${{ steps.stage.outputs.run_id }}" --notes-file release_notes.md

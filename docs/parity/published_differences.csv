@@ -189,6 +189,15 @@ d_rec_status,4,cells:progress,28 steps to $50.2M a year,28 steps to $50.2M a yea
 d_rec_status,6,cells:progress,Current Managing for Results measures are published only in the budget books (PDF); the open data portal has 2016 files only,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency",
 d_rec_status,4,cells:previous,28 steps to $50.2M a year,28 steps to $50.2M a year at the assumed rates; $41.4M–$59.0M across the assumed ranges,
 d_rec_status,6,cells:previous,Current Managing for Results measures are published only in the budget books (PDF); the open data portal has 2016 files only,"2,957 performance measures read from 108 of 111 agency plans; 106 plans matched to a budget agency",
+d_savings,S01,cells:status,Reported,Saved in FY2026,
+d_savings,S06,cells:status,Reported,Saved in FY2026,
+d_savings,S07,cells:status,Reported,Saved in FY2026,
+d_savings,S08,cells:status,Reported,Saved in FY2026,
+d_savings,S10,cells:status,Reported,Under way,
+d_savings,S12,cells:status,Projected,Projected (on completion),
+d_savings,S13,cells:status,Reported,Under way,
+d_savings,S14,cells:status,Reported,Under way,
+d_savings,S16,cells:status,Reported,Projected,
 d_vendor_moves,DELL,cells:fy2024,3337110.82,2648325.04,688785.7799999998
 d_vendor_moves,DALY COMPUTERS,cells:fy2024,1460582.29,1247967.29,212615.0
 d_vendor_moves,APPLIED TECHNOLOGY SERVICES,cells:fy2024,37628469.33,37450878.33,177591.0
@@ -216,7 +225,7 @@ d_vendor_moves,CLIFTONLARSONALLEN,rows_only_legacy,,,
 d_vendor_moves,JOHNSON CONTROLS,rows_only_export,,,
 f_agency,D78|2017,cells:payments,107269940.98,107526700.2,256759.2199999988
 f_agency,D15|2017,cells:payments,124992002.4,124992724.14,721.7399999946356
-f_area,"2017|D78|PRINT, COPY & MAIL",cells:payee_spend,,312.51,
+f_area,"2017|D78|PRINT, COPY & MAIL",cells:payee_spend,nan,312.51,
 f_area,2013|D78|TELECOM,cells:payee_spend,15329.59,40736.96,25407.37
 f_area,2014|D78|TELECOM,cells:payee_spend,548461.39,571251.35,22789.959999999963
 f_area,2015|D78|TELECOM,cells:payee_spend,565071.09,581336.8,16265.71000000008

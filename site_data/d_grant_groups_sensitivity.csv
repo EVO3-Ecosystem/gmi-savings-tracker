@@ -1,0 +1,4 @@
+cosine_threshold,backend,main,descriptions,groups,multi_description_groups,groups_with_fy_amount,overlap_leads,lead_amount_fy,multi_agency_any_year,multi_agency_any_year_amount_fy,multi_listed_any_year,collapsed_by_aliases,rows_alias_not_in_map,rows_alias_unknown,lead_share_of_fy_grants,fiscal_year
+0.8,sentence-transformers/all-MiniLM-L6-v2,False,5008,3452,763,449,1,17184122.18,71,40752025.57,463,392,0,1,0.02,2025
+0.85,sentence-transformers/all-MiniLM-L6-v2,True,5008,3803,660,480,1,17184122.18,56,34271814.18,445,389,0,1,0.02,2025
+0.9,sentence-transformers/all-MiniLM-L6-v2,False,5008,4161,524,518,1,17184122.18,42,22271814.18,417,375,0,1,0.02,2025

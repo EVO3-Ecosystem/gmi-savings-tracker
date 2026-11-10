@@ -11,6 +11,7 @@
 5. Feedback loop: the catalog snapshot is compared with the previous one; added, removed or retyped columns and changed
    titles are reported and appended to docs/schemas/drift_history.csv. --strict exits 1 on drift or gaps.
 Generated sections of docs/data-governance.md sit between <!-- gen:NAME --> and <!-- /gen:NAME --> markers.
+6. Then src/models/doc_facts.py writes the counts in docs/models/*.md (<!-- facts:NAME --> markers) and the payment review sheet.
 """
 import argparse
 import datetime as dt
@@ -141,6 +142,10 @@ def main(argv=None):
     wh = con.execute("select table_schema||'.'||table_name t, column_name c, data_type ty, ordinal_position o from information_schema.columns "
                      "where table_schema in ('raw','ref','core','mart','ops') order by 1, 4").df()
     nrows = {t: con.execute(f"select count(*) from {t}").fetchone()[0] for t in wh.t.unique()}
+    # for the site's database catalog: the tables each check reads, and what each table was built from
+    for name, t in (("check_coverage", "ops.check_coverage"), ("lineage", "ops.lineage")):
+        if t in nrows:
+            con.execute(f"select * from {t}").df().to_csv(SCH / f"{name}.csv", index=False)
     con.close()
     wh = pd.DataFrame([{"table": r.t, "column": r.c, "type": r.ty, "table_rows": nrows[r.t], **dict(zip(("definition", "origin"), define(dic, r.t, r.c)))}
                        for r in wh.itertuples()])
@@ -189,6 +194,8 @@ def main(argv=None):
     doc = put(doc, "drift", "No change in source schemas since the last snapshot." if not changes else md(pd.DataFrame(changes, columns=["dataset_id", "item", "change"])))
     DOC.write_text(doc)
     print(f"governance: {total - len(gaps)}/{total} columns documented; {len(changes)} schema changes; sources from {how}")
+    from src.models import doc_facts  # numbers in the model notes and the payment review sheet, from the same database
+    doc_facts.main(db=DB)
     return 1 if a.strict and (changes or not gaps.empty) else 0
 
 

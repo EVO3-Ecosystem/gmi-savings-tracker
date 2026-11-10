@@ -19,11 +19,12 @@ import pandas as pd  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 FIG = ROOT / "docs" / "figures"
 DB = ROOT / "data" / "md_transparency.duckdb"
-C = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4"]
+C = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#8a63d2"]
 INK, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#e6e5e0", "#fcfcfb"
-NAMES = {"budget": "Operating budget (yu65-jmmv)", "fund": "Funding source (gy87-e27x)", "fte": "Positions (x8qy-486w)",
-         "payments": "Payments (7syw-q4cy)", "grants": "Grants and loans (absk-avps)"}
-YEAR = {"budget": "fiscal_year", "fund": "fiscal_year", "fte": "fiscal_year", "payments": "fiscal_year", "grants": "fiscalyear"}
+NAMES = {"budget": "Operating budget (yu65-jmmv)", "fund": "Funding source (gy87-e27x)", "fte": "FTEs (x8qy-486w)",
+         "payments": "Payments (7syw-q4cy)", "grants": "Grants and loans (absk-avps)",
+         "highered": "Higher education (4mca-332u)"}
+YEAR = {"budget": "fiscal_year", "fund": "fiscal_year", "fte": "fiscal_year", "payments": "fiscal_year", "grants": "fiscalyear", "highered": "fiscal_year"}
 
 plt.rcParams.update({"figure.facecolor": SURF, "axes.facecolor": SURF, "axes.edgecolor": GRID, "axes.labelcolor": MUTED, "xtick.color": MUTED,
                      "ytick.color": MUTED, "axes.grid": True, "grid.color": GRID, "grid.linewidth": .8, "axes.axisbelow": True, "font.size": 10,
@@ -47,14 +48,15 @@ def save(fig, name, title, note):
 
 
 def rows_by_year(con):
-    fig, axs = plt.subplots(1, 5, figsize=(15, 3.2), sharex=False)
+    fig, axs = plt.subplots(2, 3, figsize=(15, 6.2), sharex=False)
+    axs = axs.ravel()
     for ax, (k, col), c in zip(axs, NAMES.items(), C):
         d = con.execute(f"select try_cast({YEAR[k]} as int) y, count(*) n from raw.{k} group by 1 order by 1").df()
         ax.bar(d.y, d.n, color=c, width=.75)
         ax.set_title(f"{col}\n{int(d.n.sum()):,} rows", loc="left", fontsize=9.5)
         ax.yaxis.set_major_formatter(lambda v, _: (f"{v / 1e3:,.0f}K" if v >= 1e4 else f"{v / 1e3:,.1f}K") if v >= 1e3 else f"{v:.0f}")
         ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True, nbins=5))
-    save(fig, "rows_by_year.png", "What the pipeline extracts: rows per fiscal year, five datasets",
+    save(fig, "rows_by_year.png", "What the pipeline extracts: rows per fiscal year, six datasets",
          "Source: opendata.maryland.gov SODA API, latest extract. Payments start FY2008; the latest payments year is partial.")
 
 

@@ -1,0 +1,104 @@
+check,layer,tables
+Rows loaded = portal count: budget,raw,raw.budget
+Rows loaded = portal count: fund,raw,raw.fund
+Rows loaded = portal count: fte,raw,raw.fte
+Rows loaded = portal count: payments,raw,raw.payments
+Rows loaded = portal count: grants,raw,raw.grants
+Rows loaded = portal count: highered,raw,raw.highered
+Yearly totals = portal: budget,core,core.fact_budget ops.portal_year_total
+No missing year or amount: budget,core,core.fact_budget
+Yearly totals = portal: fund,core,core.fact_fund ops.portal_year_total
+No missing year or amount: fund,core,core.fact_fund
+Yearly totals = portal: fte,core,core.fact_fte ops.portal_year_total
+No missing year or amount: fte,core,core.fact_fte
+Yearly totals = portal: payments,core,core.fact_payment ops.portal_year_total
+No missing year or amount: payments,core,core.fact_payment
+Yearly totals = portal: grants,core,core.fact_grant ops.portal_year_total
+No missing year or amount: grants,core,core.fact_grant
+Yearly totals = portal: highered,core,core.fact_budget_highered ops.portal_year_total
+No missing year or amount: highered,core,core.fact_budget_highered
+Budget totals = funding-source totals (within $1),core,core.fact_budget core.fact_fund
+Object and program codes are two digits,core,core.fact_budget
+Funding-source rows keep their unit and two-digit program,core,core.fact_fund
+Sub-object codes normalized (no leading zeros),core,core.fact_budget raw.budget ref.dim_subobject
+Agency names carry no code suffix,core,core.fact_budget ref.dim_agency
+Functions keyed by title,ref,ref.dim_function
+Every budget year has a confirmed stage,ref,core.fact_budget ref.dim_stage
+Latest payments year flagged as partial,core,core.fact_payment
+CPI covers every actual budget year (real dollars),core,core.cpi_fy ref.dim_stage
+Federal awards present for every complete year,core,core.fact_federal_award
+Population covers every actual budget year,core,core.fact_population
+Managing for Results plans downloaded (recommendation 6),core,core.mfr_document
+Context source pulled: cpi,raw,ops.enrichment
+Context source pulled: federal_awards,raw,
+Context source pulled: population,raw,
+Context source pulled: mfr,raw,
+FY2026 payment dollars matched to a budget agency,ref,core.fact_payment core.fact_payment_mapped ref.baseline_quality
+FY2027 (partial year) payment dollars matched,ref,core.fact_payment core.fact_payment_mapped
+Payment agency names mapped,ref,ref.map_payment_agency
+Payee names grouped into companies,ref,ref.map_payee_vendor
+Controllable purchases FY2025 = dashboard,ref,core.fact_budget_scope
+Focus areas FY2025 = dashboard,ref,core.fact_budget_scope ref.map_focus_area
+Every focus-area code exists in the budget,ref,ref.dim_subobject ref.map_focus_area
+New payee names since the last build,ref,ops.payee_name_seen ref.map_payee_vendor
+Managing for Results measures read from the plans (recommendation 6),ref,core.mfr_measure ref.map_mfr_agency
+"Vendor payments by year = core payments (every year, to the dollar)",mart,core.fact_payment mart.vendor_agency_year
+"Agency roll-up budget by year = core budget (every year, to the dollar)",mart,core.fact_budget mart.agency_rollup
+One vendor master row per vendor paid,mart,mart.vendor_agency_year mart.vendor_master
+Each agency's budget sits in one function (no allocation needed),mart,mart.agency_function
+Every mapped payment rolls up to a function or a named exception,mart,mart.vendor_agency_year
+Function exceptions are not in the operating budget,mart,core.fact_budget ref.function_exceptions
+Payments outside the operating budget data (latest full year),mart,core.fact_payment mart.vendor_agency_year ref.function_exceptions
+Every vendor has a payee type,mart,mart.vendor_master
+Vendors tab: vendor pages add up to the vendor list (FY2026),mart,mart.d_vendors mart.f_vendor_pay
+Vendors tab: payments by payee type = core payments (every year),mart,core.fact_payment mart.f_payee_type
+Vendors tab: every multi-agency vendor is paid by 15+ agencies,mart,mart.d_multi
+Vendors tab: concentration shares and HHI within bounds,mart,mart.f_concentration
+Vendors tab: concentration spend = private focus-area payments (every area and year),mart,mart.f_concentration mart.v_purchase
+Vendors tab: every company listed has two or more payee names,mart,mart.d_families
+Vendors tab: 15+ agency count on both bases (FY2026),mart,mart.d_multi mart.d_multi_basis
+"Grants as listed = core grants (rows and dollars, every year)",mart,core.fact_grant mart.f_grants
+Budget vs payments: budget and payments = core totals (every year),mart,core.fact_budget core.fact_payment mart.f_budget_vs_pay
+"Where it's going = how it's funded (budget by program = budget by fund source, every year)",mart,mart.f_fund_source mart.f_program
+Grants whose grantee is also a payee that year (name match),mart,mart.f_overlap
+Agency results rows = matched Managing for Results rows,mart,core.mfr_measure mart.agency_results
+Forecast ranges are ordered (p10 <= p50 <= p90),mart,mart.f_forecast
+Forecast actuals add up to controllable purchases (every actual year),mart,mart.d_forecast_model mart.f_forecast mart.f_scope
+Every forecast area has nine actual years and six forecast years,mart,mart.d_forecast_model mart.f_forecast
+Backtest ranges are ordered (p10 <= p50 <= p90),mart,mart.d_forecast_backtest
+Every forecast area is also scored against the State's plan for FY2026 and FY2027,mart,mart.d_forecast_backtest mart.d_forecast_model
+Published forecast ranges cover about their nominal share on the rolling backtest,mart,mart.d_forecast_calibration
+Chosen forecast model is no worse than the naive baseline in the rolling-origin backtest,mart,mart.d_forecast_backtest mart.d_forecast_model
+"Opportunity findings are well formed (low <= high, no duplicate id, one finding per agency and spending code)",mart,mart.d_opps
+Bid list vendors meet the agency and spend thresholds and are ranked by FY2026 payments,mart,mart.d_bid_list
+"Growth detector does not lean on findings that grew 1,000% or more (likely re-coding)",mart,mart.d_opps
+"Detector backtest: every detector, as-of year and cohort present and well formed",mart,mart.d_detector_backtest
+"Every reported savings item is unique, cites a page and a quote, and has low <= high",mart,mart.d_savings
+"Every payment check matches payments, and the four named contract types are checked",mart,mart.d_savings mart.d_savings_status mart.f_savings_check
+Every payment check has a status,mart,mart.d_savings_status
+"Vendor moves are decreases by vendors paid by enough agencies, largest first",mart,mart.d_vendor_moves
+All six recommendations have a status and a key number,mart,mart.d_rec_status
+"The path to $50M is numbered, adds up, and agrees with recommendation 4's status",mart,mart.d_plan50 mart.d_rec_status
+"Vendor drill-downs tie to their payee names, and every bid-list vendor has one",mart,mart.d_bid_list mart.d_vendor_names mart.f_vendor_detail
+Most of the path to $50M does not rest on assumed saving rates,mart,mart.d_plan50
+The measures catalog describes exactly the year-over-year columns of the marts,mart,mart.measures
+"Stage evidence agrees with the confirmed stages, with the database's whole-year totals, and with DBM's printed actuals",mart,core.fact_budget mart.stage_evidence ref.dim_stage
+Every year whose portal stage label differs from the confirmed stage has evidence,mart,core.fact_budget mart.stage_evidence ref.dim_stage
+"Higher education dataset holds only its four agencies, none of them in the operating budget dataset",core,core.fact_budget core.fact_budget_highered
+"All-funds total including public higher education = operating budget + higher education (every year, to the dollar)",mart,core.fact_budget core.fact_budget_highered mart.d_all_funds ref.dim_stage
+Public higher education is kept out of every GMI savings baseline,mart,core.fact_budget_scope mart.d_opps mart.payment_area
+Deflator: FY2026 = 1 and every budget year through FY2026 has a full-year CPI factor,mart,mart.d_deflator ref.dim_stage
+Deflator: population for every actual budget year,mart,mart.d_deflator ref.dim_stage
+"Payment screen: counts and dollars non-negative, every record in exactly one group of one rule",mart,mart.d_payment_screen mart.d_payment_screen_summary mart.v_payment_screen_rows
+Payment screen: summary ties to the groups by rule and year; overlap between rules labeled; excluded payee types absent,mart,mart.d_payment_screen mart.d_payment_screen_summary mart.v_payment_screen_rows
+Payment screen backtest: every screened year FY2022-FY2026 and rule reported (stability),mart,mart.d_payment_screen_summary
+"Payee classifier: one row per payee name, no missing or unknown label, confidence in [0, 1]",mart,mart.d_payee_class mart.v_payee_class_input
+"Payee classifier: evaluation metrics present for rules, model and combined; sample labeled",mart,mart.d_payee_class_eval
+"Payee classifier: a name is shown as paid or withheld, never altered",mart,mart.d_payee_class mart.v_payee_class_input
+Payee classifier: macro F1 on the hand-labeled sample (rules / model / combined),mart,
+Grant groups: every distinct description in exactly one group; group ids unique; no missing fields,mart,mart.d_grant_group_members mart.d_grant_groups mart.v_grant_rows
+Grant groups: FY2025 dollars tie to the grants rows; leads are exactly the groups with 2+ grantor agencies in FY2025,mart,mart.d_grant_groups mart.v_grant_rows
+Grant groups: sensitivity reported at every threshold (leads are not savings),mart,mart.d_grant_groups_sensitivity
+Payment screen vs source issues: no record is both a lead and a source issue; leads + source issues = every flagged record,mart,mart.d_payment_screen mart.d_source_issues mart.v_payment_screen_rows
+Source issues: verified issues still in the data with the dollars verified at the source on 2026-11-10,mart,mart.d_source_issues
+"Payment leads: confidence, review status and note set; measured rate NULL (lever 0) unless the review confirms a lead",mart,mart.d_payment_screen mart.d_payment_screen_summary
