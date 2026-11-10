@@ -776,7 +776,7 @@ function spark(box, pts, sel){ if (!box) return; box.textContent = ''; pts = pts
 function stacked(box, legendId, rows, keys, col, o={}){ // o.selYears (highlight), o.dimKey(k), o.click(year)
   if (legendId) { const lg = document.getElementById(legendId); lg.textContent = ''; keys.forEach(k => { const s = document.createElement('span'); const i = document.createElement('i'); i.style.background = col(k); i.style.opacity = o.dimKey && o.dimKey(k) ? .3 : 1; s.appendChild(i); s.appendChild(document.createTextNode(k)); lg.appendChild(s); }); }
   box.textContent = ''; if (!rows.length) { emptyMsg(box); return; } const W = box.clientWidth || 700, H = o.h || 290, m = {l:52,r:8,t:18,b:22};
-  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W-m.r]).padding(.22), y = d3.scaleLinear([0, d3.max(rows, d => d.total) || 1], [H-m.b, m.t]).nice();
+  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W-m.r]).padding(.22), y = d3.scaleLinear([0, d3.max(rows, d => d.total) || 1], [H-m.b, m.t]).nice(4);
   const on = yr => !o.selYears || o.selYears.includes(yr);
   const svg = d3.select(box).append('svg').attr('width','100%').attr('viewBox',`0 0 ${W} ${H}`).attr('role','img').attr('aria-label', o.aria || 'Bar chart by year');
   svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d)).attr('stroke','var(--color-border-line)');
@@ -814,7 +814,7 @@ function hbars(box, data, o={}){ box.textContent = ''; if (!data.length || !d3.m
     .on('mousemove', (e,d) => { const [mx,my] = d3.pointer(e, box); tip.style('opacity',1).style('left', Math.min(mx+12, W-260)+'px').style('top', (my+12)+'px'); tip.html(''); tip.append('div').attr('class','t').text(d.label); (o.tip ? o.tip(d) : []).forEach(t => tip.append('div').text(t)); })
     .on('mouseleave', () => tip.style('opacity',0)).on('click', (e,d) => o.click && o.click(d)); }
 function barsLine(box, rows, o={}){ box.textContent = ''; if (!rows.length) { emptyMsg(box); return; } const W = box.clientWidth || 700, H = 290, m = {l:52,r:10,t:16,b:22};
-  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W-m.r]).padding(.22), y = d3.scaleLinear([0, d3.max(rows, d => Math.max(d.a || 0, d.b || 0)) || 1], [H-m.b, m.t]).nice();
+  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W-m.r]).padding(.22), y = d3.scaleLinear([0, d3.max(rows, d => Math.max(d.a || 0, d.b || 0)) || 1], [H-m.b, m.t]).nice(4);
   const on = yr => !o.selYears || o.selYears.includes(yr);
   const svg = d3.select(box).append('svg').attr('width','100%').attr('viewBox',`0 0 ${W} ${H}`).attr('role','img').attr('aria-label', o.aria || 'Chart by year');
   svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d)).attr('stroke','var(--color-border-line)');
@@ -1298,7 +1298,7 @@ function psBars(box, legendId, rows, keys, col, label, o={}){
   const W = box.clientWidth || 700, H = o.h || 230, m = {l:56, r:8, t:28, b:24};
   const tots = rows.map(d => d.total).filter(v => v > 0).sort((a, b) => b - a); const top = tots[0], second = tots[1] || 0;
   const capped = second > 0 && top > 6 * second; const ymax = capped ? second * 1.6 : top;
-  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W - m.r]).padding(.28), y = d3.scaleLinear([0, ymax], [H - m.b, m.t]).nice();
+  const x = d3.scaleBand(rows.map(d => d.year), [m.l, W - m.r]).padding(.28), y = d3.scaleLinear([0, ymax], [H - m.b, m.t]).nice(4);
   const yv = v => y(Math.min(v, y.domain()[1])); const on = yr => !o.selYears || o.selYears.includes(yr);
   const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', o.aria || 'Bar chart by year');
   const ticks = y.ticks(4);
@@ -1657,6 +1657,7 @@ document.getElementById('psQ').addEventListener('input', () => drawPayScreen(prm
 ['caPRBasis','caPRIn'].forEach(id => document.getElementById(id).addEventListener('change', () => drawCalc(prm())));
 document.getElementById('ckStage').addEventListener('change', () => drawData());
 document.getElementById('ckStatus').addEventListener('change', () => drawData());
+{ const bt = document.querySelector('.gs .bar-top'), gs = document.querySelector('.gs'); const setH = () => gs.style.setProperty('--gs-bar-h', bt.offsetHeight + 'px'); setH(); if (window.ResizeObserver) new ResizeObserver(setH).observe(bt); } // cards scroll in below the sticky tab bar
 window.__gst = {measure, prm, reconcile, ok, yearsFor, AREAS, render, get STAGE_OF(){ return STAGE_OF; }}; // used by the pipeline's dashboard tests
 { const h = location.hash.slice(1); if (h.startsWith('t-') && TABS.includes(h.slice(2))) tab = h.slice(2); }
 showTab(tab);

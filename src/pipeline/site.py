@@ -54,14 +54,15 @@ Promise.all(Object.entries(F).map(([k,f])=>fetch('data/'+f+'.csv').then(r=>{if(!
 .catch(e=>{if(el)el.textContent=' Data could not be loaded ('+e.message+').';console.error(e);});});"""
 BANNER = re.compile(r'<body><div style="background:#fff7e0[^>]*>.*?</div>', re.S)
 
-PAGE_CSS = ("<style>:root{--s-bg:#fff;--s-fg:#0b0b0b;--s-muted:#52514e;--s-line:#e4e3de;--s-link:#1f5fbf}"
-            "@media (prefers-color-scheme: dark){:root:not([data-theme=\"light\"]){--s-bg:#161615;--s-fg:#f1f0ec;--s-muted:#b5b3ad;--s-line:#3a3936;--s-link:#7fb0ff}}"
-            ":root[data-theme=\"dark\"]{--s-bg:#161615;--s-fg:#f1f0ec;--s-muted:#b5b3ad;--s-line:#3a3936;--s-link:#7fb0ff}"
+PAGE_CSS = ("<style>:root{color-scheme:light;--s-bg:#f6f6f4;--s-fg:#0b0b0b;--s-muted:#52514e;--s-line:#e4e3de;--s-link:#1f5fbf;--s-focus:#1f5fbf;--s-img:#fff}"
+            "@media (prefers-color-scheme: dark){:root:not([data-theme=\"light\"]){color-scheme:dark;--s-bg:#111110;--s-fg:#f0efec;--s-muted:#b5b3ad;--s-line:#34332f;--s-link:#7fb0ff;--s-focus:#7fb0ff;--s-img:#fff}}"
+            ":root[data-theme=\"dark\"]{color-scheme:dark;--s-bg:#111110;--s-fg:#f0efec;--s-muted:#b5b3ad;--s-line:#34332f;--s-link:#7fb0ff;--s-focus:#7fb0ff;--s-img:#fff}"
+            ":focus-visible{outline:2px solid var(--s-focus);outline-offset:2px}"
             "*{box-sizing:border-box}body{margin:0;background:var(--s-bg);color:var(--s-fg);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}"
             "main{max-width:880px;margin:0 auto;padding:24px 16px 64px}a{color:var(--s-link)}h1{font-size:28px;line-height:1.2;margin:.2em 0 .4em}"
             "h2{font-size:20px;margin:1.8em 0 .5em}.note{color:var(--s-muted);font-size:14px;border-bottom:1px solid var(--s-line);padding-bottom:12px}"
             ".tbl{overflow-x:auto}table{border-collapse:collapse;font-size:14px;width:100%}th,td{border-bottom:1px solid var(--s-line);padding:6px 8px;text-align:left;vertical-align:top}"
-            "img{max-width:100%;height:auto;background:#fff;border:1px solid var(--s-line);border-radius:6px}code{font-size:.92em}</style>")
+            "code{overflow-wrap:anywhere}img{max-width:100%;height:auto;background:var(--s-img);border:1px solid var(--s-line);border-radius:6px}code{font-size:.92em}</style>")
 
 
 def source_dir():

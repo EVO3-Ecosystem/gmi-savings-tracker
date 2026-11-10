@@ -214,3 +214,19 @@ def test_replacement_chars_are_scrubbed_and_reported(tmp_path):
     (tmp_path / "y.png").write_bytes(b"\x89PNG\xef\xbf\xbd")
     assert site.scrub_replacement_chars(tmp_path) == {"data/x.csv": 3}
     assert (tmp_path / "data" / "x.csv").read_text() == "a,b\nCaf?,??\n" and (tmp_path / "y.png").read_bytes().endswith(b"\xef\xbf\xbd")
+
+
+def test_every_page_is_theme_aware(built):
+    """Colours are tokens with dark values under prefers-color-scheme (guarded by data-theme="light") and data-theme="dark"."""
+    for name in ("index.html", "about.html", "catalog.html", "explorer.html"):
+        f = built / name
+        if not f.exists():
+            continue
+        page = f.read_text()
+        assert '@media (prefers-color-scheme: dark){:root:not([data-theme="light"])' in page, name
+        assert ':root[data-theme="dark"]{' in page, name
+        assert re.search(r"body\{[^}]*background:var\(--", page), name
+        assert ":focus-visible{outline:2px solid var(--" in page, name
+    index = (built / "index.html").read_text()
+    assert "colors:['var(--series-1)'" in index and "--series-1:#3987e5" in index  # d3 series read CSS variables; dark steps defined
+    assert "#fff7e0" not in index and "border-bottom:1px solid #e4e3de" not in index
