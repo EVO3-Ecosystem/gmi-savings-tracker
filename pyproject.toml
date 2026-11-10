@@ -14,9 +14,11 @@ dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "reque
 dev = ["pytest>=8", "ruff>=0.5"]
 preview = ["playwright>=1.40"]
 ml = ["sentence-transformers>=2.2"]   # grant groups embeddings (src/models/grant_groups.py); without it TF-IDF is used
+mcp = ["mcp==2.3.0"]                 # src/mcp: read-only MCP server (python -m src.mcp.server); docs/mcp.md
+ai = ["google-genai==2.29.0"]        # src/briefs gemini backend (GEMINI_API_KEY); the template backend needs nothing
 
 [tool.setuptools]
-packages = ["src", "src.pipeline", "src.models"]
+packages = ["src", "src.pipeline", "src.models", "src.mcp", "src.briefs"]
 
 [tool.ruff]
 line-length = 160

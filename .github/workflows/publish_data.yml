@@ -2,6 +2,7 @@
 # thedatavigilante/maryland-gmi-spending (needs the repository secret HF_TOKEN, a write token; skipped with a notice when it
 # is missing), and a GitHub Release data-<run_id> with the Parquet files attached (skipped when that release exists).
 # Built from the checked-in snapshot in site_data/ (refresh it locally with `make export && make site-snapshot`).
+# The dry-run step (python -m src.pipeline.publish --dry-run) validates everything before any upload; staging validates again.
 name: Publish data
 on:
   push: {branches: [main]}
@@ -21,6 +22,8 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with: {python-version: "3.12", cache: pip}
       - run: pip install -e . "huggingface_hub==0.26.2"
+      - name: Validate the dataset card, files, sizes and release tag (dry run, no network)
+        run: python -m src.pipeline.publish --src site_data --dry-run
       - id: stage
         run: |
           python -m src.pipeline.publish --src site_data --out hf_stage | tee stage.log
