@@ -128,6 +128,7 @@ def readme_facts(con):
     ps = con.execute("select sum(groups), sum(review_amount) from mart.d_payment_screen_summary where rule = 'Possible duplicate'").fetchone()
     si = con.execute("select sum(amount), max(verified_on), string_agg(agency, ' and ' order by agency) from mart.d_source_issues").fetchone()
     other = len(sv) - len(gmi)
+    agencies = " and ".join(n.strip().title() for n in si[2].split(" and "))
     return "\n".join([
         f"- **Reported savings:** GMI's January 26, 2026 report lists {len(gmi)} items" + ((" (plus a separate DGS facility estimate)" if other == 1 else f" (plus {other} separate DGS estimates)") if other else "")
         + f". The {len(saved)} it describes as saved in FY2026 add up to {mm(saved.reported_low.sum())}, its own FY2026 total; the rest are yearly savings under way or projected and are not added to it.",
@@ -136,7 +137,7 @@ def readme_facts(con):
         + f" ({mm(pl.low.sum())}–{mm(pl.high.sum())} across the assumed ranges).",
         f"- **Opportunities:** {op[0]} findings worth up to {mm(op[1])} a year ({mm(op[2])} likely). They are leads to review; they overlap and are not additive.",
         f"- **Payment screen:** {int(ps[0])} possible duplicate payment groups ({mm(ps[1])} to review). None can be confirmed without payment records.",
-        f"- **Source data issue:** the published FY2022 payments data lists a second block of {mm(si[0])} for {si[2].title()}, confirmed on both State sites on "
+        f"- **Source data issue:** the published FY2022 payments data lists a second block of {mm(si[0])} for {agencies}, confirmed on both State sites on "
         f"{si[1]:%b} {si[1].day}, {si[1].year}. It is reported as a source issue, never as a lead.",
     ])
 
