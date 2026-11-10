@@ -1,0 +1,401 @@
+payee_key,payee,rule_type,type_basis,spend_bucket,paid_all_years,my_label,her_label,note
+11941c6100a8400aafca846798d7b1f5,"[individual: name withheld, see payee_key]",Business or other,default,$100K-$1M,218807.36,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+d0c81e21ae9e57762833ee477dc8f03f,THE REGENTS OF THE UNIVERSITY OF CALIFORNIA,Education institution,name rule,$100K-$1M,591639.91,government,,differs from the rule (other)
+5617be7e0cd0baba663a0c58419e0fd8,HABAKKUK MUSIC & COLOMBO BANK,Financial institution,name rule,$100K-$1M,103413.16,business,,
+eae881b03e000ad4da9904d5b92751b8,TAKOMA LANGLEY CROSSROADS DVLPMT AUTHORITY INC,Government,name rule,$100K-$1M,158750.0,unsure,,name does not settle the type
+800753a21c6c3c475cd7de6a5b5d53d5,CARROLL HOSPITAL CTR LABORATORY,Health care organization,name rule,$100K-$1M,201269.69,other,,
+303447a828ed2c1f269840fda1ee44fe,CHANGE THE CONVERSATION INC,Non-profit,grants data nonprofit = Y,$100K-$1M,172658.0,nonprofit,,
+83ac6780d20f5a7011b5776fe0d9009b,BALTIMORE GAS & ELECTRIC COMPANY,Utility,name rule,$100K-$1M,809325.2,business,,
+89580240558cc6e463b285b43d1fc303,WALGREENS #05686,Business or other,default,$100M+,472301512.94,business,,
+cb2c9171cdc700b27451fbef43255069,STEVENSON UNIVERSITY,Education institution,name rule,$100M+,134948424.04,other,,
+01e01ec39a6e00d113e2debdfcdc58e8,TRUIST BANK,Financial institution,name rule,$100M+,125554807.44,business,,
+14e9e0a79c7bd2ac84db72af5489eb62,WORCESTER COUNTY BOARD OF EDUCATION,Government,name rule,$100M+,473564751.46,government,,
+aa96ad287d6c104eda4af6828dfc8061,APS HEALTHCARE MIDWEST,Health care organization,name rule,$100M+,1104021047.6,business,,differs from the rule (other)
+5be78e8d823cc1857222dc459a724d17,ANNE ARUNDEL CO MENTAL HEALTH AGENCY INC,Non-profit,grants data nonprofit = Y,$100M+,246716304.74,nonprofit,,
+14ba57dd02b6690e3ac872aa4d779adf,SOUTHERN MARYLAND ELECTRIC COOPERATIVE INC,Utility,name rule,$100M+,109257272.96,business,,
+98e362e9068ef1a209be4ef4fb9864aa,BRITISH AIRWAYS,Business or other,default,$10M-$100M,11000000.0,business,,
+2cb91d0056200cc233dc4c892562a67d,COLLEGE OF NOTRE DAME OF MARYLAND,Education institution,name rule,$10M-$100M,30841311.38,other,,
+0e311a67d401f856a9e67d1e5332c6a2,ZIONS BANK,Financial institution,name rule,$10M-$100M,24053995.7,business,,
+caa805477e703b7ae9a8d32b4b554abd,FEDERAL DEVELOPMENT LTD. PART.,Government,name rule,$10M-$100M,12727512.06,business,,differs from the rule (government)
+bb2dbe16ec2e5d31fdc7c43b8ee3fe6d,LUMINUS HEALTH ANNE ARUNDEL MEDICAL CENTER,Health care organization,name rule,$10M-$100M,24241605.57,other,,
+0ed7c3938fe9c8c064c0b08b5ac7b7b7,TIDALHEALTH NANTICOKE,Non-profit,grants data nonprofit = Y,$10M-$100M,15319330.88,other,,differs from the rule (nonprofit)
+5522152cad4e4a30100ba090a142f0d7,POTOMAC EDISON CO,Utility,name rule,$10M-$100M,10824308.91,business,,
+76bba465c6e092448035bdd99c3d257a,SPRY BROTHERS INC,Business or other,default,$1M-$10M,2132243.36,business,,
+e10f90c19cb05cbab4601f1344d2ac21,WEST VA UNIVERSITY HOSP,Education institution,name rule,$1M-$10M,3814064.63,other,,
+d5cd701ab54714d0e8f4d7deb558988f,NATIONAL CITY MORTGAGE D/B/A ACCU BANK,Financial institution,name rule,$1M-$10M,1004293.0,business,,
+9e1c1c2b7bc31b16f08c999bfde3769c,TRI COUNTY AMERICORPS SERVICE PROJECTS,Government,name rule,$1M-$10M,3827324.87,unsure,,name does not settle the type
+405593ab5b075c9b77d63f14aba80fd2,UPPER CHESAPEAKE HEALTH SYSTEM INC,Health care organization,name rule,$1M-$10M,1051785.22,other,,
+95cc2755bce9d08667800a9cde098472,SHEPPARD PRATT,Non-profit,grants data nonprofit = Y,$1M-$10M,6569679.32,unsure,,name does not settle the type
+957bfdede0c51b924de59fd0ce4b3f56,BGE HOME PRODUCTS & SERVICES LLC,Utility,name rule,$1M-$10M,4040204.28,business,,
+7937bcdc97db1a3e3384bfb1a6b8119e,GOHIL & ASSOCIATES PC,Business or other,default,<$100K,35482.0,business,,
+063d660d0f5172dedc1e149a135bb74b,UNIVERSITY OF ALABAMA,Education institution,name rule,<$100K,40012.0,government,,differs from the rule (other)
+af02f3aa3269cfda68b7af01998ea540,REGIONS BANK,Financial institution,name rule,<$100K,43606.21,business,,
+f6a19f250366c682d5877dffa05a736f,GEO ENVIRONMENTAL SERVICES LLC/ ELYZABETH DE PEREZ,Government,name rule,<$100K,43230.0,business,,differs from the rule (government)
+363d439a31a6407fc2607b9c008e6b62,CHANGE HEALTHCARE,Health care organization,name rule,<$100K,50000.0,business,,differs from the rule (other)
+00f043c65564aa53f18c883f37efc568,"UPPER CHESAPEAKE HEALTH FOUNDATION, INC.",Non-profit,grants data nonprofit = Y,<$100K,50000.0,nonprofit,,
+cfbfb5a3487ecb5699c68a4c8579abed,BGE HOME PRODUCTS AND SERVICES,Utility,name rule,<$100K,27759.31,business,,
+4636e4b00b6269dcef6ba133e8f16d54,THE SENECA ROCKVILLE,Business or other,default,$100K-$1M,123240.0,unsure,,name does not settle the type
+09f9c83571fed2e3b2a2215720394a6a,CECIL COLLEGE FOUNDATION INC,Education institution,name rule,$100K-$1M,138024.5,nonprofit,,differs from the rule (other)
+b9f000089c2bededa0865d6ccff7e352,PITNEY BOWES GLOBAL FINANCIAL SERVICES LLC,Financial institution,name rule,$100K-$1M,667545.01,business,,
+c2395e7d0e8c8f0ec23dd9556728cffa,COLUMBIA ORCHESTRA OF HOWARD COUNTY INC,Government,name rule,$100K-$1M,136497.01,nonprofit,,differs from the rule (government)
+3e78bc94d59051448d632bf38f8fcf66,DELUXE HOME HEALTHCARE SERVICES,Health care organization,name rule,$100K-$1M,347602.16,business,,differs from the rule (other)
+c7dfff7f3c923e30bbfcb55c219910b5,FUTURE HEALTH NOW FOUNDATION INC,Non-profit,grants data nonprofit = Y,$100K-$1M,318015.0,nonprofit,,
+1abc73f2112d8e8f693e750a2aab9261,BGE HOME,Utility,name rule,$100K-$1M,240246.33,business,,
+a325ef69c8168bf3dd1ca2f5a3b09a84,CREATIVE OPTIONS INC,Business or other,default,$100M+,238284448.6,unsure,,name does not settle the type
+4b6662d136a99dbe52d357074c16b68a,UNIVERSITY OF MARYLAND HEALTH PARTNERS INC,Education institution,name rule,$100M+,1250401349.04,other,,
+5a8d16975478eef5723ea6a459f26d10,BANK OF AMERICA,Financial institution,name rule,$100M+,1440446306.49,business,,
+097841a509a7f51d456188acb936153c,KENT COUNTY PUBLIC SCHOOLS,Government,name rule,$100M+,136141462.92,government,,
+4e543e0aaffa1a9ebf7a314c0f639d72,UPPER CHESAPEAKE MEDICAL CENTER INC,Health care organization,name rule,$100M+,111391726.19,other,,
+803d906ad4258784253782d117dcf925,BAYSIDE COMMUNITY NETWORK INC,Non-profit,grants data nonprofit = Y,$100M+,162804857.14,nonprofit,,
+f0549bd17826cfec5ddf23086e9042d7,CHOPTANK ELECTRIC COOPERATIVE INC,Utility,name rule,$100M+,109531899.28,business,,
+29f1f06e0ca9cf40a113efb14ff1c333,AMBER ENTERPRISES INC,Business or other,default,$10M-$100M,10122531.15,business,,
+086b1435dc2b150fa2ea9749ea946ca9,COMMUNITY COLLEGE OF BALT CO CATONSVILLE,Education institution,name rule,$10M-$100M,32249657.89,government,,differs from the rule (other)
+3aab5fc190c508440942c79b04245dbd,CAPITAL AREA FOOD BANK,Financial institution,name rule,$10M-$100M,43714943.67,nonprofit,,differs from the rule (business)
+8d04966b0e64840b35b1e1a7c42147a9,GARRETT COUNTY MEMORIAL HOSPITAL,Government,name rule,$10M-$100M,10879407.47,other,,differs from the rule (government)
+d6b0deb6c72aef2ee08e1634cc549dd9,ASCO HEALTHCARE LLC DBA OMNICARE INC,Health care organization,name rule,$10M-$100M,90577552.2,business,,differs from the rule (other)
+2acd8e4f81f94c84475ef036da7fc43a,THE HARFORD CENTER INC,Non-profit,grants data nonprofit = Y,$10M-$100M,17799341.35,unsure,,name does not settle the type
+d835aaa74eb986bdc950edf787284a07,THE POTOMAC EDISON COMPANY,Utility,name rule,$10M-$100M,55978763.54,business,,
+3387fbbd5266d48944c53e6ee60b79fb,JETD INC DBA RENAISSANCE ADULT MED,Business or other,default,$1M-$10M,5513563.12,business,,
+ce35dfef86ea1da8e71e0f1121c56ecf,LOYOLA COLLEGE GRADUTE CENTER,Education institution,name rule,$1M-$10M,7051200.47,other,,
+eae5ccfb9b6f79d1dd2d00b7906e3373,U.S. BANK EQUIPMENT FINANCE,Financial institution,name rule,$1M-$10M,4998339.4,business,,
+4e0f3a47b161c69c13ff8e88747282be,CHARLES CO COMMISSIONER,Government,name rule,$1M-$10M,6344675.18,government,,
+e3ee0ba7c3b3c05cda0091fcd6e0a6e4,CUMBERLAND HOSPITAL LLC,Health care organization,name rule,$1M-$10M,1045231.39,business,,differs from the rule (other)
+74b3ab2b96228b352f962f2f4b8b8294,KINGDOM GLOBAL COMMUNITY DEVELOPMENT COR,Non-profit,grants data nonprofit = Y,$1M-$10M,7319430.71,nonprofit,,
+fc903703371b0ee6eaf50b5ecd542dbd,PEPCO,Utility,name rule,$1M-$10M,3462243.64,business,,
+dd40414192244e0d2a2428f60af01f1a,FOERS PHARMACY,Business or other,default,<$100K,37615.88,business,,
+1a530a10d3897cdfd61312df22015336,"OBERY COURT COLLEGE CREEK PHASE III, LLC",Education institution,name rule,<$100K,33162.25,business,,differs from the rule (other)
+e603d9621b12c99b6e8bff047e3791e2,U S BANK EQUIPMENT FINANCE INC,Financial institution,name rule,<$100K,26117.47,business,,
+c5bbab2ca8ac545defce3107b87121f5,GOVERNMENT SALES LLC,Government,name rule,<$100K,79326.81,business,,differs from the rule (government)
+db175b9750b65abef8839933e3a4a982,PRINCE GEORGE'S HOSPITAL CENTER CHILD CARE CENTER,Health care organization,name rule,<$100K,65039.6,other,,
+2a29dafc2eac16c5e77e85e2438f824d,WRAP AROUND MARYLAND INC,Non-profit,grants data nonprofit = Y,<$100K,85795.59,unsure,,name does not settle the type
+a4bed69aa9477797ad60dccc1bef7cca,BGE HOME PORDUCTS AND SERVICES,Utility,name rule,<$100K,94516.32,business,,
+3699235d56436522491265f4623be7c9,TOMORROW'S LEADERS II,Business or other,default,$100K-$1M,215191.78,unsure,,name does not settle the type
+c1355fba95cb88311373d695a48a3419,UNIVERSITY OF MARYLAND QUALITY CARE NETWORK,Education institution,name rule,$100K-$1M,149999.99,other,,
+681caa837a9b22cae86cf0de352966df,DISCOVER BANK DBA DISCOVER STUDENT LOANS,Financial institution,name rule,$100K-$1M,222277.47,business,,
+e7b6be9ba4c92bf8868e8b32e58737d5,USDA AMS FEDERAL STATE ACCOUNT,Government,name rule,$100K-$1M,478781.89,government,,
+82a68db9c7fcf49c676927b5907ecbc4,MAGEE REHABILITATIOM HOSPITAL,Health care organization,name rule,$100K-$1M,317059.92,other,,
+445bb587077e0656727d90e5e911cc64,REQUITY FOUNDATION INC.,Non-profit,grants data nonprofit = Y,$100K-$1M,115727.0,nonprofit,,
+763ab7472cee71b2643afbf0a238e558,POTOMAC EDISON / FIRST ENERGY,Utility,name rule,$100K-$1M,848032.65,business,,
+0ca301c95e9cef6df993277f301c811b,PRINCE GEORGE'S COMM COLLG,Business or other,default,$100M+,468440140.93,government,,differs from the rule (business)
+b730b0741a6538492060db9d319a8fcb,CARROLL COMMUNITY COLLEGE,Education institution,name rule,$100M+,211794767.07,government,,differs from the rule (other)
+f44da4014eeea508d0664ad01701b23f,M&T BANK,Financial institution,name rule,$100M+,357891267.6,business,,
+6b9613cd05a9c685a72eb999054cb807,FREDERICK COUNTY PUBLIC SCHOOLS,Government,name rule,$100M+,1989672334.71,government,,
+c3dd40fc7151b4ecd54ab8d4fa3af8f0,MARYLAND GENERAL HOSPITAL,Health care organization,name rule,$100M+,256706368.14,other,,
+f9bb244ae13a5d56d456ce18af69663b,POTOMAC EDISON,Utility,name rule,$100M+,182699545.44,business,,
+1b03f5310576102752caf9367fdfa2e2,COMPLETE CARE AT SEVERNA PARK LLC,Business or other,default,$10M-$100M,37549044.37,business,,
+cd7992a0dbfe0d4d2a5c38863743e439,GEORGETOWN UNIVERSITY,Education institution,name rule,$10M-$100M,22293559.31,other,,
+981a77052a809d1067f9ce676c3bec18,US BANK TRUST COMPANY NATIONAL ASSOC,Financial institution,name rule,$10M-$100M,75057707.95,business,,
+ca8a2d2944730edec510fb2cfa8b4071,MAXIMUS US SERVICES INC,Government,name rule,$10M-$100M,70578159.55,business,,differs from the rule (government)
+cdc01e7375c7658a702f9565b1ae5698,MERCY HEALTHCARE RESOURCES INC,Health care organization,name rule,$10M-$100M,23429191.64,unsure,,name does not settle the type
+e2f04011c9b515b4eb13693224f23a79,EMPLOY PRINCE GEORGE'S INC,Non-profit,grants data nonprofit = Y,$10M-$100M,59043559.85,unsure,,name does not settle the type
+ba57eb16d57d985bb48e833c09fda041,WASHINGTON GAS ENERGY SERVICES,Utility,name rule,$10M-$100M,13466559.86,business,,
+258268f47123cd0d2a27a04feb65e4af,MOTHERS LOVE CHILD CARE CENTER INC,Business or other,default,$1M-$10M,2614883.74,business,,
+82ec48090bee27c1abefeb14cd2a12d9,NER ISRAEL RABBINICAL COLLEGE,Education institution,name rule,$1M-$10M,2490327.41,other,,
+5e34afdaccf49e0787dcae13472a982b,PNC BANK/KIBLER CONST CO,Financial institution,name rule,$1M-$10M,1309053.93,business,,
+25ee8ed26c3e65199f2d9b02073e8032,MONTGOMERY COUNTY,Government,name rule,$1M-$10M,4696323.46,government,,
+2685fe29a5da5fc44c1d695ed2e0a7ad,PEAK HEALTHCARE AT COPPER,Health care organization,name rule,$1M-$10M,2612552.22,business,,differs from the rule (other)
+dc28097b37c43b31bca1b6de95d343ff,NATIONAL CAPITAL B'NAI B'RITH,Non-profit,grants data nonprofit = Y,$1M-$10M,2652415.91,nonprofit,,
+e7fcbb5a854c82c6937b5813f244f981,WASHINGTON GAS LIGHT COMPANY,Utility,name rule,$1M-$10M,7443238.27,business,,
+1a3aa5d8dacb7724e9cabc9d10470ab6,"[individual: name withheld, see payee_key]",Business or other,default,<$100K,62008.65,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+8a489b7d82ebc75af4ecafe9fb10ee70,ARIZONA STATE UNIVERSITY,Education institution,name rule,<$100K,63667.0,government,,differs from the rule (other)
+4df6a76a887e99d0960e3681f8c1a9b6,CENTRAL SAVINGS BANK PROPERTIES LLC,Financial institution,name rule,<$100K,30000.0,business,,
+cf0faf941cada7bf5a94fb704513c3f4,"[individual: name withheld, see payee_key]",Government,name rule,<$100K,55262.0,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+0be4635f371c2c975c74147d12eeda5f,ADVENTIST HOSPITAL-BASED PROVIDERS,Health care organization,name rule,<$100K,39392.27,other,,
+423b71d066001a8198cabe9f13f3bbf7,ELECTRIFY EQUITY INC,Non-profit,grants data nonprofit = Y,<$100K,34444.0,unsure,,name does not settle the type
+00f00e39c9bc0776681895fe3d09da6a,"CHOPTANK ELECTRIC COOPERATIVE, INC.",Utility,name rule,<$100K,90555.07,business,,
+f6dfbe06e3e7358dd328d0321306fa4c,KEY HIGHWAY ASSOCIATES LLC,Business or other,default,$100K-$1M,115000.0,business,,
+38956a93c25688876049ac281798ed77,GEORGE WASHINGTON UNIVERSITY,Education institution,name rule,$100K-$1M,170019.93,other,,
+5562a2774b4c8f5cdde8adadfadf9787,UNITED BANK ESCROW AGT/PESSOA CONSTRUCTION CO,Financial institution,name rule,$100K-$1M,215316.37,business,,
+e1fdfec7e6fee43ca59adc02ec4dc059,UPPER POTOMAC RIVER COMMISSION,Government,name rule,$100K-$1M,974747.0,government,,
+ffa4d61eb252e7d1b6f983e5d36b8abf,K A MEDICAL CENTER,Health care organization,name rule,$100K-$1M,289750.0,other,,
+c02859110c0f0195bc2d79d313f0d61f,"SO WHAT ELSE, INC.",Non-profit,grants data nonprofit = Y,$100K-$1M,271147.6,unsure,,name does not settle the type
+19465d360e2d29570c1c0d6175e7c18f,BGE COORDINATOR & SUPPORT UNIT,Utility,name rule,$100K-$1M,181591.0,business,,
+051f64d2060dad33f3b9235584df23d5,FEI.COM INC,Business or other,default,$100M+,235382811.17,business,,
+02e8cd99aaccb793fa4c4a5e9f4bb4c2,COLLEGE OF SOUTHERN MARYLAND,Education institution,name rule,$100M+,267219158.58,other,,
+071734beb5e6d578268bc239e58971cb,DEPOSITORY TRUST COMPANY,Financial institution,name rule,$100M+,27770803741.39,business,,
+7e6ea94ba196f35cb7dd7110efc30fd4,CHARLES CO PUBLIC SCHOOLS,Government,name rule,$100M+,881869232.3,government,,
+d5f7cccead3eeb169140a84d9b0dc903,CORRECTIONAL MEDICAL SYSTEMS,Health care organization,name rule,$100M+,283222740.83,business,,differs from the rule (other)
+965a3375d858f8cb02e4022d228aeaa9,BALTIMORE GAS & ELECTRIC,Utility,name rule,$100M+,1659979050.18,business,,
+67c710ecd6b1fd31833e9a50dd3d0a58,COMPLETE HOME CARE LLC,Business or other,default,$10M-$100M,10085755.09,business,,
+51166ee042b49e8659f4ef4ad5e2c6cc,GARRETT COMMUNITY COLLEGE,Education institution,name rule,$10M-$100M,60502163.11,government,,differs from the rule (other)
+f216b8f90245806c6aad92f3c775a881,US BANK NATIONAL ASSOCIATION,Financial institution,name rule,$10M-$100M,41392249.55,business,,
+5a3551e9509e9b1d2bbcecffa855c714,MD NATL CAPITAL PARK & PLANNING COMMISSION,Government,name rule,$10M-$100M,57970775.91,government,,
+4442b754a87aa9e7f258d3783011e731,DVA HEALTHCARE OF MARYLAND INC,Health care organization,name rule,$10M-$100M,40716225.69,business,,differs from the rule (other)
+12d644f2fb6b40b03592eaa048238a82,THE HARFORD CENTER,Non-profit,grants data nonprofit = Y,$10M-$100M,15345746.58,unsure,,name does not settle the type
+a6e45d246a1edc26c9259f22744edbc5,DELMARVA POWER & LIGHT,Utility,name rule,$10M-$100M,66669756.63,business,,
+6b025014981302639fff97d31a38fd9a,FIRST HOME CARE CORP.,Business or other,default,$1M-$10M,1036451.37,business,,
+80857ea2b7c10bfb49a808b04b34c63c,GEORGETOWN HILL AT HOOD COLLEGE LAB SCHOOL,Education institution,name rule,$1M-$10M,1639131.0,unsure,,name does not settle the type
+71c6a0d25820a2a80644594500c06beb,PITNEY BOWES GLOBAL FINANCIAL SVCS LLC,Financial institution,name rule,$1M-$10M,4205582.52,business,,
+d49a692d9b03eae990aac4469f072701,TIPTON AIRPORT AUTHORITY,Government,name rule,$1M-$10M,2129844.09,government,,
+eb838301c5a9d700f28818d62b9a5b29,RISALAH HOME HEALTHCARE LLC,Health care organization,name rule,$1M-$10M,1032403.7,business,,differs from the rule (other)
+a210abf60fa6992b98ed176de8f26fe6,SLDMD PS PORTFOLIO LLC,Non-profit,grants data nonprofit = Y,$1M-$10M,2659057.0,business,,differs from the rule (nonprofit)
+fe88363c262e53ed592ae53e0f60fbb7,BALTIMORE GAS AND ELECTRIC COMPANY,Utility,name rule,$1M-$10M,2657349.46,business,,
+0b2c40807e7b74f4e707e8dc08bc08a1,PROSAPIA INC DBA SAFETY WORKS,Business or other,default,<$100K,90064.62,business,,
+dd1f01a4309e3f963e9bec1d9a9ed86f,MOREHOUSE COLLEGE,Education institution,name rule,<$100K,74910.5,other,,
+953ce41f6c14cfd77daa9ece8e5c5abe,FIRST MERCHANTS BANK,Financial institution,name rule,<$100K,50000.0,business,,
+22091e329947d8ef4166e76267f58eb5,CECIL COUNTY PEDIATRICS,Government,name rule,<$100K,57898.67,business,,differs from the rule (government)
+8c61dfb68f9daed5dfd55107a78ec686,OAKS BED AND BREAKFAST/OAKS HOSPITALITY,Health care organization,name rule,<$100K,50000.0,business,,differs from the rule (other)
+2ec2606cc23778cbdcad6277f1109616,CONTINUOUS GROWTH LLC,Non-profit,grants data nonprofit = Y,<$100K,25952.98,business,,differs from the rule (nonprofit)
+163b6110e4b7eec7ee8a8b6369c6a68f,BGE HOME PRODUCT AND SERVICES LLC,Utility,name rule,<$100K,32226.76,business,,
+7992e739da3df6d2ed96ce8c6d191339,BFS TRUCKING LLC,Business or other,default,$100K-$1M,162187.5,business,,
+9cc7614d25bec8fb44cf761ffa8ffcff,WRIGHT STATE UNIVERSITY,Education institution,name rule,$100K-$1M,112635.17,government,,differs from the rule (other)
+344f6a945783f46a6ed36ac3ffd2b353,DTG HOLDINGS INC & BB&T BANK,Financial institution,name rule,$100K-$1M,310000.0,business,,
+d2a780d9e1fc14341de1a2634c54b729,PRINCE GEORGE'S COUNTY ECONOMIC DEVELOPMENT,Government,name rule,$100K-$1M,408404.36,government,,
+7be64abbca4543aa6b447e848fbf4c19,ST LUKES ROOSEVELT HOSPITAL,Health care organization,name rule,$100K-$1M,267119.85,other,,
+5968aa501aa2199f321099d3c7f1d10b,ST ISAAC JOGUES,Non-profit,grants data nonprofit = Y,$100K-$1M,141227.0,nonprofit,,
+0482fef471fd876bf815abf9adf19acc,MEDI-RENTS & SALES INC,Business or other,default,$100M+,157299038.99,business,,
+74c47800d75e52ad21fcc85801a483cd,JOHNS HOPKINS UNIVERSITY SAIS,Education institution,name rule,$100M+,127061736.08,other,,
+17885e45f0aaca88092e67b26fc6e454,MARYLAND FOOD BANK INC,Financial institution,name rule,$100M+,156910612.72,nonprofit,,differs from the rule (business)
+fad33700cc30b46ae823a8531c93c7df,ALLEGANY CO PUBLIC SCHOOLS,Government,name rule,$100M+,1882544228.67,government,,
+f924fd01034368daab43393929e3ba38,MEDSTAR HARBOR HOSPITAL INC,Health care organization,name rule,$100M+,119787621.23,other,,
+0cffcb1652a288be94c5720e76830ce9,WASHINGTON GAS,Utility,name rule,$100M+,185406367.12,business,,
+dcf248269d36856f1af0d4d456863fd9,SK NET LLC,Business or other,default,$10M-$100M,13976606.41,business,,
+1503d3dbdb06f0d9dd8f02cb58253f41,WASHINGTON ADVENTIST UNIVERSITY,Education institution,name rule,$10M-$100M,30705006.06,other,,
+00e34f6d3f4f5e6b1a470740e4193443,WELLS FARGO BANK NA,Financial institution,name rule,$10M-$100M,18313101.81,business,,
+cadb2919f00c47ffb3485408c34751f3,CITY OF NEW CARROLLTON THE,Government,name rule,$10M-$100M,18058800.74,government,,
+9335ee2d7c850df8a1ba7df505301eb3,BON SECOURS HOSPITAL - RENAL,Health care organization,name rule,$10M-$100M,11035867.23,other,,
+7314825db86c46791f734595322c2824,CENTER FOR HOPE INC,Non-profit,grants data nonprofit = Y,$10M-$100M,13005683.21,nonprofit,,
+1bb164a8c901d23888ba9a151ea03875,WASHINGTON GAS LIGHT CO,Utility,name rule,$10M-$100M,35846509.72,business,,
+33d4300a5472b8c0e52c922cc6a770da,FRESENIUS MEDICAL CARE GERMANTOWN LLC,Business or other,default,$1M-$10M,1553792.32,business,,
+a0c90109c7f5b923d3bbd214c01cafcb,UNIVERSITY OF MARYLAND COMMUNITY MEDICAL GROUP,Education institution,name rule,$1M-$10M,4769820.7,other,,
+5689922eaf974be4b5c7e1662aa2bfbc,MIDFIRST BANK,Financial institution,name rule,$1M-$10M,3818930.39,business,,
+acb21bc2b168b7273408956c3362994e,PFG/CARROLL COUNTY FOODS,Government,name rule,$1M-$10M,1770880.34,business,,differs from the rule (government)
+e92852af6a91ed6b5cf490510ac9e716,SUBURBAN HOSPITAL INC,Health care organization,name rule,$1M-$10M,6439184.13,other,,
+6e74e1db01a2b7ee35de64c8af685bde,"JUDE HOUSE INC, THE",Non-profit,grants data nonprofit = Y,$1M-$10M,6570941.72,nonprofit,,
+3fcdba15eed95cc4995c77f5eb888f70,"AKSHAT ENTRERPRISES, LLC",Business or other,default,<$100K,60000.0,business,,
+a8ce78aacc05ab18ded9f8ce49467fc8,BROWN UNIVERSITY,Education institution,name rule,<$100K,98890.02,other,,
+5b9053231ba85a15021367b239e6788f,ADVANCE BANK,Financial institution,name rule,<$100K,84000.0,business,,
+734dd6ea74e5d109d33e40b3179e84b2,EVANS ENVIRONMENTAL SERVICES INC,Government,name rule,<$100K,59602.5,business,,differs from the rule (government)
+cb61971d44f540417d64786d958a882e,MUHLENBERG HOSPITAL CENTE,Health care organization,name rule,<$100K,65583.74,other,,
+87ba76ac4b7603890d96a3e4fda7c3b2,"ASYLEE WOMEN ENTERPRISE, INC.",Non-profit,grants data nonprofit = Y,<$100K,25000.0,nonprofit,,
+a08fb782892554c658bdb4c32cd14ba2,"[individual: name withheld, see payee_key]",Business or other,default,$100K-$1M,477746.51,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+c24c2a4576276901df3123a8132dba5a,"TOWSON UNIVERSITY FOUNDATION, INC",Education institution,name rule,$100K-$1M,127653.0,nonprofit,,differs from the rule (other)
+ce8dcec4360c5dba987d672e63ad28a4,PROVIDENT BANK,Financial institution,name rule,$100K-$1M,283125.91,business,,
+58cec6d80cb92139a3cd75c731c10cf1,HAGERSTOWN-WASHINGTON COUNTY CONFERENCE & VISITORS,Government,name rule,$100K-$1M,877034.0,unsure,,name does not settle the type
+ae33037826504309ee4637a229ab35f2,"AYA HEALTHCARE, INC",Health care organization,name rule,$100K-$1M,195015.75,business,,differs from the rule (other)
+0a358ea71cafae5b9865efc62f8ef2ea,ST MICHAEL'S POPLAR SPGS ROMAN CATHOLIC CONGRE INC,Non-profit,grants data nonprofit = Y,$100K-$1M,242791.03,nonprofit,,
+6d17a749b58d818991c037045818dd53,CORMAN CONSTRUCTION INC,Business or other,default,$100M+,132196646.41,business,,
+f1a073840a011652c8650db3f81ace26,WOR WIC COMMUNITY COLLEGE,Education institution,name rule,$100M+,218934317.36,government,,differs from the rule (other)
+2376407f15f442a78963750f464cee8d,M & T BANK,Financial institution,name rule,$100M+,575499139.58,business,,
+fb321bb6de3f75face21b5ba8ca29009,INTERCOUNTY CONSTRUCTORS,Government,name rule,$100M+,442464838.11,business,,differs from the rule (government)
+9e5f004d66f2e32faf7dc5c891c302c6,MARYLAND CARE INC,Health care organization,name rule,$100M+,18771179387.17,business,,differs from the rule (other)
+8d243691e63ce0337f22288fb4911327,DELMARVA POWER,Utility,name rule,$100M+,369769799.69,business,,
+074e4cb2495c66f4da4b89f9e26ca081,HAGERSTOWN GOODWILL INDUSTRIES INC,Business or other,default,$10M-$100M,43032808.9,nonprofit,,differs from the rule (business)
+8c4c55c40a58ea29afffffefa78a601b,UNIVERSITY OF MARYLAND PHYSICIANS PA,Education institution,name rule,$10M-$100M,20707093.96,business,,differs from the rule (other)
+4c7053e1da5204483f5a3acb8ee11012,ZIONS FIRST NATIONAL BANK,Financial institution,name rule,$10M-$100M,30000000.0,business,,
+5beb481ce2e288b01047c680fff99d2c,MARYLAND JOCKEY CLUB OF BALTIMORE CITY INC,Government,name rule,$10M-$100M,20411691.89,business,,differs from the rule (government)
+7ce82e65a0c33b47bf04ad17ffb0e0b6,MARYLAND HOSPITAL ASSN INC,Health care organization,name rule,$10M-$100M,10282813.93,nonprofit,,differs from the rule (other)
+e22bcf65c3148412921382eb3a042437,NEIGHBORHOOD SERVICE CENTER INC,Non-profit,grants data nonprofit = Y,$10M-$100M,18009399.17,nonprofit,,
+d0e2e31bf5b4c311f9b72dcd2eee9867,SOUTHERN MARYLAND ELECTRIC COOP INC,Utility,name rule,$10M-$100M,17020120.35,business,,
+46454e4d4519d8517a53f3a2cf2c595f,PHILIP R LAMB & CO INC,Business or other,default,$1M-$10M,1620188.25,business,,
+1762d3a776978d11a58487701160257f,MT ST MARYS COLLEGE,Education institution,name rule,$1M-$10M,7407227.13,other,,
+3030d22ec058e4f1c0bf688f57499850,CFG COMMUNITY BANK,Financial institution,name rule,$1M-$10M,1060290.78,business,,
+9283be0f797712d94e7fe679a6f5371d,WASHINGTON CO MENTAL AUTHORITY,Government,name rule,$1M-$10M,1648973.02,government,,
+bde9e6316febbf4aa05cf705988bab6c,VERSATILE HEALTHCARE SERVICES OF MD INC,Health care organization,name rule,$1M-$10M,2703357.21,business,,differs from the rule (other)
+edeea6c301ed57ccf05d030939365962,"THE COMMUNITY BUILDERS,INC",Non-profit,grants data nonprofit = Y,$1M-$10M,1271309.28,nonprofit,,
+3631fed73cab228f942f0287faa5a208,"SVETLANA MALINSKY, DPM, P.C.",Business or other,default,<$100K,26312.71,business,,
+edc2ed4645b401f729857d0716f99643,NATIONAL-LOUIS UNIVERSITY,Education institution,name rule,<$100K,87330.05,other,,
+74177de11542f5851ed361414ca65469,"[individual: name withheld, see payee_key]",Financial institution,name rule,<$100K,33456.86,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+8c56bd8a1f3b4f4a28544fbc08dcb629,UNITED STATES ENVIRONMENTAL PROTECTION AGENCY,Government,name rule,<$100K,62500.0,government,,
+054e2051951c6106cf44b795965b4a88,PA & ASSOCIATES HEALTHCARE,Health care organization,name rule,<$100K,50000.0,business,,differs from the rule (other)
+40e2d9e4787662b8ae215e1298d0e76a,"CHESAPEAKE K9 FUND, INC.",Non-profit,grants data nonprofit = Y,<$100K,50000.0,nonprofit,,
+00377b1058fdca2d86a185b4c043820a,CARLTON PALMS EDUCATIONAL CTR INC,Business or other,default,$100K-$1M,543418.3,unsure,,name does not settle the type
+487992e2ac08aefbc5eebd92dfaecee7,PENNSYLVANIA COLL OF OPTOMETRY/SALUS UNIVERSITY,Education institution,name rule,$100K-$1M,996087.96,other,,
+c194123ff87c8469a333d7ed761f4764,KEY BANK AND TRUST,Financial institution,name rule,$100K-$1M,403000.0,business,,
+38462025641ed5c21da6cfe7c56a1d9d,AAAE ALA & FEDERAL AFFAIR,Government,name rule,$100K-$1M,135375.0,unsure,,name does not settle the type
+028866de8b60dc10e8d322d97cdf1c3b,VERUS HEALTHCARE LLC,Health care organization,name rule,$100K-$1M,139350.79,business,,differs from the rule (other)
+8686fafe7a42862275002c3b4f32a149,ZACHING AGAINST CANCER FOUNDATION INC,Non-profit,grants data nonprofit = Y,$100K-$1M,133884.25,nonprofit,,
+fd26b2cadcf0f44b879a2e3c71bd30f5,ARAMARK CORRECTIONAL SERVICES LLC,Business or other,default,$100M+,151126205.87,business,,
+453c301f0222f35c64093a62549e654d,JOHNS HOPKINS UNIVERSITY,Education institution,name rule,$100M+,526711396.21,other,,
+1d5d1093eaa27d94b752fcdf2f727998,US BANK CORPORATE PAYMENT SYSTEMS,Financial institution,name rule,$100M+,3490992251.72,business,,
+3adb70d855922ab76da4413b79832329,BOARD OF EDUCATION OF PRINCE GEORGE'S COUNTY,Government,name rule,$100M+,1206815633.56,government,,
+395f47dd6df06f67c10fc27999bcc17c,BON SECOURS HOSPITAL-BALTIMORE,Health care organization,name rule,$100M+,229045265.64,other,,
+398b788326ddc8077c85c8b5f9057690,POTOMAC ELECTRIC POWER COMPANY,Utility,name rule,$100M+,303195057.51,business,,
+5f705942717ccfb762b2da1bf830db20,MILLENNIUM VENTURES INC,Business or other,default,$10M-$100M,11625336.59,business,,
+f5b4847efc078a78082e9d44790268a7,WOR-WIC COMMUNITY COLLEGE,Education institution,name rule,$10M-$100M,40547312.58,government,,differs from the rule (other)
+5c5bb5843765f035b7034f5fb899c10b,PITNEY BOWES INC,Financial institution,name rule,$10M-$100M,35776939.2,business,,
+6b7142d1b48bae62c9e62b8650a2aa57,ARC OF HOWARD COUNTY INC,Government,name rule,$10M-$100M,82201822.42,nonprofit,,differs from the rule (government)
+5f84af8176b985252c9542b2a2af1e47,SHORE HEALTH SYSTEM INC,Health care organization,name rule,$10M-$100M,46455152.35,other,,
+2ac3a8754d7a5229319ecb17eb2ed2ff,RIDERWOOD VILLAGE INC,Non-profit,grants data nonprofit = Y,$10M-$100M,11566963.04,unsure,,name does not settle the type
+7957f072d12f305c5526adb03d752454,COMMUNITY RESCUE SERVICE INC,Business or other,default,$1M-$10M,9184990.65,nonprofit,,differs from the rule (business)
+3ad2014672bec589038a1773e6f79619,WEST VIRGINIA UNIVERSITY MEDICAL CORP,Education institution,name rule,$1M-$10M,2693436.39,other,,
+0af97372aa2de9dad59d9d4decab3ef4,WEX BANK,Financial institution,name rule,$1M-$10M,1833044.93,business,,
+41eab2c0f0de8ae5c2470c7b28e29ad5,HEADSTART OF WASHINGTON COUNTY INC,Government,name rule,$1M-$10M,1205288.93,nonprofit,,differs from the rule (government)
+1640c8c96597ea3571028efd7fc72723,SHEPPARD PRATT HEALTH SYSTEMS,Health care organization,name rule,$1M-$10M,3987657.13,other,,
+d8281b3932f0bc9f89ef1626c83bdccf,CONSERVATION INNOVATION FUND,Non-profit,grants data nonprofit = Y,$1M-$10M,1327057.0,nonprofit,,
+9851f3edcdbadffc0cedca0a8a963dd8,O & H TRUCKING,Business or other,default,<$100K,51510.0,business,,
+1be1b9f1fec63cf27a6cd7997f3fe8af,THE AMERICAN UNIVERSITY,Education institution,name rule,<$100K,79156.96,other,,
+90eb0f07ed2fe1de8c7a27219cd6a9b5,SALLIE MAE BANK,Financial institution,name rule,<$100K,37000.0,business,,
+1a6a5759c02670fa1c0f7a90364c9ccc,GARRETT COUNTY,Government,name rule,<$100K,91775.83,government,,
+babc123a58386fac100662dee2ba3bf0,GLOBAL HEALTHCARE GROUP,Health care organization,name rule,<$100K,32387.08,business,,differs from the rule (other)
+8ca92cfb2d0d70cac813776b2a5ee392,THE FREDERICK CENTER INC.,Non-profit,grants data nonprofit = Y,<$100K,28284.0,unsure,,name does not settle the type
+42bd072720b9f42db6a660c638669cdc,THE CHILDREN'S FANTASY LLC,Business or other,default,$100K-$1M,212547.47,business,,
+e851797a6cfa23d754a8a8eb4c142d65,UNIVERSITY OF MARYLAND CHILD DEVELOPMENT CENTER,Education institution,name rule,$100K-$1M,161292.0,government,,differs from the rule (other)
+dc5139e862dbe2b18d2cf6a30a7c4161,MK CATERING & CHASE BANK,Financial institution,name rule,$100K-$1M,188980.19,business,,
+509bf56f46cd073dea958b7ca8abae83,UPI GOVERNMENT GROUP LLC,Government,name rule,$100K-$1M,237604.0,business,,differs from the rule (government)
+6265ca3b98d7dd3c2e42139a909286cc,SPECIALTY HOSPITAL OF WASHINGTON,Health care organization,name rule,$100K-$1M,260923.67,other,,
+9d4d0c4a191a710f39ff75b0132c008a,CONGREGATION TIFERES YISROEL OF BALT INC,Non-profit,grants data nonprofit = Y,$100K-$1M,322463.25,nonprofit,,
+ffead5588540b929f5ef3a9ea1c0d085,SANDTOWN-WINCHESTER NURSING HOME INC,Business or other,default,$100M+,131607328.03,business,,
+e49888e71ad2b5ad1e9f39f894963fee,CECIL COLLEGE,Education institution,name rule,$100M+,104619237.02,other,,
+d900061e4e584e8fbefda6c1cd6774ec,THE BANK OF NEW YORK,Financial institution,name rule,$100M+,259226743.28,business,,
+f08afe6af1028bf5ad40644c542874ee,MOUNT RAINIER POLICE DEPARTMENT,Government,name rule,$100M+,1722268746.84,government,,
+62120eb98982beade03fdf9663488453,MEDSTAR GEORGETOWN MEDICAL CENTER INC,Health care organization,name rule,$100M+,100209981.49,other,,
+10351fd73d4cc51eaa23d1f5d5fe04b0,BGE,Utility,name rule,$100M+,408202669.86,business,,
+2ce54baa31c9c5aee508b9423ec08b9d,HRI/LUTHERVILLE STATION LLC,Business or other,default,$10M-$100M,12142540.06,business,,
+6f0109c233476bac033a82a016e01de5,UNIVERSITY OF MD DIAGNOSTIC IMAG SPEC PA,Education institution,name rule,$10M-$100M,12834369.71,business,,differs from the rule (other)
+4f1bdb1808aa48c598d22f2b9208c9bc,WELLS FARGO BANK MINNESOTA N A,Financial institution,name rule,$10M-$100M,88153934.54,business,,
+5a53319e5694f24e371d0471b537f865,MD NATL CAPITAL PARKS & PLAN COMMISSION,Government,name rule,$10M-$100M,29866941.13,government,,
+102d15b5c8efd0989b8ab42ca5fa7819,MEDSTAR MONTGOMERY MEDICAL CENTER,Health care organization,name rule,$10M-$100M,20681180.04,other,,
+362a8329a9c5784f533ffa43527bc718,AHEC WEST,Non-profit,grants data nonprofit = Y,$10M-$100M,12710654.82,unsure,,name does not settle the type
+f68e9245191b9efe71049a4812c93591,BIO-RAD LABORATORIES,Business or other,default,$1M-$10M,2946143.43,business,,
+d5e2730beef17f150cf096c0ca55980c,BALTIMORE INTERNATIONAL       COLLEGE,Education institution,name rule,$1M-$10M,2315988.78,other,,
+ccf16d65eaf708609b771f028d7e95a6,WELLS FARGO BANK,Financial institution,name rule,$1M-$10M,1190931.44,business,,
+c46aa64678be8ad7806e1463f2b1a58e,TOWN OF NORTH BRENTWOOD,Government,name rule,$1M-$10M,2208959.96,government,,
+c8d8f5be5bb5ce76d1c5483b58a22635,ALPHA HEALTHCARE LLC,Health care organization,name rule,$1M-$10M,9351225.46,business,,differs from the rule (other)
+137316c3085e5b316774f3b76fc6dadc,LONDON TOWN FOUNDATION INC,Non-profit,grants data nonprofit = Y,$1M-$10M,1263772.44,nonprofit,,
+544f6adecc1143db021d7dec3c1a7510,LIFE PREP EARLY LEARNING CENTER,Business or other,default,<$100K,88569.7,unsure,,name does not settle the type
+7b785a98d4202f14adfe3ba4842ae2a4,RODS LABORATORY - UNIVERSITY OF PITTSBURGH,Education institution,name rule,<$100K,74015.04,other,,
+2aad161372ee4810eef26fa76b90ff9f,PHONE BANK SYSTEMS INC,Financial institution,name rule,<$100K,31339.1,business,,
+7e22df0567e47e99722909b755f54776,URBANA VOLUNTEER FIRE DEPARTMENT INC AND URBANA,Government,name rule,<$100K,36305.46,nonprofit,,differs from the rule (government)
+b84650258655bee4deccb29bcb75bda2,FEDERATED HEALTHCARE SUPPLY INC,Health care organization,name rule,<$100K,55464.01,business,,differs from the rule (other)
+dbaf59a0a1c7aecb1864af601458bb70,ACTION IN MONTGOMERY INC,Non-profit,grants data nonprofit = Y,<$100K,64869.0,nonprofit,,
+250c15d95448df3bb6c799ff0ef01099,LUMINA STUDIO THEATRE,Business or other,default,$100K-$1M,163481.13,unsure,,name does not settle the type
+b6f0c57414760cc1e008865cfc91ee78,JOHN HOPKINS UNIVERSITY,Education institution,name rule,$100K-$1M,393458.79,other,,
+d0270b108094dcd239178c2a3b1719a0,SUNTRUST BANK/MILANI CONST LLC,Financial institution,name rule,$100K-$1M,324998.73,business,,
+ea50058795b3a19f8a9838a932166175,TREASURER STATE OF MAINE,Government,name rule,$100K-$1M,155891.52,government,,
+d7dfde2793dfeb05c624cf2aadeb9f13,AXIS HEALTHCARE GROUP PC,Health care organization,name rule,$100K-$1M,117530.09,business,,differs from the rule (other)
+89df7c8ba8bb2534c7000a11686fe6f1,BALTIMORE BAR FOUNDATION INC,Non-profit,grants data nonprofit = Y,$100K-$1M,492889.39,nonprofit,,
+aa0b27f9dbb516b22b7613753669b837,CAROLINE CENTER INC,Business or other,default,$100M+,113997452.04,unsure,,name does not settle the type
+3ceb379b6896489b52e99d6ca3fdbe04,JOHNS HOPKINS UNIVERSITY PHYSICIANS,Education institution,name rule,$100M+,142853653.63,other,,
+1d570bc5ef271d83a1fe2a972a7ba4f5,CALVERT CO PUBLIC SCHOOLS,Government,name rule,$100M+,1114756719.54,government,,
+1a560bcdc4af1d60512b27a1f728e415,HELIX HEALTHCARE INC,Health care organization,name rule,$100M+,123854122.56,business,,differs from the rule (other)
+8eaf4ca9c9e9ea8323edf7f4f84128b7,POTOMAC ELECTRIC POWER CO,Utility,name rule,$100M+,163164879.97,business,,
+943659f139adcf8130f43de8c90380ee,SOUTHERN MARYLAND VOCATIONAL INDUSTRIES INC D/EPIC,Business or other,default,$10M-$100M,71079664.06,unsure,,name does not settle the type
+fa326c5d1b87e309d75bde79f8ed94ea,COLLEGE SOUTHERN MD,Education institution,name rule,$10M-$100M,26573811.67,other,,
+3c952719b2a1e800aaa2d97e6e876ae0,PITNEY BOWES BANK INC PURCHASE POWER,Financial institution,name rule,$10M-$100M,46488918.45,business,,
+ee266de7c07dd2f98f810ea98b4092e5,WASHINGTON COUNTY HEALTH DEPT,Government,name rule,$10M-$100M,83797355.08,government,,
+ad48fcf7c792e42e87f3eb14b6e2a4fd,MARYLAND HOSPITAL ASSOCIATION INC,Health care organization,name rule,$10M-$100M,42212535.87,nonprofit,,differs from the rule (other)
+083aa4a6b695ddf405c7a6b7cfc37ad1,GAUDENZIA INC,Non-profit,grants data nonprofit = Y,$10M-$100M,52811202.74,unsure,,name does not settle the type
+a9e9ad8ad82efa901b3eee5b3ce9c043,DREAMKEEPERS INC,Business or other,default,$1M-$10M,1175180.9,unsure,,name does not settle the type
+bd40a7773904473cbd7c9d2c83d446ce,COPPIN STATE COLLEGE DEVELMNT FOUNDATION INC,Education institution,name rule,$1M-$10M,1780671.33,nonprofit,,differs from the rule (other)
+1fcc71cd7506da6971bc00af09c83934,SANDY SPRING BANK,Financial institution,name rule,$1M-$10M,1630906.26,business,,
+40a6d8f4a4f80c7c40c0dc5bed709728,CITY OF DISTRICT HEIGHTS,Government,name rule,$1M-$10M,5873993.46,government,,
+65d8427c325186d9c16d1fce7a64b990,AMERICAN HEALTHCARE SERVICES LLC,Health care organization,name rule,$1M-$10M,9279861.54,business,,differs from the rule (other)
+bb4798f8a4dc1afd2eb6c2892aee1b46,HARBEL COMMUNITY ORGANIZATION INC,Non-profit,grants data nonprofit = Y,$1M-$10M,2115957.36,nonprofit,,
+b1a76a4a4c763f0593db60da959fe232,CHESAPEAKE YACHT CENTER,Business or other,default,<$100K,50000.0,business,,
+fb91e514bf321b7bd8a5f7bcb43fd1a4,MITCHELL COLLEGE,Education institution,name rule,<$100K,61531.13,other,,
+d48a4bc583b2c873f37a0aea5fca41bf,NORTHERN BANK NOTE COMPANY,Financial institution,name rule,<$100K,32551.56,business,,
+48ebe205ae463ad04332e273edcb0e5b,"PRINCE GEORGE'S COUNTY BOYS & GIRLS CLUB, INC.",Government,name rule,<$100K,25000.0,nonprofit,,differs from the rule (government)
+fd662c32700ab62fefaaee1e2f3db424,TRUEVINE HOME HEALTHCARE LLC,Health care organization,name rule,<$100K,48228.72,business,,differs from the rule (other)
+41a717b2b643c54bbf8b11b0abf91934,MARYLAND FOREST ASSOCIATION INC,Non-profit,grants data nonprofit = Y,<$100K,33276.31,nonprofit,,
+9c4a3ad472a4b7469cdffd89ba11d5e3,"CASA OF MARYLAND, INC PRINCE GEORGE'S WORKERS",Business or other,default,$100K-$1M,296608.06,unsure,,name does not settle the type
+931337787158c51183bdce83195e1acd,MONTGOMERY COMMUNITY COLLEGE,Education institution,name rule,$100K-$1M,295147.25,government,,differs from the rule (other)
+abd0c553292baa64d79d46b5001d50e6,TD BANK/PESSOA CONSTRUCTION CO,Financial institution,name rule,$100K-$1M,750844.44,business,,
+f55193d40cd87c3c588af3bacb5be1b9,HAGERSTOWN/WASHINGTON COUNTY CVB,Government,name rule,$100K-$1M,492714.64,unsure,,name does not settle the type
+03a0f4a8530bf995acba8838737fff54,UNITED HOSPITALISTS MEDICAL,Health care organization,name rule,$100K-$1M,104415.68,business,,differs from the rule (other)
+0f40547ce44c7e463b18f3e6d0bb769a,CENTER FOR TECHNOLOGY ACCESS AND TRAINING,Non-profit,grants data nonprofit = Y,$100K-$1M,118335.37,nonprofit,,
+26c7bcf7c159857c422eca4afef792c2,LEGAL AID BUREAU INC,Business or other,default,$100M+,110894527.68,nonprofit,,differs from the rule (business)
+590a935f8dd47a1c17fd110cea3dfdce,ALLEGANY COMMUNITY COLLEGE,Education institution,name rule,$100M+,109908641.95,government,,differs from the rule (other)
+c27d5e8a5d8a6e9aaf0a7ee625354289,BOARD OF EDUCATION OF CHARLES COUNTY,Government,name rule,$100M+,1848927868.36,government,,
+9b563bb7f2c4b5be05708d8f27311ebe,DOCTORS HOSPITAL INC,Health care organization,name rule,$100M+,145005116.48,other,,
+a45b17edc825c109b026a7f8e1d03d3d,PEPCO ENERGY SERVICES INC,Utility,name rule,$100M+,187844730.84,business,,
+f8bffe010a41e5cac9d9bb71e6a5e481,WELCARE PHARMACY LLC,Business or other,default,$10M-$100M,19553037.21,business,,
+070f596df48f757e8348bee76775b648,COLLEGE PARKWAY LLLP,Education institution,name rule,$10M-$100M,38790323.0,business,,differs from the rule (other)
+e1cabb765b17073296aa4b5cbfb108f7,BANK OF AMERICA MERCHANT SERVICES,Financial institution,name rule,$10M-$100M,79268348.78,business,,
+aacca08c041738dc77d1512726844e04,WORCESTER COUNTY COMMISSIONERS,Government,name rule,$10M-$100M,58111269.98,government,,
+35aff765e191b1cc0c06d79ed2f3aa0b,GROUP HOSPITALIZATION AND MEDICAL SERVICES INC,Health care organization,name rule,$10M-$100M,11581144.24,unsure,,name does not settle the type
+9a2523e677287ea7791a10a3aff4cd88,CATO INC,Non-profit,grants data nonprofit = Y,$10M-$100M,39537186.25,unsure,,name does not settle the type
+57af501eb768bbc558e73dd3b54e1d40,NATIONAL AQUARIUM BALTIMORE,Business or other,default,$1M-$10M,2131708.03,unsure,,name does not settle the type
+2c8324e653a5eed916f8c6fa8f5059fb,COLLEGE BOUND FOUNDATION INC,Education institution,name rule,$1M-$10M,1453135.41,nonprofit,,differs from the rule (other)
+a5f22e34379023402192eaa4c3d16c16,1ST MARINER BANK,Financial institution,name rule,$1M-$10M,1841765.89,business,,
+cfa0912815c2331ee08611b467648c83,TOURISM COUNCIL OF FREDERICK COUNTY INC,Government,name rule,$1M-$10M,5541234.1,nonprofit,,differs from the rule (government)
+07f483ed8e5818ff5b90b46bbea7684d,SAVE FOR LIFE HEALTHCARE SERVICES,Health care organization,name rule,$1M-$10M,2331582.89,business,,differs from the rule (other)
+bda08e2fa6bd08f52da4858b4dde9958,SAMU FIRST RESPONSE,Non-profit,grants data nonprofit = Y,$1M-$10M,3491383.75,unsure,,name does not settle the type
+f43b5cfbef5e422b84269cf8f7db213f,RATHELL FARM EQUIP CO INC,Business or other,default,<$100K,62119.61,business,,
+6e2c54385d3648ab5d85c2ae262b9c39,TEMPLE UNIVERSITY,Education institution,name rule,<$100K,51982.08,other,,
+ed4fae7b52a22d47e2632d6d076c889f,BANK BUILDING LIMITED PARTNERSHIP,Financial institution,name rule,<$100K,30000.0,business,,
+83b6f080adc9e94731fed5fe27860bc4,"[individual: name withheld, see payee_key]",Government,name rule,<$100K,90443.0,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+3159a813b92b923aaa2c693549bae8da,OPEFUL HEART HEALTHCARE SERVICES IN,Health care organization,name rule,<$100K,93170.82,business,,differs from the rule (other)
+0be94b940563d08a5b2699cf79a6a2d9,"ONE LOVE LIFE CENTER, INC.",Non-profit,grants data nonprofit = Y,<$100K,86592.91,unsure,,name does not settle the type
+e6185b927d0d4139760734411983fd9d,LOCUM LEADERS,Business or other,default,$100K-$1M,172080.0,business,,
+28a0c812378ca308836475ecdbe7124d,EDUCATION ALLIANCE BROWN UNIVERSITY,Education institution,name rule,$100K-$1M,178499.0,other,,
+f226999b5be9159acef047eef7fd377c,REVERE BANK,Financial institution,name rule,$100K-$1M,206668.46,business,,
+a88e23434ac6f650559524e0c51e4a71,"[individual: name withheld, see payee_key]",Government,name rule,$100K-$1M,105496.0,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+28c40fa9054ee2ee6afbe832265ec63b,RW HEALTHCARE SERVICES,Health care organization,name rule,$100K-$1M,208151.84,business,,differs from the rule (other)
+43d43e4ef30f2274e75494788882ff50,HOLY FAMILY CATHOLIC COMM. OF MIDDLETOWN,Non-profit,grants data nonprofit = Y,$100K-$1M,121453.7,nonprofit,,
+e6e235c65f4c31fd7374a086261d02cb,THE ARC OF THE CENTRAL CHESAPEAKE R,Business or other,default,$100M+,1268650732.68,nonprofit,,differs from the rule (business)
+281b2e1633ee8bbe39ed44415549de16,LOYOLA UNIVERSITY MARYLAND INC,Education institution,name rule,$100M+,118042237.74,other,,
+5cbbb92449ee8a22d989c8f98de4cb22,JOHNS HOPKINS UNIVERSITY DEPT OF ANESTHESIOLOGY,Government,name rule,$100M+,120707185.7,other,,differs from the rule (government)
+fd90989ac4dc1eb8cab70c78c4ccb68e,JOHNS HOPKINS BAYVIEW MEDICAL CENTER,Health care organization,name rule,$100M+,418716924.95,other,,
+ed28a120366f6a90a9ae6aa016cefc95,WASHINGTON GAS ENERGY SERVICES INC,Utility,name rule,$100M+,136547220.29,business,,
+a22bdf05429abb6ee0dc53391afebae6,COLUMBIA GAS OF MARYLAND,Business or other,default,$10M-$100M,31281541.08,business,,
+a1dcdc8326ea1b97e6020f29f9eb2645,WASHINGTON COLLEGE,Education institution,name rule,$10M-$100M,93335598.73,other,,
+05d229bbb3c323ad96b159b5a4751f73,THE BANK OF NEW YORK MELLON,Financial institution,name rule,$10M-$100M,17376143.23,business,,
+0d4382ca1ca0d2358fa7dd9eb11122ae,COUNTY COMMISSIONERS OF WASHINGTON COUNTY,Government,name rule,$10M-$100M,10397247.0,government,,
+19f41de1618472f9684ab56693c9027d,WESTERN MARYLAND REGIONAL MEDICAL CENTER,Health care organization,name rule,$10M-$100M,19780981.46,other,,
+e9b90d96a2175d00a7389e377faebfe4,LUTHERAN SOCIAL SERVICES OF THE,Non-profit,grants data nonprofit = Y,$10M-$100M,19532105.85,nonprofit,,
+7451e0c10b0e80a1f50cadbe39c45ccc,"INLAND REISTERSTOWN SPE 1, LLC",Business or other,default,$1M-$10M,3764013.41,business,,
+71b7b094c216eaf9aa93bb23f262df16,UNIVERSITY FOR TOTS SUITLAND CHILDCARE CTR INC,Education institution,name rule,$1M-$10M,1814903.31,business,,differs from the rule (other)
+1a542a13c45e08698e1325d29893bd4d,FLAGSTAR BANK,Financial institution,name rule,$1M-$10M,4309581.8,business,,
+50952d28fea5017fc13d91456c24bc66,"ACV ENVIRONMENTAL SERVICES, INC.",Government,name rule,$1M-$10M,5557624.04,business,,differs from the rule (government)
+a131e3adfe560a7289971392d861d6d4,MEDLANTIC HEALTHCARE GROUP DBA EMC EMERGENCY PHYS,Health care organization,name rule,$1M-$10M,3864318.39,business,,differs from the rule (other)
+7dfc7db70827c6e43e22fc7f75cc30d5,THE ASSOCIATED JEWISH COMMUNITY FEDERATION,Non-profit,grants data nonprofit = Y,$1M-$10M,6610770.03,nonprofit,,
+4183c3d69dd6c6db1339b61f6712a46e,STYLISH AUTO DEALER LLC,Business or other,default,<$100K,50000.0,business,,
+b9f01b3530f95fcbfee05ec26405ec5f,UNIVERSITY PHYSICALTHERAPY ASSOCIAT,Education institution,name rule,<$100K,25447.16,business,,differs from the rule (other)
+af0c628a6c038f23bb86726bd116c77a,DLL (PNC BANK RECEIVABLES MANAGEMENT),Financial institution,name rule,<$100K,90200.0,business,,
+6875c147b43772a677fd87c14986a20a,WICOMICO COUNTY,Government,name rule,<$100K,60192.0,government,,
+9537210e65d71174cc3c262747ee972f,HOSPITAL FURNITURE RESTORATION,Health care organization,name rule,<$100K,70141.09,business,,differs from the rule (other)
+5e7f1b4cbc65981e101bbd19ba71762a,BIT COMMUNITY CENTER INC,Non-profit,grants data nonprofit = Y,<$100K,62926.42,nonprofit,,
+3f9883bc56ff8da5ff3e12f692ba83be,TORRES FOUNDATION FOR THE BLIND INTERNATIONAL INC,Business or other,default,$100K-$1M,293066.49,nonprofit,,differs from the rule (business)
+80bccf145b6fff30209178d4d1f7ec3f,MARSHALL UNIVERSITY,Education institution,name rule,$100K-$1M,304480.88,other,,
+c6d7fadad32d7f7160ee9c9984b7c99a,WACHOVIA BANK/DAISY CONCRETE,Financial institution,name rule,$100K-$1M,196855.29,business,,
+b04a99a994d36c6fa72fbdf758935693,DELL BROTHERS,Government,name rule,$100K-$1M,763315.44,business,,differs from the rule (government)
+39b2661210dfd11fc59fdd6888a81ceb,ALERT HEALTHCARE SOLUTIONS INC,Health care organization,name rule,$100K-$1M,153290.68,business,,differs from the rule (other)
+08a653f60d9c29468c6b2b410519b65b,MOSDOS KEHAL CHASSIDIM,Non-profit,grants data nonprofit = Y,$100K-$1M,873711.49,nonprofit,,
+f486be8608f98fd95485e34b3d9748e0,GANTECH INC,Business or other,default,$100M+,314619368.42,business,,
+0974ab33d47c036efd057b82769a5ec9,CHESAPEAKE COLLEGE,Education institution,name rule,$100M+,275463300.18,other,,
+dc9fbdc3ded869c8f2c541851e743db0,SOMERSET COUNTY - BOARD OF COMMISSIONERS,Government,name rule,$100M+,188765169.42,government,,
+20c4c0ccdebe7096993597f8974e1b6e,UNIVERSITY OF MARYLAND MEDICAL CENTER,Health care organization,name rule,$100M+,611307667.13,other,,
+ad43b16ac54c9eebab19642023269b2f,HEALTH-WAY PHARMACY,Business or other,default,$10M-$100M,93986488.86,business,,
+dd4dbfee2f87a85f66de07e3ecbd120f,LOYOLA COLLEGE,Education institution,name rule,$10M-$100M,24288545.55,other,,
+e14be9cc97c541ec33c65f0ec1514ea3,U S BANK NATIONAL ASSOCIATION,Financial institution,name rule,$10M-$100M,47668031.4,business,,
+235cdb6bfedd30331f3d8bbfd42561f2,TOWN OF BLADENSBURG,Government,name rule,$10M-$100M,16871953.03,government,,
+5f537ad34139d4ab42a36eaac72bc2be,PROVIDENCE HOSPITAL,Health care organization,name rule,$10M-$100M,80734136.24,other,,
+59f3aef757f613a344d57c288ad56429,TURBOMECA USA,Business or other,default,$1M-$10M,4375846.72,business,,
+12bbc8e02082affffd331572553d82eb,UNIVERSITY OF MD COLLEGE PARK FOUND,Education institution,name rule,$1M-$10M,1681787.5,nonprofit,,differs from the rule (other)
+f94cc4c51080f5fe6ab75b081ffa38e1,CONFERENCE OF STATE BANK SUPERVISORS INC,Financial institution,name rule,$1M-$10M,1014757.04,nonprofit,,differs from the rule (business)
+435086b2d6393af19144be066841c3fe,TOWN OF CAPITOL HEIGHTS OF MARYLAND,Government,name rule,$1M-$10M,6115900.29,government,,
+eb5c3a0c38ebbdde708727ed36e8929a,AXIUM HEALTHCARE PHARMACY INC,Health care organization,name rule,$1M-$10M,2371128.98,business,,differs from the rule (other)
+d7c729c9330f7c98a46f50b9183a30f9,BOYS & GIRLS CLUBS OF SOUTHERN MARYLAND,Non-profit,grants data nonprofit = Y,$1M-$10M,1798603.09,nonprofit,,
+f45bdf01dc7149d57a3732fb8a280f78,MY PARENTS PLACE LLC,Business or other,default,<$100K,79041.95,business,,
+adb9f2ac4bacd4eda7c782b86bb404bf,"COLLEGETRACKS, INC.",Education institution,name rule,<$100K,58853.0,unsure,,name does not settle the type
+bb348074598bc60840d8c43132eadf3b,CHESAPEAKE BANK OF MARYLAND,Financial institution,name rule,<$100K,38750.0,business,,
+6440aa66498b82d2d0284ff96f431bc0,HOWARD COUNTY FAIR ASSOCIATION,Government,name rule,<$100K,86484.75,nonprofit,,differs from the rule (government)
+ddde903c29d4ad27973c79aae644ff39,NASH GENERAL HOSPITAL,Health care organization,name rule,<$100K,34480.19,other,,
+dd55cdb9ec33840d86b0d422e44580a0,DIDDLY SQUAT FARMING LLC,Non-profit,grants data nonprofit = Y,<$100K,32445.0,business,,differs from the rule (nonprofit)
+d2764d2c0cd18c81f3739274c0320cea,GET IT RIGHT,Business or other,default,$100K-$1M,174780.44,unsure,,name does not settle the type
+426b871125c5fc9be01fd769a2fdcd87,UNIVERSITY OF VIRGINIA MEDICAL CTR,Education institution,name rule,$100K-$1M,292811.73,other,,
+4ef329caf111316cb43aa20d25e2b3cf,NORTH ARUNDEL SAVINGS BANK FSB,Financial institution,name rule,$100K-$1M,270200.0,business,,
+a6e68a0f65e301d1d69dce7d19f592d9,CAROLINE CO HEALTH DEPT,Government,name rule,$100K-$1M,988640.08,government,,
+10c6e21ce593034d37b4def5f511738b,HIGHLY BLESSED HEALTHCARE SERVICES,Health care organization,name rule,$100K-$1M,560374.95,business,,differs from the rule (other)
+7b34611cf8bff550e5484eff5aa532bd,EMMANUEL BAPTIST CHURCH,Non-profit,grants data nonprofit = Y,$100K-$1M,125323.28,nonprofit,,
+482899056b8b4185edb692254f4fa054,SOLUTRAN INC,Business or other,default,$100M+,532939265.5,business,,
+eb276614613056b1ec44c231c5b101be,UNIVERSITY OF MARYLAND MEDICAL SYS,Education institution,name rule,$100M+,105429670.13,other,,
+63c9ac0c06d09c464e6de692aa6d6ecc,CECIL COUNTY GOVERNMENT,Government,name rule,$100M+,437703841.08,government,,
+9956e419f88437bb261c130ab488fdfc,JOHNS HOPKINS HOSPITAL INPATIENT,Health care organization,name rule,$100M+,474304809.54,other,,
+564463d7c89c643eca3dffde91549cd1,BALTIMORE SYMPHONY ORCHESTRA INC,Business or other,default,$10M-$100M,39837284.7,nonprofit,,differs from the rule (business)
+fb11aac1087382ae440c187d4779c892,STEVENSON UNIVERSITY INC,Education institution,name rule,$10M-$100M,80202702.18,other,,
+59fc95e14e25b67579b0291a1ce936e4,SUNTRUST BANK,Financial institution,name rule,$10M-$100M,32153550.36,business,,
+c36a18d3c8090e6de3891a4c379002aa,WORCESTER COUNTY INFANTS TODDLER,Government,name rule,$10M-$100M,27058152.07,government,,
+28f0f7ecb910134a76bff6ad6e69e154,SHEPPARD PRATT HEALTH SYSTEM,Health care organization,name rule,$10M-$100M,19500430.92,other,,
+ad44dca66f1b0dc8de9f3ff81992b5dd,HOSPICE OF CHARLES CNTY REGION 02,Business or other,default,$1M-$10M,2434034.14,unsure,,name does not settle the type
+8953b8a9917cd90241d1da6d1fa4e02e,BUNDLES OF JOY UNIVERSITY INC,Education institution,name rule,$1M-$10M,4924797.76,business,,differs from the rule (other)
+a4242c71de9c9407d66ee0307af77409,PNC BANK,Financial institution,name rule,$1M-$10M,3107401.9,business,,
+49534cb47470917465322f41a6388811,MARYLAND DEPARTMENT OF THE ENVIRONMENT,Government,name rule,$1M-$10M,1164785.98,government,,
+c6434d2a6e43b977fe853110d2ffb5b9,HOSPITALIST MEDICINE PHYSICIANS OF MARYLAND P.C.,Health care organization,name rule,$1M-$10M,5316371.43,business,,differs from the rule (other)
+4b79822131847dc8d230bce8fcff3e20,CHESAPEAKE NEIGHBORS LLC/PROGRESSIVE TITLE CORP,Non-profit,grants data nonprofit = Y,$1M-$10M,1491228.59,business,,differs from the rule (nonprofit)
+143c35d7b60248d27f93f160c2f72dbd,NATIONAL TECHNOLOGY TRANSFER INC,Business or other,default,<$100K,72335.0,business,,
+b85fdc9f58ac91d221a2508276304392,CORNELL UNIVERSITY,Education institution,name rule,<$100K,70120.0,other,,
+1376bdba2a95a2c11a28b5ca3bdef3e6,"[individual: name withheld, see payee_key]",Financial institution,name rule,<$100K,37500.0,individual/withheld,,"a person's name; withheld here, look up by payee_key"
+de499a3fb2d069dae3d772c16bf03eb2,UNITED COMM VOL FIRE DEPT INC,Government,name rule,<$100K,58728.0,nonprofit,,differs from the rule (government)
+db79b2168f8fea64f7e4340e7b809756,CHIMAX MEDICAL CENTER LLC,Health care organization,name rule,<$100K,35264.04,business,,differs from the rule (other)

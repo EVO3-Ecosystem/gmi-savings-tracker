@@ -8,11 +8,12 @@ version = "0.1.0"
 description = "GMI Savings Tracker: local SODA -> Parquet -> DuckDB pipeline that checks reported savings against Maryland's own payments and finds the next $50M"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0", "pdfplumber>=0.11", "matplotlib>=3.8"]
+dependencies = ["sodapy>=2.2", "pandas>=2.0", "pyarrow>=14", "pyyaml>=6", "requests>=2.31", "duckdb>=1.0", "pdfplumber>=0.11", "matplotlib>=3.8", "scikit-learn>=1.3"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
 preview = ["playwright>=1.40"]
+ml = ["sentence-transformers>=2.2"]   # grant groups embeddings (src/models/grant_groups.py); without it TF-IDF is used
 
 [tool.setuptools]
 packages = ["src", "src.pipeline", "src.models"]

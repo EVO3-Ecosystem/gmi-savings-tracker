@@ -132,3 +132,33 @@ payment_screen:
     rate_low: 0.02             # ASSUMED confirmation rates, to be replaced by the result of a reviewed sample
     rate_likely: 0.05
     rate_high: 0.10
+
+# ======================================================================================================================
+# ML layer (src/models/payee_classifier.py, src/models/grant_groups.py; docs/models/payee_classifier.md, grant_groups.md).
+# These produce leads and better labels, never savings. Every threshold below was set before the results were looked at.
+# ======================================================================================================================
+payee_classifier:
+  random_state: 20261110        # fixed seed: the evaluation sample and the model are reproducible
+  eval_size: 400                # names in the hand-labeled evaluation set (reference/payee_labels_sample.csv)
+  spend_buckets: [0, 100000, 1000000, 10000000, 100000000]   # lower edges of the all-years spend buckets (dollars)
+  ngram_range: [2, 5]           # TF-IDF character n-grams (char_wb), lengths 2 to 5
+  max_features: 200000
+  C: 4.0                        # logistic regression inverse regularization
+  review_threshold: 0.6         # a model label below this probability goes to the review queue (review_flag)
+  # rule label (reference/payee_type_rules.csv) -> classifier class
+  rule_to_class:
+    Government: government
+    Non-profit: nonprofit
+    Business or other: business
+    Financial institution: business
+    Utility: business
+    Health care organization: other
+    Education institution: other
+grant_groups:
+  model: sentence-transformers/all-MiniLM-L6-v2   # falls back to TF-IDF word unigrams+bigrams when it cannot be loaded
+  cosine_threshold: 0.85        # agglomerative clustering (average linkage): descriptions closer than this join a group; set before looking
+  sensitivity: [0.80, 0.90]     # thresholds reported alongside, never used for the leads
+  lead_fy: 2025                 # overlap leads: groups funded by 2+ grantor agencies in this same fiscal year (the grants data ends FY2025);
+                                # the looser any-year reading is reported as multi_agency_any_year (renamed agencies count twice there)
+  min_agencies: 2
+  top_n_check: 20               # groups hand-checked in docs/models/grant_groups.md (by lead_fy dollars)
