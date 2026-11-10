@@ -96,7 +96,7 @@ function toCsv(cols, rows){ const q = v => { if (v == null) return ''; const s =
 function download(name, text){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], {type: 'text/csv'})); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0); }
 async function copyText(text){ const box = $('exCopyBox'); box.hidden = true; S.copied = null;
   try { if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('no clipboard access'); await navigator.clipboard.writeText(text); S.copied = 'clipboard';
-    $('exInfo').textContent = $('fbInfo').textContent = 'Copied ' + text.split('\n').length.toLocaleString('en') + ' lines (CSV) to the clipboard.'; }
+    $('exInfo').textContent = $('fbInfo').textContent = 'Copied ' + text.split('\\n').length.toLocaleString('en') + ' lines (CSV) to the clipboard.'; }
   catch (e) { const t = $('exCopyText'); t.value = text; box.hidden = false; t.focus(); t.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e2) { ok = false; }
     S.copied = ok ? 'execCommand' : 'select'; $('exCopyMsg').textContent = ok ? 'Copied (CSV). The rows are also in the box below.' : 'This page cannot write to the clipboard here: the rows are selected in the box below; press Ctrl+C (or ⌘C) to copy them.'; } }
 function listTables(onPick){ const ul = $('exTables'); ul.textContent = '';
