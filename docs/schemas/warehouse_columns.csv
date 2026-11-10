@@ -360,17 +360,22 @@ mart.d_grant_groups,description,VARCHAR,3803,Representative description of the g
 mart.d_grant_groups,n_descriptions,BIGINT,3803,Distinct descriptions in the group,derived
 mart.d_grant_groups,example_descriptions,VARCHAR,3803,Up to three other descriptions in the group,derived
 mart.d_grant_groups,grantor_agencies,VARCHAR,3803,"Grantor agencies that funded the group in any year (FY2009-FY2025), '; '-separated",derived
-mart.d_grant_groups,n_agencies,BIGINT,3803,"Number of grantor agencies, any year (an agency renamed between years counts twice)",derived
+mart.d_grant_groups,n_agencies,BIGINT,3803,"Number of resolved grantor agencies, any year (renames and fund names counted once, through reference/grantor_agency_aliases.csv)",derived
 mart.d_grant_groups,grantees,BIGINT,3803,"Distinct grantees, any year",derived
+mart.d_grant_groups,grantors_listed,VARCHAR,3803,"Grantor names as listed (before the alias map) that funded the group in any year, '; '-separated",derived
+mart.d_grant_groups,n_grantors_listed,BIGINT,3803,"Number of grantor names as listed, any year (a renamed agency counts twice)",derived
 mart.d_grant_groups,grantor_agencies_fy2025,VARCHAR,3803,Grantor agencies that funded the group in FY2025,derived
 mart.d_grant_groups,n_agencies_fy2025,BIGINT,3803,Number of grantor agencies in FY2025,derived
 mart.d_grant_groups,grantees_fy2025,BIGINT,3803,Distinct grantees in FY2025,derived
 mart.d_grant_groups,rows_fy2025,BIGINT,3803,Grant rows in FY2025,derived
 mart.d_grant_groups,amount_fy2025,DOUBLE,3803,"FY2025 grant dollars in the group: what was granted, not a saving, not additive with payments or across groups",derived
+mart.d_grant_groups,amount_all_years,DOUBLE,3803,"Grant dollars in the group, FY2009-FY2025 (what was granted; not a saving, not additive); breaks rank_fy ties",derived
 mart.d_grant_groups,first_fy,INTEGER,3803,First fiscal year the code appears,derived
 mart.d_grant_groups,last_fy,INTEGER,3803,Last fiscal year the code appears,derived
 mart.d_grant_groups,overlap_lead,BOOLEAN,3803,"Possible overlap lead: 2+ grantor agencies funded the group in FY2025 (a question to ask, not a finding)",derived
-mart.d_grant_groups,multi_agency_any_year,BOOLEAN,3803,2+ grantor agencies in any year; mostly renamed agencies (hand check in docs/models/grant_groups.md),derived
+mart.d_grant_groups,multi_agency_any_year,BOOLEAN,3803,2+ resolved grantor agencies in any year (hand check in docs/models/grant_groups.md),derived
+mart.d_grant_groups,multi_listed_any_year,BOOLEAN,3803,2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table),derived
+mart.d_grant_groups,collapsed_by_aliases,BOOLEAN,3803,2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table),derived
 mart.d_grant_groups,backend,VARCHAR,3803,"Embedding used: sentence-transformers/all-MiniLM-L6-v2, or tfidf-word-1-2gram when it could not be loaded",derived
 mart.d_grant_groups,cosine_threshold,DOUBLE,3803,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity),derived
 mart.d_grant_groups_sensitivity,cosine_threshold,DOUBLE,3,Average-linkage cosine similarity at which descriptions join a group (0.85 main; 0.80 and 0.90 sensitivity),derived
@@ -382,8 +387,12 @@ mart.d_grant_groups_sensitivity,multi_description_groups,BIGINT,3,Groups with tw
 mart.d_grant_groups_sensitivity,groups_with_fy_amount,BIGINT,3,Groups with FY2025 grant dollars,derived
 mart.d_grant_groups_sensitivity,overlap_leads,BIGINT,3,Groups funded by 2+ grantor agencies in FY2025,derived
 mart.d_grant_groups_sensitivity,lead_amount_fy,DOUBLE,3,"FY2025 grant dollars in the overlap leads (not savings, not additive)",derived
-mart.d_grant_groups_sensitivity,multi_agency_any_year,BIGINT,3,Groups with 2+ grantor agencies in any year,derived
+mart.d_grant_groups_sensitivity,multi_agency_any_year,BIGINT,3,Groups with 2+ resolved grantor agencies in any year,derived
 mart.d_grant_groups_sensitivity,multi_agency_any_year_amount_fy,DOUBLE,3,"FY2025 grant dollars in those groups (not savings, not additive)",derived
+mart.d_grant_groups_sensitivity,multi_listed_any_year,BIGINT,3,2+ grantor names as listed in any year (the reading before the alias map; a count in the sensitivity table),derived
+mart.d_grant_groups_sensitivity,collapsed_by_aliases,BIGINT,3,2+ grantor names as listed but one agency after the alias map (a count in the sensitivity table),derived
+mart.d_grant_groups_sensitivity,rows_alias_not_in_map,BIGINT,3,Grant rows whose grantor has no row in reference/grantor_agency_aliases.csv (expected 0),derived
+mart.d_grant_groups_sensitivity,rows_alias_unknown,BIGINT,3,Grant rows whose grantor is mapped with reason 'unknown' (kept under the listed name),derived
 mart.d_grant_groups_sensitivity,lead_share_of_fy_grants,DOUBLE,3,lead_amount_fy as a share of all FY2025 grants and loans,derived
 mart.d_grant_groups_sensitivity,fiscal_year,BIGINT,3,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 mart.d_master_quality,measure,VARCHAR,5,Name of the quality measure,reference
@@ -748,7 +757,9 @@ mart.totals_by_fy,vendors,BIGINT,20,Distinct payees in the year,derived
 mart.totals_by_fy,total_payments_prior,DOUBLE,20,All payments in the previous fiscal year,derived
 mart.totals_by_fy,total_payments_yoy,DOUBLE,20,Change in total payments from the previous fiscal year (share),derived
 mart.v_grant_rows,fiscal_year,INTEGER,23084,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
-mart.v_grant_rows,grantor_agency,VARCHAR,23084,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed",derived
+mart.v_grant_rows,grantor_listed,VARCHAR,23084,"Grantor before the first '/', upper case, '&' as AND, punctuation and a leading MARYLAND or STATE removed (the agency name as listed, before the alias map)",derived
+mart.v_grant_rows,grantor_agency,VARCHAR,23084,"Grantor agency resolved through reference/grantor_agency_aliases.csv (renames -> current agency; fund, program or unit -> the agency that runs it); the listed name when the map has no row or says unknown",derived
+mart.v_grant_rows,alias_reason,VARCHAR,23084,"Reason from reference/grantor_agency_aliases.csv for the grantor's agency, or 'not in map'",derived
 mart.v_grant_rows,grantor_program,VARCHAR,23084,Grantor after the first '/' (the program or unit the portal joins to the agency); blank when none,derived
 mart.v_grant_rows,grantee,VARCHAR,23084,Recipient of the grant or loan,portal
 mart.v_grant_rows,category,VARCHAR,23084,Grant or Loan (core.fact_grant),derived
@@ -833,8 +844,8 @@ ops.enrichment,source,VARCHAR,4,Source name or URL the data came from,ops
 ops.enrichment,status,VARCHAR,4,Run or source status,ops
 ops.enrichment,rows,BIGINT,4,Row count,ops
 ops.enrichment,detail,VARCHAR,4,Numbers behind the check result,ops
-ops.lineage,table_name,VARCHAR,277,Warehouse table (schema.name) created by the build,derived
-ops.lineage,depends_on,VARCHAR,277,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
+ops.lineage,table_name,VARCHAR,278,Warehouse table (schema.name) created by the build,derived
+ops.lineage,depends_on,VARCHAR,278,"A table the build read to create table_name (named in its CREATE statement, or read by the Python model that built it)",derived
 ops.payee_name_seen,payee_name,VARCHAR,61798,"Payee name exactly as paid (ref.map_payee_vendor.payee), one row per name ever seen by a passing build",ops
 ops.payee_name_seen,first_seen_run_id,VARCHAR,61798,Extract run of the first build that passed its stop checks and saw this payee name,ops
 ops.payee_name_seen,first_seen_date,VARCHAR,61798,UTC date of that extract run (YYYY-MM-DD),ops
@@ -976,10 +987,10 @@ ref.baseline_quality,source,VARCHAR,7,Where the reference value is documented,re
 ref.budget_stage,fiscal_year,VARCHAR,11,"Maryland fiscal year (July 1 to June 30), named for the year it ends",portal
 ref.budget_stage,stage,VARCHAR,11,"Confirmed budget stage for the fiscal year (Actual, Working, Legislative Appropriation) from ref.budget_stage, or the pipeline layer in run_checks",reference
 ref.budget_stage,source,VARCHAR,11,Where the reference value is documented,reference
-ref.column_dictionary,column,VARCHAR,480,Column name being defined,reference
-ref.column_dictionary,applies_to,VARCHAR,480,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
-ref.column_dictionary,origin,VARCHAR,480,"Where the column comes from: portal, source, reference, derived or ops",reference
-ref.column_dictionary,definition,VARCHAR,480,What the column means,reference
+ref.column_dictionary,column,VARCHAR,493,Column name being defined,reference
+ref.column_dictionary,applies_to,VARCHAR,493,"Tables the definition applies to (comma-separated, wildcards allowed); blank for all",reference
+ref.column_dictionary,origin,VARCHAR,493,"Where the column comes from: portal, source, reference, derived or ops",reference
+ref.column_dictionary,definition,VARCHAR,493,What the column means,reference
 ref.controllable_rule,rule,VARCHAR,17,Name of the mapping or scope rule,reference
 ref.controllable_rule,value,VARCHAR,17,The code or pattern the rule matches,reference
 ref.controllable_rule,note,VARCHAR,17,Explanation of the rule or row,reference
@@ -1022,6 +1033,11 @@ ref.gmi_reported_savings,source,VARCHAR,18,Citation for the reported saving,refe
 ref.gmi_reported_savings,source_url,VARCHAR,18,Link to the citation,source
 ref.gmi_reported_savings,source_page,VARCHAR,18,Page of the citation,source
 ref.gmi_reported_savings,source_quote,VARCHAR,18,Verbatim quote supporting the figure,source
+ref.grantor_agency_aliases,grantor_raw,VARCHAR,1944,"Grantor exactly as published in the grants dataset (every distinct string in raw.grants, matched after trimming)",reference
+ref.grantor_agency_aliases,grantor_agency,VARCHAR,1944,"Agency the grantor resolves to: the current name of a renamed department, or the agency that runs a fund, program or unit named in the grantor field (names from mart.agency_name / agency_master); for reason 'unknown', the listed name itself",reference
+ref.grantor_agency_aliases,agency_code,VARCHAR,1944,Three-character State budget agency code (for example D50); the key that joins budget and payments,portal
+ref.grantor_agency_aliases,reason,VARCHAR,1944,"Why the grantor maps there: current name, spelling, rename (with year), fund of agency, program of agency, unit of agency, or unknown",reference
+ref.grantor_agency_aliases,evidence,VARCHAR,1944,"Rows and fiscal years the grantor string appears in, and the agency and program parts it was read as",reference
 ref.map_focus_area,area,VARCHAR,96,One of GMI's six focus areas,derived
 ref.map_focus_area,subobject_code,VARCHAR,96,Comptroller sub-object code without leading zeros,derived
 ref.map_focus_area,subobject_name,VARCHAR,96,Comptroller sub-object name,derived

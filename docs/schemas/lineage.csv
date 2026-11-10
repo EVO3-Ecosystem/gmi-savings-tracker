@@ -237,6 +237,7 @@ mart.spending_scope,core.fact_budget_scope
 mart.spending_scope,ref.dim_stage
 mart.totals_by_fy,mart.payment_area
 mart.v_grant_rows,core.fact_grant
+mart.v_grant_rows,ref.grantor_agency_aliases
 mart.v_payee_class_input,core.fact_payment
 mart.v_payee_class_input,mart.vendor_type
 mart.v_payee_class_input,ref.map_payee_vendor
